@@ -1,9 +1,63 @@
 {
-  "generated_at": "2026-07-10T06:32:14.714345+00:00",
+  "generated_at": "2026-07-11T05:31:13.841170+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
   "scanned_events": 2100,
-  "opportunities": [],
+  "opportunities": [
+    {
+      "event_title": "Mexico GDP growth in Q2 2026?",
+      "slug": "mexico-gdp-growth-in-q2-2026",
+      "url": "https://polymarket.com/event/mexico-gdp-growth-in-q2-2026",
+      "end_date": "2026-07-30T06:00:00Z",
+      "days_left": 19,
+      "num_outcomes": 8,
+      "total_cost": 0.884,
+      "edge_pct": 13.12,
+      "min_outcome_liquidity": 1832.39,
+      "legs": [
+        {
+          "outcome": "2.0-2.5%",
+          "ask": 0.018,
+          "liquidity": 2564.15
+        },
+        {
+          "outcome": "0.5-1.0%",
+          "ask": 0.079,
+          "liquidity": 2196.59
+        },
+        {
+          "outcome": "2.5%+",
+          "ask": 0.087,
+          "liquidity": 1934.89
+        },
+        {
+          "outcome": "0.0-0.5%",
+          "ask": 0.1,
+          "liquidity": 4305.85
+        },
+        {
+          "outcome": "-0.5-0.0%",
+          "ask": 0.11,
+          "liquidity": 2955.37
+        },
+        {
+          "outcome": "1.0-1.5%",
+          "ask": 0.16,
+          "liquidity": 2106.45
+        },
+        {
+          "outcome": "1.5-2.0%",
+          "ask": 0.16,
+          "liquidity": 1832.39
+        },
+        {
+          "outcome": "<-0.5%",
+          "ask": 0.17,
+          "liquidity": 4393.47
+        }
+      ]
+    }
+  ],
   "calibration_signals": [],
   "calibration_table_generated_at": "2026-07-06T08:37:39.118204+00:00"
 }
