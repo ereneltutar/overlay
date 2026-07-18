@@ -274,7 +274,11 @@
     <b>[CAL]</b> satırları ise tamamen farklı bir şey: geçmiş kapanmış market'lerde fiyat ile
     gerçekleşen sonuç arasında istatistiksel olarak anlamlı bir sapma (favori-uzun şans yanlılığı)
     bulunan fiyat aralıklarını işaretler — bu, <b>tek bir bahiste garanti değil</b>, çok sayıda
-    tekrarlanan pozisyonda beklenen değeri lehine çeken bir eğilimdir. Hiçbiri yatırım tavsiyesi değildir.
+    tekrarlanan pozisyonda beklenen değeri lehine çeken bir eğilimdir. <b>[MIS]</b> satırları ise
+    piyasa fiyatı (implied probability) ile aynı fiyat kovasının geçmiş gerçekleşme oranı
+    (fair probability) arasında ≥15 puanlık fark olan, günde en az $5.000 hacim gören market'leri
+    listeler — [CAL] ile aynı geçmiş veriyi kullanır ama istatistiksel anlamlılık şartı aramaz,
+    bunun yerine örneklem küçükse (n&lt;30) uyarı gösterir. Hiçbiri yatırım tavsiyesi değildir.
   </p>
 
   <div class="ledger" id="grid">
@@ -329,7 +333,7 @@
     `).join('');
   }
 
-  const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', resolution_lag: 'LAG' };
+  const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', resolution_lag: 'LAG', mispricing: 'MIS' };
 
   function renderArbitrageEntry(opp, rank){
     const daysLabel = opp.days_left === null ? 'tarih belirsiz' :
@@ -378,9 +382,34 @@
     `;
   }
 
+  function renderMispricingEntry(sig, rank){
+    const daysLabel = sig.days_left === null ? 'tarih belirsiz' :
+      (sig.days_left <= 0 ? 'bugün kapanıyor' : `${Math.round(sig.days_left)} gün kaldı`);
+    const [lo, hi] = sig.bucket_range;
+    const rangeLabel = `%${Math.round(lo * 100)}–%${Math.round(hi * 100)} kovası`;
+    const warnLabel = sig.low_sample_warning ? ' · ⚠ düşük örneklem' : '';
+
+    return `
+      <a class="entry" href="${sig.url || '#'}" target="_blank" rel="noopener">
+        <div class="entry-head">
+          <span class="entry-rank">${rank}</span>
+          <span class="tag">${TAG_LABELS.mispricing}</span>
+          <p class="entry-title">${sig.market_question}</p>
+          <span class="entry-edge">${sig.edge_pct.toFixed(1)}pt</span>
+        </div>
+        <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel} · ${rangeLabel} · fair %${(sig.fair_probability * 100).toFixed(1)} vs implied %${(sig.implied_probability * 100).toFixed(1)} (n=${sig.bucket_sample_size})${warnLabel}</div>
+        <div class="entry-foot">
+          <span>24s hacim <span class="cost">$${Math.round(sig.volume_24h).toLocaleString('tr-TR')}</span> · skor ${sig.score}</span>
+          <span class="open">↗ polymarket'te aç</span>
+        </div>
+      </a>
+    `;
+  }
+
   function renderEntry(item, index){
     const rank = String(index + 1).padStart(2, '0');
     if(item.type === 'calibration') return renderCalibrationEntry(item, rank);
+    if(item.type === 'mispricing') return renderMispricingEntry(item, rank);
     return renderArbitrageEntry(item, rank);
   }
 
@@ -393,7 +422,8 @@
 
       const arbitrage = (data.opportunities || []).map(o => ({ ...o, type: 'arbitrage' }));
       const calibration = (data.calibration_signals || []).map(s => ({ ...s, type: 'calibration' }));
-      const merged = [...arbitrage, ...calibration].sort((a, b) => b.edge_pct - a.edge_pct);
+      const mispricing = (data.mispricing_signals || []).map(s => ({ ...s, type: 'mispricing' }));
+      const merged = [...arbitrage, ...calibration, ...mispricing].sort((a, b) => b.edge_pct - a.edge_pct);
 
       document.getElementById('scanTime').textContent = fmtDate(data.generated_at);
       document.getElementById('oppCount').textContent = merged.length;
