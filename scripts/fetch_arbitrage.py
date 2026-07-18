@@ -51,6 +51,7 @@ Cikti: docs/results.json (statik dashboard bu dosyayi okuyor)
 
 import datetime
 import json
+import math
 import sys
 import time
 from pathlib import Path
@@ -85,6 +86,29 @@ MAX_CALIBRATION_SIGNALS = 20      # dashboard'da gosterilecek max sinyal sayisi
 CALIBRATION_LOG_LEAD_DAYS = 7
 CALIBRATION_LOG_TOLERANCE_DAYS = 0.6  # her gun calisan cron'un bu pencereyi kacirmamasi icin pay
 CALIBRATION_LOG_MIN_LIQUIDITY = 50
+# ----------------------------------------------------------------------------
+
+# --- UCUNCU, BAGIMSIZ TARAMA: "Mispricing" (implied vs fair probability) --------
+# find_calibration_signal()'DAN FARKI: o fonksiyon bir sinyali sadece istatistiksel
+# olarak ANLAMLI ise (Wilson araligi kova ortasini dislarsa) gosterir. Bu tarama
+# ise anlamlilik sartina BAKMADAN dogrudan puan farkina (>= MISPRICING_MIN_EDGE_PTS)
+# bakar, 24 saatlik hacim filtresi ekler ve hepsini tek bir skorda birlestirip
+# gunluk bir "Top N" listesi uretir. AYRI bir fonksiyon (find_mispricing_signal) -
+# find_calibration_signal'in tek satiri bile degismedi.
+#
+# ONEMLI - "FAIR PROBABILITY" NEREDEN GELIYOR: Su an repoda market-basina bagimsiz
+# calisan bir olasilik modeli/tahmin kaynagi YOK. Bu yuzden bu tarama da CAL ile
+# AYNI kova verisini (docs/calibration.json -> bucket["resolved_yes_rate"], yani
+# o fiyat araligindaki market'lerin GECMISTE gercekten YES sonuclanma orani) "fair
+# probability" olarak kullaniyor - sadece esik/filtre/skorlama mantigi farkli.
+# Ornekleme boyutu kovaya gore hala kucuk olabilir (bkz. low_sample_warning alani);
+# bu istatistiksel anlamlilik testi degil, sadece "dikkatli oku" bayragi.
+MISPRICING_MIN_EDGE_PTS = 15.0          # implied ile kova-tarihsel-orani arasinda min. puan farki
+MISPRICING_MIN_VOLUME_24H = 5000        # bu 24s hacmin altindaki marketleri atla (trade edilebilirlik)
+MISPRICING_HORIZON_DAYS = 30            # bu gunden az kalan market'ler "oncelikli" pencerede
+MISPRICING_LONGTERM_MIN_EDGE_PTS = 25   # HORIZON_DAYS'i asan market'lerde sadece bunun ustundeki edge'ler girer
+MISPRICING_LOW_SAMPLE_WARNING_N = 30    # kova orneklem sayisi bunun altindaysa low_sample_warning=True
+MAX_MISPRICING_SIGNALS = 20             # dashboard'da gosterilecek gunluk Top N
 # ----------------------------------------------------------------------------
 
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "docs" / "results.json"
@@ -277,6 +301,74 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     }
 
 
+def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.datetime):
+    """implied probability (piyasanin su anki fiyati) ile o fiyat kovasinin
+    GECMISTE gerceklesen orani ('fair probability' proxy'si) arasindaki farka bakar.
+
+    find_calibration_signal()'dan FARKLARI:
+      - istatistiksel anlamlilik (Wilson araligi) sarti YOK, dogrudan puan farkina bakar
+      - 24 saatlik hacim filtresi var (likidite degil - trade edilebilirlik icin)
+      - HORIZON_DAYS'i asan market'ler sadece buyuk edge'lerde (>LONGTERM_MIN_EDGE_PTS) dahil edilir
+      - tek bir sinyal degil, digerleriyle kiyaslanabilir bir 'score' uretir
+
+    AYNI kova tablosunu (docs/calibration.json) okur ama find_calibration_signal'i
+    hic cagirmaz/degistirmez - tamamen bagimsiz bir fonksiyondur."""
+    try:
+        implied_prob = float(market.get("lastTradePrice") or market.get("bestAsk") or 0)
+    except (TypeError, ValueError):
+        return None
+    if implied_prob <= 0 or implied_prob >= 1:
+        return None
+
+    try:
+        volume_24h = float(market.get("volume24hr") or 0)
+    except (TypeError, ValueError):
+        return None
+    if volume_24h < MISPRICING_MIN_VOLUME_24H:
+        return None
+
+    end_date = parse_iso(event.get("endDate"))
+    days_left = (end_date - now).total_seconds() / 86400 if end_date else None
+
+    bucket = find_bin(implied_prob, bins)
+    if not bucket or bucket.get("resolved_yes_rate") is None:
+        return None  # bu kovada henuz kullanilabilir tarihsel oran yok (n < MIN_SAMPLE_PER_BUCKET)
+    fair_prob = bucket["resolved_yes_rate"]
+
+    edge_pts = abs(fair_prob - implied_prob) * 100
+    if edge_pts < MISPRICING_MIN_EDGE_PTS:
+        return None
+
+    # 30 gunu asan market'leri komple elemiyoruz - sadece kucuk edge'li olanlari.
+    if days_left is not None and days_left > MISPRICING_HORIZON_DAYS \
+            and edge_pts <= MISPRICING_LONGTERM_MIN_EDGE_PTS:
+        return None
+
+    side = "YES" if fair_prob > implied_prob else "NO"
+    liquidity = float(market.get("liquidityNum") or 0)
+
+    # gun sayisi 0'a cok yakinsa (ya da bilinmiyorsa) skor sonsuza kacmasin diye taban degeri.
+    score_days = max(days_left, 0.5) if days_left is not None else 0.5
+    score = edge_pts * math.sqrt(volume_24h) / score_days
+
+    return {
+        "market_question": market.get("question") or event.get("title") or "?",
+        "slug": event.get("slug"),
+        "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
+        "days_left": round(days_left, 1) if days_left is not None else None,
+        "recommended_side": side,
+        "implied_probability": round(implied_prob, 4),
+        "fair_probability": round(fair_prob, 4),
+        "edge_pct": round(edge_pts, 2),          # dashboard'daki diger tag'lerle ayni alan adi (sirala/goster icin)
+        "volume_24h": round(volume_24h, 2),
+        "liquidity": round(liquidity, 2),
+        "bucket_range": bucket["range"],
+        "bucket_sample_size": bucket["sample_size"],
+        "low_sample_warning": bucket["sample_size"] < MISPRICING_LOW_SAMPLE_WARNING_N,
+        "score": round(score, 2),
+    }
+
+
 def log_price_snapshot(events: list, now: datetime.datetime) -> int:
     """Kapanisina yaklasik CALIBRATION_LOG_LEAD_DAYS gun kalan her market'in
     su anki fiyatini docs/price_log.jsonl'e ekler (append-only, asla mevcut
@@ -375,6 +467,24 @@ def main():
     calibration_signals.sort(key=lambda s: s["edge_pct"], reverse=True)
     calibration_signals = calibration_signals[:MAX_CALIBRATION_SIGNALS]
 
+    # --- Mispricing taramasi: ayri, bagimsiz bir gecis (yukaridaki ARB/CAL dongusune
+    # dokunmuyor). Kendi tarih penceresi var: DAYS_AHEAD cutoff'unu miras almiyor,
+    # cunku >25 puanlik buyuk edge'lerde 30 gunun otesine de bakmasi gerekiyor -
+    # bu yuzden find_mispricing_signal() gun mantigini kendi icinde uyguluyor.
+    mispricing_signals = []
+    if calibration_bins:
+        for event in events:
+            end_date = parse_iso(event.get("endDate"))
+            if not end_date or end_date < now:
+                continue  # kapanmis / tarihi belirsiz event
+            for market in (event.get("markets") or []):
+                sig = find_mispricing_signal(market, event, calibration_bins, now)
+                if sig:
+                    mispricing_signals.append(sig)
+
+        mispricing_signals.sort(key=lambda s: s["score"], reverse=True)
+        mispricing_signals = mispricing_signals[:MAX_MISPRICING_SIGNALS]
+
     new_log_entries = log_price_snapshot(events, now)
 
     output = {
@@ -385,12 +495,20 @@ def main():
         "opportunities": opportunities,
         "calibration_signals": calibration_signals,
         "calibration_table_generated_at": calibration["generated_at"] if calibration else None,
+        "mispricing_signals": mispricing_signals,
+        "mispricing_filters": {
+            "min_edge_pts": MISPRICING_MIN_EDGE_PTS,
+            "min_volume_24h": MISPRICING_MIN_VOLUME_24H,
+            "horizon_days": MISPRICING_HORIZON_DAYS,
+            "longterm_min_edge_pts": MISPRICING_LONGTERM_MIN_EDGE_PTS,
+        },
     }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"{len(events)} event tarandi, {len(opportunities)} arbitraj firsati, "
           f"{len(calibration_signals)} kalibrasyon sinyali bulundu -> {OUTPUT_PATH}")
+    print(f"{len(mispricing_signals)} mispricing sinyali bulundu (Top {MAX_MISPRICING_SIGNALS} icinde).")
     print(f"{new_log_entries} yeni market price_log.jsonl'e eklendi "
           f"(kalibrasyon arsivi icin ileriye-donuk loglama).")
     if not calibration:
