@@ -1,9 +1,48 @@
 {
-  "generated_at": "2026-07-17T05:32:05.347761+00:00",
+  "generated_at": "2026-07-18T05:15:04.114642+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
   "scanned_events": 2100,
-  "opportunities": [],
+  "opportunities": [
+    {
+      "event_title": "Bank of Japan Decision in July?",
+      "slug": "bank-of-japan-decision-in-july-659",
+      "url": "https://polymarket.com/event/bank-of-japan-decision-in-july-659",
+      "end_date": "2026-07-31T00:00:00Z",
+      "days_left": 12,
+      "num_outcomes": 5,
+      "total_cost": 0.991,
+      "edge_pct": 0.91,
+      "min_outcome_liquidity": 8749.26,
+      "legs": [
+        {
+          "outcome": "50+ bps decrease",
+          "ask": 0.001,
+          "liquidity": 15394.9
+        },
+        {
+          "outcome": "25 bps decrease",
+          "ask": 0.001,
+          "liquidity": 14248.32
+        },
+        {
+          "outcome": "50+ bps increase",
+          "ask": 0.002,
+          "liquidity": 92885.45
+        },
+        {
+          "outcome": "25 bps increase",
+          "ask": 0.003,
+          "liquidity": 11276.4
+        },
+        {
+          "outcome": "No change",
+          "ask": 0.984,
+          "liquidity": 8749.26
+        }
+      ]
+    }
+  ],
   "calibration_signals": [],
   "calibration_table_generated_at": "2026-07-13T07:29:36.931108+00:00"
 }
