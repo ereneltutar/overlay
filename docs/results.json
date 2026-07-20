@@ -1,9 +1,48 @@
 {
-  "generated_at": "2026-07-19T05:41:06.007640+00:00",
+  "generated_at": "2026-07-20T05:58:36.797486+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
   "scanned_events": 2100,
-  "opportunities": [],
+  "opportunities": [
+    {
+      "event_title": "Bank of Brazil decision in August?",
+      "slug": "bank-of-brazil-decision-in-august",
+      "url": "https://polymarket.com/event/bank-of-brazil-decision-in-august",
+      "end_date": "2026-08-04T00:00:00Z",
+      "days_left": 14,
+      "num_outcomes": 5,
+      "total_cost": 0.993,
+      "edge_pct": 0.7,
+      "min_outcome_liquidity": 4042.66,
+      "legs": [
+        {
+          "outcome": "25 bps increase",
+          "ask": 0.005,
+          "liquidity": 15750.27
+        },
+        {
+          "outcome": "50+ bps decrease",
+          "ask": 0.007,
+          "liquidity": 4601.42
+        },
+        {
+          "outcome": "50+ bps increase",
+          "ask": 0.009,
+          "liquidity": 15947.2
+        },
+        {
+          "outcome": "No Change",
+          "ask": 0.172,
+          "liquidity": 5018.93
+        },
+        {
+          "outcome": "25 bps decrease",
+          "ask": 0.8,
+          "liquidity": 4042.66
+        }
+      ]
+    }
+  ],
   "calibration_signals": [],
   "calibration_table_generated_at": "2026-07-13T07:29:36.931108+00:00",
   "mispricing_signals": [],
