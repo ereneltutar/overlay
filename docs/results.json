@@ -1,9 +1,48 @@
 {
-  "generated_at": "2026-07-26T05:49:51.366741+00:00",
+  "generated_at": "2026-07-27T06:16:16.032712+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
   "scanned_events": 2100,
-  "opportunities": [],
+  "opportunities": [
+    {
+      "event_title": "Bank of Mexico Decision in August?",
+      "slug": "bank-of-mexico-decision-in-august",
+      "url": "https://polymarket.com/event/bank-of-mexico-decision-in-august",
+      "end_date": "2026-08-06T00:00:00Z",
+      "days_left": 9,
+      "num_outcomes": 5,
+      "total_cost": 0.992,
+      "edge_pct": 0.81,
+      "min_outcome_liquidity": 6152.56,
+      "legs": [
+        {
+          "outcome": "50+ bps decrease",
+          "ask": 0.001,
+          "liquidity": 8656.28
+        },
+        {
+          "outcome": "50+ bps increase",
+          "ask": 0.018,
+          "liquidity": 6152.56
+        },
+        {
+          "outcome": "25 bps increase",
+          "ask": 0.019,
+          "liquidity": 10222.56
+        },
+        {
+          "outcome": "25 bps decrease",
+          "ask": 0.089,
+          "liquidity": 11481.14
+        },
+        {
+          "outcome": "No change",
+          "ask": 0.865,
+          "liquidity": 7839.97
+        }
+      ]
+    }
+  ],
   "calibration_signals": [],
   "calibration_table_generated_at": "2026-07-20T06:55:07.162757+00:00",
   "mispricing_signals": [],
