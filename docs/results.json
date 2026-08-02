@@ -1,9 +1,68 @@
 {
-  "generated_at": "2026-08-01T05:45:03.562781+00:00",
+  "generated_at": "2026-08-02T05:46:08.507357+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
   "scanned_events": 2100,
-  "opportunities": [],
+  "opportunities": [
+    {
+      "event_title": "How many Republican Senators not running in 2026?",
+      "slug": "how-many-republican-senators-not-running-in-2026",
+      "url": "https://polymarket.com/event/how-many-republican-senators-not-running-in-2026",
+      "end_date": "2026-08-31T00:00:00Z",
+      "days_left": 28,
+      "num_outcomes": 9,
+      "total_cost": 0.928,
+      "edge_pct": 7.76,
+      "min_outcome_liquidity": 361.77,
+      "legs": [
+        {
+          "outcome": "<5",
+          "ask": 0.014,
+          "liquidity": 10204.26
+        },
+        {
+          "outcome": "8",
+          "ask": 0.016,
+          "liquidity": 8669.83
+        },
+        {
+          "outcome": "6",
+          "ask": 0.017,
+          "liquidity": 8747.9
+        },
+        {
+          "outcome": "10",
+          "ask": 0.035,
+          "liquidity": 2337.03
+        },
+        {
+          "outcome": "11",
+          "ask": 0.07,
+          "liquidity": 361.77
+        },
+        {
+          "outcome": "9",
+          "ask": 0.075,
+          "liquidity": 477.26
+        },
+        {
+          "outcome": "5",
+          "ask": 0.077,
+          "liquidity": 9823.16
+        },
+        {
+          "outcome": "12+",
+          "ask": 0.084,
+          "liquidity": 2591.74
+        },
+        {
+          "outcome": "7",
+          "ask": 0.54,
+          "liquidity": 534.79
+        }
+      ]
+    }
+  ],
   "calibration_signals": [],
   "calibration_table_generated_at": "2026-07-27T07:40:11.098154+00:00",
   "mispricing_signals": [],
