@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-27T07:40:11.098154+00:00",
+  "generated_at": "2026-08-03T07:35:49.957501+00:00",
   "bin_width": 0.05,
   "min_sample_per_bucket": 30,
-  "logged_markets_total": 355,
-  "logged_markets_checked": 355,
-  "markets_resolved": 267,
-  "markets_still_open_or_unclear": 88,
+  "logged_markets_total": 514,
+  "logged_markets_checked": 514,
+  "markets_resolved": 340,
+  "markets_still_open_or_unclear": 174,
   "bins": [
     {
       "range": [
@@ -13,11 +13,11 @@
         0.05
       ],
       "midpoint": 0.025,
-      "sample_size": 173,
-      "resolved_yes_rate": 0.0058,
-      "ci_95_low": 0.001,
-      "ci_95_high": 0.032,
-      "bias_pct": -1.92,
+      "sample_size": 209,
+      "resolved_yes_rate": 0.0048,
+      "ci_95_low": 0.0008,
+      "ci_95_high": 0.0266,
+      "bias_pct": -2.02,
       "significant": false
     },
     {
@@ -26,7 +26,7 @@
         0.1
       ],
       "midpoint": 0.075,
-      "sample_size": 19,
+      "sample_size": 23,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -39,7 +39,7 @@
         0.15
       ],
       "midpoint": 0.125,
-      "sample_size": 8,
+      "sample_size": 15,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -52,7 +52,7 @@
         0.2
       ],
       "midpoint": 0.175,
-      "sample_size": 5,
+      "sample_size": 11,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -65,7 +65,7 @@
         0.25
       ],
       "midpoint": 0.225,
-      "sample_size": 8,
+      "sample_size": 10,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -78,7 +78,7 @@
         0.3
       ],
       "midpoint": 0.275,
-      "sample_size": 3,
+      "sample_size": 7,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -91,7 +91,7 @@
         0.35
       ],
       "midpoint": 0.325,
-      "sample_size": 4,
+      "sample_size": 6,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -104,7 +104,7 @@
         0.4
       ],
       "midpoint": 0.375,
-      "sample_size": 2,
+      "sample_size": 3,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -117,7 +117,7 @@
         0.45
       ],
       "midpoint": 0.425,
-      "sample_size": 1,
+      "sample_size": 2,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -143,7 +143,7 @@
         0.55
       ],
       "midpoint": 0.525,
-      "sample_size": 2,
+      "sample_size": 3,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -156,7 +156,7 @@
         0.6
       ],
       "midpoint": 0.575,
-      "sample_size": 7,
+      "sample_size": 8,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -195,7 +195,7 @@
         0.75
       ],
       "midpoint": 0.725,
-      "sample_size": 1,
+      "sample_size": 3,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -208,7 +208,7 @@
         0.8
       ],
       "midpoint": 0.775,
-      "sample_size": 0,
+      "sample_size": 2,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -221,7 +221,7 @@
         0.85
       ],
       "midpoint": 0.825,
-      "sample_size": 0,
+      "sample_size": 1,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -234,7 +234,7 @@
         0.9
       ],
       "midpoint": 0.875,
-      "sample_size": 4,
+      "sample_size": 5,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -260,7 +260,7 @@
         1.0
       ],
       "midpoint": 0.975,
-      "sample_size": 21,
+      "sample_size": 24,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
