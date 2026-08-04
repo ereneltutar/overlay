@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-03T06:09:25.171407+00:00",
+  "generated_at": "2026-08-04T05:38:02.317247+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
   "scanned_events": 2100,
   "opportunities": [],
   "calibration_signals": [],
-  "calibration_table_generated_at": "2026-07-27T07:40:11.098154+00:00",
+  "calibration_table_generated_at": "2026-08-03T07:35:49.957501+00:00",
   "mispricing_signals": [],
   "mispricing_filters": {
     "min_edge_pts": 15.0,
