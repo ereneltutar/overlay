@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Overlay — Paper-Trading Archive</title>
+<script>(function(){try{var t=localStorage.getItem('overlay-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -527,7 +528,9 @@ document.getElementById('themeToggle').addEventListener('click', () => {
   const current = root.getAttribute('data-theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const effectiveCurrent = current || (prefersDark ? 'dark' : 'light');
-  root.setAttribute('data-theme', effectiveCurrent === 'dark' ? 'light' : 'dark');
+  const next = effectiveCurrent === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  try { localStorage.setItem('overlay-theme', next); } catch(e) {}
 });
 
 loadBetLog();
