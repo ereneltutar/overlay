@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Overlay — Polymarket Piyasa İzleme</title>
+<title>Overlay — Polymarket Market Watch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -244,36 +244,36 @@ footer a:hover{ color:var(--ink); }
 </head>
 <body>
 
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Tema değiştir">◐ tema</button>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">◐ theme</button>
 
 <div class="wrap">
 
   <div class="masthead">
     <div class="brand">Overlay</div>
-    <div class="brand-sub">Polymarket piyasa izleme</div>
+    <div class="brand-sub">Polymarket market watch</div>
   </div>
-  <p class="etymology">"overlay" — bahis/trading terimi: gerçek olasılığından daha iyi fiyatlanmış, dolayısıyla beklenen değeri lehte olan pozisyon. Bu araç üç ayrı yöntemle böyle pozisyonları arıyor.</p>
+  <p class="etymology">"overlay," a betting and trading term: a position priced better than its true odds, so the expected value favors you. This tool hunts for those positions using three separate methods.</p>
 
   <div class="ticker">
-    <span><span class="live-dot"></span>17 Haz 2026'dan beri canlı</span>
-    <span><b id="tkScanned">—</b> piyasa bugün tarandı</span>
-    <span><b id="tkArchive">—</b> fiyat noktası arşivde</span>
-    <span><b id="tkResolved">—</b> sonuçlanmış market ile kalibre</span>
+    <span><span class="live-dot"></span>live since Jun 17 2026</span>
+    <span><b id="tkScanned">—</b> markets scanned today</span>
+    <span><b id="tkArchive">—</b> price points archived</span>
+    <span><b id="tkResolved">—</b> resolved markets calibrated</span>
   </div>
 
   <div class="hero">
     <div class="hero-count" id="oppCount">—</div>
-    <div class="hero-label">fırsat bugün</div>
+    <div class="hero-label">opportunities today</div>
     <div class="hero-context">
-      <span><b id="scannedCount">—</b> piyasa tarandı</span>
-      <span>son güncelleme <b id="scanTime">—</b></span>
+      <span><b id="scannedCount">—</b> markets scanned</span>
+      <span>last updated <b id="scanTime">—</b></span>
     </div>
   </div>
 
   <hr class="rule-thick">
 
   <div class="filters" id="filters">
-    <button class="chip-btn active" data-tier="all" type="button">Tümü <b id="cnt-all">0</b></button>
+    <button class="chip-btn active" data-tier="all" type="button">All <b id="cnt-all">0</b></button>
     <button class="chip-btn" data-tier="arbitrage" type="button"><i class="dot"></i>ARB <b id="cnt-arbitrage">0</b></button>
     <button class="chip-btn" data-tier="calibration" type="button"><i class="dot"></i>CAL <b id="cnt-calibration">0</b></button>
     <button class="chip-btn" data-tier="mispricing" type="button"><i class="dot"></i>MIS <b id="cnt-mispricing">0</b></button>
@@ -281,18 +281,18 @@ footer a:hover{ color:var(--ink); }
 
   <div class="panel" id="calPanel">
     <div class="panel-head">
-      <p class="panel-title"><span class="tag-dot"></span>Kalibrasyon Eğrisi</p>
+      <p class="panel-title"><span class="tag-dot"></span>Calibration Curve</p>
       <span class="panel-meta" id="calMetaDate">—</span>
     </div>
     <p class="panel-desc">
-      Her nokta bir fiyat aralığı (kova): x ekseni piyasanın o an biçtiği olasılık, y ekseni o kovadaki
-      market'lerin <b>gerçekte</b> ne sıklıkla "Yes" sonuçlandığı. Kesikli çizgi mükemmel kalibrasyonu
-      temsil eder — nokta çizginin ne kadar altında/üstündeyse piyasa o kadar yanlış fiyatlıyor demektir.
-      Dolu nokta = istatistiksel olarak anlamlı (n≥30, %95 güven aralığı); içi boş halka = veri hâlâ birikiyor.
+      Each point is a price bucket. The x-axis shows the probability the market assigns; the y-axis shows
+      how often markets in that bucket <b>actually</b> resolved Yes. The dashed line marks perfect calibration.
+      Points that sit far above or below it mark ranges the market priced wrong.
+      Filled dot = statistically significant (n≥30, 95% CI). Open ring = still collecting data.
     </p>
     <div id="calBody">
       <div class="chart-wrap">
-        <svg id="calChart" viewBox="0 0 680 300" role="img" aria-label="Kalibrasyon eğrisi grafiği"></svg>
+        <svg id="calChart" viewBox="0 0 680 300" role="img" aria-label="Calibration curve chart"></svg>
       </div>
       <p class="chart-caption" id="calCaption"></p>
     </div>
@@ -301,38 +301,37 @@ footer a:hover{ color:var(--ink); }
       <div class="spark-row">
         <div class="spark-stats">
           <div class="spark-num" id="sparkTotal">—</div>
-          <div class="spark-num-label">arşivde fiyat noktası</div>
+          <div class="spark-num-label">price points archived</div>
         </div>
         <div class="spark-chart">
-          <svg id="sparkChart" viewBox="0 0 460 64" role="img" aria-label="Arşiv büyüme grafiği"></svg>
+          <svg id="sparkChart" viewBox="0 0 460 64" role="img" aria-label="Archive growth chart"></svg>
         </div>
       </div>
     </div>
   </div>
 
   <p class="disclaimer">
-    <span class="tagref arb">ARB</span> satırları, birbirini dışlayan seçeneklerin tamamını şu anki en iyi satış
-    fiyatından alırsan ödediğin toplamın $1.00'ın altında kaldığı durumları gösterir — matematiksel olarak
-    risksiz, ama yine de <b>kazanç garantisi değildir</b> (işlem ücreti, kayma, ince likidite).
-    <span class="tagref cal">CAL</span> satırları tamamen farklı: geçmiş kapanmış market'lerde fiyat ile
-    gerçekleşen sonuç arasında istatistiksel olarak anlamlı bir sapma bulunan fiyat aralıklarını işaretler —
-    <b>tek bir bahiste garanti değil</b>, çok sayıda tekrarlanan pozisyonda beklenen değeri lehine çeken bir
-    eğilim. <span class="tagref mis">MIS</span> satırları piyasa fiyatı ile aynı kovanın geçmiş gerçekleşme
-    oranı arasında ≥15 puanlık fark olan, günde en az $5.000 hacim gören market'leri listeler — istatistiksel
-    anlamlılık şartı aramaz. Hiçbiri yatırım tavsiyesi değildir.
+    <span class="tagref arb">ARB</span> rows show cases where buying every mutually exclusive outcome at the
+    current best ask costs less than $1.00 total. That's mathematically riskless, but still
+    <b>not a guaranteed profit</b> (fees, slippage, and thin liquidity eat into it).
+    <span class="tagref cal">CAL</span> rows work differently: they flag price ranges where past resolved
+    markets show a statistically significant gap between price and outcome. <b>No single bet is guaranteed</b>;
+    the edge shows up over many repeated positions. <span class="tagref mis">MIS</span> rows list markets with
+    at least $5,000 in 24-hour volume where the current price differs from that bucket's historical resolution
+    rate by 15 points or more, with no statistical-significance requirement. None of this is investment advice.
   </p>
 
   <div class="ledger-head">
-    <span class="ledger-title">Bugünkü Bilet Defteri</span>
-    <button class="demo-toggle" id="demoToggle" type="button">örnek verilerle önizle →</button>
+    <span class="ledger-title">Today's Ledger</span>
+    <button class="demo-toggle" id="demoToggle" type="button">preview with example data →</button>
   </div>
   <div class="ledger" id="grid">
-    <div class="state"><span class="state-msg"><span class="pulse"></span>Taranıyor</span></div>
+    <div class="state"><span class="state-msg"><span class="pulse"></span>Scanning</span></div>
   </div>
 
   <footer>
-    <span>her sabah 06:00 TR otomatik güncellenir · veri kaynağı gamma-api.polymarket.com</span>
-    <a href="https://github.com/ereneltutar/overlay" target="_blank" rel="noopener">kaynak kodu ↗</a>
+    <span>auto-updates every morning at 06:00 TR · data source gamma-api.polymarket.com</span>
+    <a href="https://github.com/ereneltutar/overlay" target="_blank" rel="noopener">source code ↗</a>
   </footer>
 </div>
 
@@ -341,7 +340,7 @@ footer a:hover{ color:var(--ink); }
 const DEMO_ENTRIES = [
   {
     type: 'arbitrage',
-    event_title: '[ÖRNEK] Sıradaki F1 yarışını kim kazanır?',
+    event_title: '[EXAMPLE] Who wins the next F1 race?',
     slug: '#', url: '#',
     days_left: 6, num_outcomes: 4, total_cost: 0.947, edge_pct: 5.6,
     min_outcome_liquidity: 310,
@@ -349,19 +348,19 @@ const DEMO_ENTRIES = [
       { outcome: 'Verstappen', ask: 0.520, liquidity: 900 },
       { outcome: 'Norris', ask: 0.230, liquidity: 610 },
       { outcome: 'Leclerc', ask: 0.130, liquidity: 420 },
-      { outcome: 'Diğer', ask: 0.067, liquidity: 310 }
+      { outcome: 'Other', ask: 0.067, liquidity: 310 }
     ]
   },
   {
     type: 'calibration',
-    event_title: '[ÖRNEK] Uzun kuyruklu bir "Evet/Hayır" market sorusu',
+    event_title: '[EXAMPLE] A long-tail Yes/No market question',
     slug: '#', url: '#',
     days_left: 11, recommended_side: 'NO', current_price: 0.91, implied_cost: 0.09,
     bucket_range: [0.90, 0.95], bucket_sample_size: 41, bucket_historical_rate: 0.83, edge_pct: 8.2
   },
   {
     type: 'mispricing',
-    event_title: '[ÖRNEK] Orta vadeli bir siyasi sonuç piyasası',
+    event_title: '[EXAMPLE] A medium-term political outcome market',
     slug: '#', url: '#',
     days_left: 18, recommended_side: 'YES', implied_probability: 0.34, fair_probability: 0.51,
     bucket_range: [0.30, 0.35], bucket_sample_size: 46, edge_pct: 17.0, volume_24h: 8400,
@@ -373,9 +372,9 @@ const DEMO_ENTRIES = [
 function fmtDate(iso){
   if(!iso) return "—";
   const d = new Date(iso);
-  return d.toLocaleString('tr-TR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+  return d.toLocaleString('en-US', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
 }
-function fmtInt(n){ return (n || 0).toLocaleString('tr-TR'); }
+function fmtInt(n){ return (n || 0).toLocaleString('en-US'); }
 
 /* ============ calibration curve chart ============ */
 function renderCalibrationChart(bins){
@@ -393,7 +392,7 @@ function renderCalibrationChart(bins){
     svgParts.push(`<text class="axis-label" x="${x(t)}" y="${padT+plotH+16}" text-anchor="middle">%${Math.round(t*100)}</text>`);
     svgParts.push(`<text class="axis-label" x="${padL-8}" y="${y(t)+3}" text-anchor="end">%${Math.round(t*100)}</text>`);
   });
-  svgParts.push(`<text class="axis-label" x="${padL+plotW/2}" y="${H-4}" text-anchor="middle">piyasanın fiyatladığı olasılık →</text>`);
+  svgParts.push(`<text class="axis-label" x="${padL+plotW/2}" y="${H-4}" text-anchor="middle">probability the market prices →</text>`);
   svgParts.push(`<path class="diag-line" d="M${x(0)},${y(0)} L${x(1)},${y(1)}"></path>`);
 
   bins.forEach(b => {
@@ -401,14 +400,14 @@ function renderCalibrationChart(bins){
     if(b.resolved_yes_rate === null){
       const ry = padT + plotH;
       const rr = Math.max(2.5, Math.min(7, Math.sqrt(b.sample_size) * 1.15));
-      svgParts.push(`<circle class="bucket-dot-pending" cx="${midX}" cy="${ry}" r="${rr}"><title>%${Math.round(b.range[0]*100)}–%${Math.round(b.range[1]*100)} kovası · n=${b.sample_size} (30 gerekiyor) · veri birikiyor</title></circle>`);
+      svgParts.push(`<circle class="bucket-dot-pending" cx="${midX}" cy="${ry}" r="${rr}"><title>${Math.round(b.range[0]*100)}–${Math.round(b.range[1]*100)}% bucket · n=${b.sample_size} (needs 30) · still collecting data</title></circle>`);
     } else {
       const cy = y(b.resolved_yes_rate);
       const ciLowY = y(b.ci_95_low), ciHighY = y(b.ci_95_high);
       svgParts.push(`<line class="ci-bar" x1="${midX}" y1="${ciLowY}" x2="${midX}" y2="${ciHighY}"></line>`);
       const rr = Math.max(4, Math.min(11, Math.sqrt(b.sample_size) * 0.62));
       const cls = b.significant ? 'bucket-dot-sig' : 'bucket-dot-pending';
-      svgParts.push(`<circle class="${cls}" cx="${midX}" cy="${cy}" r="${rr}"><title>%${Math.round(b.range[0]*100)}–%${Math.round(b.range[1]*100)} kovası · n=${b.sample_size} · gerçekleşen %${(b.resolved_yes_rate*100).toFixed(1)} · %95 GA [${(b.ci_95_low*100).toFixed(1)}–${(b.ci_95_high*100).toFixed(1)}] · ${b.significant ? 'anlamlı sapma' : 'anlamlı değil'}</title></circle>`);
+      svgParts.push(`<circle class="${cls}" cx="${midX}" cy="${cy}" r="${rr}"><title>${Math.round(b.range[0]*100)}–${Math.round(b.range[1]*100)}% bucket · n=${b.sample_size} · realized ${(b.resolved_yes_rate*100).toFixed(1)}% · 95% CI [${(b.ci_95_low*100).toFixed(1)}–${(b.ci_95_high*100).toFixed(1)}] · ${b.significant ? 'significant gap' : 'not significant'}</title></circle>`);
     }
   });
 
@@ -419,18 +418,18 @@ function renderCalibrationChart(bins){
   if(strongest){
     const sigCount = bins.filter(b => b.significant).length;
     if(sigCount > 0){
-      caption.innerHTML = `<b>${sigCount}</b> kovada istatistiksel olarak anlamlı bir sapma var — CAL sinyalleri bu farktan üretiliyor.`;
+      caption.innerHTML = `<b>${sigCount}</b> buckets show a statistically significant gap. CAL signals come from that gap.`;
     } else {
-      caption.innerHTML = `Şu ana kadar yeterli örnekleme ulaşan en güçlü kova: <b>%${Math.round(strongest.range[0]*100)}–%${Math.round(strongest.range[1]*100)}</b> (n=${strongest.sample_size}) — gerçekleşen oran <b>%${(strongest.resolved_yes_rate*100).toFixed(2)}</b>, piyasanın öngördüğü <b>%${(strongest.midpoint*100).toFixed(1)}</b>'e yakın. Henüz istatistiksel olarak anlamlı bir sapma yok.`;
+      caption.innerHTML = `Strongest bucket with enough samples so far: <b>${Math.round(strongest.range[0]*100)}–${Math.round(strongest.range[1]*100)}%</b> (n=${strongest.sample_size}). Realized rate <b>${(strongest.resolved_yes_rate*100).toFixed(2)}%</b>, close to the market's <b>${(strongest.midpoint*100).toFixed(1)}%</b> estimate. No statistically significant gap yet.`;
     }
   } else {
-    caption.textContent = 'Henüz hiçbir kova 30 örneğe ulaşmadı.';
+    caption.textContent = 'No bucket has reached 30 samples yet.';
   }
 }
 
 function showCalibrationUnavailable(){
-  document.getElementById('calMetaDate').textContent = 'henüz çalışmadı';
-  document.getElementById('calBody').innerHTML = `<div class="panel-empty">Haftalık kalibrasyon taraması henüz hiç çalışmadı. "Weekly Calibration Scan" iş akışı ilk kez tamamlandığında burada bir eğri belirecek.</div>`;
+  document.getElementById('calMetaDate').textContent = 'not run yet';
+  document.getElementById('calBody').innerHTML = `<div class="panel-empty">The weekly calibration scan hasn't run yet. A curve appears here once the "Weekly Calibration Scan" workflow finishes for the first time.</div>`;
 }
 
 /* ============ archive sparkline ============ */
@@ -447,7 +446,7 @@ function renderSparkline(series){
   const linePts = series.map((d,i) => `${x(i).toFixed(1)},${y(d.total).toFixed(1)}`).join(' L');
   const areaPts = `M${x(0)},${H-padY} L` + linePts + ` L${x(n-1)},${H-padY} Z`;
   const last = series[n-1];
-  const tooltips = series.map((d,i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(d.total).toFixed(1)}" r="7" fill="transparent"><title>${d.date} · ${d.total} kayıt</title></circle>`).join('');
+  const tooltips = series.map((d,i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(d.total).toFixed(1)}" r="7" fill="transparent"><title>${d.date} · ${d.total} records</title></circle>`).join('');
 
   svg.innerHTML = `
     <path class="spark-area" d="${areaPts}"></path>
@@ -461,9 +460,9 @@ function renderSparkline(series){
 const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', mispricing: 'MIS' };
 
 function daysLabel(d, roundIt){
-  if(d === null || d === undefined) return 'tarih belirsiz';
+  if(d === null || d === undefined) return 'date unknown';
   const v = roundIt ? Math.round(d) : d;
-  return v <= 0 ? 'bugün kapanıyor' : `${v} gün kaldı`;
+  return v <= 0 ? 'closes today' : `${v} days left`;
 }
 
 function buildArbBar(legs, totalCost){
@@ -515,12 +514,12 @@ function renderArbEntry(opp, rank, demo){
         <p class="entry-title">${opp.event_title}</p>
         <span class="entry-edge">+${opp.edge_pct.toFixed(1)}%</span>
       </div>
-      <div class="entry-meta">${daysLabel(opp.days_left)} · ${opp.num_outcomes} seçenek · min. likidite $${fmtInt(Math.round(opp.min_outcome_liquidity))}</div>
+      <div class="entry-meta">${daysLabel(opp.days_left)} · ${opp.num_outcomes} outcomes · min liquidity $${fmtInt(Math.round(opp.min_outcome_liquidity))}</div>
       ${buildArbBar(opp.legs, opp.total_cost)}
       <div class="legend">${opp.legs.map((leg,i) => `<span class="legend-chip"><i class="legend-dot" style="background:var(--ink-faint);opacity:${i%2===0?.35:.55}"></i>${leg.outcome} <b>$${leg.ask.toFixed(3)}</b></span>`).join('')}</div>
       <div class="entry-foot">
-        <span>maliyet <span class="cost">$${opp.total_cost.toFixed(3)}</span> / $1.00 karşılığı</span>
-        <span class="open">↗ polymarket'te aç</span>
+        <span>cost <span class="cost">$${opp.total_cost.toFixed(3)}</span> / $1.00 payout</span>
+        <span class="open">↗ open on polymarket</span>
       </div>
     </a>`;
 }
@@ -535,18 +534,18 @@ function renderCalEntry(sig, rank, demo){
         <p class="entry-title">${sig.market_question || sig.event_title}</p>
         <span class="entry-edge">+${sig.edge_pct.toFixed(1)}%</span>
       </div>
-      <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel(sig.days_left)} · %${Math.round(lo*100)}–%${Math.round(hi*100)} kovası · tarihsel oran %${(sig.bucket_historical_rate*100).toFixed(1)} (n=${sig.bucket_sample_size})</div>
+      <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
       ${buildCalBar(sig)}
       <div class="entry-foot">
-        <span>maliyet <span class="cost">$${sig.implied_cost.toFixed(3)}</span> / tarihsel %${trueRatePct.toFixed(1)} oranla</span>
-        <span class="open">↗ polymarket'te aç</span>
+        <span>cost <span class="cost">$${sig.implied_cost.toFixed(3)}</span> / historical rate ${trueRatePct.toFixed(1)}%</span>
+        <span class="open">↗ open on polymarket</span>
       </div>
     </a>`;
 }
 
 function renderMisEntry(sig, rank, demo){
   const [lo, hi] = sig.bucket_range;
-  const warn = sig.low_sample_warning ? ' · ⚠ düşük örneklem' : '';
+  const warn = sig.low_sample_warning ? ' · ⚠ low sample size' : '';
   return `
     <a class="entry" data-tier="mispricing" href="${sig.url || '#'}" target="_blank" rel="noopener">
       <div class="entry-head">
@@ -554,11 +553,11 @@ function renderMisEntry(sig, rank, demo){
         <p class="entry-title">${sig.market_question || sig.event_title}</p>
         <span class="entry-edge">${sig.edge_pct.toFixed(1)}pt</span>
       </div>
-      <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel(sig.days_left, true)} · %${Math.round(lo*100)}–%${Math.round(hi*100)} kovası · n=${sig.bucket_sample_size}${warn}</div>
+      <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · n=${sig.bucket_sample_size}${warn}</div>
       ${buildMisDumbbell(sig)}
       <div class="entry-foot">
-        <span>24s hacim <span class="cost">$${fmtInt(Math.round(sig.volume_24h))}</span> · skor ${sig.score}</span>
-        <span class="open">↗ polymarket'te aç</span>
+        <span>24h volume <span class="cost">$${fmtInt(Math.round(sig.volume_24h))}</span> · score ${sig.score}</span>
+        <span class="open">↗ open on polymarket</span>
       </div>
     </a>`;
 }
@@ -582,9 +581,9 @@ function applyFilterAndRender(){
 
   if(list.length === 0){
     if(showDemo){
-      grid.innerHTML = `<div class="state"><div class="state-msg">Bu filtrede örnek yok</div></div>`;
+      grid.innerHTML = `<div class="state"><div class="state-msg">No examples in this filter</div></div>`;
     } else {
-      grid.innerHTML = `<div class="state"><div class="state-msg">Bugün bu türde kayıt yok</div><div class="state-sub">Sistem çalışıyor — ${fmtInt(scannedEvents)} piyasa tarandı. Piyasalar bugün bu ölçütte dengeli görünüyor.</div></div>`;
+      grid.innerHTML = `<div class="state"><div class="state-msg">No entries of this type today</div><div class="state-sub">The system is running. It scanned ${fmtInt(scannedEvents)} markets. Markets look balanced on this measure today.</div></div>`;
     }
     return;
   }
@@ -645,7 +644,7 @@ async function loadResults(){
     updateCounts();
     applyFilterAndRender();
   }catch(err){
-    grid.innerHTML = `<div class="state"><div class="state-msg">Henüz tarama yok</div><div class="state-sub">results.json bulunamadı. GitHub Actions sekmesinden "Daily Polymarket Scan" iş akışını bir kere manuel çalıştır, ya da ilk otomatik taramanın geçmesini bekle.</div></div>`;
+    grid.innerHTML = `<div class="state"><div class="state-msg">No scan yet</div><div class="state-sub">results.json not found. Run the "Daily Polymarket Scan" workflow manually from the GitHub Actions tab, or wait for the first automatic scan to finish.</div></div>`;
   }
 }
 
@@ -655,7 +654,7 @@ async function loadCalibration(){
     if(!res.ok) throw new Error('not found');
     const data = await res.json();
     document.getElementById('tkResolved').textContent = fmtInt(data.markets_resolved);
-    document.getElementById('calMetaDate').textContent = 'son çalışma: ' + fmtDate(data.generated_at);
+    document.getElementById('calMetaDate').textContent = 'last run: ' + fmtDate(data.generated_at);
     renderCalibrationChart(data.bins || []);
   }catch(err){
     showCalibrationUnavailable();
@@ -688,7 +687,7 @@ document.getElementById('filters').addEventListener('click', (e) => {
 
 document.getElementById('demoToggle').addEventListener('click', () => {
   showDemo = !showDemo;
-  document.getElementById('demoToggle').textContent = showDemo ? '← gerçek veriye dön' : 'örnek verilerle önizle →';
+  document.getElementById('demoToggle').textContent = showDemo ? '← back to live data' : 'preview with example data →';
   updateCounts();
   applyFilterAndRender();
 });
