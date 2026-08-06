@@ -1,0 +1,11 @@
+{
+  "starting_bankroll": 1000.0,
+  "bankroll": 1000.0,
+  "bankroll_history": [
+    {
+      "date": "2026-08-06",
+      "bankroll": 1000.0
+    }
+  ],
+  "bets": []
+}

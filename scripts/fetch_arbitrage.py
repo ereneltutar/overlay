@@ -196,6 +196,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
             "outcome": m.get("groupItemTitle") or m.get("question") or "?",
             "ask": round(ask, 4),
             "liquidity": round(liquidity, 2),
+            "market_id": m.get("id"),
         })
 
     if total_ask <= 0:
@@ -288,6 +289,7 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     days_left = (end_date - now).days if end_date else None
 
     return {
+        "market_id": market.get("id"),
         "market_question": market.get("question") or event.get("title") or "?",
         "slug": event.get("slug"),
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
@@ -357,6 +359,7 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
     score = edge_pts * math.sqrt(volume_24h) / score_days
 
     return {
+        "market_id": market.get("id"),
         "market_question": market.get("question") or event.get("title") or "?",
         "slug": event.get("slug"),
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,

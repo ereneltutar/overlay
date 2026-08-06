@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overlay — Paper-Trading Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg: #F3F1E9;
+  --surface: #EAE6D8;
+  --ink: #1B1D22;
+  --ink-dim: #6B7280;
+  --ink-faint: #9A9585;
+  --rule: #DCD8CC;
+  --rule-strong: #1B1D22;
+  --arb: #1E9A6C;
+  --cal: #A9741C;
+  --mis: #4C51C6;
+  --loss: #B33F3F;
+  --accent: var(--cal);
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --bg: #0A0D12;
+    --surface: #11151C;
+    --ink: #ECE7DA;
+    --ink-dim: #7A818F;
+    --ink-faint: #4B5160;
+    --rule: #1D222B;
+    --rule-strong: #ECE7DA;
+    --arb: #21A97A;
+    --cal: #B87F22;
+    --mis: #6B74E0;
+    --loss: #D9615F;
+    --accent: var(--cal);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg: #0A0D12;
+  --surface: #11151C;
+  --ink: #ECE7DA;
+  --ink-dim: #7A818F;
+  --ink-faint: #4B5160;
+  --rule: #1D222B;
+  --rule-strong: #ECE7DA;
+  --arb: #21A97A;
+  --cal: #B87F22;
+  --mis: #6B74E0;
+  --loss: #D9615F;
+  --accent: var(--cal);
+}
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg: #F3F1E9;
+  --surface: #EAE6D8;
+  --ink: #1B1D22;
+  --ink-dim: #6B7280;
+  --ink-faint: #9A9585;
+  --rule: #DCD8CC;
+  --rule-strong: #1B1D22;
+  --arb: #1E9A6C;
+  --cal: #A9741C;
+  --mis: #4C51C6;
+  --loss: #B33F3F;
+  --accent: var(--cal);
+}
+
+*{ box-sizing: border-box; }
+html{ background: var(--bg); }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap{ max-width: 760px; margin: 0 auto; padding: 44px 24px 90px; }
+a{ color: inherit; }
+
+.theme-toggle{
+  position: fixed; top: 16px; right: 16px; z-index: 20;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  letter-spacing: .04em; color: var(--ink-dim);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 5px;
+  padding: 6px 10px; cursor: pointer;
+}
+.theme-toggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
+
+.masthead{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; margin-bottom:6px; }
+.brand{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink); }
+.brand-sub{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.03em; }
+.nav-back{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); text-decoration:underline; text-underline-offset:3px; }
+.nav-back:hover{ color:var(--ink); }
+.etymology{ font-family:'IBM Plex Sans', sans-serif; font-style:italic; font-size:12px; color:var(--ink-faint); max-width:52ch; line-height:1.5; margin:10px 0 28px; }
+
+.ticker{ display:flex; flex-wrap:wrap; gap:6px 18px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); padding:10px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-bottom:36px; }
+.ticker span{ white-space:nowrap; }
+.ticker b{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.ticker .live-dot{ width:6px; height:6px; border-radius:50%; background:var(--arb); display:inline-block; margin-right:6px; box-shadow:0 0 0 3px color-mix(in srgb, var(--arb) 20%, transparent); }
+
+.hero-count{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:clamp(48px,12vw,72px); line-height:.9; color:var(--ink); font-variant-numeric:tabular-nums; }
+.hero-count.up{ color:var(--arb); }
+.hero-count.down{ color:var(--loss); }
+.hero-label{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); margin-top:8px; }
+.hero-context{ display:flex; flex-wrap:wrap; gap:4px 22px; margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim); }
+.hero-context b{ color:var(--ink); font-variant-numeric:tabular-nums; font-weight:600; }
+.hero-context b.up{ color:var(--arb); }
+.hero-context b.down{ color:var(--loss); }
+
+.rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:30px 0 26px; }
+
+.filters{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+.chip-btn{
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.03em;
+  color:var(--ink-dim); background:transparent; border:1px solid var(--rule); border-radius:20px;
+  padding:7px 13px; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
+  transition:border-color .15s ease, color .15s ease, background-color .15s ease;
+}
+.chip-btn .dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.chip-btn[data-tier="all"] .dot{ background:var(--ink-faint); }
+.chip-btn[data-tier="arbitrage"] .dot{ background:var(--arb); }
+.chip-btn[data-tier="calibration"] .dot{ background:var(--cal); }
+.chip-btn[data-tier="mispricing"] .dot{ background:var(--mis); }
+.chip-btn b{ font-variant-numeric:tabular-nums; }
+.chip-btn:hover{ border-color:var(--ink-faint); color:var(--ink); }
+.chip-btn.active{ border-color:var(--ink); color:var(--ink); background:var(--surface); }
+
+.panel{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px 22px 18px; margin-bottom:34px; }
+.panel-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:4px; flex-wrap:wrap; }
+.panel-title{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:15px; margin:0; }
+.panel-title .tag-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--cal); margin-right:8px; vertical-align:middle; }
+.panel-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); }
+.panel-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.6; color:var(--ink-dim); max-width:62ch; margin:8px 0 16px; }
+.panel-desc b{ color:var(--ink); }
+.chart-wrap{ overflow-x:auto; }
+.chart-wrap svg{ display:block; width:100%; height:auto; min-width:420px; }
+.axis-label{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; fill:var(--ink-faint); }
+.grid-line{ stroke:var(--rule); stroke-width:1; }
+.diag-line{ stroke:var(--ink-faint); stroke-width:1.5; stroke-dasharray:3 4; fill:none; }
+.chart-caption{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); margin-top:8px; }
+.chart-caption b{ color:var(--ink); }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px; padding-top:20px; border-top:1px solid var(--rule); }
+.stat-card{ }
+.stat-card-tag{ display:flex; align-items:center; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:700; letter-spacing:.4px; margin-bottom:6px; }
+.stat-card-tag .dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.stat-card[data-tier="arbitrage"] .dot{ background:var(--arb); } .stat-card[data-tier="arbitrage"] .stat-card-tag{ color:var(--arb); }
+.stat-card[data-tier="calibration"] .dot{ background:var(--cal); } .stat-card[data-tier="calibration"] .stat-card-tag{ color:var(--cal); }
+.stat-card[data-tier="mispricing"] .dot{ background:var(--mis); } .stat-card[data-tier="mispricing"] .stat-card-tag{ color:var(--mis); }
+.stat-card-rate{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:22px; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; }
+.stat-card-sub{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-dim); margin-top:5px; }
+
+.disclaimer{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.65; color:var(--ink-dim); max-width:64ch; margin:0 0 30px; }
+.disclaimer b{ color:var(--ink); }
+
+.ledger-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; flex-wrap:wrap; gap:6px; }
+.ledger-title{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); }
+
+.entry{
+  display:block; text-decoration:none; color:inherit;
+  padding:20px 16px 20px 18px; margin:0 0 2px;
+  border-bottom:1px solid var(--rule); border-left:3px solid transparent; border-radius:0 4px 4px 0;
+  transition:background-color .15s ease, border-color .15s ease;
+}
+.entry[data-tier="arbitrage"]{ border-left-color:var(--arb); }
+.entry[data-tier="calibration"]{ border-left-color:var(--cal); }
+.entry[data-tier="mispricing"]{ border-left-color:var(--mis); }
+.ledger .entry:first-of-type{ padding-top:16px; }
+.entry:hover, .entry:focus-visible{ background-color:var(--surface); outline:none; }
+
+.entry-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+.entry-title{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:15.5px; line-height:1.4; margin:0; flex:1; min-width:180px; }
+.entry-pnl{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:16px; white-space:nowrap; flex-shrink:0; font-variant-numeric:tabular-nums; }
+.entry-pnl.won{ color:var(--arb); }
+.entry-pnl.lost{ color:var(--loss); }
+.entry-pnl.void, .entry-pnl.open{ color:var(--ink-dim); }
+
+.tag{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.5px; border-radius:3px; padding:2px 6px; flex-shrink:0; align-self:center; border:1px solid currentColor; }
+.entry[data-tier="arbitrage"] .tag{ color:var(--arb); }
+.entry[data-tier="calibration"] .tag{ color:var(--cal); }
+.entry[data-tier="mispricing"] .tag{ color:var(--mis); }
+
+.status-badge{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.5px; border-radius:3px; padding:2px 6px; flex-shrink:0; align-self:center; display:inline-flex; align-items:center; gap:5px; }
+.status-badge.won{ color:var(--arb); background:color-mix(in srgb, var(--arb) 14%, transparent); }
+.status-badge.lost{ color:var(--loss); background:color-mix(in srgb, var(--loss) 14%, transparent); }
+.status-badge.void{ color:var(--ink-dim); background:color-mix(in srgb, var(--ink-faint) 18%, transparent); }
+.status-badge.open{ color:var(--ink-dim); }
+.status-badge .pulse{ width:6px; height:6px; border-radius:50%; background:var(--ink-dim); display:inline-block; animation:pulse 1.4s ease-in-out infinite; }
+
+.entry-meta{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); margin-bottom:12px; }
+
+.entry-foot{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px 12px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-dim); }
+.entry-foot .stake{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.entry-foot .open-link{ color:var(--ink-dim); transition:color .15s ease; }
+.entry[data-tier="arbitrage"]:hover .open-link{ color:var(--arb); }
+.entry[data-tier="calibration"]:hover .open-link{ color:var(--cal); }
+.entry[data-tier="mispricing"]:hover .open-link{ color:var(--mis); }
+
+.state{ padding:30px 4px 6px; border-top:1px dashed var(--rule); margin-top:6px; }
+.state-msg{ font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--ink); margin-bottom:8px; display:flex; align-items:center; gap:10px; }
+.state-sub{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; color:var(--ink-dim); line-height:1.6; max-width:56ch; }
+
+.pulse{ width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; animation:pulse 1.4s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
+
+footer{ margin-top:50px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); padding-top:16px; border-top:1px solid var(--rule); }
+footer a{ color:var(--ink-dim); text-decoration:underline; text-underline-offset:2px; }
+footer a:hover{ color:var(--ink); }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .pulse{ animation:none; opacity:.8; }
+}
+
+@media (max-width:560px){
+  .wrap{ padding:32px 16px 72px; }
+  .hero-count{ font-size:clamp(38px,16vw,52px); }
+  .entry-title{ font-size:14.5px; }
+  .entry-pnl{ font-size:14.5px; }
+  .panel{ padding:18px 16px 16px; }
+  .stat-grid{ grid-template-columns:1fr; gap:18px; }
+}
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">◐ theme</button>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="brand">Overlay</div>
+    <a class="nav-back" href="./index.html">← back to dashboard</a>
+  </div>
+  <div class="brand-sub">Polymarket paper-trading archive</div>
+  <p class="etymology">Every ARB/CAL/MIS signal this project has ever surfaced gets a real paper bet: a stake sized to its edge, drawn from a fixed $1,000 starting bankroll, tracked until its market resolves. This is the track record, not the pitch.</p>
+
+  <div class="ticker">
+    <span><span class="live-dot"></span>started Aug 6 2026 with $1,000</span>
+    <span><b id="tkTotal">—</b> bets placed all-time</span>
+    <span><b id="tkOpen">—</b> currently open</span>
+    <span><b id="tkResolved">—</b> resolved</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-count" id="bankrollAmount">—</div>
+    <div class="hero-label">current bankroll</div>
+    <div class="hero-context">
+      <span>return <b id="returnPct">—</b></span>
+      <span>headline win rate (CAL+MIS) <b id="headlineWinRate">—</b></span>
+    </div>
+  </div>
+
+  <hr class="rule-thick">
+
+  <div class="filters" id="filters">
+    <button class="chip-btn active" data-tier="all" type="button">All <b id="cnt-all">0</b></button>
+    <button class="chip-btn" data-tier="arbitrage" type="button"><i class="dot"></i>ARB <b id="cnt-arbitrage">0</b></button>
+    <button class="chip-btn" data-tier="calibration" type="button"><i class="dot"></i>CAL <b id="cnt-calibration">0</b></button>
+    <button class="chip-btn" data-tier="mispricing" type="button"><i class="dot"></i>MIS <b id="cnt-mispricing">0</b></button>
+  </div>
+
+  <div class="panel" id="bankrollPanel">
+    <div class="panel-head">
+      <p class="panel-title"><span class="tag-dot"></span>Bankroll Over Time</p>
+      <span class="panel-meta" id="bankrollMetaDate">—</span>
+    </div>
+    <p class="panel-desc">
+      Every bet draws its stake from this bankroll and returns it plus or minus P&L once the market
+      resolves. The dashed line marks the $1,000 starting point. The line only moves on days a bet
+      actually resolved, not while positions are still open.
+    </p>
+    <div id="bankrollBody">
+      <div class="chart-wrap">
+        <svg id="bankrollChart" viewBox="0 0 680 220" role="img" aria-label="Bankroll over time chart"></svg>
+      </div>
+      <p class="chart-caption" id="bankrollCaption"></p>
+    </div>
+
+    <div class="stat-grid" id="statGrid">
+      <div class="stat-card" data-tier="arbitrage">
+        <div class="stat-card-tag"><i class="dot"></i>ARB</div>
+        <div class="stat-card-rate" id="rate-arbitrage">—</div>
+        <div class="stat-card-sub" id="sub-arbitrage">—</div>
+      </div>
+      <div class="stat-card" data-tier="calibration">
+        <div class="stat-card-tag"><i class="dot"></i>CAL</div>
+        <div class="stat-card-rate" id="rate-calibration">—</div>
+        <div class="stat-card-sub" id="sub-calibration">—</div>
+      </div>
+      <div class="stat-card" data-tier="mispricing">
+        <div class="stat-card-tag"><i class="dot"></i>MIS</div>
+        <div class="stat-card-rate" id="rate-mispricing">—</div>
+        <div class="stat-card-sub" id="sub-mispricing">—</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    This is a simulation, not real trading. Stakes are sized to edge (bigger edge, bigger stake,
+    capped so no single bet can seriously damage the bankroll) and drawn from a fixed $1,000 start.
+    <b>ARB</b> payouts get a small random execution haircut applied at resolution (0-2 points off the
+    edge) so a structurally near-guaranteed trade doesn't just read as a permanent win streak. A
+    market that resolves ambiguously or gets cancelled is marked <b>void</b>: the stake is returned
+    and it's excluded from win-rate math. None of this is investment advice.
+  </p>
+
+  <div class="ledger-head">
+    <span class="ledger-title">Bet Ledger</span>
+  </div>
+  <div class="ledger" id="grid">
+    <div class="state"><span class="state-msg"><span class="pulse"></span>Loading</span></div>
+  </div>
+
+  <footer>
+    <span>updates alongside the daily scan · data source gamma-api.polymarket.com</span>
+    <a href="./index.html">dashboard ↗</a>
+  </footer>
+</div>
+
+<script>
+function fmtDate(iso){
+  if(!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleString('en-US', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+}
+function fmtShortDate(iso){
+  if(!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleString('en-US', { day:'2-digit', month:'short', year:'numeric' });
+}
+function fmtUsd(n){
+  const sign = n < 0 ? '-' : '';
+  return sign + '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits:2, maximumFractionDigits:2 });
+}
+function fmtSignedUsd(n){
+  return (n > 0 ? '+' : '') + fmtUsd(n);
+}
+function fmtInt(n){ return (n || 0).toLocaleString('en-US'); }
+
+const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', mispricing: 'MIS' };
+const STATUS_LABELS = { open: 'OPEN', won: 'WON', lost: 'LOST', void: 'VOID' };
+
+let currentFilter = 'all';
+let allBets = [];
+
+function renderBankrollChart(history, startingBankroll){
+  const svg = document.getElementById('bankrollChart');
+  const caption = document.getElementById('bankrollCaption');
+  if(history.length < 2){
+    svg.innerHTML = '';
+    caption.textContent = 'Not enough history yet for a chart. Check back once a few bets have resolved.';
+    return;
+  }
+  const W = 680, H = 220;
+  const padL = 54, padR = 16, padT = 14, padB = 26;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+
+  const values = history.map(h => h.bankroll);
+  const minV = Math.min(startingBankroll, ...values);
+  const maxV = Math.max(startingBankroll, ...values);
+  const span = Math.max(maxV - minV, 1);
+  const loV = minV - span * 0.08, hiV = maxV + span * 0.08;
+
+  const x = i => padL + (i / (history.length - 1)) * plotW;
+  const y = v => padT + (1 - (v - loV) / (hiV - loV)) * plotH;
+
+  const finalUp = values[values.length - 1] >= startingBankroll;
+  const lineColor = finalUp ? 'var(--arb)' : 'var(--loss)';
+
+  let parts = [];
+  [loV, (loV+hiV)/2, hiV].forEach(v => {
+    parts.push(`<line class="grid-line" x1="${padL}" y1="${y(v)}" x2="${padL+plotW}" y2="${y(v)}"></line>`);
+    parts.push(`<text class="axis-label" x="${padL-8}" y="${y(v)+3}" text-anchor="end">$${Math.round(v).toLocaleString('en-US')}</text>`);
+  });
+
+  const startY = y(startingBankroll);
+  parts.push(`<path class="diag-line" d="M${padL},${startY} L${padL+plotW},${startY}"></path>`);
+
+  const linePts = history.map((h,i) => `${x(i).toFixed(1)},${y(h.bankroll).toFixed(1)}`).join(' L');
+  const areaPts = `M${x(0)},${padT+plotH} L` + linePts + ` L${x(history.length-1)},${padT+plotH} Z`;
+  parts.push(`<path d="${areaPts}" fill="color-mix(in srgb, ${lineColor} 14%, transparent)"></path>`);
+  parts.push(`<path d="M${linePts}" stroke="${lineColor}" stroke-width="2" fill="none"></path>`);
+
+  const tooltips = history.map((h,i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(h.bankroll).toFixed(1)}" r="8" fill="transparent"><title>${h.date} · ${fmtUsd(h.bankroll)}</title></circle>`).join('');
+  parts.push(tooltips);
+  const last = history[history.length-1];
+  parts.push(`<circle cx="${x(history.length-1).toFixed(1)}" cy="${y(last.bankroll).toFixed(1)}" r="3.5" fill="${lineColor}"></circle>`);
+
+  svg.innerHTML = parts.join('');
+  caption.innerHTML = `<b>${history.length}</b> daily snapshot${history.length===1?'':'s'} since Aug 6 2026. Dashed line = $1,000 starting point.`;
+}
+
+function computeStats(bets){
+  const byTag = { arbitrage: {won:0,lost:0,void:0,open:0}, calibration: {won:0,lost:0,void:0,open:0}, mispricing: {won:0,lost:0,void:0,open:0} };
+  bets.forEach(b => { byTag[b.tag][b.status]++; });
+  return byTag;
+}
+
+function renderStatCard(tag, stats){
+  const decided = stats.won + stats.lost;
+  const rateEl = document.getElementById('rate-' + tag);
+  const subEl = document.getElementById('sub-' + tag);
+  rateEl.textContent = decided > 0 ? `${((stats.won/decided)*100).toFixed(0)}%` : '—';
+  subEl.textContent = `${stats.won}W · ${stats.lost}L · ${stats.void}void · ${stats.open}open`;
+}
+
+function applyFilterAndRender(){
+  const grid = document.getElementById('grid');
+  const list = currentFilter === 'all' ? allBets : allBets.filter(b => b.tag === currentFilter);
+
+  if(list.length === 0){
+    grid.innerHTML = allBets.length === 0
+      ? `<div class="state"><div class="state-msg">No bets placed yet</div><div class="state-sub">The archive starts filling in once a scan finds an ARB, CAL, or MIS signal. Zero opportunities today just means the market looked balanced. Check back tomorrow.</div></div>`
+      : `<div class="state"><div class="state-msg">No bets in this filter</div></div>`;
+    return;
+  }
+  grid.innerHTML = list.map(renderEntry).join('');
+}
+
+function renderEntry(b){
+  const statusClass = b.status;
+  const statusInner = b.status === 'open'
+    ? `<span class="pulse"></span>${STATUS_LABELS.open}`
+    : STATUS_LABELS[b.status];
+  const pnlText = b.status === 'open' ? 'pending'
+    : b.status === 'void' ? 'stake returned'
+    : fmtSignedUsd(b.pnl_usd);
+  const sideText = b.recommended_side ? `${b.recommended_side} · ` : '';
+  const dateText = b.status === 'open'
+    ? `placed ${fmtShortDate(b.placed_at)} · resolves ~${fmtShortDate(b.deadline)}`
+    : `placed ${fmtShortDate(b.placed_at)} · resolved ${fmtShortDate(b.resolved_at)}`;
+
+  return `
+    <a class="entry" data-tier="${b.tag}" href="${b.url || '#'}" target="_blank" rel="noopener">
+      <div class="entry-head">
+        <span class="tag">${TAG_LABELS[b.tag]}</span>
+        <span class="status-badge ${statusClass}">${statusInner}</span>
+        <p class="entry-title">${b.market_question}</p>
+        <span class="entry-pnl ${statusClass}">${pnlText}</span>
+      </div>
+      <div class="entry-meta">${sideText}entry cost $${b.entry_cost.toFixed(3)} · edge ${b.edge_pct_at_placement.toFixed(1)}% at placement</div>
+      <div class="entry-foot">
+        <span>stake <span class="stake">${fmtUsd(b.stake_usd)}</span> · ${dateText}</span>
+        <span class="open-link">↗ open on polymarket</span>
+      </div>
+    </a>`;
+}
+
+function updateCounts(){
+  const counts = { arbitrage: 0, calibration: 0, mispricing: 0 };
+  allBets.forEach(b => counts[b.tag]++);
+  document.getElementById('cnt-all').textContent = allBets.length;
+  document.getElementById('cnt-arbitrage').textContent = counts.arbitrage;
+  document.getElementById('cnt-calibration').textContent = counts.calibration;
+  document.getElementById('cnt-mispricing').textContent = counts.mispricing;
+}
+
+async function loadBetLog(){
+  const grid = document.getElementById('grid');
+  try{
+    const res = await fetch('./bet_log.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+
+    const bankroll = data.bankroll;
+    const starting = data.starting_bankroll;
+    const returnPct = ((bankroll - starting) / starting) * 100;
+    const up = returnPct >= 0;
+
+    const bankrollEl = document.getElementById('bankrollAmount');
+    bankrollEl.textContent = fmtUsd(bankroll);
+    bankrollEl.className = 'hero-count ' + (up ? 'up' : 'down');
+
+    const returnEl = document.getElementById('returnPct');
+    returnEl.textContent = (up ? '+' : '') + returnPct.toFixed(1) + '%';
+    returnEl.className = up ? 'up' : 'down';
+
+    allBets = (data.bets || []).slice().sort((a,b) => new Date(b.placed_at) - new Date(a.placed_at));
+
+    const resolved = allBets.filter(b => b.status !== 'open');
+    const open = allBets.filter(b => b.status === 'open');
+    document.getElementById('tkTotal').textContent = fmtInt(allBets.length);
+    document.getElementById('tkOpen').textContent = fmtInt(open.length);
+    document.getElementById('tkResolved').textContent = fmtInt(resolved.length);
+
+    const headline = allBets.filter(b => (b.tag === 'calibration' || b.tag === 'mispricing') && (b.status === 'won' || b.status === 'lost'));
+    const headlineWon = headline.filter(b => b.status === 'won').length;
+    const headlineEl = document.getElementById('headlineWinRate');
+    headlineEl.textContent = headline.length > 0 ? `${((headlineWon/headline.length)*100).toFixed(0)}% (n=${headline.length})` : 'not enough data yet';
+
+    const stats = computeStats(allBets);
+    renderStatCard('arbitrage', stats.arbitrage);
+    renderStatCard('calibration', stats.calibration);
+    renderStatCard('mispricing', stats.mispricing);
+
+    document.getElementById('bankrollMetaDate').textContent = data.bankroll_history && data.bankroll_history.length
+      ? 'last snapshot: ' + fmtShortDate(data.bankroll_history[data.bankroll_history.length-1].date)
+      : '—';
+    renderBankrollChart(data.bankroll_history || [], starting);
+
+    updateCounts();
+    applyFilterAndRender();
+  }catch(err){
+    grid.innerHTML = `<div class="state"><div class="state-msg">Archive not available yet</div><div class="state-sub">bet_log.json hasn't been generated yet. It's created the first time the daily scan workflow runs with the paper-trading tracker in place.</div></div>`;
+  }
+}
+
+document.getElementById('filters').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chip-btn');
+  if(!btn) return;
+  document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.tier;
+  applyFilterAndRender();
+});
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const root = document.documentElement;
+  const current = root.getAttribute('data-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const effectiveCurrent = current || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', effectiveCurrent === 'dark' ? 'light' : 'dark');
+});
+
+loadBetLog();
+</script>
+</body>
+</html>

@@ -30,9 +30,17 @@ GitHub Actions, every Monday
         since closed, matches them against their real outcome, and
         writes docs/calibration.json
 
+GitHub Actions, every morning, right after fetch_arbitrage.py
+   └─ scripts/track_bets.py → paper-trades the signals from today's
+        results.json against a fixed $1,000 bankroll, and checks
+        whether previously placed bets have resolved, writing
+        docs/bet_log.json
+
 GitHub Pages (Actions-based deploy)
-   └─ docs/index.html reads all three JSON/JSONL files client-side
-        and renders the ledger, filters, and calibration curve
+   └─ docs/index.html reads results.json/calibration.json/price_log.jsonl
+        client-side and renders the ledger, filters, and calibration curve
+   └─ docs/archive.html reads bet_log.json and renders the paper-trading
+        track record: bankroll over time, win rate by tag, bet-by-bet ledger
 ```
 
 The calculation logic is documented at the top of each script. In short,
@@ -45,6 +53,29 @@ produce anything, which means the calibration scan has to complete at
 least once. Since that scan is forward-looking (it waits for markets
 logged today to close weeks later), expect the calibration curve to
 stay empty for a while after first setup.
+
+## Paper-trading archive
+
+Every ARB/CAL/MIS signal gets a simulated bet, sized to its edge (bigger
+edge, bigger stake, capped so no single bet can seriously damage the
+bankroll) and drawn from a fixed $1,000 starting bankroll. `docs/archive.html`
+shows the running track record: bankroll over time, win rate broken out
+by tag, and every bet with its entry price, stake, and outcome.
+
+ARB is close to a mathematically guaranteed win by construction, so its
+wins get a small random execution haircut (0-2 points off the edge,
+simulating real fees/slippage) applied at resolution — otherwise it
+would just read as a permanent win streak and tell you nothing. The
+headline win-rate stat on the archive page counts CAL and MIS only,
+since those are the signals actually worth validating; ARB is tracked
+separately alongside them. A market that resolves ambiguously or gets
+cancelled is marked void: the stake is returned and it's excluded from
+win-rate math.
+
+Because this reuses the same forward-looking pattern as calibration
+(log now, check back once the deadline passes), the archive fills in
+slowly and starts empty. It's meant to build an honest record over
+weeks and months, not simulate results for its own sake.
 
 ## Setup (10 minutes)
 
@@ -90,6 +121,16 @@ In `scripts/calibration_scan.py`:
 |---|---|---|
 | `BIN_WIDTH` | Bucket width for the calibration curve | 0.05 (20 buckets) |
 | `MIN_SAMPLE_PER_BUCKET` | Samples needed before a bucket counts as significant | 30 |
+
+In `scripts/track_bets.py`:
+
+| Parameter | What it does | Default |
+|---|---|---|
+| `STARTING_BANKROLL` | Simulated starting bankroll | $1,000 |
+| `STAKE_K` | Sizing multiplier: stake = bankroll_available x K x edge_pct/100 | 3.0 |
+| `STAKE_FLOOR_USD` | Never bet less than this | $10 |
+| `STAKE_CAP_FRAC` | Max fraction of available bankroll per bet (per tag) | 8% ARB, 5% CAL/MIS |
+| `ARB_HAIRCUT_MAX_PTS` | Simulated execution slippage/fees on ARB wins | 0-2 points off the edge |
 
 To change the schedule, edit the `cron:` line in
 `.github/workflows/daily-scan.yml` or `calibration-scan.yml` (both use
