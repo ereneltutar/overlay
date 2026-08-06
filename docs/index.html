@@ -3,445 +3,707 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Overlay — Polymarket Günlük Tarama</title>
+<title>Overlay — Polymarket Piyasa İzleme</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #0C0D10;
-    --ink: #ECE8DE;
-    --ink-dim: #93979E;
-    --rule: #262A30;
-    --amber: #D9A441;
-    --bar-a: #1C1F24;
-    --bar-b: #262A30;
+:root{
+  color-scheme: light;
+  --bg: #F3F1E9;
+  --surface: #EAE6D8;
+  --ink: #1B1D22;
+  --ink-dim: #6B7280;
+  --ink-faint: #9A9585;
+  --rule: #DCD8CC;
+  --rule-strong: #1B1D22;
+  --arb: #1E9A6C;
+  --cal: #A9741C;
+  --mis: #4C51C6;
+  --accent: var(--cal);
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --bg: #0A0D12;
+    --surface: #11151C;
+    --ink: #ECE7DA;
+    --ink-dim: #7A818F;
+    --ink-faint: #4B5160;
+    --rule: #1D222B;
+    --rule-strong: #ECE7DA;
+    --arb: #21A97A;
+    --cal: #B87F22;
+    --mis: #6B74E0;
+    --accent: var(--cal);
   }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg: #0A0D12;
+  --surface: #11151C;
+  --ink: #ECE7DA;
+  --ink-dim: #7A818F;
+  --ink-faint: #4B5160;
+  --rule: #1D222B;
+  --rule-strong: #ECE7DA;
+  --arb: #21A97A;
+  --cal: #B87F22;
+  --mis: #6B74E0;
+  --accent: var(--cal);
+}
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg: #F3F1E9;
+  --surface: #EAE6D8;
+  --ink: #1B1D22;
+  --ink-dim: #6B7280;
+  --ink-faint: #9A9585;
+  --rule: #DCD8CC;
+  --rule-strong: #1B1D22;
+  --arb: #1E9A6C;
+  --cal: #A9741C;
+  --mis: #4C51C6;
+  --accent: var(--cal);
+}
 
-  *{ box-sizing: border-box; }
+*{ box-sizing: border-box; }
+html{ background: var(--bg); }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 
-  body{
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+.wrap{ max-width: 760px; margin: 0 auto; padding: 44px 24px 90px; }
+a{ color: inherit; }
 
-  .wrap{
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
+.theme-toggle{
+  position: fixed; top: 16px; right: 16px; z-index: 20;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  letter-spacing: .04em; color: var(--ink-dim);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 5px;
+  padding: 6px 10px; cursor: pointer;
+}
+.theme-toggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
 
-  /* ---------- Masthead: small, quiet, not the hero ---------- */
-  .brand{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-bottom: 40px;
-  }
+.masthead{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; margin-bottom:6px; }
+.brand{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink); }
+.brand-sub{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.03em; }
+.etymology{ font-family:'IBM Plex Sans', sans-serif; font-style:italic; font-size:12px; color:var(--ink-faint); max-width:46ch; line-height:1.5; margin:10px 0 28px; }
 
-  /* ---------- Hero: today's count is the actual headline ---------- */
-  .hero-count{
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: clamp(56px, 14vw, 84px);
-    line-height: 0.9;
-    color: var(--amber);
-    font-variant-numeric: tabular-nums;
-  }
-  .hero-label{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--ink-dim);
-    margin-top: 6px;
-  }
-  .hero-sub{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    color: var(--ink-dim);
-    margin-top: 16px;
-  }
-  .hero-sub b{ color: var(--ink); font-variant-numeric: tabular-nums; }
+.ticker{ display:flex; flex-wrap:wrap; gap:6px 18px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); padding:10px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-bottom:36px; }
+.ticker span{ white-space:nowrap; }
+.ticker b{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.ticker .live-dot{ width:6px; height:6px; border-radius:50%; background:var(--arb); display:inline-block; margin-right:6px; box-shadow:0 0 0 3px color-mix(in srgb, var(--arb) 20%, transparent); }
 
-  .rule-thick{
-    border: none;
-    border-top: 2px solid var(--ink);
-    opacity: 0.9;
-    margin: 28px 0 22px;
-  }
+.hero-count{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:clamp(56px,14vw,84px); line-height:.9; color:var(--accent); font-variant-numeric:tabular-nums; }
+.hero-label{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); margin-top:8px; }
+.hero-context{ display:flex; flex-wrap:wrap; gap:4px 22px; margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim); }
+.hero-context b{ color:var(--ink); font-variant-numeric:tabular-nums; font-weight:600; }
 
-  .disclaimer{
-    font-size: 12.5px;
-    line-height: 1.6;
-    color: var(--ink-dim);
-    max-width: 640px;
-    margin: 0 0 36px;
-  }
-  .disclaimer b{ color: var(--ink); }
+.rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:30px 0 26px; }
 
-  /* ---------- Ledger entries: continuous, hairline-divided, no boxes ---------- */
-  .entry{
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    padding: 22px 4px;
-    margin: 0 -4px;
-    border-bottom: 1px solid var(--rule);
-    border-radius: 4px;
-    transition: background-color .15s ease, box-shadow .15s ease;
-  }
-  .ledger .entry:first-of-type{ padding-top: 4px; }
-  .entry:hover, .entry:focus-visible{
-    background-color: rgba(255,255,255,0.025);
-    outline: none;
-  }
-  .entry:focus-visible{
-    box-shadow: inset 3px 0 0 var(--amber);
-  }
+.filters{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+.chip-btn{
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.03em;
+  color:var(--ink-dim); background:transparent; border:1px solid var(--rule); border-radius:20px;
+  padding:7px 13px; cursor:pointer; display:inline-flex; align-items:center; gap:7px;
+  transition:border-color .15s ease, color .15s ease, background-color .15s ease;
+}
+.chip-btn .dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.chip-btn[data-tier="all"] .dot{ background:var(--ink-faint); }
+.chip-btn[data-tier="arbitrage"] .dot{ background:var(--arb); }
+.chip-btn[data-tier="calibration"] .dot{ background:var(--cal); }
+.chip-btn[data-tier="mispricing"] .dot{ background:var(--mis); }
+.chip-btn b{ font-variant-numeric:tabular-nums; }
+.chip-btn:hover{ border-color:var(--ink-faint); color:var(--ink); }
+.chip-btn.active{ border-color:var(--ink); color:var(--ink); background:var(--surface); }
 
-  .entry-head{
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 6px;
-  }
-  .entry-rank{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--ink-dim);
-    flex-shrink: 0;
-  }
-  .entry-title{
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 15.5px;
-    line-height: 1.4;
-    margin: 0;
-    flex: 1;
-    min-width: 0;
-  }
-  .entry-edge{
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--amber);
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-  }
+.panel{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px 22px 18px; margin-bottom:34px; }
+.panel-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:4px; flex-wrap:wrap; }
+.panel-title{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:15px; margin:0; }
+.panel-title .tag-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--cal); margin-right:8px; vertical-align:middle; }
+.panel-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); }
+.panel-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.6; color:var(--ink-dim); max-width:62ch; margin:8px 0 16px; }
+.panel-desc b{ color:var(--ink); }
+.panel-empty{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim); padding:8px 0 4px; }
+.chart-wrap{ overflow-x:auto; }
+.chart-wrap svg{ display:block; width:100%; height:auto; min-width:420px; }
+.axis-label{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; fill:var(--ink-faint); }
+.grid-line{ stroke:var(--rule); stroke-width:1; }
+.diag-line{ stroke:var(--ink-faint); stroke-width:1.5; stroke-dasharray:3 4; fill:none; }
+.ci-bar{ stroke:var(--ink-dim); stroke-width:1.5; }
+.bucket-dot-sig{ fill:var(--cal); stroke:var(--bg); stroke-width:1.5; }
+.bucket-dot-pending{ fill:none; stroke:var(--ink-faint); stroke-width:1.3; }
+.chart-caption{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); margin-top:4px; }
+.chart-caption b{ color:var(--ink); }
 
-  /* ---------- Source tag: which algorithm produced this entry ---------- */
-  .tag{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: var(--ink-dim);
-    border: 1px solid var(--rule);
-    border-radius: 3px;
-    padding: 2px 5px;
-    flex-shrink: 0;
-    align-self: center;
-  }
+.panel-sub-grid{ display:grid; grid-template-columns:1fr; gap:20px; margin-top:22px; padding-top:20px; border-top:1px solid var(--rule); }
+.spark-row{ display:flex; align-items:flex-end; gap:18px; }
+.spark-stats{ flex-shrink:0; }
+.spark-num{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:26px; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; }
+.spark-num-label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.04em; margin-top:5px; }
+.spark-chart{ flex:1; min-width:0; }
+.spark-chart svg{ display:block; width:100%; height:auto; }
+.spark-area{ fill:color-mix(in srgb, var(--cal) 16%, transparent); }
+.spark-line{ stroke:var(--cal); stroke-width:2; fill:none; }
+.spark-end{ fill:var(--cal); }
 
-  .entry-meta{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    color: var(--ink-dim);
-    margin-bottom: 12px;
-  }
+.disclaimer{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.65; color:var(--ink-dim); max-width:64ch; margin:0 0 30px; }
+.disclaimer b{ color:var(--ink); }
+.disclaimer .tagref{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:11px; padding:1px 4px; border-radius:3px; border:1px solid currentColor; }
+.tagref.arb{ color:var(--arb); }
+.tagref.cal{ color:var(--cal); }
+.tagref.mis{ color:var(--mis); }
 
-  /* ---------- The complete-set bar: the one signature element ---------- */
-  .bar{
-    display: flex;
-    height: 8px;
-    border-radius: 3px;
-    overflow: hidden;
-    margin-bottom: 10px;
-    background: var(--bar-a);
-  }
-  .seg{ height: 100%; }
-  .seg-a{ background: var(--bar-a); }
-  .seg-b{ background: var(--bar-b); }
-  .seg-edge{ background: var(--amber); }
-  .seg-risk{ background: var(--rule); }
+.ledger-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; flex-wrap:wrap; gap:6px; }
+.ledger-title{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); }
+.demo-toggle{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); background:none; border:none; text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:0; }
+.demo-toggle:hover{ color:var(--ink); }
 
-  .legend{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 14px;
-    margin-bottom: 14px;
-  }
-  .chip{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11.5px;
-    color: var(--ink-dim);
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .chip b{ color: var(--ink); font-variant-numeric: tabular-nums; }
-  .dot{ width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-  .dot-a{ background: var(--bar-a); border: 1px solid var(--rule); }
-  .dot-b{ background: var(--bar-b); }
+.entry{
+  display:block; text-decoration:none; color:inherit;
+  padding:20px 16px 20px 18px; margin:0 0 2px;
+  border-bottom:1px solid var(--rule); border-left:3px solid transparent; border-radius:0 4px 4px 0;
+  transition:background-color .15s ease, border-color .15s ease;
+}
+.entry[data-tier="arbitrage"]{ border-left-color:var(--arb); }
+.entry[data-tier="calibration"]{ border-left-color:var(--cal); }
+.entry[data-tier="mispricing"]{ border-left-color:var(--mis); }
+.ledger .entry:first-of-type{ padding-top:16px; }
+.entry:hover, .entry:focus-visible{ background-color:var(--surface); outline:none; }
 
-  .entry-foot{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--ink-dim);
-  }
-  .entry-foot .cost{ color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .entry-foot .open{ color: var(--ink-dim); transition: color .15s ease; }
-  .entry:hover .entry-foot .open,
-  .entry:focus-visible .entry-foot .open{ color: var(--amber); }
+.entry-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:6px; flex-wrap:wrap; }
+.entry-title{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:15.5px; line-height:1.4; margin:0; flex:1; min-width:180px; }
+.entry-edge{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:16px; white-space:nowrap; flex-shrink:0; font-variant-numeric:tabular-nums; }
+.entry[data-tier="arbitrage"] .entry-edge{ color:var(--arb); }
+.entry[data-tier="calibration"] .entry-edge{ color:var(--cal); }
+.entry[data-tier="mispricing"] .entry-edge{ color:var(--mis); }
 
-  /* ---------- Empty / loading / error: a ledger row that just says so ---------- */
-  .state{ padding: 28px 4px; }
-  .state-msg{
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    color: var(--ink);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .state-sub{ font-size: 12.5px; color: var(--ink-dim); line-height: 1.6; }
+.tag{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.5px; border-radius:3px; padding:2px 6px; flex-shrink:0; align-self:center; border:1px solid currentColor; }
+.entry[data-tier="arbitrage"] .tag{ color:var(--arb); }
+.entry[data-tier="calibration"] .tag{ color:var(--cal); }
+.entry[data-tier="mispricing"] .tag{ color:var(--mis); }
+.tag.demo-tag{ opacity:.85; }
 
-  .pulse{
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--amber);
-    display: inline-block;
-    animation: pulse 1.4s ease-in-out infinite;
-  }
-  @keyframes pulse{ 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
+.entry-meta{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); margin-bottom:12px; }
 
-  footer{
-    margin-top: 48px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--ink-dim);
-  }
+.bar{ display:flex; height:8px; border-radius:3px; overflow:hidden; margin-bottom:10px; background:var(--rule); }
+.seg{ height:100%; }
+.seg-a{ background:var(--ink-faint); opacity:.35; }
+.seg-b{ background:var(--ink-faint); opacity:.55; }
 
-  /* ---------- Reduced motion ---------- */
-  @media (prefers-reduced-motion: reduce){
-    *, *::before, *::after{
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
-    .pulse{ animation: none; opacity: .8; }
-  }
+.legend{ display:flex; flex-wrap:wrap; gap:6px 14px; margin-bottom:14px; }
+.legend-chip{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); display:inline-flex; align-items:center; gap:5px; }
+.legend-chip b{ color:var(--ink); font-variant-numeric:tabular-nums; }
+.legend-dot{ width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0; }
 
-  /* ---------- Small phones ---------- */
-  @media (max-width: 480px){
-    .wrap{ padding: 32px 18px 64px; }
-    .hero-count{ font-size: clamp(46px, 20vw, 64px); }
-    .entry-title{ font-size: 14.5px; }
-    .entry-edge{ font-size: 14.5px; }
-    .legend{ gap: 5px 10px; }
-    .entry-foot{ font-size: 11px; }
-  }
+.dumbbell{ margin-bottom:12px; }
+.dumbbell svg{ display:block; width:100%; height:34px; }
+.dumbbell-track{ stroke:var(--rule); stroke-width:3; stroke-linecap:round; }
+.dumbbell-gap{ stroke:var(--mis); stroke-width:3; stroke-linecap:round; }
+.dumbbell-implied{ fill:var(--ink-faint); }
+.dumbbell-fair{ fill:var(--mis); }
+.dumbbell-label{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; fill:var(--ink-dim); }
+
+.entry-foot{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:4px 12px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-dim); }
+.entry-foot .cost{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.entry-foot .open{ color:var(--ink-dim); transition:color .15s ease; }
+.entry[data-tier="arbitrage"]:hover .open{ color:var(--arb); }
+.entry[data-tier="calibration"]:hover .open{ color:var(--cal); }
+.entry[data-tier="mispricing"]:hover .open{ color:var(--mis); }
+
+.state{ padding:30px 4px 6px; border-top:1px dashed var(--rule); margin-top:6px; }
+.state-msg{ font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--ink); margin-bottom:8px; display:flex; align-items:center; gap:10px; }
+.state-sub{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; color:var(--ink-dim); line-height:1.6; max-width:56ch; }
+
+.pulse{ width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; animation:pulse 1.4s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
+
+footer{ margin-top:50px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); padding-top:16px; border-top:1px solid var(--rule); }
+footer a{ color:var(--ink-dim); text-decoration:underline; text-underline-offset:2px; }
+footer a:hover{ color:var(--ink); }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .pulse{ animation:none; opacity:.8; }
+}
+
+@media (max-width:560px){
+  .wrap{ padding:32px 16px 72px; }
+  .hero-count{ font-size:clamp(46px,20vw,64px); }
+  .entry-title{ font-size:14.5px; }
+  .entry-edge{ font-size:14.5px; }
+  .panel{ padding:18px 16px 16px; }
+  .spark-row{ flex-direction:column; align-items:stretch; gap:10px; }
+}
 </style>
 </head>
 <body>
 
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Tema değiştir">◐ tema</button>
+
 <div class="wrap">
-  <div class="brand">Overlay — Polymarket günlük tarama</div>
+
+  <div class="masthead">
+    <div class="brand">Overlay</div>
+    <div class="brand-sub">Polymarket piyasa izleme</div>
+  </div>
+  <p class="etymology">"overlay" — bahis/trading terimi: gerçek olasılığından daha iyi fiyatlanmış, dolayısıyla beklenen değeri lehte olan pozisyon. Bu araç üç ayrı yöntemle böyle pozisyonları arıyor.</p>
+
+  <div class="ticker">
+    <span><span class="live-dot"></span>17 Haz 2026'dan beri canlı</span>
+    <span><b id="tkScanned">—</b> piyasa bugün tarandı</span>
+    <span><b id="tkArchive">—</b> fiyat noktası arşivde</span>
+    <span><b id="tkResolved">—</b> sonuçlanmış market ile kalibre</span>
+  </div>
 
   <div class="hero">
     <div class="hero-count" id="oppCount">—</div>
     <div class="hero-label">fırsat bugün</div>
-    <div class="hero-sub"><b id="scannedCount">—</b> piyasa tarandı · son güncelleme <b id="scanTime">—</b></div>
+    <div class="hero-context">
+      <span><b id="scannedCount">—</b> piyasa tarandı</span>
+      <span>son güncelleme <b id="scanTime">—</b></span>
+    </div>
   </div>
 
   <hr class="rule-thick">
 
+  <div class="filters" id="filters">
+    <button class="chip-btn active" data-tier="all" type="button">Tümü <b id="cnt-all">0</b></button>
+    <button class="chip-btn" data-tier="arbitrage" type="button"><i class="dot"></i>ARB <b id="cnt-arbitrage">0</b></button>
+    <button class="chip-btn" data-tier="calibration" type="button"><i class="dot"></i>CAL <b id="cnt-calibration">0</b></button>
+    <button class="chip-btn" data-tier="mispricing" type="button"><i class="dot"></i>MIS <b id="cnt-mispricing">0</b></button>
+  </div>
+
+  <div class="panel" id="calPanel">
+    <div class="panel-head">
+      <p class="panel-title"><span class="tag-dot"></span>Kalibrasyon Eğrisi</p>
+      <span class="panel-meta" id="calMetaDate">—</span>
+    </div>
+    <p class="panel-desc">
+      Her nokta bir fiyat aralığı (kova): x ekseni piyasanın o an biçtiği olasılık, y ekseni o kovadaki
+      market'lerin <b>gerçekte</b> ne sıklıkla "Yes" sonuçlandığı. Kesikli çizgi mükemmel kalibrasyonu
+      temsil eder — nokta çizginin ne kadar altında/üstündeyse piyasa o kadar yanlış fiyatlıyor demektir.
+      Dolu nokta = istatistiksel olarak anlamlı (n≥30, %95 güven aralığı); içi boş halka = veri hâlâ birikiyor.
+    </p>
+    <div id="calBody">
+      <div class="chart-wrap">
+        <svg id="calChart" viewBox="0 0 680 300" role="img" aria-label="Kalibrasyon eğrisi grafiği"></svg>
+      </div>
+      <p class="chart-caption" id="calCaption"></p>
+    </div>
+
+    <div class="panel-sub-grid">
+      <div class="spark-row">
+        <div class="spark-stats">
+          <div class="spark-num" id="sparkTotal">—</div>
+          <div class="spark-num-label">arşivde fiyat noktası</div>
+        </div>
+        <div class="spark-chart">
+          <svg id="sparkChart" viewBox="0 0 460 64" role="img" aria-label="Arşiv büyüme grafiği"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <p class="disclaimer">
-    <b>[ARB]</b> satırları, birbirini dışlayan seçeneklerin tamamını şu anki en iyi satış fiyatından
-    alırsan ödediğin toplamın $1.00'ın altında kaldığı durumları gösterir — matematiksel olarak
+    <span class="tagref arb">ARB</span> satırları, birbirini dışlayan seçeneklerin tamamını şu anki en iyi satış
+    fiyatından alırsan ödediğin toplamın $1.00'ın altında kaldığı durumları gösterir — matematiksel olarak
     risksiz, ama yine de <b>kazanç garantisi değildir</b> (işlem ücreti, kayma, ince likidite).
-    <b>[CAL]</b> satırları ise tamamen farklı bir şey: geçmiş kapanmış market'lerde fiyat ile
-    gerçekleşen sonuç arasında istatistiksel olarak anlamlı bir sapma (favori-uzun şans yanlılığı)
-    bulunan fiyat aralıklarını işaretler — bu, <b>tek bir bahiste garanti değil</b>, çok sayıda
-    tekrarlanan pozisyonda beklenen değeri lehine çeken bir eğilimdir. <b>[MIS]</b> satırları ise
-    piyasa fiyatı (implied probability) ile aynı fiyat kovasının geçmiş gerçekleşme oranı
-    (fair probability) arasında ≥15 puanlık fark olan, günde en az $5.000 hacim gören market'leri
-    listeler — [CAL] ile aynı geçmiş veriyi kullanır ama istatistiksel anlamlılık şartı aramaz,
-    bunun yerine örneklem küçükse (n&lt;30) uyarı gösterir. Hiçbiri yatırım tavsiyesi değildir.
+    <span class="tagref cal">CAL</span> satırları tamamen farklı: geçmiş kapanmış market'lerde fiyat ile
+    gerçekleşen sonuç arasında istatistiksel olarak anlamlı bir sapma bulunan fiyat aralıklarını işaretler —
+    <b>tek bir bahiste garanti değil</b>, çok sayıda tekrarlanan pozisyonda beklenen değeri lehine çeken bir
+    eğilim. <span class="tagref mis">MIS</span> satırları piyasa fiyatı ile aynı kovanın geçmiş gerçekleşme
+    oranı arasında ≥15 puanlık fark olan, günde en az $5.000 hacim gören market'leri listeler — istatistiksel
+    anlamlılık şartı aramaz. Hiçbiri yatırım tavsiyesi değildir.
   </p>
 
+  <div class="ledger-head">
+    <span class="ledger-title">Bugünkü Bilet Defteri</span>
+    <button class="demo-toggle" id="demoToggle" type="button">örnek verilerle önizle →</button>
+  </div>
   <div class="ledger" id="grid">
     <div class="state"><span class="state-msg"><span class="pulse"></span>Taranıyor</span></div>
   </div>
 
-  <footer>Her sabah otomatik güncellenir · veri kaynağı: gamma-api.polymarket.com</footer>
+  <footer>
+    <span>her sabah 06:00 TR otomatik güncellenir · veri kaynağı gamma-api.polymarket.com</span>
+    <a href="https://github.com/ereneltutar/overlay" target="_blank" rel="noopener">kaynak kodu ↗</a>
+  </footer>
 </div>
 
 <script>
-  function fmtDate(iso){
-    if(!iso) return "—";
-    const d = new Date(iso);
-    return d.toLocaleString('tr-TR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+/* ============ illustrative example rows (clearly marked, not real market data) ============ */
+const DEMO_ENTRIES = [
+  {
+    type: 'arbitrage',
+    event_title: '[ÖRNEK] Sıradaki F1 yarışını kim kazanır?',
+    slug: '#', url: '#',
+    days_left: 6, num_outcomes: 4, total_cost: 0.947, edge_pct: 5.6,
+    min_outcome_liquidity: 310,
+    legs: [
+      { outcome: 'Verstappen', ask: 0.520, liquidity: 900 },
+      { outcome: 'Norris', ask: 0.230, liquidity: 610 },
+      { outcome: 'Leclerc', ask: 0.130, liquidity: 420 },
+      { outcome: 'Diğer', ask: 0.067, liquidity: 310 }
+    ]
+  },
+  {
+    type: 'calibration',
+    event_title: '[ÖRNEK] Uzun kuyruklu bir "Evet/Hayır" market sorusu',
+    slug: '#', url: '#',
+    days_left: 11, recommended_side: 'NO', current_price: 0.91, implied_cost: 0.09,
+    bucket_range: [0.90, 0.95], bucket_sample_size: 41, bucket_historical_rate: 0.83, edge_pct: 8.2
+  },
+  {
+    type: 'mispricing',
+    event_title: '[ÖRNEK] Orta vadeli bir siyasi sonuç piyasası',
+    slug: '#', url: '#',
+    days_left: 18, recommended_side: 'YES', implied_probability: 0.34, fair_probability: 0.51,
+    bucket_range: [0.30, 0.35], bucket_sample_size: 46, edge_pct: 17.0, volume_24h: 8400,
+    low_sample_warning: false, score: 62.4
   }
+];
 
-  function buildBar(legs, totalCost){
-    const raw = legs.map(leg => Math.max(leg.ask * 100, 0.3));
-    const edgeRaw = Math.max((1 - totalCost) * 100, 0);
-    const sum = raw.reduce((a, b) => a + b, 0) + edgeRaw;
-    const scale = sum > 0 ? 100 / sum : 1;   // many tiny legs can push the raw sum past 100% — normalize so it never overflows
+/* ============ helpers ============ */
+function fmtDate(iso){
+  if(!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleString('tr-TR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+}
+function fmtInt(n){ return (n || 0).toLocaleString('tr-TR'); }
 
-    const segs = legs.map((leg, i) => {
-      const pct = raw[i] * scale;
-      const tone = i % 2 === 0 ? 'a' : 'b';
-      return `<span class="seg seg-${tone}" style="width:${pct.toFixed(2)}%"></span>`;
-    }).join('');
-    const edgePct = edgeRaw * scale;
-    return `<div class="bar">${segs}<span class="seg seg-edge" style="width:${edgePct.toFixed(2)}%"></span></div>`;
-  }
+/* ============ calibration curve chart ============ */
+function renderCalibrationChart(bins){
+  const svg = document.getElementById('calChart');
+  const W = 680, H = 300;
+  const padL = 44, padR = 16, padT = 14, padB = 34;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const x = p => padL + p * plotW;
+  const y = r => padT + (1 - r) * plotH;
 
-  function buildCalibrationBar(item){
-    // Uc segment: odedigin (notr ton) + tarihsel edge (amber) + kalan risk (notr/karanlik ton).
-    // Toplam her zaman $1'i temsil eder, tipki arbitraj barindaki gibi - sadece anlami farkli:
-    // burada "kalan" senin alip alamayacagin pay degil, gecmise gore hala yanilma ihtimalin.
-    const trueRate = item.recommended_side === 'YES'
-      ? item.bucket_historical_rate
-      : (1 - item.bucket_historical_rate);
-    const costPct = Math.max(item.implied_cost * 100, 0.3);
-    const edgePct = Math.max((trueRate - item.implied_cost) * 100, 0);
-    const riskPct = Math.max(100 - costPct - edgePct, 0);
-    return `<div class="bar">
-      <span class="seg seg-a" style="width:${costPct.toFixed(2)}%"></span>
-      <span class="seg seg-edge" style="width:${edgePct.toFixed(2)}%"></span>
-      <span class="seg seg-risk" style="width:${riskPct.toFixed(2)}%"></span>
-    </div>`;
-  }
+  let svgParts = [];
+  [0, .25, .5, .75, 1].forEach(t => {
+    svgParts.push(`<line class="grid-line" x1="${x(t)}" y1="${padT}" x2="${x(t)}" y2="${padT+plotH}"></line>`);
+    svgParts.push(`<line class="grid-line" x1="${padL}" y1="${y(t)}" x2="${padL+plotW}" y2="${y(t)}"></line>`);
+    svgParts.push(`<text class="axis-label" x="${x(t)}" y="${padT+plotH+16}" text-anchor="middle">%${Math.round(t*100)}</text>`);
+    svgParts.push(`<text class="axis-label" x="${padL-8}" y="${y(t)+3}" text-anchor="end">%${Math.round(t*100)}</text>`);
+  });
+  svgParts.push(`<text class="axis-label" x="${padL+plotW/2}" y="${H-4}" text-anchor="middle">piyasanın fiyatladığı olasılık →</text>`);
+  svgParts.push(`<path class="diag-line" d="M${x(0)},${y(0)} L${x(1)},${y(1)}"></path>`);
 
-  function buildLegend(legs){
-    return legs.map((leg, i) => `
-      <span class="chip"><i class="dot dot-${i % 2 === 0 ? 'a' : 'b'}"></i>${leg.outcome} <b>$${leg.ask.toFixed(3)}</b></span>
-    `).join('');
-  }
-
-  const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', resolution_lag: 'LAG', mispricing: 'MIS' };
-
-  function renderArbitrageEntry(opp, rank){
-    const daysLabel = opp.days_left === null ? 'tarih belirsiz' :
-      (opp.days_left <= 0 ? 'bugün kapanıyor' : `${opp.days_left} gün kaldı`);
-    return `
-      <a class="entry" href="${opp.url || '#'}" target="_blank" rel="noopener">
-        <div class="entry-head">
-          <span class="entry-rank">${rank}</span>
-          <span class="tag">${TAG_LABELS.arbitrage}</span>
-          <p class="entry-title">${opp.event_title}</p>
-          <span class="entry-edge">+${opp.edge_pct.toFixed(1)}%</span>
-        </div>
-        <div class="entry-meta">${daysLabel} · ${opp.num_outcomes} seçenek · min. likidite $${Math.round(opp.min_outcome_liquidity).toLocaleString('tr-TR')}</div>
-        ${buildBar(opp.legs, opp.total_cost)}
-        <div class="legend">${buildLegend(opp.legs)}</div>
-        <div class="entry-foot">
-          <span>maliyet <span class="cost">$${opp.total_cost.toFixed(3)}</span> / $1.00 karşılığı</span>
-          <span class="open">↗ polymarket'te aç</span>
-        </div>
-      </a>
-    `;
-  }
-
-  function renderCalibrationEntry(sig, rank){
-    const daysLabel = sig.days_left === null ? 'tarih belirsiz' :
-      (sig.days_left <= 0 ? 'bugün kapanıyor' : `${sig.days_left} gün kaldı`);
-    const [lo, hi] = sig.bucket_range;
-    const rangeLabel = `%${Math.round(lo * 100)}–%${Math.round(hi * 100)} kovası`;
-    const trueRatePct = (sig.recommended_side === 'YES' ? sig.bucket_historical_rate : 1 - sig.bucket_historical_rate) * 100;
-
-    return `
-      <a class="entry" href="${sig.url || '#'}" target="_blank" rel="noopener">
-        <div class="entry-head">
-          <span class="entry-rank">${rank}</span>
-          <span class="tag">${TAG_LABELS.calibration}</span>
-          <p class="entry-title">${sig.market_question}</p>
-          <span class="entry-edge">+${sig.edge_pct.toFixed(1)}%</span>
-        </div>
-        <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel} · ${rangeLabel} · tarihsel oran %${(sig.bucket_historical_rate * 100).toFixed(1)} (n=${sig.bucket_sample_size})</div>
-        ${buildCalibrationBar(sig)}
-        <div class="entry-foot">
-          <span>maliyet <span class="cost">$${sig.implied_cost.toFixed(3)}</span> / tarihsel %${trueRatePct.toFixed(1)} oranla</span>
-          <span class="open">↗ polymarket'te aç</span>
-        </div>
-      </a>
-    `;
-  }
-
-  function renderMispricingEntry(sig, rank){
-    const daysLabel = sig.days_left === null ? 'tarih belirsiz' :
-      (sig.days_left <= 0 ? 'bugün kapanıyor' : `${Math.round(sig.days_left)} gün kaldı`);
-    const [lo, hi] = sig.bucket_range;
-    const rangeLabel = `%${Math.round(lo * 100)}–%${Math.round(hi * 100)} kovası`;
-    const warnLabel = sig.low_sample_warning ? ' · ⚠ düşük örneklem' : '';
-
-    return `
-      <a class="entry" href="${sig.url || '#'}" target="_blank" rel="noopener">
-        <div class="entry-head">
-          <span class="entry-rank">${rank}</span>
-          <span class="tag">${TAG_LABELS.mispricing}</span>
-          <p class="entry-title">${sig.market_question}</p>
-          <span class="entry-edge">${sig.edge_pct.toFixed(1)}pt</span>
-        </div>
-        <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel} · ${rangeLabel} · fair %${(sig.fair_probability * 100).toFixed(1)} vs implied %${(sig.implied_probability * 100).toFixed(1)} (n=${sig.bucket_sample_size})${warnLabel}</div>
-        <div class="entry-foot">
-          <span>24s hacim <span class="cost">$${Math.round(sig.volume_24h).toLocaleString('tr-TR')}</span> · skor ${sig.score}</span>
-          <span class="open">↗ polymarket'te aç</span>
-        </div>
-      </a>
-    `;
-  }
-
-  function renderEntry(item, index){
-    const rank = String(index + 1).padStart(2, '0');
-    if(item.type === 'calibration') return renderCalibrationEntry(item, rank);
-    if(item.type === 'mispricing') return renderMispricingEntry(item, rank);
-    return renderArbitrageEntry(item, rank);
-  }
-
-  async function load(){
-    const grid = document.getElementById('grid');
-    try{
-      const res = await fetch('./results.json', { cache: 'no-store' });
-      if(!res.ok) throw new Error('not found');
-      const data = await res.json();
-
-      const arbitrage = (data.opportunities || []).map(o => ({ ...o, type: 'arbitrage' }));
-      const calibration = (data.calibration_signals || []).map(s => ({ ...s, type: 'calibration' }));
-      const mispricing = (data.mispricing_signals || []).map(s => ({ ...s, type: 'mispricing' }));
-      const merged = [...arbitrage, ...calibration, ...mispricing].sort((a, b) => b.edge_pct - a.edge_pct);
-
-      document.getElementById('scanTime').textContent = fmtDate(data.generated_at);
-      document.getElementById('oppCount').textContent = merged.length;
-      document.getElementById('scannedCount').textContent = (data.scanned_events || 0).toLocaleString('tr-TR');
-
-      if(merged.length === 0){
-        grid.innerHTML = `<div class="state"><div class="state-msg">Bugün kayıt yok</div><div class="state-sub">Piyasalar dengeli görünüyor — ${data.scanned_events || 0} piyasa tarandı.</div></div>`;
-        return;
-      }
-
-      grid.innerHTML = merged.map(renderEntry).join('');
-    }catch(err){
-      grid.innerHTML = `<div class="state"><div class="state-msg">Henüz tarama yok</div><div class="state-sub">results.json bulunamadı. GitHub Actions sekmesinden "Daily Polymarket Scan" iş akışını bir kere manuel çalıştır, ya da ilk otomatik taramanın geçmesini bekle.</div></div>`;
+  bins.forEach(b => {
+    const midX = x(b.midpoint);
+    if(b.resolved_yes_rate === null){
+      const ry = padT + plotH;
+      const rr = Math.max(2.5, Math.min(7, Math.sqrt(b.sample_size) * 1.15));
+      svgParts.push(`<circle class="bucket-dot-pending" cx="${midX}" cy="${ry}" r="${rr}"><title>%${Math.round(b.range[0]*100)}–%${Math.round(b.range[1]*100)} kovası · n=${b.sample_size} (30 gerekiyor) · veri birikiyor</title></circle>`);
+    } else {
+      const cy = y(b.resolved_yes_rate);
+      const ciLowY = y(b.ci_95_low), ciHighY = y(b.ci_95_high);
+      svgParts.push(`<line class="ci-bar" x1="${midX}" y1="${ciLowY}" x2="${midX}" y2="${ciHighY}"></line>`);
+      const rr = Math.max(4, Math.min(11, Math.sqrt(b.sample_size) * 0.62));
+      const cls = b.significant ? 'bucket-dot-sig' : 'bucket-dot-pending';
+      svgParts.push(`<circle class="${cls}" cx="${midX}" cy="${cy}" r="${rr}"><title>%${Math.round(b.range[0]*100)}–%${Math.round(b.range[1]*100)} kovası · n=${b.sample_size} · gerçekleşen %${(b.resolved_yes_rate*100).toFixed(1)} · %95 GA [${(b.ci_95_low*100).toFixed(1)}–${(b.ci_95_high*100).toFixed(1)}] · ${b.significant ? 'anlamlı sapma' : 'anlamlı değil'}</title></circle>`);
     }
+  });
+
+  svg.innerHTML = svgParts.join('');
+
+  const strongest = bins.find(b => b.resolved_yes_rate !== null);
+  const caption = document.getElementById('calCaption');
+  if(strongest){
+    const sigCount = bins.filter(b => b.significant).length;
+    if(sigCount > 0){
+      caption.innerHTML = `<b>${sigCount}</b> kovada istatistiksel olarak anlamlı bir sapma var — CAL sinyalleri bu farktan üretiliyor.`;
+    } else {
+      caption.innerHTML = `Şu ana kadar yeterli örnekleme ulaşan en güçlü kova: <b>%${Math.round(strongest.range[0]*100)}–%${Math.round(strongest.range[1]*100)}</b> (n=${strongest.sample_size}) — gerçekleşen oran <b>%${(strongest.resolved_yes_rate*100).toFixed(2)}</b>, piyasanın öngördüğü <b>%${(strongest.midpoint*100).toFixed(1)}</b>'e yakın. Henüz istatistiksel olarak anlamlı bir sapma yok.`;
+    }
+  } else {
+    caption.textContent = 'Henüz hiçbir kova 30 örneğe ulaşmadı.';
   }
+}
 
-  load();
+function showCalibrationUnavailable(){
+  document.getElementById('calMetaDate').textContent = 'henüz çalışmadı';
+  document.getElementById('calBody').innerHTML = `<div class="panel-empty">Haftalık kalibrasyon taraması henüz hiç çalışmadı. "Weekly Calibration Scan" iş akışı ilk kez tamamlandığında burada bir eğri belirecek.</div>`;
+}
+
+/* ============ archive sparkline ============ */
+function renderSparkline(series){
+  const svg = document.getElementById('sparkChart');
+  if(series.length < 2){ svg.innerHTML = ''; return; }
+  const W = 460, H = 64, padX = 4, padY = 8;
+  const plotW = W - padX*2, plotH = H - padY*2;
+  const maxVal = Math.max(...series.map(d => d.total));
+  const n = series.length;
+  const x = i => padX + (i/(n-1)) * plotW;
+  const y = v => padY + (1 - v/maxVal) * plotH;
+
+  const linePts = series.map((d,i) => `${x(i).toFixed(1)},${y(d.total).toFixed(1)}`).join(' L');
+  const areaPts = `M${x(0)},${H-padY} L` + linePts + ` L${x(n-1)},${H-padY} Z`;
+  const last = series[n-1];
+  const tooltips = series.map((d,i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(d.total).toFixed(1)}" r="7" fill="transparent"><title>${d.date} · ${d.total} kayıt</title></circle>`).join('');
+
+  svg.innerHTML = `
+    <path class="spark-area" d="${areaPts}"></path>
+    <path class="spark-line" d="M${linePts}"></path>
+    ${tooltips}
+    <circle class="spark-end" cx="${x(n-1).toFixed(1)}" cy="${y(last.total).toFixed(1)}" r="3.5"></circle>
+  `;
+}
+
+/* ============ ledger entries ============ */
+const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', mispricing: 'MIS' };
+
+function daysLabel(d, roundIt){
+  if(d === null || d === undefined) return 'tarih belirsiz';
+  const v = roundIt ? Math.round(d) : d;
+  return v <= 0 ? 'bugün kapanıyor' : `${v} gün kaldı`;
+}
+
+function buildArbBar(legs, totalCost){
+  const raw = legs.map(leg => Math.max(leg.ask * 100, 0.3));
+  const edgeRaw = Math.max((1 - totalCost) * 100, 0);
+  const sum = raw.reduce((a,b) => a+b, 0) + edgeRaw;
+  const scale = sum > 0 ? 100/sum : 1;
+  const segs = legs.map((leg,i) => {
+    const pct = raw[i]*scale;
+    const tone = i % 2 === 0 ? 'a' : 'b';
+    return `<span class="seg seg-${tone}" style="width:${pct.toFixed(2)}%"></span>`;
+  }).join('');
+  const edgePct = edgeRaw*scale;
+  return `<div class="bar">${segs}<span class="seg" style="width:${edgePct.toFixed(2)}%;background:var(--arb)"></span></div>`;
+}
+
+function buildCalBar(item){
+  const trueRate = item.recommended_side === 'YES' ? item.bucket_historical_rate : (1 - item.bucket_historical_rate);
+  const costPct = Math.max(item.implied_cost*100, 0.3);
+  const edgePct = Math.max((trueRate - item.implied_cost)*100, 0);
+  const riskPct = Math.max(100 - costPct - edgePct, 0);
+  return `<div class="bar">
+    <span class="seg seg-a" style="width:${costPct.toFixed(2)}%"></span>
+    <span class="seg" style="width:${edgePct.toFixed(2)}%;background:var(--cal)"></span>
+    <span class="seg seg-b" style="width:${riskPct.toFixed(2)}%"></span>
+  </div>`;
+}
+
+function buildMisDumbbell(sig){
+  const W = 400, H = 34, padX = 6;
+  const x = p => padX + p*(W-padX*2);
+  const impX = x(sig.implied_probability), fairX = x(sig.fair_probability);
+  const lo = Math.min(impX, fairX), hi = Math.max(impX, fairX);
+  return `<div class="dumbbell"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+    <line class="dumbbell-track" x1="${padX}" y1="17" x2="${W-padX}" y2="17"></line>
+    <line class="dumbbell-gap" x1="${lo}" y1="17" x2="${hi}" y2="17"></line>
+    <circle class="dumbbell-implied" cx="${impX}" cy="17" r="4.5"><title>implied %${(sig.implied_probability*100).toFixed(1)}</title></circle>
+    <circle class="dumbbell-fair" cx="${fairX}" cy="17" r="4.5"><title>fair %${(sig.fair_probability*100).toFixed(1)}</title></circle>
+    <text class="dumbbell-label" x="${impX}" y="9" text-anchor="middle">implied %${(sig.implied_probability*100).toFixed(0)}</text>
+    <text class="dumbbell-label" x="${fairX}" y="32" text-anchor="middle">fair %${(sig.fair_probability*100).toFixed(0)}</text>
+  </svg></div>`;
+}
+
+function renderArbEntry(opp, rank, demo){
+  return `
+    <a class="entry" data-tier="arbitrage" href="${opp.url || '#'}" target="_blank" rel="noopener">
+      <div class="entry-head">
+        <span class="tag${demo?' demo-tag':''}">${TAG_LABELS.arbitrage}</span>
+        <p class="entry-title">${opp.event_title}</p>
+        <span class="entry-edge">+${opp.edge_pct.toFixed(1)}%</span>
+      </div>
+      <div class="entry-meta">${daysLabel(opp.days_left)} · ${opp.num_outcomes} seçenek · min. likidite $${fmtInt(Math.round(opp.min_outcome_liquidity))}</div>
+      ${buildArbBar(opp.legs, opp.total_cost)}
+      <div class="legend">${opp.legs.map((leg,i) => `<span class="legend-chip"><i class="legend-dot" style="background:var(--ink-faint);opacity:${i%2===0?.35:.55}"></i>${leg.outcome} <b>$${leg.ask.toFixed(3)}</b></span>`).join('')}</div>
+      <div class="entry-foot">
+        <span>maliyet <span class="cost">$${opp.total_cost.toFixed(3)}</span> / $1.00 karşılığı</span>
+        <span class="open">↗ polymarket'te aç</span>
+      </div>
+    </a>`;
+}
+
+function renderCalEntry(sig, rank, demo){
+  const [lo, hi] = sig.bucket_range;
+  const trueRatePct = (sig.recommended_side === 'YES' ? sig.bucket_historical_rate : 1 - sig.bucket_historical_rate) * 100;
+  return `
+    <a class="entry" data-tier="calibration" href="${sig.url || '#'}" target="_blank" rel="noopener">
+      <div class="entry-head">
+        <span class="tag${demo?' demo-tag':''}">${TAG_LABELS.calibration}</span>
+        <p class="entry-title">${sig.market_question || sig.event_title}</p>
+        <span class="entry-edge">+${sig.edge_pct.toFixed(1)}%</span>
+      </div>
+      <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel(sig.days_left)} · %${Math.round(lo*100)}–%${Math.round(hi*100)} kovası · tarihsel oran %${(sig.bucket_historical_rate*100).toFixed(1)} (n=${sig.bucket_sample_size})</div>
+      ${buildCalBar(sig)}
+      <div class="entry-foot">
+        <span>maliyet <span class="cost">$${sig.implied_cost.toFixed(3)}</span> / tarihsel %${trueRatePct.toFixed(1)} oranla</span>
+        <span class="open">↗ polymarket'te aç</span>
+      </div>
+    </a>`;
+}
+
+function renderMisEntry(sig, rank, demo){
+  const [lo, hi] = sig.bucket_range;
+  const warn = sig.low_sample_warning ? ' · ⚠ düşük örneklem' : '';
+  return `
+    <a class="entry" data-tier="mispricing" href="${sig.url || '#'}" target="_blank" rel="noopener">
+      <div class="entry-head">
+        <span class="tag${demo?' demo-tag':''}">${TAG_LABELS.mispricing}</span>
+        <p class="entry-title">${sig.market_question || sig.event_title}</p>
+        <span class="entry-edge">${sig.edge_pct.toFixed(1)}pt</span>
+      </div>
+      <div class="entry-meta">${sig.recommended_side} öner · ${daysLabel(sig.days_left, true)} · %${Math.round(lo*100)}–%${Math.round(hi*100)} kovası · n=${sig.bucket_sample_size}${warn}</div>
+      ${buildMisDumbbell(sig)}
+      <div class="entry-foot">
+        <span>24s hacim <span class="cost">$${fmtInt(Math.round(sig.volume_24h))}</span> · skor ${sig.score}</span>
+        <span class="open">↗ polymarket'te aç</span>
+      </div>
+    </a>`;
+}
+
+function renderEntry(item, i, demo){
+  if(item.type === 'calibration') return renderCalEntry(item, i, demo);
+  if(item.type === 'mispricing') return renderMisEntry(item, i, demo);
+  return renderArbEntry(item, i, demo);
+}
+
+/* ============ state ============ */
+let currentFilter = 'all';
+let showDemo = false;
+let merged = [];
+let scannedEvents = 0;
+
+function applyFilterAndRender(){
+  const grid = document.getElementById('grid');
+  const source = showDemo ? DEMO_ENTRIES : merged;
+  const list = currentFilter === 'all' ? source : source.filter(x => x.type === currentFilter);
+
+  if(list.length === 0){
+    if(showDemo){
+      grid.innerHTML = `<div class="state"><div class="state-msg">Bu filtrede örnek yok</div></div>`;
+    } else {
+      grid.innerHTML = `<div class="state"><div class="state-msg">Bugün bu türde kayıt yok</div><div class="state-sub">Sistem çalışıyor — ${fmtInt(scannedEvents)} piyasa tarandı. Piyasalar bugün bu ölçütte dengeli görünüyor.</div></div>`;
+    }
+    return;
+  }
+  grid.innerHTML = list.map((item,i) => renderEntry(item, i, showDemo)).join('');
+}
+
+function updateCounts(){
+  const source = showDemo ? DEMO_ENTRIES : merged;
+  const counts = { arbitrage: 0, calibration: 0, mispricing: 0 };
+  source.forEach(x => counts[x.type]++);
+  document.getElementById('cnt-all').textContent = source.length;
+  document.getElementById('cnt-arbitrage').textContent = counts.arbitrage;
+  document.getElementById('cnt-calibration').textContent = counts.calibration;
+  document.getElementById('cnt-mispricing').textContent = counts.mispricing;
+}
+
+/* ============ price_log.jsonl parsing (for the archive sparkline) ============ */
+function parsePriceLog(text){
+  const lines = text.split('\n');
+  const counts = {};
+  let total = 0;
+  for(const line of lines){
+    const trimmed = line.trim();
+    if(!trimmed) continue;
+    try{
+      const entry = JSON.parse(trimmed);
+      const day = (entry.logged_at || '').slice(0, 10);
+      if(!day) continue;
+      counts[day] = (counts[day] || 0) + 1;
+      total++;
+    }catch(e){ continue; }
+  }
+  const days = Object.keys(counts).sort();
+  let cum = 0;
+  const series = days.map(d => { cum += counts[d]; return { date: d, total: cum }; });
+  return { total, series };
+}
+
+/* ============ main load ============ */
+async function loadResults(){
+  const grid = document.getElementById('grid');
+  try{
+    const res = await fetch('./results.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+
+    scannedEvents = data.scanned_events || 0;
+    const arbitrage = (data.opportunities || []).map(o => ({ ...o, type: 'arbitrage' }));
+    const calibration = (data.calibration_signals || []).map(s => ({ ...s, type: 'calibration' }));
+    const mispricing = (data.mispricing_signals || []).map(s => ({ ...s, type: 'mispricing' }));
+    merged = [...arbitrage, ...calibration, ...mispricing].sort((a,b) => b.edge_pct - a.edge_pct);
+
+    document.getElementById('scanTime').textContent = fmtDate(data.generated_at);
+    document.getElementById('oppCount').textContent = merged.length;
+    document.getElementById('scannedCount').textContent = fmtInt(scannedEvents);
+    document.getElementById('tkScanned').textContent = fmtInt(scannedEvents);
+
+    updateCounts();
+    applyFilterAndRender();
+  }catch(err){
+    grid.innerHTML = `<div class="state"><div class="state-msg">Henüz tarama yok</div><div class="state-sub">results.json bulunamadı. GitHub Actions sekmesinden "Daily Polymarket Scan" iş akışını bir kere manuel çalıştır, ya da ilk otomatik taramanın geçmesini bekle.</div></div>`;
+  }
+}
+
+async function loadCalibration(){
+  try{
+    const res = await fetch('./calibration.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+    document.getElementById('tkResolved').textContent = fmtInt(data.markets_resolved);
+    document.getElementById('calMetaDate').textContent = 'son çalışma: ' + fmtDate(data.generated_at);
+    renderCalibrationChart(data.bins || []);
+  }catch(err){
+    showCalibrationUnavailable();
+  }
+}
+
+async function loadPriceLog(){
+  try{
+    const res = await fetch('./price_log.jsonl', { cache: 'no-store' });
+    if(!res.ok) throw new Error('not found');
+    const text = await res.text();
+    const { total, series } = parsePriceLog(text);
+    document.getElementById('tkArchive').textContent = fmtInt(total);
+    document.getElementById('sparkTotal').textContent = fmtInt(total);
+    renderSparkline(series);
+  }catch(err){
+    document.getElementById('tkArchive').textContent = '0';
+    document.getElementById('sparkTotal').textContent = '0';
+  }
+}
+
+document.getElementById('filters').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chip-btn');
+  if(!btn) return;
+  document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter = btn.dataset.tier;
+  applyFilterAndRender();
+});
+
+document.getElementById('demoToggle').addEventListener('click', () => {
+  showDemo = !showDemo;
+  document.getElementById('demoToggle').textContent = showDemo ? '← gerçek veriye dön' : 'örnek verilerle önizle →';
+  updateCounts();
+  applyFilterAndRender();
+});
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const root = document.documentElement;
+  const current = root.getAttribute('data-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const effectiveCurrent = current || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', effectiveCurrent === 'dark' ? 'light' : 'dark');
+});
+
+loadResults();
+loadCalibration();
+loadPriceLog();
 </script>
-
 </body>
 </html>
