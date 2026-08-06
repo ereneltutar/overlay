@@ -2,9 +2,9 @@ name: Daily Polymarket Scan
 
 on:
   schedule:
-    # 03:00 UTC = 06:00 Turkiye saati (UTC+3). Degistirmek icin bu satiri duzenle.
+    # 03:00 UTC = 06:00 Turkey time (UTC+3). Edit this line to change it.
     - cron: "0 3 * * *"
-  workflow_dispatch: {}   # Actions sekmesinden manuel calistirmak icin
+  workflow_dispatch: {}   # lets you run it manually from the Actions tab
 
 permissions:
   contents: write
@@ -13,21 +13,21 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - name: Repo'yu checkout et
+      - name: Check out repo
         uses: actions/checkout@v4
 
-      - name: Python kur
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Bagimliliklari yukle
+      - name: Install dependencies
         run: pip install requests
 
-      - name: Taramayi calistir
+      - name: Run scan
         run: python scripts/fetch_arbitrage.py
 
-      - name: Sonuclari commit'le
+      - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -36,7 +36,7 @@ jobs:
             git add docs/price_log.jsonl
           fi
           if git diff --staged --quiet; then
-            echo "Degisiklik yok, commit atlanıyor."
+            echo "No changes, skipping commit."
           else
             git commit -m "Daily scan: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push

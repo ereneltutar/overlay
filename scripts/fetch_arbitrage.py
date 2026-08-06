@@ -2,51 +2,53 @@
 """
 Polymarket Arbitrage Watch
 ---------------------------
-Her sabah otomatik calisir, Polymarket Gamma API'sinden acik (kapanmamis)
-event'leri ceker, deadline'i belirli bir pencere icinde olanlari filtreler
-ve iki ayri mantikla firsat arar:
+Runs automatically every morning. Pulls open (not yet closed) events from
+the Polymarket Gamma API, filters to ones with a deadline inside a given
+window, and looks for opportunities with two separate methods:
 
-1) RISKSIZ ARBITRAJ (negRisk gruplarinda):
-   Bir event'te N tane birbirini dislayan ve TAMAMI kapsayan secenek varsa
-   (ornegin "Kim kazanir?" tipi bir yarisma), her secenegin "Yes" tarafini
-   en iyi satis (ask) fiyatindan satin alip elinde tutarsan, olaylardan
-   TAM OLARAK BIRI gerceklesecegi icin garanti $1 odeme alirsin.
-   Eger butun "ask" fiyatlarinin toplami $1'in altindaysa, aradaki fark
-   teorik bir risksiz kazanc (gercek hayatta islem ucreti, kayma/slippage,
-   likidite yetersizligi ve infaz riski bu farki azaltabilir/yok edebilir).
+1) RISKLESS ARBITRAGE (in negRisk groups):
+   If an event has N mutually exclusive options that cover every outcome
+   (for example, "Who wins this race?"), and you buy the "Yes" side of
+   every option at its current best ask price, exactly ONE of them
+   resolves, so you're guaranteed a $1 payout.
+   If the sum of all those ask prices is under $1, the gap is a
+   theoretical riskless profit (in practice, fees, slippage, thin
+   liquidity, and execution risk can shrink or erase that gap).
 
-   Bu script sadece "negRisk" gruplarini tarar (binary tek soru-cevap
-   marketlerde NO tarafinin gercek ask fiyati Gamma API'de ayri bir alan
-   olarak gelmiyor, CLOB book endpoint'i de bilinen bir "stale data" sorunu
-   tasidigi icin v1'de bilerek disarida tutuldu).
+   This script only scans "negRisk" groups. For plain binary Yes/No
+   markets, the real ask price for the NO side doesn't come back as a
+   separate field from the Gamma API, and the CLOB order book endpoint has
+   a known stale-data problem, so binary markets were deliberately left
+   out of v1.
 
-2) KALIBRASYON SAPMASI (istatistiksel, RISKSIZ DEGIL):
-   scripts/calibration_scan.py (haftalik, ayri bir is) bu script'in
-   asagida yazdigi docs/price_log.jsonl'i okuyup, o markette zamani gelip
-   kapananlari gercek sonucuyla eslestirir; "piyasa fiyati" ile "gercekte
-   gerceklesen oran" arasinda sistematik bir sapma (favorite-longshot
-   bias) olup olmadigini olcup docs/calibration.json'a yazar.
-   Bu script o tabloyu okuyup BUGUNUN acik market'lerini bu tabloyla
-   karsilastirir: fiyati, gecmiste istatistiksel olarak anlamli sapma
-   gosterilmis bir araliga denk gelen market'leri "calibration_signals"
-   olarak isaretler. Bu, TEK bir bahiste kazanc garantisi DEGILDIR -
-   cok sayida tekrarlanan pozisyonda beklenen degeri (+EV) lehine ceken
-   istatistiksel bir egilimdir.
+2) CALIBRATION DRIFT (statistical, NOT riskless):
+   scripts/calibration_scan.py (a separate weekly job) reads the
+   docs/price_log.jsonl file this script writes below, matches markets
+   that have since closed against their real outcome, and measures
+   whether there's a systematic gap (favorite-longshot bias) between
+   "market price" and "actual resolved rate," writing the result to
+   docs/calibration.json.
+   This script reads that table and compares TODAY's open markets against
+   it: any market whose price falls in a range with a historically
+   significant gap gets flagged as a "calibration_signal." This is NOT a
+   guarantee for any single bet. It's a statistical tendency that pulls
+   expected value (+EV) in your favor across many repeated positions.
 
-   ONEMLI - NEDEN GECMISE BAKMIYORUZ: Polymarket'in /prices-history
-   endpoint'i canli testte (379 market, 372 basarisiz) market'lerin
-   %98'i icin bos veri dondu - bu, Polymarket'in kendi altyapisinin
-   bilinen bir sinirlamasi (bagimsiz bir ucuncu taraf veri servisinin
-   var olma sebebi de bu). Bu yuzden GECMISE bakmak yerine ILERIYE
-   bakiyoruz: asagidaki log_price_snapshot() fonksiyonu, kapanisina
-   yaklasik CALIBRATION_LOG_LEAD_DAYS gun kalan her market'in su anki
-   fiyatini docs/price_log.jsonl'e ekliyor (append-only). Haftalar
-   sonra bu market'ler kapaninca, calibration_scan.py kendi logladigimiz
-   bu fiyati gercek sonucla eslestirip kullanabiliyor - Polymarket'in
-   guvenilmez gecmis-veri endpoint'ine hic ihtiyac kalmiyor.
+   WHY WE DON'T LOOK BACKWARD: Polymarket's /prices-history endpoint
+   returned empty data for 98% of markets in a live test (379 markets,
+   372 failures). That's a known limitation of Polymarket's own
+   infrastructure, not a fluke (it's also why an independent third-party
+   data service exists to sell historical data). So instead of looking
+   BACKWARD, we look FORWARD: the log_price_snapshot() function below
+   appends the current price of every market roughly
+   CALIBRATION_LOG_LEAD_DAYS days from closing to docs/price_log.jsonl
+   (append-only). Weeks later, once those markets close,
+   calibration_scan.py matches the price we logged ourselves against the
+   real outcome, with no need for Polymarket's unreliable historical-data
+   endpoint at all.
 
-Cikti: docs/results.json (statik dashboard bu dosyayi okuyor)
-       docs/price_log.jsonl (ileriye-donuk kalibrasyon arsivi, append-only)
+Output: docs/results.json (the static dashboard reads this file)
+        docs/price_log.jsonl (forward-looking calibration archive, append-only)
 """
 
 import datetime
@@ -60,55 +62,56 @@ import requests
 
 GAMMA_BASE = "https://gamma-api.polymarket.com"
 
-# --- Ayarlanabilir parametreler -------------------------------------------
-DAYS_AHEAD = 30          # deadline'i bugunden en fazla kac gun sonra olan event'ler
-MIN_EDGE_PCT = 0.5       # bu yuzdenin altindaki "firsatlari" gosterme (gurultu filtresi)
-MIN_LIQUIDITY_USD = 50   # her bacakta en az bu kadar likidite olmali (cok ince kitaplari ele)
+# --- Tunable parameters -----------------------------------------------
+DAYS_AHEAD = 30          # scan events whose deadline is at most this many days out
+MIN_EDGE_PCT = 0.5       # don't show "opportunities" below this percent (noise filter)
+MIN_LIQUIDITY_USD = 50   # require at least this much liquidity per leg (drop thin books)
 PAGE_LIMIT = 500
-MAX_PAGES = 60           # guvenlik siniri
+MAX_PAGES = 60           # safety cap
 REQUEST_TIMEOUT = 30
 
-# Momentum / hacim anomalisi taramasi icin:
-MOMENTUM_MIN_VOLUME_24H = 200     # bu tutarin altindaki gunluk hacmi olan marketleri atla (gurultu)
-MOMENTUM_VOLUME_MULTIPLIER = 3.0  # son 24s hacmi, son 1 haftalik gunluk ortalamanin en az kac kati olmali
-MOMENTUM_MIN_PRICE_MOVE = 0.05    # son 24s (yoksa son 1s) fiyat hareketi en az kac puan olmali (0.05 = 5 puan)
-MAX_MOMENTUM_SIGNALS = 15         # dashboard'da gosterilecek max sinyal sayisi
+# For the momentum / volume-anomaly scan:
+MOMENTUM_MIN_VOLUME_24H = 200     # skip markets with less than this much daily volume (noise)
+MOMENTUM_VOLUME_MULTIPLIER = 3.0  # last-24h volume must be at least this many times the trailing weekly daily average
+MOMENTUM_MIN_PRICE_MOVE = 0.05    # last-24h (or last-1h) price move must be at least this many points (0.05 = 5 points)
+MAX_MOMENTUM_SIGNALS = 15         # max signals shown on the dashboard
 
-# Kalibrasyon sapmasi (favorite-longshot bias) capraz kontrolu icin:
-MIN_CALIBRATION_EDGE_PCT = 2.0    # bu yuzdenin altindaki kalibrasyon farkini gosterme (gurultu)
-MIN_CALIBRATION_LIQUIDITY_USD = 100  # bu likiditenin altindaki market'leri ele
-MAX_CALIBRATION_SIGNALS = 20      # dashboard'da gosterilecek max sinyal sayisi
+# For the calibration-drift (favorite-longshot bias) cross-check:
+MIN_CALIBRATION_EDGE_PCT = 2.0    # don't show a calibration gap below this percent (noise)
+MIN_CALIBRATION_LIQUIDITY_USD = 100  # drop markets below this liquidity
+MAX_CALIBRATION_SIGNALS = 20      # max signals shown on the dashboard
 
-# Ileriye-donuk kalibrasyon LOGLAMA icin (calibration_scan.py'nin okuyacagi arsiv):
-# UYARI: CALIBRATION_LOG_LEAD_DAYS, scripts/calibration_scan.py'deki LEAD_DAYS ile
-# AYNI mantigi temsil eder (ikisi de "kapanistan kac gun once" sorusu) - birini
-# degistirirsen digerini de gozden gecir, aralarinda kod baginda paylasim yok.
+# For forward-looking calibration LOGGING (the archive calibration_scan.py reads):
+# WARNING: CALIBRATION_LOG_LEAD_DAYS represents the same concept as LEAD_DAYS in
+# scripts/calibration_scan.py (both answer "how many days before closing").
+# If you change one, review the other; there's no shared code linking them.
 CALIBRATION_LOG_LEAD_DAYS = 7
-CALIBRATION_LOG_TOLERANCE_DAYS = 0.6  # her gun calisan cron'un bu pencereyi kacirmamasi icin pay
+CALIBRATION_LOG_TOLERANCE_DAYS = 0.6  # slack so a once-daily cron doesn't miss this window
 CALIBRATION_LOG_MIN_LIQUIDITY = 50
 # ----------------------------------------------------------------------------
 
-# --- UCUNCU, BAGIMSIZ TARAMA: "Mispricing" (implied vs fair probability) --------
-# find_calibration_signal()'DAN FARKI: o fonksiyon bir sinyali sadece istatistiksel
-# olarak ANLAMLI ise (Wilson araligi kova ortasini dislarsa) gosterir. Bu tarama
-# ise anlamlilik sartina BAKMADAN dogrudan puan farkina (>= MISPRICING_MIN_EDGE_PTS)
-# bakar, 24 saatlik hacim filtresi ekler ve hepsini tek bir skorda birlestirip
-# gunluk bir "Top N" listesi uretir. AYRI bir fonksiyon (find_mispricing_signal) -
-# find_calibration_signal'in tek satiri bile degismedi.
+# --- THIRD, INDEPENDENT SCAN: "Mispricing" (implied vs fair probability) --------
+# HOW THIS DIFFERS FROM find_calibration_signal(): that function only shows a
+# signal if it's statistically SIGNIFICANT (the Wilson interval excludes the
+# bucket midpoint). This scan ignores the significance requirement and looks
+# directly at the point gap (>= MISPRICING_MIN_EDGE_PTS), adds a 24-hour volume
+# filter, and combines everything into a single score to produce a daily
+# "Top N" list. It's a SEPARATE function (find_mispricing_signal); not a single
+# line of find_calibration_signal changed.
 #
-# ONEMLI - "FAIR PROBABILITY" NEREDEN GELIYOR: Su an repoda market-basina bagimsiz
-# calisan bir olasilik modeli/tahmin kaynagi YOK. Bu yuzden bu tarama da CAL ile
-# AYNI kova verisini (docs/calibration.json -> bucket["resolved_yes_rate"], yani
-# o fiyat araligindaki market'lerin GECMISTE gercekten YES sonuclanma orani) "fair
-# probability" olarak kullaniyor - sadece esik/filtre/skorlama mantigi farkli.
-# Ornekleme boyutu kovaya gore hala kucuk olabilir (bkz. low_sample_warning alani);
-# bu istatistiksel anlamlilik testi degil, sadece "dikkatli oku" bayragi.
-MISPRICING_MIN_EDGE_PTS = 15.0          # implied ile kova-tarihsel-orani arasinda min. puan farki
-MISPRICING_MIN_VOLUME_24H = 5000        # bu 24s hacmin altindaki marketleri atla (trade edilebilirlik)
-MISPRICING_HORIZON_DAYS = 30            # bu gunden az kalan market'ler "oncelikli" pencerede
-MISPRICING_LONGTERM_MIN_EDGE_PTS = 25   # HORIZON_DAYS'i asan market'lerde sadece bunun ustundeki edge'ler girer
-MISPRICING_LOW_SAMPLE_WARNING_N = 30    # kova orneklem sayisi bunun altindaysa low_sample_warning=True
-MAX_MISPRICING_SIGNALS = 20             # dashboard'da gosterilecek gunluk Top N
+# WHERE "FAIR PROBABILITY" COMES FROM: the repo currently has no independent
+# per-market probability model or forecasting source. So this scan uses the
+# same bucket data as CAL (docs/calibration.json -> bucket["resolved_yes_rate"],
+# i.e. how often markets in that price range have historically resolved YES) as
+# its "fair probability" too; only the threshold/filter/scoring logic differs.
+# Sample size can still be small for a given bucket (see the low_sample_warning
+# field); this isn't a significance test, just a "read carefully" flag.
+MISPRICING_MIN_EDGE_PTS = 15.0          # min point gap between implied and the bucket's historical rate
+MISPRICING_MIN_VOLUME_24H = 5000        # skip markets below this 24h volume (tradability)
+MISPRICING_HORIZON_DAYS = 30            # markets closing within this many days get the "priority" window
+MISPRICING_LONGTERM_MIN_EDGE_PTS = 25   # markets beyond HORIZON_DAYS only qualify above this edge
+MISPRICING_LOW_SAMPLE_WARNING_N = 30    # below this bucket sample size, set low_sample_warning=True
+MAX_MISPRICING_SIGNALS = 20             # daily Top N shown on the dashboard
 # ----------------------------------------------------------------------------
 
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "docs" / "results.json"
@@ -117,21 +120,20 @@ PRICE_LOG_PATH = Path(__file__).resolve().parent.parent / "docs" / "price_log.js
 
 
 def fetch_all_events() -> list:
-    """Gamma API /events endpoint'inden aktif ve kapanmamis tum event'leri sayfalayarak ceker.
+    """Pages through the Gamma API /events endpoint and pulls every active,
+    not-yet-closed event.
 
-    Not: API'nin sayfa basina dondurdugu gercek eleman sayisi, "limit" ile
-    istenenden daha az olabilir (sunucu kendi ust siniri uygulayabilir).
-    Bu yuzden "bos sayfa gelene kadar devam et, offset'i gercek alinan
-    miktar kadar ilerlet" mantigini kullaniyoruz; "alinan miktar < istenen
-    limit" durumunu "veri bitti" sanmiyoruz.
+    Note: the API can return fewer items per page than the requested "limit"
+    (the server may enforce its own cap). So we keep paging until an empty
+    page comes back, and advance the offset by the actual count received,
+    rather than treating "received < requested limit" as "no more data."
 
-    Ayrica: Gamma API /events endpoint'i belirli bir offset'in (canli
-    testte ~2100) USTUNDE 422 (Unprocessable Entity) ile reddediyor -
-    yani orgutu bir sayfalama tavani var. Bu hata ESKIDEN fonksiyonun
-    disina sizip o ana kadar BIRIKEN TUM event'leri kaybettiriyordu
-    (main() bos liste ile devam ediyordu). Simdi bu hata, sadece
-    sayfalamayi DURDURUYOR - o ana kadar basariyla toplanan event'ler
-    kaybedilmeden donuyor.
+    Also: the Gamma API /events endpoint rejects requests past a certain
+    offset (~2100 in a live test) with a 422 (Unprocessable Entity). There's
+    an undocumented pagination ceiling. This error USED TO leak out of the
+    function and lose every event collected up to that point (main() would
+    carry on with an empty list). Now this error only STOPS pagination;
+    events successfully collected up to that point are returned intact.
     """
     events = []
     offset = 0
@@ -147,14 +149,14 @@ def fetch_all_events() -> list:
             resp.raise_for_status()
             batch = resp.json()
         except requests.RequestException as exc:
-            print(f"Sayfalama offset={offset}'te durdu (API hatasi: {exc}). "
-                  f"O ana kadar toplanan {len(events)} event kullanilacak.", file=sys.stderr)
+            print(f"Pagination stopped at offset={offset} (API error: {exc}). "
+                  f"Using the {len(events)} events collected so far.", file=sys.stderr)
             break
         if not isinstance(batch, list) or not batch:
             break
         events.extend(batch)
         offset += len(batch)
-        time.sleep(0.2)  # API'ye nazik davran
+        time.sleep(0.2)  # be polite to the API
     return events
 
 
@@ -168,7 +170,7 @@ def parse_iso(date_str):
 
 
 def find_opportunity(event: dict, now: datetime.datetime):
-    """Bir event icin negRisk arbitraj firsati varsa dict, yoksa None doner."""
+    """Returns a dict if the event has a negRisk arbitrage opportunity, else None."""
     markets = event.get("markets") or []
     neg_risk_markets = [
         m for m in markets
@@ -211,7 +213,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
     days_left = (end_date - now).days if end_date else None
 
     return {
-        "event_title": event.get("title") or event.get("ticker") or "Bilinmeyen event",
+        "event_title": event.get("title") or event.get("ticker") or "Unknown event",
         "slug": event.get("slug"),
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
         "end_date": event.get("endDate"),
@@ -225,9 +227,9 @@ def find_opportunity(event: dict, now: datetime.datetime):
 
 
 def load_calibration():
-    """docs/calibration.json'i okur. Henuz hic kalibrasyon taramasi calismadiysa
-    (dosya yok) None doner - bu, gunluk script'in cokmesine sebep olmamali,
-    sadece kalibrasyon sinyallerini bos gecer."""
+    """Reads docs/calibration.json. Returns None if no calibration scan has run
+    yet (file doesn't exist); this should never crash the daily script, it just
+    leaves calibration signals empty."""
     if not CALIBRATION_PATH.exists():
         return None
     try:
@@ -237,7 +239,7 @@ def load_calibration():
 
 
 def find_bin(price: float, bins: list):
-    """Verilen fiyatin dustugu kalibrasyon kovasini bulur."""
+    """Finds the calibration bucket a given price falls into."""
     for b in bins:
         lo, hi = b["range"]
         if lo <= price < hi or (hi >= 1.0 and price == 1.0):
@@ -246,12 +248,12 @@ def find_bin(price: float, bins: list):
 
 
 def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime.datetime):
-    """Bir market'in fiyati, gecmiste istatistiksel olarak anlamli kalibrasyon
-    sapmasi gosterilmis bir kovaya denk geliyorsa sinyal dondurur, yoksa None.
+    """Returns a signal if a market's price falls into a bucket with a
+    historically statistically significant calibration gap, else None.
 
-    ONEMLI: Bu RISKSIZ DEGIL. Tek bir bahis icin kazanc garantisi vermiyor;
-    cok sayida tekrarlanan, BAGIMSIZ pozisyonda beklenen degeri (+EV) lehine
-    cektigi varsayilan istatistiksel bir egilim."""
+    IMPORTANT: this is NOT riskless. It doesn't guarantee a win on any single
+    bet; it's a statistical tendency assumed to pull expected value (+EV) in
+    your favor across many repeated, INDEPENDENT positions."""
     try:
         price = float(market.get("lastTradePrice") or market.get("bestAsk") or 0)
     except (TypeError, ValueError):
@@ -302,17 +304,20 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
 
 
 def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.datetime):
-    """implied probability (piyasanin su anki fiyati) ile o fiyat kovasinin
-    GECMISTE gerceklesen orani ('fair probability' proxy'si) arasindaki farka bakar.
+    """Looks at the gap between the implied probability (the market's current
+    price) and that price bucket's PAST resolution rate (a proxy for "fair
+    probability").
 
-    find_calibration_signal()'dan FARKLARI:
-      - istatistiksel anlamlilik (Wilson araligi) sarti YOK, dogrudan puan farkina bakar
-      - 24 saatlik hacim filtresi var (likidite degil - trade edilebilirlik icin)
-      - HORIZON_DAYS'i asan market'ler sadece buyuk edge'lerde (>LONGTERM_MIN_EDGE_PTS) dahil edilir
-      - tek bir sinyal degil, digerleriyle kiyaslanabilir bir 'score' uretir
+    HOW THIS DIFFERS FROM find_calibration_signal():
+      - no statistical-significance requirement (Wilson interval); looks
+        directly at the point gap
+      - has a 24-hour volume filter (tradability, not liquidity)
+      - markets beyond HORIZON_DAYS are only included at large edges
+        (>LONGTERM_MIN_EDGE_PTS)
+      - produces a comparable 'score' instead of a single signal
 
-    AYNI kova tablosunu (docs/calibration.json) okur ama find_calibration_signal'i
-    hic cagirmaz/degistirmez - tamamen bagimsiz bir fonksiyondur."""
+    Reads the SAME bucket table (docs/calibration.json) but never calls or
+    modifies find_calibration_signal; it's a fully independent function."""
     try:
         implied_prob = float(market.get("lastTradePrice") or market.get("bestAsk") or 0)
     except (TypeError, ValueError):
@@ -332,14 +337,14 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
 
     bucket = find_bin(implied_prob, bins)
     if not bucket or bucket.get("resolved_yes_rate") is None:
-        return None  # bu kovada henuz kullanilabilir tarihsel oran yok (n < MIN_SAMPLE_PER_BUCKET)
+        return None  # no usable historical rate for this bucket yet (n < MIN_SAMPLE_PER_BUCKET)
     fair_prob = bucket["resolved_yes_rate"]
 
     edge_pts = abs(fair_prob - implied_prob) * 100
     if edge_pts < MISPRICING_MIN_EDGE_PTS:
         return None
 
-    # 30 gunu asan market'leri komple elemiyoruz - sadece kucuk edge'li olanlari.
+    # Don't drop markets past 30 days entirely, just the small-edge ones.
     if days_left is not None and days_left > MISPRICING_HORIZON_DAYS \
             and edge_pts <= MISPRICING_LONGTERM_MIN_EDGE_PTS:
         return None
@@ -347,7 +352,7 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
     side = "YES" if fair_prob > implied_prob else "NO"
     liquidity = float(market.get("liquidityNum") or 0)
 
-    # gun sayisi 0'a cok yakinsa (ya da bilinmiyorsa) skor sonsuza kacmasin diye taban degeri.
+    # Floor so the score doesn't blow up when days left is near 0 (or unknown).
     score_days = max(days_left, 0.5) if days_left is not None else 0.5
     score = edge_pts * math.sqrt(volume_24h) / score_days
 
@@ -359,7 +364,7 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
         "recommended_side": side,
         "implied_probability": round(implied_prob, 4),
         "fair_probability": round(fair_prob, 4),
-        "edge_pct": round(edge_pts, 2),          # dashboard'daki diger tag'lerle ayni alan adi (sirala/goster icin)
+        "edge_pct": round(edge_pts, 2),          # same field name as the other tags (for sorting/display)
         "volume_24h": round(volume_24h, 2),
         "liquidity": round(liquidity, 2),
         "bucket_range": bucket["range"],
@@ -370,12 +375,13 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
 
 
 def log_price_snapshot(events: list, now: datetime.datetime) -> int:
-    """Kapanisina yaklasik CALIBRATION_LOG_LEAD_DAYS gun kalan her market'in
-    su anki fiyatini docs/price_log.jsonl'e ekler (append-only, asla mevcut
-    satirlari degistirmez/silmez). calibration_scan.py haftalar sonra bu
-    market'ler kapaninca, burada loglanan fiyati gercek sonucla eslestirip
-    kullanir. Ayni market'i iki kere loglamamak icin once dosyadaki mevcut
-    market_id'leri okur. Basariyla eklenen yeni satir sayisini doner."""
+    """Appends the current price of every market roughly
+    CALIBRATION_LOG_LEAD_DAYS days from closing to docs/price_log.jsonl
+    (append-only, never modifies or deletes existing rows). Weeks later, once
+    those markets close, calibration_scan.py matches the price logged here
+    against the real outcome. Reads existing market_ids from the file first so
+    the same market never gets logged twice. Returns the number of new rows
+    successfully appended."""
     existing_ids = set()
     if PRICE_LOG_PATH.exists():
         with PRICE_LOG_PATH.open("r", encoding="utf-8") as f:
@@ -439,7 +445,7 @@ def main():
     try:
         events = fetch_all_events()
     except requests.RequestException as exc:
-        print(f"Polymarket API hatasi: {exc}", file=sys.stderr)
+        print(f"Polymarket API error: {exc}", file=sys.stderr)
         events = []
 
     calibration = load_calibration()
@@ -467,16 +473,17 @@ def main():
     calibration_signals.sort(key=lambda s: s["edge_pct"], reverse=True)
     calibration_signals = calibration_signals[:MAX_CALIBRATION_SIGNALS]
 
-    # --- Mispricing taramasi: ayri, bagimsiz bir gecis (yukaridaki ARB/CAL dongusune
-    # dokunmuyor). Kendi tarih penceresi var: DAYS_AHEAD cutoff'unu miras almiyor,
-    # cunku >25 puanlik buyuk edge'lerde 30 gunun otesine de bakmasi gerekiyor -
-    # bu yuzden find_mispricing_signal() gun mantigini kendi icinde uyguluyor.
+    # --- Mispricing scan: a separate, independent pass (doesn't touch the
+    # ARB/CAL loop above). It has its own date window: it doesn't inherit the
+    # DAYS_AHEAD cutoff, because markets with a large edge (>25 points) need
+    # to be checked even past 30 days out, so find_mispricing_signal() applies
+    # its own day logic internally.
     mispricing_signals = []
     if calibration_bins:
         for event in events:
             end_date = parse_iso(event.get("endDate"))
             if not end_date or end_date < now:
-                continue  # kapanmis / tarihi belirsiz event
+                continue  # closed / date unknown event
             for market in (event.get("markets") or []):
                 sig = find_mispricing_signal(market, event, calibration_bins, now)
                 if sig:
@@ -506,14 +513,14 @@ def main():
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"{len(events)} event tarandi, {len(opportunities)} arbitraj firsati, "
-          f"{len(calibration_signals)} kalibrasyon sinyali bulundu -> {OUTPUT_PATH}")
-    print(f"{len(mispricing_signals)} mispricing sinyali bulundu (Top {MAX_MISPRICING_SIGNALS} icinde).")
-    print(f"{new_log_entries} yeni market price_log.jsonl'e eklendi "
-          f"(kalibrasyon arsivi icin ileriye-donuk loglama).")
+    print(f"Scanned {len(events)} events, found {len(opportunities)} arbitrage opportunities, "
+          f"{len(calibration_signals)} calibration signals -> {OUTPUT_PATH}")
+    print(f"Found {len(mispricing_signals)} mispricing signals (within the Top {MAX_MISPRICING_SIGNALS}).")
+    print(f"Appended {new_log_entries} new markets to price_log.jsonl "
+          f"(forward-looking log for the calibration archive).")
     if not calibration:
-        print("Not: docs/calibration.json henuz yok - 'Weekly Calibration Scan' workflow'u "
-              "en az bir kez calismadan kalibrasyon sinyalleri uretilemez.", file=sys.stderr)
+        print("Note: docs/calibration.json doesn't exist yet. The 'Weekly Calibration Scan' "
+              "workflow needs to run at least once before calibration signals can be produced.", file=sys.stderr)
 
 
 if __name__ == "__main__":

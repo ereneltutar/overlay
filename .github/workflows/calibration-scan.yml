@@ -2,8 +2,8 @@ name: Weekly Calibration Scan
 
 on:
   schedule:
-    # Her Pazartesi 04:00 UTC = 07:00 Turkiye saati. Bu, piyasanin yapisal
-    # bir ozelligini olcuyor - gunluk degismez, o yuzden haftalik yeterli.
+    # Every Monday 04:00 UTC = 07:00 Turkey time. This measures a structural
+    # property of the market, which doesn't change daily, so weekly is enough.
     - cron: "0 4 * * 1"
   workflow_dispatch: {}
 
@@ -13,29 +13,29 @@ permissions:
 jobs:
   calibrate:
     runs-on: ubuntu-latest
-    timeout-minutes: 60   # CLOB price-history cagrilari market basina yapildigi icin uzun surebilir
+    timeout-minutes: 60   # can run long since it makes one CLOB price-history call per market
     steps:
-      - name: Repo'yu checkout et
+      - name: Check out repo
         uses: actions/checkout@v4
 
-      - name: Python kur
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Bagimliliklari yukle
+      - name: Install dependencies
         run: pip install requests
 
-      - name: Kalibrasyon taramasini calistir
+      - name: Run calibration scan
         run: python scripts/calibration_scan.py
 
-      - name: Sonuclari commit'le
+      - name: Commit results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/calibration.json
           if git diff --staged --quiet; then
-            echo "Degisiklik yok, commit atlanıyor."
+            echo "No changes, skipping commit."
           else
             git commit -m "Weekly calibration: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push

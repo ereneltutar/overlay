@@ -1,38 +1,37 @@
 #!/usr/bin/env python3
 """
-Calibration Drift Scanner — Favorite-Longshot Bias Detector (v2: ileriye-donuk)
+Calibration Drift Scanner — Favorite-Longshot Bias Detector (v2: forward-looking)
 --------------------------------------------------------------------------------
-Bu script, "piyasanin fiyatladigi olasilik" ile "gercekte gerceklesen oran"
-arasinda sistematik bir sapma (favorite-longshot bias) olup olmadigini olcer.
+Measures whether there's a systematic gap (favorite-longshot bias) between
+"the probability the market prices" and "the rate that actually resolved."
 
-NEDEN GECMISE BAKMIYORUZ (v1'den v2'ye gecis nedeni):
-  v1, Polymarket'in CLOB /prices-history endpoint'inden GECMISE donup
-  "kapanistan N gun onceki fiyat ne idi" diye soruyordu. Canli testte
-  (379 nitelikli market, 372 basarisiz) bu endpoint market'lerin %98'i
-  icin BOS veri dondu. Bu rastlantisal bir hata degil - Polymarket'in
-  kendi genel API'si sadece CANLI durumu guvenilir sekilde sunuyor;
-  bagimsiz bir ucuncu taraf sirketin ("PolymarketData.co") sirf bu
-  yuzden ayrica ucretli bir gecmis-veri arsivi satmasi da bunu
-  dogruluyor.
+WHY WE DON'T LOOK BACKWARD (why v1 became v2):
+  v1 queried Polymarket's CLOB /prices-history endpoint for the past, asking
+  "what was the price N days before closing?" In a live test (379 qualifying
+  markets, 372 failures) that endpoint returned EMPTY data for 98% of
+  markets. That's not a random glitch: Polymarket's own general API only
+  reliably serves live state, which is also why an independent third-party
+  company ("PolymarketData.co") sells a paid historical-data archive
+  specifically to fill that gap.
 
-  Bu yuzden v2 GECMISE bakmiyor, ILERIYE bakiyor: scripts/fetch_arbitrage.py
-  (her sabah calisan ana script), kapanisina yaklasik 7 gun kalan her
-  market'in su anki fiyatini docs/price_log.jsonl'e ekliyor (append-only).
-  Bu script o log'u okuyor, Gamma API'den (guvenilir, sorunsuz) o
-  market'lerin ARTIK kapanip kapanmadigini kontrol ediyor, kapananlari
-  gercek sonucla eslestirip ayni kovalama/Wilson-araligi istatistigini
-  uyguluyor.
+  So v2 doesn't look BACKWARD, it looks FORWARD: scripts/fetch_arbitrage.py
+  (the main script that runs every morning) appends the current price of
+  every market roughly 7 days from closing to docs/price_log.jsonl
+  (append-only). This script reads that log, checks the Gamma API (reliable,
+  no known issues) for whether those markets have NOW closed, matches the
+  closed ones against their real outcome, and applies the same
+  bucketing/Wilson-interval statistics.
 
-  BEDELI: Bu yontem aninda sonuc vermez. Ilk anlamli sinyaller icin
-  (kova basina 30+ ornek) gercekci olarak haftalar/aylar gerekir - cunku
-  hem dogru zamanda loglanmis hem de sonradan kapanmis market birikmesi
-  gerekiyor. Ama bu, Polymarket'in guvenilmez gecmis-veri altyapisina
-  hic bagimli olmayan TEK saglam yontem.
+  THE COST: this method doesn't give instant results. Realistically it takes
+  weeks or months to get the first meaningful signals (30+ samples per
+  bucket), since it needs markets logged at the right time to accumulate and
+  then actually close. But it's the ONE solid method that doesn't depend at
+  all on Polymarket's unreliable historical-data infrastructure.
 
-Girdi: docs/price_log.jsonl (fetch_arbitrage.py tarafindan yaziliyor)
-Cikti: docs/calibration.json (sekli v1 ile AYNI - fetch_arbitrage.py'nin
-       find_calibration_signal() fonksiyonu bu degisiklikten habersiz,
-       hicbir kod degisikligi gerekmedi)
+Input: docs/price_log.jsonl (written by fetch_arbitrage.py)
+Output: docs/calibration.json (SAME shape as v1; fetch_arbitrage.py's
+        find_calibration_signal() function has no idea this changed, no
+        code changes were needed on that side)
 """
 
 import datetime
@@ -46,13 +45,13 @@ import requests
 
 GAMMA_BASE = "https://gamma-api.polymarket.com"
 
-# --- Ayarlanabilir parametreler -------------------------------------------
-BIN_WIDTH = 0.05              # kova genisligi (0.05 = 20 kova)
-MIN_SAMPLE_PER_BUCKET = 30    # bu sayidan az ornegi olan kovaya istatistiksel guven yok
-RESOLUTION_THRESHOLD = 0.98   # outcomePrices bunun ustunde/altinda degilse "net sonuclanmamis" sayip ele
-MAX_LOG_ENTRIES_TO_CHECK = 2500  # runtime/rate-limit guvenligi (Gamma API ~60 istek/dk)
+# --- Tunable parameters -----------------------------------------------
+BIN_WIDTH = 0.05              # bucket width (0.05 = 20 buckets)
+MIN_SAMPLE_PER_BUCKET = 30    # buckets with fewer samples than this have no statistical confidence
+RESOLUTION_THRESHOLD = 0.98   # if outcomePrices isn't above/below this, treat it as "not cleanly resolved" and drop it
+MAX_LOG_ENTRIES_TO_CHECK = 2500  # runtime / rate-limit safety cap (Gamma API ~60 requests/min)
 REQUEST_TIMEOUT = 20
-SLEEP_BETWEEN_CALLS = 1.15    # ~52 istek/dk - Gamma API'nin ~60/dk siniri altinda guvenli pay
+SLEEP_BETWEEN_CALLS = 1.15    # ~52 requests/min, a safe margin under the Gamma API's ~60/min limit
 MAX_RETRIES_ON_429 = 2
 BACKOFF_SECONDS_ON_429 = 8
 # ----------------------------------------------------------------------------
@@ -62,7 +61,8 @@ OUTPUT_PATH = Path(__file__).resolve().parent.parent / "docs" / "calibration.jso
 
 
 def load_price_log() -> list:
-    """docs/price_log.jsonl'i okur. Dosya yoksa (henuz hic loglanmamissa) bos liste doner."""
+    """Reads docs/price_log.jsonl. Returns an empty list if the file doesn't
+    exist yet (nothing has been logged)."""
     entries = []
     if not PRICE_LOG_PATH.exists():
         return entries
@@ -79,11 +79,11 @@ def load_price_log() -> list:
 
 
 def fetch_market_resolution(market_id: str):
-    """Gamma API'den tek bir market'in SU ANKI durumunu ceker (guvenilir,
-    /prices-history gibi bir sorun bilinmiyor). Kapanip net sonuclanmissa
-    (True=Yes, False=No) doner; hala aciksa, henuz kapanmamissa, ya da
-    belirsiz sonuclanmissa (orn. 50-50/iptal) None doner - "henuz bilinmiyor"
-    anlaminda, hata degil."""
+    """Fetches a single market's CURRENT state from the Gamma API (reliable,
+    no known issue like /prices-history has). Returns True/False if it has
+    closed with a clean resolution (True=Yes, False=No); returns None if
+    it's still open, hasn't closed yet, or resolved ambiguously (e.g.
+    50-50/cancelled), meaning "not known yet," not an error."""
     attempt = 0
     while True:
         try:
@@ -119,11 +119,12 @@ def fetch_market_resolution(market_id: str):
         return True
     if yes_price <= (1 - RESOLUTION_THRESHOLD):
         return False
-    return None  # belirsiz / 50-50 / iptal - kullanma
+    return None  # ambiguous / 50-50 / cancelled, don't use
 
 
 def wilson_interval(k: int, n: int, z: float = 1.96):
-    """95% Wilson skor guven araligi (kucuk orneklemde normal yaklasimdan daha guvenilir)."""
+    """95% Wilson score confidence interval (more reliable than a normal
+    approximation for small samples)."""
     if n == 0:
         return (0.0, 0.0)
     p_hat = k / n
@@ -137,14 +138,14 @@ def main():
     now = datetime.datetime.now(datetime.timezone.utc)
 
     log_entries = load_price_log()
-    print(f"{len(log_entries)} loglanmis market bulundu (docs/price_log.jsonl).")
+    print(f"Found {len(log_entries)} logged markets (docs/price_log.jsonl).")
 
-    # En eski loglanan market'ler kapanmaya en yakin olduklari icin once onlara bakmak,
-    # her calistirmada en yuksek "sonuclanmis market" verimini almamizi saglar.
+    # The oldest logged markets are closest to closing, so checking them first
+    # gets the highest yield of "resolved market" per run.
     log_entries.sort(key=lambda e: e.get("logged_at", ""))
     if len(log_entries) > MAX_LOG_ENTRIES_TO_CHECK:
         log_entries = log_entries[:MAX_LOG_ENTRIES_TO_CHECK]
-        print(f"Runtime guvenligi icin {MAX_LOG_ENTRIES_TO_CHECK} kayit ile sinirlandi.")
+        print(f"Capped at {MAX_LOG_ENTRIES_TO_CHECK} entries for runtime safety.")
 
     samples = []
     still_open_or_unclear = 0
@@ -160,13 +161,13 @@ def main():
         samples.append({"reference_price": entry["price"], "resolved_yes": resolved_yes})
 
         if (i + 1) % 200 == 0:
-            print(f"  ... {i + 1}/{len(log_entries)} kontrol edildi "
-                  f"({len(samples)} sonuclanmis, {still_open_or_unclear} hala acik/belirsiz)")
+            print(f"  ... checked {i + 1}/{len(log_entries)} "
+                  f"({len(samples)} resolved, {still_open_or_unclear} still open/unclear)")
 
-    print(f"Toplam {len(samples)} market sonuclanmis ve kullanilabilir.")
-    print(f"{still_open_or_unclear} market hala acik, henuz kapanmamis, ya da belirsiz sonuclanmis.")
+    print(f"{len(samples)} markets resolved and usable in total.")
+    print(f"{still_open_or_unclear} markets are still open, not yet closed, or resolved ambiguously.")
 
-    # --- Kovalama ve istatistik (v1 ile birebir ayni mantik) ---
+    # --- Bucketing and statistics (identical logic to v1) ---
     num_bins = int(round(1 / BIN_WIDTH))
     bins = []
     for b in range(num_bins):
@@ -210,7 +211,7 @@ def main():
         "generated_at": now.isoformat(),
         "bin_width": BIN_WIDTH,
         "min_sample_per_bucket": MIN_SAMPLE_PER_BUCKET,
-        "logged_markets_total": len(load_price_log()),  # checked sayisindan once, sinirlamadan once
+        "logged_markets_total": len(load_price_log()),  # before the checked count, before the cap
         "logged_markets_checked": len(log_entries),
         "markets_resolved": len(samples),
         "markets_still_open_or_unclear": still_open_or_unclear,
@@ -219,13 +220,12 @@ def main():
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Yazildi -> {OUTPUT_PATH}")
+    print(f"Wrote -> {OUTPUT_PATH}")
     sig_count = sum(1 for b in bins if b["significant"])
-    print(f"{sig_count} kovada istatistiksel olarak anlamli sapma bulundu.")
+    print(f"Found a statistically significant gap in {sig_count} buckets.")
     if len(samples) < MIN_SAMPLE_PER_BUCKET:
-        print(f"Not: toplam {len(samples)} sonuclanmis market var, en az bir kovanin "
-              f"anlamli olabilmesi icin bile {MIN_SAMPLE_PER_BUCKET} gerekiyor - "
-              f"daha fazla market kapanana kadar bekleniyor.", file=sys.stderr)
+        print(f"Note: {len(samples)} markets have resolved so far; even one significant "
+              f"bucket needs {MIN_SAMPLE_PER_BUCKET}. Waiting for more markets to close.", file=sys.stderr)
 
 
 if __name__ == "__main__":

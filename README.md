@@ -1,83 +1,123 @@
-# Overlay — Polymarket Günlük Arbitraj Taraması
+# Overlay — Polymarket Signal Scanner
 
-Her sabah otomatik çalışır: Polymarket'taki **açık, deadline'ı 14 gün içinde olan**
-"çok seçenekli" (negRisk) event'leri tarar, seçeneklerin toplam satış fiyatı
-$1.00'ın altına düştüğü — yani teorik olarak risksiz bir kâr payı bırakan —
-durumları bulur ve bunları bilet kartları halinde bir dashboard'da listeler.
+Runs automatically every morning. Scans open Polymarket events with a
+deadline inside a set window and looks for three separate kinds of
+mispriced positions, then lists them as ticket cards on a static dashboard.
 
-**Maliyet: $0. Sonsuza kadar.** GitHub Actions (cron) + GitHub Pages (statik
-barındırma) kullanıyor — ne sunucu var, ne de uyanık tutman gereken bir şey.
+**Cost: $0, indefinitely.** It runs on GitHub Actions (cron) and GitHub
+Pages (static hosting). No server to run, nothing to keep awake.
 
-## Nasıl çalışıyor
+## The three signals
+
+| Tag | What it finds | Riskless? |
+|---|---|---|
+| **ARB** | negRisk event groups where buying every mutually exclusive outcome at the current best ask costs less than $1.00 total | Mathematically yes, in practice no (fees, slippage, thin liquidity) |
+| **CAL** | Price buckets where a statistically significant gap exists between price and outcome, measured across resolved markets (Wilson 95% CI, n≥30) | No — a tendency across many repeated positions, not a single-bet guarantee |
+| **MIS** | Markets with ≥$5,000 in 24h volume where price differs from that bucket's historical resolution rate by 15+ points, no significance test required | No |
+
+None of this is investment advice.
+
+## How it works
 
 ```
-GitHub Actions (her sabah 06:00 TR saati)
-   └─ scripts/fetch_arbitrage.py  → Polymarket Gamma API'sini tarar
-        └─ docs/results.json'ı yazar ve repo'ya commit'ler
-              └─ GitHub Pages docs/index.html bu json'ı okuyup bilet kartlarını çizer
+GitHub Actions, every morning at 06:00 TR time
+   └─ scripts/fetch_arbitrage.py  → scans the Polymarket Gamma API
+        ├─ writes docs/results.json and commits it to the repo
+        └─ appends price snapshots to docs/price_log.jsonl (for calibration)
+
+GitHub Actions, every Monday
+   └─ scripts/calibration_scan.py → checks which logged markets have
+        since closed, matches them against their real outcome, and
+        writes docs/calibration.json
+
+GitHub Pages (Actions-based deploy)
+   └─ docs/index.html reads all three JSON/JSONL files client-side
+        and renders the ledger, filters, and calibration curve
 ```
 
-Hesaplama mantığı `scripts/fetch_arbitrage.py` dosyasının başında Türkçe
-yorumlarla anlatılıyor. Kısacası: bir event'te birbirini dışlayan N seçenek
-varsa (örn. "Bu yarışı kim kazanır?") ve hepsinin "Yes" tarafını şu anki en
-iyi satış fiyatından alıp toplarsan toplam $1.00'ın altında kalıyorsa, bu
-bilet olarak listelenir.
+The calculation logic is documented at the top of each script. In short,
+for ARB: if an event has N mutually exclusive options and buying all of
+their "Yes" sides at the current best ask sums to under $1.00, it gets
+listed as a ticket.
 
-## Kurulum (5 dakika)
+CAL and MIS both need `docs/calibration.json` to exist before they
+produce anything, which means the calibration scan has to complete at
+least once. Since that scan is forward-looking (it waits for markets
+logged today to close weeks later), expect the calibration curve to
+stay empty for a while after first setup.
 
-1. **Yeni bir GitHub reposu oluştur** (public — Actions dakikaları public
-   repolarda ücretsiz ve sınırsız; private de istersen çalışır ama aylık
-   dakika kotası var).
-2. Bu klasördeki her şeyi o reponun köküne kopyala ve push'la:
+## Setup (10 minutes)
+
+1. **Create a new GitHub repo.** Public is easiest — Actions minutes are
+   free and unlimited on public repos. Private works too but draws from
+   a monthly minutes quota.
+2. Copy everything in this folder to the repo root and push:
    ```
    git add .
-   git commit -m "ilk kurulum"
+   git commit -m "initial setup"
    git push
    ```
-3. **GitHub Pages'i aç:** Repo → Settings → Pages → "Build and deployment"
-   altında Source: *Deploy from a branch*, Branch: `main`, klasör: `/docs`.
-   Kaydet. Birkaç dakika içinde `https://kullanici-adin.github.io/repo-adi/`
-   adresinde yayında olacak.
-4. **İlk taramayı manuel tetikle:** Repo → Actions → "Daily Polymarket Scan" →
-   "Run workflow". Bu, ilk `results.json`'ı üretip commit'leyecek. Bundan
-   sonra her sabah otomatik çalışacak.
+3. **Turn on GitHub Pages with the Actions build:** Repo → Settings →
+   Pages → under "Build and deployment," set Source to *GitHub Actions*.
+   The `.github/workflows/pages.yml` workflow in this repo handles the
+   rest — it deploys `docs/` on every push that touches it. The site
+   goes live at `https://your-username.github.io/repo-name/` within
+   about a minute of the first push.
+4. **Trigger the first scan manually:** Repo → Actions → "Daily
+   Polymarket Scan" → "Run workflow." This produces the first
+   `results.json` and commits it. After that it runs automatically
+   every morning.
+5. **Trigger the first calibration scan too** (optional but recommended):
+   Repo → Actions → "Weekly Calibration Scan" → "Run workflow." CAL and
+   MIS signals stay empty until this has run at least once.
 
-## Ayarlanabilir parametreler
+## Tunable parameters
 
-`scripts/fetch_arbitrage.py` dosyasının üstünde:
+Near the top of `scripts/fetch_arbitrage.py`:
 
-| Parametre | Ne işe yarar | Varsayılan |
+| Parameter | What it does | Default |
 |---|---|---|
-| `DAYS_AHEAD` | Deadline'ı en fazla kaç gün sonra olan event'ler taransın | 14 |
-| `MIN_EDGE_PCT` | Bu yüzdenin altındaki "gürültü" seviyesindeki farklar gösterilmesin | 0.5 |
-| `MIN_LIQUIDITY_USD` | Her bacakta en az bu kadar likidite olsun (ince kitapları ele) | 50 |
+| `DAYS_AHEAD` | Scan events with a deadline at most this many days out | 30 |
+| `MIN_EDGE_PCT` | Hide ARB edges below this percent (noise filter) | 0.5 |
+| `MIN_LIQUIDITY_USD` | Minimum liquidity required per leg | 50 |
+| `MIN_CALIBRATION_EDGE_PCT` | Hide CAL edges below this percent | 2.0 |
+| `MISPRICING_MIN_EDGE_PTS` | Minimum point gap for a MIS signal | 15.0 |
+| `MISPRICING_MIN_VOLUME_24H` | Minimum 24h volume for a MIS signal | 5000 |
 
-Çalışma saatini değiştirmek için `.github/workflows/daily-scan.yml` içindeki
-`cron: "0 3 * * *"` satırını düzenle (UTC saat kullanır; 3 = 06:00 TR saati).
+In `scripts/calibration_scan.py`:
 
-## Önemli sınırlamalar — lütfen oku
+| Parameter | What it does | Default |
+|---|---|---|
+| `BIN_WIDTH` | Bucket width for the calibration curve | 0.05 (20 buckets) |
+| `MIN_SAMPLE_PER_BUCKET` | Samples needed before a bucket counts as significant | 30 |
 
-- **Bu bir tarama/izleme aracı, para basma makinesi değil.** Gösterilen fark
-  o anki order book "ask" fiyatlarından hesaplanan teorik bir farktır.
-  Gerçekten işlem yapmaya kalktığında: likidite o tutarı karşılamayabilir,
-  fiyat sen emri girene kadar değişmiş olabilir (slippage), ve/veya
-  Polymarket ileride işlem ücreti uygulayabilir.
-  Likit ve popüler event'lerde bu tür farklar genelde bot'lar tarafından
-  saniyeler/dakikalar içinde kapatılır; bu aracın gerçekçi kullanım alanı
-  daha az likit/uzun kuyruktaki event'lerde oluşan kısa ömürlü fırsatları
-  yakalamak ya da genel piyasa takibi.
-- Şu an sadece **çok seçenekli (negRisk) event grupları** taranıyor. Klasik
-  tek soru-cevap (Yes/No) marketlerde NO tarafının gerçek satış fiyatı
-  Gamma API'de ayrı bir alan olarak gelmiyor; CLOB order book endpoint'i de
-  bilinen bir "durağan/yanlış veri" sorunu taşıdığı için bilerek dışarıda
-  tutuldu. İstersen ileride bunu da ekleyebiliriz.
-- Bu araç **yatırım tavsiyesi vermez**, sadece halka açık piyasa verisini
-  işler. Ben (Claude) finansal danışman değilim.
-- Script, ağ erişimi kısıtlı bir ortamda yazıldığı için canlı API'ye karşı
-  uçtan uca test edilmedi — gerçek API yanıt şekli web üzerinden doğrulandı
-  ama ilk çalıştırmayı (adım 4) takip etmen iyi olur.
+To change the schedule, edit the `cron:` line in
+`.github/workflows/daily-scan.yml` or `calibration-scan.yml` (both use
+UTC; `0 3 * * *` = 06:00 Turkey time).
 
-## Lisans / sorumluluk
+## Important limitations, please read
 
-Kişisel kullanım için. Gerçek parayla işlem yapmadan önce kendi araştırmanı
-yap.
+- **This is a scanning/monitoring tool, not a money printer.** The ARB
+  edge shown is a theoretical gap computed from order-book "ask" prices
+  at scan time. Once you actually try to trade it: liquidity may not
+  cover the full size, the price may move before your order fills
+  (slippage), and Polymarket could introduce fees later. On liquid,
+  popular events, gaps like this usually get closed by bots within
+  seconds to minutes. This tool is realistically more useful for
+  catching short-lived opportunities in thinner, longer-tail events, or
+  for general market monitoring.
+- Only **negRisk (multi-outcome) event groups** are scanned for ARB.
+  For plain binary Yes/No markets, the Gamma API doesn't return a real
+  ask price for the NO side as a separate field, and the CLOB order
+  book endpoint has a known stale-data problem, so binary markets were
+  deliberately left out. This could be added later.
+- CAL and MIS use the same historical bucket table as their "fair
+  probability" proxy. They don't run an independent forecasting model.
+  Small sample sizes are flagged (`low_sample_warning`) but MIS doesn't
+  require statistical significance the way CAL does.
+- This tool gives **no investment advice**. It only processes public
+  market data.
+
+## License / liability
+
+For personal use. Do your own research before trading real money.
