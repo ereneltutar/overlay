@@ -3,39 +3,52 @@ import requests
 
 BASE = "https://gamma-api.polymarket.com"
 
-d = requests.get(f"{BASE}/events/keyset", params={"active": "true", "closed": "false", "limit": 50}, timeout=20).json()
-binary_market = None
-for ev in d["events"]:
-    for m in (ev.get("markets") or []):
-        if not m.get("negRisk"):
-            binary_market = m
-            binary_event = ev
-            break
-    if binary_market:
+found = []
+cursor = None
+for _ in range(20):
+    params = {"active": "true", "closed": "false", "limit": 100}
+    if cursor:
+        params["after_cursor"] = cursor
+    page = requests.get(f"{BASE}/events/keyset", params=params, timeout=20).json()
+    for ev in page.get("events", []):
+        for m in (ev.get("markets") or []):
+            if not m.get("negRisk") and m.get("acceptingOrders") and m.get("bestAsk") is not None:
+                found.append((ev, m))
+    cursor = page.get("next_cursor")
+    if len(found) >= 5 or not cursor:
         break
 
-if not binary_market:
-    print("No binary market found in first 50 events")
-else:
-    print("event:", binary_event.get("title"))
-    print("market keys:", sorted(binary_market.keys()))
-    for k in ["outcomes", "outcomePrices", "bestBid", "bestAsk", "clobTokenIds",
-              "lastTradePrice", "spread", "acceptingOrders", "negRisk"]:
-        print(f"  {k}: {binary_market.get(k)!r}")
+print(f"Found {len(found)} active, accepting-orders binary markets to test.\n")
 
-    token_ids_raw = binary_market.get("clobTokenIds")
-    print()
-    print("--- trying CLOB order book endpoint for both tokens ---")
+for ev, m in found[:5]:
+    print("=" * 60)
+    print("event:", ev.get("title"))
+    print("outcomes:", m.get("outcomes"))
+    print("outcomePrices:", m.get("outcomePrices"))
+    print("bestBid:", m.get("bestBid"), "bestAsk:", m.get("bestAsk"), "spread:", m.get("spread"))
+    print("volume24hr:", m.get("volume24hr"), "liquidityNum:", m.get("liquidityNum"))
+
+    raw_ids = m.get("clobTokenIds")
     try:
-        token_ids = json.loads(token_ids_raw) if isinstance(token_ids_raw, str) else token_ids_raw
+        token_ids = json.loads(raw_ids) if isinstance(raw_ids, str) else raw_ids
     except Exception as e:
         token_ids = None
         print("could not parse clobTokenIds:", e)
+
     if token_ids:
         for i, tid in enumerate(token_ids):
+            label = m.get("outcomes")
             try:
                 r = requests.get("https://clob.polymarket.com/book", params={"token_id": tid}, timeout=15)
-                print(f"token[{i}]={tid} -> HTTP {r.status_code}")
-                print("  body:", r.text[:400])
+                print(f"  CLOB book token[{i}] -> HTTP {r.status_code}")
+                if r.status_code == 200:
+                    data = r.json()
+                    bids = data.get("bids", [])
+                    asks = data.get("asks", [])
+                    print(f"    bids: {len(bids)} levels, top={bids[-1] if bids else None}")
+                    print(f"    asks: {len(asks)} levels, top={asks[0] if asks else None}")
+                else:
+                    print("    body:", r.text[:200])
             except Exception as e:
-                print(f"token[{i}]={tid} -> error: {e}")
+                print(f"  CLOB book token[{i}] -> error: {e}")
+    print()
