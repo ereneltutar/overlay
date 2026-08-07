@@ -28,7 +28,9 @@ GitHub Actions, every morning at 06:00 TR time
 GitHub Actions, every Monday
    └─ scripts/calibration_scan.py → checks which logged markets have
         since closed, matches them against their real outcome, and
-        writes docs/calibration.json
+        writes docs/calibration.json. Already-resolved markets are cached
+        in docs/resolution_cache.json so they're never re-checked via the
+        API again once known
 
 GitHub Actions, every morning, right after fetch_arbitrage.py
    └─ scripts/track_bets.py → paper-trades the signals from today's

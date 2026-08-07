@@ -32,6 +32,12 @@ Input: docs/price_log.jsonl (written by fetch_arbitrage.py)
 Output: docs/calibration.json (SAME shape as v1; fetch_arbitrage.py's
         find_calibration_signal() function has no idea this changed, no
         code changes were needed on that side)
+        docs/resolution_cache.json: every market_id already confirmed
+        CLOSED, so it's never re-checked via the API again. Without this,
+        a fixed "check the oldest N" cap re-verifies already-resolved
+        markets forever, and once the log passes N entries, anything
+        past that point never gets checked at all since the oldest N
+        never change.
 """
 
 import datetime
@@ -52,6 +58,7 @@ SLEEP_BETWEEN_CALLS = 1.15    # ~52 requests/min, a safe margin under the Gamma 
 
 PRICE_LOG_PATH = Path(__file__).resolve().parent.parent / "docs" / "price_log.jsonl"
 OUTPUT_PATH = Path(__file__).resolve().parent.parent / "docs" / "calibration.json"
+CACHE_PATH = Path(__file__).resolve().parent.parent / "docs" / "resolution_cache.json"
 
 
 def load_price_log() -> list:
@@ -72,15 +79,50 @@ def load_price_log() -> list:
     return entries
 
 
-def fetch_market_resolution(market_id: str):
-    """True/False if the market has closed with a clean resolution; None if
-    it's still open, hasn't closed yet, or resolved ambiguously (e.g.
-    50-50/cancelled), meaning "not known yet," not an error. Thin wrapper
-    around the shared gamma_client.fetch_market_state (closed, outcome_yes)
-    pair, kept as its own function since callers here only care about the
-    resolution, not whether the market has closed."""
-    closed, outcome_yes = gamma_client.fetch_market_state(market_id)
-    return outcome_yes if closed else None
+def load_resolution_cache() -> dict:
+    """Reads docs/resolution_cache.json: {market_id: {outcome_yes, checked_at}}
+    for every market already confirmed CLOSED in a previous run (outcome_yes
+    is True/False for a clean resolution, or None for closed-but-ambiguous;
+    either way it's a final state that never needs re-checking). Markets
+    still open are deliberately never cached, since their state can change."""
+    if CACHE_PATH.exists():
+        try:
+            return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    return {}
+
+
+def save_resolution_cache(cache: dict):
+    CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    CACHE_PATH.write_text(json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def partition_log_entries(log_entries: list, cache: dict, max_to_check: int):
+    """Splits log entries (assumed oldest-first) into three groups so the
+    per-run API budget is spent only on markets whose resolution isn't
+    already known:
+      - cached: market_id has a final resolution already, no API call needed
+      - to_check: not cached, the oldest max_to_check of them, hit the API
+        this run
+      - deferred: not cached, beyond this run's budget, picked up by a
+        future run once older entries resolve and free up room
+
+    Without this split, a fixed "check the oldest N" cap re-verifies markets
+    that already resolved weeks ago forever, and once the log has more than
+    N entries, anything past position N never gets checked at all since the
+    oldest N never change. Pure function so the allocation logic is testable
+    without a network call."""
+    cached, to_check, deferred = [], [], []
+    for entry in log_entries:
+        market_id = entry.get("market_id")
+        if market_id in cache:
+            cached.append(entry)
+        elif len(to_check) < max_to_check:
+            to_check.append(entry)
+        else:
+            deferred.append(entry)
+    return cached, to_check, deferred
 
 
 def wilson_interval(k: int, n: int, z: float = 1.96):
@@ -145,34 +187,53 @@ def main():
     now = datetime.datetime.now(datetime.timezone.utc)
 
     log_entries = load_price_log()
+    # The oldest logged markets are closest to closing, so checking them
+    # first gets the highest yield of "resolved market" per run.
+    log_entries.sort(key=lambda e: e.get("logged_at", ""))
     print(f"Found {len(log_entries)} logged markets (docs/price_log.jsonl).")
 
-    # The oldest logged markets are closest to closing, so checking them first
-    # gets the highest yield of "resolved market" per run.
-    log_entries.sort(key=lambda e: e.get("logged_at", ""))
-    if len(log_entries) > MAX_LOG_ENTRIES_TO_CHECK:
-        log_entries = log_entries[:MAX_LOG_ENTRIES_TO_CHECK]
-        print(f"Capped at {MAX_LOG_ENTRIES_TO_CHECK} entries for runtime safety.")
+    cache = load_resolution_cache()
+    cached, to_check, deferred = partition_log_entries(log_entries, cache, MAX_LOG_ENTRIES_TO_CHECK)
+    print(f"{len(cached)} already resolved in a previous run (skipped, no API call), "
+          f"{len(to_check)} to check this run, {len(deferred)} deferred to a future run.")
 
     samples = []
     still_open_or_unclear = 0
 
-    for i, entry in enumerate(log_entries):
-        resolved_yes = fetch_market_resolution(entry["market_id"])
+    for entry in cached:
+        outcome_yes = cache[entry["market_id"]]["outcome_yes"]
+        if outcome_yes is None:
+            still_open_or_unclear += 1
+        else:
+            samples.append({"reference_price": entry["price"], "resolved_yes": outcome_yes})
+
+    newly_resolved = 0
+    for i, entry in enumerate(to_check):
+        market_id = entry["market_id"]
+        closed, outcome_yes = gamma_client.fetch_market_state(market_id)
         time.sleep(SLEEP_BETWEEN_CALLS)
 
-        if resolved_yes is None:
+        if not closed:
             still_open_or_unclear += 1
-            continue
-
-        samples.append({"reference_price": entry["price"], "resolved_yes": resolved_yes})
+        else:
+            cache[market_id] = {"outcome_yes": outcome_yes, "checked_at": now.isoformat()}
+            newly_resolved += 1
+            if outcome_yes is None:
+                still_open_or_unclear += 1
+            else:
+                samples.append({"reference_price": entry["price"], "resolved_yes": outcome_yes})
 
         if (i + 1) % 200 == 0:
-            print(f"  ... checked {i + 1}/{len(log_entries)} "
-                  f"({len(samples)} resolved, {still_open_or_unclear} still open/unclear)")
+            print(f"  ... checked {i + 1}/{len(to_check)} this run ({newly_resolved} newly resolved)")
 
-    print(f"{len(samples)} markets resolved and usable in total.")
+    save_resolution_cache(cache)
+
+    print(f"{len(samples)} markets resolved and usable in total "
+          f"({len(cached)} from cache, {newly_resolved} newly confirmed this run).")
     print(f"{still_open_or_unclear} markets are still open, not yet closed, or resolved ambiguously.")
+    if deferred:
+        print(f"{len(deferred)} not-yet-resolved markets deferred to a future run "
+              f"({MAX_LOG_ENTRIES_TO_CHECK}-per-run budget).")
 
     # --- Bucketing and statistics (identical logic to v1) ---
     bins = compute_bins(samples)
@@ -181,8 +242,10 @@ def main():
         "generated_at": now.isoformat(),
         "bin_width": BIN_WIDTH,
         "min_sample_per_bucket": MIN_SAMPLE_PER_BUCKET,
-        "logged_markets_total": len(load_price_log()),  # before the checked count, before the cap
-        "logged_markets_checked": len(log_entries),
+        "logged_markets_total": len(log_entries),
+        "logged_markets_cached": len(cached),
+        "logged_markets_checked_this_run": len(to_check),
+        "logged_markets_deferred": len(deferred),
         "markets_resolved": len(samples),
         "markets_still_open_or_unclear": still_open_or_unclear,
         "bins": bins,

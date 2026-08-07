@@ -1,5 +1,3 @@
-from unittest.mock import patch
-
 import calibration_scan as cs
 
 
@@ -84,23 +82,52 @@ def test_compute_bins_not_significant_near_midpoint():
     assert bucket["significant"] is False
 
 
-# --- fetch_market_resolution -----------------------------------------------
-# The actual HTTP/retry/ambiguous-outcome behavior lives in gamma_client now
-# and is covered by tests/test_gamma_client.py; these just confirm the thin
-# wrapper here delegates and translates (closed, outcome_yes) correctly.
+# --- partition_log_entries --------------------------------------------------
+# The core fix for a real bug: a fixed "check the oldest N" cap re-verifies
+# already-resolved markets forever and, once the log exceeds N entries,
+# never reaches anything past position N since the oldest N never change.
+# These confirm the cache-aware split spends the per-run budget only on
+# markets whose resolution isn't already known.
 
-def test_fetch_market_resolution_delegates_to_gamma_client():
-    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(True, True)):
-        assert cs.fetch_market_resolution("m1") is True
-    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(True, False)):
-        assert cs.fetch_market_resolution("m1") is False
-
-
-def test_fetch_market_resolution_none_when_not_closed():
-    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(False, None)):
-        assert cs.fetch_market_resolution("m1") is None
+def entry(market_id, price=0.4):
+    return {"market_id": market_id, "price": price, "logged_at": f"2026-08-{market_id}"}
 
 
-def test_fetch_market_resolution_none_when_closed_but_ambiguous():
-    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(True, None)):
-        assert cs.fetch_market_resolution("m1") is None
+def test_partition_cached_entries_never_consume_the_check_budget():
+    entries = [entry("01"), entry("02"), entry("03")]
+    cache = {"01": {"outcome_yes": True, "checked_at": "x"}}
+    cached, to_check, deferred = cs.partition_log_entries(entries, cache, max_to_check=10)
+    assert [e["market_id"] for e in cached] == ["01"]
+    assert [e["market_id"] for e in to_check] == ["02", "03"]
+    assert deferred == []
+
+
+def test_partition_respects_max_to_check_budget():
+    entries = [entry(f"{i:02d}") for i in range(5)]
+    cached, to_check, deferred = cs.partition_log_entries(entries, {}, max_to_check=2)
+    assert len(to_check) == 2
+    assert len(deferred) == 3
+    # oldest-first: the budget goes to the first two entries in list order
+    assert [e["market_id"] for e in to_check] == ["00", "01"]
+    assert [e["market_id"] for e in deferred] == ["02", "03", "04"]
+
+
+def test_partition_cached_entries_dont_count_against_budget_even_if_earlier():
+    # a resolved entry sitting ahead of un-resolved ones shouldn't eat into
+    # the budget meant for entries that still need an API call
+    entries = [entry("01"), entry("02"), entry("03")]
+    cache = {"01": {"outcome_yes": True, "checked_at": "x"}}
+    cached, to_check, deferred = cs.partition_log_entries(entries, cache, max_to_check=1)
+    assert [e["market_id"] for e in cached] == ["01"]
+    assert [e["market_id"] for e in to_check] == ["02"]
+    assert [e["market_id"] for e in deferred] == ["03"]
+
+
+def test_partition_all_cached_means_nothing_to_check():
+    entries = [entry("01"), entry("02")]
+    cache = {"01": {"outcome_yes": True, "checked_at": "x"}, "02": {"outcome_yes": None, "checked_at": "x"}}
+    cached, to_check, deferred = cs.partition_log_entries(entries, cache, max_to_check=10)
+    assert len(cached) == 2
+    assert to_check == []
+    assert deferred == []
+
