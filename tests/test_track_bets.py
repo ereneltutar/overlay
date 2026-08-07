@@ -172,7 +172,7 @@ def test_resolve_open_bets_skips_bets_before_deadline_plus_grace():
 def test_resolve_open_bets_calibration_win():
     log = fresh_log()
     log["bets"].append(make_bet(tag="calibration", recommended_side="YES", entry_cost=0.2, stake=100))
-    with patch.object(tb, "fetch_market_state", return_value=(True, True)):
+    with patch.object(tb.gamma_client, "fetch_market_state", return_value=(True, True)):
         with patch.object(tb.time, "sleep"):
             resolved = tb.resolve_open_bets(log, NOW)
     assert resolved == 1
@@ -184,7 +184,7 @@ def test_resolve_open_bets_calibration_win():
 def test_resolve_open_bets_calibration_loss():
     log = fresh_log()
     log["bets"].append(make_bet(tag="calibration", recommended_side="YES", entry_cost=0.2, stake=100))
-    with patch.object(tb, "fetch_market_state", return_value=(True, False)):
+    with patch.object(tb.gamma_client, "fetch_market_state", return_value=(True, False)):
         with patch.object(tb.time, "sleep"):
             tb.resolve_open_bets(log, NOW)
     bet = log["bets"][0]
@@ -195,7 +195,7 @@ def test_resolve_open_bets_calibration_loss():
 def test_resolve_open_bets_void_when_ambiguous():
     log = fresh_log()
     log["bets"].append(make_bet(tag="mispricing"))
-    with patch.object(tb, "fetch_market_state", return_value=(True, None)):
+    with patch.object(tb.gamma_client, "fetch_market_state", return_value=(True, None)):
         with patch.object(tb.time, "sleep"):
             tb.resolve_open_bets(log, NOW)
     bet = log["bets"][0]
@@ -206,7 +206,7 @@ def test_resolve_open_bets_void_when_ambiguous():
 def test_resolve_open_bets_still_open_when_market_not_closed_yet():
     log = fresh_log()
     log["bets"].append(make_bet(tag="mispricing"))
-    with patch.object(tb, "fetch_market_state", return_value=(False, None)):
+    with patch.object(tb.gamma_client, "fetch_market_state", return_value=(False, None)):
         with patch.object(tb.time, "sleep"):
             resolved = tb.resolve_open_bets(log, NOW)
     assert resolved == 0
@@ -217,7 +217,7 @@ def test_resolve_open_bets_arb_win_after_haircut():
     log = fresh_log()
     # entry_cost=0.9 -> raw edge = (1/0.9 - 1)*100 = 11.11%; haircut max 2pts, so always a net win
     log["bets"].append(make_bet(tag="arbitrage", entry_cost=0.9, stake=100, market_ids=("m1", "m2")))
-    with patch.object(tb, "fetch_market_state", return_value=(True, True)):
+    with patch.object(tb.gamma_client, "fetch_market_state", return_value=(True, True)):
         with patch.object(tb.time, "sleep"):
             with patch.object(tb.random, "uniform", return_value=1.0):  # fixed 1pt haircut
                 tb.resolve_open_bets(log, NOW)
@@ -231,7 +231,7 @@ def test_resolve_open_bets_arb_can_lose_if_haircut_exceeds_thin_edge():
     log = fresh_log()
     # entry_cost=0.995 -> raw edge = 0.5%, a max haircut of 2pts will exceed it
     log["bets"].append(make_bet(tag="arbitrage", entry_cost=0.995, stake=100, market_ids=("m1",)))
-    with patch.object(tb, "fetch_market_state", return_value=(True, True)):
+    with patch.object(tb.gamma_client, "fetch_market_state", return_value=(True, True)):
         with patch.object(tb.time, "sleep"):
             with patch.object(tb.random, "uniform", return_value=2.0):  # max haircut
                 tb.resolve_open_bets(log, NOW)

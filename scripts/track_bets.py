@@ -44,9 +44,7 @@ import sys
 import time
 from pathlib import Path
 
-import requests
-
-GAMMA_BASE = "https://gamma-api.polymarket.com"
+import gamma_client
 
 # --- Tunable parameters -----------------------------------------------
 STARTING_BANKROLL = 1000.00
@@ -59,12 +57,8 @@ STAKE_CAP_FRAC = {             # never bet more than this fraction of available 
 }
 ARB_HAIRCUT_MAX_PTS = 2.0      # simulated execution slippage/fees, 0 to this many points off the ARB edge
 
-RESOLUTION_THRESHOLD = 0.98    # same convention as calibration_scan.py
 DEADLINE_GRACE_HOURS = 12      # wait this long past the deadline before checking (resolution isn't instant)
-REQUEST_TIMEOUT = 20
 SLEEP_BETWEEN_CALLS = 1.15
-MAX_RETRIES_ON_429 = 2
-BACKOFF_SECONDS_ON_429 = 8
 # ----------------------------------------------------------------------------
 
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "docs" / "results.json"
@@ -107,48 +101,6 @@ def available_bankroll(log: dict) -> float:
     return total_bankroll(log) - open_stake
 
 
-def fetch_market_state(market_id: str):
-    """Returns (closed, outcome_yes) for a single market. outcome_yes is
-    None if the market isn't closed yet, or closed but resolved
-    ambiguously (voided / 50-50)."""
-    attempt = 0
-    while True:
-        try:
-            resp = requests.get(f"{GAMMA_BASE}/markets/{market_id}", timeout=REQUEST_TIMEOUT)
-        except requests.RequestException:
-            return False, None
-        if resp.status_code == 429:
-            if attempt >= MAX_RETRIES_ON_429:
-                return False, None
-            attempt += 1
-            time.sleep(BACKOFF_SECONDS_ON_429 * attempt)
-            continue
-        try:
-            resp.raise_for_status()
-            market = resp.json()
-        except (requests.RequestException, ValueError):
-            return False, None
-        break
-
-    if not market.get("closed"):
-        return False, None
-
-    raw_prices = market.get("outcomePrices")
-    if not raw_prices:
-        return True, None
-    try:
-        prices = json.loads(raw_prices) if isinstance(raw_prices, str) else raw_prices
-        yes_price = float(prices[0])
-    except (ValueError, TypeError, IndexError, json.JSONDecodeError):
-        return True, None
-
-    if yes_price >= RESOLUTION_THRESHOLD:
-        return True, True
-    if yes_price <= (1 - RESOLUTION_THRESHOLD):
-        return True, False
-    return True, None  # closed but ambiguous / cancelled
-
-
 def resolve_open_bets(log: dict, now: datetime.datetime) -> int:
     resolved_count = 0
     for bet in log["bets"]:
@@ -164,7 +116,7 @@ def resolve_open_bets(log: dict, now: datetime.datetime) -> int:
         outcome_yes = None
         all_closed = True
         for market_id in bet["market_ids"]:
-            closed, oy = fetch_market_state(market_id)
+            closed, oy = gamma_client.fetch_market_state(market_id)
             time.sleep(SLEEP_BETWEEN_CALLS)
             if not closed:
                 all_closed = False
