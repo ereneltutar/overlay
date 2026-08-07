@@ -66,8 +66,8 @@ GAMMA_BASE = "https://gamma-api.polymarket.com"
 DAYS_AHEAD = 30          # scan events whose deadline is at most this many days out
 MIN_EDGE_PCT = 0.5       # don't show "opportunities" below this percent (noise filter)
 MIN_LIQUIDITY_USD = 50   # require at least this much liquidity per leg (drop thin books)
-PAGE_LIMIT = 500
-MAX_PAGES = 60           # safety cap
+PAGE_LIMIT = 100         # /events/keyset caps this at 100 regardless of what's requested
+MAX_PAGES = 300          # safety cap (300 x 100 = 30,000 events of headroom)
 REQUEST_TIMEOUT = 30
 
 # For the momentum / volume-anomaly scan:
@@ -120,42 +120,53 @@ PRICE_LOG_PATH = Path(__file__).resolve().parent.parent / "docs" / "price_log.js
 
 
 def fetch_all_events() -> list:
-    """Pages through the Gamma API /events endpoint and pulls every active,
-    not-yet-closed event.
+    """Pages through the Gamma API /events/keyset endpoint and pulls every
+    active, not-yet-closed event.
 
-    Note: the API can return fewer items per page than the requested "limit"
-    (the server may enforce its own cap). So we keep paging until an empty
-    page comes back, and advance the offset by the actual count received,
-    rather than treating "received < requested limit" as "no more data."
+    This used to hit the plain offset-paginated /events endpoint, which has
+    a hard, undocumented ceiling: any request where offset + limit > ~2100
+    gets rejected with a 422 (Unprocessable Entity), no matter how many
+    events actually exist. That endpoint is also now formally deprecated
+    (its responses carry `deprecation: true` and a `sunset` header pointing
+    at the cursor-based replacement). Live testing found at least 6,000
+    active events on Polymarket, meaning the old code was silently missing
+    roughly two-thirds of the market every single day for over a month
+    without ever raising an error, since offset-based pagination just stops
+    cleanly at its ceiling instead of failing loudly.
 
-    Also: the Gamma API /events endpoint rejects requests past a certain
-    offset (~2100 in a live test) with a 422 (Unprocessable Entity). There's
-    an undocumented pagination ceiling. This error USED TO leak out of the
-    function and lose every event collected up to that point (main() would
-    carry on with an empty list). Now this error only STOPS pagination;
-    events successfully collected up to that point are returned intact.
+    /events/keyset fixes this with cursor pagination instead of a numeric
+    offset: each response includes a `next_cursor`, which gets passed back
+    as the `after_cursor` query param to fetch the next page (NOT `cursor` -
+    that parameter name is silently ignored server-side and just re-returns
+    the first page again, a known gotcha: see Polymarket/agents#227). A
+    missing/empty `next_cursor` means there are no more pages. The `limit`
+    param is capped at 100 by the server regardless of what's requested.
     """
     events = []
-    offset = 0
+    cursor = None
     for _ in range(MAX_PAGES):
         params = {
             "active": "true",
             "closed": "false",
             "limit": PAGE_LIMIT,
-            "offset": offset,
         }
+        if cursor:
+            params["after_cursor"] = cursor
         try:
-            resp = requests.get(f"{GAMMA_BASE}/events", params=params, timeout=REQUEST_TIMEOUT)
+            resp = requests.get(f"{GAMMA_BASE}/events/keyset", params=params, timeout=REQUEST_TIMEOUT)
             resp.raise_for_status()
-            batch = resp.json()
+            page = resp.json()
         except requests.RequestException as exc:
-            print(f"Pagination stopped at offset={offset} (API error: {exc}). "
+            print(f"Pagination stopped after cursor={cursor} (API error: {exc}). "
                   f"Using the {len(events)} events collected so far.", file=sys.stderr)
             break
-        if not isinstance(batch, list) or not batch:
+        batch = page.get("events") if isinstance(page, dict) else None
+        if not batch:
             break
         events.extend(batch)
-        offset += len(batch)
+        cursor = page.get("next_cursor")
+        if not cursor:
+            break
         time.sleep(0.2)  # be polite to the API
     return events
 
