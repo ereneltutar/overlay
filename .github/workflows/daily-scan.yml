@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   scan:
@@ -46,4 +47,16 @@ jobs:
           else
             git commit -m "Daily scan: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
+            echo "PUSHED=true" >> "$GITHUB_ENV"
           fi
+
+      - name: Trigger Pages deploy
+        if: env.PUSHED == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # A push made with the default GITHUB_TOKEN does not trigger other
+          # workflows' `on: push` (GitHub's anti-recursion safeguard), so the
+          # docs/**-triggered Pages deploy never fires on its own here.
+          # Dispatch it explicitly instead.
+          gh workflow run pages.yml --repo "$GITHUB_REPOSITORY"
