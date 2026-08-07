@@ -60,7 +60,9 @@ from pathlib import Path
 
 import requests
 
-GAMMA_BASE = "https://gamma-api.polymarket.com"
+import gamma_client
+
+GAMMA_BASE = gamma_client.GAMMA_BASE
 
 # --- Tunable parameters -----------------------------------------------
 DAYS_AHEAD = 30          # scan events whose deadline is at most this many days out
