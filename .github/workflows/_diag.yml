@@ -1,5 +1,8 @@
-name: _diag
-on: { workflow_dispatch: {} }
+name: Diagnostic Probe
+
+on:
+  workflow_dispatch: {}
+
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -15,7 +18,7 @@ jobs:
             n=$(python3 -c "import json;d=json.load(open('/tmp/r.json'));print(len(d) if isinstance(d,list) else 'n/a')" 2>/dev/null)
             echo "offset=$off -> HTTP $code, items=$n"
           done
-          echo "--- does an 'order' param change what comes back? ---"
+          echo "--- does an order param change what comes back? ---"
           for order in id -id createdAt -createdAt startDate -startDate; do
             first=$(curl -s "$BASE/events?active=true&closed=false&limit=1&order=$order" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d[0].get('id') if d else 'empty')" 2>/dev/null)
             echo "order=$order -> first id=$first"
