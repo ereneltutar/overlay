@@ -79,6 +79,15 @@ separately alongside them. A market that resolves ambiguously or gets
 cancelled is marked void: the stake is returned and it's excluded from
 win-rate math.
 
+The headline win rate is shown with a 95% Wilson confidence interval
+(e.g. "50% [15-85%] (n=4)"), not a bare percentage, so a handful of
+early bets doesn't read as more conclusive than it is. A "Predicted vs
+Realized" chart buckets resolved CAL/MIS bets by the win probability
+predicted at placement time and plots that against how often each
+bucket actually won — the real test of whether the signals are
+accurate or just optimistic, separate from whether the bankroll
+happens to be up. Max drawdown is tracked alongside the bankroll chart.
+
 Because this reuses the same forward-looking pattern as calibration
 (log now, check back once the deadline passes), the archive fills in
 slowly and starts empty. It's meant to build an honest record over
