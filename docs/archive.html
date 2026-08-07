@@ -147,6 +147,8 @@ a{ color: inherit; }
 .diag-line{ stroke:var(--ink-faint); stroke-width:1.5; stroke-dasharray:3 4; fill:none; }
 .chart-caption{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); margin-top:8px; }
 .chart-caption b{ color:var(--ink); }
+.predict-dot-filled{ fill:var(--cal); stroke:var(--bg); stroke-width:1.5; }
+.predict-dot-open{ fill:none; stroke:var(--ink-faint); stroke-width:1.3; }
 
 .stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px; padding-top:20px; border-top:1px solid var(--rule); }
 .stat-card{ }
@@ -305,6 +307,28 @@ footer a:hover{ color:var(--ink); }
     </div>
   </div>
 
+  <div class="panel" id="calCheckPanel">
+    <div class="panel-head">
+      <p class="panel-title"><span class="tag-dot"></span>Predicted vs Realized</p>
+      <span class="panel-meta" id="calCheckMeta">—</span>
+    </div>
+    <p class="panel-desc">
+      For every resolved CAL/MIS bet, the model's predicted win probability at the moment it was
+      placed, bucketed against how often that bucket actually won. The dashed line marks perfect
+      calibration. Bucketed coarsely (25-point-wide bins) since sample sizes here are far smaller
+      than the main dashboard's calibration curve. Filled dot = at least 5 resolved bets in that
+      bucket. Open ring = fewer than that; still shown, just noisier. This isn't a formal
+      significance test at these sample sizes, just a rough read on whether the signals lean
+      accurate or overconfident.
+    </p>
+    <div id="calCheckBody">
+      <div class="chart-wrap">
+        <svg id="calCheckChart" viewBox="0 0 680 300" role="img" aria-label="Predicted versus realized win rate chart"></svg>
+      </div>
+      <p class="chart-caption" id="calCheckCaption"></p>
+    </div>
+  </div>
+
   <p class="disclaimer">
     This is a simulation, not real trading. Stakes are sized to edge (bigger edge, bigger stake,
     capped so no single bet can seriously damage the bankroll) and drawn from a fixed $1,000 start.
@@ -438,6 +462,70 @@ function renderStatCard(tag, stats){
   subEl.textContent = `${stats.won}W · ${stats.lost}L · ${stats.void}void · ${stats.open}open`;
 }
 
+const CAL_CHECK_BUCKET_WIDTH = 0.25;
+const CAL_CHECK_FILLED_MIN_N = 5;
+
+function renderCalibrationCheck(bets){
+  const svg = document.getElementById('calCheckChart');
+  const caption = document.getElementById('calCheckCaption');
+
+  const sample = bets.filter(b =>
+    (b.tag === 'calibration' || b.tag === 'mispricing') &&
+    (b.status === 'won' || b.status === 'lost') &&
+    typeof b.predicted_win_prob === 'number'
+  );
+
+  if(sample.length === 0){
+    svg.innerHTML = '';
+    caption.textContent = 'No resolved CAL/MIS bets with a recorded prediction yet. This fills in as bets resolve.';
+    return;
+  }
+
+  const numBuckets = Math.round(1 / CAL_CHECK_BUCKET_WIDTH);
+  const buckets = [];
+  for(let i = 0; i < numBuckets; i++){
+    const lo = i * CAL_CHECK_BUCKET_WIDTH, hi = lo + CAL_CHECK_BUCKET_WIDTH;
+    const inBucket = sample.filter(b => (b.predicted_win_prob >= lo && b.predicted_win_prob < hi) || (i === numBuckets-1 && b.predicted_win_prob === 1));
+    const n = inBucket.length;
+    const k = inBucket.filter(b => b.status === 'won').length;
+    buckets.push({ lo, hi, midpoint: (lo+hi)/2, n, realizedRate: n > 0 ? k/n : null });
+  }
+
+  const W = 680, H = 300;
+  const padL = 44, padR = 16, padT = 14, padB = 34;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const x = p => padL + p * plotW;
+  const y = r => padT + (1 - r) * plotH;
+
+  let parts = [];
+  [0, .25, .5, .75, 1].forEach(t => {
+    parts.push(`<line class="grid-line" x1="${x(t)}" y1="${padT}" x2="${x(t)}" y2="${padT+plotH}"></line>`);
+    parts.push(`<line class="grid-line" x1="${padL}" y1="${y(t)}" x2="${padL+plotW}" y2="${y(t)}"></line>`);
+    parts.push(`<text class="axis-label" x="${x(t)}" y="${padT+plotH+16}" text-anchor="middle">${Math.round(t*100)}%</text>`);
+    parts.push(`<text class="axis-label" x="${padL-8}" y="${y(t)+3}" text-anchor="end">${Math.round(t*100)}%</text>`);
+  });
+  parts.push(`<text class="axis-label" x="${padL+plotW/2}" y="${H-4}" text-anchor="middle">predicted win probability →</text>`);
+  parts.push(`<path class="diag-line" d="M${x(0)},${y(0)} L${x(1)},${y(1)}"></path>`);
+
+  buckets.forEach(b => {
+    if(b.n === 0) return;
+    const midX = x(b.midpoint);
+    const cy = y(b.realizedRate);
+    const rr = Math.max(3, Math.min(12, Math.sqrt(b.n) * 2));
+    const cls = b.n >= CAL_CHECK_FILLED_MIN_N ? 'predict-dot-filled' : 'predict-dot-open';
+    const lo = Math.round(b.lo*100), hi = Math.round(b.hi*100), rate = (b.realizedRate*100).toFixed(0);
+    parts.push(`<circle class="${cls}" cx="${midX}" cy="${cy}" r="${rr}"><title>${lo}-${hi}% predicted · n=${b.n} · realized ${rate}%</title></circle>`);
+  });
+
+  svg.innerHTML = parts.join('');
+
+  const avgPredicted = sample.reduce((s,b) => s + b.predicted_win_prob, 0) / sample.length * 100;
+  const won = sample.filter(b => b.status === 'won').length;
+  const actualRate = (won / sample.length) * 100;
+  caption.innerHTML = `Across <b>${sample.length}</b> resolved bet${sample.length===1?'':'s'}, average predicted win probability was ` +
+    `<b>${avgPredicted.toFixed(0)}%</b>; actual win rate was <b>${actualRate.toFixed(0)}%</b>.`;
+}
+
 function applyFilterAndRender(){
   const grid = document.getElementById('grid');
   const list = currentFilter === 'all' ? allBets : allBets.filter(b => b.tag === currentFilter);
@@ -541,6 +629,11 @@ async function loadBetLog(){
       ? 'last snapshot: ' + fmtShortDate(data.bankroll_history[data.bankroll_history.length-1].date)
       : '—';
     renderBankrollChart(data.bankroll_history || [], starting);
+
+    document.getElementById('calCheckMeta').textContent = resolved.length
+      ? `${resolved.length} resolved bet${resolved.length===1?'':'s'} total`
+      : '—';
+    renderCalibrationCheck(allBets);
 
     updateCounts();
     applyFilterAndRender();
