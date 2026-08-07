@@ -134,40 +134,11 @@ def wilson_interval(k: int, n: int, z: float = 1.96):
     return (max(0.0, center - margin), min(1.0, center + margin))
 
 
-def main():
-    now = datetime.datetime.now(datetime.timezone.utc)
-
-    log_entries = load_price_log()
-    print(f"Found {len(log_entries)} logged markets (docs/price_log.jsonl).")
-
-    # The oldest logged markets are closest to closing, so checking them first
-    # gets the highest yield of "resolved market" per run.
-    log_entries.sort(key=lambda e: e.get("logged_at", ""))
-    if len(log_entries) > MAX_LOG_ENTRIES_TO_CHECK:
-        log_entries = log_entries[:MAX_LOG_ENTRIES_TO_CHECK]
-        print(f"Capped at {MAX_LOG_ENTRIES_TO_CHECK} entries for runtime safety.")
-
-    samples = []
-    still_open_or_unclear = 0
-
-    for i, entry in enumerate(log_entries):
-        resolved_yes = fetch_market_resolution(entry["market_id"])
-        time.sleep(SLEEP_BETWEEN_CALLS)
-
-        if resolved_yes is None:
-            still_open_or_unclear += 1
-            continue
-
-        samples.append({"reference_price": entry["price"], "resolved_yes": resolved_yes})
-
-        if (i + 1) % 200 == 0:
-            print(f"  ... checked {i + 1}/{len(log_entries)} "
-                  f"({len(samples)} resolved, {still_open_or_unclear} still open/unclear)")
-
-    print(f"{len(samples)} markets resolved and usable in total.")
-    print(f"{still_open_or_unclear} markets are still open, not yet closed, or resolved ambiguously.")
-
-    # --- Bucketing and statistics (identical logic to v1) ---
+def compute_bins(samples: list) -> list:
+    """Buckets resolved samples into BIN_WIDTH-wide price ranges and computes
+    the calibration stats for each bucket. Pure function of `samples`
+    (each a {"reference_price": float, "resolved_yes": bool} dict) so it can
+    be tested without hitting the network."""
     num_bins = int(round(1 / BIN_WIDTH))
     bins = []
     for b in range(num_bins):
@@ -206,6 +177,44 @@ def main():
             })
 
         bins.append(entry)
+    return bins
+
+
+def main():
+    now = datetime.datetime.now(datetime.timezone.utc)
+
+    log_entries = load_price_log()
+    print(f"Found {len(log_entries)} logged markets (docs/price_log.jsonl).")
+
+    # The oldest logged markets are closest to closing, so checking them first
+    # gets the highest yield of "resolved market" per run.
+    log_entries.sort(key=lambda e: e.get("logged_at", ""))
+    if len(log_entries) > MAX_LOG_ENTRIES_TO_CHECK:
+        log_entries = log_entries[:MAX_LOG_ENTRIES_TO_CHECK]
+        print(f"Capped at {MAX_LOG_ENTRIES_TO_CHECK} entries for runtime safety.")
+
+    samples = []
+    still_open_or_unclear = 0
+
+    for i, entry in enumerate(log_entries):
+        resolved_yes = fetch_market_resolution(entry["market_id"])
+        time.sleep(SLEEP_BETWEEN_CALLS)
+
+        if resolved_yes is None:
+            still_open_or_unclear += 1
+            continue
+
+        samples.append({"reference_price": entry["price"], "resolved_yes": resolved_yes})
+
+        if (i + 1) % 200 == 0:
+            print(f"  ... checked {i + 1}/{len(log_entries)} "
+                  f"({len(samples)} resolved, {still_open_or_unclear} still open/unclear)")
+
+    print(f"{len(samples)} markets resolved and usable in total.")
+    print(f"{still_open_or_unclear} markets are still open, not yet closed, or resolved ambiguously.")
+
+    # --- Bucketing and statistics (identical logic to v1) ---
+    bins = compute_bins(samples)
 
     output = {
         "generated_at": now.isoformat(),

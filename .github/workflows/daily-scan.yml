@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write
   actions: write
+  issues: write
 
 jobs:
   scan:
@@ -23,13 +24,51 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install -r requirements.txt
 
       - name: Run scan
         run: python scripts/fetch_arbitrage.py
 
       - name: Track paper-trading bets
         run: python scripts/track_bets.py
+
+      - name: Check scan health
+        id: health
+        run: |
+          set +e
+          python3 scripts/check_scan_health.py > /tmp/health_output.txt 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          cat /tmp/health_output.txt
+
+      - name: File or update scan-health issue
+        if: steps.health.outputs.exit_code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create scan-health --color d93f0b \
+            --description "Automated alert from the daily scan's health check" 2>/dev/null || true
+          BODY="$(cat /tmp/health_output.txt)"
+          EXISTING=$(gh issue list --repo "$GITHUB_REPOSITORY" --label scan-health --state open \
+            --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$GITHUB_REPOSITORY" --body "$BODY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "Scan health anomaly detected" \
+              --label scan-health --body "$BODY"
+          fi
+
+      - name: Close scan-health issue if healthy again
+        if: steps.health.outputs.exit_code == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXISTING=$(gh issue list --repo "$GITHUB_REPOSITORY" --label scan-health --state open \
+            --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "$GITHUB_REPOSITORY" \
+              --body "Scan health back to normal as of $(date -u +'%Y-%m-%d %H:%M UTC')."
+            gh issue close "$EXISTING" --repo "$GITHUB_REPOSITORY"
+          fi
 
       - name: Commit results
         run: |
@@ -41,6 +80,9 @@ jobs:
           fi
           if [ -f docs/bet_log.json ]; then
             git add docs/bet_log.json
+          fi
+          if [ -f docs/scan_health.json ]; then
+            git add docs/scan_health.json
           fi
           if git diff --staged --quiet; then
             echo "No changes, skipping commit."

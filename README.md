@@ -36,6 +36,13 @@ GitHub Actions, every morning, right after fetch_arbitrage.py
         whether previously placed bets have resolved, writing
         docs/bet_log.json
 
+GitHub Actions, every morning, right after track_bets.py
+   └─ scripts/check_scan_health.py → tracks scanned_events over time
+        in docs/scan_health.json and flags anomalies (zero events, a
+        suspiciously stuck count, or a sudden drop). Files or updates
+        a GitHub issue labeled scan-health when something looks wrong,
+        closes it automatically once things recover
+
 GitHub Pages (Actions-based deploy)
    └─ docs/index.html reads results.json/calibration.json/price_log.jsonl
         client-side and renders the ledger, filters, and calibration curve
@@ -76,6 +83,23 @@ Because this reuses the same forward-looking pattern as calibration
 (log now, check back once the deadline passes), the archive fills in
 slowly and starts empty. It's meant to build an honest record over
 weeks and months, not simulate results for its own sake.
+
+## Scan health monitoring
+
+The scanner used to hit a hard, undocumented pagination ceiling on the
+Gamma API (capped at exactly 2,100 events) for 44 consecutive daily
+runs before anyone noticed, because a silently truncated result set
+doesn't raise an error — it just returns a quietly wrong number, every
+day, forever. `scripts/check_scan_health.py` exists so that failure
+mode gets caught in days, not weeks.
+
+It keeps a rolling history of `scanned_events` in `docs/scan_health.json`
+and flags three patterns after each run: zero events scanned (the scan
+produced nothing), a value stuck identically for several runs in a row
+(the exact signature of a hard ceiling), or a sudden drop against the
+trailing average. Any anomaly gets filed as a GitHub issue labeled
+`scan-health` (or added as a comment if one's already open); the issue
+closes itself automatically once a later run comes back healthy.
 
 ## Setup (10 minutes)
 
@@ -135,6 +159,26 @@ In `scripts/track_bets.py`:
 To change the schedule, edit the `cron:` line in
 `.github/workflows/daily-scan.yml` or `calibration-scan.yml` (both use
 UTC; `0 3 * * *` = 06:00 Turkey time).
+
+## Development / testing
+
+The pure calculation logic (opportunity/signal detection, bet sizing,
+bankroll accounting, calibration bucketing, anomaly detection) has a
+pytest suite in `tests/`, covering the deterministic functions in
+isolation with synthetic data — no network calls, no live API
+dependency. Network-touching functions (market resolution lookups) are
+tested with `unittest.mock` instead of hitting the real Gamma API.
+
+```
+pip install -r requirements-dev.txt
+python -m pytest tests/ -v
+```
+
+`.github/workflows/tests.yml` runs the suite plus `scripts/lint_workflows.py`
+(a YAML sanity check for every workflow file) on every push and PR
+against `main` — a plain `run: |` block with inconsistent indentation
+parses fine locally but fails at push time in a way that's easy to miss,
+so this catches it before merge instead of live in the Actions tab.
 
 ## Important limitations, please read
 
