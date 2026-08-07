@@ -1,36 +1,43 @@
+import json
 import requests
 
 BASE = "https://gamma-api.polymarket.com/events/keyset"
+d = requests.get(BASE, params={"active": "true", "closed": "false", "limit": 3}, timeout=20).json()
+ev = d["events"][0]
+print("event top-level keys:", sorted(ev.keys()))
+print("has endDate:", "endDate" in ev, "value:", ev.get("endDate"))
+print("has markets:", "markets" in ev, "count:", len(ev.get("markets") or []))
+if ev.get("markets"):
+    m = ev["markets"][0]
+    print("market[0] keys:", sorted(m.keys()))
+    for k in ["negRisk", "acceptingOrders", "bestAsk", "liquidityNum", "id", "groupItemTitle", "question", "lastTradePrice", "volume24hr"]:
+        print(f"  has {k}:", k in m)
 
-print("--- page 1: ids and next_cursor ---")
-p1 = requests.get(BASE, params={"active": "true", "closed": "false", "limit": 5}, timeout=20).json()
-print("ids:", [e["id"] for e in p1["events"]])
-print("next_cursor:", repr(p1.get("next_cursor")))
-
-cursor = p1.get("next_cursor")
-print("--- page 2 using after_cursor param with real next_cursor value ---")
-p2 = requests.get(BASE, params={"active": "true", "closed": "false", "limit": 5, "after_cursor": cursor}, timeout=20).json()
-print("ids:", [e["id"] for e in p2.get("events", [])])
-print("next_cursor:", repr(p2.get("next_cursor")))
-overlap = set(e["id"] for e in p1["events"]) & set(e["id"] for e in p2.get("events", []))
-print("overlap between page1 and page2 ids (should be empty):", overlap)
-
-print("--- walk forward with limit=100 (the real max) repeatedly, count the true total ---")
+# also specifically hunt for a negRisk multi-outcome event to confirm shape end to end
+found = None
 cursor = None
-seen = set()
-for i in range(60):
+for _ in range(15):
     params = {"active": "true", "closed": "false", "limit": 100}
     if cursor:
         params["after_cursor"] = cursor
-    d = requests.get(BASE, params=params, timeout=20).json()
-    events = d.get("events", [])
-    new_ids = [e["id"] for e in events]
-    dupes = sum(1 for i2 in new_ids if i2 in seen)
-    seen.update(new_ids)
-    cursor = d.get("next_cursor")
-    print(f"page {i}: got {len(events)} events, dupes-vs-seen={dupes}, cumulative-unique={len(seen)}, next_cursor={cursor!r}")
-    if not events or not cursor:
-        print("no more pages / no cursor, stopping")
+    page = requests.get(BASE, params=params, timeout=20).json()
+    for e in page.get("events", []):
+        neg = [m for m in (e.get("markets") or []) if m.get("negRisk")]
+        if len(neg) >= 2:
+            found = e
+            break
+    if found:
+        break
+    cursor = page.get("next_cursor")
+    if not cursor:
         break
 
-print("FINAL total unique events collected:", len(seen))
+print("--- negRisk multi-outcome event found ---")
+if found:
+    print("event id:", found.get("id"), "title:", found.get("title"))
+    print("num negRisk legs:", len([m for m in found["markets"] if m.get("negRisk")]))
+    for m in found["markets"]:
+        if m.get("negRisk"):
+            print("  leg:", m.get("groupItemTitle"), "bestAsk:", m.get("bestAsk"), "acceptingOrders:", m.get("acceptingOrders"), "liquidityNum:", m.get("liquidityNum"), "id:", m.get("id"))
+else:
+    print("none found in first 1500 events scanned")

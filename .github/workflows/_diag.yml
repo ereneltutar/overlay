@@ -15,5 +15,5 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: pip install requests
-      - name: Confirm real cursor pagination mechanics
+      - name: Verify event/market shape from keyset endpoint
         run: python3 _diag_probe.py
