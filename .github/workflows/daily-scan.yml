@@ -88,8 +88,26 @@ jobs:
             echo "No changes, skipping commit."
           else
             git commit -m "Daily scan: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
-            echo "PUSHED=true" >> "$GITHUB_ENV"
+            # main may have moved since checkout (this job does several
+            # network-bound steps first). Rebase onto the latest before
+            # pushing, with a few retries, instead of losing the whole
+            # run's work to a rejected non-fast-forward push.
+            pushed=false
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push; then
+                pushed=true
+                break
+              fi
+              echo "Push attempt $attempt failed, retrying..."
+              sleep 5
+            done
+            if [ "$pushed" = true ]; then
+              echo "PUSHED=true" >> "$GITHUB_ENV"
+            else
+              echo "::error::Failed to push after 3 attempts"
+              exit 1
+            fi
           fi
 
       - name: Trigger Pages deploy
