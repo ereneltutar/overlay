@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import calibration_scan as cs
 
@@ -84,46 +84,23 @@ def test_compute_bins_not_significant_near_midpoint():
     assert bucket["significant"] is False
 
 
-# --- fetch_market_resolution (network mocked) -------------------------------
+# --- fetch_market_resolution -----------------------------------------------
+# The actual HTTP/retry/ambiguous-outcome behavior lives in gamma_client now
+# and is covered by tests/test_gamma_client.py; these just confirm the thin
+# wrapper here delegates and translates (closed, outcome_yes) correctly.
 
-def _resp(status_code=200, json_data=None):
-    r = MagicMock()
-    r.status_code = status_code
-    r.json.return_value = json_data or {}
-    r.raise_for_status = MagicMock()
-    return r
-
-
-def test_fetch_market_resolution_not_closed_returns_none():
-    with patch.object(cs.requests, "get", return_value=_resp(json_data={"closed": False})):
-        assert cs.fetch_market_resolution("m1") is None
-
-
-def test_fetch_market_resolution_closed_yes():
-    data = {"closed": True, "outcomePrices": '["0.99", "0.01"]'}
-    with patch.object(cs.requests, "get", return_value=_resp(json_data=data)):
+def test_fetch_market_resolution_delegates_to_gamma_client():
+    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(True, True)):
         assert cs.fetch_market_resolution("m1") is True
-
-
-def test_fetch_market_resolution_closed_no():
-    data = {"closed": True, "outcomePrices": '["0.01", "0.99"]'}
-    with patch.object(cs.requests, "get", return_value=_resp(json_data=data)):
+    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(True, False)):
         assert cs.fetch_market_resolution("m1") is False
 
 
-def test_fetch_market_resolution_closed_ambiguous():
-    data = {"closed": True, "outcomePrices": '["0.5", "0.5"]'}
-    with patch.object(cs.requests, "get", return_value=_resp(json_data=data)):
+def test_fetch_market_resolution_none_when_not_closed():
+    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(False, None)):
         assert cs.fetch_market_resolution("m1") is None
 
 
-def test_fetch_market_resolution_network_error_returns_none():
-    with patch.object(cs.requests, "get", side_effect=cs.requests.RequestException("boom")):
+def test_fetch_market_resolution_none_when_closed_but_ambiguous():
+    with patch.object(cs.gamma_client, "fetch_market_state", return_value=(True, None)):
         assert cs.fetch_market_resolution("m1") is None
-
-
-def test_fetch_market_resolution_retries_on_429_then_succeeds():
-    responses = [_resp(status_code=429), _resp(json_data={"closed": False})]
-    with patch.object(cs.requests, "get", side_effect=responses):
-        with patch.object(cs.time, "sleep"):
-            assert cs.fetch_market_resolution("m1") is None

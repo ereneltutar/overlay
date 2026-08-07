@@ -41,19 +41,13 @@ import sys
 import time
 from pathlib import Path
 
-import requests
-
-GAMMA_BASE = "https://gamma-api.polymarket.com"
+import gamma_client
 
 # --- Tunable parameters -----------------------------------------------
 BIN_WIDTH = 0.05              # bucket width (0.05 = 20 buckets)
 MIN_SAMPLE_PER_BUCKET = 30    # buckets with fewer samples than this have no statistical confidence
-RESOLUTION_THRESHOLD = 0.98   # if outcomePrices isn't above/below this, treat it as "not cleanly resolved" and drop it
 MAX_LOG_ENTRIES_TO_CHECK = 2500  # runtime / rate-limit safety cap (Gamma API ~60 requests/min)
-REQUEST_TIMEOUT = 20
 SLEEP_BETWEEN_CALLS = 1.15    # ~52 requests/min, a safe margin under the Gamma API's ~60/min limit
-MAX_RETRIES_ON_429 = 2
-BACKOFF_SECONDS_ON_429 = 8
 # ----------------------------------------------------------------------------
 
 PRICE_LOG_PATH = Path(__file__).resolve().parent.parent / "docs" / "price_log.jsonl"
@@ -79,47 +73,14 @@ def load_price_log() -> list:
 
 
 def fetch_market_resolution(market_id: str):
-    """Fetches a single market's CURRENT state from the Gamma API (reliable,
-    no known issue like /prices-history has). Returns True/False if it has
-    closed with a clean resolution (True=Yes, False=No); returns None if
+    """True/False if the market has closed with a clean resolution; None if
     it's still open, hasn't closed yet, or resolved ambiguously (e.g.
-    50-50/cancelled), meaning "not known yet," not an error."""
-    attempt = 0
-    while True:
-        try:
-            resp = requests.get(f"{GAMMA_BASE}/markets/{market_id}", timeout=REQUEST_TIMEOUT)
-        except requests.RequestException:
-            return None
-        if resp.status_code == 429:
-            if attempt >= MAX_RETRIES_ON_429:
-                return None
-            attempt += 1
-            time.sleep(BACKOFF_SECONDS_ON_429 * attempt)
-            continue
-        try:
-            resp.raise_for_status()
-            market = resp.json()
-        except (requests.RequestException, ValueError):
-            return None
-        break
-
-    if not market.get("closed"):
-        return None
-
-    raw_prices = market.get("outcomePrices")
-    if not raw_prices:
-        return None
-    try:
-        prices = json.loads(raw_prices) if isinstance(raw_prices, str) else raw_prices
-        yes_price = float(prices[0])
-    except (ValueError, TypeError, IndexError, json.JSONDecodeError):
-        return None
-
-    if yes_price >= RESOLUTION_THRESHOLD:
-        return True
-    if yes_price <= (1 - RESOLUTION_THRESHOLD):
-        return False
-    return None  # ambiguous / 50-50 / cancelled, don't use
+    50-50/cancelled), meaning "not known yet," not an error. Thin wrapper
+    around the shared gamma_client.fetch_market_state (closed, outcome_yes)
+    pair, kept as its own function since callers here only care about the
+    resolution, not whether the market has closed."""
+    closed, outcome_yes = gamma_client.fetch_market_state(market_id)
+    return outcome_yes if closed else None
 
 
 def wilson_interval(k: int, n: int, z: float = 1.96):
