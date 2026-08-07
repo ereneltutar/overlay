@@ -439,6 +439,69 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:gtm-dsp-suc-2026-08-09",
+      "tag": "arbitrage",
+      "market_question": "Deportivo San Pedro vs. CSD Suchitepéquez",
+      "slug": "gtm-dsp-suc-2026-08-09",
+      "url": "https://polymarket.com/event/gtm-dsp-suc-2026-08-09",
+      "placed_at": "2026-08-07T09:48:54.044776+00:00",
+      "deadline": "2026-08-09T21:00:00Z",
+      "market_ids": [
+        "3125469",
+        "3125468",
+        "3125467"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.97,
+      "edge_pct_at_placement": 3.09,
+      "stake_usd": 42.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:chi-ygb-tie-2026-08-08-second-half-result",
+      "tag": "arbitrage",
+      "market_question": "Dalian Yingbo FC vs. Liaoning Tieren FC - Second Half Result",
+      "slug": "chi-ygb-tie-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/chi-ygb-tie-2026-08-08-second-half-result",
+      "placed_at": "2026-08-07T09:48:54.044776+00:00",
+      "deadline": "2026-08-08T11:35:00Z",
+      "market_ids": [
+        "3120416",
+        "3120415",
+        "3120414"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.98,
+      "edge_pct_at_placement": 2.04,
+      "stake_usd": 29.83,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:chi-hai-sgr-2026-08-08-second-half-result",
+      "tag": "arbitrage",
+      "market_question": "Qingdao Hainiu FC vs. Shanghai Shenhua FC - Second Half Result",
+      "slug": "chi-hai-sgr-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/chi-hai-sgr-2026-08-08-second-half-result",
+      "placed_at": "2026-08-07T09:48:54.044776+00:00",
+      "deadline": "2026-08-08T11:00:00Z",
+      "market_ids": [
+        "3120362",
+        "3120363",
+        "3120364"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 13.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
