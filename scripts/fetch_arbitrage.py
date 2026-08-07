@@ -22,11 +22,28 @@ window, and looks for opportunities with two separate methods:
    Makers pay nothing; this only applies to buying at the ask, which is
    exactly what constructing this basket requires.
 
-   This script only scans "negRisk" groups. For plain binary Yes/No
-   markets, the real ask price for the NO side doesn't come back as a
-   separate field from the Gamma API, and the CLOB order book endpoint has
-   a known stale-data problem, so binary markets were deliberately left
-   out of v1.
+   ARB only scans "negRisk" groups; plain binary Yes/No markets don't
+   have a viable path to a real, tradeable NO-side ask, so they're
+   deliberately excluded from ARB specifically. This is a structural
+   data-availability gap, not a "not implemented yet" one, confirmed
+   directly (not just inherited from an earlier assumption): the Gamma
+   API exposes exactly one bestAsk/bestBid pair per binary market, for
+   the "Yes" token by convention, no second field for "No." Each
+   market's clobTokenIds does give both outcomes' token IDs, so the
+   CLOB order book endpoint CAN be queried per token, and it does
+   return real order-book data - but across every actively-traded
+   binary market checked live, the secondary (No) token's ask side
+   was consistently a flat 0.99 wall with large size, a non-tradeable
+   placeholder rather than real liquidity, while its BID side tracked
+   (1 - Yes ask) almost exactly. There is currently no endpoint that
+   returns a real, tradeable No-side ask, so "Yes ask + No ask < $1"
+   can't be constructed from real data for a plain binary market.
+
+   CAL and MIS below have never had this restriction: they only need
+   ONE reliable price per market (lastTradePrice/bestAsk, which Gamma
+   does provide correctly for binary markets), so they already scan
+   every market in every event regardless of negRisk, and have since
+   this script's first version.
 
 2) CALIBRATION DRIFT (statistical, NOT riskless):
    scripts/calibration_scan.py (a separate weekly job) reads the

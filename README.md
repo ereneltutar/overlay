@@ -206,10 +206,18 @@ so this catches it before merge instead of live in the Actions tab.
   realistically more useful for catching short-lived opportunities in
   thinner, longer-tail events, or for general market monitoring.
 - Only **negRisk (multi-outcome) event groups** are scanned for ARB.
-  For plain binary Yes/No markets, the Gamma API doesn't return a real
-  ask price for the NO side as a separate field, and the CLOB order
-  book endpoint has a known stale-data problem, so binary markets were
-  deliberately left out. This could be added later.
+  This is a real data-availability gap, not a "not implemented yet"
+  one: Gamma exposes exactly one bestAsk/bestBid pair per binary
+  market (the "Yes" side by convention), and while each market's
+  clobTokenIds does let you query the CLOB order book per outcome
+  token directly, checking it live against active binary markets
+  showed the secondary (No) token's ask side is consistently a flat
+  $0.99 wall with large size, a placeholder rather than real tradeable
+  liquidity, every time. There's currently no reliable way to get a
+  real No-side ask, so a genuine "Yes ask + No ask < $1" check can't
+  be built for plain binary markets. CAL and MIS never had this
+  restriction and already scan every market regardless of type, since
+  they only need one reliable price per market, not a two-sided quote.
 - CAL and MIS use the same historical bucket table as their "fair
   probability" proxy. They don't run an independent forecasting model.
   Small sample sizes are flagged (`low_sample_warning`) but MIS doesn't
