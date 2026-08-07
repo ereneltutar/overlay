@@ -11,9 +11,16 @@ window, and looks for opportunities with two separate methods:
    (for example, "Who wins this race?"), and you buy the "Yes" side of
    every option at its current best ask price, exactly ONE of them
    resolves, so you're guaranteed a $1 payout.
-   If the sum of all those ask prices is under $1, the gap is a
-   theoretical riskless profit (in practice, fees, slippage, thin
-   liquidity, and execution risk can shrink or erase that gap).
+   If the sum of all those ask prices plus taker fees is under $1, the gap
+   is a theoretical riskless profit (in practice, slippage, thin liquidity,
+   and execution risk can still shrink or erase it).
+
+   Taker fees are modeled precisely per Polymarket's published formula
+   (fee = rate * shares * price * (1-price), see estimate_taker_fee()
+   below), reading each market's actual feesEnabled/feeSchedule.rate
+   fields rather than assuming a flat rate or ignoring fees entirely.
+   Makers pay nothing; this only applies to buying at the ask, which is
+   exactly what constructing this basket requires.
 
    This script only scans "negRisk" groups. For plain binary Yes/No
    markets, the real ask price for the NO side doesn't come back as a
@@ -182,6 +189,23 @@ def parse_iso(date_str):
         return None
 
 
+def estimate_taker_fee(market: dict, price: float, shares: float = 1.0) -> float:
+    """Estimates the taker fee for buying `shares` at `price`, using
+    Polymarket's published formula: fee = rate * shares * price * (1 - price).
+    Fees are charged only to the taker (the side crossing the spread, which
+    is exactly what buying at "best ask" is) and only when the market has
+    them enabled; the fee peaks at a 50c price and goes to zero at the
+    extremes (0 or 1). `rate` comes from the market's own feeSchedule, so
+    this varies per market/category rather than assuming one global rate.
+    Returns 0.0 if the market has fees disabled or no fee schedule at all."""
+    if not market.get("feesEnabled"):
+        return 0.0
+    rate = (market.get("feeSchedule") or {}).get("rate")
+    if not rate:
+        return 0.0
+    return rate * shares * price * (1 - price)
+
+
 def find_opportunity(event: dict, now: datetime.datetime):
     """Returns a dict if the event has a negRisk arbitrage opportunity, else None."""
     markets = event.get("markets") or []
@@ -196,6 +220,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
 
     legs = []
     total_ask = 0.0
+    total_fee = 0.0
     for m in neg_risk_markets:
         try:
             ask = float(m["bestAsk"])
@@ -204,18 +229,22 @@ def find_opportunity(event: dict, now: datetime.datetime):
         if ask <= 0 or ask >= 1:
             return None
         liquidity = float(m.get("liquidityNum") or 0)
+        fee = estimate_taker_fee(m, ask)
         total_ask += ask
+        total_fee += fee
         legs.append({
             "outcome": m.get("groupItemTitle") or m.get("question") or "?",
             "ask": round(ask, 4),
             "liquidity": round(liquidity, 2),
             "market_id": m.get("id"),
+            "fee": round(fee, 4),
         })
 
     if total_ask <= 0:
         return None
 
-    edge_pct = (1 - total_ask) / total_ask * 100
+    total_cost = total_ask + total_fee
+    edge_pct = (1 - total_cost) / total_cost * 100
     if edge_pct < MIN_EDGE_PCT:
         return None
 
@@ -233,7 +262,9 @@ def find_opportunity(event: dict, now: datetime.datetime):
         "end_date": event.get("endDate"),
         "days_left": days_left,
         "num_outcomes": len(legs),
-        "total_cost": round(total_ask, 4),
+        "ask_cost": round(total_ask, 4),
+        "total_fee": round(total_fee, 4),
+        "total_cost": round(total_cost, 4),
         "edge_pct": round(edge_pct, 2),
         "min_outcome_liquidity": round(min_liquidity, 2),
         "legs": sorted(legs, key=lambda x: x["ask"]),

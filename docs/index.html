@@ -322,8 +322,9 @@ footer a:hover{ color:var(--ink); }
 
   <p class="disclaimer">
     <span class="tagref arb">ARB</span> rows show cases where buying every mutually exclusive outcome at the
-    current best ask costs less than $1.00 total. That's mathematically riskless, but still
-    <b>not a guaranteed profit</b> (fees, slippage, and thin liquidity eat into it).
+    current best ask, including each market's real taker fee where one applies, still costs less than $1.00
+    total. That's mathematically riskless, but still <b>not a guaranteed profit</b> (slippage and thin
+    liquidity can still eat into it, since prices can move before an order fills).
     <span class="tagref cal">CAL</span> rows work differently: they flag price ranges where past resolved
     markets show a statistically significant gap between price and outcome. <b>No single bet is guaranteed</b>;
     the edge shows up over many repeated positions. <span class="tagref mis">MIS</span> rows list markets with
@@ -355,7 +356,7 @@ const DEMO_ENTRIES = [
     type: 'arbitrage',
     event_title: '[EXAMPLE] Who wins the next F1 race?',
     slug: '#', url: '#',
-    days_left: 6, num_outcomes: 4, total_cost: 0.947, edge_pct: 5.6,
+    days_left: 6, num_outcomes: 4, ask_cost: 0.947, total_fee: 0.008, total_cost: 0.955, edge_pct: 4.7,
     min_outcome_liquidity: 310,
     legs: [
       { outcome: 'Verstappen', ask: 0.520, liquidity: 900 },
@@ -555,7 +556,7 @@ function renderArbEntry(opp, rank, demo){
       ${buildArbBar(opp.legs, opp.total_cost)}
       <div class="legend">${opp.legs.map((leg,i) => `<span class="legend-chip"><i class="legend-dot" style="background:var(--ink-faint);opacity:${i%2===0?.35:.55}"></i>${leg.outcome} <b>$${leg.ask.toFixed(3)}</b></span>`).join('')}</div>
       <div class="entry-foot">
-        <span>cost <span class="cost">$${opp.total_cost.toFixed(3)}</span> / $1.00 payout</span>
+        <span>cost <span class="cost">$${opp.total_cost.toFixed(3)}</span>${opp.total_fee > 0 ? ` (incl. $${opp.total_fee.toFixed(3)} fees)` : ''} / $1.00 payout</span>
         <span class="open">↗ open on polymarket</span>
       </div>
     </a>`;

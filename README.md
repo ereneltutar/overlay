@@ -195,14 +195,16 @@ so this catches it before merge instead of live in the Actions tab.
 ## Important limitations, please read
 
 - **This is a scanning/monitoring tool, not a money printer.** The ARB
-  edge shown is a theoretical gap computed from order-book "ask" prices
-  at scan time. Once you actually try to trade it: liquidity may not
-  cover the full size, the price may move before your order fills
-  (slippage), and Polymarket could introduce fees later. On liquid,
-  popular events, gaps like this usually get closed by bots within
-  seconds to minutes. This tool is realistically more useful for
-  catching short-lived opportunities in thinner, longer-tail events, or
-  for general market monitoring.
+  edge shown is computed from order-book "ask" prices at scan time,
+  including each leg's real taker fee (Polymarket's published formula:
+  fee = rate x shares x price x (1-price), read per-market from the
+  API's own feesEnabled/feeSchedule fields rather than assumed). Once
+  you actually try to trade it: liquidity may not cover the full size,
+  and the price may move before your order fills (slippage) — that part
+  is still not modeled. On liquid, popular events, gaps like this
+  usually get closed by bots within seconds to minutes. This tool is
+  realistically more useful for catching short-lived opportunities in
+  thinner, longer-tail events, or for general market monitoring.
 - Only **negRisk (multi-outcome) event groups** are scanned for ARB.
   For plain binary Yes/No markets, the Gamma API doesn't return a real
   ask price for the NO side as a separate field, and the CLOB order

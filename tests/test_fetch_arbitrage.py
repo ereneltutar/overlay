@@ -5,15 +5,20 @@ import fetch_arbitrage as fa
 NOW = datetime.datetime(2026, 1, 1, tzinfo=datetime.timezone.utc)
 
 
-def leg(ask, negrisk=True, accepting=True, liquidity=1000, market_id="m1", title="A"):
-    return {
+def leg(ask, negrisk=True, accepting=True, liquidity=1000, market_id="m1", title="A",
+        fees_enabled=False, fee_rate=None):
+    m = {
         "negRisk": negrisk,
         "acceptingOrders": accepting,
         "bestAsk": ask,
         "liquidityNum": liquidity,
         "id": market_id,
         "groupItemTitle": title,
+        "feesEnabled": fees_enabled,
     }
+    if fee_rate is not None:
+        m["feeSchedule"] = {"rate": fee_rate}
+    return m
 
 
 def make_event(markets, end_date="2026-02-01T00:00:00Z", slug="evt", title="Event"):
@@ -122,6 +127,83 @@ def test_find_opportunity_falls_back_to_ticker_then_unknown():
     opp = fa.find_opportunity(event, NOW)
     assert opp["event_title"] == "TICK"
     assert opp["url"] is None
+
+
+# --- estimate_taker_fee -----------------------------------------------
+
+def test_estimate_taker_fee_zero_when_fees_disabled():
+    market = {"feesEnabled": False, "feeSchedule": {"rate": 0.04}}
+    assert fa.estimate_taker_fee(market, 0.5) == 0.0
+
+
+def test_estimate_taker_fee_zero_when_no_fee_schedule():
+    market = {"feesEnabled": True}
+    assert fa.estimate_taker_fee(market, 0.5) == 0.0
+
+
+def test_estimate_taker_fee_matches_polymarket_formula():
+    # fee = rate * shares * price * (1 - price)
+    market = {"feesEnabled": True, "feeSchedule": {"rate": 0.04}}
+    assert fa.estimate_taker_fee(market, 0.5) == 0.04 * 1 * 0.5 * 0.5
+    assert fa.estimate_taker_fee(market, 0.5, shares=10) == 0.04 * 10 * 0.5 * 0.5
+
+
+def test_estimate_taker_fee_peaks_at_50_cents():
+    market = {"feesEnabled": True, "feeSchedule": {"rate": 0.04}}
+    fee_50 = fa.estimate_taker_fee(market, 0.50)
+    fee_20 = fa.estimate_taker_fee(market, 0.20)
+    fee_80 = fa.estimate_taker_fee(market, 0.80)
+    assert fee_50 > fee_20
+    assert fee_50 > fee_80
+    assert round(fee_20, 10) == round(fee_80, 10)  # symmetric around 0.5
+
+
+def test_estimate_taker_fee_zero_at_price_extremes():
+    market = {"feesEnabled": True, "feeSchedule": {"rate": 0.04}}
+    assert fa.estimate_taker_fee(market, 0.0) == 0.0
+    assert fa.estimate_taker_fee(market, 1.0) == 0.0
+
+
+# --- find_opportunity fee-awareness -------------------------------------
+
+def test_find_opportunity_total_cost_includes_fees_when_enabled():
+    markets = [
+        leg(0.5, market_id="a", liquidity=200, fees_enabled=True, fee_rate=0.04),
+        leg(0.45, market_id="b", liquidity=300, fees_enabled=True, fee_rate=0.04),
+    ]
+    event = make_event(markets)
+    opp = fa.find_opportunity(event, NOW)
+    assert opp is not None
+    expected_fee = (0.04*0.5*0.5) + (0.04*0.45*0.55)
+    assert opp["ask_cost"] == 0.95
+    assert opp["total_fee"] == round(expected_fee, 4)
+    assert opp["total_cost"] == round(0.95 + expected_fee, 4)
+    # edge_pct should be computed against the fee-inclusive cost, not ask_cost alone
+    assert opp["edge_pct"] == round((1 - opp["total_cost"]) / opp["total_cost"] * 100, 2)
+
+
+def test_find_opportunity_fees_can_erase_an_edge_that_looked_valid_ignoring_them():
+    # ask-only edge is (1-0.995)/0.995*100 = 0.503%, just above MIN_EDGE_PCT=0.5,
+    # but a real fee on both legs should push the fee-inclusive edge below the floor
+    markets = [
+        leg(0.50, market_id="a", liquidity=200, fees_enabled=True, fee_rate=0.04),
+        leg(0.495, market_id="b", liquidity=300, fees_enabled=True, fee_rate=0.04),
+    ]
+    event = make_event(markets)
+    assert fa.find_opportunity(event, NOW) is None
+
+
+def test_find_opportunity_mixed_fee_status_per_leg():
+    # one leg has fees enabled, the other doesn't - only the enabled leg should
+    # contribute a nonzero fee, confirming fees are evaluated per-market, not
+    # assumed uniform across an event
+    markets = [
+        leg(0.5, market_id="a", liquidity=200, fees_enabled=True, fee_rate=0.04),
+        leg(0.45, market_id="b", liquidity=300, fees_enabled=False),
+    ]
+    event = make_event(markets)
+    opp = fa.find_opportunity(event, NOW)
+    assert opp["total_fee"] == round(0.04*0.5*0.5, 4)
 
 
 # --- find_calibration_signal -------------------------------------------
