@@ -31,11 +31,4 @@ jobs:
           echo "id_gt=$last_id -> HTTP $code, items=$n2"
           echo "--- try filtering by tag/category to partition below the ceiling ---"
           curl -s "$BASE/tags?limit=20" -o /tmp/tags.json
-          python3 -c "
-import json
-try:
-    d = json.load(open('/tmp/tags.json'))
-    print('tags sample:', [t.get('label') or t.get('slug') for t in d[:20]])
-except Exception as e:
-    print('tags fetch failed:', e)
-"
+          python3 -c "import json; d=json.load(open('/tmp/tags.json')); print('tags sample:', [t.get('label') or t.get('slug') for t in d[:20]])" 2>/dev/null || echo "tags fetch failed"
