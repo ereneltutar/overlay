@@ -174,12 +174,19 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
             "recommended_side": None,
             "entry_cost": opp["total_cost"],
             "edge_pct": opp["edge_pct"],
+            # ARB has no single "win probability" in the same sense as
+            # CAL/MIS (it's structurally close to guaranteed by construction,
+            # not a probabilistic bet), so it's left out of the predicted-vs-
+            # realized calibration check rather than given a fake number.
+            "predicted_win_prob": None,
         })
 
     for sig in results.get("calibration_signals", []):
         if not sig.get("market_id") or not sig.get("slug") or sig.get("days_left") is None:
             continue
         deadline = now + datetime.timedelta(days=sig["days_left"])
+        actual_rate = sig["bucket_historical_rate"]
+        predicted_win_prob = actual_rate if sig["recommended_side"] == "YES" else 1 - actual_rate
         candidates.append({
             "bet_id": f"calibration:{sig['slug']}:{sig['market_id']}",
             "tag": "calibration",
@@ -191,6 +198,7 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
             "recommended_side": sig["recommended_side"],
             "entry_cost": sig["implied_cost"],
             "edge_pct": sig["edge_pct"],
+            "predicted_win_prob": round(predicted_win_prob, 4),
         })
 
     for sig in results.get("mispricing_signals", []):
@@ -201,6 +209,8 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
         if entry_cost <= 0:
             continue
         deadline = now + datetime.timedelta(days=sig["days_left"])
+        fair_prob = sig["fair_probability"]
+        predicted_win_prob = fair_prob if sig["recommended_side"] == "YES" else 1 - fair_prob
         candidates.append({
             "bet_id": f"mispricing:{sig['slug']}:{sig['market_id']}",
             "tag": "mispricing",
@@ -212,6 +222,7 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
             "recommended_side": sig["recommended_side"],
             "entry_cost": round(entry_cost, 4),
             "edge_pct": sig["edge_pct"],
+            "predicted_win_prob": round(predicted_win_prob, 4),
         })
 
     return candidates
@@ -243,6 +254,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime):
             "recommended_side": c["recommended_side"],
             "entry_cost": c["entry_cost"],
             "edge_pct_at_placement": c["edge_pct"],
+            "predicted_win_prob": c["predicted_win_prob"],
             "stake_usd": stake,
             "status": "open",
             "resolved_at": None,

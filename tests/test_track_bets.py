@@ -102,22 +102,45 @@ def test_build_candidates_calibration_valid():
     results = {"calibration_signals": [{
         "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
         "url": "http://x", "recommended_side": "YES", "implied_cost": 0.2, "edge_pct": 8,
+        "bucket_historical_rate": 0.35,
     }]}
     candidates = tb.build_candidates(results, NOW)
     assert len(candidates) == 1
     assert candidates[0]["bet_id"] == "calibration:s:m1"
     assert candidates[0]["deadline"] == (NOW + datetime.timedelta(days=5)).isoformat()
+    assert candidates[0]["predicted_win_prob"] == 0.35
+
+
+def test_build_candidates_calibration_predicted_win_prob_flips_for_no_side():
+    results = {"calibration_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+        "recommended_side": "NO", "implied_cost": 0.8, "edge_pct": 8,
+        "bucket_historical_rate": 0.35,
+    }]}
+    candidates = tb.build_candidates(results, NOW)
+    assert candidates[0]["predicted_win_prob"] == 0.65  # 1 - 0.35
+
+
+def test_build_candidates_arbitrage_has_no_predicted_win_prob():
+    results = {"opportunities": [{
+        "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
+        "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
+    }]}
+    candidates = tb.build_candidates(results, NOW)
+    assert candidates[0]["predicted_win_prob"] is None
 
 
 def test_build_candidates_mispricing_entry_cost_flips_with_side():
     base = {"market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
-            "implied_probability": 0.3, "edge_pct": 20}
+            "implied_probability": 0.3, "edge_pct": 20, "fair_probability": 0.7}
     yes_sig = dict(base, recommended_side="YES")
     no_sig = dict(base, recommended_side="NO")
     yes_c = tb.build_candidates({"mispricing_signals": [yes_sig]}, NOW)[0]
     no_c = tb.build_candidates({"mispricing_signals": [no_sig]}, NOW)[0]
     assert yes_c["entry_cost"] == 0.3
     assert no_c["entry_cost"] == 0.7
+    assert yes_c["predicted_win_prob"] == 0.7    # fair_probability, side YES
+    assert no_c["predicted_win_prob"] == 0.3     # 1 - fair_probability, side NO
 
 
 # --- place_new_bets ------------------------------------------------------
@@ -157,6 +180,17 @@ def test_place_new_bets_places_and_updates_log():
     assert skipped == 0
     assert log["bets"][0]["status"] == "open"
     assert log["bets"][0]["stake_usd"] > 0
+
+
+def test_place_new_bets_carries_predicted_win_prob_into_stored_bet():
+    log = fresh_log()
+    results = {"calibration_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+        "recommended_side": "YES", "implied_cost": 0.2, "edge_pct": 8,
+        "bucket_historical_rate": 0.35,
+    }]}
+    tb.place_new_bets(log, results, NOW)
+    assert log["bets"][0]["predicted_win_prob"] == 0.35
 
 
 # --- resolve_open_bets (network mocked) ------------------------------------
