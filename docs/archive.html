@@ -256,6 +256,7 @@ footer a:hover{ color:var(--ink); }
     <div class="hero-context">
       <span>return <b id="returnPct">—</b></span>
       <span>headline win rate (CAL+MIS) <b id="headlineWinRate">—</b></span>
+      <span>max drawdown <b id="maxDrawdown">—</b></span>
     </div>
   </div>
 
@@ -345,6 +346,30 @@ function fmtSignedUsd(n){
   return (n > 0 ? '+' : '') + fmtUsd(n);
 }
 function fmtInt(n){ return (n || 0).toLocaleString('en-US'); }
+
+function wilsonInterval(k, n, z){
+  z = z || 1.96;
+  if(n === 0) return [0, 0];
+  const pHat = k / n;
+  const denom = 1 + (z*z) / n;
+  const center = (pHat + (z*z) / (2*n)) / denom;
+  const margin = (z / denom) * Math.sqrt((pHat * (1 - pHat) / n) + (z*z) / (4*n*n));
+  return [Math.max(0, center - margin), Math.min(1, center + margin)];
+}
+
+function computeMaxDrawdown(history){
+  if(!history || history.length < 2) return 0;
+  let peak = history[0].bankroll;
+  let maxDrawdownPct = 0;
+  for(const h of history){
+    if(h.bankroll > peak) peak = h.bankroll;
+    if(peak > 0){
+      const drawdownPct = (peak - h.bankroll) / peak * 100;
+      if(drawdownPct > maxDrawdownPct) maxDrawdownPct = drawdownPct;
+    }
+  }
+  return maxDrawdownPct;
+}
 
 const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', mispricing: 'MIS' };
 const STATUS_LABELS = { open: 'OPEN', won: 'WON', lost: 'LOST', void: 'VOID' };
@@ -495,7 +520,17 @@ async function loadBetLog(){
     const headline = allBets.filter(b => (b.tag === 'calibration' || b.tag === 'mispricing') && (b.status === 'won' || b.status === 'lost'));
     const headlineWon = headline.filter(b => b.status === 'won').length;
     const headlineEl = document.getElementById('headlineWinRate');
-    headlineEl.textContent = headline.length > 0 ? `${((headlineWon/headline.length)*100).toFixed(0)}% (n=${headline.length})` : 'not enough data yet';
+    if(headline.length > 0){
+      const [ciLow, ciHigh] = wilsonInterval(headlineWon, headline.length);
+      const rate = (headlineWon / headline.length) * 100;
+      headlineEl.textContent = `${rate.toFixed(0)}% [${(ciLow*100).toFixed(0)}–${(ciHigh*100).toFixed(0)}%] (n=${headline.length})`;
+    } else {
+      headlineEl.textContent = 'not enough data yet';
+    }
+
+    const drawdownEl = document.getElementById('maxDrawdown');
+    const maxDrawdownPct = computeMaxDrawdown(data.bankroll_history || []);
+    drawdownEl.textContent = maxDrawdownPct > 0 ? `-${maxDrawdownPct.toFixed(1)}%` : '—';
 
     const stats = computeStats(allBets);
     renderStatCard('arbitrage', stats.arbitrage);
