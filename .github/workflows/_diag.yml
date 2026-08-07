@@ -7,28 +7,23 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe Gamma API pagination
+      - name: Probe events/keyset endpoint
         run: |
           BASE="https://gamma-api.polymarket.com"
-          echo "--- headers on a minimal request ---"
-          curl -sI "$BASE/events?active=true&closed=false&limit=1"
-          echo "--- binary search the real offset ceiling ---"
-          for off in 1900 2000 2050 2080 2090 2095 2099 2100 2101 2105 2150 2300 2500 3000; do
-            code=$(curl -s -o /tmp/r.json -w "%{http_code}" "$BASE/events?active=true&closed=false&limit=100&offset=$off")
-            n=$(python3 -c "import json;d=json.load(open('/tmp/r.json'));print(len(d) if isinstance(d,list) else 'n/a')" 2>/dev/null)
+          echo "--- raw keyset response shape (first 800 chars) ---"
+          curl -s "$BASE/events/keyset?active=true&closed=false&limit=3" | head -c 800
+          echo ""
+          echo "--- keyset with a large limit, count items and inspect shape ---"
+          curl -s "$BASE/events/keyset?active=true&closed=false&limit=500" -o /tmp/k1.json
+          python3 -c "import json; d=json.load(open('/tmp/k1.json')); print('type:', type(d).__name__); print('keys/len:', (list(d.keys()) if isinstance(d,dict) else len(d)))"
+          echo "--- try common cursor param names to page past item 500 ---"
+          for param in cursor next_cursor after offset_id last_id starting_after; do
+            code=$(curl -s -o /tmp/k2.json -w "%{http_code}" "$BASE/events/keyset?active=true&closed=false&limit=100&$param=999999")
+            echo "param=$param -> HTTP $code"
+          done
+          echo "--- does keyset accept a plain numeric offset like the old endpoint, up to a bigger number? ---"
+          for off in 2100 5000 10000 20000; do
+            code=$(curl -s -o /tmp/k3.json -w "%{http_code}" "$BASE/events/keyset?active=true&closed=false&limit=10&offset=$off")
+            n=$(python3 -c "import json; d=json.load(open('/tmp/k3.json')); print(len(d) if isinstance(d,list) else d)" 2>/dev/null)
             echo "offset=$off -> HTTP $code, items=$n"
           done
-          echo "--- does an order param change what comes back? ---"
-          for order in id -id createdAt -createdAt startDate -startDate; do
-            first=$(curl -s "$BASE/events?active=true&closed=false&limit=1&order=$order" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d[0].get('id') if d else 'empty')" 2>/dev/null)
-            echo "order=$order -> first id=$first"
-          done
-          echo "--- try id-cursor style pagination instead of offset ---"
-          last_id=$(curl -s "$BASE/events?active=true&closed=false&limit=1&offset=2099" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d[0].get('id') if d else '')" 2>/dev/null)
-          echo "last id before ceiling: $last_id"
-          code=$(curl -s -o /tmp/r2.json -w "%{http_code}" "$BASE/events?active=true&closed=false&limit=100&id_gt=$last_id")
-          n2=$(python3 -c "import json;d=json.load(open('/tmp/r2.json'));print(len(d) if isinstance(d,list) else d)" 2>/dev/null)
-          echo "id_gt=$last_id -> HTTP $code, items=$n2"
-          echo "--- try filtering by tag/category to partition below the ceiling ---"
-          curl -s "$BASE/tags?limit=20" -o /tmp/tags.json
-          python3 -c "import json; d=json.load(open('/tmp/tags.json')); print('tags sample:', [t.get('label') or t.get('slug') for t in d[:20]])" 2>/dev/null || echo "tags fetch failed"
