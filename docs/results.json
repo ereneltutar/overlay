@@ -1,9 +1,71 @@
 {
-  "generated_at": "2026-08-07T09:19:53.006506+00:00",
+  "generated_at": "2026-08-07T09:25:36.022018+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 18091,
+  "scanned_events": 18097,
   "opportunities": [
+    {
+      "event_title": "St Mirren FC vs. St Johnstone FC - Second Half Result",
+      "slug": "scop-stm-joh-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/scop-stm-joh-2026-08-08-second-half-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.98,
+      "edge_pct": 2.04,
+      "min_outcome_liquidity": 2017.28,
+      "legs": [
+        {
+          "outcome": "St Johnstone FC",
+          "ask": 0.28,
+          "liquidity": 2017.28,
+          "market_id": "3110711"
+        },
+        {
+          "outcome": "St Mirren FC",
+          "ask": 0.34,
+          "liquidity": 2099.54,
+          "market_id": "3110707"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.36,
+          "liquidity": 2055.36,
+          "market_id": "3110708"
+        }
+      ]
+    },
+    {
+      "event_title": "Colchester United FC vs. Southampton FC - Halftime Result",
+      "slug": "efl-col-sot-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-col-sot-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T16:30:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.98,
+      "edge_pct": 2.04,
+      "min_outcome_liquidity": 4114.2,
+      "legs": [
+        {
+          "outcome": "Colchester United FC",
+          "ask": 0.1,
+          "liquidity": 4975.38,
+          "market_id": "3147056"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.33,
+          "liquidity": 4114.2,
+          "market_id": "3147057"
+        },
+        {
+          "outcome": "Southampton FC",
+          "ask": 0.55,
+          "liquidity": 4183.02,
+          "market_id": "3147058"
+        }
+      ]
+    },
     {
       "event_title": "Altrincham FC vs. Southend United FC - Halftime Result",
       "slug": "enl-alt-sou-2026-08-08-halftime-result",
@@ -13,7 +75,7 @@
       "num_outcomes": 3,
       "total_cost": 0.98,
       "edge_pct": 2.04,
-      "min_outcome_liquidity": 1832.92,
+      "min_outcome_liquidity": 2044.25,
       "legs": [
         {
           "outcome": "Altrincham FC",
@@ -30,7 +92,7 @@
         {
           "outcome": "Southend United FC",
           "ask": 0.41,
-          "liquidity": 1832.92,
+          "liquidity": 2076.44,
           "market_id": "3153062"
         }
       ]
@@ -98,37 +160,6 @@
       ]
     },
     {
-      "event_title": "St Mirren FC vs. St Johnstone FC - Second Half Result",
-      "slug": "scop-stm-joh-2026-08-08-second-half-result",
-      "url": "https://polymarket.com/event/scop-stm-joh-2026-08-08-second-half-result",
-      "end_date": "2026-08-08T14:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 1991.67,
-      "legs": [
-        {
-          "outcome": "St Johnstone FC",
-          "ask": 0.29,
-          "liquidity": 1991.67,
-          "market_id": "3110711"
-        },
-        {
-          "outcome": "St Mirren FC",
-          "ask": 0.34,
-          "liquidity": 2099.54,
-          "market_id": "3110707"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.36,
-          "liquidity": 2055.36,
-          "market_id": "3110708"
-        }
-      ]
-    },
-    {
       "event_title": "1. FC Heidenheim 1846 vs. VfL Osnabrück - Halftime Result",
       "slug": "bl2-hei-vfl-2026-08-08-halftime-result",
       "url": "https://polymarket.com/event/bl2-hei-vfl-2026-08-08-halftime-result",
@@ -168,24 +199,24 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 2257.44,
+      "min_outcome_liquidity": 2209.9,
       "legs": [
         {
           "outcome": "SpVgg Greuther Fürth",
           "ask": 0.21,
-          "liquidity": 2257.44,
+          "liquidity": 2209.9,
           "market_id": "3146200"
         },
         {
           "outcome": "Draw",
           "ask": 0.38,
-          "liquidity": 2335.99,
+          "liquidity": 2597.49,
           "market_id": "3146199"
         },
         {
           "outcome": "FC St. Pauli 1910",
           "ask": 0.4,
-          "liquidity": 2284.66,
+          "liquidity": 2535.32,
           "market_id": "3146198"
         }
       ]
@@ -222,6 +253,37 @@
       ]
     },
     {
+      "event_title": "Norwich City FC vs. Milton Keynes Dons FC - Halftime Result",
+      "slug": "efl-nor-mkd-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-nor-mkd-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 3491.45,
+      "legs": [
+        {
+          "outcome": "Milton Keynes Dons FC",
+          "ask": 0.15,
+          "liquidity": 3632.11,
+          "market_id": "3146324"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.37,
+          "liquidity": 3491.45,
+          "market_id": "3146323"
+        },
+        {
+          "outcome": "Norwich City FC",
+          "ask": 0.47,
+          "liquidity": 3639.29,
+          "market_id": "3146322"
+        }
+      ]
+    },
+    {
       "event_title": "Stoke City FC vs. Oldham Athletic AFC - Halftime Result",
       "slug": "efl-sto-old-2026-08-08-halftime-result",
       "url": "https://polymarket.com/event/efl-sto-old-2026-08-08-halftime-result",
@@ -230,24 +292,24 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 4499.53,
+      "min_outcome_liquidity": 4033.84,
       "legs": [
         {
           "outcome": "Oldham Athletic AFC",
           "ask": 0.13,
-          "liquidity": 4499.53,
+          "liquidity": 4033.84,
           "market_id": "3146428"
         },
         {
           "outcome": "Draw",
           "ask": 0.34,
-          "liquidity": 4587.51,
+          "liquidity": 4052.5,
           "market_id": "3146427"
         },
         {
           "outcome": "Stoke City FC",
           "ask": 0.52,
-          "liquidity": 4697.38,
+          "liquidity": 4127.98,
           "market_id": "3146426"
         }
       ]
@@ -261,56 +323,56 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 4695.99,
+      "min_outcome_liquidity": 4311.04,
       "legs": [
         {
           "outcome": "Doncaster Rovers FC",
           "ask": 0.18,
-          "liquidity": 4695.99,
+          "liquidity": 4358.01,
           "market_id": "3146873"
         },
         {
           "outcome": "Draw",
           "ask": 0.39,
-          "liquidity": 4922.88,
+          "liquidity": 4725.12,
           "market_id": "3146872"
         },
         {
           "outcome": "Stockport County FC",
           "ask": 0.42,
-          "liquidity": 4747.37,
+          "liquidity": 4311.04,
           "market_id": "3146871"
         }
       ]
     },
     {
-      "event_title": "Colchester United FC vs. Southampton FC - Halftime Result",
-      "slug": "efl-col-sot-2026-08-08-halftime-result",
-      "url": "https://polymarket.com/event/efl-col-sot-2026-08-08-halftime-result",
-      "end_date": "2026-08-08T16:30:00Z",
+      "event_title": "Hornchurch FC vs. Kidderminster Harriers FC - Halftime Result",
+      "slug": "enl-hor-kid-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/enl-hor-kid-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T14:00:00Z",
       "days_left": 1,
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 4860.61,
+      "min_outcome_liquidity": 1765.26,
       "legs": [
         {
-          "outcome": "Colchester United FC",
-          "ask": 0.11,
-          "liquidity": 5647.95,
-          "market_id": "3147056"
+          "outcome": "Hornchurch FC",
+          "ask": 0.28,
+          "liquidity": 2010.82,
+          "market_id": "3153008"
+        },
+        {
+          "outcome": "Kidderminster Harriers FC",
+          "ask": 0.31,
+          "liquidity": 1765.26,
+          "market_id": "3153010"
         },
         {
           "outcome": "Draw",
-          "ask": 0.33,
-          "liquidity": 4895.14,
-          "market_id": "3147057"
-        },
-        {
-          "outcome": "Southampton FC",
-          "ask": 0.55,
-          "liquidity": 4860.61,
-          "market_id": "3147058"
+          "ask": 0.4,
+          "liquidity": 1981.3,
+          "market_id": "3153009"
         }
       ]
     },
@@ -323,24 +385,24 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 4507.08,
+      "min_outcome_liquidity": 4075.33,
       "legs": [
         {
           "outcome": "Rochdale AFC",
           "ask": 0.14,
-          "liquidity": 4645.54,
+          "liquidity": 4180.05,
           "market_id": "3279641"
         },
         {
           "outcome": "Draw",
           "ask": 0.4,
-          "liquidity": 4805.67,
+          "liquidity": 4131.37,
           "market_id": "3279640"
         },
         {
           "outcome": "Bradford City AFC",
           "ask": 0.45,
-          "liquidity": 4507.08,
+          "liquidity": 4075.33,
           "market_id": "3279638"
         }
       ]
@@ -385,12 +447,12 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 10597.27,
+      "min_outcome_liquidity": 10531.09,
       "legs": [
         {
           "outcome": "Racing Club",
           "ask": 0.25,
-          "liquidity": 10597.27,
+          "liquidity": 10531.09,
           "market_id": "3314297"
         },
         {
@@ -402,7 +464,7 @@
         {
           "outcome": "AA Argentinos Juniors",
           "ask": 0.42,
-          "liquidity": 11151.32,
+          "liquidity": 11396.32,
           "market_id": "3314295"
         }
       ]
@@ -447,24 +509,24 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 5384.37,
+      "min_outcome_liquidity": 5960.1,
       "legs": [
         {
           "outcome": "Draw (Tottenham Hotspur vs. Getafe CF)",
           "ask": 0.23,
-          "liquidity": 13518.69,
+          "liquidity": 13516.38,
           "market_id": "3336218"
         },
         {
           "outcome": "Getafe CF",
           "ask": 0.23,
-          "liquidity": 5384.37,
+          "liquidity": 7007.3,
           "market_id": "3336219"
         },
         {
           "outcome": "Tottenham Hotspur",
           "ask": 0.53,
-          "liquidity": 5673.07,
+          "liquidity": 5960.1,
           "market_id": "3336217"
         }
       ]
@@ -478,7 +540,7 @@
       "num_outcomes": 3,
       "total_cost": 0.99,
       "edge_pct": 1.01,
-      "min_outcome_liquidity": 1002.39,
+      "min_outcome_liquidity": 1001.5,
       "legs": [
         {
           "outcome": "Libertad Loja",
@@ -489,14 +551,93 @@
         {
           "outcome": "CD Universidad Catolica del Ecuador",
           "ask": 0.38,
-          "liquidity": 1002.39,
+          "liquidity": 1001.5,
           "market_id": "3339756"
         },
         {
           "outcome": "Draw",
           "ask": 0.43,
-          "liquidity": 1035.59,
+          "liquidity": 1034.85,
           "market_id": "3339753"
+        }
+      ]
+    },
+    {
+      "event_title": "Highest temperature in Istanbul on August 7?",
+      "slug": "highest-temperature-in-istanbul-on-august-7-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-istanbul-on-august-7-2026",
+      "end_date": "2026-08-07T12:00:00Z",
+      "days_left": 0,
+      "num_outcomes": 11,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 299.27,
+      "legs": [
+        {
+          "outcome": "24°C or below",
+          "ask": 0.001,
+          "liquidity": 10594.36,
+          "market_id": "3352555"
+        },
+        {
+          "outcome": "25°C",
+          "ask": 0.001,
+          "liquidity": 10613.28,
+          "market_id": "3352556"
+        },
+        {
+          "outcome": "26°C",
+          "ask": 0.001,
+          "liquidity": 10466.9,
+          "market_id": "3352557"
+        },
+        {
+          "outcome": "32°C",
+          "ask": 0.001,
+          "liquidity": 1806.81,
+          "market_id": "3352563"
+        },
+        {
+          "outcome": "33°C",
+          "ask": 0.001,
+          "liquidity": 4495.56,
+          "market_id": "3352564"
+        },
+        {
+          "outcome": "34°C or higher",
+          "ask": 0.001,
+          "liquidity": 3417.83,
+          "market_id": "3352565"
+        },
+        {
+          "outcome": "31°C",
+          "ask": 0.005,
+          "liquidity": 1403.74,
+          "market_id": "3352562"
+        },
+        {
+          "outcome": "27°C",
+          "ask": 0.009,
+          "liquidity": 1327.74,
+          "market_id": "3352558"
+        },
+        {
+          "outcome": "30°C",
+          "ask": 0.02,
+          "liquidity": 468.93,
+          "market_id": "3352561"
+        },
+        {
+          "outcome": "29°C",
+          "ask": 0.3,
+          "liquidity": 1131.39,
+          "market_id": "3352560"
+        },
+        {
+          "outcome": "28°C",
+          "ask": 0.65,
+          "liquidity": 299.27,
+          "market_id": "3352559"
         }
       ]
     },
@@ -509,24 +650,24 @@
       "num_outcomes": 3,
       "total_cost": 0.994,
       "edge_pct": 0.6,
-      "min_outcome_liquidity": 15400.23,
+      "min_outcome_liquidity": 16129.38,
       "legs": [
         {
           "outcome": "Académico de Viseu FC",
           "ask": 0.034,
-          "liquidity": 17423.57,
+          "liquidity": 18443.42,
           "market_id": "3315090"
         },
         {
           "outcome": "Draw (Sport Lisboa e Benfica vs. Académico de Viseu FC)",
           "ask": 0.09,
-          "liquidity": 15400.23,
+          "liquidity": 17082.56,
           "market_id": "3315089"
         },
         {
           "outcome": "Sport Lisboa e Benfica",
           "ask": 0.87,
-          "liquidity": 15944.22,
+          "liquidity": 16129.38,
           "market_id": "3315088"
         }
       ]

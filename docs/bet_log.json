@@ -368,6 +368,77 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:efl-nor-mkd-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Norwich City FC vs. Milton Keynes Dons FC - Halftime Result",
+      "slug": "efl-nor-mkd-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-nor-mkd-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:26:56.633982+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3146324",
+        "3146323",
+        "3146322"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 17.61,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:enl-hor-kid-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Hornchurch FC vs. Kidderminster Harriers FC - Halftime Result",
+      "slug": "enl-hor-kid-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/enl-hor-kid-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:26:56.633982+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3153008",
+        "3153010",
+        "3153009"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 17.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:highest-temperature-in-istanbul-on-august-7-2026",
+      "tag": "arbitrage",
+      "market_question": "Highest temperature in Istanbul on August 7?",
+      "slug": "highest-temperature-in-istanbul-on-august-7-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-istanbul-on-august-7-2026",
+      "placed_at": "2026-08-07T09:26:56.633982+00:00",
+      "deadline": "2026-08-07T12:00:00Z",
+      "market_ids": [
+        "3352555",
+        "3352556",
+        "3352557",
+        "3352563",
+        "3352564",
+        "3352565",
+        "3352562",
+        "3352558",
+        "3352561",
+        "3352560",
+        "3352559"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 16.56,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
