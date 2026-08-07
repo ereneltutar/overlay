@@ -11,5 +11,363 @@
       "bankroll": 1000.0
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "bet_id": "arbitrage:enl-alt-sou-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Altrincham FC vs. Southend United FC - Halftime Result",
+      "slug": "enl-alt-sou-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/enl-alt-sou-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3153060",
+        "3153061",
+        "3153062"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.98,
+      "edge_pct_at_placement": 2.04,
+      "stake_usd": 61.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:nwsl-pri-rac-2026-08-07-second-half-result",
+      "tag": "arbitrage",
+      "market_question": "Orlando Pride vs. Racing Louisville FC - Second Half Result",
+      "slug": "nwsl-pri-rac-2026-08-07-second-half-result",
+      "url": "https://polymarket.com/event/nwsl-pri-rac-2026-08-07-second-half-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-07T23:00:00Z",
+      "market_ids": [
+        "3100732",
+        "3100731",
+        "3100730"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 28.45,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:por-csm-cas-2026-08-08-second-half-result",
+      "tag": "arbitrage",
+      "market_question": "CS Marítimo vs. Casa Pia AC - Second Half Result",
+      "slug": "por-csm-cas-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/por-csm-cas-2026-08-08-second-half-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:30:00Z",
+      "market_ids": [
+        "3103195",
+        "3103193",
+        "3103194"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 27.58,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:scop-stm-joh-2026-08-08-second-half-result",
+      "tag": "arbitrage",
+      "market_question": "St Mirren FC vs. St Johnstone FC - Second Half Result",
+      "slug": "scop-stm-joh-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/scop-stm-joh-2026-08-08-second-half-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3110711",
+        "3110707",
+        "3110708"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 26.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:bl2-hei-vfl-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "1. FC Heidenheim 1846 vs. VfL Osnabrück - Halftime Result",
+      "slug": "bl2-hei-vfl-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/bl2-hei-vfl-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T11:00:00Z",
+      "market_ids": [
+        "3146043",
+        "3146042",
+        "3146041"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 25.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:bl2-stp-fur-2026-08-09-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "FC St. Pauli 1910 vs. SpVgg Greuther Fürth - Halftime Result",
+      "slug": "bl2-stp-fur-2026-08-09-halftime-result",
+      "url": "https://polymarket.com/event/bl2-stp-fur-2026-08-09-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-09T11:30:00Z",
+      "market_ids": [
+        "3146200",
+        "3146199",
+        "3146198"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 25.15,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:bl2-fce-h96-2026-08-09-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "FC Energie Cottbus vs. Hannover 96 - Halftime Result",
+      "slug": "bl2-fce-h96-2026-08-09-halftime-result",
+      "url": "https://polymarket.com/event/bl2-fce-h96-2026-08-09-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-09T11:30:00Z",
+      "market_ids": [
+        "3146242",
+        "3146244",
+        "3146243"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 24.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:efl-sto-old-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Stoke City FC vs. Oldham Athletic AFC - Halftime Result",
+      "slug": "efl-sto-old-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-sto-old-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3146428",
+        "3146427",
+        "3146426"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 23.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:efl-sto1-don-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Stockport County FC vs. Doncaster Rovers FC - Halftime Result",
+      "slug": "efl-sto1-don-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-sto1-don-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3146873",
+        "3146872",
+        "3146871"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 22.93,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:efl-col-sot-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Colchester United FC vs. Southampton FC - Halftime Result",
+      "slug": "efl-col-sot-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-col-sot-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T16:30:00Z",
+      "market_ids": [
+        "3147056",
+        "3147057",
+        "3147058"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 22.24,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:efl-bra-roc-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Bradford City AFC vs. Rochdale AFC - Halftime Result",
+      "slug": "efl-bra-roc-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-bra-roc-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3279641",
+        "3279640",
+        "3279638"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 21.57,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:uslc-lc-san-2026-08-08-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Louisville City FC vs. San Antonio FC - Halftime Result",
+      "slug": "uslc-lc-san-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/uslc-lc-san-2026-08-08-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-09T00:00:00Z",
+      "market_ids": [
+        "3306971",
+        "3306969",
+        "3306968"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 20.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:arg-aaj-rac-2026-08-09",
+      "tag": "arbitrage",
+      "market_question": "AA Argentinos Juniors vs. Racing Club",
+      "slug": "arg-aaj-rac-2026-08-09",
+      "url": "https://polymarket.com/event/arg-aaj-rac-2026-08-09",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-09T23:15:00Z",
+      "market_ids": [
+        "3314297",
+        "3314296",
+        "3314295"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 20.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:swe-sir-bro-2026-08-10-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "IK Sirius vs. IF Brommapojkarna - Halftime Result",
+      "slug": "swe-sir-bro-2026-08-10-halftime-result",
+      "url": "https://polymarket.com/event/swe-sir-bro-2026-08-10-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-10T17:00:00Z",
+      "market_ids": [
+        "3325770",
+        "3325769",
+        "3325767"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 19.66,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:clf-tot-get-2026-08-08",
+      "tag": "arbitrage",
+      "market_question": "Tottenham Hotspur vs. Getafe CF",
+      "slug": "clf-tot-get-2026-08-08",
+      "url": "https://polymarket.com/event/clf-tot-get-2026-08-08",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-08T14:00:00Z",
+      "market_ids": [
+        "3336218",
+        "3336219",
+        "3336217"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 19.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:ecu1-lib-uni-2026-08-10-halftime-result",
+      "tag": "arbitrage",
+      "market_question": "Libertad Loja vs. CD Universidad Catolica del Ecuador - Halftime Result",
+      "slug": "ecu1-lib-uni-2026-08-10-halftime-result",
+      "url": "https://polymarket.com/event/ecu1-lib-uni-2026-08-10-halftime-result",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-10T21:30:00Z",
+      "market_ids": [
+        "3339749",
+        "3339756",
+        "3339753"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "stake_usd": 18.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:por-ben-acv-2026-08-09",
+      "tag": "arbitrage",
+      "market_question": "Sport Lisboa e Benfica vs. Académico de Viseu FC",
+      "slug": "por-ben-acv-2026-08-09",
+      "url": "https://polymarket.com/event/por-ben-acv-2026-08-09",
+      "placed_at": "2026-08-07T09:21:06.471740+00:00",
+      "deadline": "2026-08-09T19:30:00Z",
+      "market_ids": [
+        "3315090",
+        "3315089",
+        "3315088"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.994,
+      "edge_pct_at_placement": 0.6,
+      "stake_usd": 10.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    }
+  ]
 }

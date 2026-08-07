@@ -1,9 +1,537 @@
 {
-  "generated_at": "2026-08-07T04:46:29.398942+00:00",
+  "generated_at": "2026-08-07T09:19:53.006506+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 2100,
-  "opportunities": [],
+  "scanned_events": 18091,
+  "opportunities": [
+    {
+      "event_title": "Altrincham FC vs. Southend United FC - Halftime Result",
+      "slug": "enl-alt-sou-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/enl-alt-sou-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.98,
+      "edge_pct": 2.04,
+      "min_outcome_liquidity": 1832.92,
+      "legs": [
+        {
+          "outcome": "Altrincham FC",
+          "ask": 0.18,
+          "liquidity": 2044.25,
+          "market_id": "3153060"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.39,
+          "liquidity": 2100.5,
+          "market_id": "3153061"
+        },
+        {
+          "outcome": "Southend United FC",
+          "ask": 0.41,
+          "liquidity": 1832.92,
+          "market_id": "3153062"
+        }
+      ]
+    },
+    {
+      "event_title": "Orlando Pride vs. Racing Louisville FC - Second Half Result",
+      "slug": "nwsl-pri-rac-2026-08-07-second-half-result",
+      "url": "https://polymarket.com/event/nwsl-pri-rac-2026-08-07-second-half-result",
+      "end_date": "2026-08-07T23:00:00Z",
+      "days_left": 0,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 1872.31,
+      "legs": [
+        {
+          "outcome": "Racing Louisville FC",
+          "ask": 0.21,
+          "liquidity": 1906.76,
+          "market_id": "3100732"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.33,
+          "liquidity": 1872.31,
+          "market_id": "3100731"
+        },
+        {
+          "outcome": "Orlando Pride",
+          "ask": 0.45,
+          "liquidity": 1912.83,
+          "market_id": "3100730"
+        }
+      ]
+    },
+    {
+      "event_title": "CS Marítimo vs. Casa Pia AC - Second Half Result",
+      "slug": "por-csm-cas-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/por-csm-cas-2026-08-08-second-half-result",
+      "end_date": "2026-08-08T14:30:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 1978.45,
+      "legs": [
+        {
+          "outcome": "Casa Pia AC",
+          "ask": 0.29,
+          "liquidity": 1978.45,
+          "market_id": "3103195"
+        },
+        {
+          "outcome": "CS Marítimo",
+          "ask": 0.33,
+          "liquidity": 2031.14,
+          "market_id": "3103193"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.37,
+          "liquidity": 2083.98,
+          "market_id": "3103194"
+        }
+      ]
+    },
+    {
+      "event_title": "St Mirren FC vs. St Johnstone FC - Second Half Result",
+      "slug": "scop-stm-joh-2026-08-08-second-half-result",
+      "url": "https://polymarket.com/event/scop-stm-joh-2026-08-08-second-half-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 1991.67,
+      "legs": [
+        {
+          "outcome": "St Johnstone FC",
+          "ask": 0.29,
+          "liquidity": 1991.67,
+          "market_id": "3110711"
+        },
+        {
+          "outcome": "St Mirren FC",
+          "ask": 0.34,
+          "liquidity": 2099.54,
+          "market_id": "3110707"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.36,
+          "liquidity": 2055.36,
+          "market_id": "3110708"
+        }
+      ]
+    },
+    {
+      "event_title": "1. FC Heidenheim 1846 vs. VfL Osnabrück - Halftime Result",
+      "slug": "bl2-hei-vfl-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/bl2-hei-vfl-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T11:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 5188.64,
+      "legs": [
+        {
+          "outcome": "VfL Osnabrück",
+          "ask": 0.16,
+          "liquidity": 5188.64,
+          "market_id": "3146043"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.38,
+          "liquidity": 5465.87,
+          "market_id": "3146042"
+        },
+        {
+          "outcome": "1. FC Heidenheim 1846",
+          "ask": 0.45,
+          "liquidity": 5724.31,
+          "market_id": "3146041"
+        }
+      ]
+    },
+    {
+      "event_title": "FC St. Pauli 1910 vs. SpVgg Greuther Fürth - Halftime Result",
+      "slug": "bl2-stp-fur-2026-08-09-halftime-result",
+      "url": "https://polymarket.com/event/bl2-stp-fur-2026-08-09-halftime-result",
+      "end_date": "2026-08-09T11:30:00Z",
+      "days_left": 2,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 2257.44,
+      "legs": [
+        {
+          "outcome": "SpVgg Greuther Fürth",
+          "ask": 0.21,
+          "liquidity": 2257.44,
+          "market_id": "3146200"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.38,
+          "liquidity": 2335.99,
+          "market_id": "3146199"
+        },
+        {
+          "outcome": "FC St. Pauli 1910",
+          "ask": 0.4,
+          "liquidity": 2284.66,
+          "market_id": "3146198"
+        }
+      ]
+    },
+    {
+      "event_title": "FC Energie Cottbus vs. Hannover 96 - Halftime Result",
+      "slug": "bl2-fce-h96-2026-08-09-halftime-result",
+      "url": "https://polymarket.com/event/bl2-fce-h96-2026-08-09-halftime-result",
+      "end_date": "2026-08-09T11:30:00Z",
+      "days_left": 2,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 2518.83,
+      "legs": [
+        {
+          "outcome": "FC Energie Cottbus",
+          "ask": 0.26,
+          "liquidity": 2615.68,
+          "market_id": "3146242"
+        },
+        {
+          "outcome": "Hannover 96",
+          "ask": 0.35,
+          "liquidity": 2528.05,
+          "market_id": "3146244"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.38,
+          "liquidity": 2518.83,
+          "market_id": "3146243"
+        }
+      ]
+    },
+    {
+      "event_title": "Stoke City FC vs. Oldham Athletic AFC - Halftime Result",
+      "slug": "efl-sto-old-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-sto-old-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 4499.53,
+      "legs": [
+        {
+          "outcome": "Oldham Athletic AFC",
+          "ask": 0.13,
+          "liquidity": 4499.53,
+          "market_id": "3146428"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.34,
+          "liquidity": 4587.51,
+          "market_id": "3146427"
+        },
+        {
+          "outcome": "Stoke City FC",
+          "ask": 0.52,
+          "liquidity": 4697.38,
+          "market_id": "3146426"
+        }
+      ]
+    },
+    {
+      "event_title": "Stockport County FC vs. Doncaster Rovers FC - Halftime Result",
+      "slug": "efl-sto1-don-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-sto1-don-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 4695.99,
+      "legs": [
+        {
+          "outcome": "Doncaster Rovers FC",
+          "ask": 0.18,
+          "liquidity": 4695.99,
+          "market_id": "3146873"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.39,
+          "liquidity": 4922.88,
+          "market_id": "3146872"
+        },
+        {
+          "outcome": "Stockport County FC",
+          "ask": 0.42,
+          "liquidity": 4747.37,
+          "market_id": "3146871"
+        }
+      ]
+    },
+    {
+      "event_title": "Colchester United FC vs. Southampton FC - Halftime Result",
+      "slug": "efl-col-sot-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-col-sot-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T16:30:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 4860.61,
+      "legs": [
+        {
+          "outcome": "Colchester United FC",
+          "ask": 0.11,
+          "liquidity": 5647.95,
+          "market_id": "3147056"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.33,
+          "liquidity": 4895.14,
+          "market_id": "3147057"
+        },
+        {
+          "outcome": "Southampton FC",
+          "ask": 0.55,
+          "liquidity": 4860.61,
+          "market_id": "3147058"
+        }
+      ]
+    },
+    {
+      "event_title": "Bradford City AFC vs. Rochdale AFC - Halftime Result",
+      "slug": "efl-bra-roc-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/efl-bra-roc-2026-08-08-halftime-result",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 4507.08,
+      "legs": [
+        {
+          "outcome": "Rochdale AFC",
+          "ask": 0.14,
+          "liquidity": 4645.54,
+          "market_id": "3279641"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.4,
+          "liquidity": 4805.67,
+          "market_id": "3279640"
+        },
+        {
+          "outcome": "Bradford City AFC",
+          "ask": 0.45,
+          "liquidity": 4507.08,
+          "market_id": "3279638"
+        }
+      ]
+    },
+    {
+      "event_title": "Louisville City FC vs. San Antonio FC - Halftime Result",
+      "slug": "uslc-lc-san-2026-08-08-halftime-result",
+      "url": "https://polymarket.com/event/uslc-lc-san-2026-08-08-halftime-result",
+      "end_date": "2026-08-09T00:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 2546.31,
+      "legs": [
+        {
+          "outcome": "San Antonio FC",
+          "ask": 0.12,
+          "liquidity": 2546.31,
+          "market_id": "3306971"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.37,
+          "liquidity": 2655.61,
+          "market_id": "3306969"
+        },
+        {
+          "outcome": "Louisville City FC",
+          "ask": 0.5,
+          "liquidity": 2670.48,
+          "market_id": "3306968"
+        }
+      ]
+    },
+    {
+      "event_title": "AA Argentinos Juniors vs. Racing Club",
+      "slug": "arg-aaj-rac-2026-08-09",
+      "url": "https://polymarket.com/event/arg-aaj-rac-2026-08-09",
+      "end_date": "2026-08-09T23:15:00Z",
+      "days_left": 2,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 10597.27,
+      "legs": [
+        {
+          "outcome": "Racing Club",
+          "ask": 0.25,
+          "liquidity": 10597.27,
+          "market_id": "3314297"
+        },
+        {
+          "outcome": "Draw (AA Argentinos Juniors vs. Racing Club)",
+          "ask": 0.32,
+          "liquidity": 12160.4,
+          "market_id": "3314296"
+        },
+        {
+          "outcome": "AA Argentinos Juniors",
+          "ask": 0.42,
+          "liquidity": 11151.32,
+          "market_id": "3314295"
+        }
+      ]
+    },
+    {
+      "event_title": "IK Sirius vs. IF Brommapojkarna - Halftime Result",
+      "slug": "swe-sir-bro-2026-08-10-halftime-result",
+      "url": "https://polymarket.com/event/swe-sir-bro-2026-08-10-halftime-result",
+      "end_date": "2026-08-10T17:00:00Z",
+      "days_left": 3,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 2819.05,
+      "legs": [
+        {
+          "outcome": "IF Brommapojkarna",
+          "ask": 0.11,
+          "liquidity": 2890.45,
+          "market_id": "3325770"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.31,
+          "liquidity": 2819.05,
+          "market_id": "3325769"
+        },
+        {
+          "outcome": "IK Sirius",
+          "ask": 0.57,
+          "liquidity": 3620.29,
+          "market_id": "3325767"
+        }
+      ]
+    },
+    {
+      "event_title": "Tottenham Hotspur vs. Getafe CF",
+      "slug": "clf-tot-get-2026-08-08",
+      "url": "https://polymarket.com/event/clf-tot-get-2026-08-08",
+      "end_date": "2026-08-08T14:00:00Z",
+      "days_left": 1,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 5384.37,
+      "legs": [
+        {
+          "outcome": "Draw (Tottenham Hotspur vs. Getafe CF)",
+          "ask": 0.23,
+          "liquidity": 13518.69,
+          "market_id": "3336218"
+        },
+        {
+          "outcome": "Getafe CF",
+          "ask": 0.23,
+          "liquidity": 5384.37,
+          "market_id": "3336219"
+        },
+        {
+          "outcome": "Tottenham Hotspur",
+          "ask": 0.53,
+          "liquidity": 5673.07,
+          "market_id": "3336217"
+        }
+      ]
+    },
+    {
+      "event_title": "Libertad Loja vs. CD Universidad Catolica del Ecuador - Halftime Result",
+      "slug": "ecu1-lib-uni-2026-08-10-halftime-result",
+      "url": "https://polymarket.com/event/ecu1-lib-uni-2026-08-10-halftime-result",
+      "end_date": "2026-08-10T21:30:00Z",
+      "days_left": 3,
+      "num_outcomes": 3,
+      "total_cost": 0.99,
+      "edge_pct": 1.01,
+      "min_outcome_liquidity": 1002.39,
+      "legs": [
+        {
+          "outcome": "Libertad Loja",
+          "ask": 0.18,
+          "liquidity": 1015.57,
+          "market_id": "3339749"
+        },
+        {
+          "outcome": "CD Universidad Catolica del Ecuador",
+          "ask": 0.38,
+          "liquidity": 1002.39,
+          "market_id": "3339756"
+        },
+        {
+          "outcome": "Draw",
+          "ask": 0.43,
+          "liquidity": 1035.59,
+          "market_id": "3339753"
+        }
+      ]
+    },
+    {
+      "event_title": "Sport Lisboa e Benfica vs. Académico de Viseu FC",
+      "slug": "por-ben-acv-2026-08-09",
+      "url": "https://polymarket.com/event/por-ben-acv-2026-08-09",
+      "end_date": "2026-08-09T19:30:00Z",
+      "days_left": 2,
+      "num_outcomes": 3,
+      "total_cost": 0.994,
+      "edge_pct": 0.6,
+      "min_outcome_liquidity": 15400.23,
+      "legs": [
+        {
+          "outcome": "Académico de Viseu FC",
+          "ask": 0.034,
+          "liquidity": 17423.57,
+          "market_id": "3315090"
+        },
+        {
+          "outcome": "Draw (Sport Lisboa e Benfica vs. Académico de Viseu FC)",
+          "ask": 0.09,
+          "liquidity": 15400.23,
+          "market_id": "3315089"
+        },
+        {
+          "outcome": "Sport Lisboa e Benfica",
+          "ask": 0.87,
+          "liquidity": 15944.22,
+          "market_id": "3315088"
+        }
+      ]
+    }
+  ],
   "calibration_signals": [],
   "calibration_table_generated_at": "2026-08-03T07:35:49.957501+00:00",
   "mispricing_signals": [],
