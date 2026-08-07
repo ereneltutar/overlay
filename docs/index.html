@@ -308,6 +308,15 @@ footer a:hover{ color:var(--ink); }
           <svg id="sparkChart" viewBox="0 0 460 64" role="img" aria-label="Archive growth chart"></svg>
         </div>
       </div>
+      <div class="spark-row">
+        <div class="spark-stats">
+          <div class="spark-num" id="signalSparkAvg">—</div>
+          <div class="spark-num-label">avg signals/day</div>
+        </div>
+        <div class="spark-chart">
+          <svg id="signalSparkChart" viewBox="0 0 460 64" role="img" aria-label="Signals found per day chart"></svg>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -451,6 +460,30 @@ function renderSparkline(series){
   const areaPts = `M${x(0)},${H-padY} L` + linePts + ` L${x(n-1)},${H-padY} Z`;
   const last = series[n-1];
   const tooltips = series.map((d,i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(d.total).toFixed(1)}" r="7" fill="transparent"><title>${d.date} · ${d.total} records</title></circle>`).join('');
+
+  svg.innerHTML = `
+    <path class="spark-area" d="${areaPts}"></path>
+    <path class="spark-line" d="M${linePts}"></path>
+    ${tooltips}
+    <circle class="spark-end" cx="${x(n-1).toFixed(1)}" cy="${y(last.total).toFixed(1)}" r="3.5"></circle>
+  `;
+}
+
+/* ============ signals-found-per-day sparkline ============ */
+function renderSignalSparkline(series){
+  const svg = document.getElementById('signalSparkChart');
+  if(series.length < 2){ svg.innerHTML = ''; return; }
+  const W = 460, H = 64, padX = 4, padY = 8;
+  const plotW = W - padX*2, plotH = H - padY*2;
+  const maxVal = Math.max(1, ...series.map(d => d.total));
+  const n = series.length;
+  const x = i => padX + (i/(n-1)) * plotW;
+  const y = v => padY + (1 - v/maxVal) * plotH;
+
+  const linePts = series.map((d,i) => `${x(i).toFixed(1)},${y(d.total).toFixed(1)}`).join(' L');
+  const areaPts = `M${x(0)},${H-padY} L` + linePts + ` L${x(n-1)},${H-padY} Z`;
+  const last = series[n-1];
+  const tooltips = series.map((d,i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(d.total).toFixed(1)}" r="7" fill="transparent"><title>${d.date} · ${d.total} signals</title></circle>`).join('');
 
   svg.innerHTML = `
     <path class="spark-area" d="${areaPts}"></path>
@@ -680,6 +713,30 @@ async function loadPriceLog(){
   }
 }
 
+async function loadScanHealth(){
+  try{
+    const res = await fetch('./scan_health.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error('not found');
+    const data = await res.json();
+    const history = data.history || [];
+    const series = history.map(h => ({
+      date: h.date,
+      total: (h.opportunities || 0) + (h.calibration_signals || 0) + (h.mispricing_signals || 0),
+    }));
+    const avgEl = document.getElementById('signalSparkAvg');
+    if(series.length > 0){
+      const window = series.slice(-7);
+      const avg = window.reduce((s,d) => s + d.total, 0) / window.length;
+      avgEl.textContent = avg.toFixed(1);
+    } else {
+      avgEl.textContent = '0';
+    }
+    renderSignalSparkline(series);
+  }catch(err){
+    document.getElementById('signalSparkAvg').textContent = '0';
+  }
+}
+
 document.getElementById('filters').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip-btn');
   if(!btn) return;
@@ -709,6 +766,7 @@ document.getElementById('themeToggle').addEventListener('click', () => {
 loadResults();
 loadCalibration();
 loadPriceLog();
+loadScanHealth();
 </script>
 </body>
 </html>

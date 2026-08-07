@@ -1,4 +1,4 @@
-# Overlay — Polymarket Signal Scanner
+# Overlay
 
 Runs automatically every morning. Scans open Polymarket events with a
 deadline inside a set window and looks for three separate kinds of
@@ -44,8 +44,9 @@ GitHub Actions, every morning, right after track_bets.py
         closes it automatically once things recover
 
 GitHub Pages (Actions-based deploy)
-   └─ docs/index.html reads results.json/calibration.json/price_log.jsonl
-        client-side and renders the ledger, filters, and calibration curve
+   └─ docs/index.html reads results.json/calibration.json/price_log.jsonl/
+        scan_health.json client-side and renders the ledger, filters,
+        calibration curve, and a signals-found-per-day trend
    └─ docs/archive.html reads bet_log.json and renders the paper-trading
         track record: bankroll over time, win rate by tag, bet-by-bet ledger
 ```
