@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1000.0,
+  "bankroll": 999.88,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -9,6 +9,10 @@
     {
       "date": "2026-08-07",
       "bankroll": 1000.0
+    },
+    {
+      "date": "2026-08-08",
+      "bankroll": 999.88
     }
   ],
   "bets": [
@@ -436,9 +440,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 16.56,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-08T04:05:06.997277+00:00",
+      "pnl_usd": -0.12
     },
     {
       "bet_id": "arbitrage:gtm-dsp-suc-2026-08-09",
@@ -499,6 +503,406 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 13.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-googl-hit-in-august-2026:3342857",
+      "tag": "calibration",
+      "market_question": "Will Alphabet Inc. (GOOGL) hit (HIGH) $450 in August?",
+      "slug": "what-price-will-googl-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-googl-hit-in-august-2026",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-31T04:05:06.997277+00:00",
+      "market_ids": [
+        "3342857"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 23.01,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ja2-fuj-veg-2026-08-08-exact-score:3104391",
+      "tag": "calibration",
+      "market_question": "Exact Score: Fujieda MYFC 1 - 3 Vegalta Sendai?",
+      "slug": "ja2-fuj-veg-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/ja2-fuj-veg-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3104391"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 21.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:scop-hmi-dun-2026-08-08-exact-score:3110568",
+      "tag": "calibration",
+      "market_question": "Exact Score: Heart of Midlothian FC 3 - 3 Dundee United FC?",
+      "slug": "scop-hmi-dun-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/scop-hmi-dun-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-09T04:05:06.997277+00:00",
+      "market_ids": [
+        "3110568"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 20.77,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lec-orl-leo-2026-08-08-exact-score:3114747",
+      "tag": "calibration",
+      "market_question": "Exact Score: Orlando City SC 3 - 2 Club León FC?",
+      "slug": "lec-orl-leo-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/lec-orl-leo-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3114747"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 19.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:den-ran-lyn-2026-08-09-exact-score:3118286",
+      "tag": "calibration",
+      "market_question": "Exact Score: Randers FC 0 - 2 Lyngby BK?",
+      "slug": "den-ran-lyn-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/den-ran-lyn-2026-08-09-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-09T04:05:06.997277+00:00",
+      "market_ids": [
+        "3118286"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 18.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:chi-yun-ron-2026-08-08-exact-score:3120449",
+      "tag": "calibration",
+      "market_question": "Exact Score: Yunnan Yukun FC 0 - 3 Chengdu Rongcheng FC?",
+      "slug": "chi-yun-ron-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/chi-yun-ron-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3120449"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 17.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:gtm-mix-mrq-2026-08-08-exact-score:3125494",
+      "tag": "calibration",
+      "market_question": "Exact Score: CSD Mixco 3 - 2 CD Marquense?",
+      "slug": "gtm-mix-mrq-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/gtm-mix-mrq-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3125494"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 16.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:itc-vic-cat-2026-08-08-exact-score:3126472",
+      "tag": "calibration",
+      "market_question": "Exact Score: L.R. Vicenza 0 - 2 Catania FC?",
+      "slug": "itc-vic-cat-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/itc-vic-cat-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3126472"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 16.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:itc-vic-cat-2026-08-08-exact-score:3126491",
+      "tag": "calibration",
+      "market_question": "Exact Score: L.R. Vicenza 3 - 2 Catania FC?",
+      "slug": "itc-vic-cat-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/itc-vic-cat-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3126491"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 15.27,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:kor-bch-gwa-2026-08-08-exact-score:3130415",
+      "tag": "calibration",
+      "market_question": "Exact Score: Bucheon FC 1995 3 - 1 Gwangju FC?",
+      "slug": "kor-bch-gwa-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/kor-bch-gwa-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3130415"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 14.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-cfc-acm-2026-08-08-exact-score:3138676",
+      "tag": "calibration",
+      "market_question": "Exact Score: Chelsea FC 0 - 2 AC Milan?",
+      "slug": "clf-cfc-acm-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-cfc-acm-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3138676"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 13.78,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-cfc-acm-2026-08-08-exact-score:3138685",
+      "tag": "calibration",
+      "market_question": "Exact Score: Chelsea FC 3 - 0 AC Milan?",
+      "slug": "clf-cfc-acm-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-cfc-acm-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3138685"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 13.09,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-cfc-acm-2026-08-08-exact-score:3138690",
+      "tag": "calibration",
+      "market_question": "Exact Score: Chelsea FC 3 - 2 AC Milan?",
+      "slug": "clf-cfc-acm-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-cfc-acm-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3138690"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 12.43,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-lev-sev-2026-08-08-exact-score:3138737",
+      "tag": "calibration",
+      "market_question": "Exact Score: Bayer Leverkusen 3 - 0 Sevilla FC?",
+      "slug": "clf-lev-sev-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-lev-sev-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3138737"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 11.81,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-fca-sas-2026-08-08-exact-score:3138755",
+      "tag": "calibration",
+      "market_question": "Exact Score: FC Augsburg 0 - 2 Sassuolo Calcio?",
+      "slug": "clf-fca-sas-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-fca-sas-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3138755"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 11.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-bha-rom-2026-08-08-exact-score:3138801",
+      "tag": "calibration",
+      "market_question": "Exact Score: Brighton & Hove Albion 3 - 2 AS Roma?",
+      "slug": "clf-bha-rom-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-bha-rom-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3138801"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 10.66,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:clf-gc-dep-2026-08-08-exact-score:3139034",
+      "tag": "calibration",
+      "market_question": "Exact Score: Genoa CFC 3 - 0 RC Deportivo De La Coruna?",
+      "slug": "clf-gc-dep-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-gc-dep-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3139034"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 10.13,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ma-04-democratic-primary-winner-20260727180932560:3141889",
+      "tag": "calibration",
+      "market_question": "Will Jason Poulos be the MA-04 Democratic nominee?",
+      "slug": "ma-04-democratic-primary-winner-20260727180932560",
+      "url": "https://polymarket.com/event/ma-04-democratic-primary-winner-20260727180932560",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-09-01T04:05:06.997277+00:00",
+      "market_ids": [
+        "3141889"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503:3143584",
+      "tag": "calibration",
+      "market_question": "Will no press briefing air by August 31?",
+      "slug": "what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
+      "url": "https://polymarket.com/event/what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-31T04:05:06.997277+00:00",
+      "market_ids": [
+        "3143584"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:bl2-wob-fck-2026-08-08-exact-score:3146110",
+      "tag": "calibration",
+      "market_question": "Exact Score: VfL Wolfsburg 0 - 0 1. FC Kaiserslautern?",
+      "slug": "bl2-wob-fck-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/bl2-wob-fck-2026-08-08-exact-score",
+      "placed_at": "2026-08-08T04:05:06.997277+00:00",
+      "deadline": "2026-08-08T04:05:06.997277+00:00",
+      "market_ids": [
+        "3146110"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 10.0,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null

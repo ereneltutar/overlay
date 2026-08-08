@@ -1,477 +1,372 @@
 {
-  "generated_at": "2026-08-07T09:46:59.113510+00:00",
+  "generated_at": "2026-08-08T04:03:44.459428+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 18091,
-  "opportunities": [
+  "scanned_events": 18261,
+  "opportunities": [],
+  "calibration_signals": [
     {
-      "event_title": "Deportivo San Pedro vs. CSD Suchitepéquez",
-      "slug": "gtm-dsp-suc-2026-08-09",
-      "url": "https://polymarket.com/event/gtm-dsp-suc-2026-08-09",
-      "end_date": "2026-08-09T21:00:00Z",
-      "days_left": 2,
-      "num_outcomes": 3,
-      "total_cost": 0.97,
-      "edge_pct": 3.09,
-      "min_outcome_liquidity": 1115.8,
-      "legs": [
-        {
-          "outcome": "CSD Suchitepéquez",
-          "ask": 0.17,
-          "liquidity": 1115.8,
-          "market_id": "3125469"
-        },
-        {
-          "outcome": "Draw (Deportivo San Pedro vs. CSD Suchitepéquez)",
-          "ask": 0.28,
-          "liquidity": 1465.09,
-          "market_id": "3125468"
-        },
-        {
-          "outcome": "Deportivo San Pedro",
-          "ask": 0.52,
-          "liquidity": 1566.47,
-          "market_id": "3125467"
-        }
-      ]
+      "market_id": "3342857",
+      "market_question": "Will Alphabet Inc. (GOOGL) hit (HIGH) $450 in August?",
+      "slug": "what-price-will-googl-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-googl-hit-in-august-2026",
+      "days_left": 23,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 629.13
     },
     {
-      "event_title": "Dalian Yingbo FC vs. Liaoning Tieren FC - Second Half Result",
-      "slug": "chi-ygb-tie-2026-08-08-second-half-result",
-      "url": "https://polymarket.com/event/chi-ygb-tie-2026-08-08-second-half-result",
-      "end_date": "2026-08-08T11:35:00Z",
+      "market_id": "3104391",
+      "market_question": "Exact Score: Fujieda MYFC 1 - 3 Vegalta Sendai?",
+      "slug": "ja2-fuj-veg-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/ja2-fuj-veg-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 4195.57
+    },
+    {
+      "market_id": "3110568",
+      "market_question": "Exact Score: Heart of Midlothian FC 3 - 3 Dundee United FC?",
+      "slug": "scop-hmi-dun-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/scop-hmi-dun-2026-08-08-exact-score",
       "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.98,
-      "edge_pct": 2.04,
-      "min_outcome_liquidity": 1871.06,
-      "legs": [
-        {
-          "outcome": "Liaoning Tieren FC",
-          "ask": 0.2,
-          "liquidity": 1871.06,
-          "market_id": "3120416"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.31,
-          "liquidity": 1919.91,
-          "market_id": "3120415"
-        },
-        {
-          "outcome": "Dalian Yingbo FC",
-          "ask": 0.47,
-          "liquidity": 2040.96,
-          "market_id": "3120414"
-        }
-      ]
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 4576.24
     },
     {
-      "event_title": "CS Marítimo vs. Casa Pia AC - Second Half Result",
-      "slug": "por-csm-cas-2026-08-08-second-half-result",
-      "url": "https://polymarket.com/event/por-csm-cas-2026-08-08-second-half-result",
-      "end_date": "2026-08-08T14:30:00Z",
+      "market_id": "3114747",
+      "market_question": "Exact Score: Orlando City SC 3 - 2 Club León FC?",
+      "slug": "lec-orl-leo-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/lec-orl-leo-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 16772.07
+    },
+    {
+      "market_id": "3118286",
+      "market_question": "Exact Score: Randers FC 0 - 2 Lyngby BK?",
+      "slug": "den-ran-lyn-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/den-ran-lyn-2026-08-09-exact-score",
       "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 1913.75,
-      "legs": [
-        {
-          "outcome": "Casa Pia AC",
-          "ask": 0.29,
-          "liquidity": 1913.75,
-          "market_id": "3103195"
-        },
-        {
-          "outcome": "CS Marítimo",
-          "ask": 0.33,
-          "liquidity": 1968.12,
-          "market_id": "3103193"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.37,
-          "liquidity": 2020.84,
-          "market_id": "3103194"
-        }
-      ]
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 5086.77
     },
     {
-      "event_title": "St Mirren FC vs. St Johnstone FC - Second Half Result",
-      "slug": "scop-stm-joh-2026-08-08-second-half-result",
-      "url": "https://polymarket.com/event/scop-stm-joh-2026-08-08-second-half-result",
-      "end_date": "2026-08-08T14:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 2039.39,
-      "legs": [
-        {
-          "outcome": "St Johnstone FC",
-          "ask": 0.28,
-          "liquidity": 2039.42,
-          "market_id": "3110711"
-        },
-        {
-          "outcome": "St Mirren FC",
-          "ask": 0.34,
-          "liquidity": 2039.39,
-          "market_id": "3110707"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.37,
-          "liquidity": 2080.64,
-          "market_id": "3110708"
-        }
-      ]
+      "market_id": "3120449",
+      "market_question": "Exact Score: Yunnan Yukun FC 0 - 3 Chengdu Rongcheng FC?",
+      "slug": "chi-yun-ron-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/chi-yun-ron-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 85173.65
     },
     {
-      "event_title": "Qingdao Hainiu FC vs. Shanghai Shenhua FC - Second Half Result",
-      "slug": "chi-hai-sgr-2026-08-08-second-half-result",
-      "url": "https://polymarket.com/event/chi-hai-sgr-2026-08-08-second-half-result",
-      "end_date": "2026-08-08T11:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 1882.73,
-      "legs": [
-        {
-          "outcome": "Qingdao Hainiu FC",
-          "ask": 0.22,
-          "liquidity": 1882.73,
-          "market_id": "3120362"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.31,
-          "liquidity": 2006.88,
-          "market_id": "3120363"
-        },
-        {
-          "outcome": "Shanghai Shenhua FC",
-          "ask": 0.46,
-          "liquidity": 2027.39,
-          "market_id": "3120364"
-        }
-      ]
+      "market_id": "3125494",
+      "market_question": "Exact Score: CSD Mixco 3 - 2 CD Marquense?",
+      "slug": "gtm-mix-mrq-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/gtm-mix-mrq-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 437.87
     },
     {
-      "event_title": "1. FC Heidenheim 1846 vs. VfL Osnabrück - Halftime Result",
-      "slug": "bl2-hei-vfl-2026-08-08-halftime-result",
-      "url": "https://polymarket.com/event/bl2-hei-vfl-2026-08-08-halftime-result",
-      "end_date": "2026-08-08T11:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 5278.65,
-      "legs": [
-        {
-          "outcome": "VfL Osnabrück",
-          "ask": 0.16,
-          "liquidity": 5536.82,
-          "market_id": "3146043"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.38,
-          "liquidity": 5278.65,
-          "market_id": "3146042"
-        },
-        {
-          "outcome": "1. FC Heidenheim 1846",
-          "ask": 0.45,
-          "liquidity": 5760.28,
-          "market_id": "3146041"
-        }
-      ]
+      "market_id": "3126472",
+      "market_question": "Exact Score: L.R. Vicenza 0 - 2 Catania FC?",
+      "slug": "itc-vic-cat-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/itc-vic-cat-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 2649.54
     },
     {
-      "event_title": "FC St. Pauli 1910 vs. SpVgg Greuther Fürth - Halftime Result",
-      "slug": "bl2-stp-fur-2026-08-09-halftime-result",
-      "url": "https://polymarket.com/event/bl2-stp-fur-2026-08-09-halftime-result",
-      "end_date": "2026-08-09T11:30:00Z",
-      "days_left": 2,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 2229.75,
-      "legs": [
-        {
-          "outcome": "SpVgg Greuther Fürth",
-          "ask": 0.21,
-          "liquidity": 2229.75,
-          "market_id": "3146200"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.38,
-          "liquidity": 2288.69,
-          "market_id": "3146199"
-        },
-        {
-          "outcome": "FC St. Pauli 1910",
-          "ask": 0.4,
-          "liquidity": 2255.72,
-          "market_id": "3146198"
-        }
-      ]
+      "market_id": "3126491",
+      "market_question": "Exact Score: L.R. Vicenza 3 - 2 Catania FC?",
+      "slug": "itc-vic-cat-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/itc-vic-cat-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 3022.8
     },
     {
-      "event_title": "FC Energie Cottbus vs. Hannover 96 - Halftime Result",
-      "slug": "bl2-fce-h96-2026-08-09-halftime-result",
-      "url": "https://polymarket.com/event/bl2-fce-h96-2026-08-09-halftime-result",
-      "end_date": "2026-08-09T11:30:00Z",
-      "days_left": 2,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 2502.45,
-      "legs": [
-        {
-          "outcome": "FC Energie Cottbus",
-          "ask": 0.26,
-          "liquidity": 2557.28,
-          "market_id": "3146242"
-        },
-        {
-          "outcome": "Hannover 96",
-          "ask": 0.35,
-          "liquidity": 2502.45,
-          "market_id": "3146244"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.38,
-          "liquidity": 2576.83,
-          "market_id": "3146243"
-        }
-      ]
+      "market_id": "3130415",
+      "market_question": "Exact Score: Bucheon FC 1995 3 - 1 Gwangju FC?",
+      "slug": "kor-bch-gwa-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/kor-bch-gwa-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 32792.27
     },
     {
-      "event_title": "Stoke City FC vs. Oldham Athletic AFC - Halftime Result",
-      "slug": "efl-sto-old-2026-08-08-halftime-result",
-      "url": "https://polymarket.com/event/efl-sto-old-2026-08-08-halftime-result",
-      "end_date": "2026-08-08T14:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 4579.08,
-      "legs": [
-        {
-          "outcome": "Oldham Athletic AFC",
-          "ask": 0.13,
-          "liquidity": 4579.08,
-          "market_id": "3146428"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.34,
-          "liquidity": 4818.13,
-          "market_id": "3146427"
-        },
-        {
-          "outcome": "Stoke City FC",
-          "ask": 0.52,
-          "liquidity": 4782.46,
-          "market_id": "3146426"
-        }
-      ]
+      "market_id": "3138676",
+      "market_question": "Exact Score: Chelsea FC 0 - 2 AC Milan?",
+      "slug": "clf-cfc-acm-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-cfc-acm-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 65428.01
     },
     {
-      "event_title": "Colchester United FC vs. Southampton FC - Halftime Result",
-      "slug": "efl-col-sot-2026-08-08-halftime-result",
-      "url": "https://polymarket.com/event/efl-col-sot-2026-08-08-halftime-result",
-      "end_date": "2026-08-08T16:30:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 4825.72,
-      "legs": [
-        {
-          "outcome": "Colchester United FC",
-          "ask": 0.11,
-          "liquidity": 5651.79,
-          "market_id": "3147056"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.33,
-          "liquidity": 4891.48,
-          "market_id": "3147057"
-        },
-        {
-          "outcome": "Southampton FC",
-          "ask": 0.55,
-          "liquidity": 4825.72,
-          "market_id": "3147058"
-        }
-      ]
+      "market_id": "3138685",
+      "market_question": "Exact Score: Chelsea FC 3 - 0 AC Milan?",
+      "slug": "clf-cfc-acm-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-cfc-acm-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 69471.04
     },
     {
-      "event_title": "Hornchurch FC vs. Kidderminster Harriers FC - Halftime Result",
-      "slug": "enl-hor-kid-2026-08-08-halftime-result",
-      "url": "https://polymarket.com/event/enl-hor-kid-2026-08-08-halftime-result",
-      "end_date": "2026-08-08T14:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 1613.86,
-      "legs": [
-        {
-          "outcome": "Hornchurch FC",
-          "ask": 0.28,
-          "liquidity": 2021.82,
-          "market_id": "3153008"
-        },
-        {
-          "outcome": "Kidderminster Harriers FC",
-          "ask": 0.31,
-          "liquidity": 1613.86,
-          "market_id": "3153010"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.4,
-          "liquidity": 1935.54,
-          "market_id": "3153009"
-        }
-      ]
+      "market_id": "3138690",
+      "market_question": "Exact Score: Chelsea FC 3 - 2 AC Milan?",
+      "slug": "clf-cfc-acm-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-cfc-acm-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 43959.71
     },
     {
-      "event_title": "Bradford City AFC vs. Rochdale AFC - Halftime Result",
-      "slug": "efl-bra-roc-2026-08-08-halftime-result",
-      "url": "https://polymarket.com/event/efl-bra-roc-2026-08-08-halftime-result",
-      "end_date": "2026-08-08T14:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 4459.65,
-      "legs": [
-        {
-          "outcome": "Rochdale AFC",
-          "ask": 0.14,
-          "liquidity": 4508.92,
-          "market_id": "3279641"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.4,
-          "liquidity": 4476.17,
-          "market_id": "3279640"
-        },
-        {
-          "outcome": "Bradford City AFC",
-          "ask": 0.45,
-          "liquidity": 4459.65,
-          "market_id": "3279638"
-        }
-      ]
+      "market_id": "3138737",
+      "market_question": "Exact Score: Bayer Leverkusen 3 - 0 Sevilla FC?",
+      "slug": "clf-lev-sev-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-lev-sev-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 57319.06
     },
     {
-      "event_title": "AA Argentinos Juniors vs. Racing Club",
-      "slug": "arg-aaj-rac-2026-08-09",
-      "url": "https://polymarket.com/event/arg-aaj-rac-2026-08-09",
-      "end_date": "2026-08-09T23:15:00Z",
-      "days_left": 2,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 13857.72,
-      "legs": [
-        {
-          "outcome": "Racing Club",
-          "ask": 0.25,
-          "liquidity": 15941.04,
-          "market_id": "3314297"
-        },
-        {
-          "outcome": "Draw (AA Argentinos Juniors vs. Racing Club)",
-          "ask": 0.32,
-          "liquidity": 16646.43,
-          "market_id": "3314296"
-        },
-        {
-          "outcome": "AA Argentinos Juniors",
-          "ask": 0.42,
-          "liquidity": 13857.72,
-          "market_id": "3314295"
-        }
-      ]
+      "market_id": "3138755",
+      "market_question": "Exact Score: FC Augsburg 0 - 2 Sassuolo Calcio?",
+      "slug": "clf-fca-sas-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-fca-sas-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 59128.38
     },
     {
-      "event_title": "Tottenham Hotspur vs. Getafe CF",
-      "slug": "clf-tot-get-2026-08-08",
-      "url": "https://polymarket.com/event/clf-tot-get-2026-08-08",
-      "end_date": "2026-08-08T14:00:00Z",
-      "days_left": 1,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 10029.35,
-      "legs": [
-        {
-          "outcome": "Draw (Tottenham Hotspur vs. Getafe CF)",
-          "ask": 0.23,
-          "liquidity": 11987.14,
-          "market_id": "3336218"
-        },
-        {
-          "outcome": "Getafe CF",
-          "ask": 0.23,
-          "liquidity": 12197.48,
-          "market_id": "3336219"
-        },
-        {
-          "outcome": "Tottenham Hotspur",
-          "ask": 0.53,
-          "liquidity": 10029.35,
-          "market_id": "3336217"
-        }
-      ]
+      "market_id": "3138801",
+      "market_question": "Exact Score: Brighton & Hove Albion 3 - 2 AS Roma?",
+      "slug": "clf-bha-rom-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-bha-rom-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 36951.18
     },
     {
-      "event_title": "Libertad Loja vs. CD Universidad Catolica del Ecuador - Halftime Result",
-      "slug": "ecu1-lib-uni-2026-08-10-halftime-result",
-      "url": "https://polymarket.com/event/ecu1-lib-uni-2026-08-10-halftime-result",
-      "end_date": "2026-08-10T21:30:00Z",
-      "days_left": 3,
-      "num_outcomes": 3,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 657.8,
-      "legs": [
-        {
-          "outcome": "Libertad Loja",
-          "ask": 0.18,
-          "liquidity": 941.73,
-          "market_id": "3339749"
-        },
-        {
-          "outcome": "CD Universidad Catolica del Ecuador",
-          "ask": 0.38,
-          "liquidity": 657.8,
-          "market_id": "3339756"
-        },
-        {
-          "outcome": "Draw",
-          "ask": 0.43,
-          "liquidity": 990.5,
-          "market_id": "3339753"
-        }
-      ]
+      "market_id": "3139034",
+      "market_question": "Exact Score: Genoa CFC 3 - 0 RC Deportivo De La Coruna?",
+      "slug": "clf-gc-dep-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/clf-gc-dep-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 1616.98
+    },
+    {
+      "market_id": "3141889",
+      "market_question": "Will Jason Poulos be the MA-04 Democratic nominee?",
+      "slug": "ma-04-democratic-primary-winner-20260727180932560",
+      "url": "https://polymarket.com/event/ma-04-democratic-primary-winner-20260727180932560",
+      "days_left": 24,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 8844.63
+    },
+    {
+      "market_id": "3143584",
+      "market_question": "Will no press briefing air by August 31?",
+      "slug": "what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
+      "url": "https://polymarket.com/event/what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
+      "days_left": 23,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 305.19
+    },
+    {
+      "market_id": "3146110",
+      "market_question": "Exact Score: VfL Wolfsburg 0 - 0 1. FC Kaiserslautern?",
+      "slug": "bl2-wob-fck-2026-08-08-exact-score",
+      "url": "https://polymarket.com/event/bl2-wob-fck-2026-08-08-exact-score",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.951,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.79,
+      "liquidity": 74572.75
     }
   ],
-  "calibration_signals": [],
-  "calibration_table_generated_at": "2026-08-03T07:35:49.957501+00:00",
+  "calibration_table_generated_at": "2026-08-07T11:48:01.795800+00:00",
   "mispricing_signals": [],
   "mispricing_filters": {
     "min_edge_pts": 15.0,
