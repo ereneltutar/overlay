@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 999.88,
+  "bankroll": 985.39,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -13,6 +13,10 @@
     {
       "date": "2026-08-08",
       "bankroll": 999.88
+    },
+    {
+      "date": "2026-08-09",
+      "bankroll": 985.39
     }
   ],
   "bets": [
@@ -33,9 +37,9 @@
       "entry_cost": 0.98,
       "edge_pct_at_placement": 2.04,
       "stake_usd": 61.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.27
     },
     {
       "bet_id": "arbitrage:nwsl-pri-rac-2026-08-07-second-half-result",
@@ -54,9 +58,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 28.45,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.22
     },
     {
       "bet_id": "arbitrage:por-csm-cas-2026-08-08-second-half-result",
@@ -75,9 +79,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 27.58,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.06
     },
     {
       "bet_id": "arbitrage:scop-stm-joh-2026-08-08-second-half-result",
@@ -96,9 +100,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 26.75,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.21
     },
     {
       "bet_id": "arbitrage:bl2-hei-vfl-2026-08-08-halftime-result",
@@ -117,9 +121,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 25.94,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.1
     },
     {
       "bet_id": "arbitrage:bl2-stp-fur-2026-08-09-halftime-result",
@@ -180,9 +184,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 23.65,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.23
     },
     {
       "bet_id": "arbitrage:efl-sto1-don-2026-08-08-halftime-result",
@@ -201,9 +205,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 22.93,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.0
     },
     {
       "bet_id": "arbitrage:efl-col-sot-2026-08-08-halftime-result",
@@ -243,9 +247,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 21.57,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.01
     },
     {
       "bet_id": "arbitrage:uslc-lc-san-2026-08-08-halftime-result",
@@ -327,9 +331,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 19.07,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.13
     },
     {
       "bet_id": "arbitrage:ecu1-lib-uni-2026-08-10-halftime-result",
@@ -390,9 +394,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 17.61,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.15
     },
     {
       "bet_id": "arbitrage:enl-hor-kid-2026-08-08-halftime-result",
@@ -411,9 +415,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 17.07,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.14
     },
     {
       "bet_id": "arbitrage:highest-temperature-in-istanbul-on-august-7-2026",
@@ -482,9 +486,9 @@
       "entry_cost": 0.98,
       "edge_pct_at_placement": 2.04,
       "stake_usd": 29.83,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.55
     },
     {
       "bet_id": "arbitrage:chi-hai-sgr-2026-08-08-second-half-result",
@@ -503,9 +507,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 13.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -0.13
     },
     {
       "bet_id": "calibration:what-price-will-googl-hit-in-august-2026:3342857",
@@ -543,9 +547,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 21.86,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 1.13
     },
     {
       "bet_id": "calibration:scop-hmi-dun-2026-08-08-exact-score:3110568",
@@ -583,9 +587,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 19.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 1.02
     },
     {
       "bet_id": "calibration:den-ran-lyn-2026-08-09-exact-score:3118286",
@@ -623,9 +627,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 17.8,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.92
     },
     {
       "bet_id": "calibration:gtm-mix-mrq-2026-08-08-exact-score:3125494",
@@ -643,9 +647,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 16.91,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.87
     },
     {
       "bet_id": "calibration:itc-vic-cat-2026-08-08-exact-score:3126472",
@@ -703,9 +707,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 14.5,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.75
     },
     {
       "bet_id": "calibration:clf-cfc-acm-2026-08-08-exact-score:3138676",
@@ -723,9 +727,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 13.78,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.71
     },
     {
       "bet_id": "calibration:clf-cfc-acm-2026-08-08-exact-score:3138685",
@@ -743,9 +747,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 13.09,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -13.09
     },
     {
       "bet_id": "calibration:clf-cfc-acm-2026-08-08-exact-score:3138690",
@@ -763,9 +767,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 12.43,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.64
     },
     {
       "bet_id": "calibration:clf-lev-sev-2026-08-08-exact-score:3138737",
@@ -783,9 +787,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 11.81,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.61
     },
     {
       "bet_id": "calibration:clf-fca-sas-2026-08-08-exact-score:3138755",
@@ -803,9 +807,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 11.22,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.58
     },
     {
       "bet_id": "calibration:clf-bha-rom-2026-08-08-exact-score:3138801",
@@ -823,9 +827,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 10.66,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.55
     },
     {
       "bet_id": "calibration:clf-gc-dep-2026-08-08-exact-score:3139034",
@@ -843,9 +847,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 10.13,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": 0.52
     },
     {
       "bet_id": "calibration:ma-04-democratic-primary-winner-20260727180932560:3141889",
@@ -903,6 +907,368 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 10.0,
+      "status": "lost",
+      "resolved_at": "2026-08-09T04:10:43.696778+00:00",
+      "pnl_usd": -10.0
+    },
+    {
+      "bet_id": "arbitrage:number-of-north-korea-missile-tests-in-august-2026-1785517679415",
+      "tag": "arbitrage",
+      "market_question": "Number of North Korea Missile Tests in August 2026?",
+      "slug": "number-of-north-korea-missile-tests-in-august-2026-1785517679415",
+      "url": "https://polymarket.com/event/number-of-north-korea-missile-tests-in-august-2026-1785517679415",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-31T23:59:00Z",
+      "market_ids": [
+        "3242440",
+        "3242442",
+        "3242441"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.99,
+      "edge_pct_at_placement": 1.01,
+      "predicted_win_prob": null,
+      "stake_usd": 20.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wi-03-democratic-primary-winner-20260714154921992:2938036",
+      "tag": "calibration",
+      "market_question": "Will Emily Berge be the WI-03 Democratic nominee?",
+      "slug": "wi-03-democratic-primary-winner-20260714154921992",
+      "url": "https://polymarket.com/event/wi-03-democratic-primary-winner-20260714154921992",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-11T04:10:43.696778+00:00",
+      "market_ids": [
+        "2938036"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 32.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-tsla-hit-in-august-2026:3096157",
+      "tag": "calibration",
+      "market_question": "Will Tesla, Inc. (TSLA) hit (LOW) $240 in August?",
+      "slug": "what-price-will-tsla-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-tsla-hit-in-august-2026",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-31T04:10:43.696778+00:00",
+      "market_ids": [
+        "3096157"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 30.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:rus-spa-kra-2026-08-09-exact-score:3115683",
+      "tag": "calibration",
+      "market_question": "Exact Score: FK Spartak Moskva 1 - 3 FK Krasnodar?",
+      "slug": "rus-spa-kra-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/rus-spa-kra-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3115683"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 29.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:rus-spa-kra-2026-08-09-exact-score:3115687",
+      "tag": "calibration",
+      "market_question": "Exact Score: FK Spartak Moskva 3 - 2 FK Krasnodar?",
+      "slug": "rus-spa-kra-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/rus-spa-kra-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3115687"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 27.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:chi-hen-qin-2026-08-09-exact-score:3120470",
+      "tag": "calibration",
+      "market_question": "Exact Score: Henan FC 0 - 1 Qingdao Xihaian FC?",
+      "slug": "chi-hen-qin-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/chi-hen-qin-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3120470"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 26.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lec-aus-pue-2026-08-09-exact-score:3128504",
+      "tag": "calibration",
+      "market_question": "Exact Score: Austin FC 3 - 2 Club Puebla?",
+      "slug": "lec-aus-pue-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/lec-aus-pue-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3128504"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 25.04,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lec-ame-por-2026-08-09-exact-score:3128542",
+      "tag": "calibration",
+      "market_question": "Exact Score: CF América 0 - 0 Portland Timbers?",
+      "slug": "lec-ame-por-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/lec-ame-por-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3128542"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 23.79,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lec-ame-por-2026-08-09-exact-score:3128551",
+      "tag": "calibration",
+      "market_question": "Exact Score: CF América 3 - 0 Portland Timbers?",
+      "slug": "lec-ame-por-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/lec-ame-por-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3128551"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 22.6,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:fpd-her-ala-2026-08-09-exact-score:3150216",
+      "tag": "calibration",
+      "market_question": "Exact Score: CS Herediano 3 - 1 LD Alajuelense?",
+      "slug": "fpd-her-ala-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/fpd-her-ala-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3150216"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 21.47,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ukr1-ver-dyn-2026-08-09-exact-score:3150922",
+      "tag": "calibration",
+      "market_question": "Exact Score: RNK Veres Rivne 1 - 0 FK Dynamo Kyiv?",
+      "slug": "ukr1-ver-dyn-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ukr1-ver-dyn-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3150922"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 20.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ukr1-ver-dyn-2026-08-09-exact-score:3150931",
+      "tag": "calibration",
+      "market_question": "Exact Score: RNK Veres Rivne 2 - 2 FK Dynamo Kyiv?",
+      "slug": "ukr1-ver-dyn-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ukr1-ver-dyn-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3150931"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 19.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ukr1-ver-dyn-2026-08-09-exact-score:3150934",
+      "tag": "calibration",
+      "market_question": "Exact Score: RNK Veres Rivne 3 - 2 FK Dynamo Kyiv?",
+      "slug": "ukr1-ver-dyn-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ukr1-ver-dyn-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3150934"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 18.4,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ere-spa-fey-2026-08-09-exact-score:3156374",
+      "tag": "calibration",
+      "market_question": "Exact Score: Sparta Rotterdam 1 - 0 Feyenoord Rotterdam?",
+      "slug": "ere-spa-fey-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ere-spa-fey-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3156374"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 17.48,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ere-zwo-aja-2026-08-09-exact-score:3156432",
+      "tag": "calibration",
+      "market_question": "Exact Score: PEC Zwolle 2 - 1 AFC Ajax?",
+      "slug": "ere-zwo-aja-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ere-zwo-aja-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3156432"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 16.61,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ere-zwo-aja-2026-08-09-exact-score:3156437",
+      "tag": "calibration",
+      "market_question": "Exact Score: PEC Zwolle 2 - 3 AFC Ajax?",
+      "slug": "ere-zwo-aja-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ere-zwo-aja-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3156437"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 15.78,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ere-her1-twe-2026-08-09-exact-score:3156463",
+      "tag": "calibration",
+      "market_question": "Exact Score: SC Heerenveen 2 - 3 FC Twente?",
+      "slug": "ere-her1-twe-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/ere-her1-twe-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3156463"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 14.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:cze1-fhk-fbo-2026-08-09-exact-score:3177775",
+      "tag": "calibration",
+      "market_question": "Exact Score: FC Hradec Králové 3 - 1 FC Baník Ostrava?",
+      "slug": "cze1-fhk-fbo-2026-08-09-exact-score",
+      "url": "https://polymarket.com/event/cze1-fhk-fbo-2026-08-09-exact-score",
+      "placed_at": "2026-08-09T04:10:43.696778+00:00",
+      "deadline": "2026-08-09T04:10:43.696778+00:00",
+      "market_ids": [
+        "3177775"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.951,
+      "edge_pct_at_placement": 4.79,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 14.24,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
