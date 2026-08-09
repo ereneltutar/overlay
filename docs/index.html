@@ -90,10 +90,22 @@ a{ color: inherit; }
 }
 .theme-toggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
 
-.masthead{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; margin-bottom:6px; }
+.masthead{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px 20px; margin-bottom:6px; }
 .brand{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink); }
 .brand-sub{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.03em; }
 .etymology{ font-family:'IBM Plex Sans', sans-serif; font-style:italic; font-size:12px; color:var(--ink-faint); max-width:46ch; line-height:1.5; margin:10px 0 28px; }
+
+.archive-btn{
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:700; letter-spacing:.03em;
+  color:var(--ink); background:var(--surface); border:1px solid var(--rule-strong); border-radius:20px;
+  padding:8px 16px; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  text-decoration:none; white-space:nowrap;
+  transition:background-color .15s ease, color .15s ease, transform .1s ease;
+}
+.archive-btn .dot{ width:6px; height:6px; border-radius:50%; background:var(--arb); flex-shrink:0; box-shadow:0 0 0 3px color-mix(in srgb, var(--arb) 22%, transparent); }
+.archive-btn:hover{ background:var(--accent); border-color:var(--accent); color:var(--bg); }
+.archive-btn:hover .dot{ background:var(--bg); box-shadow:0 0 0 3px color-mix(in srgb, var(--bg) 22%, transparent); }
+.archive-btn:active{ transform:scale(.97); }
 
 .ticker{ display:flex; flex-wrap:wrap; gap:6px 18px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); padding:10px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-bottom:36px; }
 .ticker span{ white-space:nowrap; }
@@ -259,8 +271,9 @@ footer a:hover{ color:var(--ink); }
 
   <div class="masthead">
     <div class="brand">Overlay</div>
-    <div class="brand-sub">Polymarket market watch</div>
+    <a class="archive-btn" href="./archive.html"><span class="dot"></span>paper-trading archive ↗</a>
   </div>
+  <div class="brand-sub">Polymarket market watch</div>
   <p class="etymology">"overlay," a betting and trading term: a position priced better than its true odds, so the expected value favors you. This tool hunts for those positions using three separate methods.</p>
 
   <div class="ticker">
@@ -334,10 +347,11 @@ footer a:hover{ color:var(--ink); }
     total. That's mathematically riskless, but still <b>not a guaranteed profit</b> (slippage and thin
     liquidity can still eat into it, since prices can move before an order fills).
     <span class="tagref cal">CAL</span> rows work differently: they flag price ranges where past resolved
-    markets show a statistically significant gap between price and outcome. <b>No single bet is guaranteed</b>;
-    the edge shows up over many repeated positions. <span class="tagref mis">MIS</span> rows list markets with
-    at least $5,000 in 24-hour volume where the current price differs from that bucket's historical resolution
-    rate by 15 points or more, with no statistical-significance requirement. None of this is investment advice.
+    markets show a statistically significant gap between price and outcome, with each market's real taker fee
+    folded into the cost side of that edge, same as ARB. <b>No single bet is guaranteed</b>; the edge shows up
+    over many repeated positions. <span class="tagref mis">MIS</span> rows list markets with at least $5,000 in
+    24-hour volume where the current price differs from that bucket's historical resolution rate by 15 fee-adjusted
+    points or more, with no statistical-significance requirement. None of this is investment advice.
   </p>
 
   <div class="ledger-head">
@@ -351,7 +365,6 @@ footer a:hover{ color:var(--ink); }
   <footer>
     <span>auto-updates every morning at 06:00 TR · data source gamma-api.polymarket.com</span>
     <span>
-      <a href="./archive.html">paper-trading archive ↗</a> ·
       <a href="https://github.com/ereneltutar/overlay" target="_blank" rel="noopener">source code ↗</a>
     </span>
   </footer>
@@ -583,7 +596,7 @@ function renderCalEntry(sig, rank, demo){
       <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
       ${buildCalBar(sig)}
       <div class="entry-foot">
-        <span>cost <span class="cost">$${sig.implied_cost.toFixed(3)}</span> / historical rate ${trueRatePct.toFixed(1)}%</span>
+        <span>cost <span class="cost">$${sig.implied_cost.toFixed(3)}</span>${sig.fee > 0 ? ` (incl. $${sig.fee.toFixed(3)} fees)` : ''} / historical rate ${trueRatePct.toFixed(1)}%</span>
         <span class="open">↗ open on polymarket</span>
       </div>
     </a>`;

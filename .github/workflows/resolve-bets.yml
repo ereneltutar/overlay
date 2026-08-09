@@ -1,0 +1,76 @@
+name: Resolve Paper-Trading Bets
+
+# The daily scan (daily-scan.yml) only checks open bets for resolution once,
+# at ~03:00 UTC, as part of its full run. Bet deadlines are scattered across
+# the whole day, so a bet whose market closes at, say, 14:00 UTC clears its
+# 12h grace window at 02:00 UTC the NEXT day - just missing that day's scan
+# and sitting shown as "pending" on the archive page for up to ~24h even
+# though Polymarket itself has already settled it. This workflow runs the
+# resolution pass on its own, more often, decoupled from the once-a-day
+# full event scan (which is what's actually expensive/rate-limit-sensitive),
+# so a closed market gets picked up within hours instead of by the next day.
+
+on:
+  schedule:
+    - cron: "20 */4 * * *"   # every 4 hours, offset from the daily scan's :00
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Resolve open bets
+        run: python scripts/track_bets.py --resolve-only
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/bet_log.json
+          if git diff --staged --quiet; then
+            echo "No changes, skipping commit."
+          else
+            git commit -m "Resolve bets: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            pushed=false
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push; then
+                pushed=true
+                break
+              fi
+              echo "Push attempt $attempt failed, retrying..."
+              sleep 5
+            done
+            if [ "$pushed" = true ]; then
+              echo "PUSHED=true" >> "$GITHUB_ENV"
+            else
+              echo "::error::Failed to push after 3 attempts"
+              exit 1
+            fi
+          fi
+
+      - name: Trigger Pages deploy
+        if: env.PUSHED == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # A push made with the default GITHUB_TOKEN does not trigger other
+          # workflows' `on: push` (GitHub's anti-recursion safeguard), so the
+          # docs/**-triggered Pages deploy never fires on its own here.
+          # Dispatch it explicitly instead.
+          gh workflow run pages.yml --repo "$GITHUB_REPOSITORY"

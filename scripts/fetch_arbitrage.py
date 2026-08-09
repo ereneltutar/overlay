@@ -334,10 +334,15 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     bias_pct = bucket["bias_pct"]
     actual_rate = bucket["resolved_yes_rate"]
 
+    # Same real per-market taker fee as the ARB scan (rate * price * (1-price),
+    # symmetric so it doesn't matter which side ends up being bought), added to
+    # the raw market price to get the real cost of entering the position.
+    fee = estimate_taker_fee(market, price)
     if bias_pct > 0:
-        side, cost, true_rate = "YES", price, actual_rate
+        side, raw_cost, true_rate = "YES", price, actual_rate
     else:
-        side, cost, true_rate = "NO", 1 - price, 1 - actual_rate
+        side, raw_cost, true_rate = "NO", 1 - price, 1 - actual_rate
+    cost = raw_cost + fee
 
     if cost <= 0:
         return None
@@ -358,6 +363,7 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
         "recommended_side": side,
         "current_price": round(price, 4),
         "implied_cost": round(cost, 4),
+        "fee": round(fee, 4),
         "bucket_range": bucket["range"],
         "bucket_sample_size": bucket["sample_size"],
         "bucket_historical_rate": round(actual_rate, 4),
@@ -403,7 +409,17 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
         return None  # no usable historical rate for this bucket yet (n < MIN_SAMPLE_PER_BUCKET)
     fair_prob = bucket["resolved_yes_rate"]
 
-    edge_pts = abs(fair_prob - implied_prob) * 100
+    # Same real per-market taker fee as ARB/CAL (rate * price * (1-price), so
+    # it's the same value regardless of which side ends up getting bought),
+    # folded into the cost side of the point gap so edge_pts reflects what a
+    # bet here would actually net, not just the raw price-vs-history gap.
+    side = "YES" if fair_prob > implied_prob else "NO"
+    fee = estimate_taker_fee(market, implied_prob)
+    raw_cost = implied_prob if side == "YES" else 1 - implied_prob
+    cost = raw_cost + fee
+    true_prob_for_side = fair_prob if side == "YES" else 1 - fair_prob
+
+    edge_pts = (true_prob_for_side - cost) * 100
     if edge_pts < MISPRICING_MIN_EDGE_PTS:
         return None
 
@@ -412,7 +428,6 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
             and edge_pts <= MISPRICING_LONGTERM_MIN_EDGE_PTS:
         return None
 
-    side = "YES" if fair_prob > implied_prob else "NO"
     liquidity = float(market.get("liquidityNum") or 0)
 
     # Floor so the score doesn't blow up when days left is near 0 (or unknown).
@@ -428,6 +443,8 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
         "recommended_side": side,
         "implied_probability": round(implied_prob, 4),
         "fair_probability": round(fair_prob, 4),
+        "implied_cost": round(cost, 4),
+        "fee": round(fee, 4),
         "edge_pct": round(edge_pts, 2),          # same field name as the other tags (for sorting/display)
         "volume_24h": round(volume_24h, 2),
         "liquidity": round(liquidity, 2),

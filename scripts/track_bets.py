@@ -37,6 +37,7 @@ Output: docs/bet_log.json (bankroll, full bet history, daily bankroll
         snapshots for the archive page's sparkline)
 """
 
+import argparse
 import datetime
 import json
 import random
@@ -101,12 +102,21 @@ def available_bankroll(log: dict) -> float:
     return total_bankroll(log) - open_stake
 
 
+def parse_deadline(deadline_str: str) -> datetime.datetime:
+    """Same Z-suffix normalization as fetch_arbitrage.parse_iso(). ARB bet
+    deadlines come straight from the Gamma API's endDate field (e.g.
+    "2026-08-08T14:00:00Z"); plain fromisoformat() only started accepting
+    a bare "Z" suffix in Python 3.11, so this keeps parsing correct even
+    if the runtime ever changes."""
+    return datetime.datetime.fromisoformat(deadline_str.replace("Z", "+00:00"))
+
+
 def resolve_open_bets(log: dict, now: datetime.datetime) -> int:
     resolved_count = 0
     for bet in log["bets"]:
         if bet["status"] != "open":
             continue
-        deadline = datetime.datetime.fromisoformat(bet["deadline"])
+        deadline = parse_deadline(bet["deadline"])
         if now < deadline + datetime.timedelta(hours=DEADLINE_GRACE_HOURS):
             continue
 
@@ -204,8 +214,12 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
     for sig in results.get("mispricing_signals", []):
         if not sig.get("market_id") or not sig.get("slug") or sig.get("days_left") is None:
             continue
-        entry_cost = sig["implied_probability"] if sig["recommended_side"] == "YES" \
-            else 1 - sig["implied_probability"]
+        # implied_cost is fee-inclusive (see find_mispricing_signal); fall back
+        # to the raw price for older results.json snapshots that predate it.
+        entry_cost = sig.get("implied_cost")
+        if entry_cost is None:
+            entry_cost = sig["implied_probability"] if sig["recommended_side"] == "YES" \
+                else 1 - sig["implied_probability"]
         if entry_cost <= 0:
             continue
         deadline = now + datetime.timedelta(days=sig["days_left"])
@@ -276,18 +290,35 @@ def record_bankroll_snapshot(log: dict, now: datetime.datetime):
         history.append({"date": today, "bankroll": bankroll})
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--resolve-only", action="store_true",
+        help="Only settle open bets against their markets; skip placing new "
+             "ones and don't require docs/results.json to exist. Meant for "
+             "a tighter-cadence workflow than the once-a-day full scan, so "
+             "a bet whose market closes mid-day doesn't sit shown as "
+             "'pending' for up to 24h waiting on tomorrow's run.")
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
     now = datetime.datetime.now(datetime.timezone.utc)
 
-    if not RESULTS_PATH.exists():
+    results = None
+    if RESULTS_PATH.exists():
+        results = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))
+    elif not args.resolve_only:
         print("docs/results.json not found, skipping bet tracking.", file=sys.stderr)
         return
 
-    results = json.loads(RESULTS_PATH.read_text(encoding="utf-8"))
     log = load_bet_log()
 
     resolved_count = resolve_open_bets(log, now)
-    placed_count, skipped = place_new_bets(log, results, now)
+    placed_count, skipped = (0, 0)
+    if not args.resolve_only:
+        placed_count, skipped = place_new_bets(log, results, now)
 
     log["bankroll"] = round(total_bankroll(log), 2)
     record_bankroll_snapshot(log, now)

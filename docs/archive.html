@@ -159,6 +159,7 @@ a{ color: inherit; }
 .stat-card[data-tier="mispricing"] .dot{ background:var(--mis); } .stat-card[data-tier="mispricing"] .stat-card-tag{ color:var(--mis); }
 .stat-card-rate{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:22px; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; }
 .stat-card-sub{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-dim); margin-top:5px; }
+.stat-card-sub2{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-faint); margin-top:3px; }
 
 .disclaimer{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.65; color:var(--ink-dim); max-width:64ch; margin:0 0 30px; }
 .disclaimer b{ color:var(--ink); }
@@ -248,17 +249,22 @@ footer a:hover{ color:var(--ink); }
   <div class="ticker">
     <span><span class="live-dot"></span>started Aug 6 2026 with $1,000</span>
     <span><b id="tkTotal">—</b> bets placed all-time</span>
-    <span><b id="tkOpen">—</b> currently open</span>
+    <span><b id="tkOpen">—</b> currently open (<b id="tkOpenUsd">—</b> pending)</span>
     <span><b id="tkResolved">—</b> resolved</span>
   </div>
 
   <div class="hero">
     <div class="hero-count" id="bankrollAmount">—</div>
-    <div class="hero-label">current bankroll</div>
+    <div class="hero-label">current bankroll · started at $1,000.00</div>
     <div class="hero-context">
       <span>return <b id="returnPct">—</b></span>
-      <span>headline win rate (CAL+MIS) <b id="headlineWinRate">—</b></span>
+      <span>available (cash on hand) <b id="availableAmount">—</b></span>
+      <span>pending in open bets <b id="pendingAmount">—</b></span>
       <span>max drawdown <b id="maxDrawdown">—</b></span>
+    </div>
+    <div class="hero-context" style="margin-top:6px;">
+      <span>win rate by count (CAL+MIS) <b id="headlineWinRate">—</b></span>
+      <span>win rate by $ staked (CAL+MIS) <b id="headlineWinRateByStake">—</b></span>
     </div>
   </div>
 
@@ -293,16 +299,19 @@ footer a:hover{ color:var(--ink); }
         <div class="stat-card-tag"><i class="dot"></i>ARB</div>
         <div class="stat-card-rate" id="rate-arbitrage">—</div>
         <div class="stat-card-sub" id="sub-arbitrage">—</div>
+        <div class="stat-card-sub2" id="sub2-arbitrage">—</div>
       </div>
       <div class="stat-card" data-tier="calibration">
         <div class="stat-card-tag"><i class="dot"></i>CAL</div>
         <div class="stat-card-rate" id="rate-calibration">—</div>
         <div class="stat-card-sub" id="sub-calibration">—</div>
+        <div class="stat-card-sub2" id="sub2-calibration">—</div>
       </div>
       <div class="stat-card" data-tier="mispricing">
         <div class="stat-card-tag"><i class="dot"></i>MIS</div>
         <div class="stat-card-rate" id="rate-mispricing">—</div>
         <div class="stat-card-sub" id="sub-mispricing">—</div>
+        <div class="stat-card-sub2" id="sub2-mispricing">—</div>
       </div>
     </div>
   </div>
@@ -448,18 +457,45 @@ function renderBankrollChart(history, startingBankroll){
   caption.innerHTML = `<b>${history.length}</b> daily snapshot${history.length===1?'':'s'} since Aug 6 2026. Dashed line = $1,000 starting point.`;
 }
 
+function emptyTagStats(){
+  return { won:0, lost:0, void:0, open:0, stakeWon:0, stakeLost:0, stakeVoid:0, stakeOpen:0, pnl:0 };
+}
+
 function computeStats(bets){
-  const byTag = { arbitrage: {won:0,lost:0,void:0,open:0}, calibration: {won:0,lost:0,void:0,open:0}, mispricing: {won:0,lost:0,void:0,open:0} };
-  bets.forEach(b => { byTag[b.tag][b.status]++; });
+  const byTag = { arbitrage: emptyTagStats(), calibration: emptyTagStats(), mispricing: emptyTagStats() };
+  bets.forEach(b => {
+    const s = byTag[b.tag];
+    s[b.status]++;
+    if(b.status === 'won') { s.stakeWon += b.stake_usd; s.pnl += b.pnl_usd; }
+    else if(b.status === 'lost') { s.stakeLost += b.stake_usd; s.pnl += b.pnl_usd; }
+    else if(b.status === 'void') { s.stakeVoid += b.stake_usd; }
+    else if(b.status === 'open') { s.stakeOpen += b.stake_usd; }
+  });
   return byTag;
+}
+
+// Win rate weighted by dollars staked rather than bet count: what fraction
+// of the money put into DECIDED (won+lost) bets ended up in a winner. Can
+// diverge a lot from the count-based rate if bigger-edge bets (bigger
+// stakes) win or lose disproportionately often.
+function stakeWeightedRate(stakeWon, stakeLost){
+  const decided = stakeWon + stakeLost;
+  return decided > 0 ? stakeWon / decided : null;
 }
 
 function renderStatCard(tag, stats){
   const decided = stats.won + stats.lost;
+  const decidedStake = stats.stakeWon + stats.stakeLost;
   const rateEl = document.getElementById('rate-' + tag);
   const subEl = document.getElementById('sub-' + tag);
+  const sub2El = document.getElementById('sub2-' + tag);
   rateEl.textContent = decided > 0 ? `${((stats.won/decided)*100).toFixed(0)}%` : '—';
   subEl.textContent = `${stats.won}W · ${stats.lost}L · ${stats.void}void · ${stats.open}open`;
+
+  const stakeRate = stakeWeightedRate(stats.stakeWon, stats.stakeLost);
+  const stakeRateText = stakeRate !== null ? `${(stakeRate*100).toFixed(0)}% by $` : '';
+  const pnlText = decided > 0 ? `${fmtSignedUsd(stats.pnl)} realized on ${fmtUsd(decidedStake)} decided` : 'no resolved bets yet';
+  sub2El.textContent = stakeRateText ? `${stakeRateText} · ${pnlText}` : pnlText;
 }
 
 const CAL_CHECK_BUCKET_WIDTH = 0.25;
@@ -601,9 +637,14 @@ async function loadBetLog(){
 
     const resolved = allBets.filter(b => b.status !== 'open');
     const open = allBets.filter(b => b.status === 'open');
+    const openStakeTotal = open.reduce((s,b) => s + b.stake_usd, 0);
     document.getElementById('tkTotal').textContent = fmtInt(allBets.length);
     document.getElementById('tkOpen').textContent = fmtInt(open.length);
+    document.getElementById('tkOpenUsd').textContent = fmtUsd(openStakeTotal);
     document.getElementById('tkResolved').textContent = fmtInt(resolved.length);
+
+    document.getElementById('pendingAmount').textContent = `${fmtUsd(openStakeTotal)} (${open.length} bet${open.length===1?'':'s'})`;
+    document.getElementById('availableAmount').textContent = fmtUsd(bankroll - openStakeTotal);
 
     const headline = allBets.filter(b => (b.tag === 'calibration' || b.tag === 'mispricing') && (b.status === 'won' || b.status === 'lost'));
     const headlineWon = headline.filter(b => b.status === 'won').length;
@@ -615,6 +656,14 @@ async function loadBetLog(){
     } else {
       headlineEl.textContent = 'not enough data yet';
     }
+
+    const headlineStakeWon = headline.filter(b => b.status === 'won').reduce((s,b) => s + b.stake_usd, 0);
+    const headlineStakeLost = headline.filter(b => b.status === 'lost').reduce((s,b) => s + b.stake_usd, 0);
+    const headlineStakeRate = stakeWeightedRate(headlineStakeWon, headlineStakeLost);
+    const headlineStakeEl = document.getElementById('headlineWinRateByStake');
+    headlineStakeEl.textContent = headlineStakeRate !== null
+      ? `${(headlineStakeRate*100).toFixed(0)}% (${fmtUsd(headlineStakeWon)} won of ${fmtUsd(headlineStakeWon+headlineStakeLost)} decided)`
+      : 'not enough data yet';
 
     const drawdownEl = document.getElementById('maxDrawdown');
     const maxDrawdownPct = computeMaxDrawdown(data.bankroll_history || []);

@@ -260,6 +260,21 @@ def test_find_calibration_signal_below_min_edge_returns_none():
     assert sig is None
 
 
+def test_find_calibration_signal_implied_cost_includes_real_taker_fee():
+    # price=0.45, fee = rate * price * (1-price) = 0.04 * 0.45 * 0.55 = 0.0099
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "feesEnabled": True,
+              "feeSchedule": {"rate": 0.04}}
+    event = {"endDate": "2026-01-11T00:00:00Z", "slug": "s"}
+    sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW)
+    assert sig is not None
+    expected_fee = round(0.04 * 0.45 * 0.55, 4)
+    assert sig["fee"] == expected_fee
+    assert sig["implied_cost"] == round(0.45 + expected_fee, 4)
+    # fee-inclusive edge is strictly worse than the no-fee edge would have been
+    no_fee_edge = (0.6 - 0.45) / 0.45 * 100
+    assert sig["edge_pct"] < no_fee_edge
+
+
 # --- find_mispricing_signal ----------------------------------------------
 
 def mis_bins(resolved_yes_rate=0.5, sample_size=40):
@@ -317,3 +332,17 @@ def test_find_mispricing_signal_long_horizon_with_big_edge_included():
     bins = [{"range": [0.05, 0.2], "resolved_yes_rate": 0.5, "sample_size": 40}]
     sig = fa.find_mispricing_signal(market, event, bins, NOW)
     assert sig is not None
+
+
+def test_find_mispricing_signal_implied_cost_includes_real_taker_fee():
+    # implied=0.3, fair=0.5 -> YES side; fee = 0.04 * 0.3 * 0.7 = 0.0084
+    market = {"lastTradePrice": 0.3, "volume24hr": 10000, "feesEnabled": True,
+              "feeSchedule": {"rate": 0.04}}
+    event = {"endDate": (NOW + datetime.timedelta(days=5)).isoformat(), "slug": "s"}
+    sig = fa.find_mispricing_signal(market, event, mis_bins(resolved_yes_rate=0.5), NOW)
+    assert sig is not None
+    expected_fee = round(0.04 * 0.3 * 0.7, 4)
+    assert sig["fee"] == expected_fee
+    assert sig["implied_cost"] == round(0.3 + expected_fee, 4)
+    # fee eats into the raw 20pt gap
+    assert sig["edge_pct"] < 20.0

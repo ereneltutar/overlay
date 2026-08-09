@@ -131,6 +131,8 @@ def test_build_candidates_arbitrage_has_no_predicted_win_prob():
 
 
 def test_build_candidates_mispricing_entry_cost_flips_with_side():
+    # No implied_cost field (older results.json snapshot) -> falls back to
+    # computing straight from implied_probability, with no fee added.
     base = {"market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
             "implied_probability": 0.3, "edge_pct": 20, "fair_probability": 0.7}
     yes_sig = dict(base, recommended_side="YES")
@@ -141,6 +143,17 @@ def test_build_candidates_mispricing_entry_cost_flips_with_side():
     assert no_c["entry_cost"] == 0.7
     assert yes_c["predicted_win_prob"] == 0.7    # fair_probability, side YES
     assert no_c["predicted_win_prob"] == 0.3     # 1 - fair_probability, side NO
+
+
+def test_build_candidates_mispricing_prefers_fee_inclusive_implied_cost():
+    # When results.json carries implied_cost (fee-inclusive, from
+    # find_mispricing_signal), that value is used as-is instead of being
+    # recomputed from the raw implied_probability.
+    sig = {"market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+           "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
+           "fair_probability": 0.7, "recommended_side": "YES"}
+    c = tb.build_candidates({"mispricing_signals": [sig]}, NOW)[0]
+    assert c["entry_cost"] == 0.3084
 
 
 # --- place_new_bets ------------------------------------------------------
