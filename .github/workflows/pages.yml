@@ -17,11 +17,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  # Split into build + deploy (GitHub's own Pages starter workflow does the
+  # same) instead of one job doing upload-pages-artifact immediately followed
+  # by deploy-pages. That single-job shape hit an intermittent failure here:
+  # "No artifacts named 'github-pages' were found for this workflow run" -
+  # confirmed from the run log to be a read-after-write race, not a real
+  # missing upload: the artifact finished uploading at 04:11:39.061Z and
+  # deploy-pages queried the Artifacts API for it at 04:11:39.550Z, ~489ms
+  # later, and got zero results back (the API's index hadn't caught up yet).
+  # A second job naturally can't start until it's scheduled and provisions a
+  # runner, which alone takes several seconds - comfortably longer than that
+  # indexing lag - so the deploy job's first API call always lands after the
+  # artifact is actually visible.
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,6 +43,13 @@ jobs:
         with:
           path: docs
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
