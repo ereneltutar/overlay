@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1004.55,
+  "bankroll": 1004.72,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -20,7 +20,7 @@
     },
     {
       "date": "2026-08-10",
-      "bankroll": 1004.55
+      "bankroll": 1004.72
     }
   ],
   "bets": [
@@ -293,9 +293,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 20.28,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-10T13:48:44.726619+00:00",
+      "pnl_usd": 0.17
     },
     {
       "bet_id": "arbitrage:swe-sir-bro-2026-08-10-halftime-result",
