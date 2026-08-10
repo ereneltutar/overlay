@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 996.11,
+  "bankroll": 999.15,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -17,6 +17,10 @@
     {
       "date": "2026-08-09",
       "bankroll": 996.11
+    },
+    {
+      "date": "2026-08-10",
+      "bankroll": 999.15
     }
   ],
   "bets": [
@@ -142,9 +146,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 25.15,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-10T02:37:48.943869+00:00",
+      "pnl_usd": 0.12
     },
     {
       "bet_id": "arbitrage:bl2-fce-h96-2026-08-09-halftime-result",
@@ -163,9 +167,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 24.39,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-10T02:37:48.943869+00:00",
+      "pnl_usd": -0.01
     },
     {
       "bet_id": "arbitrage:efl-sto-old-2026-08-08-halftime-result",
@@ -989,9 +993,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 29.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-10T02:37:48.943869+00:00",
+      "pnl_usd": 1.5
     },
     {
       "bet_id": "calibration:rus-spa-kra-2026-08-09-exact-score:3115687",
@@ -1009,9 +1013,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 27.74,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-10T02:37:48.943869+00:00",
+      "pnl_usd": 1.43
     },
     {
       "bet_id": "calibration:chi-hen-qin-2026-08-09-exact-score:3120470",
