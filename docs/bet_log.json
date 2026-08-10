@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 999.15,
+  "bankroll": 1000.26,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -20,7 +20,7 @@
     },
     {
       "date": "2026-08-10",
-      "bankroll": 999.15
+      "bankroll": 1000.26
     }
   ],
   "bets": [
@@ -1113,9 +1113,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 21.47,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-10T04:22:44.279722+00:00",
+      "pnl_usd": 1.11
     },
     {
       "bet_id": "calibration:ukr1-ver-dyn-2026-08-09-exact-score:3150922",
@@ -1276,6 +1276,346 @@
       "status": "won",
       "resolved_at": "2026-08-09T20:55:16.006907+00:00",
       "pnl_usd": 0.73
+    },
+    {
+      "bet_id": "calibration:who-will-trump-speak-to-in-august-20260731154151454:3246745",
+      "tag": "calibration",
+      "market_question": "Will Trump speak to Masoud Pezeshkian in August?",
+      "slug": "who-will-trump-speak-to-in-august-20260731154151454",
+      "url": "https://polymarket.com/event/who-will-trump-speak-to-in-august-20260731154151454",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-31T04:22:44.279722+00:00",
+      "market_ids": [
+        "3246745"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.952,
+      "edge_pct_at_placement": 4.68,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 32.98,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wisconsin-governor-democratic-primary-winner:907512",
+      "tag": "calibration",
+      "market_question": "Will David Crowley win the 2026 Wisconsin Governor Democratic primary election?",
+      "slug": "wisconsin-governor-democratic-primary-winner",
+      "url": "https://polymarket.com/event/wisconsin-governor-democratic-primary-winner",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-10T04:22:44.279722+00:00",
+      "market_ids": [
+        "907512"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9529,
+      "edge_pct_at_placement": 4.59,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 31.34,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:best-chinese-ai-company-end-of-august-20260717004241592:2954949",
+      "tag": "calibration",
+      "market_question": "Will Z.ai have the best Chinese AI model at the end of August 2026?",
+      "slug": "best-chinese-ai-company-end-of-august-20260717004241592",
+      "url": "https://polymarket.com/event/best-chinese-ai-company-end-of-august-20260717004241592",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-30T04:22:44.279722+00:00",
+      "market_ids": [
+        "2954949"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9529,
+      "edge_pct_at_placement": 4.59,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 29.77,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729:3008568",
+      "tag": "calibration",
+      "market_question": "Will Meta be the third-best Code Arena | WebDev AI lab at the end of August 2026?",
+      "slug": "third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729",
+      "url": "https://polymarket.com/event/third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-31T04:22:44.279722+00:00",
+      "market_ids": [
+        "3008568"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9529,
+      "edge_pct_at_placement": 4.59,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 28.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:will-wti-hit-week-of-august-10-2026:3410169",
+      "tag": "calibration",
+      "market_question": "Will WTI Crude Oil (WTI) hit (HIGH) $100 Week of August 10 2026?",
+      "slug": "will-wti-hit-week-of-august-10-2026",
+      "url": "https://polymarket.com/event/will-wti-hit-week-of-august-10-2026",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-14T04:22:44.279722+00:00",
+      "market_ids": [
+        "3410169"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9529,
+      "edge_pct_at_placement": 4.59,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 26.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:july-inflation-us-annual-20260714150613267:2925073",
+      "tag": "calibration",
+      "market_question": "Will annual inflation be 3.2% in July?",
+      "slug": "july-inflation-us-annual-20260714150613267",
+      "url": "https://polymarket.com/event/july-inflation-us-annual-20260714150613267",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "2925073"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 25.52,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ukr1-kar-che-2026-08-10-exact-score:3150983",
+      "tag": "calibration",
+      "market_question": "Exact Score: FK Karpaty Lviv 2 - 2 FK LNZ Cherkasy?",
+      "slug": "ukr1-kar-che-2026-08-10-exact-score",
+      "url": "https://polymarket.com/event/ukr1-kar-che-2026-08-10-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-10T04:22:44.279722+00:00",
+      "market_ids": [
+        "3150983"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 24.25,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:den-sif-ode-2026-08-10-exact-score:3210181",
+      "tag": "calibration",
+      "market_question": "Exact Score: Silkeborg IF 0 - 0 Odense BK?",
+      "slug": "den-sif-ode-2026-08-10-exact-score",
+      "url": "https://polymarket.com/event/den-sif-ode-2026-08-10-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-10T04:22:44.279722+00:00",
+      "market_ids": [
+        "3210181"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 23.03,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ucl-lyo-spp-2026-08-11-exact-score:3227262",
+      "tag": "calibration",
+      "market_question": "Exact Score: Olympique Lyonnais 0 - 0 AC Sparta Praha?",
+      "slug": "ucl-lyo-spp-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/ucl-lyo-spp-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3227262"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 21.88,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:col-al-bra-2026-08-11-exact-score:3243821",
+      "tag": "calibration",
+      "market_question": "Exact Score: Apóllon Lemesoú 3 - 3 SK Brann?",
+      "slug": "col-al-bra-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/col-al-bra-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3243821"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 20.79,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:white-house-of-tweets-august-4-august-11-2026:3253752",
+      "tag": "calibration",
+      "market_question": "Will White House post 200+ posts from August 4 to August 11, 2026?",
+      "slug": "white-house-of-tweets-august-4-august-11-2026",
+      "url": "https://polymarket.com/event/white-house-of-tweets-august-4-august-11-2026",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3253752"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 19.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:uel-sab-lar-2026-08-11-exact-score:3269624",
+      "tag": "calibration",
+      "market_question": "Exact Score: SK Iberia 1999 0 - 3 Larne FC?",
+      "slug": "uel-sab-lar-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/uel-sab-lar-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3269624"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 18.76,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:uel-sab-lar-2026-08-11-exact-score:3269629",
+      "tag": "calibration",
+      "market_question": "Exact Score: SK Iberia 1999 2 - 2 Larne FC?",
+      "slug": "uel-sab-lar-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/uel-sab-lar-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3269629"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 17.82,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:auc-lf-mct-2026-08-11-exact-score:3294040",
+      "tag": "calibration",
+      "market_question": "Exact Score: Lions FC 2 - 3 Melbourne City FC?",
+      "slug": "auc-lf-mct-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/auc-lf-mct-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3294040"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 16.93,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:arg-tal-lan-2026-08-11-exact-score:3314728",
+      "tag": "calibration",
+      "market_question": "Exact Score: CA Talleres 0 - 3 CA Lanús?",
+      "slug": "arg-tal-lan-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3314728"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 16.09,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:arg-tal-lan-2026-08-11-exact-score:3314731",
+      "tag": "calibration",
+      "market_question": "Exact Score: CA Talleres 3 - 0 CA Lanús?",
+      "slug": "arg-tal-lan-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3314731"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 15.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:arg-tal-lan-2026-08-11-exact-score:3314735",
+      "tag": "calibration",
+      "market_question": "Exact Score: CA Talleres 2 - 3 CA Lanús?",
+      "slug": "arg-tal-lan-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
+      "placed_at": "2026-08-10T04:22:44.279722+00:00",
+      "deadline": "2026-08-11T04:22:44.279722+00:00",
+      "market_ids": [
+        "3314735"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.9533,
+      "edge_pct_at_placement": 4.54,
+      "predicted_win_prob": 0.9966,
+      "stake_usd": 14.52,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }

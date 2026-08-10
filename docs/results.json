@@ -1,406 +1,389 @@
 {
-  "generated_at": "2026-08-09T04:09:13.420468+00:00",
+  "generated_at": "2026-08-10T04:21:44.169903+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 17574,
-  "opportunities": [
-    {
-      "event_title": "Number of North Korea Missile Tests in August 2026?",
-      "slug": "number-of-north-korea-missile-tests-in-august-2026-1785517679415",
-      "url": "https://polymarket.com/event/number-of-north-korea-missile-tests-in-august-2026-1785517679415",
-      "end_date": "2026-08-31T23:59:00Z",
-      "days_left": 22,
-      "num_outcomes": 3,
-      "ask_cost": 0.99,
-      "total_fee": 0.0,
-      "total_cost": 0.99,
-      "edge_pct": 1.01,
-      "min_outcome_liquidity": 686.79,
-      "legs": [
-        {
-          "outcome": "1",
-          "ask": 0.32,
-          "liquidity": 1054.34,
-          "market_id": "3242440",
-          "fee": 0.0
-        },
-        {
-          "outcome": "3+",
-          "ask": 0.32,
-          "liquidity": 686.79,
-          "market_id": "3242442",
-          "fee": 0.0
-        },
-        {
-          "outcome": "2",
-          "ask": 0.35,
-          "liquidity": 1172.12,
-          "market_id": "3242441",
-          "fee": 0.0
-        }
-      ]
-    }
-  ],
+  "scanned_events": 18500,
+  "opportunities": [],
   "calibration_signals": [
     {
-      "market_id": "2938036",
-      "market_question": "Will Emily Berge be the WI-03 Democratic nominee?",
-      "slug": "wi-03-democratic-primary-winner-20260714154921992",
-      "url": "https://polymarket.com/event/wi-03-democratic-primary-winner-20260714154921992",
-      "days_left": 2,
+      "market_id": "3246745",
+      "market_question": "Will Trump speak to Masoud Pezeshkian in August?",
+      "slug": "who-will-trump-speak-to-in-august-20260731154151454",
+      "url": "https://polymarket.com/event/who-will-trump-speak-to-in-august-20260731154151454",
+      "days_left": 21,
       "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
+      "current_price": 0.048,
+      "implied_cost": 0.952,
+      "fee": 0.0,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 24401.77
+      "edge_pct": 4.68,
+      "liquidity": 11034.94
+    },
+    {
+      "market_id": "907512",
+      "market_question": "Will David Crowley win the 2026 Wisconsin Governor Democratic primary election?",
+      "slug": "wisconsin-governor-democratic-primary-winner",
+      "url": "https://polymarket.com/event/wisconsin-governor-democratic-primary-winner",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.59,
+      "liquidity": 65555.18
+    },
+    {
+      "market_id": "2954949",
+      "market_question": "Will Z.ai have the best Chinese AI model at the end of August 2026?",
+      "slug": "best-chinese-ai-company-end-of-august-20260717004241592",
+      "url": "https://polymarket.com/event/best-chinese-ai-company-end-of-august-20260717004241592",
+      "days_left": 20,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.59,
+      "liquidity": 6173.82
+    },
+    {
+      "market_id": "3008568",
+      "market_question": "Will Meta be the third-best Code Arena | WebDev AI lab at the end of August 2026?",
+      "slug": "third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729",
+      "url": "https://polymarket.com/event/third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729",
+      "days_left": 21,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.59,
+      "liquidity": 714.6
     },
     {
       "market_id": "3096157",
       "market_question": "Will Tesla, Inc. (TSLA) hit (LOW) $240 in August?",
       "slug": "what-price-will-tsla-hit-in-august-2026",
       "url": "https://polymarket.com/event/what-price-will-tsla-hit-in-august-2026",
-      "days_left": 22,
+      "days_left": 21,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 1017.49
-    },
-    {
-      "market_id": "3115683",
-      "market_question": "Exact Score: FK Spartak Moskva 1 - 3 FK Krasnodar?",
-      "slug": "rus-spa-kra-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/rus-spa-kra-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 3056.17
-    },
-    {
-      "market_id": "3115687",
-      "market_question": "Exact Score: FK Spartak Moskva 3 - 2 FK Krasnodar?",
-      "slug": "rus-spa-kra-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/rus-spa-kra-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 2943.84
-    },
-    {
-      "market_id": "3118286",
-      "market_question": "Exact Score: Randers FC 0 - 2 Lyngby BK?",
-      "slug": "den-ran-lyn-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/den-ran-lyn-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 71738.79
-    },
-    {
-      "market_id": "3120470",
-      "market_question": "Exact Score: Henan FC 0 - 1 Qingdao Xihaian FC?",
-      "slug": "chi-hen-qin-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/chi-hen-qin-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 69046.34
-    },
-    {
-      "market_id": "3128504",
-      "market_question": "Exact Score: Austin FC 3 - 2 Club Puebla?",
-      "slug": "lec-aus-pue-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/lec-aus-pue-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 20933.5
-    },
-    {
-      "market_id": "3128542",
-      "market_question": "Exact Score: CF América 0 - 0 Portland Timbers?",
-      "slug": "lec-ame-por-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/lec-ame-por-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 13724.53
-    },
-    {
-      "market_id": "3128551",
-      "market_question": "Exact Score: CF América 3 - 0 Portland Timbers?",
-      "slug": "lec-ame-por-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/lec-ame-por-2026-08-09-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.951,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 10375.03
+      "edge_pct": 4.59,
+      "liquidity": 540.5
     },
     {
       "market_id": "3141889",
       "market_question": "Will Jason Poulos be the MA-04 Democratic nominee?",
       "slug": "ma-04-democratic-primary-winner-20260727180932560",
       "url": "https://polymarket.com/event/ma-04-democratic-primary-winner-20260727180932560",
-      "days_left": 23,
+      "days_left": 22,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 8957.94
+      "edge_pct": 4.59,
+      "liquidity": 8883.41
     },
     {
       "market_id": "3143584",
       "market_question": "Will no press briefing air by August 31?",
       "slug": "what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
       "url": "https://polymarket.com/event/what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
-      "days_left": 22,
+      "days_left": 21,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 318.98
+      "edge_pct": 4.59,
+      "liquidity": 265.13
     },
     {
-      "market_id": "3150216",
-      "market_question": "Exact Score: CS Herediano 3 - 1 LD Alajuelense?",
-      "slug": "fpd-her-ala-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/fpd-her-ala-2026-08-09-exact-score",
+      "market_id": "3410169",
+      "market_question": "Will WTI Crude Oil (WTI) hit (HIGH) $100 Week of August 10 2026?",
+      "slug": "will-wti-hit-week-of-august-10-2026",
+      "url": "https://polymarket.com/event/will-wti-hit-week-of-august-10-2026",
+      "days_left": 4,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9529,
+      "fee": 0.0019,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.59,
+      "liquidity": 1021.59
+    },
+    {
+      "market_id": "2925073",
+      "market_question": "Will annual inflation be 3.2% in July?",
+      "slug": "july-inflation-us-annual-20260714150613267",
+      "url": "https://polymarket.com/event/july-inflation-us-annual-20260714150613267",
+      "days_left": 1,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.54,
+      "liquidity": 13092.11
+    },
+    {
+      "market_id": "3150983",
+      "market_question": "Exact Score: FK Karpaty Lviv 2 - 2 FK LNZ Cherkasy?",
+      "slug": "ukr1-kar-che-2026-08-10-exact-score",
+      "url": "https://polymarket.com/event/ukr1-kar-che-2026-08-10-exact-score",
       "days_left": 0,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 1312.95
+      "edge_pct": 4.54,
+      "liquidity": 12947.03
     },
     {
-      "market_id": "3150922",
-      "market_question": "Exact Score: RNK Veres Rivne 1 - 0 FK Dynamo Kyiv?",
-      "slug": "ukr1-ver-dyn-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ukr1-ver-dyn-2026-08-09-exact-score",
+      "market_id": "3210181",
+      "market_question": "Exact Score: Silkeborg IF 0 - 0 Odense BK?",
+      "slug": "den-sif-ode-2026-08-10-exact-score",
+      "url": "https://polymarket.com/event/den-sif-ode-2026-08-10-exact-score",
       "days_left": 0,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 28186.68
+      "edge_pct": 4.54,
+      "liquidity": 76429.53
     },
     {
-      "market_id": "3150931",
-      "market_question": "Exact Score: RNK Veres Rivne 2 - 2 FK Dynamo Kyiv?",
-      "slug": "ukr1-ver-dyn-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ukr1-ver-dyn-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3227262",
+      "market_question": "Exact Score: Olympique Lyonnais 0 - 0 AC Sparta Praha?",
+      "slug": "ucl-lyo-spp-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/ucl-lyo-spp-2026-08-11-exact-score",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 26233.83
+      "edge_pct": 4.54,
+      "liquidity": 17207.54
     },
     {
-      "market_id": "3150934",
-      "market_question": "Exact Score: RNK Veres Rivne 3 - 2 FK Dynamo Kyiv?",
-      "slug": "ukr1-ver-dyn-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ukr1-ver-dyn-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3243821",
+      "market_question": "Exact Score: Apóllon Lemesoú 3 - 3 SK Brann?",
+      "slug": "col-al-bra-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/col-al-bra-2026-08-11-exact-score",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 26086.01
+      "edge_pct": 4.54,
+      "liquidity": 8830.51
     },
     {
-      "market_id": "3156374",
-      "market_question": "Exact Score: Sparta Rotterdam 1 - 0 Feyenoord Rotterdam?",
-      "slug": "ere-spa-fey-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ere-spa-fey-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3253752",
+      "market_question": "Will White House post 200+ posts from August 4 to August 11, 2026?",
+      "slug": "white-house-of-tweets-august-4-august-11-2026",
+      "url": "https://polymarket.com/event/white-house-of-tweets-august-4-august-11-2026",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 83790.96
+      "edge_pct": 4.54,
+      "liquidity": 2446.98
     },
     {
-      "market_id": "3156432",
-      "market_question": "Exact Score: PEC Zwolle 2 - 1 AFC Ajax?",
-      "slug": "ere-zwo-aja-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ere-zwo-aja-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3269624",
+      "market_question": "Exact Score: SK Iberia 1999 0 - 3 Larne FC?",
+      "slug": "uel-sab-lar-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/uel-sab-lar-2026-08-11-exact-score",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 30307.96
+      "edge_pct": 4.54,
+      "liquidity": 15213.3
     },
     {
-      "market_id": "3156437",
-      "market_question": "Exact Score: PEC Zwolle 2 - 3 AFC Ajax?",
-      "slug": "ere-zwo-aja-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ere-zwo-aja-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3269629",
+      "market_question": "Exact Score: SK Iberia 1999 2 - 2 Larne FC?",
+      "slug": "uel-sab-lar-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/uel-sab-lar-2026-08-11-exact-score",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 98207.13
+      "edge_pct": 4.54,
+      "liquidity": 16589.4
     },
     {
-      "market_id": "3156463",
-      "market_question": "Exact Score: SC Heerenveen 2 - 3 FC Twente?",
-      "slug": "ere-her1-twe-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/ere-her1-twe-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3294040",
+      "market_question": "Exact Score: Lions FC 2 - 3 Melbourne City FC?",
+      "slug": "auc-lf-mct-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/auc-lf-mct-2026-08-11-exact-score",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 26457.71
+      "edge_pct": 4.54,
+      "liquidity": 871.46
     },
     {
-      "market_id": "3177775",
-      "market_question": "Exact Score: FC Hradec Králové 3 - 1 FC Baník Ostrava?",
-      "slug": "cze1-fhk-fbo-2026-08-09-exact-score",
-      "url": "https://polymarket.com/event/cze1-fhk-fbo-2026-08-09-exact-score",
-      "days_left": 0,
+      "market_id": "3314728",
+      "market_question": "Exact Score: CA Talleres 0 - 3 CA Lanús?",
+      "slug": "arg-tal-lan-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
+      "days_left": 1,
       "recommended_side": "NO",
       "current_price": 0.049,
-      "implied_cost": 0.951,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
       "bucket_range": [
         0.0,
         0.05
       ],
       "bucket_sample_size": 296,
       "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.79,
-      "liquidity": 75532.35
+      "edge_pct": 4.54,
+      "liquidity": 8790.48
+    },
+    {
+      "market_id": "3314731",
+      "market_question": "Exact Score: CA Talleres 3 - 0 CA Lanús?",
+      "slug": "arg-tal-lan-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
+      "days_left": 1,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.54,
+      "liquidity": 8793.49
+    },
+    {
+      "market_id": "3314735",
+      "market_question": "Exact Score: CA Talleres 2 - 3 CA Lanús?",
+      "slug": "arg-tal-lan-2026-08-11-exact-score",
+      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
+      "days_left": 1,
+      "recommended_side": "NO",
+      "current_price": 0.049,
+      "implied_cost": 0.9533,
+      "fee": 0.0023,
+      "bucket_range": [
+        0.0,
+        0.05
+      ],
+      "bucket_sample_size": 296,
+      "bucket_historical_rate": 0.0034,
+      "edge_pct": 4.54,
+      "liquidity": 8823.29
     }
   ],
   "calibration_table_generated_at": "2026-08-07T11:48:01.795800+00:00",
