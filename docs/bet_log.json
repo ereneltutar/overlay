@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1000.26,
+  "bankroll": 1001.55,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -20,7 +20,7 @@
     },
     {
       "date": "2026-08-10",
-      "bankroll": 1000.26
+      "bankroll": 1001.55
     }
   ],
   "bets": [
@@ -1053,9 +1053,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 25.04,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-10T05:48:00.817452+00:00",
+      "pnl_usd": 1.29
     },
     {
       "bet_id": "calibration:lec-ame-por-2026-08-09-exact-score:3128542",
