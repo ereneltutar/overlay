@@ -411,6 +411,15 @@ function fmtDate(iso){
 }
 function fmtInt(n){ return (n || 0).toLocaleString('en-US'); }
 
+// Market titles/questions/outcomes/slugs come from the public Polymarket
+// API (anyone can create a market), so they're untrusted and must be
+// escaped before landing in any innerHTML-rendered markup or attribute.
+function escapeHtml(str){
+  return String(str == null ? '' : str).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
 /* ============ calibration curve chart ============ */
 function renderCalibrationChart(bins){
   const svg = document.getElementById('calChart');
@@ -567,15 +576,15 @@ function buildMisDumbbell(sig){
 
 function renderArbEntry(opp, rank, demo){
   return `
-    <a class="entry" data-tier="arbitrage" href="${opp.url || '#'}" target="_blank" rel="noopener">
+    <a class="entry" data-tier="arbitrage" href="${escapeHtml(opp.url || '#')}" target="_blank" rel="noopener">
       <div class="entry-head">
         <span class="tag${demo?' demo-tag':''}">${TAG_LABELS.arbitrage}</span>
-        <p class="entry-title">${opp.event_title}</p>
+        <p class="entry-title">${escapeHtml(opp.event_title)}</p>
         <span class="entry-edge">+${opp.edge_pct.toFixed(1)}%</span>
       </div>
       <div class="entry-meta">${daysLabel(opp.days_left)} · ${opp.num_outcomes} outcomes · min liquidity $${fmtInt(Math.round(opp.min_outcome_liquidity))}</div>
       ${buildArbBar(opp.legs, opp.total_cost)}
-      <div class="legend">${opp.legs.map((leg,i) => `<span class="legend-chip"><i class="legend-dot" style="background:var(--ink-faint);opacity:${i%2===0?.35:.55}"></i>${leg.outcome} <b>$${leg.ask.toFixed(3)}</b></span>`).join('')}</div>
+      <div class="legend">${opp.legs.map((leg,i) => `<span class="legend-chip"><i class="legend-dot" style="background:var(--ink-faint);opacity:${i%2===0?.35:.55}"></i>${escapeHtml(leg.outcome)} <b>$${leg.ask.toFixed(3)}</b></span>`).join('')}</div>
       <div class="entry-foot">
         <span>cost <span class="cost">$${opp.total_cost.toFixed(3)}</span>${opp.total_fee > 0 ? ` (incl. $${opp.total_fee.toFixed(3)} fees)` : ''} / $1.00 payout</span>
         <span class="open">↗ open on polymarket</span>
@@ -587,10 +596,10 @@ function renderCalEntry(sig, rank, demo){
   const [lo, hi] = sig.bucket_range;
   const trueRatePct = (sig.recommended_side === 'YES' ? sig.bucket_historical_rate : 1 - sig.bucket_historical_rate) * 100;
   return `
-    <a class="entry" data-tier="calibration" href="${sig.url || '#'}" target="_blank" rel="noopener">
+    <a class="entry" data-tier="calibration" href="${escapeHtml(sig.url || '#')}" target="_blank" rel="noopener">
       <div class="entry-head">
         <span class="tag${demo?' demo-tag':''}">${TAG_LABELS.calibration}</span>
-        <p class="entry-title">${sig.market_question || sig.event_title}</p>
+        <p class="entry-title">${escapeHtml(sig.market_question || sig.event_title)}</p>
         <span class="entry-edge">+${sig.edge_pct.toFixed(1)}%</span>
       </div>
       <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
@@ -606,10 +615,10 @@ function renderMisEntry(sig, rank, demo){
   const [lo, hi] = sig.bucket_range;
   const warn = sig.low_sample_warning ? ' · ⚠ low sample size' : '';
   return `
-    <a class="entry" data-tier="mispricing" href="${sig.url || '#'}" target="_blank" rel="noopener">
+    <a class="entry" data-tier="mispricing" href="${escapeHtml(sig.url || '#')}" target="_blank" rel="noopener">
       <div class="entry-head">
         <span class="tag${demo?' demo-tag':''}">${TAG_LABELS.mispricing}</span>
-        <p class="entry-title">${sig.market_question || sig.event_title}</p>
+        <p class="entry-title">${escapeHtml(sig.market_question || sig.event_title)}</p>
         <span class="entry-edge">${sig.edge_pct.toFixed(1)}pt</span>
       </div>
       <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · n=${sig.bucket_sample_size}${warn}</div>

@@ -390,6 +390,15 @@ function fmtSignedUsd(n){
 }
 function fmtInt(n){ return (n || 0).toLocaleString('en-US'); }
 
+// Market titles/questions/slugs come from the public Polymarket API
+// (anyone can create a market), so they're untrusted and must be
+// escaped before landing in any innerHTML-rendered markup or attribute.
+function escapeHtml(str){
+  return String(str == null ? '' : str).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
 function wilsonInterval(k, n, z){
   z = z || 1.96;
   if(n === 0) return [0, 0];
@@ -602,11 +611,11 @@ function renderEntry(b){
     : `placed ${fmtShortDate(b.placed_at)} · resolved ${fmtShortDate(b.resolved_at)}`;
 
   return `
-    <a class="entry" data-tier="${b.tag}" href="${b.url || '#'}" target="_blank" rel="noopener">
+    <a class="entry" data-tier="${b.tag}" href="${escapeHtml(b.url || '#')}" target="_blank" rel="noopener">
       <div class="entry-head">
         <span class="tag">${TAG_LABELS[b.tag]}</span>
         <span class="status-badge ${statusClass}">${statusInner}</span>
-        <p class="entry-title">${b.market_question}</p>
+        <p class="entry-title">${escapeHtml(b.market_question)}</p>
         <span class="entry-pnl ${statusClass}">${pnlText}</span>
       </div>
       <div class="entry-meta">${sideText}entry cost $${b.entry_cost.toFixed(3)} · edge ${b.edge_pct_at_placement.toFixed(1)}% at placement</div>
