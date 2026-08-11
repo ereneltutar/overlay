@@ -1620,6 +1620,756 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:highest-temperature-in-guangzhou-on-august-11-2026",
+      "tag": "arbitrage",
+      "market_question": "Highest temperature in Guangzhou on August 11?",
+      "slug": "highest-temperature-in-guangzhou-on-august-11-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-guangzhou-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T12:00:00Z",
+      "market_ids": [
+        "3436148",
+        "3436149",
+        "3436150",
+        "3436151",
+        "3436152",
+        "3436157",
+        "3436158",
+        "3436156",
+        "3436155",
+        "3436153",
+        "3436154"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.9883,
+      "edge_pct_at_placement": 1.18,
+      "predicted_win_prob": null,
+      "stake_usd": 16.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3128786",
+      "tag": "calibration",
+      "market_question": "Israel x Iran ceasefire continues through August 9?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-31T04:11:41.646676+00:00",
+      "market_ids": [
+        "3128786"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25760.0,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 22.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:nflx-above-on-august-14-2026:3409865",
+      "tag": "calibration",
+      "market_question": "Will Netflix (NFLX) finish week of August 10 above $30?",
+      "slug": "nflx-above-on-august-14-2026",
+      "url": "https://polymarket.com/event/nflx-above-on-august-14-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-14T04:11:41.646676+00:00",
+      "market_ids": [
+        "3409865"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 21.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:open-above-on-august-14-2026:3409939",
+      "tag": "calibration",
+      "market_question": "Will Opendoor (OPEN) finish week of August 10 above $1.00?",
+      "slug": "open-above-on-august-14-2026",
+      "url": "https://polymarket.com/event/open-above-on-august-14-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-14T04:11:41.646676+00:00",
+      "market_ids": [
+        "3409939"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 20.66,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349:3410461",
+      "tag": "calibration",
+      "market_question": "Will \"Hot\" or \"Heat\" be in the headlines this week?",
+      "slug": "what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "url": "https://polymarket.com/event/what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-16T04:11:41.646676+00:00",
+      "market_ids": [
+        "3410461"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 19.63,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349:3410464",
+      "tag": "calibration",
+      "market_question": "Will \"Earthquake\" or \"Quake\" be in the headlines this week?",
+      "slug": "what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "url": "https://polymarket.com/event/what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-16T04:11:41.646676+00:00",
+      "market_ids": [
+        "3410464"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 18.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-trump-say-this-week-august-10-august-16-20260807162748299:3410502",
+      "tag": "calibration",
+      "market_question": "Will Trump say \"Lindsey\" or \"Graham\" this week?",
+      "slug": "what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "url": "https://polymarket.com/event/what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-16T04:11:41.646676+00:00",
+      "market_ids": [
+        "3410502"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 17.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-trump-say-this-week-august-10-august-16-20260807162748299:3410508",
+      "tag": "calibration",
+      "market_question": "Will Trump say \"Pearl Harbor\" this week?",
+      "slug": "what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "url": "https://polymarket.com/event/what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-16T04:11:41.646676+00:00",
+      "market_ids": [
+        "3410508"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 16.83,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-trump-post-this-week-august-10-august-16-20260807163025489:3410676",
+      "tag": "calibration",
+      "market_question": "Will Trump post \"Scam\" on Truth Social this week?",
+      "slug": "what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "url": "https://polymarket.com/event/what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-16T04:11:41.646676+00:00",
+      "market_ids": [
+        "3410676"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 15.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-will-trump-post-this-week-august-10-august-16-20260807163025489:3410680",
+      "tag": "calibration",
+      "market_question": "Will Trump post \"Crime\" on Truth Social this week?",
+      "slug": "what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "url": "https://polymarket.com/event/what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-16T04:11:41.646676+00:00",
+      "market_ids": [
+        "3410680"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 15.19,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:will-the-white-house-call-a-full-lid-by-630-pm-august-10-august-15-1786098036080:3422102",
+      "tag": "calibration",
+      "market_question": "Will the White House call a full lid by 6:30 PM on August 10?",
+      "slug": "will-the-white-house-call-a-full-lid-by-630-pm-august-10-august-15-1786098036080",
+      "url": "https://polymarket.com/event/will-the-white-house-call-a-full-lid-by-630-pm-august-10-august-15-1786098036080",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-15T04:11:41.646676+00:00",
+      "market_ids": [
+        "3422102"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24766.34,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 14.43,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-col-ari-2026-08-10:3336177",
+      "tag": "calibration",
+      "market_question": "Will there be a run scored in the first inning?: Colorado Rockies vs. Arizona Diamondbacks",
+      "slug": "mlb-col-ari-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-col-ari-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3336177"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 13.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-col-ari-2026-08-10:3472294",
+      "tag": "calibration",
+      "market_question": "Spread: Arizona Diamondbacks (-1.5)",
+      "slug": "mlb-col-ari-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-col-ari-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3472294"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 13.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-tb-oak-2026-08-10:3470027",
+      "tag": "calibration",
+      "market_question": "Tampa Bay Rays vs. Athletics: O/U 11.5",
+      "slug": "mlb-tb-oak-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3470027"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 12.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-tb-oak-2026-08-10:3505862",
+      "tag": "calibration",
+      "market_question": "Tampa Bay Rays vs. Athletics: O/U 12.5",
+      "slug": "mlb-tb-oak-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3505862"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 11.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-tb-oak-2026-08-10:3505863",
+      "tag": "calibration",
+      "market_question": "Tampa Bay Rays vs. Athletics: O/U 13.5",
+      "slug": "mlb-tb-oak-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3505863"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 11.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-kc-lad-2026-08-10:3463447",
+      "tag": "calibration",
+      "market_question": "Kansas City Royals vs. Los Angeles Dodgers: O/U 7.5",
+      "slug": "mlb-kc-lad-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-kc-lad-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3463447"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.61,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-kc-lad-2026-08-10:3463476",
+      "tag": "calibration",
+      "market_question": "Kansas City Royals vs. Los Angeles Dodgers: O/U 6.5",
+      "slug": "mlb-kc-lad-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-kc-lad-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-17T04:11:41.646676+00:00",
+      "market_ids": [
+        "3463476"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-los-png1-2026-08-10:3370488",
+      "tag": "calibration",
+      "market_question": "LoL: LOS vs paiN Gaming - Game 2 Winner",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370488"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-los-png1-2026-08-10:3370489",
+      "tag": "calibration",
+      "market_question": "LoL: LOS vs paiN Gaming (BO3) - CBLOL Regular Season",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370489"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-los-png1-2026-08-10:3370491",
+      "tag": "calibration",
+      "market_question": "Game Handicap: LOS (-1.5) vs paiN Gaming (+1.5)",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370491"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 24529.74,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-los-png1-2026-08-10:3370487",
+      "tag": "mispricing",
+      "market_question": "LoL: LOS vs paiN Gaming - Game 1 Winner",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370487"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:bitcoin-above-on-august-11-2026:3338654",
+      "tag": "mispricing",
+      "market_question": "Will the price of Bitcoin be above $60,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T16:11:41.646676+00:00",
+      "market_ids": [
+        "3338654"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0021,
+      "edge_pct_at_placement": 25.65,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-los-png1-2026-08-10:3370489",
+      "tag": "mispricing",
+      "market_question": "LoL: LOS vs paiN Gaming (BO3) - CBLOL Regular Season",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370489"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-los-png1-2026-08-10:3370488",
+      "tag": "mispricing",
+      "market_question": "LoL: LOS vs paiN Gaming - Game 2 Winner",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370488"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-los-png1-2026-08-10:3370491",
+      "tag": "mispricing",
+      "market_question": "Game Handicap: LOS (-1.5) vs paiN Gaming (+1.5)",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3370491"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:bitcoin-above-on-august-11-2026:3338665",
+      "tag": "mispricing",
+      "market_question": "Will the price of Bitcoin be above $62,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T16:11:41.646676+00:00",
+      "market_ids": [
+        "3338665"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0171,
+      "edge_pct_at_placement": 24.15,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ethereum-above-on-august-11-2026:3338541",
+      "tag": "mispricing",
+      "market_question": "Will the price of Ethereum be above $1,700 on August 11?",
+      "slug": "ethereum-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T16:11:41.646676+00:00",
+      "market_ids": [
+        "3338541"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0011,
+      "edge_pct_at_placement": 25.75,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:bitcoin-above-on-august-11-2026:3338632",
+      "tag": "mispricing",
+      "market_question": "Will the price of Bitcoin be above $54,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T16:11:41.646676+00:00",
+      "market_ids": [
+        "3338632"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0011,
+      "edge_pct_at_placement": 25.75,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-paina-quin-2026-08-10:3481203",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: paiN Academy vs QUINTESSÊNCIA (BO3) - CCT South America Challengers #2 Playoffs",
+      "slug": "cs2-paina-quin-2026-08-10",
+      "url": "https://polymarket.com/event/cs2-paina-quin-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T06:35:41.646676+00:00",
+      "market_ids": [
+        "3481203"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-paina-quin-2026-08-10:3481178",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: paiN Academy vs QUINTESSÊNCIA - Map 1 Winner",
+      "slug": "cs2-paina-quin-2026-08-10",
+      "url": "https://polymarket.com/event/cs2-paina-quin-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T06:35:41.646676+00:00",
+      "market_ids": [
+        "3481178"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-paina-quin-2026-08-10:3481180",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: paiN Academy vs QUINTESSÊNCIA - Map 2 Winner",
+      "slug": "cs2-paina-quin-2026-08-10",
+      "url": "https://polymarket.com/event/cs2-paina-quin-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T06:35:41.646676+00:00",
+      "market_ids": [
+        "3481180"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.001,
+      "edge_pct_at_placement": 25.76,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ethereum-above-on-august-11-2026:3338544",
+      "tag": "mispricing",
+      "market_question": "Will the price of Ethereum be above $1,800 on August 11?",
+      "slug": "ethereum-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T16:11:41.646676+00:00",
+      "market_ids": [
+        "3338544"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0075,
+      "edge_pct_at_placement": 25.11,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-wellington-on-august-11-2026:3435830",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Wellington be 12°C on August 11?",
+      "slug": "highest-temperature-in-wellington-on-august-11-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-wellington-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T11:23:41.646676+00:00",
+      "market_ids": [
+        "3435830"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0105,
+      "edge_pct_at_placement": 24.81,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:bitcoin-above-on-august-11-2026:3338643",
+      "tag": "mispricing",
+      "market_question": "Will the price of Bitcoin be above $58,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T16:11:41.646676+00:00",
+      "market_ids": [
+        "3338643"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0011,
+      "edge_pct_at_placement": 25.75,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-los-png1-2026-08-10:3471676",
+      "tag": "mispricing",
+      "market_question": "Total Kills Over/Under 27.5 in Game 2?",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T04:11:41.646676+00:00",
+      "market_ids": [
+        "3471676"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0105,
+      "edge_pct_at_placement": 24.81,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lowest-temperature-in-hong-kong-on-august-11-2026:3436820",
+      "tag": "mispricing",
+      "market_question": "Will the lowest temperature in Hong Kong be 29°C on August 11?",
+      "slug": "lowest-temperature-in-hong-kong-on-august-11-2026",
+      "url": "https://polymarket.com/event/lowest-temperature-in-hong-kong-on-august-11-2026",
+      "placed_at": "2026-08-11T04:11:41.646676+00:00",
+      "deadline": "2026-08-11T11:23:41.646676+00:00",
+      "market_ids": [
+        "3436820"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0524,
+      "edge_pct_at_placement": 20.62,
+      "predicted_win_prob": 0.2586,
+      "stake_usd": 10.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }

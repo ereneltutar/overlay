@@ -1,393 +1,927 @@
 {
-  "generated_at": "2026-08-10T04:21:44.169903+00:00",
+  "generated_at": "2026-08-11T04:10:36.693343+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 18500,
-  "opportunities": [],
-  "calibration_signals": [
+  "scanned_events": 19289,
+  "opportunities": [
     {
-      "market_id": "3246745",
-      "market_question": "Will Trump speak to Masoud Pezeshkian in August?",
-      "slug": "who-will-trump-speak-to-in-august-20260731154151454",
-      "url": "https://polymarket.com/event/who-will-trump-speak-to-in-august-20260731154151454",
-      "days_left": 21,
-      "recommended_side": "NO",
-      "current_price": 0.048,
-      "implied_cost": 0.952,
-      "fee": 0.0,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.68,
-      "liquidity": 11034.94
-    },
-    {
-      "market_id": "907512",
-      "market_question": "Will David Crowley win the 2026 Wisconsin Governor Democratic primary election?",
-      "slug": "wisconsin-governor-democratic-primary-winner",
-      "url": "https://polymarket.com/event/wisconsin-governor-democratic-primary-winner",
+      "event_title": "Highest temperature in Guangzhou on August 11?",
+      "slug": "highest-temperature-in-guangzhou-on-august-11-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-guangzhou-on-august-11-2026",
+      "end_date": "2026-08-11T12:00:00Z",
       "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 65555.18
-    },
-    {
-      "market_id": "2954949",
-      "market_question": "Will Z.ai have the best Chinese AI model at the end of August 2026?",
-      "slug": "best-chinese-ai-company-end-of-august-20260717004241592",
-      "url": "https://polymarket.com/event/best-chinese-ai-company-end-of-august-20260717004241592",
-      "days_left": 20,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 6173.82
-    },
-    {
-      "market_id": "3008568",
-      "market_question": "Will Meta be the third-best Code Arena | WebDev AI lab at the end of August 2026?",
-      "slug": "third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729",
-      "url": "https://polymarket.com/event/third-best-code-arena-webdev-ai-lab-end-of-august-20260720220546729",
-      "days_left": 21,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 714.6
-    },
-    {
-      "market_id": "3096157",
-      "market_question": "Will Tesla, Inc. (TSLA) hit (LOW) $240 in August?",
-      "slug": "what-price-will-tsla-hit-in-august-2026",
-      "url": "https://polymarket.com/event/what-price-will-tsla-hit-in-august-2026",
-      "days_left": 21,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 540.5
-    },
-    {
-      "market_id": "3141889",
-      "market_question": "Will Jason Poulos be the MA-04 Democratic nominee?",
-      "slug": "ma-04-democratic-primary-winner-20260727180932560",
-      "url": "https://polymarket.com/event/ma-04-democratic-primary-winner-20260727180932560",
-      "days_left": 22,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 8883.41
-    },
-    {
-      "market_id": "3143584",
-      "market_question": "Will no press briefing air by August 31?",
-      "slug": "what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
-      "url": "https://polymarket.com/event/what-will-karoline-leavitt-say-during-the-next-white-house-press-briefing-20260723175551503",
-      "days_left": 21,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 265.13
-    },
-    {
-      "market_id": "3410169",
-      "market_question": "Will WTI Crude Oil (WTI) hit (HIGH) $100 Week of August 10 2026?",
-      "slug": "will-wti-hit-week-of-august-10-2026",
-      "url": "https://polymarket.com/event/will-wti-hit-week-of-august-10-2026",
-      "days_left": 4,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9529,
-      "fee": 0.0019,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.59,
-      "liquidity": 1021.59
-    },
-    {
-      "market_id": "2925073",
-      "market_question": "Will annual inflation be 3.2% in July?",
-      "slug": "july-inflation-us-annual-20260714150613267",
-      "url": "https://polymarket.com/event/july-inflation-us-annual-20260714150613267",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 13092.11
-    },
-    {
-      "market_id": "3150983",
-      "market_question": "Exact Score: FK Karpaty Lviv 2 - 2 FK LNZ Cherkasy?",
-      "slug": "ukr1-kar-che-2026-08-10-exact-score",
-      "url": "https://polymarket.com/event/ukr1-kar-che-2026-08-10-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 12947.03
-    },
-    {
-      "market_id": "3210181",
-      "market_question": "Exact Score: Silkeborg IF 0 - 0 Odense BK?",
-      "slug": "den-sif-ode-2026-08-10-exact-score",
-      "url": "https://polymarket.com/event/den-sif-ode-2026-08-10-exact-score",
-      "days_left": 0,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 76429.53
-    },
-    {
-      "market_id": "3227262",
-      "market_question": "Exact Score: Olympique Lyonnais 0 - 0 AC Sparta Praha?",
-      "slug": "ucl-lyo-spp-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/ucl-lyo-spp-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 17207.54
-    },
-    {
-      "market_id": "3243821",
-      "market_question": "Exact Score: Apóllon Lemesoú 3 - 3 SK Brann?",
-      "slug": "col-al-bra-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/col-al-bra-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 8830.51
-    },
-    {
-      "market_id": "3253752",
-      "market_question": "Will White House post 200+ posts from August 4 to August 11, 2026?",
-      "slug": "white-house-of-tweets-august-4-august-11-2026",
-      "url": "https://polymarket.com/event/white-house-of-tweets-august-4-august-11-2026",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 2446.98
-    },
-    {
-      "market_id": "3269624",
-      "market_question": "Exact Score: SK Iberia 1999 0 - 3 Larne FC?",
-      "slug": "uel-sab-lar-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/uel-sab-lar-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 15213.3
-    },
-    {
-      "market_id": "3269629",
-      "market_question": "Exact Score: SK Iberia 1999 2 - 2 Larne FC?",
-      "slug": "uel-sab-lar-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/uel-sab-lar-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 16589.4
-    },
-    {
-      "market_id": "3294040",
-      "market_question": "Exact Score: Lions FC 2 - 3 Melbourne City FC?",
-      "slug": "auc-lf-mct-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/auc-lf-mct-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 871.46
-    },
-    {
-      "market_id": "3314728",
-      "market_question": "Exact Score: CA Talleres 0 - 3 CA Lanús?",
-      "slug": "arg-tal-lan-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 8790.48
-    },
-    {
-      "market_id": "3314731",
-      "market_question": "Exact Score: CA Talleres 3 - 0 CA Lanús?",
-      "slug": "arg-tal-lan-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 8793.49
-    },
-    {
-      "market_id": "3314735",
-      "market_question": "Exact Score: CA Talleres 2 - 3 CA Lanús?",
-      "slug": "arg-tal-lan-2026-08-11-exact-score",
-      "url": "https://polymarket.com/event/arg-tal-lan-2026-08-11-exact-score",
-      "days_left": 1,
-      "recommended_side": "NO",
-      "current_price": 0.049,
-      "implied_cost": 0.9533,
-      "fee": 0.0023,
-      "bucket_range": [
-        0.0,
-        0.05
-      ],
-      "bucket_sample_size": 296,
-      "bucket_historical_rate": 0.0034,
-      "edge_pct": 4.54,
-      "liquidity": 8823.29
+      "num_outcomes": 11,
+      "ask_cost": 0.964,
+      "total_fee": 0.0243,
+      "total_cost": 0.9883,
+      "edge_pct": 1.18,
+      "min_outcome_liquidity": 363.24,
+      "legs": [
+        {
+          "outcome": "31°C or below",
+          "ask": 0.001,
+          "liquidity": 51374.17,
+          "market_id": "3436148",
+          "fee": 0.0
+        },
+        {
+          "outcome": "32°C",
+          "ask": 0.001,
+          "liquidity": 37363.39,
+          "market_id": "3436149",
+          "fee": 0.0
+        },
+        {
+          "outcome": "33°C",
+          "ask": 0.001,
+          "liquidity": 44863.72,
+          "market_id": "3436150",
+          "fee": 0.0
+        },
+        {
+          "outcome": "34°C",
+          "ask": 0.001,
+          "liquidity": 29104.66,
+          "market_id": "3436151",
+          "fee": 0.0
+        },
+        {
+          "outcome": "35°C",
+          "ask": 0.001,
+          "liquidity": 31588.87,
+          "market_id": "3436152",
+          "fee": 0.0
+        },
+        {
+          "outcome": "40°C",
+          "ask": 0.001,
+          "liquidity": 1453.91,
+          "market_id": "3436157",
+          "fee": 0.0
+        },
+        {
+          "outcome": "41°C or higher",
+          "ask": 0.001,
+          "liquidity": 1379.01,
+          "market_id": "3436158",
+          "fee": 0.0
+        },
+        {
+          "outcome": "39°C",
+          "ask": 0.007,
+          "liquidity": 4553.06,
+          "market_id": "3436156",
+          "fee": 0.0003
+        },
+        {
+          "outcome": "38°C",
+          "ask": 0.14,
+          "liquidity": 1009.76,
+          "market_id": "3436155",
+          "fee": 0.006
+        },
+        {
+          "outcome": "36°C",
+          "ask": 0.15,
+          "liquidity": 363.24,
+          "market_id": "3436153",
+          "fee": 0.0064
+        },
+        {
+          "outcome": "37°C",
+          "ask": 0.66,
+          "liquidity": 919.21,
+          "market_id": "3436154",
+          "fee": 0.0112
+        }
+      ]
     }
   ],
-  "calibration_table_generated_at": "2026-08-07T11:48:01.795800+00:00",
-  "mispricing_signals": [],
+  "calibration_signals": [
+    {
+      "market_id": "3128786",
+      "market_question": "Israel x Iran ceasefire continues through August 9?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "days_left": 20,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 25760.0,
+      "liquidity": 130354.9
+    },
+    {
+      "market_id": "3409865",
+      "market_question": "Will Netflix (NFLX) finish week of August 10 above $30?",
+      "slug": "nflx-above-on-august-14-2026",
+      "url": "https://polymarket.com/event/nflx-above-on-august-14-2026",
+      "days_left": 3,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 736.74
+    },
+    {
+      "market_id": "3409939",
+      "market_question": "Will Opendoor (OPEN) finish week of August 10 above $1.00?",
+      "slug": "open-above-on-august-14-2026",
+      "url": "https://polymarket.com/event/open-above-on-august-14-2026",
+      "days_left": 3,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 5563.8
+    },
+    {
+      "market_id": "3410461",
+      "market_question": "Will \"Hot\" or \"Heat\" be in the headlines this week?",
+      "slug": "what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "url": "https://polymarket.com/event/what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "days_left": 5,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 634.43
+    },
+    {
+      "market_id": "3410464",
+      "market_question": "Will \"Earthquake\" or \"Quake\" be in the headlines this week?",
+      "slug": "what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "url": "https://polymarket.com/event/what-will-the-nyt-front-page-headlines-say-this-week-august-10-august-16-20260807161735349",
+      "days_left": 5,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 651.77
+    },
+    {
+      "market_id": "3410502",
+      "market_question": "Will Trump say \"Lindsey\" or \"Graham\" this week?",
+      "slug": "what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "url": "https://polymarket.com/event/what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "days_left": 5,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 36632.47
+    },
+    {
+      "market_id": "3410508",
+      "market_question": "Will Trump say \"Pearl Harbor\" this week?",
+      "slug": "what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "url": "https://polymarket.com/event/what-will-trump-say-this-week-august-10-august-16-20260807162748299",
+      "days_left": 5,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 583.98
+    },
+    {
+      "market_id": "3410676",
+      "market_question": "Will Trump post \"Scam\" on Truth Social this week?",
+      "slug": "what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "url": "https://polymarket.com/event/what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "days_left": 5,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 1160.33
+    },
+    {
+      "market_id": "3410680",
+      "market_question": "Will Trump post \"Crime\" on Truth Social this week?",
+      "slug": "what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "url": "https://polymarket.com/event/what-will-trump-post-this-week-august-10-august-16-20260807163025489",
+      "days_left": 5,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 32275.93
+    },
+    {
+      "market_id": "3422102",
+      "market_question": "Will the White House call a full lid by 6:30 PM on August 10?",
+      "slug": "will-the-white-house-call-a-full-lid-by-630-pm-august-10-august-15-1786098036080",
+      "url": "https://polymarket.com/event/will-the-white-house-call-a-full-lid-by-630-pm-august-10-august-15-1786098036080",
+      "days_left": 4,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24766.34,
+      "liquidity": 1612.01
+    },
+    {
+      "market_id": "3336177",
+      "market_question": "Will there be a run scored in the first inning?: Colorado Rockies vs. Arizona Diamondbacks",
+      "slug": "mlb-col-ari-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-col-ari-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 891.4
+    },
+    {
+      "market_id": "3472294",
+      "market_question": "Spread: Arizona Diamondbacks (-1.5)",
+      "slug": "mlb-col-ari-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-col-ari-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 10041.69
+    },
+    {
+      "market_id": "3470027",
+      "market_question": "Tampa Bay Rays vs. Athletics: O/U 11.5",
+      "slug": "mlb-tb-oak-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 42388.5
+    },
+    {
+      "market_id": "3505862",
+      "market_question": "Tampa Bay Rays vs. Athletics: O/U 12.5",
+      "slug": "mlb-tb-oak-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 14429.58
+    },
+    {
+      "market_id": "3505863",
+      "market_question": "Tampa Bay Rays vs. Athletics: O/U 13.5",
+      "slug": "mlb-tb-oak-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-tb-oak-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 16502.41
+    },
+    {
+      "market_id": "3463447",
+      "market_question": "Kansas City Royals vs. Los Angeles Dodgers: O/U 7.5",
+      "slug": "mlb-kc-lad-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-kc-lad-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 41560.87
+    },
+    {
+      "market_id": "3463476",
+      "market_question": "Kansas City Royals vs. Los Angeles Dodgers: O/U 6.5",
+      "slug": "mlb-kc-lad-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-kc-lad-2026-08-10",
+      "days_left": 6,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 37665.43
+    },
+    {
+      "market_id": "3370488",
+      "market_question": "LoL: LOS vs paiN Gaming - Game 2 Winner",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 209194.78
+    },
+    {
+      "market_id": "3370489",
+      "market_question": "LoL: LOS vs paiN Gaming (BO3) - CBLOL Regular Season",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 262024.06
+    },
+    {
+      "market_id": "3370491",
+      "market_question": "Game Handicap: LOS (-1.5) vs paiN Gaming (+1.5)",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0,
+      "recommended_side": "NO",
+      "current_price": 0.999,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "bucket_historical_rate": 0.7414,
+      "edge_pct": 24529.74,
+      "liquidity": 179287.06
+    }
+  ],
+  "calibration_table_generated_at": "2026-08-10T05:38:46.276958+00:00",
+  "mispricing_signals": [
+    {
+      "market_id": "3370487",
+      "market_question": "LoL: LOS vs paiN Gaming - Game 1 Winner",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0.0,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 258864.95,
+      "liquidity": 0.0,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 26207.66
+    },
+    {
+      "market_id": "3338654",
+      "market_question": "Will the price of Bitcoin be above $60,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.998,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0021,
+      "fee": 0.0001,
+      "edge_pct": 25.65,
+      "volume_24h": 215305.02,
+      "liquidity": 24848.15,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 23800.01
+    },
+    {
+      "market_id": "3370489",
+      "market_question": "LoL: LOS vs paiN Gaming (BO3) - CBLOL Regular Season",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0.0,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 98513.81,
+      "liquidity": 262024.06,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 16167.4
+    },
+    {
+      "market_id": "3370488",
+      "market_question": "LoL: LOS vs paiN Gaming - Game 2 Winner",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0.0,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 85633.75,
+      "liquidity": 209194.78,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 15073.5
+    },
+    {
+      "market_id": "3370491",
+      "market_question": "Game Handicap: LOS (-1.5) vs paiN Gaming (+1.5)",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0.0,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 79669.01,
+      "liquidity": 179287.06,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 14539.06
+    },
+    {
+      "market_id": "3338665",
+      "market_question": "Will the price of Bitcoin be above $62,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.984,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0171,
+      "fee": 0.0011,
+      "edge_pct": 24.15,
+      "volume_24h": 69299.8,
+      "liquidity": 32223.93,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 12714.8
+    },
+    {
+      "market_id": "3338541",
+      "market_question": "Will the price of Ethereum be above $1,700 on August 11?",
+      "slug": "ethereum-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-august-11-2026",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0011,
+      "fee": 0.0001,
+      "edge_pct": 25.75,
+      "volume_24h": 57011.04,
+      "liquidity": 18214.68,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 12298.08
+    },
+    {
+      "market_id": "3338632",
+      "market_question": "Will the price of Bitcoin be above $54,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0011,
+      "fee": 0.0001,
+      "edge_pct": 25.75,
+      "volume_24h": 51000.0,
+      "liquidity": 155953.34,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 11631.7
+    },
+    {
+      "market_id": "3481203",
+      "market_question": "Counter-Strike: paiN Academy vs QUINTESSÊNCIA (BO3) - CCT South America Challengers #2 Playoffs",
+      "slug": "cs2-paina-quin-2026-08-10",
+      "url": "https://polymarket.com/event/cs2-paina-quin-2026-08-10",
+      "days_left": 0.1,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 26850.33,
+      "liquidity": 101655.12,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 8440.47
+    },
+    {
+      "market_id": "3481178",
+      "market_question": "Counter-Strike: paiN Academy vs QUINTESSÊNCIA - Map 1 Winner",
+      "slug": "cs2-paina-quin-2026-08-10",
+      "url": "https://polymarket.com/event/cs2-paina-quin-2026-08-10",
+      "days_left": 0.1,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 25131.13,
+      "liquidity": 144505.98,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 8165.78
+    },
+    {
+      "market_id": "3481180",
+      "market_question": "Counter-Strike: paiN Academy vs QUINTESSÊNCIA - Map 2 Winner",
+      "slug": "cs2-paina-quin-2026-08-10",
+      "url": "https://polymarket.com/event/cs2-paina-quin-2026-08-10",
+      "days_left": 0.1,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 16429.32,
+      "liquidity": 119836.87,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 6602.39
+    },
+    {
+      "market_id": "3338544",
+      "market_question": "Will the price of Ethereum be above $1,800 on August 11?",
+      "slug": "ethereum-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-august-11-2026",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.993,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0075,
+      "fee": 0.0005,
+      "edge_pct": 25.11,
+      "volume_24h": 15661.49,
+      "liquidity": 15715.38,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 6285.16
+    },
+    {
+      "market_id": "3435830",
+      "market_question": "Will the highest temperature in Wellington be 12°C on August 11?",
+      "slug": "highest-temperature-in-wellington-on-august-11-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-wellington-on-august-11-2026",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "implied_probability": 0.99,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0105,
+      "fee": 0.0005,
+      "edge_pct": 24.81,
+      "volume_24h": 14745.6,
+      "liquidity": 726.34,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 6025.55
+    },
+    {
+      "market_id": "3338643",
+      "market_question": "Will the price of Bitcoin be above $58,000 on August 11?",
+      "slug": "bitcoin-above-on-august-11-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-11-2026",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0011,
+      "fee": 0.0001,
+      "edge_pct": 25.75,
+      "volume_24h": 12215.0,
+      "liquidity": 101165.85,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 5692.52
+    },
+    {
+      "market_id": "3471676",
+      "market_question": "Total Kills Over/Under 27.5 in Game 2?",
+      "slug": "lol-los-png1-2026-08-10",
+      "url": "https://polymarket.com/event/lol-los-png1-2026-08-10",
+      "days_left": 0.0,
+      "recommended_side": "NO",
+      "implied_probability": 0.99,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0105,
+      "fee": 0.0005,
+      "edge_pct": 24.81,
+      "volume_24h": 8709.74,
+      "liquidity": 1438.35,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 4630.93
+    },
+    {
+      "market_id": "3436820",
+      "market_question": "Will the lowest temperature in Hong Kong be 29°C on August 11?",
+      "slug": "lowest-temperature-in-hong-kong-on-august-11-2026",
+      "url": "https://polymarket.com/event/lowest-temperature-in-hong-kong-on-august-11-2026",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "implied_probability": 0.95,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0524,
+      "fee": 0.0024,
+      "edge_pct": 20.62,
+      "volume_24h": 9133.54,
+      "liquidity": 308.68,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 3941.77
+    },
+    {
+      "market_id": "3361358",
+      "market_question": "Will the price of Bitcoin be above $58,000 on August 12?",
+      "slug": "bitcoin-above-on-august-12-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-12-2026",
+      "days_left": 1.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0011,
+      "fee": 0.0001,
+      "edge_pct": 25.75,
+      "volume_24h": 36900.41,
+      "liquidity": 24531.18,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 3314.29
+    },
+    {
+      "market_id": "2832140",
+      "market_question": "Will Nigel Farage win the Clacton by-election?",
+      "slug": "clacton-by-election-winner-20260707143521303",
+      "url": "https://polymarket.com/event/clacton-by-election-winner-20260707143521303",
+      "days_left": 2.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.993,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0073,
+      "fee": 0.0003,
+      "edge_pct": 25.13,
+      "volume_24h": 56283.15,
+      "liquidity": 183633.7,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 2392.0
+    },
+    {
+      "market_id": "3361353",
+      "market_question": "Will the price of Bitcoin be above $56,000 on August 12?",
+      "slug": "bitcoin-above-on-august-12-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-12-2026",
+      "days_left": 1.5,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.0011,
+      "fee": 0.0001,
+      "edge_pct": 25.75,
+      "volume_24h": 17872.0,
+      "liquidity": 22584.25,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 2306.55
+    },
+    {
+      "market_id": "3463447",
+      "market_question": "Kansas City Royals vs. Los Angeles Dodgers: O/U 7.5",
+      "slug": "mlb-kc-lad-2026-08-10",
+      "url": "https://polymarket.com/event/mlb-kc-lad-2026-08-10",
+      "days_left": 6.9,
+      "recommended_side": "NO",
+      "implied_probability": 0.999,
+      "fair_probability": 0.7414,
+      "implied_cost": 0.001,
+      "fee": 0.0,
+      "edge_pct": 25.76,
+      "volume_24h": 380874.16,
+      "liquidity": 41560.87,
+      "bucket_range": [
+        0.95,
+        1.0
+      ],
+      "bucket_sample_size": 58,
+      "low_sample_warning": false,
+      "score": 2298.17
+    }
+  ],
   "mispricing_filters": {
     "min_edge_pts": 15.0,
     "min_volume_24h": 5000,
