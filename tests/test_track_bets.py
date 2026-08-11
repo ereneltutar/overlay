@@ -46,28 +46,31 @@ def test_available_bankroll_subtracts_open_stake():
     assert tb.available_bankroll(log) == 1000.0 + 50.0 - 150.0
 
 
-# --- sizing_stake ------------------------------------------------------
+# --- arb_kelly_stake ----------------------------------------------------
 
-def test_sizing_stake_scales_with_edge():
-    small = tb.sizing_stake("calibration", edge_pct=0.5, bankroll_avail=1000)
-    big = tb.sizing_stake("calibration", edge_pct=1.0, bankroll_avail=1000)
-    assert small < big
-
-
-def test_sizing_stake_respects_floor():
-    stake = tb.sizing_stake("calibration", edge_pct=0.01, bankroll_avail=1000)
-    assert stake == tb.STAKE_FLOOR_USD
+def test_arb_kelly_stake_zero_below_breakeven():
+    # breakeven is ARB_HAIRCUT_MAX_PTS / 2 = 1.0%; 0.6% can't clear the
+    # haircut's expected cost, matching the one real 0.6%-edge bet that lost.
+    stake = tb.arb_kelly_stake(raw_edge_pct=0.6, bankroll_avail=1000, cap_frac=0.08)
+    assert stake == 0.0
 
 
-def test_sizing_stake_respects_cap():
-    stake = tb.sizing_stake("calibration", edge_pct=1000, bankroll_avail=1000)
-    assert stake == round(1000 * tb.STAKE_CAP_FRAC["calibration"], 2)
+def test_arb_kelly_stake_caps_out_once_haircut_cannot_reach_the_edge():
+    # edge >= ARB_HAIRCUT_MAX_PTS -> the haircut can never exceed it, a
+    # guaranteed win by construction, so it takes the full cap directly.
+    stake = tb.arb_kelly_stake(raw_edge_pct=5.0, bankroll_avail=1000, cap_frac=0.08)
+    assert stake == round(1000 * 0.08, 2)
 
 
-def test_sizing_stake_arb_has_higher_cap_than_calibration():
-    arb = tb.sizing_stake("arbitrage", edge_pct=1000, bankroll_avail=1000)
-    cal = tb.sizing_stake("calibration", edge_pct=1000, bankroll_avail=1000)
-    assert arb > cal
+def test_arb_kelly_stake_positive_but_thin_edge_still_places_a_bet():
+    # 1.01% just clears the 1.0% breakeven -- thin, but not zero.
+    stake = tb.arb_kelly_stake(raw_edge_pct=1.01, bankroll_avail=1000, cap_frac=0.08)
+    assert stake > 0.0
+
+
+def test_arb_kelly_stake_at_exact_breakeven_is_zero():
+    stake = tb.arb_kelly_stake(raw_edge_pct=tb.ARB_HAIRCUT_MAX_PTS / 2, bankroll_avail=1000, cap_frac=0.08)
+    assert stake == 0.0
 
 
 # --- kelly_fraction ------------------------------------------------------
@@ -82,6 +85,23 @@ def test_kelly_fraction_zero_when_no_edge():
 
 def test_kelly_fraction_zero_when_b_not_positive():
     assert tb.kelly_fraction(0.9, 0.0) == 0.0
+
+
+def test_kelly_fraction_defaults_to_losing_the_whole_stake():
+    assert tb.kelly_fraction(0.7, 1.0) == tb.kelly_fraction(0.7, 1.0, l=1.0)
+
+
+def test_kelly_fraction_smaller_loss_fraction_needs_less_edge_to_pay_off():
+    # A partial loss (l < 1) is more forgiving than losing the whole stake,
+    # so the same p and b should allow a smaller p to still show an edge --
+    # equivalently, at a fixed marginal p, a smaller l gives a bigger f.
+    full_loss = tb.kelly_fraction(0.4, 1.0, l=1.0)
+    partial_loss = tb.kelly_fraction(0.4, 1.0, l=0.1)
+    assert partial_loss > full_loss
+
+
+def test_kelly_fraction_zero_when_l_not_positive():
+    assert tb.kelly_fraction(0.9, 1.0, l=0.0) == 0.0
 
 
 # --- prob_bucket_key -------------------------------------------------------

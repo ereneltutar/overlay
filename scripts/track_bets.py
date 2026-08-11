@@ -20,7 +20,9 @@ just wrote, in two passes:
    stays in the scan for weeks doesn't get bet on twice), size a stake
    and log it as open.
 
-Bet sizing differs by tag because the payoffs aren't the same shape:
+Bet sizing differs by tag because the payoffs aren't the same shape, but
+both use fractional Kelly against the ACTUAL resolution math below rather
+than sizing off edge_pct alone (see kelly_fraction).
 
 ARB is close to a mathematically guaranteed win by construction (that's
 the definition of arbitrage), so a pure-math simulation would show ARB
@@ -28,17 +30,18 @@ winning almost every time and tell us little. To keep it honest, ARB
 wins get a small random execution haircut (0 to ARB_HAIRCUT_MAX_PTS
 points off the edge, simulating real fees/slippage) applied at
 resolution time; if the haircut exceeds the edge, that bet is recorded
-as a loss. ARB stake = bankroll_available * STAKE_K * (edge_pct / 100),
-floored at STAKE_FLOOR_USD and capped at a fraction of bankroll_available
-(STAKE_CAP_FRAC), so bigger edges get bigger stakes but a single bet can
-never seriously damage the bankroll.
+as a loss instead. That means a thin ARB edge (say 1%) sits close to a
+coin flip against a haircut that can run up to 2 points, while a wide
+edge (say 5%) can never lose. Sizing purely off edge_pct (the old
+approach) staked both the same way. arb_kelly_stake() instead derives
+the real win probability and average win/loss size straight from that
+Uniform(0, ARB_HAIRCUT_MAX_PTS) haircut model, and skips the bet
+entirely once the edge doesn't clear the haircut's expected cost.
 
-CAL/MIS have an asymmetric payoff instead: a win only returns
+CAL/MIS have a different asymmetric payoff: a win only returns
 (1/entry_cost - 1) on the stake (often just a few percent) while a loss
-forfeits the entire stake. Sizing that off edge_pct alone (like ARB)
-ignores how expensive a miss actually is, so CAL/MIS use fractional-Kelly
-sizing (see kelly_stake) that weighs both the win probability and that
-payout asymmetry directly, and automatically discounts the win
+forfeits the entire stake. kelly_stake() weighs the win probability and
+that payout asymmetry directly, and automatically discounts the win
 probability once Overlay's own resolved bets in that probability bucket
 show a realized rate below what was predicted -- so a bucket that keeps
 underperforming its own prediction gets sized down or shut off entirely
@@ -61,19 +64,19 @@ import gamma_client
 
 # --- Tunable parameters -----------------------------------------------
 STARTING_BANKROLL = 1000.00
-STAKE_K = 3.0                  # stake = bankroll_available * STAKE_K * edge_pct/100 (arbitrage only, see below)
-STAKE_FLOOR_USD = 10.0         # never bet less than this (arbitrage only; CAL/MIS use Kelly sizing, see kelly_stake)
+STAKE_FLOOR_USD = 10.0         # available bankroll must clear this before even trying to size a bet
 STAKE_CAP_FRAC = {             # never bet more than this fraction of available bankroll
     "arbitrage": 0.08,
     "calibration": 0.05,
     "mispricing": 0.05,
 }
 ARB_HAIRCUT_MAX_PTS = 2.0      # simulated execution slippage/fees, 0 to this many points off the ARB edge
+                                # (see arb_kelly_stake: this also defines the ARB breakeven edge, H/2)
 
-# CAL/MIS stake sizing (see kelly_stake): unlike ARB, a CAL/MIS win only pays
-# out (1/entry_cost - 1) on the stake but a loss forfeits the whole stake, so
-# sizing purely off edge_pct (like ARB does) ignores how expensive a miss is.
-# Kelly weighs both sides of that payoff directly instead.
+# Both ARB and CAL/MIS stake sizing (arb_kelly_stake, kelly_stake) use
+# fractional Kelly against the tag's real resolution math instead of sizing
+# off edge_pct alone, since edge_pct alone says nothing about how a miss
+# actually costs relative to a win for that tag.
 PROB_BIN_WIDTH = 0.05          # same bucket width calibration_scan.py uses for market-price buckets
 OWN_TRACK_MIN_SAMPLE = 8       # need at least this many of Overlay's own resolved CAL/MIS bets in a
                                 # probability bucket before that bucket's realized win rate overrides
@@ -186,12 +189,6 @@ def resolve_open_bets(log: dict, now: datetime.datetime) -> int:
     return resolved_count
 
 
-def sizing_stake(tag: str, edge_pct: float, bankroll_avail: float) -> float:
-    cap = bankroll_avail * STAKE_CAP_FRAC[tag]
-    raw = bankroll_avail * STAKE_K * (edge_pct / 100)
-    return round(max(min(raw, cap), STAKE_FLOOR_USD), 2)
-
-
 def wilson_interval(k: int, n: int, z: float = 1.96):
     """95% Wilson score confidence interval. Duplicated from
     calibration_scan.py on purpose (same convention as gamma_client-style
@@ -231,25 +228,27 @@ def own_track_record(log: dict) -> dict:
     return buckets
 
 
-def kelly_fraction(p: float, b: float) -> float:
-    """Kelly criterion optimal bet fraction for a binary win/lose-the-stake
-    payoff: p = win probability, b = net odds on a win (payout multiple,
-    e.g. entry_cost 0.951 -> b=0.0515, a win pays 5.15% of the stake).
-    Returns 0 once the edge implied by p and b is gone or negative."""
-    if b <= 0:
+def kelly_fraction(p: float, b: float, l: float = 1.0) -> float:
+    """Kelly criterion optimal bet fraction for a two-outcome payoff: with
+    probability p you gain fraction b of the stake, with probability (1-p)
+    you lose fraction l of the stake (l defaults to 1.0 -- lose the whole
+    stake -- which is the CAL/MIS case; arb_kelly_stake passes a smaller l
+    since an ARB loss is usually a partial haircut, not the whole stake).
+    Returns 0 once the edge implied by p, b and l is gone or negative."""
+    if b <= 0 or l <= 0:
         return 0.0
-    return max(0.0, p - (1 - p) / b)
+    return max(0.0, p / l - (1 - p) / b)
 
 
 def kelly_stake(entry_cost: float, predicted_win_prob: float, track: dict,
                  bankroll_avail: float, cap_frac: float) -> float:
     """Fractional-Kelly stake sizing for CAL/MIS bets.
 
-    The old edge-based sizing_stake() only scales with edge_pct and has no
-    idea how asymmetric a CAL/MIS payoff is: a win returns a few percent of
-    the stake, a loss forfeits all of it. A bucket can carry a real percentage
-    edge and still be a bad bet once that asymmetry is weighed -- Kelly does
-    that weighing directly instead of trusting edge_pct alone.
+    Sizing purely off edge_pct has no idea how asymmetric a CAL/MIS payoff
+    is: a win returns a few percent of the stake, a loss forfeits all of it.
+    A bucket can carry a real percentage edge and still be a bad bet once
+    that asymmetry is weighed -- Kelly does that weighing directly instead
+    of trusting edge_pct alone.
 
     predicted_win_prob already comes calibration-corrected against the
     market's own history (see calibration_scan.py). Before trusting it
@@ -281,6 +280,49 @@ def kelly_stake(entry_cost: float, predicted_win_prob: float, track: dict,
 
     stake = bankroll_avail * f * KELLY_FRACTION
     cap = bankroll_avail * cap_frac
+    return round(min(stake, cap), 2)
+
+
+def arb_kelly_stake(raw_edge_pct: float, bankroll_avail: float, cap_frac: float) -> float:
+    """Fractional-Kelly stake sizing for ARB, derived from the exact same
+    resolution-time haircut model resolve_open_bets() applies
+    (haircut_pts ~ Uniform(0, ARB_HAIRCUT_MAX_PTS)) -- not a separate
+    assumption, just solving Kelly for the payoff that model already implies:
+
+      - P(win) = P(haircut < edge) = edge / ARB_HAIRCUT_MAX_PTS
+      - given a win, the average payout is edge/2 points (a uniform haircut
+        below edge averages edge/2)
+      - given a loss, the average cost is (ARB_HAIRCUT_MAX_PTS - edge)/2
+        points (a uniform haircut above edge averages (edge+H)/2, so the net
+        average loss is edge - (edge+H)/2 = (H-edge)/2)
+
+    If edge_pct >= ARB_HAIRCUT_MAX_PTS, the haircut can never reach it -- a
+    guaranteed win by construction of this resolution model, no loss branch
+    exists -- so this returns the cap directly.
+
+    Below that, b and l (the win/loss fractions above) are both small
+    relative to cap_frac, since a thin ARB edge only swings a couple of
+    percentage points either way. Once there's ANY positive edge left after
+    weighing p against that swing, full Kelly saturates the position cap
+    almost immediately -- which is the expected, correct behavior for a
+    low-variance-per-dollar edge like this; STAKE_CAP_FRAC is exactly the
+    deliberate ceiling on how far that gets to run. Below breakeven
+    (edge_pct <= ARB_HAIRCUT_MAX_PTS / 2, where the expected haircut wipes
+    out the expected edge), it returns 0.0 and place_new_bets skips the bet.
+    """
+    cap = bankroll_avail * cap_frac
+    if raw_edge_pct >= ARB_HAIRCUT_MAX_PTS:
+        return round(cap, 2)
+
+    p = raw_edge_pct / ARB_HAIRCUT_MAX_PTS
+    avg_win_frac = (raw_edge_pct / 2) / 100
+    avg_loss_frac = ((ARB_HAIRCUT_MAX_PTS - raw_edge_pct) / 2) / 100
+
+    f = kelly_fraction(p, avg_win_frac, avg_loss_frac)
+    if f <= 0:
+        return 0.0
+
+    stake = bankroll_avail * f * KELLY_FRACTION
     return round(min(stake, cap), 2)
 
 
@@ -376,13 +418,13 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime):
             continue
 
         if c["tag"] == "arbitrage":
-            stake = sizing_stake(c["tag"], c["edge_pct"], bankroll_avail)
+            stake = arb_kelly_stake(c["edge_pct"], bankroll_avail, STAKE_CAP_FRAC["arbitrage"])
         else:
             stake = kelly_stake(c["entry_cost"], c["predicted_win_prob"], track,
                                  bankroll_avail, STAKE_CAP_FRAC[c["tag"]])
-            if stake <= 0:
-                skipped_no_edge += 1
-                continue
+        if stake <= 0:
+            skipped_no_edge += 1
+            continue
         stake = min(stake, round(bankroll_avail, 2))
 
         log["bets"].append({
@@ -464,8 +506,9 @@ def main():
         print(f"Skipped {skipped_bankroll} signals: available bankroll below the ${STAKE_FLOOR_USD:.0f} stake floor.",
               file=sys.stderr)
     if skipped_no_edge:
-        print(f"Skipped {skipped_no_edge} CAL/MIS signals: Kelly sizing found no edge once the bucket's "
-              f"own realized win rate (not just the predicted one) was priced in.", file=sys.stderr)
+        print(f"Skipped {skipped_no_edge} signals: Kelly sizing found no edge once each tag's real "
+              f"resolution math (haircut model for ARB, own realized win rate for CAL/MIS) was priced in.",
+              file=sys.stderr)
 
 
 if __name__ == "__main__":
