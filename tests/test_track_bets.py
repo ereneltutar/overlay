@@ -1,6 +1,8 @@
 import datetime
 from unittest.mock import patch
 
+import pytest
+
 import track_bets as tb
 
 NOW = datetime.datetime(2026, 1, 1, tzinfo=datetime.timezone.utc)
@@ -66,6 +68,93 @@ def test_sizing_stake_arb_has_higher_cap_than_calibration():
     arb = tb.sizing_stake("arbitrage", edge_pct=1000, bankroll_avail=1000)
     cal = tb.sizing_stake("calibration", edge_pct=1000, bankroll_avail=1000)
     assert arb > cal
+
+
+# --- kelly_fraction ------------------------------------------------------
+
+def test_kelly_fraction_positive_when_p_beats_breakeven():
+    assert tb.kelly_fraction(0.7, 1.0) == pytest.approx(0.4)  # 0.7 - 0.3/1.0
+
+
+def test_kelly_fraction_zero_when_no_edge():
+    assert tb.kelly_fraction(0.5, 0.1) == 0.0  # 0.5 - 0.5/0.1 is deeply negative
+
+
+def test_kelly_fraction_zero_when_b_not_positive():
+    assert tb.kelly_fraction(0.9, 0.0) == 0.0
+
+
+# --- prob_bucket_key -------------------------------------------------------
+
+def test_prob_bucket_key_buckets_by_width():
+    assert tb.prob_bucket_key(0.12) == 2  # falls in [0.10, 0.15)
+
+
+def test_prob_bucket_key_clamps_at_top_bucket():
+    assert tb.prob_bucket_key(1.0) == tb.prob_bucket_key(0.999)
+
+
+# --- own_track_record --------------------------------------------------
+
+def test_own_track_record_counts_resolved_cal_and_mis_by_bucket():
+    log = fresh_log()
+    for tag, status in [("calibration", "won"), ("calibration", "lost"), ("mispricing", "won")]:
+        bet = make_bet(tag=tag, status=status)
+        bet["predicted_win_prob"] = 0.97  # all land in the same bucket
+        log["bets"].append(bet)
+    track = tb.own_track_record(log)
+    key = tb.prob_bucket_key(0.97)
+    assert track[key] == (2, 3)  # 2 wins out of 3
+
+
+def test_own_track_record_ignores_arbitrage_open_and_unpredicted_bets():
+    log = fresh_log()
+    arb = make_bet(tag="arbitrage", status="won"); arb["predicted_win_prob"] = 0.9
+    still_open = make_bet(tag="calibration", status="open"); still_open["predicted_win_prob"] = 0.9
+    no_prediction = make_bet(tag="calibration", status="won"); no_prediction["predicted_win_prob"] = None
+    log["bets"] += [arb, still_open, no_prediction]
+    assert tb.own_track_record(log) == {}
+
+
+# --- kelly_stake ------------------------------------------------------
+
+def test_kelly_stake_matches_predicted_prob_when_no_track_record():
+    stake = tb.kelly_stake(entry_cost=0.5, predicted_win_prob=0.7, track={},
+                            bankroll_avail=1000, cap_frac=0.05)
+    # f = 0.7 - 0.3/1.0 = 0.4; stake = 1000*0.4*0.5 = 200, capped at 1000*0.05 = 50
+    assert stake == 50.0
+
+
+def test_kelly_stake_ignores_track_record_below_min_sample():
+    key = tb.prob_bucket_key(0.9)
+    thin_track = {key: (1, 3)}  # only 3 samples, below OWN_TRACK_MIN_SAMPLE
+    with_track = tb.kelly_stake(0.5, 0.9, thin_track, 1000, 0.05)
+    without_track = tb.kelly_stake(0.5, 0.9, {}, 1000, 0.05)
+    assert with_track == without_track  # too few samples to override the prediction
+
+
+def test_kelly_stake_returns_zero_when_track_record_kills_the_edge():
+    # entry_cost 0.951 -> b=0.0515, breakeven win prob ~95.1%. A 20-bet own
+    # track record at 75% (well below breakeven) should zero the stake out
+    # even though the model still predicts 90%.
+    key = tb.prob_bucket_key(0.9)
+    weak_track = {key: (15, 20)}
+    stake = tb.kelly_stake(entry_cost=0.951, predicted_win_prob=0.9,
+                            track=weak_track, bankroll_avail=1000, cap_frac=0.05)
+    assert stake == 0.0
+
+
+def test_kelly_stake_discounts_toward_wilson_low_once_min_sample_met():
+    key = tb.prob_bucket_key(0.99)
+    # 100 resolved bets at 95% -- enough samples that the Wilson lower bound
+    # (~0.888) sits comfortably below the model's 0.99 prediction but still
+    # above this entry cost's ~80% breakeven, so the edge shrinks rather
+    # than disappearing. cap_frac=1.0 (effectively uncapped) so the stake
+    # cap doesn't mask the difference the discount makes.
+    strong_track = {key: (95, 100)}
+    discounted = tb.kelly_stake(0.80, 0.99, strong_track, 1000, 1.0)
+    undiscounted = tb.kelly_stake(0.80, 0.99, {}, 1000, 1.0)
+    assert 0 < discounted < undiscounted
 
 
 # --- build_candidates ----------------------------------------------------
@@ -166,7 +255,7 @@ def test_place_new_bets_dedupes_against_existing_bets():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
     assert placed == 0
     assert len(log["bets"]) == 1  # still just the pre-existing one
 
@@ -177,9 +266,9 @@ def test_place_new_bets_skips_when_bankroll_below_floor():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
     assert placed == 0
-    assert skipped == 1
+    assert skipped_bankroll == 1
 
 
 def test_place_new_bets_places_and_updates_log():
@@ -188,9 +277,10 @@ def test_place_new_bets_places_and_updates_log():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
     assert placed == 1
-    assert skipped == 0
+    assert skipped_bankroll == 0
+    assert skipped_no_edge == 0
     assert log["bets"][0]["status"] == "open"
     assert log["bets"][0]["stake_usd"] > 0
 
@@ -204,6 +294,32 @@ def test_place_new_bets_carries_predicted_win_prob_into_stored_bet():
     }]}
     tb.place_new_bets(log, results, NOW)
     assert log["bets"][0]["predicted_win_prob"] == 0.35
+
+
+def test_place_new_bets_skips_calibration_signal_when_own_track_record_kills_kelly_edge():
+    log = fresh_log()
+    # Seed a poor own track record (75% win rate) in the same predicted-prob
+    # bucket the new signal falls into. Its entry cost implies a ~95.1%
+    # breakeven win rate, so Kelly should refuse to size this bet at all,
+    # even though the model still predicts 90%.
+    for _ in range(15):
+        bet = make_bet(tag="calibration", status="won", pnl=1.0)
+        bet["predicted_win_prob"] = 0.90
+        log["bets"].append(bet)
+    for _ in range(5):
+        bet = make_bet(tag="calibration", status="lost", pnl=-10.0)
+        bet["predicted_win_prob"] = 0.90
+        log["bets"].append(bet)
+
+    results = {"calibration_signals": [{
+        "market_id": "new1", "slug": "new-market", "days_left": 5, "market_question": "Q?",
+        "recommended_side": "YES", "implied_cost": 0.951, "edge_pct": 4.79,
+        "bucket_historical_rate": 0.90,
+    }]}
+    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
+    assert placed == 0
+    assert skipped_no_edge == 1
+    assert not any(b["slug"] == "new-market" for b in log["bets"])
 
 
 # --- resolve_open_bets (network mocked) ------------------------------------
