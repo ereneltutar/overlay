@@ -117,7 +117,7 @@ a{ color: inherit; }
 
 .rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:30px 0 26px; }
 
-.ledger-filters{ display:flex; flex-wrap:wrap; gap:8px 16px; }
+.ledger-filters{ display:flex; flex-wrap:wrap; gap:12px 32px; }
 .filter-group{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip-btn{
   font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.03em;
@@ -417,8 +417,8 @@ function computeMaxDrawdown(history){
 const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', mispricing: 'MIS' };
 const STATUS_LABELS = { open: 'OPEN', won: 'WON', lost: 'LOST', void: 'VOID' };
 
-let currentTierFilter = 'all';
-let currentStatusFilter = 'all';
+let selectedTiers = new Set();
+let selectedStatuses = new Set();
 let allBets = [];
 
 function renderBankrollChart(history, startingBankroll){
@@ -576,8 +576,8 @@ function renderCalibrationCheck(bets){
 function applyFilterAndRender(){
   const grid = document.getElementById('grid');
   const list = allBets
-    .filter(b => currentTierFilter === 'all' || b.tag === currentTierFilter)
-    .filter(b => currentStatusFilter === 'all' || b.status === currentStatusFilter);
+    .filter(b => selectedTiers.size === 0 || selectedTiers.has(b.tag))
+    .filter(b => selectedStatuses.size === 0 || selectedStatuses.has(b.status));
 
   if(list.length === 0){
     grid.innerHTML = allBets.length === 0
@@ -704,21 +704,34 @@ async function loadBetLog(){
   }
 }
 
+function toggleChipFilter(groupId, selectedSet, valueAttr, allValue, btn){
+  const value = btn.dataset[valueAttr];
+  if(value === allValue){
+    selectedSet.clear();
+  } else if(selectedSet.has(value)){
+    selectedSet.delete(value);
+  } else {
+    selectedSet.add(value);
+  }
+  const group = document.getElementById(groupId);
+  group.querySelectorAll('.chip-btn').forEach(b => {
+    const v = b.dataset[valueAttr];
+    const active = v === allValue ? selectedSet.size === 0 : selectedSet.has(v);
+    b.classList.toggle('active', active);
+  });
+}
+
 document.getElementById('filterCategory').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip-btn');
   if(!btn) return;
-  document.querySelectorAll('#filterCategory .chip-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentTierFilter = btn.dataset.tier;
+  toggleChipFilter('filterCategory', selectedTiers, 'tier', 'all', btn);
   applyFilterAndRender();
 });
 
 document.getElementById('filterStatus').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip-btn');
   if(!btn) return;
-  document.querySelectorAll('#filterStatus .chip-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentStatusFilter = btn.dataset.status;
+  toggleChipFilter('filterStatus', selectedStatuses, 'status', 'all', btn);
   applyFilterAndRender();
 });
 
