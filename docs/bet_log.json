@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1007.01,
+  "bankroll": 1007.11,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -24,7 +24,7 @@
     },
     {
       "date": "2026-08-11",
-      "bankroll": 1007.01
+      "bankroll": 1007.11
     }
   ],
   "bets": [
@@ -360,9 +360,9 @@
       "entry_cost": 0.99,
       "edge_pct_at_placement": 1.01,
       "stake_usd": 18.49,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-11T13:47:12.438155+00:00",
+      "pnl_usd": 0.1
     },
     {
       "bet_id": "arbitrage:por-ben-acv-2026-08-09",
