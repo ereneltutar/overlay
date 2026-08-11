@@ -117,7 +117,8 @@ a{ color: inherit; }
 
 .rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:30px 0 26px; }
 
-.filters{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+.ledger-filters{ display:flex; flex-wrap:wrap; gap:8px 16px; }
+.filter-group{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip-btn{
   font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.03em;
   color:var(--ink-dim); background:transparent; border:1px solid var(--rule); border-radius:20px;
@@ -132,6 +133,8 @@ a{ color: inherit; }
 .chip-btn b{ font-variant-numeric:tabular-nums; }
 .chip-btn:hover{ border-color:var(--ink-faint); color:var(--ink); }
 .chip-btn.active{ border-color:var(--ink); color:var(--ink); background:var(--surface); }
+.chip-btn.active[data-status="won"]{ border-color:var(--arb); color:var(--arb); }
+.chip-btn.active[data-status="lost"]{ border-color:var(--loss); color:var(--loss); }
 
 .panel{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px 22px 18px; margin-bottom:34px; }
 .panel-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:4px; flex-wrap:wrap; }
@@ -270,13 +273,6 @@ footer a:hover{ color:var(--ink); }
 
   <hr class="rule-thick">
 
-  <div class="filters" id="filters">
-    <button class="chip-btn active" data-tier="all" type="button">All <b id="cnt-all">0</b></button>
-    <button class="chip-btn" data-tier="arbitrage" type="button"><i class="dot"></i>ARB <b id="cnt-arbitrage">0</b></button>
-    <button class="chip-btn" data-tier="calibration" type="button"><i class="dot"></i>CAL <b id="cnt-calibration">0</b></button>
-    <button class="chip-btn" data-tier="mispricing" type="button"><i class="dot"></i>MIS <b id="cnt-mispricing">0</b></button>
-  </div>
-
   <div class="panel" id="bankrollPanel">
     <div class="panel-head">
       <p class="panel-title"><span class="tag-dot"></span>Bankroll Over Time</p>
@@ -349,6 +345,20 @@ footer a:hover{ color:var(--ink); }
 
   <div class="ledger-head">
     <span class="ledger-title">Bet Ledger</span>
+    <div class="ledger-filters">
+      <div class="filter-group" id="filterCategory">
+        <button class="chip-btn active" data-tier="all" type="button">All <b id="cnt-all">0</b></button>
+        <button class="chip-btn" data-tier="arbitrage" type="button"><i class="dot"></i>ARB <b id="cnt-arbitrage">0</b></button>
+        <button class="chip-btn" data-tier="calibration" type="button"><i class="dot"></i>CAL <b id="cnt-calibration">0</b></button>
+        <button class="chip-btn" data-tier="mispricing" type="button"><i class="dot"></i>MIS <b id="cnt-mispricing">0</b></button>
+      </div>
+      <div class="filter-group" id="filterStatus">
+        <button class="chip-btn active" data-status="all" type="button">All</button>
+        <button class="chip-btn" data-status="open" type="button">Pending</button>
+        <button class="chip-btn" data-status="won" type="button">Win</button>
+        <button class="chip-btn" data-status="lost" type="button">Loss</button>
+      </div>
+    </div>
   </div>
   <div class="ledger" id="grid">
     <div class="state"><span class="state-msg"><span class="pulse"></span>Loading</span></div>
@@ -407,7 +417,8 @@ function computeMaxDrawdown(history){
 const TAG_LABELS = { arbitrage: 'ARB', calibration: 'CAL', mispricing: 'MIS' };
 const STATUS_LABELS = { open: 'OPEN', won: 'WON', lost: 'LOST', void: 'VOID' };
 
-let currentFilter = 'all';
+let currentTierFilter = 'all';
+let currentStatusFilter = 'all';
 let allBets = [];
 
 function renderBankrollChart(history, startingBankroll){
@@ -564,7 +575,9 @@ function renderCalibrationCheck(bets){
 
 function applyFilterAndRender(){
   const grid = document.getElementById('grid');
-  const list = currentFilter === 'all' ? allBets : allBets.filter(b => b.tag === currentFilter);
+  const list = allBets
+    .filter(b => currentTierFilter === 'all' || b.tag === currentTierFilter)
+    .filter(b => currentStatusFilter === 'all' || b.status === currentStatusFilter);
 
   if(list.length === 0){
     grid.innerHTML = allBets.length === 0
@@ -691,12 +704,21 @@ async function loadBetLog(){
   }
 }
 
-document.getElementById('filters').addEventListener('click', (e) => {
+document.getElementById('filterCategory').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip-btn');
   if(!btn) return;
-  document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#filterCategory .chip-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  currentFilter = btn.dataset.tier;
+  currentTierFilter = btn.dataset.tier;
+  applyFilterAndRender();
+});
+
+document.getElementById('filterStatus').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chip-btn');
+  if(!btn) return;
+  document.querySelectorAll('#filterStatus .chip-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentStatusFilter = btn.dataset.status;
   applyFilterAndRender();
 });
 
