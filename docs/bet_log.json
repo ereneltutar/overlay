@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 927.94,
+  "bankroll": 900.7,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -24,7 +24,7 @@
     },
     {
       "date": "2026-08-11",
-      "bankroll": 927.94
+      "bankroll": 900.7
     }
   ],
   "bets": [
@@ -1497,9 +1497,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 19.75,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-11T21:07:27.797909+00:00",
+      "pnl_usd": 0.97
     },
     {
       "bet_id": "calibration:uel-sab-lar-2026-08-11-exact-score:3269624",
@@ -1517,9 +1517,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 18.76,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-11T21:07:27.797909+00:00",
+      "pnl_usd": 0.92
     },
     {
       "bet_id": "calibration:uel-sab-lar-2026-08-11-exact-score:3269629",
@@ -1537,9 +1537,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 17.82,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-11T21:07:27.797909+00:00",
+      "pnl_usd": 0.87
     },
     {
       "bet_id": "calibration:auc-lf-mct-2026-08-11-exact-score:3294040",
@@ -2227,9 +2227,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-11T21:07:27.797909+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:cs2-paina-quin-2026-08-10:3481178",
@@ -2247,9 +2247,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-11T21:07:27.797909+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:cs2-paina-quin-2026-08-10:3481180",
@@ -2267,9 +2267,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-11T21:07:27.797909+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:ethereum-above-on-august-11-2026:3338544",
