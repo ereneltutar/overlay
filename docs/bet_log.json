@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 900.7,
+  "bankroll": 878.35,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -25,6 +25,10 @@
     {
       "date": "2026-08-11",
       "bankroll": 900.7
+    },
+    {
+      "date": "2026-08-12",
+      "bankroll": 878.35
     }
   ],
   "bets": [
@@ -1457,9 +1461,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 21.88,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": 1.07
     },
     {
       "bet_id": "calibration:col-al-bra-2026-08-11-exact-score:3243821",
@@ -1477,9 +1481,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 20.79,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": 1.02
     },
     {
       "bet_id": "calibration:white-house-of-tweets-august-4-august-11-2026:3253752",
@@ -1577,9 +1581,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 16.09,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": -16.09
     },
     {
       "bet_id": "calibration:arg-tal-lan-2026-08-11-exact-score:3314731",
@@ -1597,9 +1601,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 15.28,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": 0.75
     },
     {
       "bet_id": "calibration:arg-tal-lan-2026-08-11-exact-score:3314735",
@@ -1617,9 +1621,9 @@
       "edge_pct_at_placement": 4.54,
       "predicted_win_prob": 0.9966,
       "stake_usd": 14.52,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": 0.71
     },
     {
       "bet_id": "arbitrage:highest-temperature-in-guangzhou-on-august-11-2026",
@@ -1647,9 +1651,9 @@
       "edge_pct_at_placement": 1.18,
       "predicted_win_prob": null,
       "stake_usd": 16.8,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": 0.19
     },
     {
       "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3128786",
@@ -2307,9 +2311,9 @@
       "edge_pct_at_placement": 24.81,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T02:48:45.783543+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:bitcoin-above-on-august-11-2026:3338643",
