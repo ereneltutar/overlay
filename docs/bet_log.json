@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 878.35,
+  "bankroll": 810.02,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -28,7 +28,7 @@
     },
     {
       "date": "2026-08-12",
-      "bankroll": 878.35
+      "bankroll": 810.02
     }
   ],
   "bets": [
@@ -961,9 +961,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 32.36,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": 1.67
     },
     {
       "bet_id": "calibration:what-price-will-tsla-hit-in-august-2026:3096157",
@@ -2091,9 +2091,9 @@
       "edge_pct_at_placement": 25.65,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:lol-los-png1-2026-08-10:3370489",
@@ -2171,9 +2171,9 @@
       "edge_pct_at_placement": 24.15,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:ethereum-above-on-august-11-2026:3338541",
@@ -2191,9 +2191,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:bitcoin-above-on-august-11-2026:3338632",
@@ -2211,9 +2211,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:cs2-paina-quin-2026-08-10:3481203",
@@ -2291,9 +2291,9 @@
       "edge_pct_at_placement": 25.11,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:highest-temperature-in-wellington-on-august-11-2026:3435830",
@@ -2331,9 +2331,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     },
     {
       "bet_id": "mispricing:lol-los-png1-2026-08-10:3471676",
@@ -2371,9 +2371,9 @@
       "edge_pct_at_placement": 20.62,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T04:41:24.993041+00:00",
+      "pnl_usd": -10.0
     }
   ]
 }
