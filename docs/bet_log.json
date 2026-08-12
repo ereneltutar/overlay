@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 812.06,
+  "bankroll": 781.55,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -28,7 +28,7 @@
     },
     {
       "date": "2026-08-12",
-      "bankroll": 812.06
+      "bankroll": 781.55
     }
   ],
   "bets": [
@@ -679,9 +679,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 16.07,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T21:06:40.587850+00:00",
+      "pnl_usd": 0.83
     },
     {
       "bet_id": "calibration:itc-vic-cat-2026-08-08-exact-score:3126491",
@@ -1321,9 +1321,9 @@
       "edge_pct_at_placement": 4.59,
       "predicted_win_prob": 0.9966,
       "stake_usd": 31.34,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-12T21:06:40.587850+00:00",
+      "pnl_usd": -31.34
     },
     {
       "bet_id": "calibration:best-chinese-ai-company-end-of-august-20260717004241592:2954949",
