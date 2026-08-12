@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 810.02,
+  "bankroll": 810.81,
   "bankroll_history": [
     {
       "date": "2026-08-06",
@@ -28,7 +28,7 @@
     },
     {
       "date": "2026-08-12",
-      "bankroll": 810.02
+      "bankroll": 810.81
     }
   ],
   "bets": [
@@ -699,9 +699,9 @@
       "edge_pct_at_placement": 4.79,
       "predicted_win_prob": 0.9966,
       "stake_usd": 15.27,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-12T09:33:56.642242+00:00",
+      "pnl_usd": 0.79
     },
     {
       "bet_id": "calibration:kor-bch-gwa-2026-08-08-exact-score:3130415",
