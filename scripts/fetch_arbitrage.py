@@ -103,7 +103,7 @@ MOMENTUM_MIN_PRICE_MOVE = 0.05    # last-24h (or last-1h) price move must be at 
 MAX_MOMENTUM_SIGNALS = 15         # max signals shown on the dashboard
 
 # For the calibration-drift (favorite-longshot bias) cross-check:
-MIN_CALIBRATION_EDGE_PCT = 2.0    # don't show a calibration gap below this percent (noise)
+MIN_CALIBRATION_EDGE_PCT = 2.0    # min gap in percentage points between true_rate and cost (noise floor)
 MIN_CALIBRATION_LIQUIDITY_USD = 100  # drop markets below this liquidity
 MAX_CALIBRATION_SIGNALS = 20      # max signals shown on the dashboard
 
@@ -315,7 +315,16 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
 
     IMPORTANT: this is NOT riskless. It doesn't guarantee a win on any single
     bet; it's a statistical tendency assumed to pull expected value (+EV) in
-    your favor across many repeated, INDEPENDENT positions."""
+    your favor across many repeated, INDEPENDENT positions.
+
+    edge_pct is a percentage-POINT gap (true_rate - cost) * 100, same as
+    find_mispricing_signal's edge_pts -- not a ratio over cost. A ratio blows
+    up without bound as cost approaches 0, and since calibration_signals gets
+    sorted by edge_pct and truncated to MAX_CALIBRATION_SIGNALS, a single
+    low-cost bucket with a ratio-inflated "edge" could otherwise monopolize
+    every slot in that Top N regardless of how small its real, absolute edge
+    was (a real incident: one bucket's edge_pct hit five digits this way and
+    crowded out every other candidate for days)."""
     try:
         price = float(market.get("lastTradePrice") or market.get("bestAsk") or 0)
     except (TypeError, ValueError):
@@ -347,7 +356,7 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     if cost <= 0:
         return None
 
-    edge_pct = (true_rate - cost) / cost * 100
+    edge_pct = (true_rate - cost) * 100
     if edge_pct < MIN_CALIBRATION_EDGE_PCT:
         return None
 

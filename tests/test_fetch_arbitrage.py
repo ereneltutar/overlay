@@ -254,10 +254,24 @@ def test_find_calibration_signal_negative_bias_recommends_no():
 
 
 def test_find_calibration_signal_below_min_edge_returns_none():
-    # implied_cost=0.59, true_rate=0.6 -> edge = (0.6-0.59)/0.59*100 ~= 1.7%, below MIN_CALIBRATION_EDGE_PCT=2.0
+    # implied_cost=0.59, true_rate=0.6 -> edge = (0.6-0.59)*100 = 1pt, below MIN_CALIBRATION_EDGE_PCT=2.0
     market = {"lastTradePrice": 0.59, "liquidityNum": 1000}
     sig = fa.find_calibration_signal(market, {}, sig_bins(bias_pct=1.0, resolved_yes_rate=0.6), NOW)
     assert sig is None
+
+
+def test_find_calibration_signal_edge_pct_is_a_point_gap_not_a_ratio():
+    # true_rate=0.6, cost=0.001 (near-zero) -> a ratio-over-cost formula would
+    # blow up to tens of thousands of percent; the point-gap formula instead
+    # stays bounded at (0.6-0.001)*100 ~= 59.9, matching find_mispricing_signal's
+    # edge_pts convention. This is the fix for the bug that let one low-cost
+    # bucket's inflated edge_pct monopolize the Top-N ranking.
+    market = {"lastTradePrice": 0.999, "liquidityNum": 1000}
+    bins = [{"range": [0.95, 1.0], "significant": True, "bias_pct": -10.0,
+             "resolved_yes_rate": 0.4, "sample_size": 40}]
+    sig = fa.find_calibration_signal(market, {}, bins, NOW)
+    assert sig is not None
+    assert sig["edge_pct"] < 100
 
 
 def test_find_calibration_signal_implied_cost_includes_real_taker_fee():
@@ -271,7 +285,7 @@ def test_find_calibration_signal_implied_cost_includes_real_taker_fee():
     assert sig["fee"] == expected_fee
     assert sig["implied_cost"] == round(0.45 + expected_fee, 4)
     # fee-inclusive edge is strictly worse than the no-fee edge would have been
-    no_fee_edge = (0.6 - 0.45) / 0.45 * 100
+    no_fee_edge = (0.6 - 0.45) * 100
     assert sig["edge_pct"] < no_fee_edge
 
 
