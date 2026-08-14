@@ -50,7 +50,20 @@ from pathlib import Path
 import gamma_client
 
 # --- Tunable parameters -----------------------------------------------
-BIN_WIDTH = 0.05              # bucket width (0.05 = 20 buckets)
+BIN_WIDTH = 0.05              # bucket width through the middle of the range
+# The top and bottom BIN_WIDTH-wide buckets ([0,.05) and [.95,1.0]) used to
+# be a single bucket each, which blends genuinely-uncertain markets (priced
+# e.g. 95%) with effectively-decided ones (priced 99.9%) into one averaged
+# "historical win rate" -- see find_calibration_signal()'s docstring in
+# fetch_arbitrage.py. That let a near-certain market get judged against the
+# whole tail's average and produce a wildly overconfident signal (a real
+# case: a market priced at a 0.1% NO cost got assigned a bucket-average 26%
+# NO win rate instead of the near-0% its own price implied, and Kelly staked
+# real money on it as if 26% were correct). TAIL_BIN_WIDTH splits just the
+# outer TAIL_ZONE_WIDTH of the range into finer buckets so a market that
+# extreme is compared against genuinely similar historical markets instead.
+TAIL_ZONE_WIDTH = 0.05        # how much of each end (0..this, (1-this)..1) gets finer bins
+TAIL_BIN_WIDTH = 0.01         # width of those finer tail bins
 MIN_SAMPLE_PER_BUCKET = 30    # buckets with fewer samples than this have no statistical confidence
 MAX_LOG_ENTRIES_TO_CHECK = 2500  # runtime / rate-limit safety cap (Gamma API ~60 requests/min)
 SLEEP_BETWEEN_CALLS = 1.15    # ~52 requests/min, a safe margin under the Gamma API's ~60/min limit
@@ -137,17 +150,34 @@ def wilson_interval(k: int, n: int, z: float = 1.96):
     return (max(0.0, center - margin), min(1.0, center + margin))
 
 
+def bucket_edges() -> list:
+    """(lo, hi) edges for compute_bins: BIN_WIDTH through the middle of the
+    range, TAIL_BIN_WIDTH within TAIL_ZONE_WIDTH of 0 and 1. Computed in
+    integer cents to avoid float drift from repeated addition."""
+    def frange(lo_cents, hi_cents, step_cents):
+        return [(c / 100, (c + step_cents) / 100) for c in range(lo_cents, hi_cents, step_cents)]
+
+    tail_cents = round(TAIL_ZONE_WIDTH * 100)
+    tail_step = round(TAIL_BIN_WIDTH * 100)
+    mid_step = round(BIN_WIDTH * 100)
+
+    return (
+        frange(0, tail_cents, tail_step) +
+        frange(tail_cents, 100 - tail_cents, mid_step) +
+        frange(100 - tail_cents, 100, tail_step)
+    )
+
+
 def compute_bins(samples: list) -> list:
-    """Buckets resolved samples into BIN_WIDTH-wide price ranges and computes
-    the calibration stats for each bucket. Pure function of `samples`
-    (each a {"reference_price": float, "resolved_yes": bool} dict) so it can
-    be tested without hitting the network."""
-    num_bins = int(round(1 / BIN_WIDTH))
+    """Buckets resolved samples into price ranges (see bucket_edges) and
+    computes the calibration stats for each bucket. Pure function of
+    `samples` (each a {"reference_price": float, "resolved_yes": bool}
+    dict) so it can be tested without hitting the network."""
+    edges = bucket_edges()
+    last_idx = len(edges) - 1
     bins = []
-    for b in range(num_bins):
-        lo = b * BIN_WIDTH
-        hi = lo + BIN_WIDTH
-        bucket_samples = [s for s in samples if lo <= s["reference_price"] < hi or (b == num_bins - 1 and s["reference_price"] == 1.0)]
+    for b, (lo, hi) in enumerate(edges):
+        bucket_samples = [s for s in samples if lo <= s["reference_price"] < hi or (b == last_idx and s["reference_price"] == 1.0)]
         n = len(bucket_samples)
         k = sum(1 for s in bucket_samples if s["resolved_yes"])
         midpoint = (lo + hi) / 2
@@ -241,6 +271,8 @@ def main():
     output = {
         "generated_at": now.isoformat(),
         "bin_width": BIN_WIDTH,
+        "tail_bin_width": TAIL_BIN_WIDTH,
+        "tail_zone_width": TAIL_ZONE_WIDTH,
         "min_sample_per_bucket": MIN_SAMPLE_PER_BUCKET,
         "logged_markets_total": len(log_entries),
         "logged_markets_cached": len(cached),

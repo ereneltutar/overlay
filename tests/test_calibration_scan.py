@@ -31,11 +31,13 @@ def make_samples(price, yes_count, no_count):
            [{"reference_price": price, "resolved_yes": False} for _ in range(no_count)]
 
 
-def test_compute_bins_returns_20_buckets_for_default_width():
+def test_compute_bins_returns_28_buckets_for_default_widths():
+    # 18 mid-range 0.05-wide buckets ([0.05,0.95)) plus 5 finer 0.01-wide
+    # buckets at each tail ([0,0.05) and [0.95,1.0]).
     bins = cs.compute_bins([])
-    assert len(bins) == 20
-    assert bins[0]["range"] == [0.0, 0.05]
-    assert bins[-1]["range"] == [0.95, 1.0]
+    assert len(bins) == 28
+    assert bins[0]["range"] == [0.0, 0.01]
+    assert bins[-1]["range"] == [0.99, 1.0]
 
 
 def test_compute_bins_below_min_sample_has_null_stats():
@@ -60,7 +62,7 @@ def test_compute_bins_price_exactly_one_falls_in_last_bucket():
     samples = make_samples(1.0, yes_count=30, no_count=0)
     bins = cs.compute_bins(samples)
     last = bins[-1]
-    assert last["range"] == [0.95, 1.0]
+    assert last["range"] == [0.99, 1.0]
     assert last["sample_size"] == 30
 
 
@@ -80,6 +82,28 @@ def test_compute_bins_not_significant_near_midpoint():
     bins = cs.compute_bins(samples)
     bucket = next(b for b in bins if b["range"] == [0.4, 0.45])
     assert bucket["significant"] is False
+
+
+def test_compute_bins_extreme_tail_bucket_does_not_blend_with_near_certain_price():
+    # Regression for the bug that made the simulator lose big: a wide top
+    # bucket used to average markets priced 95%-100% into one historical
+    # rate, so a market priced at 99.9% (effectively decided) got judged
+    # against the SAME rate as one priced at 95% (genuinely uncertain).
+    # With tail bins split to 0.01 width, a market priced at 0.999 falls in
+    # [0.99, 1.0) and must not be pooled with samples priced around 0.95.
+    uncertain_95 = make_samples(0.951, yes_count=22, no_count=8)   # noisy, near 95%
+    near_certain_999 = make_samples(0.999, yes_count=30, no_count=0)  # always resolves YES
+    bins = cs.compute_bins(uncertain_95 + near_certain_999)
+
+    bucket_95 = next(b for b in bins if b["range"] == [0.95, 0.96])
+    bucket_999 = next(b for b in bins if b["range"] == [0.99, 1.0])
+
+    assert bucket_95["sample_size"] == 30
+    assert bucket_999["sample_size"] == 30
+    assert bucket_999["resolved_yes_rate"] == 1.0
+    # The two buckets must be scored independently, not blended into one
+    # [0.95, 1.0) average.
+    assert bucket_95["resolved_yes_rate"] != bucket_999["resolved_yes_rate"]
 
 
 # --- partition_log_entries --------------------------------------------------
