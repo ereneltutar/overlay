@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1000.0,
+  "bankroll": 702.9,
   "bankroll_history": [
     {
       "date": "2026-08-14",
@@ -8,7 +8,7 @@
     },
     {
       "date": "2026-08-15",
-      "bankroll": 1000.0
+      "bankroll": 702.9
     }
   ],
   "bets": [
@@ -148,9 +148,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 36.75,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -36.75
     },
     {
       "bet_id": "calibration:val-c9-w7m-2026-08-14:3497937",
@@ -168,9 +168,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 34.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -34.92
     },
     {
       "bet_id": "calibration:val-c9-w7m-2026-08-14:3497938",
@@ -188,9 +188,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 33.17,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -33.17
     },
     {
       "bet_id": "calibration:val-c9-w7m-2026-08-14:3497939",
@@ -208,9 +208,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 31.51,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -31.51
     },
     {
       "bet_id": "calibration:cs2-bst-alkaa-2026-08-14:3505647",
@@ -228,9 +228,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 29.94,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -29.94
     },
     {
       "bet_id": "calibration:cs2-bst-alkaa-2026-08-14:3505648",
@@ -248,9 +248,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 28.44,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -28.44
     },
     {
       "bet_id": "calibration:cs2-bst-alkaa-2026-08-14:3505653",
@@ -268,9 +268,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 27.02,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -27.02
     },
     {
       "bet_id": "calibration:cs2-bst-alkaa-2026-08-14:3505654",
@@ -288,9 +288,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 25.67,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -25.67
     },
     {
       "bet_id": "calibration:where-will-a-6pt0-earthquake-occur-by-august-31-20260811153256891:3527286",
@@ -348,9 +348,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 22.01,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -22.01
     },
     {
       "bet_id": "calibration:argpn-ar-ddb-2026-08-15-exact-score:3536805",
@@ -368,9 +368,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 20.91,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -20.91
     },
     {
       "bet_id": "calibration:how-many-views-will-the-1-movie-on-netflix-have-this-week-20260812185905064:3555278",
@@ -808,9 +808,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 6.76,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T16:43:57.970091+00:00",
+      "pnl_usd": -6.76
     }
   ]
 }
