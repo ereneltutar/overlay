@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 702.9,
+  "bankroll": 572.75,
   "bankroll_history": [
     {
       "date": "2026-08-14",
@@ -8,7 +8,7 @@
     },
     {
       "date": "2026-08-15",
-      "bankroll": 702.9
+      "bankroll": 572.75
     }
   ],
   "bets": [
@@ -428,9 +428,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 17.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -17.92
     },
     {
       "bet_id": "mispricing:dota2-og-huliga-2026-08-14:3580376",
@@ -448,9 +448,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 17.03,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -17.03
     },
     {
       "bet_id": "mispricing:dota2-flc-gl-2026-08-14:3582962",
@@ -468,9 +468,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 16.18,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -16.18
     },
     {
       "bet_id": "mispricing:val-c9-w7m-2026-08-14:3497938",
@@ -488,9 +488,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 15.37,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -15.37
     },
     {
       "bet_id": "mispricing:cs2-bst-alkaa-2026-08-14:3505647",
@@ -508,9 +508,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 14.6,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -14.6
     },
     {
       "bet_id": "mispricing:bitcoin-above-on-august-15-2026:3421365",
@@ -548,9 +548,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 13.18,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -13.18
     },
     {
       "bet_id": "mispricing:lol-ccg-cont-2026-08-14:3577865",
@@ -568,9 +568,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 12.52,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -12.52
     },
     {
       "bet_id": "mispricing:bitcoin-above-on-august-15-2026:3421368",
@@ -708,9 +708,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 8.74,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -8.74
     },
     {
       "bet_id": "mispricing:ethereum-above-on-august-15-2026:3421327",
@@ -768,9 +768,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 7.49,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -7.49
     },
     {
       "bet_id": "mispricing:cs2-bst-alkaa-2026-08-14:3505648",
@@ -788,9 +788,9 @@
       "edge_pct_at_placement": 25.76,
       "predicted_win_prob": 0.2586,
       "stake_usd": 7.12,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-15T20:42:33.740066+00:00",
+      "pnl_usd": -7.12
     },
     {
       "bet_id": "mispricing:what-price-will-solana-hit-on-august-14:3576566",
