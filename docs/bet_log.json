@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 564.86,
+  "bankroll": 479.69,
   "bankroll_history": [
     {
       "date": "2026-08-14",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-08-16",
-      "bankroll": 564.86
+      "bankroll": 479.69
     }
   ],
   "bets": [
@@ -532,9 +532,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 13.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -13.87
     },
     {
       "bet_id": "mispricing:cs2-mw-meiano-2026-08-14:3576502",
@@ -592,9 +592,9 @@
       "edge_pct_at_placement": 23.08,
       "predicted_win_prob": 0.2586,
       "stake_usd": 11.89,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -11.89
     },
     {
       "bet_id": "mispricing:ethereum-above-on-august-15-2026:3421323",
@@ -612,9 +612,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 11.3,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -11.3
     },
     {
       "bet_id": "mispricing:ethereum-above-on-august-15-2026:3421326",
@@ -632,9 +632,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -10.73
     },
     {
       "bet_id": "mispricing:bitcoin-above-on-august-15-2026:3421361",
@@ -652,9 +652,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 10.19,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -10.19
     },
     {
       "bet_id": "mispricing:bitcoin-above-on-august-15-2026:3421363",
@@ -672,9 +672,9 @@
       "edge_pct_at_placement": 25.75,
       "predicted_win_prob": 0.2586,
       "stake_usd": 9.69,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -9.69
     },
     {
       "bet_id": "mispricing:bitcoin-price-on-august-15-2026:3421328",
@@ -692,9 +692,9 @@
       "edge_pct_at_placement": 22.23,
       "predicted_win_prob": 0.2586,
       "stake_usd": 9.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -9.2
     },
     {
       "bet_id": "mispricing:cs2-bst-alkaa-2026-08-14:3505645",
@@ -732,9 +732,9 @@
       "edge_pct_at_placement": 25.33,
       "predicted_win_prob": 0.2586,
       "stake_usd": 8.3,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-16T03:39:33.272843+00:00",
+      "pnl_usd": -8.3
     },
     {
       "bet_id": "mispricing:highest-temperature-in-wellington-on-august-15-2026:3558061",
@@ -815,6 +815,156 @@
       "status": "lost",
       "resolved_at": "2026-08-15T16:43:57.970091+00:00",
       "pnl_usd": -6.76
+    },
+    {
+      "bet_id": "arbitrage:what-will-be-the-2-us-netflix-movie-this-week-20260812183618499",
+      "tag": "arbitrage",
+      "market_question": "What will be the #2 US Netflix movie this week?",
+      "slug": "what-will-be-the-2-us-netflix-movie-this-week-20260812183618499",
+      "url": "https://polymarket.com/event/what-will-be-the-2-us-netflix-movie-this-week-20260812183618499",
+      "placed_at": "2026-08-16T03:39:33.272843+00:00",
+      "deadline": "2026-08-18T23:59:00Z",
+      "market_ids": [
+        "3555262",
+        "3555267",
+        "3555263",
+        "3555266",
+        "3555264",
+        "3555265"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.1667,
+      "edge_pct_at_placement": 499.87,
+      "predicted_win_prob": null,
+      "stake_usd": 10.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:what-will-be-the-2-global-netflix-movie-this-week-20260812182754329",
+      "tag": "arbitrage",
+      "market_question": "What will be the #2 global Netflix movie this week?",
+      "slug": "what-will-be-the-2-global-netflix-movie-this-week-20260812182754329",
+      "url": "https://polymarket.com/event/what-will-be-the-2-global-netflix-movie-this-week-20260812182754329",
+      "placed_at": "2026-08-16T03:39:33.272843+00:00",
+      "deadline": "2026-08-18T23:59:00Z",
+      "market_ids": [
+        "3555239",
+        "3555236",
+        "3555234",
+        "3555235",
+        "3555237",
+        "3555238"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.451,
+      "edge_pct_at_placement": 121.74,
+      "predicted_win_prob": null,
+      "stake_usd": 9.46,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:lpga-2026-portland-classic-third-round-leader",
+      "tag": "arbitrage",
+      "market_question": "LPGA: Portland Classic Third Round Leader",
+      "slug": "lpga-2026-portland-classic-third-round-leader",
+      "url": "https://polymarket.com/event/lpga-2026-portland-classic-third-round-leader",
+      "placed_at": "2026-08-16T03:39:33.272843+00:00",
+      "deadline": "2026-08-17T03:59:00Z",
+      "market_ids": [
+        "3515813",
+        "3515822",
+        "3515836",
+        "3515881",
+        "3515890",
+        "3515906",
+        "3515908",
+        "3515910",
+        "3515912",
+        "3515810",
+        "3515811",
+        "3515812",
+        "3515814",
+        "3515815",
+        "3515816",
+        "3515817",
+        "3515820",
+        "3515821",
+        "3515823",
+        "3515829",
+        "3515830",
+        "3515833",
+        "3515835",
+        "3515838",
+        "3515842",
+        "3515844",
+        "3515846",
+        "3515847",
+        "3515859",
+        "3515860",
+        "3515862",
+        "3515866",
+        "3515869",
+        "3515875",
+        "3515876",
+        "3515878",
+        "3515879",
+        "3515880",
+        "3515882",
+        "3515885",
+        "3515889",
+        "3515891",
+        "3515896",
+        "3515897",
+        "3515901",
+        "3515903",
+        "3515904",
+        "3515913",
+        "3515915",
+        "3515916",
+        "3515819"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.6047,
+      "edge_pct_at_placement": 65.36,
+      "predicted_win_prob": null,
+      "stake_usd": 8.7,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "arbitrage:lowest-temperature-in-shanghai-on-august-16-2026",
+      "tag": "arbitrage",
+      "market_question": "Lowest temperature in Shanghai on August 16?",
+      "slug": "lowest-temperature-in-shanghai-on-august-16-2026",
+      "url": "https://polymarket.com/event/lowest-temperature-in-shanghai-on-august-16-2026",
+      "placed_at": "2026-08-16T03:39:33.272843+00:00",
+      "deadline": "2026-08-16T12:00:00Z",
+      "market_ids": [
+        "3576872",
+        "3576873",
+        "3576874",
+        "3576879",
+        "3576880",
+        "3576881",
+        "3576882",
+        "3576875",
+        "3576876",
+        "3576877",
+        "3576878"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.8902,
+      "edge_pct_at_placement": 12.33,
+      "predicted_win_prob": null,
+      "stake_usd": 8.01,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
