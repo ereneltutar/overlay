@@ -1,202 +1,61 @@
 {
-  "generated_at": "2026-08-10T05:38:46.276958+00:00",
+  "generated_at": "2026-08-17T04:51:09.072866+00:00",
   "bin_width": 0.05,
+  "tail_bin_width": 0.01,
+  "tail_zone_width": 0.05,
   "min_sample_per_bucket": 30,
-  "logged_markets_total": 16286,
-  "logged_markets_cached": 485,
+  "logged_markets_total": 37200,
+  "logged_markets_cached": 1204,
   "logged_markets_checked_this_run": 2500,
-  "logged_markets_deferred": 13301,
-  "markets_resolved": 1187,
-  "markets_still_open_or_unclear": 1798,
+  "logged_markets_deferred": 33496,
+  "markets_resolved": 3605,
+  "markets_still_open_or_unclear": 99,
   "bins": [
     {
       "range": [
         0.0,
-        0.05
+        0.01
       ],
-      "midpoint": 0.025,
-      "sample_size": 368,
-      "resolved_yes_rate": 0.0027,
-      "ci_95_low": 0.0005,
-      "ci_95_high": 0.0152,
-      "bias_pct": -2.23,
-      "significant": true
-    },
-    {
-      "range": [
-        0.05,
-        0.1
-      ],
-      "midpoint": 0.075,
-      "sample_size": 30,
+      "midpoint": 0.005,
+      "sample_size": 333,
       "resolved_yes_rate": 0.0,
       "ci_95_low": 0.0,
-      "ci_95_high": 0.1135,
-      "bias_pct": -7.5,
+      "ci_95_high": 0.0114,
+      "bias_pct": -0.5,
       "significant": false
     },
     {
       "range": [
-        0.1,
-        0.15
+        0.01,
+        0.02
       ],
-      "midpoint": 0.125,
-      "sample_size": 32,
-      "resolved_yes_rate": 0.1562,
-      "ci_95_low": 0.0686,
-      "ci_95_high": 0.3175,
-      "bias_pct": 3.12,
+      "midpoint": 0.015,
+      "sample_size": 118,
+      "resolved_yes_rate": 0.0,
+      "ci_95_low": 0.0,
+      "ci_95_high": 0.0315,
+      "bias_pct": -1.5,
       "significant": false
     },
     {
       "range": [
-        0.15,
-        0.2
+        0.02,
+        0.03
       ],
-      "midpoint": 0.175,
-      "sample_size": 24,
-      "resolved_yes_rate": null,
-      "ci_95_low": null,
-      "ci_95_high": null,
-      "bias_pct": null,
+      "midpoint": 0.025,
+      "sample_size": 36,
+      "resolved_yes_rate": 0.0,
+      "ci_95_low": 0.0,
+      "ci_95_high": 0.0964,
+      "bias_pct": -2.5,
       "significant": false
     },
     {
       "range": [
-        0.2,
-        0.25
+        0.03,
+        0.04
       ],
-      "midpoint": 0.225,
-      "sample_size": 34,
-      "resolved_yes_rate": 0.0882,
-      "ci_95_low": 0.0305,
-      "ci_95_high": 0.2296,
-      "bias_pct": -13.68,
-      "significant": false
-    },
-    {
-      "range": [
-        0.25,
-        0.3
-      ],
-      "midpoint": 0.275,
-      "sample_size": 41,
-      "resolved_yes_rate": 0.2927,
-      "ci_95_low": 0.1761,
-      "ci_95_high": 0.4448,
-      "bias_pct": 1.77,
-      "significant": false
-    },
-    {
-      "range": [
-        0.3,
-        0.35
-      ],
-      "midpoint": 0.325,
-      "sample_size": 42,
-      "resolved_yes_rate": 0.381,
-      "ci_95_low": 0.25,
-      "ci_95_high": 0.5319,
-      "bias_pct": 5.6,
-      "significant": false
-    },
-    {
-      "range": [
-        0.35,
-        0.4
-      ],
-      "midpoint": 0.375,
-      "sample_size": 65,
-      "resolved_yes_rate": 0.3692,
-      "ci_95_low": 0.2623,
-      "ci_95_high": 0.4908,
-      "bias_pct": -0.58,
-      "significant": false
-    },
-    {
-      "range": [
-        0.4,
-        0.45
-      ],
-      "midpoint": 0.425,
-      "sample_size": 77,
-      "resolved_yes_rate": 0.4026,
-      "ci_95_low": 0.3002,
-      "ci_95_high": 0.5142,
-      "bias_pct": -2.24,
-      "significant": false
-    },
-    {
-      "range": [
-        0.45,
-        0.5
-      ],
-      "midpoint": 0.475,
-      "sample_size": 102,
-      "resolved_yes_rate": 0.4608,
-      "ci_95_low": 0.3672,
-      "ci_95_high": 0.5572,
-      "bias_pct": -1.42,
-      "significant": false
-    },
-    {
-      "range": [
-        0.5,
-        0.55
-      ],
-      "midpoint": 0.525,
-      "sample_size": 77,
-      "resolved_yes_rate": 0.4675,
-      "ci_95_low": 0.3603,
-      "ci_95_high": 0.5779,
-      "bias_pct": -5.75,
-      "significant": false
-    },
-    {
-      "range": [
-        0.55,
-        0.6
-      ],
-      "midpoint": 0.575,
-      "sample_size": 57,
-      "resolved_yes_rate": 0.5789,
-      "ci_95_low": 0.4498,
-      "ci_95_high": 0.6981,
-      "bias_pct": 0.39,
-      "significant": false
-    },
-    {
-      "range": [
-        0.6,
-        0.65
-      ],
-      "midpoint": 0.625,
-      "sample_size": 39,
-      "resolved_yes_rate": 0.7436,
-      "ci_95_low": 0.5892,
-      "ci_95_high": 0.8543,
-      "bias_pct": 11.86,
-      "significant": false
-    },
-    {
-      "range": [
-        0.65,
-        0.7
-      ],
-      "midpoint": 0.675,
-      "sample_size": 29,
-      "resolved_yes_rate": null,
-      "ci_95_low": null,
-      "ci_95_high": null,
-      "bias_pct": null,
-      "significant": false
-    },
-    {
-      "range": [
-        0.7,
-        0.75
-      ],
-      "midpoint": 0.725,
+      "midpoint": 0.035,
       "sample_size": 28,
       "resolved_yes_rate": null,
       "ci_95_low": null,
@@ -206,16 +65,211 @@
     },
     {
       "range": [
+        0.04,
+        0.05
+      ],
+      "midpoint": 0.045,
+      "sample_size": 21,
+      "resolved_yes_rate": null,
+      "ci_95_low": null,
+      "ci_95_high": null,
+      "bias_pct": null,
+      "significant": false
+    },
+    {
+      "range": [
+        0.05,
+        0.1
+      ],
+      "midpoint": 0.075,
+      "sample_size": 74,
+      "resolved_yes_rate": 0.0,
+      "ci_95_low": 0.0,
+      "ci_95_high": 0.0494,
+      "bias_pct": -7.5,
+      "significant": true
+    },
+    {
+      "range": [
+        0.1,
+        0.15
+      ],
+      "midpoint": 0.125,
+      "sample_size": 167,
+      "resolved_yes_rate": 0.0838,
+      "ci_95_low": 0.0506,
+      "ci_95_high": 0.1358,
+      "bias_pct": -4.12,
+      "significant": false
+    },
+    {
+      "range": [
+        0.15,
+        0.2
+      ],
+      "midpoint": 0.175,
+      "sample_size": 62,
+      "resolved_yes_rate": 0.0645,
+      "ci_95_low": 0.0254,
+      "ci_95_high": 0.1545,
+      "bias_pct": -11.05,
+      "significant": true
+    },
+    {
+      "range": [
+        0.2,
+        0.25
+      ],
+      "midpoint": 0.225,
+      "sample_size": 55,
+      "resolved_yes_rate": 0.1636,
+      "ci_95_low": 0.0886,
+      "ci_95_high": 0.2826,
+      "bias_pct": -6.14,
+      "significant": false
+    },
+    {
+      "range": [
+        0.25,
+        0.3
+      ],
+      "midpoint": 0.275,
+      "sample_size": 114,
+      "resolved_yes_rate": 0.193,
+      "ci_95_low": 0.131,
+      "ci_95_high": 0.2749,
+      "bias_pct": -8.2,
+      "significant": true
+    },
+    {
+      "range": [
+        0.3,
+        0.35
+      ],
+      "midpoint": 0.325,
+      "sample_size": 71,
+      "resolved_yes_rate": 0.338,
+      "ci_95_low": 0.2388,
+      "ci_95_high": 0.4538,
+      "bias_pct": 1.3,
+      "significant": false
+    },
+    {
+      "range": [
+        0.35,
+        0.4
+      ],
+      "midpoint": 0.375,
+      "sample_size": 115,
+      "resolved_yes_rate": 0.3217,
+      "ci_95_low": 0.2433,
+      "ci_95_high": 0.4117,
+      "bias_pct": -5.33,
+      "significant": false
+    },
+    {
+      "range": [
+        0.4,
+        0.45
+      ],
+      "midpoint": 0.425,
+      "sample_size": 119,
+      "resolved_yes_rate": 0.3697,
+      "ci_95_low": 0.2884,
+      "ci_95_high": 0.4593,
+      "bias_pct": -5.53,
+      "significant": false
+    },
+    {
+      "range": [
+        0.45,
+        0.5
+      ],
+      "midpoint": 0.475,
+      "sample_size": 141,
+      "resolved_yes_rate": 0.4255,
+      "ci_95_low": 0.347,
+      "ci_95_high": 0.5081,
+      "bias_pct": -4.95,
+      "significant": false
+    },
+    {
+      "range": [
+        0.5,
+        0.55
+      ],
+      "midpoint": 0.525,
+      "sample_size": 144,
+      "resolved_yes_rate": 0.4931,
+      "ci_95_low": 0.4126,
+      "ci_95_high": 0.5738,
+      "bias_pct": -3.19,
+      "significant": false
+    },
+    {
+      "range": [
+        0.55,
+        0.6
+      ],
+      "midpoint": 0.575,
+      "sample_size": 85,
+      "resolved_yes_rate": 0.4706,
+      "ci_95_low": 0.3681,
+      "ci_95_high": 0.5757,
+      "bias_pct": -10.44,
+      "significant": false
+    },
+    {
+      "range": [
+        0.6,
+        0.65
+      ],
+      "midpoint": 0.625,
+      "sample_size": 78,
+      "resolved_yes_rate": 0.6026,
+      "ci_95_low": 0.4916,
+      "ci_95_high": 0.7039,
+      "bias_pct": -2.24,
+      "significant": false
+    },
+    {
+      "range": [
+        0.65,
+        0.7
+      ],
+      "midpoint": 0.675,
+      "sample_size": 54,
+      "resolved_yes_rate": 0.6111,
+      "ci_95_low": 0.4779,
+      "ci_95_high": 0.7296,
+      "bias_pct": -6.39,
+      "significant": false
+    },
+    {
+      "range": [
+        0.7,
+        0.75
+      ],
+      "midpoint": 0.725,
+      "sample_size": 53,
+      "resolved_yes_rate": 0.6792,
+      "ci_95_low": 0.5452,
+      "ci_95_high": 0.7891,
+      "bias_pct": -4.58,
+      "significant": false
+    },
+    {
+      "range": [
         0.75,
         0.8
       ],
       "midpoint": 0.775,
-      "sample_size": 34,
-      "resolved_yes_rate": 0.8235,
-      "ci_95_low": 0.6649,
-      "ci_95_high": 0.9165,
-      "bias_pct": 4.85,
-      "significant": false
+      "sample_size": 76,
+      "resolved_yes_rate": 0.5921,
+      "ci_95_low": 0.4798,
+      "ci_95_high": 0.6956,
+      "bias_pct": -18.29,
+      "significant": true
     },
     {
       "range": [
@@ -223,12 +277,12 @@
         0.85
       ],
       "midpoint": 0.825,
-      "sample_size": 26,
-      "resolved_yes_rate": null,
-      "ci_95_low": null,
-      "ci_95_high": null,
-      "bias_pct": null,
-      "significant": false
+      "sample_size": 123,
+      "resolved_yes_rate": 0.4146,
+      "ci_95_low": 0.3314,
+      "ci_95_high": 0.503,
+      "bias_pct": -41.04,
+      "significant": true
     },
     {
       "range": [
@@ -236,12 +290,12 @@
         0.9
       ],
       "midpoint": 0.875,
-      "sample_size": 11,
-      "resolved_yes_rate": null,
-      "ci_95_low": null,
-      "ci_95_high": null,
-      "bias_pct": null,
-      "significant": false
+      "sample_size": 250,
+      "resolved_yes_rate": 0.292,
+      "ci_95_low": 0.2391,
+      "ci_95_high": 0.3512,
+      "bias_pct": -58.3,
+      "significant": true
     },
     {
       "range": [
@@ -249,24 +303,76 @@
         0.95
       ],
       "midpoint": 0.925,
-      "sample_size": 18,
-      "resolved_yes_rate": null,
-      "ci_95_low": null,
-      "ci_95_high": null,
-      "bias_pct": null,
-      "significant": false
+      "sample_size": 665,
+      "resolved_yes_rate": 0.3278,
+      "ci_95_low": 0.2932,
+      "ci_95_high": 0.3644,
+      "bias_pct": -59.72,
+      "significant": true
     },
     {
       "range": [
         0.95,
-        1.0
+        0.96
+      ],
+      "midpoint": 0.955,
+      "sample_size": 116,
+      "resolved_yes_rate": 0.3621,
+      "ci_95_low": 0.2803,
+      "ci_95_high": 0.4527,
+      "bias_pct": -59.29,
+      "significant": true
+    },
+    {
+      "range": [
+        0.96,
+        0.97
+      ],
+      "midpoint": 0.965,
+      "sample_size": 255,
+      "resolved_yes_rate": 0.5059,
+      "ci_95_low": 0.4449,
+      "ci_95_high": 0.5667,
+      "bias_pct": -45.91,
+      "significant": true
+    },
+    {
+      "range": [
+        0.97,
+        0.98
       ],
       "midpoint": 0.975,
-      "sample_size": 58,
-      "resolved_yes_rate": 0.7414,
-      "ci_95_low": 0.6162,
-      "ci_95_high": 0.8365,
-      "bias_pct": -23.36,
+      "sample_size": 132,
+      "resolved_yes_rate": 0.6667,
+      "ci_95_low": 0.5825,
+      "ci_95_high": 0.7414,
+      "bias_pct": -30.83,
+      "significant": true
+    },
+    {
+      "range": [
+        0.98,
+        0.99
+      ],
+      "midpoint": 0.985,
+      "sample_size": 31,
+      "resolved_yes_rate": 0.6774,
+      "ci_95_low": 0.5014,
+      "ci_95_high": 0.8143,
+      "bias_pct": -30.76,
+      "significant": true
+    },
+    {
+      "range": [
+        0.99,
+        1.0
+      ],
+      "midpoint": 0.995,
+      "sample_size": 89,
+      "resolved_yes_rate": 0.7416,
+      "ci_95_low": 0.642,
+      "ci_95_high": 0.8212,
+      "bias_pct": -25.34,
       "significant": true
     }
   ]
