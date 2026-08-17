@@ -969,6 +969,29 @@
       "status": "won",
       "resolved_at": "2026-08-17T01:57:34.666342+00:00",
       "pnl_usd": 0.88
+    },
+    {
+      "bet_id": "arbitrage:sweden-parliamentary-election-v-vote-share-20260812172636440",
+      "tag": "arbitrage",
+      "market_question": "Sweden Parliamentary Election: V Vote Share?",
+      "slug": "sweden-parliamentary-election-v-vote-share-20260812172636440",
+      "url": "https://polymarket.com/event/sweden-parliamentary-election-v-vote-share-20260812172636440",
+      "placed_at": "2026-08-17T03:41:39.681209+00:00",
+      "deadline": "2026-09-13T00:00:00Z",
+      "market_ids": [
+        "3562258",
+        "3562255",
+        "3562256",
+        "3562257"
+      ],
+      "recommended_side": null,
+      "entry_cost": 0.9759,
+      "edge_pct_at_placement": 2.47,
+      "predicted_win_prob": null,
+      "stake_usd": 8.08,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
