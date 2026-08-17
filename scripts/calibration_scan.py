@@ -65,6 +65,15 @@ BIN_WIDTH = 0.05              # bucket width through the middle of the range
 TAIL_ZONE_WIDTH = 0.05        # how much of each end (0..this, (1-this)..1) gets finer bins
 TAIL_BIN_WIDTH = 0.01         # width of those finer tail bins
 MIN_SAMPLE_PER_BUCKET = 30    # buckets with fewer samples than this have no statistical confidence
+# Must match fetch_arbitrage.py's MIN_CALIBRATION_LIQUIDITY_USD (the live signal's own
+# floor). price_log.jsonl was logged with a looser $50 floor (CALIBRATION_LOG_MIN_LIQUIDITY,
+# since raised to match), so it still contains thin, single-trade-priced markets from before
+# that change. A market too illiquid to ever qualify as a live signal shouldn't get a vote in
+# the historical rate that judges every live signal in its bucket -- a real case: the
+# [0.99, 1.0] bucket's samples included $50-99-liquidity sports-prop markets that resolved
+# their extreme-priced side only ~74% of the time (vs 100%, 27/27, once restricted to samples
+# clearing this floor), making genuinely well-calibrated live markets look like a 26% edge.
+MIN_SAMPLE_LIQUIDITY_USD = 100
 MAX_LOG_ENTRIES_TO_CHECK = 2500  # runtime / rate-limit safety cap (Gamma API ~60 requests/min)
 SLEEP_BETWEEN_CALLS = 1.15    # ~52 requests/min, a safe margin under the Gamma API's ~60/min limit
 # ----------------------------------------------------------------------------
@@ -109,6 +118,13 @@ def load_resolution_cache() -> dict:
 def save_resolution_cache(cache: dict):
     CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
     CACHE_PATH.write_text(json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def filter_by_liquidity(log_entries: list, min_liquidity: float) -> list:
+    """Drops logged markets below min_liquidity -- too thin to trust their
+    price as a real probability (see MIN_SAMPLE_LIQUIDITY_USD). Pure function
+    so the filter is testable without a network call or the full price log."""
+    return [e for e in log_entries if float(e.get("liquidity") or 0) >= min_liquidity]
 
 
 def partition_log_entries(log_entries: list, cache: dict, max_to_check: int):
@@ -222,6 +238,18 @@ def main():
     log_entries.sort(key=lambda e: e.get("logged_at", ""))
     print(f"Found {len(log_entries)} logged markets (docs/price_log.jsonl).")
 
+    # Drop entries too thin to trust as a real probability (see MIN_SAMPLE_LIQUIDITY_USD).
+    # Filtered here, in memory, rather than by editing price_log.jsonl itself, since that
+    # file is append-only by design (see log_price_snapshot()'s docstring) -- this also
+    # saves the rate-limited Gamma API budget below from being spent resolving markets
+    # that would just get dropped anyway.
+    logged_markets_total = len(log_entries)
+    log_entries = filter_by_liquidity(log_entries, MIN_SAMPLE_LIQUIDITY_USD)
+    below_liquidity_floor = logged_markets_total - len(log_entries)
+    if below_liquidity_floor:
+        print(f"Dropped {below_liquidity_floor} logged markets below the "
+              f"${MIN_SAMPLE_LIQUIDITY_USD:.0f} liquidity floor.")
+
     cache = load_resolution_cache()
     cached, to_check, deferred = partition_log_entries(log_entries, cache, MAX_LOG_ENTRIES_TO_CHECK)
     print(f"{len(cached)} already resolved in a previous run (skipped, no API call), "
@@ -274,7 +302,9 @@ def main():
         "tail_bin_width": TAIL_BIN_WIDTH,
         "tail_zone_width": TAIL_ZONE_WIDTH,
         "min_sample_per_bucket": MIN_SAMPLE_PER_BUCKET,
-        "logged_markets_total": len(log_entries),
+        "min_sample_liquidity_usd": MIN_SAMPLE_LIQUIDITY_USD,
+        "logged_markets_total": logged_markets_total,
+        "logged_markets_below_liquidity_floor": below_liquidity_floor,
         "logged_markets_cached": len(cached),
         "logged_markets_checked_this_run": len(to_check),
         "logged_markets_deferred": len(deferred),

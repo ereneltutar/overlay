@@ -113,7 +113,16 @@ MAX_CALIBRATION_SIGNALS = 20      # max signals shown on the dashboard
 # If you change one, review the other; there's no shared code linking them.
 CALIBRATION_LOG_LEAD_DAYS = 7
 CALIBRATION_LOG_TOLERANCE_DAYS = 0.6  # slack so a once-daily cron doesn't miss this window
-CALIBRATION_LOG_MIN_LIQUIDITY = 50
+# Must be >= MIN_CALIBRATION_LIQUIDITY_USD (the live signal's own floor). A gap here
+# lets markets too thin to ever qualify as a live signal into the training data that
+# scores every live signal in their bucket instead -- a real case: the [0.99, 1.0]
+# bucket's logged samples were 50-99 liquidity sports-prop markets (single-trade
+# prices, not real conviction) that resolved their extreme-priced side only ~74% of
+# the time, dragging the whole bucket's historical rate down; restricted to samples
+# that clear the $100 live-signal floor, that same bucket resolved 100% (27/27) --
+# i.e. genuinely well-calibrated. The mismatch let Kelly stake real money against
+# markets that were actually priced correctly.
+CALIBRATION_LOG_MIN_LIQUIDITY = 100
 # ----------------------------------------------------------------------------
 
 # --- THIRD, INDEPENDENT SCAN: "Mispricing" (implied vs fair probability) --------

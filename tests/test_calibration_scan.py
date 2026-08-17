@@ -1,4 +1,5 @@
 import calibration_scan as cs
+import fetch_arbitrage as fa
 
 
 # --- wilson_interval -------------------------------------------------------
@@ -154,4 +155,39 @@ def test_partition_all_cached_means_nothing_to_check():
     assert len(cached) == 2
     assert to_check == []
     assert deferred == []
+
+
+# --- filter_by_liquidity ----------------------------------------------------
+# Regression for the bug that made the simulator lose ~52% of its bankroll
+# right after the tail-bucket fix above shipped: price_log.jsonl was logged
+# with a looser liquidity floor ($50, CALIBRATION_LOG_MIN_LIQUIDITY) than the
+# floor live signals require ($100, MIN_CALIBRATION_LIQUIDITY_USD), so
+# single-trade, $50-99-liquidity markets -- priced near 0 or 1 with no real
+# conviction behind it -- entered the [0.99, 1.0] bucket's historical rate
+# and dragged it from ~100% down to ~74%, making genuinely well-calibrated,
+# high-liquidity live markets look like a 26-point edge.
+
+def liquidity_entry(market_id, liquidity):
+    return {"market_id": market_id, "price": 0.995, "liquidity": liquidity}
+
+
+def test_filter_by_liquidity_drops_entries_below_floor():
+    entries = [liquidity_entry("01", 49), liquidity_entry("02", 50), liquidity_entry("03", 5000)]
+    kept = cs.filter_by_liquidity(entries, min_liquidity=50)
+    assert [e["market_id"] for e in kept] == ["02", "03"]
+
+
+def test_filter_by_liquidity_treats_missing_liquidity_as_zero():
+    entries = [{"market_id": "01", "price": 0.995}]
+    assert cs.filter_by_liquidity(entries, min_liquidity=50) == []
+
+
+def test_calibration_log_floor_matches_live_signal_floor():
+    # CALIBRATION_LOG_MIN_LIQUIDITY (what gets logged as training data) must
+    # never be looser than MIN_CALIBRATION_LIQUIDITY_USD (what a live signal
+    # requires) or MIN_SAMPLE_LIQUIDITY_USD (this script's own re-filter) --
+    # otherwise thin markets that could never fire a live signal themselves
+    # sneak back into the historical rate that scores every live signal.
+    assert fa.CALIBRATION_LOG_MIN_LIQUIDITY >= fa.MIN_CALIBRATION_LIQUIDITY_USD
+    assert cs.MIN_SAMPLE_LIQUIDITY_USD >= fa.MIN_CALIBRATION_LIQUIDITY_USD
 
