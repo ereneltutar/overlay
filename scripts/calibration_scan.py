@@ -66,14 +66,19 @@ TAIL_ZONE_WIDTH = 0.05        # how much of each end (0..this, (1-this)..1) gets
 TAIL_BIN_WIDTH = 0.01         # width of those finer tail bins
 MIN_SAMPLE_PER_BUCKET = 30    # buckets with fewer samples than this have no statistical confidence
 # Must match fetch_arbitrage.py's MIN_CALIBRATION_LIQUIDITY_USD (the live signal's own
-# floor). price_log.jsonl was logged with a looser $50 floor (CALIBRATION_LOG_MIN_LIQUIDITY,
-# since raised to match), so it still contains thin, single-trade-priced markets from before
-# that change. A market too illiquid to ever qualify as a live signal shouldn't get a vote in
-# the historical rate that judges every live signal in its bucket -- a real case: the
-# [0.99, 1.0] bucket's samples included $50-99-liquidity sports-prop markets that resolved
-# their extreme-priced side only ~74% of the time (vs 100%, 27/27, once restricted to samples
-# clearing this floor), making genuinely well-calibrated live markets look like a 26% edge.
-MIN_SAMPLE_LIQUIDITY_USD = 100
+# floor). A market too illiquid to ever qualify as a live signal shouldn't get a vote in
+# the historical rate that judges every live signal in its bucket. $100 (this constant's
+# prior value) turned out to still be far too low: pooled across price_log.jsonl, markets
+# priced >=85% resolved YES only 37.5% of the time at $100-250 liquidity vs 84.8% at
+# $500-1000 and ~100% above $2500 -- the real inflection point is around $500. The root
+# cause is that most of Polymarket's long-tail auto-generated markets (corner counts,
+# exact scores, half-outcomes) never get organically traded, so their price falls back to
+# a resting bestAsk quote instead of a real trade -- see MIN_CALIBRATION_VOLUME_24H_USD in
+# fetch_arbitrage.py for the matching volume-based fix applied going forward. That fix only
+# affects NEWLY logged rows (price_log.jsonl never recorded volume, so the existing backlog
+# can't be filtered by it retroactively); this liquidity floor is the defense-in-depth that
+# also cleans up the backlog already in the log.
+MIN_SAMPLE_LIQUIDITY_USD = 500
 MAX_LOG_ENTRIES_TO_CHECK = 2500  # runtime / rate-limit safety cap (Gamma API ~60 requests/min)
 SLEEP_BETWEEN_CALLS = 1.15    # ~52 requests/min, a safe margin under the Gamma API's ~60/min limit
 # ----------------------------------------------------------------------------

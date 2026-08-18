@@ -219,22 +219,34 @@ def sig_bins(significant=True, bias_pct=10.0, resolved_yes_rate=0.6, sample_size
 
 
 def test_find_calibration_signal_price_out_of_bounds():
-    market = {"lastTradePrice": 0, "liquidityNum": 1000}
+    market = {"lastTradePrice": 0, "liquidityNum": 1000, "volume24hr": 10000}
     assert fa.find_calibration_signal(market, {}, sig_bins(), NOW) is None
 
 
 def test_find_calibration_signal_low_liquidity():
-    market = {"lastTradePrice": 0.45, "liquidityNum": 10}
+    market = {"lastTradePrice": 0.45, "liquidityNum": 10, "volume24hr": 10000}
+    assert fa.find_calibration_signal(market, {}, sig_bins(), NOW) is None
+
+
+def test_find_calibration_signal_low_volume():
+    # Regression: liquidityNum measures resting order-book depth, which a market
+    # can have with zero real trades. Most of Polymarket's long-tail auto-
+    # generated props never get organically traded, so lastTradePrice is null
+    # and the price falls back to bestAsk -- a lone resting quote, not a real
+    # probability. This is the fix for CAL repeatedly re-monopolizing on those
+    # phantom-quote markets even after the liquidity floor alone was raised;
+    # MIS already had this exact guard (test_find_mispricing_signal_low_volume_returns_none).
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 100}
     assert fa.find_calibration_signal(market, {}, sig_bins(), NOW) is None
 
 
 def test_find_calibration_signal_bucket_not_significant():
-    market = {"lastTradePrice": 0.45, "liquidityNum": 1000}
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000}
     assert fa.find_calibration_signal(market, {}, sig_bins(significant=False), NOW) is None
 
 
 def test_find_calibration_signal_positive_bias_recommends_yes():
-    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "id": "mk1", "question": "Q?"}
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000, "id": "mk1", "question": "Q?"}
     event = {"endDate": "2026-01-11T00:00:00Z", "slug": "s", "title": "T"}
     sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW)
     assert sig is not None
@@ -245,7 +257,7 @@ def test_find_calibration_signal_positive_bias_recommends_yes():
 
 
 def test_find_calibration_signal_negative_bias_recommends_no():
-    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "id": "mk1"}
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000, "id": "mk1"}
     event = {"endDate": "2026-01-11T00:00:00Z", "slug": "s"}
     sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=-10.0, resolved_yes_rate=0.2), NOW)
     assert sig is not None
@@ -255,7 +267,7 @@ def test_find_calibration_signal_negative_bias_recommends_no():
 
 def test_find_calibration_signal_below_min_edge_returns_none():
     # implied_cost=0.59, true_rate=0.6 -> edge = (0.6-0.59)*100 = 1pt, below MIN_CALIBRATION_EDGE_PCT=2.0
-    market = {"lastTradePrice": 0.59, "liquidityNum": 1000}
+    market = {"lastTradePrice": 0.59, "liquidityNum": 1000, "volume24hr": 10000}
     sig = fa.find_calibration_signal(market, {}, sig_bins(bias_pct=1.0, resolved_yes_rate=0.6), NOW)
     assert sig is None
 
@@ -266,7 +278,7 @@ def test_find_calibration_signal_edge_pct_is_a_point_gap_not_a_ratio():
     # stays bounded at (0.6-0.001)*100 ~= 59.9, matching find_mispricing_signal's
     # edge_pts convention. This is the fix for the bug that let one low-cost
     # bucket's inflated edge_pct monopolize the Top-N ranking.
-    market = {"lastTradePrice": 0.999, "liquidityNum": 1000}
+    market = {"lastTradePrice": 0.999, "liquidityNum": 1000, "volume24hr": 10000}
     bins = [{"range": [0.95, 1.0], "significant": True, "bias_pct": -10.0,
              "resolved_yes_rate": 0.4, "sample_size": 40}]
     sig = fa.find_calibration_signal(market, {}, bins, NOW)
@@ -276,7 +288,7 @@ def test_find_calibration_signal_edge_pct_is_a_point_gap_not_a_ratio():
 
 def test_find_calibration_signal_implied_cost_includes_real_taker_fee():
     # price=0.45, fee = rate * price * (1-price) = 0.04 * 0.45 * 0.55 = 0.0099
-    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "feesEnabled": True,
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000, "feesEnabled": True,
               "feeSchedule": {"rate": 0.04}}
     event = {"endDate": "2026-01-11T00:00:00Z", "slug": "s"}
     sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW)

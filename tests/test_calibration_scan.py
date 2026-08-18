@@ -187,7 +187,13 @@ def test_calibration_log_floor_matches_live_signal_floor():
     # never be looser than MIN_CALIBRATION_LIQUIDITY_USD (what a live signal
     # requires) or MIN_SAMPLE_LIQUIDITY_USD (this script's own re-filter) --
     # otherwise thin markets that could never fire a live signal themselves
-    # sneak back into the historical rate that scores every live signal.
+    # sneak back into the historical rate that scores every live signal. Same
+    # logic for the 24h-volume floors: CALIBRATION_LOG_MIN_VOLUME_24H must
+    # never be looser than MIN_CALIBRATION_VOLUME_24H_USD, or untraded,
+    # bestAsk-only "phantom quote" markets sneak back into the training data
+    # even though they could never fire a live signal (see
+    # MIN_CALIBRATION_VOLUME_24H_USD's docstring in fetch_arbitrage.py).
     assert fa.CALIBRATION_LOG_MIN_LIQUIDITY >= fa.MIN_CALIBRATION_LIQUIDITY_USD
     assert cs.MIN_SAMPLE_LIQUIDITY_USD >= fa.MIN_CALIBRATION_LIQUIDITY_USD
+    assert fa.CALIBRATION_LOG_MIN_VOLUME_24H >= fa.MIN_CALIBRATION_VOLUME_24H_USD
 

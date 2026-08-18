@@ -104,7 +104,26 @@ MAX_MOMENTUM_SIGNALS = 15         # max signals shown on the dashboard
 
 # For the calibration-drift (favorite-longshot bias) cross-check:
 MIN_CALIBRATION_EDGE_PCT = 2.0    # min gap in percentage points between true_rate and cost (noise floor)
-MIN_CALIBRATION_LIQUIDITY_USD = 100  # drop markets below this liquidity
+# $100 was the old floor after the first liquidity-contamination fix (see
+# CALIBRATION_LOG_MIN_LIQUIDITY below); it wasn't enough. Pooled across every
+# resolved sample in price_log.jsonl, markets priced >=85% resolved YES only
+# 37.5% of the time at $100-250 liquidity, vs 84.8% at $500-1000 and ~100% above
+# $2500 -- the real inflection point is around $500, not $100.
+MIN_CALIBRATION_LIQUIDITY_USD = 500  # drop markets below this liquidity
+# liquidityNum measures resting order-book depth, which a market can have with
+# zero actual trades -- most of Polymarket's long-tail auto-generated props
+# (corner counts, exact scores, half-outcomes) never get organically traded, so
+# lastTradePrice is null and the price falls back to bestAsk: a lone resting
+# quote, not a crowd-informed probability. Tell: 99.8% of sub-$250-liquidity,
+# >=85%-priced samples sit on an exact 1-cent tick (0.85, 0.86, ...) vs 33% for
+# genuinely liquid (>=$2500) ones -- the signature of a quoted-not-traded price.
+# find_mispricing_signal already guards against exactly this with a 24h volume
+# requirement (MISPRICING_MIN_VOLUME_24H); find_calibration_signal didn't, which
+# is why CAL signals kept re-monopolizing on these phantom-quote markets even
+# after the liquidity floor above went from $50 to $100, while MIS (which has
+# this filter) stayed diversified throughout. Same bar as mispricing's, which
+# already has a clean track record at this threshold.
+MIN_CALIBRATION_VOLUME_24H_USD = 5000
 MAX_CALIBRATION_SIGNALS = 20      # max signals shown on the dashboard
 
 # For forward-looking calibration LOGGING (the archive calibration_scan.py reads):
@@ -113,16 +132,13 @@ MAX_CALIBRATION_SIGNALS = 20      # max signals shown on the dashboard
 # If you change one, review the other; there's no shared code linking them.
 CALIBRATION_LOG_LEAD_DAYS = 7
 CALIBRATION_LOG_TOLERANCE_DAYS = 0.6  # slack so a once-daily cron doesn't miss this window
-# Must be >= MIN_CALIBRATION_LIQUIDITY_USD (the live signal's own floor). A gap here
-# lets markets too thin to ever qualify as a live signal into the training data that
-# scores every live signal in their bucket instead -- a real case: the [0.99, 1.0]
-# bucket's logged samples were 50-99 liquidity sports-prop markets (single-trade
-# prices, not real conviction) that resolved their extreme-priced side only ~74% of
-# the time, dragging the whole bucket's historical rate down; restricted to samples
-# that clear the $100 live-signal floor, that same bucket resolved 100% (27/27) --
-# i.e. genuinely well-calibrated. The mismatch let Kelly stake real money against
-# markets that were actually priced correctly.
-CALIBRATION_LOG_MIN_LIQUIDITY = 100
+# Must be >= MIN_CALIBRATION_LIQUIDITY_USD / MIN_CALIBRATION_VOLUME_24H_USD (the
+# live signal's own floors). A gap here lets markets too thin/untraded to ever
+# qualify as a live signal into the training data that scores every live signal
+# in their bucket instead -- see the comments on those two constants above for
+# the incidents this caused.
+CALIBRATION_LOG_MIN_LIQUIDITY = 500
+CALIBRATION_LOG_MIN_VOLUME_24H = 5000
 # ----------------------------------------------------------------------------
 
 # --- THIRD, INDEPENDENT SCAN: "Mispricing" (implied vs fair probability) --------
@@ -345,6 +361,10 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     if liquidity < MIN_CALIBRATION_LIQUIDITY_USD:
         return None
 
+    volume_24h = float(market.get("volume24hr") or 0)
+    if volume_24h < MIN_CALIBRATION_VOLUME_24H_USD:
+        return None
+
     bucket = find_bin(price, bins)
     if not bucket or not bucket.get("significant"):
         return None
@@ -516,6 +536,9 @@ def log_price_snapshot(events: list, now: datetime.datetime) -> int:
                 continue
             liquidity = float(market.get("liquidityNum") or 0)
             if liquidity < CALIBRATION_LOG_MIN_LIQUIDITY:
+                continue
+            volume_24h = float(market.get("volume24hr") or 0)
+            if volume_24h < CALIBRATION_LOG_MIN_VOLUME_24H:
                 continue
 
             new_entries.append({
