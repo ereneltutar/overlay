@@ -99,6 +99,16 @@ MIN_EDGE_PCT = 0.5       # don't show "opportunities" below this percent (noise 
 # MIN_CALIBRATION_LIQUIDITY_USD below), plus a same-day-volume floor (below).
 MIN_LIQUIDITY_USD = 500  # require at least this much liquidity per leg (drop thin books)
 ARB_MIN_VOLUME_24H_USD = 5000  # require every leg to have real same-day trading volume
+# The liquidity/volume floors above are still a cheap pre-filter (skip obvious
+# junk before spending an API call on it), but they're proxies. The real
+# question -- "would buying this leg actually cost what bestAsk claims?" -- is
+# answered by walking each leg's live CLOB order book (see get_order_book /
+# walk_ask_book) and simulating a real fill of this many dollars. This is what
+# actually catches a phantom resting quote: a stale $0.009 ask with no real
+# size behind it can't fill $100, so it fails here even if it slipped past the
+# liquidity/volume floors.
+CLOB_BASE = "https://clob.polymarket.com"
+ARB_TARGET_FILL_USD = 100  # simulated per-leg buy size used to sanity-check real fillability
 PAGE_LIMIT = 100         # /events/keyset caps this at 100 regardless of what's requested
 MAX_PAGES = 300          # safety cap (300 x 100 = 30,000 events of headroom)
 REQUEST_TIMEOUT = 30
@@ -238,6 +248,72 @@ def parse_iso(date_str):
         return None
 
 
+def leg_token_id(market: dict):
+    """Extracts the CLOB token ID for the outcome this market's bestAsk
+    refers to. clobTokenIds is Gamma's JSON-encoded [yes_token, no_token]
+    pair; index 0 matches the "Yes" convention bestAsk already uses (see
+    the module docstring's clobTokenIds note). Returns None if missing or
+    unparseable, which the caller treats as "can't verify, don't show"."""
+    raw = market.get("clobTokenIds")
+    if not raw:
+        return None
+    try:
+        ids = json.loads(raw) if isinstance(raw, str) else raw
+    except (json.JSONDecodeError, TypeError):
+        return None
+    return ids[0] if ids else None
+
+
+def get_order_book(token_id: str):
+    """Fetches the live CLOB order book for one outcome token. No auth
+    required for read endpoints. Returns None on any failure so callers
+    can treat an unreachable/malformed book the same as an unfillable one
+    rather than crashing the whole scan."""
+    try:
+        resp = requests.get(f"{CLOB_BASE}/book", params={"token_id": token_id}, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+        return resp.json()
+    except (requests.RequestException, ValueError):
+        return None
+
+
+def walk_ask_book(asks: list, target_usd: float):
+    """Walks the ask side of a real order book (cheapest price first) to
+    find the average price actually paid buying $target_usd worth of
+    shares, level by level. This is the ground-truth check for the
+    liquidityNum/bestAsk phantom-quote problem documented above: a lone
+    resting quote shows up here as a book that can't fill target_usd at
+    all, which is exactly what should disqualify an "arbitrage." Returns
+    None if the book (across all its levels) can't fill target_usd."""
+    try:
+        levels = sorted(asks, key=lambda lvl: float(lvl["price"]))
+    except (TypeError, ValueError, KeyError):
+        return None
+    remaining = target_usd
+    cost = 0.0
+    shares = 0.0
+    for level in levels:
+        try:
+            price = float(level["price"])
+            size = float(level["size"])
+        except (TypeError, ValueError, KeyError):
+            return None
+        if price <= 0:
+            continue
+        level_value = price * size
+        if level_value >= remaining:
+            cost += remaining
+            shares += remaining / price
+            remaining = 0.0
+            break
+        cost += level_value
+        shares += size
+        remaining -= level_value
+    if remaining > 1e-9 or shares <= 0:
+        return None
+    return cost / shares
+
+
 def estimate_taker_fee(market: dict, price: float, shares: float = 1.0) -> float:
     """Estimates the taker fee for buying `shares` at `price`, using
     Polymarket's published formula: fee = rate * shares * price * (1 - price).
@@ -255,8 +331,10 @@ def estimate_taker_fee(market: dict, price: float, shares: float = 1.0) -> float
     return rate * shares * price * (1 - price)
 
 
-def find_opportunity(event: dict, now: datetime.datetime):
-    """Returns a dict if the event has a negRisk arbitrage opportunity, else None."""
+def find_opportunity(event: dict, now: datetime.datetime, fetch_book=get_order_book):
+    """Returns a dict if the event has a negRisk arbitrage opportunity, else
+    None. `fetch_book` is injectable so tests can simulate order books
+    without a real network call; defaults to the live CLOB endpoint."""
     markets = event.get("markets") or []
     neg_risk_markets = [
         m for m in markets
@@ -288,6 +366,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
             "liquidity": round(liquidity, 2),
             "volume_24h": round(volume_24h, 2),
             "market_id": m.get("id"),
+            "token_id": leg_token_id(m),
             "fee": round(fee, 4),
         })
 
@@ -310,6 +389,35 @@ def find_opportunity(event: dict, now: datetime.datetime):
     if min_volume_24h < ARB_MIN_VOLUME_24H_USD:
         return None
 
+    # Ground-truth check: walk each leg's real order book to see what buying
+    # ARB_TARGET_FILL_USD would actually cost. A stale/phantom resting quote
+    # fails here (can't fill the target) even though it cleared the liquidity
+    # and volume proxies above. Recompute cost/fee/edge from the real walked
+    # prices -- that's what the dashboard should show as "cost," not the raw
+    # bestAsk sticker price.
+    real_total_ask = 0.0
+    real_total_fee = 0.0
+    for leg, m in zip(legs, neg_risk_markets):
+        token_id = leg["token_id"]
+        if not token_id:
+            return None
+        book = fetch_book(token_id)
+        if not book or not book.get("asks"):
+            return None
+        fill_price = walk_ask_book(book["asks"], ARB_TARGET_FILL_USD)
+        if fill_price is None or fill_price <= 0 or fill_price >= 1:
+            return None
+        leg["sticker_ask"] = leg["ask"]
+        leg["ask"] = round(fill_price, 4)
+        leg["fee"] = round(estimate_taker_fee(m, fill_price), 4)
+        real_total_ask += fill_price
+        real_total_fee += leg["fee"]
+
+    real_total_cost = real_total_ask + real_total_fee
+    real_edge_pct = (1 - real_total_cost) / real_total_cost * 100
+    if real_edge_pct < MIN_EDGE_PCT:
+        return None
+
     end_date = parse_iso(event.get("endDate"))
     days_left = (end_date - now).days if end_date else None
 
@@ -320,10 +428,10 @@ def find_opportunity(event: dict, now: datetime.datetime):
         "end_date": event.get("endDate"),
         "days_left": days_left,
         "num_outcomes": len(legs),
-        "ask_cost": round(total_ask, 4),
-        "total_fee": round(total_fee, 4),
-        "total_cost": round(total_cost, 4),
-        "edge_pct": round(edge_pct, 2),
+        "ask_cost": round(real_total_ask, 4),
+        "total_fee": round(real_total_fee, 4),
+        "total_cost": round(real_total_cost, 4),
+        "edge_pct": round(real_edge_pct, 2),
         "min_outcome_liquidity": round(min_liquidity, 2),
         "min_outcome_volume_24h": round(min_volume_24h, 2),
         "legs": sorted(legs, key=lambda x: x["ask"]),

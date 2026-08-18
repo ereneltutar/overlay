@@ -1,4 +1,5 @@
 import datetime
+import json
 
 import fetch_arbitrage as fa
 
@@ -6,7 +7,7 @@ NOW = datetime.datetime(2026, 1, 1, tzinfo=datetime.timezone.utc)
 
 
 def leg(ask, negrisk=True, accepting=True, liquidity=1000, volume=10000, market_id="m1", title="A",
-        fees_enabled=False, fee_rate=None):
+        fees_enabled=False, fee_rate=None, token_id=None):
     m = {
         "negRisk": negrisk,
         "acceptingOrders": accepting,
@@ -16,6 +17,7 @@ def leg(ask, negrisk=True, accepting=True, liquidity=1000, volume=10000, market_
         "id": market_id,
         "groupItemTitle": title,
         "feesEnabled": fees_enabled,
+        "clobTokenIds": json.dumps([token_id or f"tok-{market_id}", f"tok-{market_id}-no"]),
     }
     if fee_rate is not None:
         m["feeSchedule"] = {"rate": fee_rate}
@@ -24,6 +26,30 @@ def leg(ask, negrisk=True, accepting=True, liquidity=1000, volume=10000, market_
 
 def make_event(markets, end_date="2026-02-01T00:00:00Z", slug="evt", title="Event"):
     return {"markets": markets, "endDate": end_date, "slug": slug, "title": title}
+
+
+def deep_book(price, size=100000):
+    """A single order-book level with plenty of size at `price` -- walking
+    it for ARB_TARGET_FILL_USD yields exactly `price` back out, so tests
+    that don't care about the real-depth check get the same numbers the
+    old bestAsk-only math produced."""
+    return {"asks": [{"price": str(price), "size": str(size)}]}
+
+
+def fetch_book_for(markets, overrides=None):
+    """Builds a fetch_book callable for find_opportunity(). By default every
+    leg's simulated order book has full depth at its own bestAsk. Pass
+    `overrides` (market_id -> book dict, or market_id -> None to simulate a
+    failed/empty fetch) to test the real-depth-check path itself."""
+    overrides = overrides or {}
+    by_token = {}
+    for m in markets:
+        token_id = fa.leg_token_id(m)
+        by_token[token_id] = overrides[m["id"]] if m["id"] in overrides else deep_book(m["bestAsk"])
+
+    def fetch(tid):
+        return by_token.get(tid)
+    return fetch
 
 
 # --- parse_iso ---------------------------------------------------------
@@ -69,8 +95,9 @@ def test_find_bin_no_match_returns_none():
 # --- find_opportunity ------------------------------------------------------
 
 def test_find_opportunity_needs_at_least_two_negrisk_legs():
-    event = make_event([leg(0.4, market_id="a")])
-    assert fa.find_opportunity(event, NOW) is None
+    markets = [leg(0.4, market_id="a")]
+    event = make_event(markets)
+    assert fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_ignores_non_negrisk_and_non_accepting_legs():
@@ -80,25 +107,25 @@ def test_find_opportunity_ignores_non_negrisk_and_non_accepting_legs():
         leg(0.4, market_id="c", accepting=False),
     ]
     event = make_event(markets)
-    assert fa.find_opportunity(event, NOW) is None
+    assert fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_rejects_ask_out_of_bounds():
     markets = [leg(0.0, market_id="a"), leg(0.5, market_id="b")]
-    assert fa.find_opportunity(make_event(markets), NOW) is None
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book_for(markets)) is None
     markets = [leg(1.0, market_id="a"), leg(0.5, market_id="b")]
-    assert fa.find_opportunity(make_event(markets), NOW) is None
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_below_min_edge_returns_none():
     # total ask 0.999 -> edge_pct = (1-0.999)/0.999*100 = 0.1%, below MIN_EDGE_PCT=0.5
     markets = [leg(0.5, market_id="a"), leg(0.499, market_id="b")]
-    assert fa.find_opportunity(make_event(markets), NOW) is None
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_below_min_liquidity_returns_none():
     markets = [leg(0.4, market_id="a", liquidity=10), leg(0.4, market_id="b", liquidity=10)]
-    assert fa.find_opportunity(make_event(markets), NOW) is None
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_valid_case():
@@ -107,7 +134,7 @@ def test_find_opportunity_valid_case():
         leg(0.45, market_id="b", liquidity=700, title="Beta"),
     ]
     event = make_event(markets, end_date="2026-01-11T00:00:00Z", slug="my-event", title="My Event")
-    opp = fa.find_opportunity(event, NOW)
+    opp = fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets))
     assert opp is not None
     assert opp["event_title"] == "My Event"
     assert opp["slug"] == "my-event"
@@ -131,16 +158,136 @@ def test_find_opportunity_below_min_volume_returns_none():
         leg(0.4, market_id="a", liquidity=1000, volume=10000),
         leg(0.4, market_id="b", liquidity=1000, volume=100),
     ]
-    assert fa.find_opportunity(make_event(markets), NOW) is None
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_falls_back_to_ticker_then_unknown():
     markets = [leg(0.4, market_id="a"), leg(0.4, market_id="b")]
     event = make_event(markets, slug=None, title=None)
     event["ticker"] = "TICK"
-    opp = fa.find_opportunity(event, NOW)
+    opp = fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets))
     assert opp["event_title"] == "TICK"
     assert opp["url"] is None
+
+
+# --- find_opportunity real-depth check (CLOB order book) ------------------
+
+def test_find_opportunity_phantom_quote_thin_book_returns_none():
+    # Regression: this is the exact bug that shipped an 800%-edge "arb" on a
+    # 6-outcome long-tail market. bestAsk/liquidityNum/volume24hr can all
+    # look fine while the real order book has only a few dollars of size at
+    # that price -- not enough to fill ARB_TARGET_FILL_USD ($100).
+    markets = [
+        leg(0.01, market_id="a", liquidity=1000, volume=10000),
+        leg(0.02, market_id="b", liquidity=1000, volume=10000),
+    ]
+    thin_book = {"asks": [{"price": "0.01", "size": "50"}]}  # only $0.50 of real depth
+    fetch_book = fetch_book_for(markets, overrides={"a": thin_book})
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book) is None
+
+
+def test_find_opportunity_walks_multiple_book_levels_for_real_cost():
+    # Real depth check should average across levels, not just read the top
+    # of book: half the target fills at 0.01, the rest costs more.
+    markets = [
+        leg(0.01, market_id="a", liquidity=1000, volume=10000),
+        leg(0.10, market_id="b", liquidity=1000, volume=10000),
+    ]
+    stepped_book = {"asks": [
+        {"price": "0.01", "size": "5000"},   # $50 worth
+        {"price": "0.03", "size": "5000"},   # covers the rest of the $100 target
+    ]}
+    fetch_book = fetch_book_for(markets, overrides={"a": stepped_book})
+    opp = fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book)
+    assert opp is not None
+    leg_a = next(l for l in opp["legs"] if l["market_id"] == "a")
+    # $50 at 0.01 (5000 shares) + $50 at 0.03 (1666.67 shares) = $100 / 6666.67 shares
+    assert leg_a["sticker_ask"] == 0.01
+    assert leg_a["ask"] == round(100 / (5000 + 50 / 0.03), 4)
+
+
+def test_find_opportunity_none_when_book_unreachable():
+    markets = [leg(0.4, market_id="a"), leg(0.4, market_id="b")]
+    fetch_book = fetch_book_for(markets, overrides={"a": None})
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book) is None
+
+
+def test_find_opportunity_none_when_missing_token_id():
+    markets = [leg(0.4, market_id="a"), leg(0.4, market_id="b")]
+    markets[0]["clobTokenIds"] = None
+    fetch_book = fetch_book_for(markets)
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book) is None
+
+
+def test_find_opportunity_real_edge_below_floor_after_depth_check():
+    # Sticker asks clear MIN_EDGE_PCT, but the real fillable price on one leg
+    # is worse than the sticker price, dragging the real edge below the floor.
+    markets = [
+        leg(0.49, market_id="a", liquidity=1000, volume=10000),
+        leg(0.49, market_id="b", liquidity=1000, volume=10000),
+    ]
+    worse_book = {"asks": [{"price": "0.55", "size": "100000"}]}
+    fetch_book = fetch_book_for(markets, overrides={"a": worse_book})
+    assert fa.find_opportunity(make_event(markets), NOW, fetch_book=fetch_book) is None
+
+
+# --- walk_ask_book ----------------------------------------------------
+
+def test_walk_ask_book_single_level_returns_that_price():
+    asks = [{"price": "0.10", "size": "10000"}]
+    assert fa.walk_ask_book(asks, 100) == 0.10
+
+
+def test_walk_ask_book_sums_across_levels_cheapest_first():
+    # unsorted input on purpose -- function must sort ascending itself
+    asks = [{"price": "0.05", "size": "2000"}, {"price": "0.02", "size": "1000"}]
+    # $20 at 0.02 (1000 shares) fully consumes the cheap level, remaining $80
+    # needs 1600 shares at 0.05 -> total 2600 shares for $100
+    price = fa.walk_ask_book(asks, 100)
+    assert price == 100 / 2600
+
+
+def test_walk_ask_book_insufficient_depth_returns_none():
+    # only $0.50 of real size behind a phantom-looking resting quote
+    asks = [{"price": "0.01", "size": "50"}]
+    assert fa.walk_ask_book(asks, 100) is None
+
+
+def test_walk_ask_book_empty_asks_returns_none():
+    assert fa.walk_ask_book([], 100) is None
+
+
+def test_walk_ask_book_skips_zero_or_negative_price_levels():
+    asks = [{"price": "0", "size": "999999"}, {"price": "0.10", "size": "10000"}]
+    assert fa.walk_ask_book(asks, 100) == 0.10
+
+
+def test_walk_ask_book_malformed_level_returns_none():
+    assert fa.walk_ask_book([{"price": "not-a-number", "size": "10"}], 100) is None
+
+
+# --- leg_token_id -------------------------------------------------------
+
+def test_leg_token_id_parses_json_string_and_takes_first():
+    market = {"clobTokenIds": json.dumps(["yes-tok", "no-tok"])}
+    assert fa.leg_token_id(market) == "yes-tok"
+
+
+def test_leg_token_id_accepts_already_parsed_list():
+    market = {"clobTokenIds": ["yes-tok", "no-tok"]}
+    assert fa.leg_token_id(market) == "yes-tok"
+
+
+def test_leg_token_id_missing_field_returns_none():
+    assert fa.leg_token_id({}) is None
+
+
+def test_leg_token_id_malformed_json_returns_none():
+    assert fa.leg_token_id({"clobTokenIds": "{not valid json"}) is None
+
+
+def test_leg_token_id_empty_list_returns_none():
+    assert fa.leg_token_id({"clobTokenIds": json.dumps([])}) is None
 
 
 # --- estimate_taker_fee -----------------------------------------------
@@ -186,7 +333,7 @@ def test_find_opportunity_total_cost_includes_fees_when_enabled():
         leg(0.45, market_id="b", liquidity=700, fees_enabled=True, fee_rate=0.04),
     ]
     event = make_event(markets)
-    opp = fa.find_opportunity(event, NOW)
+    opp = fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets))
     assert opp is not None
     expected_fee = (0.04*0.5*0.5) + (0.04*0.45*0.55)
     assert opp["ask_cost"] == 0.95
@@ -200,11 +347,11 @@ def test_find_opportunity_fees_can_erase_an_edge_that_looked_valid_ignoring_them
     # ask-only edge is (1-0.995)/0.995*100 = 0.503%, just above MIN_EDGE_PCT=0.5,
     # but a real fee on both legs should push the fee-inclusive edge below the floor
     markets = [
-        leg(0.50, market_id="a", liquidity=200, fees_enabled=True, fee_rate=0.04),
-        leg(0.495, market_id="b", liquidity=300, fees_enabled=True, fee_rate=0.04),
+        leg(0.50, market_id="a", liquidity=600, fees_enabled=True, fee_rate=0.04),
+        leg(0.495, market_id="b", liquidity=700, fees_enabled=True, fee_rate=0.04),
     ]
     event = make_event(markets)
-    assert fa.find_opportunity(event, NOW) is None
+    assert fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets)) is None
 
 
 def test_find_opportunity_mixed_fee_status_per_leg():
@@ -216,7 +363,7 @@ def test_find_opportunity_mixed_fee_status_per_leg():
         leg(0.45, market_id="b", liquidity=700, fees_enabled=False),
     ]
     event = make_event(markets)
-    opp = fa.find_opportunity(event, NOW)
+    opp = fa.find_opportunity(event, NOW, fetch_book=fetch_book_for(markets))
     assert opp["total_fee"] == round(0.04*0.5*0.5, 4)
 
 
