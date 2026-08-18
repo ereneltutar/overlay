@@ -5,13 +5,14 @@ import fetch_arbitrage as fa
 NOW = datetime.datetime(2026, 1, 1, tzinfo=datetime.timezone.utc)
 
 
-def leg(ask, negrisk=True, accepting=True, liquidity=1000, market_id="m1", title="A",
+def leg(ask, negrisk=True, accepting=True, liquidity=1000, volume=10000, market_id="m1", title="A",
         fees_enabled=False, fee_rate=None):
     m = {
         "negRisk": negrisk,
         "acceptingOrders": accepting,
         "bestAsk": ask,
         "liquidityNum": liquidity,
+        "volume24hr": volume,
         "id": market_id,
         "groupItemTitle": title,
         "feesEnabled": fees_enabled,
@@ -102,8 +103,8 @@ def test_find_opportunity_below_min_liquidity_returns_none():
 
 def test_find_opportunity_valid_case():
     markets = [
-        leg(0.5, market_id="a", liquidity=200, title="Alpha"),
-        leg(0.45, market_id="b", liquidity=300, title="Beta"),
+        leg(0.5, market_id="a", liquidity=600, title="Alpha"),
+        leg(0.45, market_id="b", liquidity=700, title="Beta"),
     ]
     event = make_event(markets, end_date="2026-01-11T00:00:00Z", slug="my-event", title="My Event")
     opp = fa.find_opportunity(event, NOW)
@@ -115,9 +116,22 @@ def test_find_opportunity_valid_case():
     assert opp["num_outcomes"] == 2
     assert opp["total_cost"] == 0.95
     assert opp["edge_pct"] == round((1 - 0.95) / 0.95 * 100, 2)
-    assert opp["min_outcome_liquidity"] == 200
+    assert opp["min_outcome_liquidity"] == 600
+    assert opp["min_outcome_volume_24h"] == 10000
     assert [l["ask"] for l in opp["legs"]] == [0.45, 0.5]  # sorted ascending
     assert all("market_id" in l for l in opp["legs"])
+
+
+def test_find_opportunity_below_min_volume_returns_none():
+    # Regression: liquidityNum is resting order-book depth and can be nonzero
+    # even on a market nobody's actually trading (a lone stale/phantom ask).
+    # Every leg must clear the same-day volume floor too, or the arb isn't
+    # really fillable even though it clears the liquidity check.
+    markets = [
+        leg(0.4, market_id="a", liquidity=1000, volume=10000),
+        leg(0.4, market_id="b", liquidity=1000, volume=100),
+    ]
+    assert fa.find_opportunity(make_event(markets), NOW) is None
 
 
 def test_find_opportunity_falls_back_to_ticker_then_unknown():
@@ -168,8 +182,8 @@ def test_estimate_taker_fee_zero_at_price_extremes():
 
 def test_find_opportunity_total_cost_includes_fees_when_enabled():
     markets = [
-        leg(0.5, market_id="a", liquidity=200, fees_enabled=True, fee_rate=0.04),
-        leg(0.45, market_id="b", liquidity=300, fees_enabled=True, fee_rate=0.04),
+        leg(0.5, market_id="a", liquidity=600, fees_enabled=True, fee_rate=0.04),
+        leg(0.45, market_id="b", liquidity=700, fees_enabled=True, fee_rate=0.04),
     ]
     event = make_event(markets)
     opp = fa.find_opportunity(event, NOW)
@@ -198,8 +212,8 @@ def test_find_opportunity_mixed_fee_status_per_leg():
     # contribute a nonzero fee, confirming fees are evaluated per-market, not
     # assumed uniform across an event
     markets = [
-        leg(0.5, market_id="a", liquidity=200, fees_enabled=True, fee_rate=0.04),
-        leg(0.45, market_id="b", liquidity=300, fees_enabled=False),
+        leg(0.5, market_id="a", liquidity=600, fees_enabled=True, fee_rate=0.04),
+        leg(0.45, market_id="b", liquidity=700, fees_enabled=False),
     ]
     event = make_event(markets)
     opp = fa.find_opportunity(event, NOW)

@@ -91,7 +91,14 @@ GAMMA_BASE = gamma_client.GAMMA_BASE
 # --- Tunable parameters -----------------------------------------------
 DAYS_AHEAD = 30          # scan events whose deadline is at most this many days out
 MIN_EDGE_PCT = 0.5       # don't show "opportunities" below this percent (noise filter)
-MIN_LIQUIDITY_USD = 50   # require at least this much liquidity per leg (drop thin books)
+# Same phantom-quote problem documented below for calibration/mispricing applies
+# here: liquidityNum is resting order-book depth, not evidence anyone's actually
+# trading. $50 let arbs like a 6-outcome long-tail props market price at 800%+
+# edge onto the dashboard on lone, untraded resting asks. Raised to match the
+# $500 real-world inflection point established for CAL/MIS (see
+# MIN_CALIBRATION_LIQUIDITY_USD below), plus a same-day-volume floor (below).
+MIN_LIQUIDITY_USD = 500  # require at least this much liquidity per leg (drop thin books)
+ARB_MIN_VOLUME_24H_USD = 5000  # require every leg to have real same-day trading volume
 PAGE_LIMIT = 100         # /events/keyset caps this at 100 regardless of what's requested
 MAX_PAGES = 300          # safety cap (300 x 100 = 30,000 events of headroom)
 REQUEST_TIMEOUT = 30
@@ -271,6 +278,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
         if ask <= 0 or ask >= 1:
             return None
         liquidity = float(m.get("liquidityNum") or 0)
+        volume_24h = float(m.get("volume24hr") or 0)
         fee = estimate_taker_fee(m, ask)
         total_ask += ask
         total_fee += fee
@@ -278,6 +286,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
             "outcome": m.get("groupItemTitle") or m.get("question") or "?",
             "ask": round(ask, 4),
             "liquidity": round(liquidity, 2),
+            "volume_24h": round(volume_24h, 2),
             "market_id": m.get("id"),
             "fee": round(fee, 4),
         })
@@ -292,6 +301,13 @@ def find_opportunity(event: dict, now: datetime.datetime):
 
     min_liquidity = min(leg["liquidity"] for leg in legs)
     if min_liquidity < MIN_LIQUIDITY_USD:
+        return None
+
+    # Every leg has to be genuinely tradable, not just resting-quote thin -- an
+    # arb is only as real as its worst-traded leg, since that's the one most
+    # likely to be a stale/phantom quote that won't actually fill at this ask.
+    min_volume_24h = min(leg["volume_24h"] for leg in legs)
+    if min_volume_24h < ARB_MIN_VOLUME_24H_USD:
         return None
 
     end_date = parse_iso(event.get("endDate"))
@@ -309,6 +325,7 @@ def find_opportunity(event: dict, now: datetime.datetime):
         "total_cost": round(total_cost, 4),
         "edge_pct": round(edge_pct, 2),
         "min_outcome_liquidity": round(min_liquidity, 2),
+        "min_outcome_volume_24h": round(min_volume_24h, 2),
         "legs": sorted(legs, key=lambda x: x["ask"]),
     }
 

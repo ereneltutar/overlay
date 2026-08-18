@@ -5,12 +5,12 @@ const DEMO_ENTRIES = [
     event_title: '[EXAMPLE] Who wins the next F1 race?',
     slug: '#', url: '#',
     days_left: 6, num_outcomes: 4, ask_cost: 0.947, total_fee: 0.008, total_cost: 0.955, edge_pct: 4.7,
-    min_outcome_liquidity: 310,
+    min_outcome_liquidity: 310, min_outcome_volume_24h: 5900,
     legs: [
-      { outcome: 'Verstappen', ask: 0.520, liquidity: 900 },
-      { outcome: 'Norris', ask: 0.230, liquidity: 610 },
-      { outcome: 'Leclerc', ask: 0.130, liquidity: 420 },
-      { outcome: 'Other', ask: 0.067, liquidity: 310 }
+      { outcome: 'Verstappen', ask: 0.520, liquidity: 900, volume_24h: 21000 },
+      { outcome: 'Norris', ask: 0.230, liquidity: 610, volume_24h: 14200 },
+      { outcome: 'Leclerc', ask: 0.130, liquidity: 420, volume_24h: 9100 },
+      { outcome: 'Other', ask: 0.067, liquidity: 310, volume_24h: 5900 }
     ]
   },
   {
@@ -209,7 +209,7 @@ function renderArbEntry(opp, rank, demo){
         <p class="entry-title">${escapeHtml(opp.event_title)}</p>
         <span class="entry-edge">+${opp.edge_pct.toFixed(1)}%</span>
       </div>
-      <div class="entry-meta">${daysLabel(opp.days_left)} · ${opp.num_outcomes} outcomes · min liquidity $${fmtInt(Math.round(opp.min_outcome_liquidity))}</div>
+      <div class="entry-meta">${daysLabel(opp.days_left)} · ${opp.num_outcomes} outcomes · min liquidity $${fmtInt(Math.round(opp.min_outcome_liquidity))} · min 24h vol $${fmtInt(Math.round(opp.min_outcome_volume_24h))}</div>
       ${buildArbBar(opp.legs, opp.total_cost)}
       <div class="legend">${opp.legs.map((leg,i) => `<span class="legend-chip"><i class="legend-dot" style="background:var(--ink-faint);opacity:${i%2===0?.35:.55}"></i>${escapeHtml(leg.outcome)} <b>$${leg.ask.toFixed(3)}</b></span>`).join('')}</div>
       <div class="entry-foot">
