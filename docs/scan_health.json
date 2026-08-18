@@ -79,10 +79,10 @@
     },
     {
       "date": "2026-08-18",
-      "scanned_events": 21598,
-      "opportunities": 3,
+      "scanned_events": 21651,
+      "opportunities": 0,
       "calibration_signals": 20,
-      "mispricing_signals": 20
+      "mispricing_signals": 0
     }
   ]
 }

@@ -7,5 +7,406 @@
       "bankroll": 1000.0
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "bet_id": "calibration:will-iran-target-a-arab-country-onptptpt-20260801004719118:3253021",
+      "tag": "calibration",
+      "market_question": "Will Iran target a Arab country on August 17, 2026?",
+      "slug": "will-iran-target-a-arab-country-onptptpt-20260801004719118",
+      "url": "https://polymarket.com/event/will-iran-target-a-arab-country-onptptpt-20260801004719118",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "3253021"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.159,
+      "edge_pct_at_placement": 11.16,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 50.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:spy-up-or-down-on-august-18-2026:3664906",
+      "tag": "calibration",
+      "market_question": "SPY (SPY) Up or Down on August 18?",
+      "slug": "spy-up-or-down-on-august-18-2026",
+      "url": "https://polymarket.com/event/spy-up-or-down-on-august-18-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-18T10:14:17.025286+00:00",
+      "market_ids": [
+        "3664906"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8162,
+      "edge_pct_at_placement": 10.88,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 47.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-cerund-augeral-2026-08-18:3649965",
+      "tag": "calibration",
+      "market_question": "Cincinnati Open: Juan Manuel Cerundolo vs Felix Auger-Aliassime",
+      "slug": "atp-cerund-augeral-2026-08-18",
+      "url": "https://polymarket.com/event/atp-cerund-augeral-2026-08-18",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-25T10:14:17.025286+00:00",
+      "market_ids": [
+        "3649965"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 10.73,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 45.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-nyc-on-august-18-2026:3652765",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in New York City be between 80-81°F on August 18?",
+      "slug": "highest-temperature-in-nyc-on-august-18-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-nyc-on-august-18-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-18T10:14:17.025286+00:00",
+      "market_ids": [
+        "3652765"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 10.73,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 42.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-august-14-august-21:3505966",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post 100-119 tweets from August 14 to August 21, 2026?",
+      "slug": "elon-musk-of-tweets-august-14-august-21",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-14-august-21",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-21T10:14:17.025286+00:00",
+      "market_ids": [
+        "3505966"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8196,
+      "edge_pct_at_placement": 10.54,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 40.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:iran-full-airspace-closure-byptptpt-20260625195253028:3128769",
+      "tag": "calibration",
+      "market_question": "Iran full airspace closure by September 30?",
+      "slug": "iran-full-airspace-closure-byptptpt-20260625195253028",
+      "url": "https://polymarket.com/event/iran-full-airspace-closure-byptptpt-20260625195253028",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "3128769"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.82,
+      "edge_pct_at_placement": 10.5,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 38.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-ars-cov-2026-08-21:3414490",
+      "tag": "calibration",
+      "market_question": "Will Arsenal FC win on 2026-08-21?",
+      "slug": "epl-ars-cov-2026-08-21",
+      "url": "https://polymarket.com/event/epl-ars-cov-2026-08-21",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-21T10:14:17.025286+00:00",
+      "market_ids": [
+        "3414490"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1667,
+      "edge_pct_at_placement": 10.39,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 36.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-gen-kt-2026-08-19:3591438",
+      "tag": "calibration",
+      "market_question": "LoL: Gen.G vs KT Rolster (BO3) - LCK Round 3-4 Legend Group",
+      "slug": "lol-gen-kt-2026-08-19",
+      "url": "https://polymarket.com/event/lol-gen-kt-2026-08-19",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-19T10:14:17.025286+00:00",
+      "market_ids": [
+        "3591438"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1667,
+      "edge_pct_at_placement": 10.39,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 34.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-sly-tlnpir-2026-08-18:3606249",
+      "tag": "calibration",
+      "market_question": "LoL: Solary vs TLN Pirates (BO3) - LFL Playoffs",
+      "slug": "lol-sly-tlnpir-2026-08-18",
+      "url": "https://polymarket.com/event/lol-sly-tlnpir-2026-08-18",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-18T10:14:17.025286+00:00",
+      "market_ids": [
+        "3606249"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1667,
+      "edge_pct_at_placement": 10.39,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 33.17,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-wti-hit-in-august-2026:3102462",
+      "tag": "calibration",
+      "market_question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in August?",
+      "slug": "what-price-will-wti-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-wti-hit-in-august-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "3102462"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8259,
+      "edge_pct_at_placement": 9.91,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 31.51,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:spx-up-or-down-on-august-18-2026:3664695",
+      "tag": "calibration",
+      "market_question": "S&P 500 (SPX) Up or Down on August 18?",
+      "slug": "spx-up-or-down-on-august-18-2026",
+      "url": "https://polymarket.com/event/spx-up-or-down-on-august-18-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-18T10:14:17.025286+00:00",
+      "market_ids": [
+        "3664695"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8259,
+      "edge_pct_at_placement": 9.91,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 29.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-in-august-2026:3257392",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $2,100 in August?",
+      "slug": "what-price-will-ethereum-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "3257392"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8303,
+      "edge_pct_at_placement": 9.47,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 28.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3399458",
+      "tag": "calibration",
+      "market_question": "Israel x Iran ceasefire continues through September 30?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "3399458"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.18,
+      "edge_pct_at_placement": 9.06,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 27.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:bitcoin-above-on-august-20-2026:3565415",
+      "tag": "calibration",
+      "market_question": "Will the price of Bitcoin be above $62,000 on August 20?",
+      "slug": "bitcoin-above-on-august-20-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-20-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-20T10:14:17.025286+00:00",
+      "market_ids": [
+        "3565415"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0448,
+      "edge_pct_at_placement": 8.85,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 23.78,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:nato-downs-another-russian-drone-byptptpt-20260726214930818:3121262",
+      "tag": "calibration",
+      "market_question": "NATO downs another Russian drone by August 31?",
+      "slug": "nato-downs-another-russian-drone-byptptpt-20260726214930818",
+      "url": "https://polymarket.com/event/nato-downs-another-russian-drone-byptptpt-20260726214930818",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "3121262"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.048,
+      "edge_pct_at_placement": 8.53,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 21.93,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:us-iran-final-nuclear-deal-by-20260621201254412:2696747",
+      "tag": "calibration",
+      "market_question": "US-Iran Final Nuclear Deal by December 31, 2026?",
+      "slug": "us-iran-final-nuclear-deal-by-20260621201254412",
+      "url": "https://polymarket.com/event/us-iran-final-nuclear-deal-by-20260621201254412",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-31T10:14:17.025286+00:00",
+      "market_ids": [
+        "2696747"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.84,
+      "edge_pct_at_placement": 8.5,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 23.38,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:crint-lka-ind-2026-08-15:3575628",
+      "tag": "calibration",
+      "market_question": "Will India win?",
+      "slug": "crint-lka-ind-2026-08-15",
+      "url": "https://polymarket.com/event/crint-lka-ind-2026-08-15",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-21T10:14:17.025286+00:00",
+      "market_ids": [
+        "3575628"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1874,
+      "edge_pct_at_placement": 8.32,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 22.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:itf-okutoyi-petreti-2026-08-18:3672478",
+      "tag": "calibration",
+      "market_question": "ITF W35 Verbier Women: Angella Okutoyi vs Laia Petretic",
+      "slug": "itf-okutoyi-petreti-2026-08-18",
+      "url": "https://polymarket.com/event/itf-okutoyi-petreti-2026-08-18",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-25T10:14:17.025286+00:00",
+      "market_ids": [
+        "3672478"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1874,
+      "edge_pct_at_placement": 8.32,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 21.1,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:itf-kaji-hosogi-2026-08-18:3672383",
+      "tag": "calibration",
+      "market_question": "ITF W75 Kursumlijska Banja 3 Women: Haruka Kaji vs Sakura Hosogi",
+      "slug": "itf-kaji-hosogi-2026-08-18",
+      "url": "https://polymarket.com/event/itf-kaji-hosogi-2026-08-18",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-24T10:14:17.025286+00:00",
+      "market_ids": [
+        "3672383"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0524,
+      "edge_pct_at_placement": 8.09,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 17.11,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-madrid-on-august-18-2026:3624168",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Madrid be 40°C on August 18?",
+      "slug": "highest-temperature-in-madrid-on-august-18-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-madrid-on-august-18-2026",
+      "placed_at": "2026-08-18T10:14:17.025286+00:00",
+      "deadline": "2026-08-18T10:14:17.025286+00:00",
+      "market_ids": [
+        "3624168"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8467,
+      "edge_pct_at_placement": 7.83,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 19.19,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    }
+  ]
 }
