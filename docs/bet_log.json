@@ -407,6 +407,86 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-on-august-18-2026:3688230",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin reach $65,000 on August 18?",
+      "slug": "what-price-will-bitcoin-hit-on-august-18-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-on-august-18-2026",
+      "placed_at": "2026-08-18T10:31:53.744498+00:00",
+      "deadline": "2026-08-18T10:31:53.744498+00:00",
+      "market_ids": [
+        "3688230"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8399,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 18.23,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:2952493",
+      "tag": "calibration",
+      "market_question": "Israel x Iran ceasefire continues through August 31?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "placed_at": "2026-08-18T10:31:53.744498+00:00",
+      "deadline": "2026-08-31T10:31:53.744498+00:00",
+      "market_ids": [
+        "2952493"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.05,
+      "edge_pct_at_placement": 8.33,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 15.19,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:hd-quarterly-earnings-nongaap-eps-08-18-2026-4pt73:3347198",
+      "tag": "calibration",
+      "market_question": "Will Home Depot (HD) beat quarterly earnings?",
+      "slug": "hd-quarterly-earnings-nongaap-eps-08-18-2026-4pt73",
+      "url": "https://polymarket.com/event/hd-quarterly-earnings-nongaap-eps-08-18-2026-4pt73",
+      "placed_at": "2026-08-18T10:31:53.744498+00:00",
+      "deadline": "2026-08-18T10:31:53.744498+00:00",
+      "market_ids": [
+        "3347198"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0524,
+      "edge_pct_at_placement": 8.09,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 14.14,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ethereum-up-or-down-on-august-18-2026:3636337",
+      "tag": "calibration",
+      "market_question": "Ethereum Up or Down on August 18?",
+      "slug": "ethereum-up-or-down-on-august-18-2026",
+      "url": "https://polymarket.com/event/ethereum-up-or-down-on-august-18-2026",
+      "placed_at": "2026-08-18T10:31:53.744498+00:00",
+      "deadline": "2026-08-18T10:31:53.744498+00:00",
+      "market_ids": [
+        "3636337"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8494,
+      "edge_pct_at_placement": 7.56,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 15.85,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
