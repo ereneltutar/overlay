@@ -491,6 +491,326 @@
       "status": "lost",
       "resolved_at": "2026-08-19T01:55:48.232612+00:00",
       "pnl_usd": -15.85
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-paris-on-august-19-2026:3655232",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Paris be 29°C or higher on August 19?",
+      "slug": "highest-temperature-in-paris-on-august-19-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-paris-on-august-19-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3655232"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8128,
+      "edge_pct_at_placement": 11.22,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 30.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lal-mad-mala-2026-08-19:3375992",
+      "tag": "calibration",
+      "market_question": "Will Club Atlético de Madrid vs. Málaga CF end in a draw?",
+      "slug": "lal-mad-mala-2026-08-19",
+      "url": "https://polymarket.com/event/lal-mad-mala-2026-08-19",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3375992"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 10.73,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 29.32,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lal-mad-mala-2026-08-19-first-to-score:3376090",
+      "tag": "calibration",
+      "market_question": "Málaga CF to score first vs. Club Atlético de Madrid?",
+      "slug": "lal-mad-mala-2026-08-19-first-to-score",
+      "url": "https://polymarket.com/event/lal-mad-mala-2026-08-19-first-to-score",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3376090"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 10.73,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 27.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-cws-chc-2026-08-18:3681082",
+      "tag": "calibration",
+      "market_question": "Spread: Chicago Cubs (-2.5)",
+      "slug": "mlb-cws-chc-2026-08-18",
+      "url": "https://polymarket.com/event/mlb-cws-chc-2026-08-18",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-25T03:38:51.220153+00:00",
+      "market_ids": [
+        "3681082"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 10.73,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 26.46,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:2026-mens-us-open-winner-tennis:1088472",
+      "tag": "calibration",
+      "market_question": "Will Carlos Alcaraz win the 2026 Men's US Open?",
+      "slug": "2026-mens-us-open-winner-tennis",
+      "url": "https://polymarket.com/event/2026-mens-us-open-winner-tennis",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-09-12T03:38:51.220153+00:00",
+      "market_ids": [
+        "1088472"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8274,
+      "edge_pct_at_placement": 9.76,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 25.14,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-august-17-23-2026:3653966",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $62,000 August 17-23?",
+      "slug": "what-price-will-bitcoin-hit-august-17-23-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-august-17-23-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-24T03:38:51.220153+00:00",
+      "market_ids": [
+        "3653966"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8303,
+      "edge_pct_at_placement": 9.47,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 23.88,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:core-pce-yoy-july-2026-20260731151537:3251541",
+      "tag": "calibration",
+      "market_question": "Will Core PCE YoY be 3.3% in July?",
+      "slug": "core-pce-yoy-july-2026-20260731151537",
+      "url": "https://polymarket.com/event/core-pce-yoy-july-2026-20260731151537",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-26T03:38:51.220153+00:00",
+      "market_ids": [
+        "3251541"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 9.35,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 22.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-su-dp-2026-08-19:3692786",
+      "tag": "calibration",
+      "market_question": "LoL: SU Esports vs Dark Passage (BO5) - TCL Playoffs",
+      "slug": "lol-su-dp-2026-08-19",
+      "url": "https://polymarket.com/event/lol-su-dp-2026-08-19",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3692786"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.043,
+      "edge_pct_at_placement": 9.03,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 20.34,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ucl-cel-lin2-2026-08-19:3386383",
+      "tag": "calibration",
+      "market_question": "Will LASK Linz win on 2026-08-19?",
+      "slug": "ucl-cel-lin2-2026-08-19",
+      "url": "https://polymarket.com/event/ucl-cel-lin2-2026-08-19",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3386383"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8371,
+      "edge_pct_at_placement": 8.79,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 20.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-hong-kong-on-august-19-2026:3655315",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Hong Kong be 31°C on August 19?",
+      "slug": "highest-temperature-in-hong-kong-on-august-19-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-hong-kong-on-august-19-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3655315"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8371,
+      "edge_pct_at_placement": 8.79,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 19.51,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-busan-on-august-19-2026:3655478",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Busan be 31°C on August 19?",
+      "slug": "highest-temperature-in-busan-on-august-19-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-busan-on-august-19-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3655478"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8371,
+      "edge_pct_at_placement": 8.79,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 18.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-in-august-2026:3257355",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $60,000 in August?",
+      "slug": "what-price-will-bitcoin-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-09-01T03:38:51.220153+00:00",
+      "market_ids": [
+        "3257355"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8399,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 17.61,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:bitcoin-up-or-down-on-august-19-2026:3670532",
+      "tag": "calibration",
+      "market_question": "Bitcoin Up or Down on August 19?",
+      "slug": "bitcoin-up-or-down-on-august-19-2026",
+      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-august-19-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3670532"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8399,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 16.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:saudi-arabia-military-action-against-yemen-byptptpt-20260808162019737:3422247",
+      "tag": "calibration",
+      "market_question": "Will there be Saudi Arabian military action against Yemen by August 31, 2026?",
+      "slug": "saudi-arabia-military-action-against-yemen-byptptpt-20260808162019737",
+      "url": "https://polymarket.com/event/saudi-arabia-military-action-against-yemen-byptptpt-20260808162019737",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-31T03:38:51.220153+00:00",
+      "market_ids": [
+        "3422247"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.84,
+      "edge_pct_at_placement": 8.5,
+      "predicted_win_prob": 0.925,
+      "stake_usd": 15.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:bitcoin-above-on-august-21-2026:3651161",
+      "tag": "calibration",
+      "market_question": "Will the price of Bitcoin be above $62,000 on August 21?",
+      "slug": "bitcoin-above-on-august-21-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-august-21-2026",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-21T03:38:51.220153+00:00",
+      "market_ids": [
+        "3651161"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0491,
+      "edge_pct_at_placement": 8.42,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 13.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-su-dp-2026-08-19:3692783",
+      "tag": "calibration",
+      "market_question": "LoL: SU Esports vs Dark Passage - Game 2 Winner",
+      "slug": "lol-su-dp-2026-08-19",
+      "url": "https://polymarket.com/event/lol-su-dp-2026-08-19",
+      "placed_at": "2026-08-19T03:38:51.220153+00:00",
+      "deadline": "2026-08-19T03:38:51.220153+00:00",
+      "market_ids": [
+        "3692783"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1874,
+      "edge_pct_at_placement": 8.32,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 14.43,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
