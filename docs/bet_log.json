@@ -1,10 +1,14 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1000.0,
+  "bankroll": 1138.07,
   "bankroll_history": [
     {
       "date": "2026-08-18",
       "bankroll": 1000.0
+    },
+    {
+      "date": "2026-08-19",
+      "bankroll": 1138.07
     }
   ],
   "bets": [
@@ -44,9 +48,9 @@
       "edge_pct_at_placement": 10.88,
       "predicted_win_prob": 0.925,
       "stake_usd": 47.5,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": 10.7
     },
     {
       "bet_id": "calibration:atp-cerund-augeral-2026-08-18:3649965",
@@ -184,9 +188,9 @@
       "edge_pct_at_placement": 10.39,
       "predicted_win_prob": 0.2706,
       "stake_usd": 33.17,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": 165.81
     },
     {
       "bet_id": "calibration:what-price-will-wti-hit-in-august-2026:3102462",
@@ -224,9 +228,9 @@
       "edge_pct_at_placement": 9.91,
       "predicted_win_prob": 0.925,
       "stake_usd": 29.94,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": 6.31
     },
     {
       "bet_id": "calibration:what-price-will-ethereum-hit-in-august-2026:3257392",
@@ -404,9 +408,9 @@
       "edge_pct_at_placement": 7.83,
       "predicted_win_prob": 0.925,
       "stake_usd": 19.19,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": 3.47
     },
     {
       "bet_id": "calibration:what-price-will-bitcoin-hit-on-august-18-2026:3688230",
@@ -424,9 +428,9 @@
       "edge_pct_at_placement": 8.51,
       "predicted_win_prob": 0.925,
       "stake_usd": 18.23,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": -18.23
     },
     {
       "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:2952493",
@@ -464,9 +468,9 @@
       "edge_pct_at_placement": 8.09,
       "predicted_win_prob": 0.1333,
       "stake_usd": 14.14,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": -14.14
     },
     {
       "bet_id": "calibration:ethereum-up-or-down-on-august-18-2026:3636337",
@@ -484,9 +488,9 @@
       "edge_pct_at_placement": 7.56,
       "predicted_win_prob": 0.925,
       "stake_usd": 15.85,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-19T01:55:48.232612+00:00",
+      "pnl_usd": -15.85
     }
   ]
 }
