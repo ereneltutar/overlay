@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1054.5,
+  "bankroll": 1014.82,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-08-20",
-      "bankroll": 1054.5
+      "bankroll": 1014.82
     }
   ],
   "bets": [
@@ -832,9 +832,9 @@
       "edge_pct_at_placement": 10.12,
       "predicted_win_prob": 0.2706,
       "stake_usd": 23.33,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-20T16:54:36.532283+00:00",
+      "pnl_usd": -23.33
     },
     {
       "bet_id": "calibration:bitcoin-above-on-august-21-2026:3651163",
@@ -952,9 +952,9 @@
       "edge_pct_at_placement": 7.5,
       "predicted_win_prob": 0.2706,
       "stake_usd": 16.35,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-20T16:54:36.532283+00:00",
+      "pnl_usd": -16.35
     }
   ]
 }
