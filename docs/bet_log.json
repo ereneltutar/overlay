@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1120.08,
+  "bankroll": 1050.7,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -9,6 +9,10 @@
     {
       "date": "2026-08-19",
       "bankroll": 1120.08
+    },
+    {
+      "date": "2026-08-20",
+      "bankroll": 1050.7
     }
   ],
   "bets": [
@@ -168,9 +172,9 @@
       "edge_pct_at_placement": 10.39,
       "predicted_win_prob": 0.2706,
       "stake_usd": 34.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-20T01:54:35.753237+00:00",
+      "pnl_usd": -34.92
     },
     {
       "bet_id": "calibration:lol-sly-tlnpir-2026-08-18:3606249",
@@ -508,9 +512,9 @@
       "edge_pct_at_placement": 11.22,
       "predicted_win_prob": 0.925,
       "stake_usd": 30.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-20T01:54:35.753237+00:00",
+      "pnl_usd": -30.87
     },
     {
       "bet_id": "calibration:lal-mad-mala-2026-08-19:3375992",
@@ -528,9 +532,9 @@
       "edge_pct_at_placement": 10.73,
       "predicted_win_prob": 0.925,
       "stake_usd": 29.32,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-20T01:54:35.753237+00:00",
+      "pnl_usd": 6.54
     },
     {
       "bet_id": "calibration:lal-mad-mala-2026-08-19-first-to-score:3376090",
@@ -548,9 +552,9 @@
       "edge_pct_at_placement": 10.73,
       "predicted_win_prob": 0.925,
       "stake_usd": 27.86,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-20T01:54:35.753237+00:00",
+      "pnl_usd": 6.21
     },
     {
       "bet_id": "calibration:mlb-cws-chc-2026-08-18:3681082",
@@ -648,9 +652,9 @@
       "edge_pct_at_placement": 9.03,
       "predicted_win_prob": 0.1333,
       "stake_usd": 20.34,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-20T01:54:35.753237+00:00",
+      "pnl_usd": -20.34
     },
     {
       "bet_id": "calibration:ucl-cel-lin2-2026-08-19:3386383",
@@ -668,9 +672,9 @@
       "edge_pct_at_placement": 8.79,
       "predicted_win_prob": 0.925,
       "stake_usd": 20.54,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-20T01:54:35.753237+00:00",
+      "pnl_usd": 4.0
     },
     {
       "bet_id": "calibration:highest-temperature-in-hong-kong-on-august-19-2026:3655315",
