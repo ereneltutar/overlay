@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 991.04,
+  "bankroll": 949.4,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -16,7 +16,7 @@
     },
     {
       "date": "2026-08-21",
-      "bankroll": 991.04
+      "bankroll": 949.4
     }
   ],
   "bets": [
@@ -796,9 +796,9 @@
       "edge_pct_at_placement": 8.42,
       "predicted_win_prob": 0.1333,
       "stake_usd": 13.37,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-21T16:55:03.759800+00:00",
+      "pnl_usd": -13.37
     },
     {
       "bet_id": "calibration:lol-su-dp-2026-08-19:3692783",
@@ -856,9 +856,9 @@
       "edge_pct_at_placement": 8.42,
       "predicted_win_prob": 0.1333,
       "stake_usd": 19.62,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-21T16:55:03.759800+00:00",
+      "pnl_usd": -19.62
     },
     {
       "bet_id": "calibration:bitcoin-above-on-august-24-2026:3670206",
@@ -936,9 +936,9 @@
       "edge_pct_at_placement": 7.71,
       "predicted_win_prob": 0.8384,
       "stake_usd": 18.45,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-21T16:55:03.759800+00:00",
+      "pnl_usd": 5.78
     },
     {
       "bet_id": "calibration:bitcoin-above-on-august-20-2026:3565421",
@@ -996,9 +996,9 @@
       "edge_pct_at_placement": 7.29,
       "predicted_win_prob": 0.2706,
       "stake_usd": 14.43,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-21T16:55:03.759800+00:00",
+      "pnl_usd": -14.43
     },
     {
       "bet_id": "calibration:what-price-will-ethereum-hit-in-august-2026:3257389",
