@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1014.82,
+  "bankroll": 991.04,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -13,6 +13,10 @@
     {
       "date": "2026-08-20",
       "bankroll": 1014.82
+    },
+    {
+      "date": "2026-08-21",
+      "bankroll": 991.04
     }
   ],
   "bets": [
@@ -292,9 +296,9 @@
       "edge_pct_at_placement": 8.85,
       "predicted_win_prob": 0.1333,
       "stake_usd": 23.78,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-21T02:01:00.827053+00:00",
+      "pnl_usd": -23.78
     },
     {
       "bet_id": "calibration:nato-downs-another-russian-drone-byptptpt-20260726214930818:3121262",
