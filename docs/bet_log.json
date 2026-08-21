@@ -959,6 +959,66 @@
       "status": "lost",
       "resolved_at": "2026-08-20T16:54:36.532283+00:00",
       "pnl_usd": -16.35
+    },
+    {
+      "bet_id": "calibration:russia-parliamentary-election-2nd-place:2046123",
+      "tag": "calibration",
+      "market_question": "Will the Communist Party of the Russian Federation (KPRF) win the second-most seats in the next Russian parliamentary election?",
+      "slug": "russia-parliamentary-election-2nd-place",
+      "url": "https://polymarket.com/event/russia-parliamentary-election-2nd-place",
+      "placed_at": "2026-08-21T03:42:40.445556+00:00",
+      "deadline": "2026-09-19T03:42:40.445556+00:00",
+      "market_ids": [
+        "2046123"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1654,
+      "edge_pct_at_placement": 10.52,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 16.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-foxy-genga-2026-08-21:3583946",
+      "tag": "calibration",
+      "market_question": "LoL: BNK FearX Youth vs Gen.G Global Academy (BO3) - LCK Challengers League Rounds 3-4 Trial Group",
+      "slug": "lol-foxy-genga-2026-08-21",
+      "url": "https://polymarket.com/event/lol-foxy-genga-2026-08-21",
+      "placed_at": "2026-08-21T03:42:40.445556+00:00",
+      "deadline": "2026-08-21T03:42:40.445556+00:00",
+      "market_ids": [
+        "3583946"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1977,
+      "edge_pct_at_placement": 7.29,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 14.43,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-in-august-2026:3257389",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $2,400 in August?",
+      "slug": "what-price-will-ethereum-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "placed_at": "2026-08-21T03:42:40.445556+00:00",
+      "deadline": "2026-09-01T03:42:40.445556+00:00",
+      "market_ids": [
+        "3257389"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2008,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.2706,
+      "stake_usd": 13.24,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
