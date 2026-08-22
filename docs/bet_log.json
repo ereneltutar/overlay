@@ -1023,6 +1023,126 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ethereum-above-on-august-25-2026:3701207",
+      "tag": "calibration",
+      "market_question": "Will the price of Ethereum be above $2,200 on August 25?",
+      "slug": "ethereum-above-on-august-25-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-august-25-2026",
+      "placed_at": "2026-08-22T03:35:31.839226+00:00",
+      "deadline": "2026-08-25T03:35:31.839226+00:00",
+      "market_ids": [
+        "3701207"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0448,
+      "edge_pct_at_placement": 8.85,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 16.85,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ethereum-up-or-down-on-august-22-2026:3746515",
+      "tag": "calibration",
+      "market_question": "Ethereum Up or Down on August 22?",
+      "slug": "ethereum-up-or-down-on-august-22-2026",
+      "url": "https://polymarket.com/event/ethereum-up-or-down-on-august-22-2026",
+      "placed_at": "2026-08-22T03:35:31.839226+00:00",
+      "deadline": "2026-08-22T03:35:31.839226+00:00",
+      "market_ids": [
+        "3746515"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0459,
+      "edge_pct_at_placement": 8.74,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 15.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-xrp-hit-in-august-2026:3257482",
+      "tag": "calibration",
+      "market_question": "Will XRP reach $1.60 in August?",
+      "slug": "what-price-will-xrp-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-xrp-hit-in-august-2026",
+      "placed_at": "2026-08-22T03:35:31.839226+00:00",
+      "deadline": "2026-09-01T03:35:31.839226+00:00",
+      "market_ids": [
+        "3257482"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0501,
+      "edge_pct_at_placement": 8.32,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 14.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lal-esp-rea-2026-08-22-more-markets:3439176",
+      "tag": "calibration",
+      "market_question": "RCD Espanyol de Barcelona vs. Real Madrid CF: O/U 0.5",
+      "slug": "lal-esp-rea-2026-08-22-more-markets",
+      "url": "https://polymarket.com/event/lal-esp-rea-2026-08-22-more-markets",
+      "placed_at": "2026-08-22T03:35:31.839226+00:00",
+      "deadline": "2026-08-22T03:35:31.839226+00:00",
+      "market_ids": [
+        "3439176"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0524,
+      "edge_pct_at_placement": 8.09,
+      "predicted_win_prob": 0.1333,
+      "stake_usd": 13.51,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:which-party-will-gain-most-seats-in-russian-parliamentary-election:1130016",
+      "tag": "calibration",
+      "market_question": "Will New People (NL) gain the most seats in the next Russian parliamentary election?",
+      "slug": "which-party-will-gain-most-seats-in-russian-parliamentary-election",
+      "url": "https://polymarket.com/event/which-party-will-gain-most-seats-in-russian-parliamentary-election",
+      "placed_at": "2026-08-22T03:35:31.839226+00:00",
+      "deadline": "2026-09-19T03:35:31.839226+00:00",
+      "market_ids": [
+        "1130016"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.763,
+      "edge_pct_at_placement": 7.54,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 15.15,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-august-22-august-24-2026:3746509",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post <40 tweets from August 22 to August 24, 2026?",
+      "slug": "elon-musk-of-tweets-august-22-august-24-2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-22-august-24-2026",
+      "placed_at": "2026-08-22T03:35:31.839226+00:00",
+      "deadline": "2026-08-24T03:35:31.839226+00:00",
+      "market_ids": [
+        "3746509"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.93,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 14.4,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
