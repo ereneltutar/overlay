@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 949.4,
+  "bankroll": 899.4,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -17,6 +17,10 @@
     {
       "date": "2026-08-21",
       "bankroll": 949.4
+    },
+    {
+      "date": "2026-08-22",
+      "bankroll": 899.4
     }
   ],
   "bets": [
@@ -116,9 +120,9 @@
       "edge_pct_at_placement": 10.54,
       "predicted_win_prob": 0.925,
       "stake_usd": 40.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-22T01:53:42.376937+00:00",
+      "pnl_usd": 8.96
     },
     {
       "bet_id": "calibration:iran-full-airspace-closure-byptptpt-20260625195253028:3128769",
@@ -156,9 +160,9 @@
       "edge_pct_at_placement": 10.39,
       "predicted_win_prob": 0.2706,
       "stake_usd": 36.75,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-22T01:53:42.376937+00:00",
+      "pnl_usd": -36.75
     },
     {
       "bet_id": "calibration:lol-gen-kt-2026-08-19:3591438",
@@ -356,9 +360,9 @@
       "edge_pct_at_placement": 8.32,
       "predicted_win_prob": 0.2706,
       "stake_usd": 22.21,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-22T01:53:42.376937+00:00",
+      "pnl_usd": -22.21
     },
     {
       "bet_id": "calibration:itf-okutoyi-petreti-2026-08-18:3672478",
