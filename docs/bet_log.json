@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 899.4,
+  "bankroll": 883.51,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -20,7 +20,7 @@
     },
     {
       "date": "2026-08-22",
-      "bankroll": 899.4
+      "bankroll": 883.51
     }
   ],
   "bets": [
@@ -1060,9 +1060,9 @@
       "edge_pct_at_placement": 8.74,
       "predicted_win_prob": 0.1333,
       "stake_usd": 15.89,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-22T16:43:48.819874+00:00",
+      "pnl_usd": -15.89
     },
     {
       "bet_id": "calibration:what-price-will-xrp-hit-in-august-2026:3257482",
