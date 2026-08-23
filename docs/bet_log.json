@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 870.0,
+  "bankroll": 857.01,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -24,7 +24,7 @@
     },
     {
       "date": "2026-08-23",
-      "bankroll": 870.0
+      "bankroll": 857.01
     }
   ],
   "bets": [
@@ -1184,9 +1184,9 @@
       "edge_pct_at_placement": 6.93,
       "predicted_win_prob": 0.8384,
       "stake_usd": 12.99,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-23T20:42:28.237947+00:00",
+      "pnl_usd": -12.99
     },
     {
       "bet_id": "calibration:wnba-sea-dal-2026-08-23:3474321",
