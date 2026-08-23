@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 883.51,
+  "bankroll": 870.0,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -21,6 +21,10 @@
     {
       "date": "2026-08-22",
       "bankroll": 883.51
+    },
+    {
+      "date": "2026-08-23",
+      "bankroll": 870.0
     }
   ],
   "bets": [
@@ -1100,9 +1104,9 @@
       "edge_pct_at_placement": 8.09,
       "predicted_win_prob": 0.1333,
       "stake_usd": 13.51,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-23T02:02:10.934703+00:00",
+      "pnl_usd": -13.51
     },
     {
       "bet_id": "calibration:which-party-will-gain-most-seats-in-russian-parliamentary-election:1130016",
