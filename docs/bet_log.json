@@ -1147,6 +1147,66 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-august-18-august-25:3595817",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post 300-319 tweets from August 18 to August 25, 2026?",
+      "slug": "elon-musk-of-tweets-august-18-august-25",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-18-august-25",
+      "placed_at": "2026-08-23T03:42:27.739700+00:00",
+      "deadline": "2026-08-25T03:42:27.739700+00:00",
+      "market_ids": [
+        "3595817"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7603,
+      "edge_pct_at_placement": 7.81,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 13.68,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-new-liv-2026-08-23:3474310",
+      "tag": "calibration",
+      "market_question": "Will Newcastle United FC vs. Liverpool FC end in a draw?",
+      "slug": "epl-new-liv-2026-08-23",
+      "url": "https://polymarket.com/event/epl-new-liv-2026-08-23",
+      "placed_at": "2026-08-23T03:42:27.739700+00:00",
+      "deadline": "2026-08-23T03:42:27.739700+00:00",
+      "market_ids": [
+        "3474310"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.93,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 12.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wnba-sea-dal-2026-08-23:3474321",
+      "tag": "calibration",
+      "market_question": "Seattle Storm vs. Dallas Wings",
+      "slug": "wnba-sea-dal-2026-08-23",
+      "url": "https://polymarket.com/event/wnba-sea-dal-2026-08-23",
+      "placed_at": "2026-08-23T03:42:27.739700+00:00",
+      "deadline": "2026-08-23T03:42:27.739700+00:00",
+      "market_ids": [
+        "3474321"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.93,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 12.34,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
