@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 857.01,
+  "bankroll": 860.71,
   "bankroll_history": [
     {
       "date": "2026-08-18",
@@ -25,6 +25,10 @@
     {
       "date": "2026-08-23",
       "bankroll": 857.01
+    },
+    {
+      "date": "2026-08-24",
+      "bankroll": 860.71
     }
   ],
   "bets": [
@@ -1204,9 +1208,9 @@
       "edge_pct_at_placement": 6.93,
       "predicted_win_prob": 0.8384,
       "stake_usd": 12.34,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-24T02:00:25.290576+00:00",
+      "pnl_usd": 3.7
     }
   ]
 }
