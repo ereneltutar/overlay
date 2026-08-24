@@ -175,7 +175,20 @@ CALIBRATION_LOG_MIN_VOLUME_24H = 5000
 # its "fair probability" too; only the threshold/filter/scoring logic differs.
 # Sample size can still be small for a given bucket (see the low_sample_warning
 # field); this isn't a significance test, just a "read carefully" flag.
-MISPRICING_MIN_EDGE_PTS = 15.0          # min point gap between implied and the bucket's historical rate
+MISPRICING_MIN_EDGE_PTS = 5.0           # min point gap between implied and the bucket's historical rate
+# Lowered from 15.0 (Aug 24 2026) after 7 straight days of zero mispricing
+# signals following the Aug 18 phantom-quote fix (liquidity/volume floors +
+# CLOB depth verification). A diagnostic run with this floor dropped to 5.0
+# (branch diagnostic/relaxed-arb-mis-thresholds, not merged) surfaced a full
+# Top-20 of genuine signals clustered at 5-8 points, all backed by large
+# buckets (37-599 samples) and real liquidity/volume ($2.5K-$560K liquidity,
+# $5K-$90K 24h volume) -- evidence the 15pt floor was calibrated for a noisier
+# market (phantom-quote-inflated apparent edges) that no longer exists post-
+# fix, and was screening out every real signal along with the noise. ARB's
+# floors (MIN_LIQUIDITY_USD, ARB_MIN_VOLUME_24H_USD above) were NOT changed:
+# the same diagnostic run, with those floors also relaxed, still found zero
+# arbitrage opportunities -- confirming ARB's zero is real market efficiency,
+# not an overly strict filter.
 MISPRICING_MIN_VOLUME_24H = 5000        # skip markets below this 24h volume (tradability)
 MISPRICING_HORIZON_DAYS = 30            # markets closing within this many days get the "priority" window
 MISPRICING_LONGTERM_MIN_EDGE_PTS = 25   # markets beyond HORIZON_DAYS only qualify above this edge
