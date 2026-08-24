@@ -92,6 +92,34 @@ def test_find_bin_no_match_returns_none():
     assert fa.find_bin(2.0, BINS) is None
 
 
+# --- select_bins_for_market ------------------------------------------------
+# Regression for the crypto calibration blind spot (see market_category.py):
+# a live crypto market must be scored against the crypto-only table, not the
+# general one built mostly from sports/weather/politics history.
+
+GENERAL_BINS = [{"range": [0.0, 1.0], "table": "general"}]
+CRYPTO_BINS = [{"range": [0.0, 1.0], "table": "crypto"}]
+
+
+def test_select_bins_for_market_routes_crypto_question_to_crypto_bins():
+    market = {"question": "Will Bitcoin reach $65,000 on August 18?"}
+    result = fa.select_bins_for_market(market, {}, GENERAL_BINS, CRYPTO_BINS)
+    assert result is CRYPTO_BINS
+
+
+def test_select_bins_for_market_routes_non_crypto_question_to_general_bins():
+    market = {"question": "Will Fulham FC win on 2026-08-24?"}
+    result = fa.select_bins_for_market(market, {}, GENERAL_BINS, CRYPTO_BINS)
+    assert result is GENERAL_BINS
+
+
+def test_select_bins_for_market_falls_back_to_event_title():
+    market = {}
+    event = {"title": "Will Ethereum reach $2,400 in August?"}
+    result = fa.select_bins_for_market(market, event, GENERAL_BINS, CRYPTO_BINS)
+    assert result is CRYPTO_BINS
+
+
 # --- find_opportunity ------------------------------------------------------
 
 def test_find_opportunity_needs_at_least_two_negrisk_legs():

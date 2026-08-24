@@ -48,6 +48,7 @@ import time
 from pathlib import Path
 
 import gamma_client
+import market_category
 
 # --- Tunable parameters -----------------------------------------------
 BIN_WIDTH = 0.05              # bucket width through the middle of the range
@@ -189,6 +190,27 @@ def bucket_edges() -> list:
     )
 
 
+def build_sample(entry: dict, outcome_yes: bool) -> dict:
+    """Builds one resolved-market sample from a price_log.jsonl entry, tagged
+    with its category so compute_bins() can be run separately per category
+    (see split_samples_by_category and market_category.is_crypto_market)."""
+    return {
+        "reference_price": entry["price"],
+        "resolved_yes": outcome_yes,
+        "is_crypto": market_category.is_crypto_market(entry.get("question")),
+    }
+
+
+def split_samples_by_category(samples: list):
+    """Splits resolved samples into (general, crypto) so each category gets
+    its own calibration table instead of being blended into one average --
+    see market_category.py's docstring for why crypto needs this. Pure
+    function so it's testable without touching compute_bins or the network."""
+    general = [s for s in samples if not s.get("is_crypto")]
+    crypto = [s for s in samples if s.get("is_crypto")]
+    return general, crypto
+
+
 def compute_bins(samples: list) -> list:
     """Buckets resolved samples into price ranges (see bucket_edges) and
     computes the calibration stats for each bucket. Pure function of
@@ -268,7 +290,7 @@ def main():
         if outcome_yes is None:
             still_open_or_unclear += 1
         else:
-            samples.append({"reference_price": entry["price"], "resolved_yes": outcome_yes})
+            samples.append(build_sample(entry, outcome_yes))
 
     newly_resolved = 0
     for i, entry in enumerate(to_check):
@@ -284,7 +306,7 @@ def main():
             if outcome_yes is None:
                 still_open_or_unclear += 1
             else:
-                samples.append({"reference_price": entry["price"], "resolved_yes": outcome_yes})
+                samples.append(build_sample(entry, outcome_yes))
 
         if (i + 1) % 200 == 0:
             print(f"  ... checked {i + 1}/{len(to_check)} this run ({newly_resolved} newly resolved)")
@@ -298,8 +320,13 @@ def main():
         print(f"{len(deferred)} not-yet-resolved markets deferred to a future run "
               f"({MAX_LOG_ENTRIES_TO_CHECK}-per-run budget).")
 
-    # --- Bucketing and statistics (identical logic to v1) ---
-    bins = compute_bins(samples)
+    # --- Bucketing and statistics ---
+    # Crypto gets its own table (see market_category.py) instead of being
+    # blended into the general one, so a live crypto market is only judged
+    # against genuinely comparable crypto history.
+    general_samples, crypto_samples = split_samples_by_category(samples)
+    bins = compute_bins(general_samples)
+    crypto_bins = compute_bins(crypto_samples)
 
     output = {
         "generated_at": now.isoformat(),
@@ -314,15 +341,20 @@ def main():
         "logged_markets_checked_this_run": len(to_check),
         "logged_markets_deferred": len(deferred),
         "markets_resolved": len(samples),
+        "markets_resolved_general": len(general_samples),
+        "markets_resolved_crypto": len(crypto_samples),
         "markets_still_open_or_unclear": still_open_or_unclear,
         "bins": bins,
+        "crypto_bins": crypto_bins,
     }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote -> {OUTPUT_PATH}")
     sig_count = sum(1 for b in bins if b["significant"])
-    print(f"Found a statistically significant gap in {sig_count} buckets.")
+    crypto_sig_count = sum(1 for b in crypto_bins if b["significant"])
+    print(f"Found a statistically significant gap in {sig_count} general buckets, "
+          f"{crypto_sig_count} crypto buckets ({len(crypto_samples)} crypto samples).")
     if len(samples) < MIN_SAMPLE_PER_BUCKET:
         print(f"Note: {len(samples)} markets have resolved so far; even one significant "
               f"bucket needs {MIN_SAMPLE_PER_BUCKET}. Waiting for more markets to close.", file=sys.stderr)

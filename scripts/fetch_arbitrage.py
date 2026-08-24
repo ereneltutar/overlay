@@ -85,6 +85,7 @@ from pathlib import Path
 import requests
 
 import gamma_client
+import market_category
 
 GAMMA_BASE = gamma_client.GAMMA_BASE
 
@@ -450,6 +451,15 @@ def load_calibration():
         return None
 
 
+def select_bins_for_market(market: dict, event: dict, bins: list, crypto_bins: list):
+    """Routes a live market to the calibration table matching its category
+    (see market_category.py for why crypto needs its own table). Pure
+    function of the market/event question text plus the two already-loaded
+    tables, so it's testable without a network call."""
+    question = market.get("question") or event.get("title") or ""
+    return crypto_bins if market_category.is_crypto_market(question) else bins
+
+
 def find_bin(price: float, bins: list):
     """Finds the calibration bucket a given price falls into."""
     for b in bins:
@@ -697,6 +707,7 @@ def main():
 
     calibration = load_calibration()
     calibration_bins = calibration["bins"] if calibration else None
+    calibration_crypto_bins = calibration.get("crypto_bins") if calibration else None
 
     opportunities = []
     calibration_signals = []
@@ -710,9 +721,12 @@ def main():
         if opp:
             opportunities.append(opp)
 
-        if calibration_bins:
+        if calibration_bins or calibration_crypto_bins:
             for market in (event.get("markets") or []):
-                sig = find_calibration_signal(market, event, calibration_bins, now)
+                market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins)
+                if not market_bins:
+                    continue
+                sig = find_calibration_signal(market, event, market_bins, now)
                 if sig:
                     calibration_signals.append(sig)
 
@@ -726,13 +740,16 @@ def main():
     # to be checked even past 30 days out, so find_mispricing_signal() applies
     # its own day logic internally.
     mispricing_signals = []
-    if calibration_bins:
+    if calibration_bins or calibration_crypto_bins:
         for event in events:
             end_date = parse_iso(event.get("endDate"))
             if not end_date or end_date < now:
                 continue  # closed / date unknown event
             for market in (event.get("markets") or []):
-                sig = find_mispricing_signal(market, event, calibration_bins, now)
+                market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins)
+                if not market_bins:
+                    continue
+                sig = find_mispricing_signal(market, event, market_bins, now)
                 if sig:
                     mispricing_signals.append(sig)
 

@@ -182,6 +182,57 @@ def test_filter_by_liquidity_treats_missing_liquidity_as_zero():
     assert cs.filter_by_liquidity(entries, min_liquidity=50) == []
 
 
+# --- build_sample / split_samples_by_category ------------------------------
+# Regression for the crypto calibration blind spot: live paper-trading data
+# (Aug 18-24 2026) showed crypto threshold markets ("will Bitcoin be above
+# $X") went 0-for-9 despite calibration flagging them as a significant edge,
+# because they were pooled into the same price-only bucket as sports/weather.
+# These confirm crypto samples get tagged and split out into their own table.
+
+def log_entry(market_id, price, question, liquidity=1000):
+    return {"market_id": market_id, "price": price, "question": question, "liquidity": liquidity}
+
+
+def test_build_sample_tags_crypto_market():
+    sample = cs.build_sample(log_entry("01", 0.4, "Will Bitcoin reach $65,000 on August 18?"), True)
+    assert sample == {"reference_price": 0.4, "resolved_yes": True, "is_crypto": True}
+
+
+def test_build_sample_tags_non_crypto_market():
+    sample = cs.build_sample(log_entry("02", 0.4, "Will Fulham FC win on 2026-08-24?"), False)
+    assert sample == {"reference_price": 0.4, "resolved_yes": False, "is_crypto": False}
+
+
+def test_split_samples_by_category_separates_crypto_from_general():
+    samples = [
+        cs.build_sample(log_entry("01", 0.4, "Will Bitcoin reach $65,000?"), True),
+        cs.build_sample(log_entry("02", 0.4, "Will Fulham FC win?"), False),
+        cs.build_sample(log_entry("03", 0.5, "Will Ethereum reach $2,400?"), True),
+    ]
+    general, crypto = cs.split_samples_by_category(samples)
+    assert len(general) == 1
+    assert len(crypto) == 2
+    assert all(s["is_crypto"] for s in crypto)
+    assert all(not s["is_crypto"] for s in general)
+
+
+def test_split_samples_by_category_feeds_compute_bins_independently():
+    # A crypto sample and a non-crypto sample at the same price must not end
+    # up pooled into the same bucket's historical rate.
+    crypto_samples = [cs.build_sample(log_entry(str(i), 0.42, "Will Bitcoin reach $65,000?"), True)
+                       for i in range(30)]
+    general_samples = [cs.build_sample(log_entry(str(i), 0.42, "Will Fulham FC win?"), False)
+                        for i in range(100, 130)]
+    general, crypto = cs.split_samples_by_category(general_samples + crypto_samples)
+    general_bins = cs.compute_bins(general)
+    crypto_bins = cs.compute_bins(crypto)
+
+    general_bucket = next(b for b in general_bins if b["range"] == [0.4, 0.45])
+    crypto_bucket = next(b for b in crypto_bins if b["range"] == [0.4, 0.45])
+    assert general_bucket["resolved_yes_rate"] == 0.0
+    assert crypto_bucket["resolved_yes_rate"] == 1.0
+
+
 def test_calibration_log_floor_matches_live_signal_floor():
     # CALIBRATION_LOG_MIN_LIQUIDITY (what gets logged as training data) must
     # never be looser than MIN_CALIBRATION_LIQUIDITY_USD (what a live signal
