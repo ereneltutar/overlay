@@ -1211,6 +1211,126 @@
       "status": "won",
       "resolved_at": "2026-08-24T02:00:25.290576+00:00",
       "pnl_usd": 3.7
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-in-august-2026:3746578",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $2,800 in August?",
+      "slug": "what-price-will-ethereum-hit-in-august-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-august-2026",
+      "placed_at": "2026-08-24T03:44:50.384428+00:00",
+      "deadline": "2026-09-01T03:44:50.384428+00:00",
+      "market_ids": [
+        "3746578"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.767,
+      "edge_pct_at_placement": 7.14,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 12.53,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:the-odyssey-total-domestic-gross-by-august-31-higher-strikes-20260723204527748:3094312",
+      "tag": "calibration",
+      "market_question": "Will the total domestic gross for The Odyssey be at least 570m by August 31?",
+      "slug": "the-odyssey-total-domestic-gross-by-august-31-higher-strikes-20260723204527748",
+      "url": "https://polymarket.com/event/the-odyssey-total-domestic-gross-by-august-31-higher-strikes-20260723204527748",
+      "placed_at": "2026-08-24T03:44:50.384428+00:00",
+      "deadline": "2026-08-31T03:44:50.384428+00:00",
+      "market_ids": [
+        "3094312"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.93,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 11.9,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-ful-che-2026-08-24:3505968",
+      "tag": "calibration",
+      "market_question": "Will Fulham FC win on 2026-08-24?",
+      "slug": "epl-ful-che-2026-08-24",
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24",
+      "placed_at": "2026-08-24T03:44:50.384428+00:00",
+      "deadline": "2026-08-24T03:44:50.384428+00:00",
+      "market_ids": [
+        "3505968"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.93,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 11.31,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-ful-che-2026-08-24:3505978",
+      "tag": "calibration",
+      "market_question": "Will Fulham FC vs. Chelsea FC end in a draw?",
+      "slug": "epl-ful-che-2026-08-24",
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24",
+      "placed_at": "2026-08-24T03:44:50.384428+00:00",
+      "deadline": "2026-08-24T03:44:50.384428+00:00",
+      "market_ids": [
+        "3505978"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.93,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 10.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:of-views-of-next-mrbeast-video-on-week-1-20260822:3725920",
+      "tag": "calibration",
+      "market_question": "Will MrBeast's next video get between 60 and 70 million views on week 1?",
+      "slug": "of-views-of-next-mrbeast-video-on-week-1-20260822",
+      "url": "https://polymarket.com/event/of-views-of-next-mrbeast-video-on-week-1-20260822",
+      "placed_at": "2026-08-24T03:44:50.384428+00:00",
+      "deadline": "2026-08-29T03:44:50.384428+00:00",
+      "market_ids": [
+        "3725920"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7789,
+      "edge_pct_at_placement": 5.95,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 10.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wta-ruzic-bartunk-2026-08-23:3792999",
+      "tag": "calibration",
+      "market_question": "Monterrey Open: Antonia Ruzic vs Nikola Bartunkova",
+      "slug": "wta-ruzic-bartunk-2026-08-23",
+      "url": "https://polymarket.com/event/wta-ruzic-bartunk-2026-08-23",
+      "placed_at": "2026-08-24T03:44:50.384428+00:00",
+      "deadline": "2026-08-30T03:44:50.384428+00:00",
+      "market_ids": [
+        "3792999"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7789,
+      "edge_pct_at_placement": 5.95,
+      "predicted_win_prob": 0.8384,
+      "stake_usd": 9.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
