@@ -7,5 +7,806 @@
       "bankroll": 1000.0
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "bet_id": "calibration:wnba-gsv-min-2026-08-24:3808348",
+      "tag": "calibration",
+      "market_question": "Golden State Valkyries vs. Minnesota Lynx: O/U 160.5",
+      "slug": "wnba-gsv-min-2026-08-24",
+      "url": "https://polymarket.com/event/wnba-gsv-min-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3808348"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 50.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wnba-gsv-min-2026-08-24:3823411",
+      "tag": "calibration",
+      "market_question": "Golden State Valkyries vs. Minnesota Lynx: O/U 159.5",
+      "slug": "wnba-gsv-min-2026-08-24",
+      "url": "https://polymarket.com/event/wnba-gsv-min-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3823411"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 47.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-ful-che-2026-08-24-more-markets:3506955",
+      "tag": "calibration",
+      "market_question": "Fulham FC vs. Chelsea FC: O/U 2.5",
+      "slug": "epl-ful-che-2026-08-24-more-markets",
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-more-markets",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3506955"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 45.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-bos-mia-2026-08-24:3696487",
+      "tag": "calibration",
+      "market_question": "Boston Red Sox vs. Miami Marlins",
+      "slug": "mlb-bos-mia-2026-08-24",
+      "url": "https://polymarket.com/event/mlb-bos-mia-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-31T17:06:11.449758+00:00",
+      "market_ids": [
+        "3696487"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 42.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-passaro-gill-2026-08-24:3825592",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification ATP: Francesco Passaro vs Felix Gill",
+      "slug": "atp-passaro-gill-2026-08-24",
+      "url": "https://polymarket.com/event/atp-passaro-gill-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-31T17:06:11.449758+00:00",
+      "market_ids": [
+        "3825592"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 40.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-schwaer-heide-2026-08-24:3825622",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification ATP: Joel Schwaerzler vs Gustavo Heide",
+      "slug": "atp-schwaer-heide-2026-08-24",
+      "url": "https://polymarket.com/event/atp-schwaer-heide-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-31T17:06:11.449758+00:00",
+      "market_ids": [
+        "3825622"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 38.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462:3195077",
+      "tag": "calibration",
+      "market_question": "Will David Morales be the Democratic nominee for Mayor of Providence?",
+      "slug": "who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462",
+      "url": "https://polymarket.com/event/who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-09-08T17:06:11.449758+00:00",
+      "market_ids": [
+        "3195077"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.48,
+      "edge_pct_at_placement": 10.65,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 36.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wta-brengle-gasanov-2026-08-24:3823643",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification WTA: Madison Brengle vs Anastasia Gasanova",
+      "slug": "wta-brengle-gasanov-2026-08-24",
+      "url": "https://polymarket.com/event/wta-brengle-gasanov-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-30T17:06:11.449758+00:00",
+      "market_ids": [
+        "3823643"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 34.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-atlanta-on-august-25-2026:3828425",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Atlanta be between 92-93°F on August 25?",
+      "slug": "highest-temperature-in-atlanta-on-august-25-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-atlanta-on-august-25-2026",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3828425"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 33.17,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:sea-rom-fio-2026-08-24-more-markets:3506975",
+      "tag": "calibration",
+      "market_question": "AS Roma vs. ACF Fiorentina: O/U 2.5",
+      "slug": "sea-rom-fio-2026-08-24-more-markets",
+      "url": "https://polymarket.com/event/sea-rom-fio-2026-08-24-more-markets",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3506975"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 31.51,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:fr2-rei-fca-2026-08-24:3508935",
+      "tag": "calibration",
+      "market_question": "Will Stade de Reims win on 2026-08-24?",
+      "slug": "fr2-rei-fca-2026-08-24",
+      "url": "https://polymarket.com/event/fr2-rei-fca-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3508935"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 29.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ucl-lyo-fen-2026-08-26:3566700",
+      "tag": "calibration",
+      "market_question": "Will Olympique Lyonnais win on 2026-08-26?",
+      "slug": "ucl-lyo-fen-2026-08-26",
+      "url": "https://polymarket.com/event/ucl-lyo-fen-2026-08-26",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-26T17:06:11.449758+00:00",
+      "market_ids": [
+        "3566700"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 28.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-phi-sea-2026-08-24:3696499",
+      "tag": "calibration",
+      "market_question": "Philadelphia Phillies vs. Seattle Mariners",
+      "slug": "mlb-phi-sea-2026-08-24",
+      "url": "https://polymarket.com/event/mlb-phi-sea-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-31T17:06:11.449758+00:00",
+      "market_ids": [
+        "3696499"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 27.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-london-on-august-25-2026:3794940",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in London be 24°C on August 25?",
+      "slug": "highest-temperature-in-london-on-august-25-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-london-on-august-25-2026",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3794940"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 25.67,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:dota2-sb5-ducksq-2026-08-24:3831396",
+      "tag": "calibration",
+      "market_question": "Dota 2: summer bear vs Ducksquad - Game 2 Winner",
+      "slug": "dota2-sb5-ducksq-2026-08-24",
+      "url": "https://polymarket.com/event/dota2-sb5-ducksq-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3831396"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 24.38,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:will-trump-publicly-insult-someone-onptptpt-20260724221849631:3145210",
+      "tag": "calibration",
+      "market_question": "Will Donald Trump publicly insult someone on August 23, 2026?",
+      "slug": "will-trump-publicly-insult-someone-onptptpt-20260724221849631",
+      "url": "https://polymarket.com/event/will-trump-publicly-insult-someone-onptptpt-20260724221849631",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-31T17:06:11.449758+00:00",
+      "market_ids": [
+        "3145210"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.493,
+      "edge_pct_at_placement": 9.35,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 23.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462:3195078",
+      "tag": "calibration",
+      "market_question": "Will Brett Smiley be the Democratic nominee for Mayor of Providence?",
+      "slug": "who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462",
+      "url": "https://polymarket.com/event/who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-09-08T17:06:11.449758+00:00",
+      "market_ids": [
+        "3195078"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5,
+      "edge_pct_at_placement": 8.65,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 22.01,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-ful-che-2026-08-24:3505990",
+      "tag": "calibration",
+      "market_question": "Will Chelsea FC win on 2026-08-24?",
+      "slug": "epl-ful-che-2026-08-24",
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3505990"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 20.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lal-mala-dep-2026-08-24-more-markets:3508966",
+      "tag": "calibration",
+      "market_question": "Málaga CF vs. RC Deportivo A Coruña: Both Teams to Score",
+      "slug": "lal-mala-dep-2026-08-24-more-markets",
+      "url": "https://polymarket.com/event/lal-mala-dep-2026-08-24-more-markets",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3508966"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 19.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:chi1-edv-cu1-2026-08-24:3521025",
+      "tag": "calibration",
+      "market_question": "Will Everton de Viña del Mar win on 2026-08-24?",
+      "slug": "chi1-edv-cu1-2026-08-24",
+      "url": "https://polymarket.com/event/chi1-edv-cu1-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3521025"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 18.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:epl-ful-che-2026-08-24:3505990",
+      "tag": "mispricing",
+      "market_question": "Will Chelsea FC win on 2026-08-24?",
+      "slug": "epl-ful-che-2026-08-24",
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3505990"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 17.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831397",
+      "tag": "mispricing",
+      "market_question": "Dota 2: summer bear vs Ducksquad (BO3) - EPL Masters 2 Play-In Group B",
+      "slug": "dota2-sb5-ducksq-2026-08-24",
+      "url": "https://polymarket.com/event/dota2-sb5-ducksq-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3831397"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 17.03,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lal-osa-lev-2026-08-24:3507994",
+      "tag": "mispricing",
+      "market_question": "Will CA Osasuna win on 2026-08-24?",
+      "slug": "lal-osa-lev-2026-08-24",
+      "url": "https://polymarket.com/event/lal-osa-lev-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T17:06:11.449758+00:00",
+      "market_ids": [
+        "3507994"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 16.18,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:epl-ful-che-2026-08-24-more-markets:3506955",
+      "tag": "mispricing",
+      "market_question": "Fulham FC vs. Chelsea FC: O/U 2.5",
+      "slug": "epl-ful-che-2026-08-24-more-markets",
+      "url": "https://polymarket.com/event/epl-ful-che-2026-08-24-more-markets",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3506955"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 15.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831395",
+      "tag": "mispricing",
+      "market_question": "Dota 2: summer bear vs Ducksquad - Game 1 Winner",
+      "slug": "dota2-sb5-ducksq-2026-08-24",
+      "url": "https://polymarket.com/event/dota2-sb5-ducksq-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3831395"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 14.6,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:wnba-gsv-min-2026-08-24:3808348",
+      "tag": "mispricing",
+      "market_question": "Golden State Valkyries vs. Minnesota Lynx: O/U 160.5",
+      "slug": "wnba-gsv-min-2026-08-24",
+      "url": "https://polymarket.com/event/wnba-gsv-min-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-25T00:18:11.449758+00:00",
+      "market_ids": [
+        "3808348"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 13.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:wnba-atl-la-2026-08-24:3506081",
+      "tag": "mispricing",
+      "market_question": "Atlanta Dream vs. Los Angeles Sparks",
+      "slug": "wnba-atl-la-2026-08-24",
+      "url": "https://polymarket.com/event/wnba-atl-la-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-25T02:42:11.449758+00:00",
+      "market_ids": [
+        "3506081"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 10.46,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:spx-up-or-down-on-august-24-2026:3760428",
+      "tag": "mispricing",
+      "market_question": "S&P 500 (SPX) Up or Down on August 24?",
+      "slug": "spx-up-or-down-on-august-24-2026",
+      "url": "https://polymarket.com/event/spx-up-or-down-on-august-24-2026",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3760428"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8356,
+      "edge_pct_at_placement": 5.3,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 12.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-gx-g2-2026-08-24:3700336",
+      "tag": "mispricing",
+      "market_question": "LoL: GIANTX vs G2 Esports (BO3) - LEC Regular Season",
+      "slug": "lol-gx-g2-2026-08-24",
+      "url": "https://polymarket.com/event/lol-gx-g2-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-25T00:18:11.449758+00:00",
+      "market_ids": [
+        "3700336"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8274,
+      "edge_pct_at_placement": 6.12,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 12.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:wnba-gsv-min-2026-08-24:3823411",
+      "tag": "mispricing",
+      "market_question": "Golden State Valkyries vs. Minnesota Lynx: O/U 159.5",
+      "slug": "wnba-gsv-min-2026-08-24",
+      "url": "https://polymarket.com/event/wnba-gsv-min-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-25T00:18:11.449758+00:00",
+      "market_ids": [
+        "3823411"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 11.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-navi-fnc-2026-08-24:3808443",
+      "tag": "mispricing",
+      "market_question": "Game Handicap: FNC (-1.5) vs Natus Vincere (+1.5)",
+      "slug": "lol-navi-fnc-2026-08-24",
+      "url": "https://polymarket.com/event/lol-navi-fnc-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T21:54:11.449758+00:00",
+      "market_ids": [
+        "3808443"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 7.09,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 10.85,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:fr2-rei-fca-2026-08-24:3508935",
+      "tag": "mispricing",
+      "market_question": "Will Stade de Reims win on 2026-08-24?",
+      "slug": "fr2-rei-fca-2026-08-24",
+      "url": "https://polymarket.com/event/fr2-rei-fca-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3508935"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 10.31,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lal-mala-dep-2026-08-24-more-markets:3508966",
+      "tag": "mispricing",
+      "market_question": "Málaga CF vs. RC Deportivo A Coruña: Both Teams to Score",
+      "slug": "lal-mala-dep-2026-08-24-more-markets",
+      "url": "https://polymarket.com/event/lal-mala-dep-2026-08-24-more-markets",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3508966"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 9.79,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:sea-rom-fio-2026-08-24:3502256",
+      "tag": "mispricing",
+      "market_question": "Will ACF Fiorentina win on 2026-08-24?",
+      "slug": "sea-rom-fio-2026-08-24",
+      "url": "https://polymarket.com/event/sea-rom-fio-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3502256"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 7.09,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 9.3,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:elon-musk-of-tweets-august-18-august-25:3595817",
+      "tag": "mispricing",
+      "market_question": "Will Elon Musk post 300-319 tweets from August 18 to August 25, 2026?",
+      "slug": "elon-musk-of-tweets-august-18-august-25",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-18-august-25",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-25T17:06:11.449758+00:00",
+      "market_ids": [
+        "3595817"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 8.84,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831396",
+      "tag": "mispricing",
+      "market_question": "Dota 2: summer bear vs Ducksquad - Game 2 Winner",
+      "slug": "dota2-sb5-ducksq-2026-08-24",
+      "url": "https://polymarket.com/event/dota2-sb5-ducksq-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3831396"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 8.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:spy-up-or-down-on-august-24-2026:3760435",
+      "tag": "mispricing",
+      "market_question": "SPY (SPY) Up or Down on August 24?",
+      "slug": "spy-up-or-down-on-august-24-2026",
+      "url": "https://polymarket.com/event/spy-up-or-down-on-august-24-2026",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3760435"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8259,
+      "edge_pct_at_placement": 6.27,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 7.97,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:chi1-edv-cu1-2026-08-24:3521025",
+      "tag": "mispricing",
+      "market_question": "Will Everton de Viña del Mar win on 2026-08-24?",
+      "slug": "chi1-edv-cu1-2026-08-24",
+      "url": "https://polymarket.com/event/chi1-edv-cu1-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-25T00:18:11.449758+00:00",
+      "market_ids": [
+        "3521025"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 7.58,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:sea-rom-fio-2026-08-24-more-markets:3506975",
+      "tag": "mispricing",
+      "market_question": "AS Roma vs. ACF Fiorentina: O/U 2.5",
+      "slug": "sea-rom-fio-2026-08-24-more-markets",
+      "url": "https://polymarket.com/event/sea-rom-fio-2026-08-24-more-markets",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3506975"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 7.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831399",
+      "tag": "mispricing",
+      "market_question": "Game Handicap: SB (-1.5) vs Ducksquad (+1.5)",
+      "slug": "dota2-sb5-ducksq-2026-08-24",
+      "url": "https://polymarket.com/event/dota2-sb5-ducksq-2026-08-24",
+      "placed_at": "2026-08-24T17:06:11.449758+00:00",
+      "deadline": "2026-08-24T19:30:11.449758+00:00",
+      "market_ids": [
+        "3831399"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 6.84,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    }
+  ]
 }

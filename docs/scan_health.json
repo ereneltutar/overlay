@@ -121,10 +121,10 @@
     },
     {
       "date": "2026-08-24",
-      "scanned_events": 21148,
+      "scanned_events": 21712,
       "opportunities": 0,
       "calibration_signals": 20,
-      "mispricing_signals": 0
+      "mispricing_signals": 20
     }
   ]
 }
