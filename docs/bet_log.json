@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 903.72,
+  "bankroll": 914.78,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -8,7 +8,7 @@
     },
     {
       "date": "2026-08-25",
-      "bankroll": 903.72
+      "bankroll": 914.78
     }
   ],
   "bets": [
@@ -528,9 +528,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 13.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T13:14:55.673270+00:00",
+      "pnl_usd": 15.49
     },
     {
       "bet_id": "mispricing:wnba-atl-la-2026-08-24:3506081",
@@ -588,9 +588,9 @@
       "edge_pct_at_placement": 6.12,
       "predicted_win_prob": 0.8886,
       "stake_usd": 12.02,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T13:14:55.673270+00:00",
+      "pnl_usd": -12.02
     },
     {
       "bet_id": "mispricing:wnba-gsv-min-2026-08-24:3823411",
@@ -608,9 +608,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 11.42,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T13:14:55.673270+00:00",
+      "pnl_usd": 12.75
     },
     {
       "bet_id": "mispricing:lol-navi-fnc-2026-08-24:3808443",
@@ -628,9 +628,9 @@
       "edge_pct_at_placement": 7.09,
       "predicted_win_prob": 0.8886,
       "stake_usd": 10.85,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T13:14:55.673270+00:00",
+      "pnl_usd": 2.42
     },
     {
       "bet_id": "mispricing:fr2-rei-fca-2026-08-24:3508935",
@@ -768,9 +768,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 7.58,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T13:14:55.673270+00:00",
+      "pnl_usd": -7.58
     },
     {
       "bet_id": "mispricing:sea-rom-fio-2026-08-24-more-markets:3506975",
