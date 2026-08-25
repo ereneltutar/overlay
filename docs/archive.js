@@ -56,6 +56,25 @@ const STATUS_LABELS = { open: 'OPEN', won: 'WON', lost: 'LOST', void: 'VOID' };
 let selectedTiers = new Set();
 let selectedStatuses = new Set();
 let allBets = [];
+let sortKey = 'placed_desc';
+
+function resolveDate(b){
+  return b.status === 'open' ? b.deadline : b.resolved_at;
+}
+
+const SORTERS = {
+  placed_desc: (a,b) => new Date(b.placed_at) - new Date(a.placed_at),
+  placed_asc: (a,b) => new Date(a.placed_at) - new Date(b.placed_at),
+  stake_desc: (a,b) => b.stake_usd - a.stake_usd,
+  stake_asc: (a,b) => a.stake_usd - b.stake_usd,
+  resolve_asc: (a,b) => new Date(resolveDate(a)) - new Date(resolveDate(b)),
+  resolve_desc: (a,b) => new Date(resolveDate(b)) - new Date(resolveDate(a)),
+};
+
+function sortBets(list){
+  const cmp = SORTERS[sortKey] || SORTERS.placed_desc;
+  return list.slice().sort(cmp);
+}
 
 function renderBankrollChart(history, startingBankroll){
   const svg = document.getElementById('bankrollChart');
@@ -211,9 +230,9 @@ function renderCalibrationCheck(bets){
 
 function applyFilterAndRender(){
   const grid = document.getElementById('grid');
-  const list = allBets
+  const list = sortBets(allBets
     .filter(b => selectedTiers.size === 0 || selectedTiers.has(b.tag))
-    .filter(b => selectedStatuses.size === 0 || selectedStatuses.has(b.status));
+    .filter(b => selectedStatuses.size === 0 || selectedStatuses.has(b.status)));
 
   if(list.length === 0){
     grid.innerHTML = allBets.length === 0
@@ -368,6 +387,11 @@ document.getElementById('filterStatus').addEventListener('click', (e) => {
   const btn = e.target.closest('.chip-btn');
   if(!btn) return;
   toggleChipFilter('filterStatus', selectedStatuses, 'status', 'all', btn);
+  applyFilterAndRender();
+});
+
+document.getElementById('sortSelect').addEventListener('change', (e) => {
+  sortKey = e.target.value;
   applyFilterAndRender();
 });
 
