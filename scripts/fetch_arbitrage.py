@@ -538,14 +538,14 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
         return None
 
     end_date = parse_iso(event.get("endDate"))
-    days_left = (end_date - now).days if end_date else None
+    days_left = (end_date - now).total_seconds() / 86400 if end_date else None
 
     return {
         "market_id": market.get("id"),
         "market_question": market.get("question") or event.get("title") or "?",
         "slug": event.get("slug"),
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
-        "days_left": days_left,
+        "days_left": round(days_left, 1) if days_left is not None else None,
         "recommended_side": side,
         "current_price": round(price, 4),
         "implied_cost": round(cost, 4),

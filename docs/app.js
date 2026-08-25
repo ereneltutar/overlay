@@ -229,7 +229,7 @@ function renderCalEntry(sig, rank, demo){
         <p class="entry-title">${escapeHtml(sig.market_question || sig.event_title)}</p>
         <span class="entry-edge">+${sig.edge_pct.toFixed(1)}%</span>
       </div>
-      <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
+      <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
       ${buildCalBar(sig)}
       <div class="entry-foot">
         <span>cost <span class="cost">$${sig.implied_cost.toFixed(3)}</span>${sig.fee > 0 ? ` (incl. $${sig.fee.toFixed(3)} fees)` : ''} / historical rate ${trueRatePct.toFixed(1)}%</span>
