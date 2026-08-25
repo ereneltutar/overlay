@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1000.0,
+  "bankroll": 903.72,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -8,7 +8,7 @@
     },
     {
       "date": "2026-08-25",
-      "bankroll": 1000.0
+      "bankroll": 903.72
     }
   ],
   "bets": [
@@ -28,9 +28,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 50.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 55.84
     },
     {
       "bet_id": "calibration:wnba-gsv-min-2026-08-24:3823411",
@@ -48,9 +48,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 47.5,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 53.05
     },
     {
       "bet_id": "calibration:epl-ful-che-2026-08-24-more-markets:3506955",
@@ -68,9 +68,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 45.12,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -45.12
     },
     {
       "bet_id": "calibration:mlb-bos-mia-2026-08-24:3696487",
@@ -208,9 +208,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 31.51,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -31.51
     },
     {
       "bet_id": "calibration:fr2-rei-fca-2026-08-24:3508935",
@@ -228,9 +228,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 29.94,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -29.94
     },
     {
       "bet_id": "calibration:ucl-lyo-fen-2026-08-26:3566700",
@@ -308,9 +308,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 24.38,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "void",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 0.0
     },
     {
       "bet_id": "calibration:will-trump-publicly-insult-someone-onptptpt-20260724221849631:3145210",
@@ -368,9 +368,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 20.91,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -20.91
     },
     {
       "bet_id": "calibration:lal-mala-dep-2026-08-24-more-markets:3508966",
@@ -388,9 +388,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 19.86,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -19.86
     },
     {
       "bet_id": "calibration:chi1-edv-cu1-2026-08-24:3521025",
@@ -408,9 +408,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 18.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -18.87
     },
     {
       "bet_id": "mispricing:epl-ful-che-2026-08-24:3505990",
@@ -428,9 +428,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 17.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -17.92
     },
     {
       "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831397",
@@ -448,9 +448,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 17.03,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "void",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 0.0
     },
     {
       "bet_id": "mispricing:lal-osa-lev-2026-08-24:3507994",
@@ -468,9 +468,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 16.18,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 15.39
     },
     {
       "bet_id": "mispricing:epl-ful-che-2026-08-24-more-markets:3506955",
@@ -488,9 +488,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 15.37,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -15.37
     },
     {
       "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831395",
@@ -508,9 +508,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 14.6,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "void",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 0.0
     },
     {
       "bet_id": "mispricing:wnba-gsv-min-2026-08-24:3808348",
@@ -568,9 +568,9 @@
       "edge_pct_at_placement": 5.3,
       "predicted_win_prob": 0.8886,
       "stake_usd": 12.65,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 2.49
     },
     {
       "bet_id": "mispricing:lol-gx-g2-2026-08-24:3700336",
@@ -648,9 +648,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 10.31,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -10.31
     },
     {
       "bet_id": "mispricing:lal-mala-dep-2026-08-24-more-markets:3508966",
@@ -668,9 +668,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 9.79,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -9.79
     },
     {
       "bet_id": "mispricing:sea-rom-fio-2026-08-24:3502256",
@@ -688,9 +688,9 @@
       "edge_pct_at_placement": 7.09,
       "predicted_win_prob": 0.8886,
       "stake_usd": 9.3,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 2.07
     },
     {
       "bet_id": "mispricing:elon-musk-of-tweets-august-18-august-25:3595817",
@@ -728,9 +728,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 8.39,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "void",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 0.0
     },
     {
       "bet_id": "mispricing:spy-up-or-down-on-august-24-2026:3760435",
@@ -748,9 +748,9 @@
       "edge_pct_at_placement": 6.27,
       "predicted_win_prob": 0.8886,
       "stake_usd": 7.97,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 1.68
     },
     {
       "bet_id": "mispricing:chi1-edv-cu1-2026-08-24:3521025",
@@ -788,9 +788,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 7.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": -7.2
     },
     {
       "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831399",
@@ -808,9 +808,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 6.84,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "void",
+      "resolved_at": "2026-08-25T09:03:12.641402+00:00",
+      "pnl_usd": 0.0
     },
     {
       "bet_id": "calibration:atp-ofner-nishiko-2026-08-25:3825712",
