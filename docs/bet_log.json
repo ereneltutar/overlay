@@ -811,6 +811,726 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-ofner-nishiko-2026-08-25:3825712",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification ATP: Sebastian Ofner vs Kei Nishikori",
+      "slug": "atp-ofner-nishiko-2026-08-25",
+      "url": "https://polymarket.com/event/atp-ofner-nishiko-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T03:40:00.923612+00:00",
+      "market_ids": [
+        "3825712"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 6.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ucl-lin2-cel-2026-08-25:3545759",
+      "tag": "calibration",
+      "market_question": "Will LASK Linz win on 2026-08-25?",
+      "slug": "ucl-lin2-cel-2026-08-25",
+      "url": "https://polymarket.com/event/ucl-lin2-cel-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T03:40:00.923612+00:00",
+      "market_ids": [
+        "3545759"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 6.17,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-mejia-draxl-2026-08-25:3825696",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification ATP: Nicolas Mejia vs Liam Draxl",
+      "slug": "atp-mejia-draxl-2026-08-25",
+      "url": "https://polymarket.com/event/atp-mejia-draxl-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T03:40:00.923612+00:00",
+      "market_ids": [
+        "3825696"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 5.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3399459",
+      "tag": "calibration",
+      "market_question": "Israel x Iran ceasefire continues through October 31?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-31T03:40:00.923612+00:00",
+      "market_ids": [
+        "3399459"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.17,
+      "edge_pct_at_placement": 7.24,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 4.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-hong-kong-on-august-25-2026:3795039",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Hong Kong be 32°C on August 25?",
+      "slug": "highest-temperature-in-hong-kong-on-august-25-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-hong-kong-on-august-25-2026",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T03:40:00.923612+00:00",
+      "market_ids": [
+        "3795039"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 7.09,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 5.33,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-singapore-on-august-25-2026:3795058",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Singapore be 33°C on August 25?",
+      "slug": "highest-temperature-in-singapore-on-august-25-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-singapore-on-august-25-2026",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T03:40:00.923612+00:00",
+      "market_ids": [
+        "3795058"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 4.01,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-gea-nagal-2026-08-25:3825651",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification ATP: Arthur Gea vs Sumit Nagal",
+      "slug": "atp-gea-nagal-2026-08-25",
+      "url": "https://polymarket.com/event/atp-gea-nagal-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T03:40:00.923612+00:00",
+      "market_ids": [
+        "3825651"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 3.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-kt-bro2-2026-08-26:3819663",
+      "tag": "calibration",
+      "market_question": "LoL: KT Rolster vs HANJIN BRION (BO5) - LCK Play-In",
+      "slug": "lol-kt-bro2-2026-08-26",
+      "url": "https://polymarket.com/event/lol-kt-bro2-2026-08-26",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-26T03:40:00.923612+00:00",
+      "market_ids": [
+        "3819663"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2286,
+      "edge_pct_at_placement": 4.69,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 2.84,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wta-jones-brancac-2026-08-25:3823699",
+      "tag": "calibration",
+      "market_question": "US Open, Qualification WTA: Francesca Jones vs Nuria Brancaccio",
+      "slug": "wta-jones-brancac-2026-08-25",
+      "url": "https://polymarket.com/event/wta-jones-brancac-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T03:40:00.923612+00:00",
+      "market_ids": [
+        "3823699"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2286,
+      "edge_pct_at_placement": 4.69,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 2.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:cs2-aur1-g2-2026-08-26:3682168",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: Aurora Gaming vs G2 (BO3) - BLAST Open Porto Group A",
+      "slug": "cs2-aur1-g2-2026-08-26",
+      "url": "https://polymarket.com/event/cs2-aur1-g2-2026-08-26",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-26T03:40:00.923612+00:00",
+      "market_ids": [
+        "3682168"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 4.58,
+      "predicted_win_prob": 0.5683,
+      "stake_usd": 4.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:mlb-pit-sd-2026-08-25:3720893",
+      "tag": "calibration",
+      "market_question": "Pittsburgh Pirates vs. San Diego Padres",
+      "slug": "mlb-pit-sd-2026-08-25",
+      "url": "https://polymarket.com/event/mlb-pit-sd-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T03:40:00.923612+00:00",
+      "market_ids": [
+        "3720893"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 4.58,
+      "predicted_win_prob": 0.5683,
+      "stake_usd": 4.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:of-views-of-next-mrbeast-video-on-week-1-20260822:3725920",
+      "tag": "calibration",
+      "market_question": "Will MrBeast's next video get between 60 and 70 million views on week 1?",
+      "slug": "of-views-of-next-mrbeast-video-on-week-1-20260822",
+      "url": "https://polymarket.com/event/of-views-of-next-mrbeast-video-on-week-1-20260822",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-29T03:40:00.923612+00:00",
+      "market_ids": [
+        "3725920"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 4.58,
+      "predicted_win_prob": 0.5683,
+      "stake_usd": 3.81,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lol-drxc-foxy-2026-08-25:3845971",
+      "tag": "calibration",
+      "market_question": "Game Handicap: FOX.Y (-1.5) vs Kiwoom DRX Challengers (+1.5)",
+      "slug": "lol-drxc-foxy-2026-08-25",
+      "url": "https://polymarket.com/event/lol-drxc-foxy-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T03:40:00.923612+00:00",
+      "market_ids": [
+        "3845971"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 4.58,
+      "predicted_win_prob": 0.5683,
+      "stake_usd": 3.63,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:crint-lka-ind-2026-08-23:3627457",
+      "tag": "calibration",
+      "market_question": "Will India win?",
+      "slug": "crint-lka-ind-2026-08-23",
+      "url": "https://polymarket.com/event/crint-lka-ind-2026-08-23",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-29T03:40:00.923612+00:00",
+      "market_ids": [
+        "3627457"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1977,
+      "edge_pct_at_placement": 4.47,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 2.01,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:2026-womens-us-open-winner-tennis:1088654",
+      "tag": "calibration",
+      "market_question": "Will Coco Gauff win the 2026 Women’s US Open?",
+      "slug": "2026-womens-us-open-winner-tennis",
+      "url": "https://polymarket.com/event/2026-womens-us-open-winner-tennis",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-12T03:40:00.923612+00:00",
+      "market_ids": [
+        "1088654"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.845,
+      "edge_pct_at_placement": 4.36,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 3.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lal-rea-rso-2026-08-26:3558750",
+      "tag": "calibration",
+      "market_question": "Will Real Madrid CF vs. Real Sociedad de Fútbol end in a draw?",
+      "slug": "lal-rea-rso-2026-08-26",
+      "url": "https://polymarket.com/event/lal-rea-rso-2026-08-26",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-26T03:40:00.923612+00:00",
+      "market_ids": [
+        "3558750"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8467,
+      "edge_pct_at_placement": 4.19,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 3.33,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-august-21-august-28-2026:3688261",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post 200-219 tweets from August 21 to August 28, 2026?",
+      "slug": "elon-musk-of-tweets-august-21-august-28-2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-21-august-28-2026",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-28T03:40:00.923612+00:00",
+      "market_ids": [
+        "3688261"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8467,
+      "edge_pct_at_placement": 4.19,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 3.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-august-18-august-25:3595819",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post 340-359 tweets from August 18 to August 25, 2026?",
+      "slug": "elon-musk-of-tweets-august-18-august-25",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-18-august-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T03:40:00.923612+00:00",
+      "market_ids": [
+        "3595819"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8477,
+      "edge_pct_at_placement": 4.09,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 3.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:bun-bay-stu-2026-08-28:3595720",
+      "tag": "calibration",
+      "market_question": "Will FC Bayern München win on 2026-08-28?",
+      "slug": "bun-bay-stu-2026-08-28",
+      "url": "https://polymarket.com/event/bun-bay-stu-2026-08-28",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-28T03:40:00.923612+00:00",
+      "market_ids": [
+        "3595720"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2389,
+      "edge_pct_at_placement": 3.66,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 1.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ucl-lin2-cel-2026-08-25:3545759",
+      "tag": "mispricing",
+      "market_question": "Will LASK Linz win on 2026-08-25?",
+      "slug": "ucl-lin2-cel-2026-08-25",
+      "url": "https://polymarket.com/event/ucl-lin2-cel-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T18:04:00.923612+00:00",
+      "market_ids": [
+        "3545759"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 8.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 2.79,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-hong-kong-on-august-25-2026:3795039",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Hong Kong be 32°C on August 25?",
+      "slug": "highest-temperature-in-hong-kong-on-august-25-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-hong-kong-on-august-25-2026",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T10:52:00.923612+00:00",
+      "market_ids": [
+        "3795039"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 7.09,
+      "predicted_win_prob": 0.8886,
+      "stake_usd": 2.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-singapore-on-august-25-2026:3795058",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Singapore be 33°C on August 25?",
+      "slug": "highest-temperature-in-singapore-on-august-25-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-singapore-on-august-25-2026",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-25T10:52:00.923612+00:00",
+      "market_ids": [
+        "3795058"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 1.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ucl-lyo-fen-2026-08-26:3566700",
+      "tag": "mispricing",
+      "market_question": "Will Olympique Lyonnais win on 2026-08-26?",
+      "slug": "ucl-lyo-fen-2026-08-26",
+      "url": "https://polymarket.com/event/ucl-lyo-fen-2026-08-26",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-26T18:04:00.923612+00:00",
+      "market_ids": [
+        "3566700"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 2.41,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:mlb-cle-laa-2026-08-24:3696493",
+      "tag": "mispricing",
+      "market_question": "Cleveland Guardians vs. Los Angeles Angels",
+      "slug": "mlb-cle-laa-2026-08-24",
+      "url": "https://polymarket.com/event/mlb-cle-laa-2026-08-24",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T01:16:00.923612+00:00",
+      "market_ids": [
+        "3696493"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 5.22,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 1.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lal-bar-bil-2026-08-27:3578043",
+      "tag": "mispricing",
+      "market_question": "Will FC Barcelona win on 2026-08-27?",
+      "slug": "lal-bar-bil-2026-08-27",
+      "url": "https://polymarket.com/event/lal-bar-bil-2026-08-27",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-27T18:04:00.923612+00:00",
+      "market_ids": [
+        "3578043"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2696,
+      "edge_pct_at_placement": 5.05,
+      "predicted_win_prob": 0.3201,
+      "stake_usd": 1.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:mlb-min-oak-2026-08-24:3819645",
+      "tag": "mispricing",
+      "market_question": "Minnesota Twins vs. Athletics: O/U 10.5",
+      "slug": "mlb-min-oak-2026-08-24",
+      "url": "https://polymarket.com/event/mlb-min-oak-2026-08-24",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T01:16:00.923612+00:00",
+      "market_ids": [
+        "3819645"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2696,
+      "edge_pct_at_placement": 5.05,
+      "predicted_win_prob": 0.3201,
+      "stake_usd": 1.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:mlb-min-oak-2026-08-24:3819644",
+      "tag": "mispricing",
+      "market_question": "Spread: Minnesota Twins (-1.5)",
+      "slug": "mlb-min-oak-2026-08-24",
+      "url": "https://polymarket.com/event/mlb-min-oak-2026-08-24",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T01:16:00.923612+00:00",
+      "market_ids": [
+        "3819644"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 5.22,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 1.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:mlb-cin-sf-2026-08-24:3696502",
+      "tag": "mispricing",
+      "market_question": "Will there be a run scored in the first inning?: Cincinnati Reds vs. San Francisco Giants",
+      "slug": "mlb-cin-sf-2026-08-24",
+      "url": "https://polymarket.com/event/mlb-cin-sf-2026-08-24",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T01:16:00.923612+00:00",
+      "market_ids": [
+        "3696502"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1874,
+      "edge_pct_at_placement": 5.5,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 1.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:atp-ofner-nishiko-2026-08-25:3825712",
+      "tag": "mispricing",
+      "market_question": "US Open, Qualification ATP: Sebastian Ofner vs Kei Nishikori",
+      "slug": "atp-ofner-nishiko-2026-08-25",
+      "url": "https://polymarket.com/event/atp-ofner-nishiko-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T15:40:00.923612+00:00",
+      "market_ids": [
+        "3825712"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 1.95,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3399459",
+      "tag": "mispricing",
+      "market_question": "Israel x Iran ceasefire continues through October 31?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-31T22:52:00.923612+00:00",
+      "market_ids": [
+        "3399459"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.17,
+      "edge_pct_at_placement": 7.24,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 1.62,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:atp-mejia-draxl-2026-08-25:3825696",
+      "tag": "mispricing",
+      "market_question": "US Open, Qualification ATP: Nicolas Mejia vs Liam Draxl",
+      "slug": "atp-mejia-draxl-2026-08-25",
+      "url": "https://polymarket.com/event/atp-mejia-draxl-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T15:40:00.923612+00:00",
+      "market_ids": [
+        "3825696"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.5865,
+      "stake_usd": 1.77,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3399458",
+      "tag": "mispricing",
+      "market_question": "Israel x Iran ceasefire continues through September 30?",
+      "slug": "israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-31T22:52:00.923612+00:00",
+      "market_ids": [
+        "3399458"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.11,
+      "edge_pct_at_placement": 5.1,
+      "predicted_win_prob": 0.161,
+      "stake_usd": 0.96,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:best-chinese-ai-company-end-of-august-20260717004241592:2954946",
+      "tag": "mispricing",
+      "market_question": "Will Alibaba have the best Chinese AI model at the end of August 2026?",
+      "slug": "best-chinese-ai-company-end-of-august-20260717004241592",
+      "url": "https://polymarket.com/event/best-chinese-ai-company-end-of-august-20260717004241592",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-30T22:52:00.923612+00:00",
+      "market_ids": [
+        "2954946"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0498,
+      "edge_pct_at_placement": 5.28,
+      "predicted_win_prob": 0.1026,
+      "stake_usd": 0.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:atp-gea-nagal-2026-08-25:3825651",
+      "tag": "mispricing",
+      "market_question": "US Open, Qualification ATP: Arthur Gea vs Sumit Nagal",
+      "slug": "atp-gea-nagal-2026-08-25",
+      "url": "https://polymarket.com/event/atp-gea-nagal-2026-08-25",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-01T15:40:00.923612+00:00",
+      "market_ids": [
+        "3825651"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 1.26,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:iran-successfully-targets-shipping-byptptpt-21:3862741",
+      "tag": "mispricing",
+      "market_question": "Iran successfully targets shipping by August 26, 2026?",
+      "slug": "iran-successfully-targets-shipping-byptptpt-21",
+      "url": "https://polymarket.com/event/iran-successfully-targets-shipping-byptptpt-21",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-08-31T22:52:00.923612+00:00",
+      "market_ids": [
+        "3862741"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.51,
+      "edge_pct_at_placement": 5.83,
+      "predicted_win_prob": 0.5683,
+      "stake_usd": 1.53,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:rhode-island-governor-democratic-primary-winner:906867",
+      "tag": "mispricing",
+      "market_question": "Will Helena Foulkes win the 2026 Rhode Island Governor Democratic primary election?",
+      "slug": "rhode-island-governor-democratic-primary-winner",
+      "url": "https://polymarket.com/event/rhode-island-governor-democratic-primary-winner",
+      "placed_at": "2026-08-25T03:40:00.923612+00:00",
+      "deadline": "2026-09-07T22:52:00.923612+00:00",
+      "market_ids": [
+        "906867"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0633,
+      "edge_pct_at_placement": 5.17,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 0.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
