@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 904.17,
+  "bankroll": 870.34,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -9,6 +9,10 @@
     {
       "date": "2026-08-25",
       "bankroll": 904.17
+    },
+    {
+      "date": "2026-08-26",
+      "bankroll": 870.34
     }
   ],
   "bets": [
@@ -288,9 +292,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 25.67,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T02:01:42.552757+00:00",
+      "pnl_usd": -25.67
     },
     {
       "bet_id": "calibration:dota2-sb5-ducksq-2026-08-24:3831396",
@@ -848,9 +852,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 6.17,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T02:01:42.552757+00:00",
+      "pnl_usd": -6.17
     },
     {
       "bet_id": "calibration:atp-mejia-draxl-2026-08-25:3825696",
@@ -1248,9 +1252,9 @@
       "edge_pct_at_placement": 6.53,
       "predicted_win_prob": 0.2424,
       "stake_usd": 1.99,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T02:01:42.552757+00:00",
+      "pnl_usd": -1.99
     },
     {
       "bet_id": "mispricing:ucl-lyo-fen-2026-08-26:3566700",
