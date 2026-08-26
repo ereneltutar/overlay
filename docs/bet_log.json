@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 872.12,
+  "bankroll": 844.91,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-08-26",
-      "bankroll": 872.12
+      "bankroll": 844.91
     }
   ],
   "bets": [
@@ -192,9 +192,9 @@
       "edge_pct_at_placement": 10.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 33.17,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T09:05:55.588296+00:00",
+      "pnl_usd": -33.17
     },
     {
       "bet_id": "calibration:sea-rom-fio-2026-08-24-more-markets:3506975",
@@ -712,9 +712,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 8.84,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-26T09:05:55.588296+00:00",
+      "pnl_usd": 8.75
     },
     {
       "bet_id": "mispricing:dota2-sb5-ducksq-2026-08-24:3831396",
@@ -1212,9 +1212,9 @@
       "edge_pct_at_placement": 8.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 2.79,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T09:05:55.588296+00:00",
+      "pnl_usd": -2.79
     },
     {
       "bet_id": "mispricing:highest-temperature-in-hong-kong-on-august-25-2026:3795039",
