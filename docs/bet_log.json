@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 845.92,
+  "bankroll": 828.97,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-08-26",
-      "bankroll": 845.92
+      "bankroll": 828.97
     }
   ],
   "bets": [
@@ -1132,9 +1132,9 @@
       "edge_pct_at_placement": 4.19,
       "predicted_win_prob": 0.8886,
       "stake_usd": 3.33,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-26T23:42:32.683742+00:00",
+      "pnl_usd": 0.6
     },
     {
       "bet_id": "calibration:elon-musk-of-tweets-august-21-august-28-2026:3688261",
@@ -1572,9 +1572,9 @@
       "edge_pct_at_placement": 6.53,
       "predicted_win_prob": 0.2424,
       "stake_usd": 17.55,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T23:42:32.683742+00:00",
+      "pnl_usd": -17.55
     },
     {
       "bet_id": "mispricing:cs2-alkaa-pug1-2026-08-25:3774744",
