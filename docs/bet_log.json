@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 870.34,
+  "bankroll": 872.12,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-08-26",
-      "bankroll": 870.34
+      "bankroll": 872.12
     }
   ],
   "bets": [
@@ -912,9 +912,9 @@
       "edge_pct_at_placement": 7.09,
       "predicted_win_prob": 0.8886,
       "stake_usd": 5.33,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-26T03:45:15.013040+00:00",
+      "pnl_usd": 1.19
     },
     {
       "bet_id": "calibration:highest-temperature-in-singapore-on-august-25-2026:3795058",
@@ -1232,9 +1232,9 @@
       "edge_pct_at_placement": 7.09,
       "predicted_win_prob": 0.8886,
       "stake_usd": 2.65,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-26T03:45:15.013040+00:00",
+      "pnl_usd": 0.59
     },
     {
       "bet_id": "mispricing:highest-temperature-in-singapore-on-august-25-2026:3795058",
@@ -1532,6 +1532,86 @@
       "edge_pct_at_placement": 5.17,
       "predicted_win_prob": 0.115,
       "stake_usd": 0.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:cs2-alkaa-pug1-2026-08-25:3774744",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: ALKA vs pugdesonesto (BO3) - CCT South America Series 5 Group Stage",
+      "slug": "cs2-alkaa-pug1-2026-08-25",
+      "url": "https://polymarket.com/event/cs2-alkaa-pug1-2026-08-25",
+      "placed_at": "2026-08-26T03:45:15.013040+00:00",
+      "deadline": "2026-08-26T22:57:15.013040+00:00",
+      "market_ids": [
+        "3774744"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 18.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-farmvi-club33-2026-08-25:3865658",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: FarmVille vs Club 333 (BO3) - ESL Challenger League North America Cup #1 Playoffs",
+      "slug": "cs2-farmvi-club33-2026-08-25",
+      "url": "https://polymarket.com/event/cs2-farmvi-club33-2026-08-25",
+      "placed_at": "2026-08-26T03:45:15.013040+00:00",
+      "deadline": "2026-08-26T08:33:15.013040+00:00",
+      "market_ids": [
+        "3865658"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 17.55,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-alkaa-pug1-2026-08-25:3774744",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: ALKA vs pugdesonesto (BO3) - CCT South America Series 5 Group Stage",
+      "slug": "cs2-alkaa-pug1-2026-08-25",
+      "url": "https://polymarket.com/event/cs2-alkaa-pug1-2026-08-25",
+      "placed_at": "2026-08-26T03:45:15.013040+00:00",
+      "deadline": "2026-08-26T22:57:15.013040+00:00",
+      "market_ids": [
+        "3774744"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 16.85,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:will-wti-hit-week-of-august-24-2026:3769468",
+      "tag": "mispricing",
+      "market_question": "Will WTI Crude Oil (WTI) hit (LOW) $80 Week of August 24 2026?",
+      "slug": "will-wti-hit-week-of-august-24-2026",
+      "url": "https://polymarket.com/event/will-wti-hit-week-of-august-24-2026",
+      "placed_at": "2026-08-26T03:45:15.013040+00:00",
+      "deadline": "2026-08-28T20:33:15.013040+00:00",
+      "market_ids": [
+        "3769468"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0519,
+      "edge_pct_at_placement": 5.07,
+      "predicted_win_prob": 0.1026,
+      "stake_usd": 10.91,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
