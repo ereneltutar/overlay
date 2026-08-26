@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 844.91,
+  "bankroll": 845.92,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-08-26",
-      "bankroll": 844.91
+      "bankroll": 845.92
     }
   ],
   "bets": [
@@ -972,9 +972,9 @@
       "edge_pct_at_placement": 4.69,
       "predicted_win_prob": 0.2755,
       "stake_usd": 2.84,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-26T18:05:46.118321+00:00",
+      "pnl_usd": -2.84
     },
     {
       "bet_id": "calibration:wta-jones-brancac-2026-08-25:3823699",
@@ -1012,9 +1012,9 @@
       "edge_pct_at_placement": 4.58,
       "predicted_win_prob": 0.5683,
       "stake_usd": 4.21,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-26T18:05:46.118321+00:00",
+      "pnl_usd": 3.85
     },
     {
       "bet_id": "calibration:mlb-pit-sd-2026-08-25:3720893",
