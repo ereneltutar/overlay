@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 828.97,
+  "bankroll": 860.57,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -13,6 +13,10 @@
     {
       "date": "2026-08-26",
       "bankroll": 828.97
+    },
+    {
+      "date": "2026-08-27",
+      "bankroll": 860.57
     }
   ],
   "bets": [
@@ -252,9 +256,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 28.44,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-27T09:57:41.632353+00:00",
+      "pnl_usd": 29.31
     },
     {
       "bet_id": "calibration:mlb-phi-sea-2026-08-24:3696499",
@@ -1272,9 +1276,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 2.41,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-27T09:57:41.632353+00:00",
+      "pnl_usd": 2.29
     },
     {
       "bet_id": "mispricing:mlb-cle-laa-2026-08-24:3696493",
