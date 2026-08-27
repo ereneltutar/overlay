@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 860.57,
+  "bankroll": 825.44,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -16,7 +16,7 @@
     },
     {
       "date": "2026-08-27",
-      "bankroll": 860.57
+      "bankroll": 825.44
     }
   ],
   "bets": [
@@ -1556,9 +1556,9 @@
       "edge_pct_at_placement": 6.53,
       "predicted_win_prob": 0.2424,
       "stake_usd": 18.28,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-27T13:19:26.310150+00:00",
+      "pnl_usd": -18.28
     },
     {
       "bet_id": "mispricing:cs2-farmvi-club33-2026-08-25:3865658",
@@ -1596,9 +1596,9 @@
       "edge_pct_at_placement": 6.53,
       "predicted_win_prob": 0.2424,
       "stake_usd": 16.85,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-27T13:19:26.310150+00:00",
+      "pnl_usd": -16.85
     },
     {
       "bet_id": "mispricing:will-wti-hit-week-of-august-24-2026:3769468",
@@ -1616,6 +1616,46 @@
       "edge_pct_at_placement": 5.07,
       "predicted_win_prob": 0.1026,
       "stake_usd": 10.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:col-scf-mot-2026-08-27:3587366",
+      "tag": "mispricing",
+      "market_question": "Will SC Freiburg win on 2026-08-27?",
+      "slug": "col-scf-mot-2026-08-27",
+      "url": "https://polymarket.com/event/col-scf-mot-2026-08-27",
+      "placed_at": "2026-08-27T13:19:26.310150+00:00",
+      "deadline": "2026-08-27T15:43:26.310150+00:00",
+      "market_ids": [
+        "3587366"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1874,
+      "edge_pct_at_placement": 5.5,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 16.55,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:spx-up-or-down-on-august-27-2026:3901212",
+      "tag": "mispricing",
+      "market_question": "S&P 500 (SPX) Up or Down on August 27?",
+      "slug": "spx-up-or-down-on-august-27-2026",
+      "url": "https://polymarket.com/event/spx-up-or-down-on-august-27-2026",
+      "placed_at": "2026-08-27T13:19:26.310150+00:00",
+      "deadline": "2026-08-27T20:31:26.310150+00:00",
+      "market_ids": [
+        "3901212"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2677,
+      "edge_pct_at_placement": 5.24,
+      "predicted_win_prob": 0.3201,
+      "stake_usd": 16.91,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
