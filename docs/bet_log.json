@@ -1663,6 +1663,66 @@
       "status": "lost",
       "resolved_at": "2026-08-28T11:30:30.722079+00:00",
       "pnl_usd": -16.91
+    },
+    {
+      "bet_id": "mispricing:elon-musk-of-tweets-august-21-august-28-2026:3688259",
+      "tag": "mispricing",
+      "market_question": "Will Elon Musk post 180-199 tweets from August 21 to August 28, 2026?",
+      "slug": "elon-musk-of-tweets-august-21-august-28-2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-21-august-28-2026",
+      "placed_at": "2026-08-28T14:43:33.148020+00:00",
+      "deadline": "2026-08-28T17:07:33.148020+00:00",
+      "market_ids": [
+        "3688259"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1771,
+      "edge_pct_at_placement": 6.53,
+      "predicted_win_prob": 0.2424,
+      "stake_usd": 18.08,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:fl1-lil-psg-2026-08-28-more-markets:3597114",
+      "tag": "mispricing",
+      "market_question": "Lille OSC vs. Paris Saint-Germain FC: O/U 0.5",
+      "slug": "fl1-lil-psg-2026-08-28-more-markets",
+      "url": "https://polymarket.com/event/fl1-lil-psg-2026-08-28-more-markets",
+      "placed_at": "2026-08-28T14:43:33.148020+00:00",
+      "deadline": "2026-08-28T19:31:33.148020+00:00",
+      "market_ids": [
+        "3597114"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0534,
+      "edge_pct_at_placement": 6.16,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 14.24,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-inox-lavked-2026-08-28:3925837",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: INOX Division vs Lavked (BO3) - Exort Fiesta Playoffs",
+      "slug": "cs2-inox-lavked-2026-08-28",
+      "url": "https://polymarket.com/event/cs2-inox-lavked-2026-08-28",
+      "placed_at": "2026-08-28T14:43:33.148020+00:00",
+      "deadline": "2026-08-28T19:31:33.148020+00:00",
+      "market_ids": [
+        "3925837"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 5.72,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 15.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
