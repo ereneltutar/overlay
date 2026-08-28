@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 825.44,
+  "bankroll": 790.44,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -17,6 +17,10 @@
     {
       "date": "2026-08-27",
       "bankroll": 825.44
+    },
+    {
+      "date": "2026-08-28",
+      "bankroll": 790.44
     }
   ],
   "bets": [
@@ -1316,9 +1320,9 @@
       "edge_pct_at_placement": 5.05,
       "predicted_win_prob": 0.3201,
       "stake_usd": 1.54,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-28T11:30:30.722079+00:00",
+      "pnl_usd": -1.54
     },
     {
       "bet_id": "mispricing:mlb-min-oak-2026-08-24:3819645",
@@ -1636,9 +1640,9 @@
       "edge_pct_at_placement": 5.5,
       "predicted_win_prob": 0.2424,
       "stake_usd": 16.55,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-28T11:30:30.722079+00:00",
+      "pnl_usd": -16.55
     },
     {
       "bet_id": "mispricing:spx-up-or-down-on-august-27-2026:3901212",
@@ -1656,9 +1660,9 @@
       "edge_pct_at_placement": 5.24,
       "predicted_win_prob": 0.3201,
       "stake_usd": 16.91,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-28T11:30:30.722079+00:00",
+      "pnl_usd": -16.91
     }
   ]
 }
