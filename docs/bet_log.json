@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 771.56,
+  "bankroll": 730.92,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -24,7 +24,7 @@
     },
     {
       "date": "2026-08-29",
-      "bankroll": 771.56
+      "bankroll": 730.92
     }
   ],
   "bets": [
@@ -1624,9 +1624,9 @@
       "edge_pct_at_placement": 5.07,
       "predicted_win_prob": 0.1026,
       "stake_usd": 10.91,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-29T09:32:37.036235+00:00",
+      "pnl_usd": -10.91
     },
     {
       "bet_id": "mispricing:col-scf-mot-2026-08-27:3587366",
@@ -1704,9 +1704,9 @@
       "edge_pct_at_placement": 6.16,
       "predicted_win_prob": 0.115,
       "stake_usd": 14.24,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-29T09:32:37.036235+00:00",
+      "pnl_usd": -14.24
     },
     {
       "bet_id": "mispricing:cs2-inox-lavked-2026-08-28:3925837",
@@ -1724,6 +1724,66 @@
       "edge_pct_at_placement": 5.72,
       "predicted_win_prob": 0.2755,
       "stake_usd": 15.49,
+      "status": "lost",
+      "resolved_at": "2026-08-29T09:32:37.036235+00:00",
+      "pnl_usd": -15.49
+    },
+    {
+      "bet_id": "mispricing:tur-gal-goz-2026-08-29:3636520",
+      "tag": "mispricing",
+      "market_question": "Will Galatasaray SK win on 2026-08-29?",
+      "slug": "tur-gal-goz-2026-08-29",
+      "url": "https://polymarket.com/event/tur-gal-goz-2026-08-29",
+      "placed_at": "2026-08-29T09:32:37.036235+00:00",
+      "deadline": "2026-08-29T19:08:37.036235+00:00",
+      "market_ids": [
+        "3636520"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2696,
+      "edge_pct_at_placement": 5.05,
+      "predicted_win_prob": 0.3201,
+      "stake_usd": 14.23,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-tes-lgd-2026-08-29:3810031",
+      "tag": "mispricing",
+      "market_question": "LoL: Top Esports vs LGD Gaming - Game 1 Winner",
+      "slug": "lol-tes-lgd-2026-08-29",
+      "url": "https://polymarket.com/event/lol-tes-lgd-2026-08-29",
+      "placed_at": "2026-08-29T09:32:37.036235+00:00",
+      "deadline": "2026-08-29T14:20:37.036235+00:00",
+      "market_ids": [
+        "3810031"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2696,
+      "edge_pct_at_placement": 5.05,
+      "predicted_win_prob": 0.3201,
+      "stake_usd": 13.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-tes-lgd-2026-08-29:3810036",
+      "tag": "mispricing",
+      "market_question": "Games Total: O/U 3.5",
+      "slug": "lol-tes-lgd-2026-08-29",
+      "url": "https://polymarket.com/event/lol-tes-lgd-2026-08-29",
+      "placed_at": "2026-08-29T09:32:37.036235+00:00",
+      "deadline": "2026-08-29T14:20:37.036235+00:00",
+      "market_ids": [
+        "3810036"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2696,
+      "edge_pct_at_placement": 5.05,
+      "predicted_win_prob": 0.3201,
+      "stake_usd": 13.26,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
