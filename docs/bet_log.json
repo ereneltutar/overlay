@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 730.92,
+  "bankroll": 742.56,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -24,7 +24,7 @@
     },
     {
       "date": "2026-08-29",
-      "bankroll": 730.92
+      "bankroll": 742.56
     }
   ],
   "bets": [
@@ -1064,9 +1064,9 @@
       "edge_pct_at_placement": 4.58,
       "predicted_win_prob": 0.5683,
       "stake_usd": 3.81,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-29T19:25:44.514559+00:00",
+      "pnl_usd": 3.48
     },
     {
       "bet_id": "calibration:lol-drxc-foxy-2026-08-25:3845971",
@@ -1104,9 +1104,9 @@
       "edge_pct_at_placement": 4.47,
       "predicted_win_prob": 0.2424,
       "stake_usd": 2.01,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-29T19:25:44.514559+00:00",
+      "pnl_usd": 8.16
     },
     {
       "bet_id": "calibration:2026-womens-us-open-winner-tennis:1088654",
