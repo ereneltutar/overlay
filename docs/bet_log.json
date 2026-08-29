@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 789.64,
+  "bankroll": 771.56,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -21,6 +21,10 @@
     {
       "date": "2026-08-28",
       "bankroll": 789.64
+    },
+    {
+      "date": "2026-08-29",
+      "bankroll": 771.56
     }
   ],
   "bets": [
@@ -1680,9 +1684,9 @@
       "edge_pct_at_placement": 6.53,
       "predicted_win_prob": 0.2424,
       "stake_usd": 18.08,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-29T07:10:01.662364+00:00",
+      "pnl_usd": -18.08
     },
     {
       "bet_id": "mispricing:fl1-lil-psg-2026-08-28-more-markets:3597114",
