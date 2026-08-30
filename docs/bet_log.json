@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 766.5,
+  "bankroll": 752.27,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -28,7 +28,7 @@
     },
     {
       "date": "2026-08-30",
-      "bankroll": 766.5
+      "bankroll": 752.27
     }
   ],
   "bets": [
@@ -1748,9 +1748,9 @@
       "edge_pct_at_placement": 5.05,
       "predicted_win_prob": 0.3201,
       "stake_usd": 14.23,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-30T08:39:35.149341+00:00",
+      "pnl_usd": -14.23
     },
     {
       "bet_id": "mispricing:lol-tes-lgd-2026-08-29:3810031",
@@ -1791,6 +1791,26 @@
       "status": "lost",
       "resolved_at": "2026-08-30T05:31:09.411513+00:00",
       "pnl_usd": -13.26
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-guangzhou-on-august-30-2026:3945776",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Guangzhou be 27°C or below on August 30?",
+      "slug": "highest-temperature-in-guangzhou-on-august-30-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-guangzhou-on-august-30-2026",
+      "placed_at": "2026-08-30T08:39:35.149341+00:00",
+      "deadline": "2026-08-30T11:03:35.149341+00:00",
+      "market_ids": [
+        "3945776"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1066,
+      "edge_pct_at_placement": 5.44,
+      "predicted_win_prob": 0.161,
+      "stake_usd": 13.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
