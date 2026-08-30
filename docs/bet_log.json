@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 742.56,
+  "bankroll": 766.5,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -25,6 +25,10 @@
     {
       "date": "2026-08-29",
       "bankroll": 742.56
+    },
+    {
+      "date": "2026-08-30",
+      "bankroll": 766.5
     }
   ],
   "bets": [
@@ -1764,9 +1768,9 @@
       "edge_pct_at_placement": 5.05,
       "predicted_win_prob": 0.3201,
       "stake_usd": 13.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-08-30T05:31:09.411513+00:00",
+      "pnl_usd": 37.2
     },
     {
       "bet_id": "mispricing:lol-tes-lgd-2026-08-29:3810036",
@@ -1784,9 +1788,9 @@
       "edge_pct_at_placement": 5.05,
       "predicted_win_prob": 0.3201,
       "stake_usd": 13.26,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-30T05:31:09.411513+00:00",
+      "pnl_usd": -13.26
     }
   ]
 }
