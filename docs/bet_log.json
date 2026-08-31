@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 752.27,
+  "bankroll": 703.99,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -29,6 +29,10 @@
     {
       "date": "2026-08-30",
       "bankroll": 752.27
+    },
+    {
+      "date": "2026-08-31",
+      "bankroll": 703.99
     }
   ],
   "bets": [
@@ -188,9 +192,9 @@
       "edge_pct_at_placement": 10.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 34.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-31T05:44:58.767276+00:00",
+      "pnl_usd": -34.92
     },
     {
       "bet_id": "calibration:highest-temperature-in-atlanta-on-august-25-2026:3828425",
@@ -1808,9 +1812,9 @@
       "edge_pct_at_placement": 5.44,
       "predicted_win_prob": 0.161,
       "stake_usd": 13.36,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-08-31T05:44:58.767276+00:00",
+      "pnl_usd": -13.36
     }
   ]
 }
