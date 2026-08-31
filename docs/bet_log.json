@@ -1815,6 +1815,166 @@
       "status": "lost",
       "resolved_at": "2026-08-31T05:44:58.767276+00:00",
       "pnl_usd": -13.36
+    },
+    {
+      "bet_id": "calibration:wta-bartunk-sherif-2026-08-30:3943967",
+      "tag": "calibration",
+      "market_question": "US Open WTA: Nikola Bartunkova vs Mayar Sherif",
+      "slug": "wta-bartunk-sherif-2026-08-30",
+      "url": "https://polymarket.com/event/wta-bartunk-sherif-2026-08-30",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-09-06T13:51:01.030021+00:00",
+      "market_ids": [
+        "3943967"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 5.72,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 15.56,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-milan-on-august-31-2026:3967507",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Milan be 31°C on August 31?",
+      "slug": "highest-temperature-in-milan-on-august-31-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-milan-on-august-31-2026",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-08-31T11:27:01.030021+00:00",
+      "market_ids": [
+        "3967507"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 5.72,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 14.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:rhode-island-attorney-general-democratic-primary-winner:3752064",
+      "tag": "calibration",
+      "market_question": "Will Kim Ahern be the Rhode Island Attorney General Democratic nominee?",
+      "slug": "rhode-island-attorney-general-democratic-primary-winner",
+      "url": "https://polymarket.com/event/rhode-island-attorney-general-democratic-primary-winner",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-09-09T23:27:01.030021+00:00",
+      "market_ids": [
+        "3752064"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2269,
+      "edge_pct_at_placement": 4.86,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 12.41,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:epl-ast-ars-2026-08-31-more-markets:3689270",
+      "tag": "mispricing",
+      "market_question": "Aston Villa FC vs. Arsenal FC: O/U 0.5",
+      "slug": "epl-ast-ars-2026-08-31-more-markets",
+      "url": "https://polymarket.com/event/epl-ast-ars-2026-08-31-more-markets",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-08-31T18:39:01.030021+00:00",
+      "market_ids": [
+        "3689270"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0524,
+      "edge_pct_at_placement": 5.02,
+      "predicted_win_prob": 0.1026,
+      "stake_usd": 10.13,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-milan-on-august-31-2026:3967507",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Milan be 31°C on August 31?",
+      "slug": "highest-temperature-in-milan-on-august-31-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-milan-on-august-31-2026",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-08-31T11:27:01.030021+00:00",
+      "market_ids": [
+        "3967507"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 5.72,
+      "predicted_win_prob": 0.2755,
+      "stake_usd": 13.62,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:wta-navarro-boisson-2026-08-30:3943959",
+      "tag": "mispricing",
+      "market_question": "US Open WTA: Emma Navarro vs Lois Boisson",
+      "slug": "wta-navarro-boisson-2026-08-30",
+      "url": "https://polymarket.com/event/wta-navarro-boisson-2026-08-30",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-09-06T13:51:01.030021+00:00",
+      "market_ids": [
+        "3943959"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 5.22,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 9.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:atp-sultan-charlto-2026-08-30:3998487",
+      "tag": "mispricing",
+      "market_question": "Zhangjiagang: Khumoyun Sultanov vs Joshua Charlton",
+      "slug": "atp-sultan-charlto-2026-08-30",
+      "url": "https://polymarket.com/event/atp-sultan-charlto-2026-08-30",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-09-07T01:51:01.030021+00:00",
+      "market_ids": [
+        "3998487"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 5.22,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 9.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:atp-zverev-sonego-2026-08-30:3945841",
+      "tag": "mispricing",
+      "market_question": "US Open ATP: Alexander Zverev vs Lorenzo Sonego",
+      "slug": "atp-zverev-sonego-2026-08-30",
+      "url": "https://polymarket.com/event/atp-zverev-sonego-2026-08-30",
+      "placed_at": "2026-08-31T09:03:01.030021+00:00",
+      "deadline": "2026-09-06T13:51:01.030021+00:00",
+      "market_ids": [
+        "3945841"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 5.22,
+      "predicted_win_prob": 0.115,
+      "stake_usd": 9.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
