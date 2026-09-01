@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 703.99,
+  "bankroll": 603.84,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -33,6 +33,10 @@
     {
       "date": "2026-08-31",
       "bankroll": 703.99
+    },
+    {
+      "date": "2026-09-01",
+      "bankroll": 603.84
     }
   ],
   "bets": [
@@ -112,9 +116,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 42.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": -42.87
     },
     {
       "bet_id": "calibration:atp-passaro-gill-2026-08-24:3825592",
@@ -132,9 +136,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 40.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": -40.73
     },
     {
       "bet_id": "calibration:atp-schwaer-heide-2026-08-24:3825622",
@@ -152,9 +156,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.5865,
       "stake_usd": 38.69,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": -38.69
     },
     {
       "bet_id": "calibration:who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462:3195077",
@@ -292,9 +296,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 27.02,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": 27.84
     },
     {
       "bet_id": "calibration:highest-temperature-in-london-on-august-25-2026:3794940",
@@ -352,9 +356,9 @@
       "edge_pct_at_placement": 9.35,
       "predicted_win_prob": 0.5865,
       "stake_usd": 23.16,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": 23.82
     },
     {
       "bet_id": "calibration:who-will-win-the-democratic-nomination-for-providence-rhode-island-mayor-20260727182320462:3195078",
@@ -1492,9 +1496,9 @@
       "edge_pct_at_placement": 5.28,
       "predicted_win_prob": 0.1026,
       "stake_usd": 0.91,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": -0.91
     },
     {
       "bet_id": "mispricing:atp-gea-nagal-2026-08-25:3825651",
@@ -1852,9 +1856,9 @@
       "edge_pct_at_placement": 5.72,
       "predicted_win_prob": 0.2755,
       "stake_usd": 14.99,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": -14.99
     },
     {
       "bet_id": "calibration:rhode-island-attorney-general-democratic-primary-winner:3752064",
@@ -1912,9 +1916,9 @@
       "edge_pct_at_placement": 5.72,
       "predicted_win_prob": 0.2755,
       "stake_usd": 13.62,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T05:18:06.290486+00:00",
+      "pnl_usd": -13.62
     },
     {
       "bet_id": "mispricing:wta-navarro-boisson-2026-08-30:3943959",
