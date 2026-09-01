@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 603.84,
+  "bankroll": 593.71,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -36,7 +36,7 @@
     },
     {
       "date": "2026-09-01",
-      "bankroll": 603.84
+      "bankroll": 593.71
     }
   ],
   "bets": [
@@ -1896,9 +1896,9 @@
       "edge_pct_at_placement": 5.02,
       "predicted_win_prob": 0.1026,
       "stake_usd": 10.13,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T08:06:27.817031+00:00",
+      "pnl_usd": -10.13
     },
     {
       "bet_id": "mispricing:highest-temperature-in-milan-on-august-31-2026:3967507",
@@ -1976,6 +1976,406 @@
       "edge_pct_at_placement": 5.22,
       "predicted_win_prob": 0.115,
       "stake_usd": 9.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:which-company-has-the-best-ai-model-end-of-september-20260717143435868:3008494",
+      "tag": "calibration",
+      "market_question": "Will Anthropic have the best AI model at the end of September 2026?",
+      "slug": "which-company-has-the-best-ai-model-end-of-september-20260717143435868",
+      "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-september-20260717143435868",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-10-01T03:18:27.817031+00:00",
+      "market_ids": [
+        "3008494"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0623,
+      "edge_pct_at_placement": 11.34,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 21.57,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:atp-zverev-sonego-2026-08-30:3945841",
+      "tag": "calibration",
+      "market_question": "US Open ATP: Alexander Zverev vs Lorenzo Sonego",
+      "slug": "atp-zverev-sonego-2026-08-30",
+      "url": "https://polymarket.com/event/atp-zverev-sonego-2026-08-30",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-06T15:18:27.817031+00:00",
+      "market_ids": [
+        "3945841"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 11.29,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 20.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:will-iran-target-the-united-arab-emirates-byptptpt:3710797",
+      "tag": "calibration",
+      "market_question": "Will Iran target the United Arab Emirates by August 31, 2026?",
+      "slug": "will-iran-target-the-united-arab-emirates-byptptpt",
+      "url": "https://polymarket.com/event/will-iran-target-the-united-arab-emirates-byptptpt",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-30T20:06:27.817031+00:00",
+      "market_ids": [
+        "3710797"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.08,
+      "edge_pct_at_placement": 9.57,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 19.46,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:next-mythos-class-model-released-by:2487206",
+      "tag": "calibration",
+      "market_question": "Next Mythos-Class Model released by September 30, 2026?",
+      "slug": "next-mythos-class-model-released-by",
+      "url": "https://polymarket.com/event/next-mythos-class-model-released-by",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-10-01T00:54:27.817031+00:00",
+      "market_ids": [
+        "2487206"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0829,
+      "edge_pct_at_placement": 9.28,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 18.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:largest-company-end-of-september-1785358369147:3212185",
+      "tag": "calibration",
+      "market_question": "Will NVIDIA be the largest company in the world by market cap on September 30?",
+      "slug": "largest-company-end-of-september-1785358369147",
+      "url": "https://polymarket.com/event/largest-company-end-of-september-1785358369147",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-10-01T00:54:27.817031+00:00",
+      "market_ids": [
+        "3212185"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0829,
+      "edge_pct_at_placement": 9.28,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 17.57,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:ma-01-democratic-primary-winner-20260727173754524:3141846",
+      "tag": "calibration",
+      "market_question": "Will Richard Neal be the MA-01 Democratic nominee?",
+      "slug": "ma-01-democratic-primary-winner-20260727173754524",
+      "url": "https://polymarket.com/event/ma-01-democratic-primary-winner-20260727173754524",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-02T00:54:27.817031+00:00",
+      "market_ids": [
+        "3141846"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.085,
+      "edge_pct_at_placement": 9.07,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 16.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:next-mythos-class-model-released-by:3949511",
+      "tag": "calibration",
+      "market_question": "Next Mythos-Class Model released by September 4, 2026?",
+      "slug": "next-mythos-class-model-released-by",
+      "url": "https://polymarket.com/event/next-mythos-class-model-released-by",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-10-01T00:54:27.817031+00:00",
+      "market_ids": [
+        "3949511"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2166,
+      "edge_pct_at_placement": 8.46,
+      "predicted_win_prob": 0.3012,
+      "stake_usd": 15.86,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:which-party-will-gain-most-seats-in-russian-parliamentary-election:1130016",
+      "tag": "calibration",
+      "market_question": "Will New People (NL) gain the most seats in the next Russian parliamentary election?",
+      "slug": "which-party-will-gain-most-seats-in-russian-parliamentary-election",
+      "url": "https://polymarket.com/event/which-party-will-gain-most-seats-in-russian-parliamentary-election",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-20T00:54:27.817031+00:00",
+      "market_ids": [
+        "1130016"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.76,
+      "edge_pct_at_placement": 8.31,
+      "predicted_win_prob": 0.8431,
+      "stake_usd": 15.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:what-will-be-the-top-us-netflix-movie-this-week-20260901:3916401",
+      "tag": "mispricing",
+      "market_question": "Will \"Grand Theft Auto VI Extended Look\" be the top US Netflix movie this week?",
+      "slug": "what-will-be-the-top-us-netflix-movie-this-week-20260901",
+      "url": "https://polymarket.com/event/what-will-be-the-top-us-netflix-movie-this-week-20260901",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-02T00:54:27.817031+00:00",
+      "market_ids": [
+        "3916401"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0503,
+      "edge_pct_at_placement": 8.01,
+      "predicted_win_prob": 0.1304,
+      "stake_usd": 12.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:what-will-be-the-2-us-netflix-movie-this-week-20260901:3916435",
+      "tag": "mispricing",
+      "market_question": "Will \"The Whisper Man (2026)\" be the #2 US Netflix movie this week?",
+      "slug": "what-will-be-the-2-us-netflix-movie-this-week-20260901",
+      "url": "https://polymarket.com/event/what-will-be-the-2-us-netflix-movie-this-week-20260901",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-02T00:54:27.817031+00:00",
+      "market_ids": [
+        "3916435"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 10.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 13.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:cs2-thunde-gz1-2026-09-01:4034422",
+      "tag": "mispricing",
+      "market_question": "Counter-Strike: THUNDER dOWNUNDER vs Ground Zero (BO3) - ESL Challenger League Oceania Cup #1 Playoffs",
+      "slug": "cs2-thunde-gz1-2026-09-01",
+      "url": "https://polymarket.com/event/cs2-thunde-gz1-2026-09-01",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T15:18:27.817031+00:00",
+      "market_ids": [
+        "4034422"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2799,
+      "edge_pct_at_placement": 6.49,
+      "predicted_win_prob": 0.3448,
+      "stake_usd": 11.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-shenzhen-on-september-1-2026:3992504",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Shenzhen be 31°C on September 1?",
+      "slug": "highest-temperature-in-shenzhen-on-september-1-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-shenzhen-on-september-1-2026",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T12:54:27.817031+00:00",
+      "market_ids": [
+        "3992504"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.067,
+      "edge_pct_at_placement": 10.87,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 12.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-seoul-on-september-1-2026:3992295",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Seoul (Incheon) be 25°C on September 1?",
+      "slug": "highest-temperature-in-seoul-on-september-1-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-seoul-on-september-1-2026",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T12:54:27.817031+00:00",
+      "market_ids": [
+        "3992295"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0837,
+      "edge_pct_at_placement": 9.2,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 11.82,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ma-01-democratic-primary-winner-20260727173754524:3141846",
+      "tag": "mispricing",
+      "market_question": "Will Richard Neal be the MA-01 Democratic nominee?",
+      "slug": "ma-01-democratic-primary-winner-20260727173754524",
+      "url": "https://polymarket.com/event/ma-01-democratic-primary-winner-20260727173754524",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-02T00:54:27.817031+00:00",
+      "market_ids": [
+        "3141846"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.085,
+      "edge_pct_at_placement": 9.07,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 11.13,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:elc-she-bol-2026-09-01:3713974",
+      "tag": "mispricing",
+      "market_question": "Will Sheffield United FC vs. Bolton Wanderers FC end in a draw?",
+      "slug": "elc-she-bol-2026-09-01",
+      "url": "https://polymarket.com/event/elc-she-bol-2026-09-01",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T17:42:27.817031+00:00",
+      "market_ids": [
+        "3713974"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.8431,
+      "stake_usd": 10.67,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ma-06-democratic-primary-winner:704002",
+      "tag": "mispricing",
+      "market_question": "Will Dan Koh be the Democratic nominee for MA-06?",
+      "slug": "ma-06-democratic-primary-winner",
+      "url": "https://polymarket.com/event/ma-06-democratic-primary-winner",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-02T00:54:27.817031+00:00",
+      "market_ids": [
+        "704002"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1036,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 8.15,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:white-house-of-tweets-august-25-september-1-2026:3772704",
+      "tag": "mispricing",
+      "market_question": "Will White House post 140-159 posts from August 25 to September 1, 2026?",
+      "slug": "white-house-of-tweets-august-25-september-1-2026",
+      "url": "https://polymarket.com/event/white-house-of-tweets-august-25-september-1-2026",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T15:18:27.817031+00:00",
+      "market_ids": [
+        "3772704"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.772,
+      "edge_pct_at_placement": 7.11,
+      "predicted_win_prob": 0.8431,
+      "stake_usd": 9.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-pcific-dp-2026-09-01:3969266",
+      "tag": "mispricing",
+      "market_question": "LoL: PCIFIC  vs Dark Passage (BO5) - TCL Playoffs",
+      "slug": "lol-pcific-dp-2026-09-01",
+      "url": "https://polymarket.com/event/lol-pcific-dp-2026-09-01",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T20:06:27.817031+00:00",
+      "market_ids": [
+        "3969266"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2286,
+      "edge_pct_at_placement": 7.26,
+      "predicted_win_prob": 0.3012,
+      "stake_usd": 8.7,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-ucam1-bar-2026-09-01:3777592",
+      "tag": "mispricing",
+      "market_question": "LoL: UCAM Esports Club vs Barça eSports (BO5) - LES Final Four",
+      "slug": "lol-ucam1-bar-2026-09-01",
+      "url": "https://polymarket.com/event/lol-ucam1-bar-2026-09-01",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T20:06:27.817031+00:00",
+      "market_ids": [
+        "3777592"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2389,
+      "edge_pct_at_placement": 6.23,
+      "predicted_win_prob": 0.3012,
+      "stake_usd": 7.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:xauusd-up-or-down-on-september-1-2026:4024728",
+      "tag": "mispricing",
+      "market_question": "Gold (XAUUSD) Up or Down on September 1?",
+      "slug": "xauusd-up-or-down-on-september-1-2026",
+      "url": "https://polymarket.com/event/xauusd-up-or-down-on-september-1-2026",
+      "placed_at": "2026-09-01T08:06:27.817031+00:00",
+      "deadline": "2026-09-01T20:06:27.817031+00:00",
+      "market_ids": [
+        "4024728"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7771,
+      "edge_pct_at_placement": 6.6,
+      "predicted_win_prob": 0.8431,
+      "stake_usd": 8.45,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
