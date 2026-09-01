@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 589.88,
+  "bankroll": 591.8,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -36,7 +36,7 @@
     },
     {
       "date": "2026-09-01",
-      "bankroll": 589.88
+      "bankroll": 591.8
     }
   ],
   "bets": [
@@ -856,9 +856,9 @@
       "edge_pct_at_placement": 10.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 6.49,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-01T19:25:32.878310+00:00",
+      "pnl_usd": 6.96
     },
     {
       "bet_id": "calibration:ucl-lin2-cel-2026-08-25:3545759",
@@ -896,9 +896,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.5865,
       "stake_usd": 5.86,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-01T19:25:32.878310+00:00",
+      "pnl_usd": 5.57
     },
     {
       "bet_id": "calibration:israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963:3399459",
@@ -976,9 +976,9 @@
       "edge_pct_at_placement": 6.53,
       "predicted_win_prob": 0.2424,
       "stake_usd": 3.86,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T19:25:32.878310+00:00",
+      "pnl_usd": -3.86
     },
     {
       "bet_id": "calibration:lol-kt-bro2-2026-08-26:3819663",
@@ -1016,9 +1016,9 @@
       "edge_pct_at_placement": 4.69,
       "predicted_win_prob": 0.2755,
       "stake_usd": 2.75,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T19:25:32.878310+00:00",
+      "pnl_usd": -2.75
     },
     {
       "bet_id": "calibration:cs2-aur1-g2-2026-08-26:3682168",
@@ -1056,9 +1056,9 @@
       "edge_pct_at_placement": 4.58,
       "predicted_win_prob": 0.5683,
       "stake_usd": 4.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T19:25:32.878310+00:00",
+      "pnl_usd": -4.0
     },
     {
       "bet_id": "calibration:of-views-of-next-mrbeast-video-on-week-1-20260822:3725920",
