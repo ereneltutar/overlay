@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 593.71,
+  "bankroll": 589.88,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -36,7 +36,7 @@
     },
     {
       "date": "2026-09-01",
-      "bankroll": 593.71
+      "bankroll": 589.88
     }
   ],
   "bets": [
@@ -1316,9 +1316,9 @@
       "edge_pct_at_placement": 5.22,
       "predicted_win_prob": 0.115,
       "stake_usd": 1.28,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T13:32:06.867789+00:00",
+      "pnl_usd": -1.28
     },
     {
       "bet_id": "mispricing:lal-bar-bil-2026-08-27:3578043",
@@ -1356,9 +1356,9 @@
       "edge_pct_at_placement": 5.05,
       "predicted_win_prob": 0.3201,
       "stake_usd": 1.49,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T13:32:06.867789+00:00",
+      "pnl_usd": -1.49
     },
     {
       "bet_id": "mispricing:mlb-min-oak-2026-08-24:3819644",
@@ -1376,9 +1376,9 @@
       "edge_pct_at_placement": 5.22,
       "predicted_win_prob": 0.115,
       "stake_usd": 1.16,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T13:32:06.867789+00:00",
+      "pnl_usd": -1.16
     },
     {
       "bet_id": "mispricing:mlb-cin-sf-2026-08-24:3696502",
@@ -1396,9 +1396,9 @@
       "edge_pct_at_placement": 5.5,
       "predicted_win_prob": 0.2424,
       "stake_usd": 1.37,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-01T13:32:06.867789+00:00",
+      "pnl_usd": -1.37
     },
     {
       "bet_id": "mispricing:atp-ofner-nishiko-2026-08-25:3825712",
@@ -1536,9 +1536,9 @@
       "edge_pct_at_placement": 5.83,
       "predicted_win_prob": 0.5683,
       "stake_usd": 1.53,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-01T13:32:06.867789+00:00",
+      "pnl_usd": 1.47
     },
     {
       "bet_id": "mispricing:rhode-island-governor-democratic-primary-winner:906867",
