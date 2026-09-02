@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 564.38,
+  "bankroll": 550.89,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -40,7 +40,7 @@
     },
     {
       "date": "2026-09-02",
-      "bankroll": 564.38
+      "bankroll": 550.89
     }
   ],
   "bets": [
@@ -2340,9 +2340,9 @@
       "edge_pct_at_placement": 7.26,
       "predicted_win_prob": 0.3012,
       "stake_usd": 8.7,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T12:48:57.255858+00:00",
+      "pnl_usd": -8.7
     },
     {
       "bet_id": "mispricing:lol-ucam1-bar-2026-09-01:3777592",
@@ -2360,9 +2360,9 @@
       "edge_pct_at_placement": 6.23,
       "predicted_win_prob": 0.3012,
       "stake_usd": 7.21,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T12:48:57.255858+00:00",
+      "pnl_usd": -7.21
     },
     {
       "bet_id": "mispricing:xauusd-up-or-down-on-september-1-2026:4024728",
@@ -2380,9 +2380,9 @@
       "edge_pct_at_placement": 6.6,
       "predicted_win_prob": 0.8431,
       "stake_usd": 8.45,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-02T12:48:57.255858+00:00",
+      "pnl_usd": 2.42
     },
     {
       "bet_id": "calibration:wta-pegula-kenin-2026-09-02:4023677",
