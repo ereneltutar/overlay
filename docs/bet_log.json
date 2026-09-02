@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 561.18,
+  "bankroll": 564.38,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -40,7 +40,7 @@
     },
     {
       "date": "2026-09-02",
-      "bankroll": 561.18
+      "bankroll": 564.38
     }
   ],
   "bets": [
@@ -2280,9 +2280,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.8431,
       "stake_usd": 10.67,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-02T07:26:44.474063+00:00",
+      "pnl_usd": 3.2
     },
     {
       "bet_id": "mispricing:ma-06-democratic-primary-winner:704002",
@@ -2380,6 +2380,186 @@
       "edge_pct_at_placement": 6.6,
       "predicted_win_prob": 0.8431,
       "stake_usd": 8.45,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wta-pegula-kenin-2026-09-02:4023677",
+      "tag": "calibration",
+      "market_question": "US Open WTA: Jessica Pegula vs Sofia Kenin",
+      "slug": "wta-pegula-kenin-2026-09-02",
+      "url": "https://polymarket.com/event/wta-pegula-kenin-2026-09-02",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-09T14:38:44.474063+00:00",
+      "market_ids": [
+        "4023677"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 10.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 11.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wta-townsen-preston-2026-09-02:4045873",
+      "tag": "calibration",
+      "market_question": "US Open WTA: Taylor Townsend vs Taylah Preston",
+      "slug": "wta-townsen-preston-2026-09-02",
+      "url": "https://polymarket.com/event/wta-townsen-preston-2026-09-02",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-09T14:38:44.474063+00:00",
+      "market_ids": [
+        "4045873"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 8.29,
+      "predicted_win_prob": 0.3012,
+      "stake_usd": 10.56,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:russia-parliamentary-election-2nd-place:2046123",
+      "tag": "calibration",
+      "market_question": "Will the Communist Party of the Russian Federation (KPRF) win the second-most seats in the next Russian parliamentary election?",
+      "slug": "russia-parliamentary-election-2nd-place",
+      "url": "https://polymarket.com/event/russia-parliamentary-election-2nd-place",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-20T00:14:44.474063+00:00",
+      "market_ids": [
+        "2046123"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0933,
+      "edge_pct_at_placement": 8.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 9.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:which-company-has-the-best-ai-agent-end-of-september-20260716211946456:3007835",
+      "tag": "calibration",
+      "market_question": "Will Anthropic have the best AI Agent at the end of September 2026?",
+      "slug": "which-company-has-the-best-ai-agent-end-of-september-20260716211946456",
+      "url": "https://polymarket.com/event/which-company-has-the-best-ai-agent-end-of-september-20260716211946456",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-10-01T05:02:44.474063+00:00",
+      "market_ids": [
+        "3007835"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0933,
+      "edge_pct_at_placement": 8.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 8.7,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:lol-hle1-t1-2026-09-02:4000249",
+      "tag": "mispricing",
+      "market_question": "Games Total: O/U 3.5",
+      "slug": "lol-hle1-t1-2026-09-02",
+      "url": "https://polymarket.com/event/lol-hle1-t1-2026-09-02",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-02T14:38:44.474063+00:00",
+      "market_ids": [
+        "4000249"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.2696,
+      "edge_pct_at_placement": 7.52,
+      "predicted_win_prob": 0.3448,
+      "stake_usd": 9.14,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-hong-kong-on-september-2-2026:4018339",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Hong Kong be 31°C on September 2?",
+      "slug": "highest-temperature-in-hong-kong-on-september-2-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-hong-kong-on-september-2-2026",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-02T12:14:44.474063+00:00",
+      "market_ids": [
+        "4018339"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0524,
+      "edge_pct_at_placement": 7.8,
+      "predicted_win_prob": 0.1304,
+      "stake_usd": 7.15,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:ethereum-above-on-september-2-2026:3903717",
+      "tag": "mispricing",
+      "market_question": "Will the price of Ethereum be above $2,500 on September 2?",
+      "slug": "ethereum-above-on-september-2-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-september-2-2026",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-02T17:02:44.474063+00:00",
+      "market_ids": [
+        "3903717"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0224,
+      "edge_pct_at_placement": 5.13,
+      "predicted_win_prob": 0.0737,
+      "stake_usd": 4.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:highest-temperature-in-miami-on-september-2-2026:4020677",
+      "tag": "mispricing",
+      "market_question": "Will the highest temperature in Miami be between 88-89°F on September 2?",
+      "slug": "highest-temperature-in-miami-on-september-2-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-miami-on-september-2-2026",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-02T12:14:44.474063+00:00",
+      "market_ids": [
+        "4020677"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.8431,
+      "stake_usd": 8.11,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:wta-bartunk-sherif-2026-08-30:3943967",
+      "tag": "mispricing",
+      "market_question": "US Open WTA: Nikola Bartunkova vs Mayar Sherif",
+      "slug": "wta-bartunk-sherif-2026-08-30",
+      "url": "https://polymarket.com/event/wta-bartunk-sherif-2026-08-30",
+      "placed_at": "2026-09-02T07:26:44.474063+00:00",
+      "deadline": "2026-09-06T14:38:44.474063+00:00",
+      "market_ids": [
+        "3943967"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 10.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 7.7,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
