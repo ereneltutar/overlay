@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 550.89,
+  "bankroll": 489.29,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -40,7 +40,7 @@
     },
     {
       "date": "2026-09-02",
-      "bankroll": 550.89
+      "bankroll": 489.29
     }
   ],
   "bets": [
@@ -2100,9 +2100,9 @@
       "edge_pct_at_placement": 9.07,
       "predicted_win_prob": 0.1757,
       "stake_usd": 16.54,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T19:24:33.238321+00:00",
+      "pnl_usd": -16.54
     },
     {
       "bet_id": "calibration:next-mythos-class-model-released-by:3949511",
@@ -2160,9 +2160,9 @@
       "edge_pct_at_placement": 8.01,
       "predicted_win_prob": 0.1304,
       "stake_usd": 12.07,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T19:24:33.238321+00:00",
+      "pnl_usd": -12.07
     },
     {
       "bet_id": "mispricing:what-will-be-the-2-us-netflix-movie-this-week-20260901:3916435",
@@ -2180,9 +2180,9 @@
       "edge_pct_at_placement": 10.24,
       "predicted_win_prob": 0.1757,
       "stake_usd": 13.71,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T19:24:33.238321+00:00",
+      "pnl_usd": -13.71
     },
     {
       "bet_id": "mispricing:cs2-thunde-gz1-2026-09-01:4034422",
@@ -2260,9 +2260,9 @@
       "edge_pct_at_placement": 9.07,
       "predicted_win_prob": 0.1757,
       "stake_usd": 11.13,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T19:24:33.238321+00:00",
+      "pnl_usd": -11.13
     },
     {
       "bet_id": "mispricing:elc-she-bol-2026-09-01:3713974",
@@ -2300,9 +2300,9 @@
       "edge_pct_at_placement": 7.21,
       "predicted_win_prob": 0.1757,
       "stake_usd": 8.15,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-02T19:24:33.238321+00:00",
+      "pnl_usd": -8.15
     },
     {
       "bet_id": "mispricing:white-house-of-tweets-august-25-september-1-2026:3772704",
