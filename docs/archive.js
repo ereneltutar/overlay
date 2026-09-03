@@ -251,7 +251,7 @@ function renderEntry(b){
   const pnlText = b.status === 'open' ? 'pending'
     : b.status === 'void' ? 'stake returned'
     : fmtSignedUsd(b.pnl_usd);
-  const sideText = b.recommended_side ? `${b.recommended_side} · ` : '';
+  const sideBadge = b.recommended_side ? `<span class="side-badge">${escapeHtml(b.recommended_side)}</span>` : '';
   const dateText = b.status === 'open'
     ? `placed ${fmtShortDate(b.placed_at)} · resolves ~${fmtShortDate(b.deadline)}`
     : `placed ${fmtShortDate(b.placed_at)} · resolved ${fmtShortDate(b.resolved_at)}`;
@@ -264,9 +264,9 @@ function renderEntry(b){
         <p class="entry-title">${escapeHtml(b.market_question)}</p>
         <span class="entry-pnl ${statusClass}">${pnlText}</span>
       </div>
-      <div class="entry-meta">${sideText}entry cost $${b.entry_cost.toFixed(3)} · edge ${b.edge_pct_at_placement.toFixed(1)}% at placement</div>
+      <div class="entry-meta">entry cost $${b.entry_cost.toFixed(3)} · edge ${b.edge_pct_at_placement.toFixed(1)}% at placement</div>
       <div class="entry-foot">
-        <span>stake <span class="stake">${fmtUsd(b.stake_usd)}</span> · ${dateText}</span>
+        <span>${sideBadge}stake <span class="stake">${fmtUsd(b.stake_usd)}</span> · ${dateText}</span>
         <span class="open-link">↗ open on polymarket</span>
       </div>
     </a>`;
