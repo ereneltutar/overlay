@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 489.29,
+  "bankroll": 480.15,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -41,6 +41,10 @@
     {
       "date": "2026-09-02",
       "bankroll": 489.29
+    },
+    {
+      "date": "2026-09-03",
+      "bankroll": 480.15
     }
   ],
   "bets": [
@@ -2480,9 +2484,9 @@
       "edge_pct_at_placement": 7.52,
       "predicted_win_prob": 0.3448,
       "stake_usd": 9.14,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-03T04:39:29.012076+00:00",
+      "pnl_usd": -9.14
     },
     {
       "bet_id": "mispricing:highest-temperature-in-hong-kong-on-september-2-2026:4018339",
