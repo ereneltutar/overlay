@@ -492,8 +492,9 @@ def test_find_calibration_signal_implied_cost_includes_real_taker_fee():
 
 # --- find_mispricing_signal ----------------------------------------------
 
-def mis_bins(resolved_yes_rate=0.5, sample_size=40):
-    return [{"range": [0.2, 0.35], "resolved_yes_rate": resolved_yes_rate, "sample_size": sample_size}]
+def mis_bins(resolved_yes_rate=0.5, sample_size=40, significant=True):
+    return [{"range": [0.2, 0.35], "resolved_yes_rate": resolved_yes_rate,
+             "sample_size": sample_size, "significant": significant}]
 
 
 def test_find_mispricing_signal_low_volume_returns_none():
@@ -505,6 +506,15 @@ def test_find_mispricing_signal_no_bucket_data_returns_none():
     market = {"lastTradePrice": 0.3, "volume24hr": 10000}
     empty_bins = [{"range": [0.2, 0.35], "resolved_yes_rate": None, "sample_size": 5}]
     assert fa.find_mispricing_signal(market, {}, empty_bins, NOW) is None
+
+
+def test_find_mispricing_signal_bucket_not_significant_returns_none():
+    # Same guard find_calibration_signal already has (test_find_calibration_signal_bucket_not_significant).
+    # Added after the Sep 2026 drawdown: MIS had no significance requirement
+    # at all, letting statistically-noisy point gaps through as if they were
+    # real edge.
+    market = {"lastTradePrice": 0.3, "volume24hr": 10000}
+    assert fa.find_mispricing_signal(market, {}, mis_bins(resolved_yes_rate=0.5, significant=False), NOW) is None
 
 
 def test_find_mispricing_signal_below_min_edge_returns_none():
@@ -544,7 +554,7 @@ def test_find_mispricing_signal_long_horizon_with_big_edge_included():
     # 40 days out, implied=0.1 fair=0.5 -> 40pt gap, exceeds LONGTERM_MIN_EDGE_PTS(25)
     market = {"lastTradePrice": 0.1, "volume24hr": 10000}
     event = {"endDate": (NOW + datetime.timedelta(days=40)).isoformat(), "slug": "s"}
-    bins = [{"range": [0.05, 0.2], "resolved_yes_rate": 0.5, "sample_size": 40}]
+    bins = [{"range": [0.05, 0.2], "resolved_yes_rate": 0.5, "sample_size": 40, "significant": True}]
     sig = fa.find_mispricing_signal(market, event, bins, NOW)
     assert sig is not None
 

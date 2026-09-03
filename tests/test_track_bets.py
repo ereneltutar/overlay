@@ -177,6 +177,56 @@ def test_kelly_stake_discounts_toward_wilson_low_once_min_sample_met():
     assert 0 < discounted < undiscounted
 
 
+# --- pooled_track_record / neighbor-bucket pooling -------------------------
+
+def test_pooled_track_record_sums_immediate_neighbors():
+    key = tb.prob_bucket_key(0.22)  # bucket [0.20, 0.25)
+    track = {
+        key - 1: (0, 5),   # [0.15, 0.20)
+        key: (1, 3),       # [0.20, 0.25) -- alone, below OWN_TRACK_MIN_SAMPLE
+        key + 1: (0, 4),   # [0.25, 0.30)
+    }
+    wins, total = tb.pooled_track_record(track, key)
+    assert (wins, total) == (1, 12)
+
+
+def test_pooled_track_record_stops_at_radius_and_range_edges():
+    # radius=1 by default: a bucket two slots away must not be pooled in.
+    key = tb.prob_bucket_key(0.5)
+    track = {key: (0, 2), key - 2: (100, 100)}
+    wins, total = tb.pooled_track_record(track, key)
+    assert (wins, total) == (0, 2)
+
+    # bucket 0 has no key-1 neighbor to pool from -- must not go negative/wrap.
+    wins0, total0 = tb.pooled_track_record({0: (0, 2)}, 0)
+    assert (wins0, total0) == (0, 2)
+
+
+def test_kelly_stake_pools_neighbors_when_exact_bucket_below_min_sample():
+    # Mirrors the real Sep 2026 case: bucket [0.15,0.20) alone only has 5
+    # resolved bets (below OWN_TRACK_MIN_SAMPLE=8), all losses, but its
+    # neighbor [0.10,0.15) already has 8 resolved, also all losses. Pooling
+    # should let that neighbor evidence suppress the bet instead of falling
+    # back to the model's raw, unproven prediction.
+    key = tb.prob_bucket_key(0.176)
+    track = {key: (0, 5), key - 1: (0, 8)}
+    stake = tb.kelly_stake(entry_cost=0.10, predicted_win_prob=0.176,
+                            track=track, bankroll_avail=1000, cap_frac=0.05)
+    assert stake == 0.0
+
+
+def test_kelly_stake_pooling_only_kicks_in_below_own_min_sample():
+    # Once the exact bucket itself clears OWN_TRACK_MIN_SAMPLE, its own
+    # (unpooled) Wilson bound is used -- pooling is a fallback, not blended
+    # in on top of an already-sufficient exact-bucket sample.
+    key = tb.prob_bucket_key(0.9)
+    exact_only = {key: (7, 8)}                    # exact bucket: strong 87.5% win rate, n=8
+    polluted_neighbor = {key: (7, 8), key + 1: (0, 50)}  # neighbor is terrible but irrelevant now
+    stake_exact = tb.kelly_stake(0.5, 0.9, exact_only, 1000, 1.0)
+    stake_polluted = tb.kelly_stake(0.5, 0.9, polluted_neighbor, 1000, 1.0)
+    assert stake_exact == stake_polluted
+
+
 # --- build_candidates ----------------------------------------------------
 
 def test_build_candidates_arb_requires_market_ids_slug_and_end_date():
@@ -275,7 +325,7 @@ def test_place_new_bets_dedupes_against_existing_bets():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
     assert placed == 0
     assert len(log["bets"]) == 1  # still just the pre-existing one
 
@@ -286,7 +336,7 @@ def test_place_new_bets_skips_when_bankroll_below_floor():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
     assert placed == 0
     assert skipped_bankroll == 1
 
@@ -297,7 +347,7 @@ def test_place_new_bets_places_and_updates_log():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
     assert placed == 1
     assert skipped_bankroll == 0
     assert skipped_no_edge == 0
@@ -336,10 +386,55 @@ def test_place_new_bets_skips_calibration_signal_when_own_track_record_kills_kel
         "recommended_side": "YES", "implied_cost": 0.951, "edge_pct": 4.79,
         "bucket_historical_rate": 0.90,
     }]}
-    placed, skipped_bankroll, skipped_no_edge = tb.place_new_bets(log, results, NOW)
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
     assert placed == 0
     assert skipped_no_edge == 1
     assert not any(b["slug"] == "new-market" for b in log["bets"])
+
+
+# --- place_new_bets: portfolio exposure cap ---------------------------------
+
+def test_place_new_bets_skips_when_open_stake_already_at_exposure_cap():
+    log = fresh_log()  # bankroll 1000, cap = 350
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=350.0))
+    results = {"mispricing_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+        "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
+        "fair_probability": 0.7, "recommended_side": "YES",
+    }]}
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
+    assert placed == 0
+    assert skipped_exposure_cap == 1
+    assert not any(b["slug"] == "s" for b in log["bets"])
+
+
+def test_place_new_bets_trims_stake_to_remaining_exposure_room():
+    log = fresh_log()  # bankroll 1000, cap = 350
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=345.0))  # only $5 of room left
+    results = {"mispricing_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+        "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
+        "fair_probability": 0.7, "recommended_side": "YES",
+    }]}
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
+    # exposure_room ($5) is below STAKE_FLOOR_USD ($10), so this is skipped
+    # outright rather than placed with a dust-sized stake.
+    assert placed == 0
+    assert skipped_exposure_cap == 1
+
+
+def test_place_new_bets_allows_bet_within_exposure_room():
+    log = fresh_log()  # bankroll 1000, cap = 350
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=300.0))  # $50 of room left
+    results = {"mispricing_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+        "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
+        "fair_probability": 0.7, "recommended_side": "YES",
+    }]}
+    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = tb.place_new_bets(log, results, NOW)
+    assert placed == 1
+    assert skipped_exposure_cap == 0
+    assert log["bets"][-1]["stake_usd"] <= 50.0
 
 
 # --- resolve_open_bets (network mocked) ------------------------------------

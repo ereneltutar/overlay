@@ -564,12 +564,26 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
     probability").
 
     HOW THIS DIFFERS FROM find_calibration_signal():
-      - no statistical-significance requirement (Wilson interval); looks
-        directly at the point gap
-      - has a 24-hour volume filter (tradability, not liquidity)
+      - has a 24-hour volume filter (tradability, not liquidity), CAL has a
+        liquidity floor instead
       - markets beyond HORIZON_DAYS are only included at large edges
         (>LONGTERM_MIN_EDGE_PTS)
       - produces a comparable 'score' instead of a single signal
+
+    Used to skip the Wilson-significance check find_calibration_signal
+    requires and look directly at the point gap. Removed after the Sep 2026
+    drawdown investigation: forward performance on resolved CAL/MIS bets
+    showed predicted_win_prob running ~12-13 points above realized win rate,
+    concentrated in cheap "buy the underpriced longshot" bets -- and lowering
+    MISPRICING_MIN_EDGE_PTS from 15 to 5 on 2026-08-24 let much weaker,
+    noisier point-gaps through right as the drawdown started. Requiring the
+    same significance bar CAL already uses is a cheap first line of defense
+    against sizing bets on point estimates that are themselves statistical
+    noise, even though it alone wouldn't have caught every losing bet in
+    that period (most did land in nominally "significant" buckets whose
+    point estimate still didn't hold up out of sample -- see
+    NEIGHBOR_POOL_RADIUS in track_bets.py for the complementary fix on the
+    sizing side).
 
     Reads the SAME bucket table (docs/calibration.json) but never calls or
     modifies find_calibration_signal; it's a fully independent function."""
@@ -593,6 +607,8 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
     bucket = find_bin(implied_prob, bins)
     if not bucket or bucket.get("resolved_yes_rate") is None:
         return None  # no usable historical rate for this bucket yet (n < MIN_SAMPLE_PER_BUCKET)
+    if not bucket.get("significant"):
+        return None  # point estimate isn't statistically distinguishable from the market's own price
     fair_prob = bucket["resolved_yes_rate"]
 
     # Same real per-market taker fee as ARB/CAL (rate * price * (1-price), so

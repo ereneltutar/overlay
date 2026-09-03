@@ -83,9 +83,25 @@ OWN_TRACK_MIN_SAMPLE = 8       # need at least this many of Overlay's own resolv
                                 # the model's predicted one (small samples stay noisy either way, so
                                 # this keeps the model's number until there's enough of our own history
                                 # to say something with real confidence)
+NEIGHBOR_POOL_RADIUS = 1        # a bucket that hasn't hit OWN_TRACK_MIN_SAMPLE on its own yet borrows
+                                # evidence from buckets this many PROB_BIN_WIDTH slots to either side
+                                # before falling back to the model's raw, uncorrected prediction. Added
+                                # after the Sep 2026 drawdown: adjacent low-probability buckets (cheap
+                                # "longshot NO" bets, ~0.05-0.35 predicted win prob) turned out to share
+                                # the same structural overconfidence, but each 0.05-wide bucket had to
+                                # independently rack up 8 losses before its own correction kicked in --
+                                # meanwhile the neighbor bucket right next to it, already sitting on
+                                # damning evidence, kept getting bet into for days. This only ever pulls
+                                # the used probability DOWN (same guarantee kelly_stake already made),
+                                # it just lets that evidence propagate one bucket faster.
 KELLY_FRACTION = 0.5           # half-Kelly: full Kelly is provably optimal long-run growth but swings
                                 # hard on estimation error; half-Kelly trades some growth for a much
                                 # smaller drawdown when the win-probability estimate is off
+MAX_OPEN_STAKE_FRAC = 0.35     # never let more than this fraction of total bankroll sit in open
+                                # (unresolved) bets at once, independent of the per-tag STAKE_CAP_FRAC --
+                                # added after the Sep 2026 drawdown left 70% of bankroll concurrently at
+                                # risk in open positions, which is a portfolio-level concentration problem
+                                # no single per-bet cap addresses
 
 DEADLINE_GRACE_HOURS = 12      # wait this long past the deadline before checking (resolution isn't instant)
 SLEEP_BETWEEN_CALLS = 1.15
@@ -202,10 +218,27 @@ def wilson_interval(k: int, n: int, z: float = 1.96):
     return (max(0.0, center - margin), min(1.0, center + margin))
 
 
+NUM_PROB_BUCKETS = int(round(1 / PROB_BIN_WIDTH))
+
+
 def prob_bucket_key(predicted_win_prob: float) -> int:
     """Buckets a predicted win probability into a PROB_BIN_WIDTH-wide bin."""
-    num_bins = int(round(1 / PROB_BIN_WIDTH))
-    return min(int(predicted_win_prob / PROB_BIN_WIDTH), num_bins - 1)
+    return min(int(predicted_win_prob / PROB_BIN_WIDTH), NUM_PROB_BUCKETS - 1)
+
+
+def pooled_track_record(track: dict, key: int, radius: int = NEIGHBOR_POOL_RADIUS):
+    """Sums (wins, total) for bucket `key` plus up to `radius` buckets on
+    either side. Used by kelly_stake() as a fallback when the exact bucket
+    alone hasn't reached OWN_TRACK_MIN_SAMPLE yet -- see NEIGHBOR_POOL_RADIUS
+    for why neighboring buckets are treated as sharing evidence."""
+    wins, total = track.get(key, (0, 0))
+    for offset in range(1, radius + 1):
+        for neighbor in (key - offset, key + offset):
+            if 0 <= neighbor < NUM_PROB_BUCKETS:
+                w, t = track.get(neighbor, (0, 0))
+                wins += w
+                total += t
+    return wins, total
 
 
 def own_track_record(log: dict) -> dict:
@@ -262,6 +295,13 @@ def kelly_stake(entry_cost: float, predicted_win_prob: float, track: dict,
     underperforming its prediction automatically gets sized down or shut
     off entirely, with no manual threshold to update.
 
+    If the exact bucket alone hasn't reached OWN_TRACK_MIN_SAMPLE yet, this
+    also checks the pooled record across its immediate neighbors
+    (pooled_track_record) -- see NEIGHBOR_POOL_RADIUS. A newly-bad bucket
+    otherwise had to independently rack up its own 8 losses before shutting
+    off even while the bucket right next to it already had damning evidence;
+    pooling lets that evidence apply faster. Still only ever pulls p down.
+
     Returns 0.0 (place_new_bets then skips the bet) if the resulting Kelly
     fraction is <= 0, i.e. there's no edge left once realized performance is
     priced in.
@@ -272,6 +312,11 @@ def kelly_stake(entry_cost: float, predicted_win_prob: float, track: dict,
     if total >= OWN_TRACK_MIN_SAMPLE:
         ci_low, _ = wilson_interval(wins, total)
         p = min(p, ci_low)
+    else:
+        pooled_wins, pooled_total = pooled_track_record(track, key)
+        if pooled_total >= OWN_TRACK_MIN_SAMPLE:
+            ci_low, _ = wilson_interval(pooled_wins, pooled_total)
+            p = min(p, ci_low)
 
     b = (1 / entry_cost) - 1
     f = kelly_fraction(p, b)
@@ -402,12 +447,17 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
     return candidates
 
 
+def open_stake_total(log: dict) -> float:
+    return sum(b["stake_usd"] for b in log["bets"] if b["status"] == "open")
+
+
 def place_new_bets(log: dict, results: dict, now: datetime.datetime):
     existing_ids = {bet["bet_id"] for bet in log["bets"]}
     track = own_track_record(log)
     placed_count = 0
     skipped_low_bankroll = 0
     skipped_no_edge = 0
+    skipped_exposure_cap = 0
 
     for c in build_candidates(results, now):
         if c["bet_id"] in existing_ids:
@@ -415,6 +465,18 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime):
         bankroll_avail = available_bankroll(log)
         if bankroll_avail < STAKE_FLOOR_USD:
             skipped_low_bankroll += 1
+            continue
+
+        # Portfolio-level cap: how much stake room is left before open bets
+        # (across every tag) would hit MAX_OPEN_STAKE_FRAC of total bankroll.
+        # Independent of the per-tag STAKE_CAP_FRAC, which only bounds a
+        # single bet -- nothing else stopped dozens of small per-bet-capped
+        # stakes from collectively parking most of the bankroll in open
+        # positions at once (hit 70% during the Sep 2026 drawdown).
+        total_bank = total_bankroll(log)
+        exposure_room = max(0.0, MAX_OPEN_STAKE_FRAC * total_bank - open_stake_total(log))
+        if exposure_room < STAKE_FLOOR_USD:
+            skipped_exposure_cap += 1
             continue
 
         if c["tag"] == "arbitrage":
@@ -425,7 +487,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime):
         if stake <= 0:
             skipped_no_edge += 1
             continue
-        stake = min(stake, round(bankroll_avail, 2))
+        stake = min(stake, round(bankroll_avail, 2), round(exposure_room, 2))
 
         log["bets"].append({
             "bet_id": c["bet_id"],
@@ -448,7 +510,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime):
         existing_ids.add(c["bet_id"])
         placed_count += 1
 
-    return placed_count, skipped_low_bankroll, skipped_no_edge
+    return placed_count, skipped_low_bankroll, skipped_no_edge, skipped_exposure_cap
 
 
 def record_bankroll_snapshot(log: dict, now: datetime.datetime):
@@ -487,9 +549,9 @@ def main():
     log = load_bet_log()
 
     resolved_count = resolve_open_bets(log, now)
-    placed_count, skipped_bankroll, skipped_no_edge = (0, 0, 0)
+    placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = (0, 0, 0, 0)
     if not args.resolve_only:
-        placed_count, skipped_bankroll, skipped_no_edge = place_new_bets(log, results, now)
+        placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = place_new_bets(log, results, now)
 
     log["bankroll"] = round(total_bankroll(log), 2)
     record_bankroll_snapshot(log, now)
@@ -508,6 +570,10 @@ def main():
     if skipped_no_edge:
         print(f"Skipped {skipped_no_edge} signals: Kelly sizing found no edge once each tag's real "
               f"resolution math (haircut model for ARB, own realized win rate for CAL/MIS) was priced in.",
+              file=sys.stderr)
+    if skipped_exposure_cap:
+        print(f"Skipped {skipped_exposure_cap} signals: open bets already at/near "
+              f"{MAX_OPEN_STAKE_FRAC:.0%} of bankroll (MAX_OPEN_STAKE_FRAC).",
               file=sys.stderr)
 
 
