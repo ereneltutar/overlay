@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 480.15,
+  "bankroll": 471.06,
   "bankroll_history": [
     {
       "date": "2026-08-24",
@@ -44,7 +44,7 @@
     },
     {
       "date": "2026-09-03",
-      "bankroll": 480.15
+      "bankroll": 471.06
     }
   ],
   "bets": [
@@ -2504,9 +2504,9 @@
       "edge_pct_at_placement": 7.8,
       "predicted_win_prob": 0.1304,
       "stake_usd": 7.15,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-03T07:30:01.349679+00:00",
+      "pnl_usd": -7.15
     },
     {
       "bet_id": "mispricing:ethereum-above-on-september-2-2026:3903717",
@@ -2524,9 +2524,9 @@
       "edge_pct_at_placement": 5.13,
       "predicted_win_prob": 0.0737,
       "stake_usd": 4.37,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-03T07:30:01.349679+00:00",
+      "pnl_usd": -4.37
     },
     {
       "bet_id": "mispricing:highest-temperature-in-miami-on-september-2-2026:4020677",
@@ -2544,9 +2544,9 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.8431,
       "stake_usd": 8.11,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-03T07:30:01.349679+00:00",
+      "pnl_usd": 2.43
     },
     {
       "bet_id": "mispricing:wta-bartunk-sherif-2026-08-30:3943967",
@@ -2564,6 +2564,86 @@
       "edge_pct_at_placement": 10.24,
       "predicted_win_prob": 0.1757,
       "stake_usd": 7.7,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:israel-x-lebanon-diplomatic-meeting-byptptpt-20260810145737299:3502067",
+      "tag": "calibration",
+      "market_question": "Israel x Lebanon diplomatic meeting by September 30, 2026?",
+      "slug": "israel-x-lebanon-diplomatic-meeting-byptptpt-20260810145737299",
+      "url": "https://polymarket.com/event/israel-x-lebanon-diplomatic-meeting-byptptpt-20260810145737299",
+      "placed_at": "2026-09-03T07:30:01.349679+00:00",
+      "deadline": "2026-10-01T00:18:01.349679+00:00",
+      "market_ids": [
+        "3502067"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.07,
+      "edge_pct_at_placement": 10.57,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 8.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:which-company-has-the-best-code-arena-webdev-ai-model-end-of-september-20260717140116512:3008012",
+      "tag": "calibration",
+      "market_question": "Will Anthropic have the best Code Arena | WebDev AI at the end of September 2026?",
+      "slug": "which-company-has-the-best-code-arena-webdev-ai-model-end-of-september-20260717140116512",
+      "url": "https://polymarket.com/event/which-company-has-the-best-code-arena-webdev-ai-model-end-of-september-20260717140116512",
+      "placed_at": "2026-09-03T07:30:01.349679+00:00",
+      "deadline": "2026-10-01T05:06:01.349679+00:00",
+      "market_ids": [
+        "3008012"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0933,
+      "edge_pct_at_placement": 8.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 7.24,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:of-views-of-grand-theft-auto-vi-extended-look-on-week-1:3962584",
+      "tag": "mispricing",
+      "market_question": "Will Grand Theft Auto VI Extended Look get between 20 and 22 million views on week 1?",
+      "slug": "of-views-of-grand-theft-auto-vi-extended-look-on-week-1",
+      "url": "https://polymarket.com/event/of-views-of-grand-theft-auto-vi-extended-look-on-week-1",
+      "placed_at": "2026-09-03T07:30:01.349679+00:00",
+      "deadline": "2026-09-04T00:18:01.349679+00:00",
+      "market_ids": [
+        "3962584"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1045,
+      "edge_pct_at_placement": 7.12,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 6.05,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "mispricing:scarborough-southwest-provincial-by-election-winner-1785955561142:3741437",
+      "tag": "mispricing",
+      "market_question": "Will Fatima Shaban win the 2026 Scarborough Southwest provincial by-election?",
+      "slug": "scarborough-southwest-provincial-by-election-winner-1785955561142",
+      "url": "https://polymarket.com/event/scarborough-southwest-provincial-by-election-winner-1785955561142",
+      "placed_at": "2026-09-03T07:30:01.349679+00:00",
+      "deadline": "2026-09-04T00:18:01.349679+00:00",
+      "market_ids": [
+        "3741437"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1036,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 5.87,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
