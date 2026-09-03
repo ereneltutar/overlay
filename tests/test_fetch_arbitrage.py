@@ -518,7 +518,7 @@ def test_find_mispricing_signal_bucket_not_significant_returns_none():
 
 
 def test_find_mispricing_signal_below_min_edge_returns_none():
-    # implied=0.3, fair=0.32 -> 2pt gap, below MISPRICING_MIN_EDGE_PTS=5
+    # implied=0.3, fair=0.32 -> 2pt gap, below MISPRICING_MIN_EDGE_PTS=10
     market = {"lastTradePrice": 0.3, "volume24hr": 10000}
     assert fa.find_mispricing_signal(market, {}, mis_bins(resolved_yes_rate=0.32), NOW) is None
 
@@ -543,7 +543,7 @@ def test_find_mispricing_signal_low_sample_warning_flag():
 
 
 def test_find_mispricing_signal_long_horizon_needs_bigger_edge():
-    # 40 days out, 20pt gap: passes MIN_EDGE_PTS(5) but fails at horizon check
+    # 40 days out, 20pt gap: passes MIN_EDGE_PTS(10) but fails at horizon check
     # since 20 <= LONGTERM_MIN_EDGE_PTS(25)
     market = {"lastTradePrice": 0.3, "volume24hr": 10000}
     event = {"endDate": (NOW + datetime.timedelta(days=40)).isoformat(), "slug": "s"}

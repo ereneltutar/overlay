@@ -160,13 +160,15 @@ CALIBRATION_LOG_MIN_VOLUME_24H = 5000
 # ----------------------------------------------------------------------------
 
 # --- THIRD, INDEPENDENT SCAN: "Mispricing" (implied vs fair probability) --------
-# HOW THIS DIFFERS FROM find_calibration_signal(): that function only shows a
-# signal if it's statistically SIGNIFICANT (the Wilson interval excludes the
-# bucket midpoint). This scan ignores the significance requirement and looks
-# directly at the point gap (>= MISPRICING_MIN_EDGE_PTS), adds a 24-hour volume
-# filter, and combines everything into a single score to produce a daily
-# "Top N" list. It's a SEPARATE function (find_mispricing_signal); not a single
-# line of find_calibration_signal changed.
+# HOW THIS DIFFERS FROM find_calibration_signal(): both now require the same
+# Wilson-significance bar (the significance check was added to this scan on
+# 2026-09-03; see find_mispricing_signal's docstring for why). The remaining
+# differences: a 24-hour volume filter instead of a liquidity floor, its own
+# HORIZON_DAYS/LONGTERM_MIN_EDGE_PTS long-dated-market carve-out, and it
+# combines everything into a single score to produce a daily "Top N" list
+# instead of showing every qualifying market. It's a SEPARATE function
+# (find_mispricing_signal); not a single line of find_calibration_signal
+# changed.
 #
 # WHERE "FAIR PROBABILITY" COMES FROM: the repo currently has no independent
 # per-market probability model or forecasting source. So this scan uses the
@@ -174,21 +176,35 @@ CALIBRATION_LOG_MIN_VOLUME_24H = 5000
 # i.e. how often markets in that price range have historically resolved YES) as
 # its "fair probability" too; only the threshold/filter/scoring logic differs.
 # Sample size can still be small for a given bucket (see the low_sample_warning
-# field); this isn't a significance test, just a "read carefully" flag.
-MISPRICING_MIN_EDGE_PTS = 5.0           # min point gap between implied and the bucket's historical rate
-# Lowered from 15.0 (Aug 24 2026) after 7 straight days of zero mispricing
-# signals following the Aug 18 phantom-quote fix (liquidity/volume floors +
-# CLOB depth verification). A diagnostic run with this floor dropped to 5.0
-# (branch diagnostic/relaxed-arb-mis-thresholds, not merged) surfaced a full
-# Top-20 of genuine signals clustered at 5-8 points, all backed by large
-# buckets (37-599 samples) and real liquidity/volume ($2.5K-$560K liquidity,
-# $5K-$90K 24h volume) -- evidence the 15pt floor was calibrated for a noisier
-# market (phantom-quote-inflated apparent edges) that no longer exists post-
-# fix, and was screening out every real signal along with the noise. ARB's
-# floors (MIN_LIQUIDITY_USD, ARB_MIN_VOLUME_24H_USD above) were NOT changed:
-# the same diagnostic run, with those floors also relaxed, still found zero
-# arbitrage opportunities -- confirming ARB's zero is real market efficiency,
-# not an overly strict filter.
+# field); the significance check catches the worst of that, this is a
+# "read carefully" flag on top, not a substitute for it.
+MISPRICING_MIN_EDGE_PTS = 10.0          # min point gap between implied and the bucket's historical rate
+# History:
+#  - 15.0 originally. Produced 7 straight days of zero mispricing signals
+#    following the Aug 18 phantom-quote fix (liquidity/volume floors + CLOB
+#    depth verification), which a diagnostic run traced to the floor being
+#    calibrated for a noisier, phantom-quote-inflated market that no longer
+#    existed post-fix -- screening out every real signal along with the noise.
+#  - Lowered to 5.0 on 2026-08-24 off that diagnostic. Turned out to have a
+#    second problem this fix didn't catch: find_mispricing_signal had no
+#    Wilson-significance requirement at all (see above), so 5.0 let through
+#    point gaps that were themselves statistical noise. Bankroll went
+#    $1000 -> $471 (-53%) over the following 10 days; resolved CAL/MIS bets
+#    showed predicted_win_prob running ~12-13pts above realized win rate.
+#  - Raised to 10.0 on 2026-09-03 alongside adding the significance
+#    requirement. A diagnostic re-run (branch
+#    diagnostic/mis-edge-and-arb-floor-sep2026, not merged) swept candidate
+#    floors against a live snapshot WITH the new significance gate active:
+#    15.0 still finds zero signals (confirms that part of the original
+#    problem was real, not just the missing significance check), 5.0 finds
+#    100 signals averaging a 562-sample bucket, 10.0 finds a smaller, more
+#    selective 12 signals averaging an 815-sample bucket -- a middle ground
+#    that keeps real signal flowing without reopening the 5.0-era door to
+#    thin-margin picks. ARB's floors (MIN_LIQUIDITY_USD,
+#    ARB_MIN_VOLUME_24H_USD above) were checked again in the same sweep, at
+#    10x relaxed (liquidity $50, volume $500) against 22,768 events -- still
+#    zero arbitrage opportunities, confirming that's real market efficiency,
+#    not an overly strict filter, so those floors were left unchanged.
 MISPRICING_MIN_VOLUME_24H = 5000        # skip markets below this 24h volume (tradability)
 MISPRICING_HORIZON_DAYS = 30            # markets closing within this many days get the "priority" window
 MISPRICING_LONGTERM_MIN_EDGE_PTS = 25   # markets beyond HORIZON_DAYS only qualify above this edge
