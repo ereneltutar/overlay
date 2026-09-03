@@ -1,0 +1,29 @@
+name: Diagnostic Scan (throwaway, MIS edge sweep + relaxed ARB floors)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run diagnostic sweep (does not commit; results uploaded as an artifact only)
+        run: python scripts/diagnostic_sweep.py
+
+      - name: Upload diagnostic_results.json as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-sweep-results
+          path: docs/diagnostic_results.json
+          retention-days: 3
