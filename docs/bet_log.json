@@ -11,5 +11,186 @@
       "bankroll": 1000.0
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "bet_id": "calibration:spx-up-or-down-on-september-4-2026:4187267",
+      "tag": "calibration",
+      "market_question": "S&P 500 (SPX) Up or Down on September 4?",
+      "slug": "spx-up-or-down-on-september-4-2026",
+      "url": "https://polymarket.com/event/spx-up-or-down-on-september-4-2026",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-04T19:31:22.234603+00:00",
+      "market_ids": [
+        "4187267"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4699,
+      "edge_pct_at_placement": 11.41,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 50.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:largest-company-end-of-september-1785358369147:3212185",
+      "tag": "calibration",
+      "market_question": "Will NVIDIA be the largest company in the world by market cap on September 30?",
+      "slug": "largest-company-end-of-september-1785358369147",
+      "url": "https://polymarket.com/event/largest-company-end-of-september-1785358369147",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-10-01T00:19:22.234603+00:00",
+      "market_ids": [
+        "3212185"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0623,
+      "edge_pct_at_placement": 11.34,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 47.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:wta-sabalen-rakhimo-2026-09-04:4180671",
+      "tag": "calibration",
+      "market_question": "US Open WTA: Aryna Sabalenka vs Kamilla Rakhimova",
+      "slug": "wta-sabalen-rakhimo-2026-09-04",
+      "url": "https://polymarket.com/event/wta-sabalen-rakhimo-2026-09-04",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-11T14:43:22.234603+00:00",
+      "market_ids": [
+        "4180671"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 11.29,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 45.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:val-nrg-100t1-2026-09-04:3968838",
+      "tag": "calibration",
+      "market_question": "Valorant: NRG vs 100 Thieves (BO3) - VCT Americas Stage 2 Playoffs",
+      "slug": "val-nrg-100t1-2026-09-04",
+      "url": "https://polymarket.com/event/val-nrg-100t1-2026-09-04",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-04T21:55:22.234603+00:00",
+      "market_ids": [
+        "3968838"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.16,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 42.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:cs2-b8-ntr-2026-09-04:4192261",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: B8 vs Nuclear TigeRES (BO3) - IEM Beijing: Global Qualifier Playoffs",
+      "slug": "cs2-b8-ntr-2026-09-04",
+      "url": "https://polymarket.com/event/cs2-b8-ntr-2026-09-04",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-04T21:55:22.234603+00:00",
+      "market_ids": [
+        "4192261"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 11.16,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 40.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:abbotsford-mission-by-election-winner:4039960",
+      "tag": "calibration",
+      "market_question": "Will Kerry-Lynne Findlay win the next Abbotsford-Mission by-election?",
+      "slug": "abbotsford-mission-by-election-winner",
+      "url": "https://polymarket.com/event/abbotsford-mission-by-election-winner",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-27T00:19:22.234603+00:00",
+      "market_ids": [
+        "4039960"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.49,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 38.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:will-any-ai-model-reach-overall-arena-score-by-september-30:1831352",
+      "tag": "calibration",
+      "market_question": "Will any AI model reach 1520 Overall Arena Score by September 30, 2026?",
+      "slug": "will-any-ai-model-reach-overall-arena-score-by-september-30",
+      "url": "https://polymarket.com/event/will-any-ai-model-reach-overall-arena-score-by-september-30",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-10-01T05:07:22.234603+00:00",
+      "market_ids": [
+        "1831352"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0819,
+      "edge_pct_at_placement": 9.38,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 36.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:spl-sha-hil-2026-09-04-more-markets:3789821",
+      "tag": "calibration",
+      "market_question": "Al Shabab Saudi Club vs. Al Hilal Saudi Club: O/U 3.5",
+      "slug": "spl-sha-hil-2026-09-04-more-markets",
+      "url": "https://polymarket.com/event/spl-sha-hil-2026-09-04-more-markets",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-04T17:07:22.234603+00:00",
+      "market_ids": [
+        "3789821"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.15,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 34.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-hul-ast-2026-09-05:3792023",
+      "tag": "calibration",
+      "market_question": "Will Aston Villa FC win on 2026-09-05?",
+      "slug": "epl-hul-ast-2026-09-05",
+      "url": "https://polymarket.com/event/epl-hul-ast-2026-09-05",
+      "placed_at": "2026-09-04T07:31:22.234603+00:00",
+      "deadline": "2026-09-05T17:07:22.234603+00:00",
+      "market_ids": [
+        "3792023"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 9.15,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 13.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    }
+  ]
 }
