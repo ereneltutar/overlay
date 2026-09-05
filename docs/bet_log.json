@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1000.0,
+  "bankroll": 1035.98,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-09-05",
-      "bankroll": 1000.0
+      "bankroll": 1035.98
     }
   ],
   "bets": [
@@ -172,9 +172,9 @@
       "edge_pct_at_placement": 9.15,
       "predicted_win_prob": 0.584,
       "stake_usd": 34.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-05T07:13:37.728991+00:00",
+      "pnl_usd": 35.98
     },
     {
       "bet_id": "calibration:epl-hul-ast-2026-09-05:3792023",
@@ -192,6 +192,46 @@
       "edge_pct_at_placement": 9.15,
       "predicted_win_prob": 0.584,
       "stake_usd": 13.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-not-tot-2026-09-05-more-markets:3795805",
+      "tag": "calibration",
+      "market_question": "Nottingham Forest FC vs. Tottenham Hotspur FC: O/U 0.5",
+      "slug": "epl-not-tot-2026-09-05-more-markets",
+      "url": "https://polymarket.com/event/epl-not-tot-2026-09-05-more-markets",
+      "placed_at": "2026-09-05T07:13:37.728991+00:00",
+      "deadline": "2026-09-05T14:25:37.728991+00:00",
+      "market_ids": [
+        "3795805"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 11.29,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 36.05,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:dota2-nem-carst-2026-09-05:4214351",
+      "tag": "calibration",
+      "market_question": "Dota 2: Team Nemesis vs Carstensz - Game 2 Winner",
+      "slug": "dota2-nem-carst-2026-09-05",
+      "url": "https://polymarket.com/event/dota2-nem-carst-2026-09-05",
+      "placed_at": "2026-09-05T07:13:37.728991+00:00",
+      "deadline": "2026-09-05T12:01:37.728991+00:00",
+      "market_ids": [
+        "4214351"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 11.29,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 11.46,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
