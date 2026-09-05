@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1035.98,
+  "bankroll": 1099.54,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-09-05",
-      "bankroll": 1035.98
+      "bankroll": 1099.54
     }
   ],
   "bets": [
@@ -32,9 +32,9 @@
       "edge_pct_at_placement": 11.41,
       "predicted_win_prob": 0.584,
       "stake_usd": 50.0,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-05T11:51:50.306468+00:00",
+      "pnl_usd": 56.41
     },
     {
       "bet_id": "calibration:largest-company-end-of-september-1785358369147:3212185",
@@ -92,9 +92,9 @@
       "edge_pct_at_placement": 11.16,
       "predicted_win_prob": 0.584,
       "stake_usd": 42.87,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-05T11:51:50.306468+00:00",
+      "pnl_usd": 47.88
     },
     {
       "bet_id": "calibration:cs2-b8-ntr-2026-09-04:4192261",
@@ -112,9 +112,9 @@
       "edge_pct_at_placement": 11.16,
       "predicted_win_prob": 0.584,
       "stake_usd": 40.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-05T11:51:50.306468+00:00",
+      "pnl_usd": -40.73
     },
     {
       "bet_id": "calibration:abbotsford-mission-by-election-winner:4039960",
