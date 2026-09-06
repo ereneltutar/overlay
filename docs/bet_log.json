@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1626.07,
+  "bankroll": 1639.9,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -16,7 +16,7 @@
     },
     {
       "date": "2026-09-06",
-      "bankroll": 1626.07
+      "bankroll": 1639.9
     }
   ],
   "bets": [
@@ -196,9 +196,9 @@
       "edge_pct_at_placement": 9.15,
       "predicted_win_prob": 0.584,
       "stake_usd": 13.42,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-06T07:25:39.179211+00:00",
+      "pnl_usd": 13.83
     },
     {
       "bet_id": "calibration:epl-not-tot-2026-09-05-more-markets:3795805",
@@ -239,6 +239,146 @@
       "status": "lost",
       "resolved_at": "2026-09-06T04:48:02.975938+00:00",
       "pnl_usd": -11.46
+    },
+    {
+      "bet_id": "calibration:lacy-and-marlon-beat-gaming-challenge-by-2026:4080253",
+      "tag": "calibration",
+      "market_question": "Lacy and Marlon beat gaming challenge by September 10, 2026, 11:59 PM ET?",
+      "slug": "lacy-and-marlon-beat-gaming-challenge-by-2026",
+      "url": "https://polymarket.com/event/lacy-and-marlon-beat-gaming-challenge-by-2026",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-09-15T05:01:39.179211+00:00",
+      "market_ids": [
+        "4080253"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 11.29,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 73.59,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:next-regional-board-chair-of-region-kalmar-20260810082939125:3480216",
+      "tag": "calibration",
+      "market_question": "Will Angelica Katsanidou be the next Regional Board Chair of Region Kalmar County?",
+      "slug": "next-regional-board-chair-of-region-kalmar-20260810082939125",
+      "url": "https://polymarket.com/event/next-regional-board-chair-of-region-kalmar-20260810082939125",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-09-14T00:13:39.179211+00:00",
+      "market_ids": [
+        "3480216"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1046,
+      "edge_pct_at_placement": 11.16,
+      "predicted_win_prob": 0.2162,
+      "stake_usd": 69.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lacy-and-marlon-beat-gaming-challenge-by-2026:4080254",
+      "tag": "calibration",
+      "market_question": "Lacy and Marlon beat gaming challenge by September 14, 2026, 11:59 PM ET?",
+      "slug": "lacy-and-marlon-beat-gaming-challenge-by-2026",
+      "url": "https://polymarket.com/event/lacy-and-marlon-beat-gaming-challenge-by-2026",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-09-15T05:01:39.179211+00:00",
+      "market_ids": [
+        "4080254"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 10.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 66.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:brazil-presidential-election-first-round-2nd-place:1365861",
+      "tag": "calibration",
+      "market_question": "Will Flávio Bolsonaro finish in second place in the first round of the 2026 Brazilian presidential election?",
+      "slug": "brazil-presidential-election-first-round-2nd-place",
+      "url": "https://polymarket.com/event/brazil-presidential-election-first-round-2nd-place",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-10-04T00:13:39.179211+00:00",
+      "market_ids": [
+        "1365861"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.1139,
+      "edge_pct_at_placement": 10.23,
+      "predicted_win_prob": 0.2162,
+      "stake_usd": 63.1,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:jap-kaw-ssp-2026-09-06:3819227",
+      "tag": "calibration",
+      "market_question": "Will Kawasaki Frontale win on 2026-09-06?",
+      "slug": "jap-kaw-ssp-2026-09-06",
+      "url": "https://polymarket.com/event/jap-kaw-ssp-2026-09-06",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-09-06T09:49:39.179211+00:00",
+      "market_ids": [
+        "3819227"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.15,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 59.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:epl-ars-che-2026-09-06-more-markets:3831928",
+      "tag": "calibration",
+      "market_question": "Arsenal FC vs. Chelsea FC: O/U 2.5",
+      "slug": "epl-ars-che-2026-09-06-more-markets",
+      "url": "https://polymarket.com/event/epl-ars-che-2026-09-06-more-markets",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-09-06T14:37:39.179211+00:00",
+      "market_ids": [
+        "3831928"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.15,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 56.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:lal-val-bar-2026-09-06-more-markets:3834792",
+      "tag": "calibration",
+      "market_question": "Valencia CF vs. FC Barcelona: FC Barcelona O/U 2.5",
+      "slug": "lal-val-bar-2026-09-06-more-markets",
+      "url": "https://polymarket.com/event/lal-val-bar-2026-09-06-more-markets",
+      "placed_at": "2026-09-06T07:25:39.179211+00:00",
+      "deadline": "2026-09-06T14:37:39.179211+00:00",
+      "market_ids": [
+        "3834792"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 10.15,
+      "predicted_win_prob": 0.584,
+      "stake_usd": 16.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
