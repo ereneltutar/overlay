@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1099.54,
+  "bankroll": 1626.07,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -13,6 +13,10 @@
     {
       "date": "2026-09-05",
       "bankroll": 1099.54
+    },
+    {
+      "date": "2026-09-06",
+      "bankroll": 1626.07
     }
   ],
   "bets": [
@@ -212,9 +216,9 @@
       "edge_pct_at_placement": 11.29,
       "predicted_win_prob": 0.1757,
       "stake_usd": 36.05,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "won",
+      "resolved_at": "2026-09-06T04:48:02.975938+00:00",
+      "pnl_usd": 537.99
     },
     {
       "bet_id": "calibration:dota2-nem-carst-2026-09-05:4214351",
@@ -232,9 +236,9 @@
       "edge_pct_at_placement": 11.29,
       "predicted_win_prob": 0.1757,
       "stake_usd": 11.46,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-06T04:48:02.975938+00:00",
+      "pnl_usd": -11.46
     }
   ]
 }
