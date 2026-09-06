@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1639.9,
+  "bankroll": 1579.96,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -16,7 +16,7 @@
     },
     {
       "date": "2026-09-06",
-      "bankroll": 1639.9
+      "bankroll": 1579.96
     }
   ],
   "bets": [
@@ -336,9 +336,9 @@
       "edge_pct_at_placement": 10.15,
       "predicted_win_prob": 0.584,
       "stake_usd": 59.94,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-06T22:09:10.277245+00:00",
+      "pnl_usd": -59.94
     },
     {
       "bet_id": "calibration:epl-ars-che-2026-09-06-more-markets:3831928",
