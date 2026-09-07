@@ -383,6 +383,46 @@
       "status": "lost",
       "resolved_at": "2026-09-07T04:51:44.275322+00:00",
       "pnl_usd": -16.0
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-september-5-september-7-2026:4190736",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post <40 tweets from September 5 to September 7, 2026?",
+      "slug": "elon-musk-of-tweets-september-5-september-7-2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-september-5-september-7-2026",
+      "placed_at": "2026-09-07T07:40:26.092242+00:00",
+      "deadline": "2026-09-07T14:52:26.092242+00:00",
+      "market_ids": [
+        "4190736"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 10.24,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 53.3,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:of-views-of-mrbeast-video-on-day-2:4293229",
+      "tag": "calibration",
+      "market_question": "Will MrBeast's latest video get between 50 and 53 million views on day 2?",
+      "slug": "of-views-of-mrbeast-video-on-day-2",
+      "url": "https://polymarket.com/event/of-views-of-mrbeast-video-on-day-2",
+      "placed_at": "2026-09-07T07:40:26.092242+00:00",
+      "deadline": "2026-09-08T00:28:26.092242+00:00",
+      "market_ids": [
+        "4293229"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0743,
+      "edge_pct_at_placement": 10.14,
+      "predicted_win_prob": 0.1757,
+      "stake_usd": 33.08,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
