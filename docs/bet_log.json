@@ -427,6 +427,26 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:bank-of-japan-decision-in-september-20260616002734979:2589856",
+      "tag": "calibration",
+      "market_question": "Will the Bank of Japan announce a 25 bps increase at the September 2026 meeting?",
+      "slug": "bank-of-japan-decision-in-september-20260616002734979",
+      "url": "https://polymarket.com/event/bank-of-japan-decision-in-september-20260616002734979",
+      "placed_at": "2026-09-08T07:33:07.067770+00:00",
+      "deadline": "2026-09-18T17:09:07.067770+00:00",
+      "market_ids": [
+        "2589856"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0199,
+      "edge_pct_at_placement": 12.72,
+      "predicted_win_prob": 0.1471,
+      "stake_usd": 34.64,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
