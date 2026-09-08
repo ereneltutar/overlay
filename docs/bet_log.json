@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1453.72,
+  "bankroll": 1420.64,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -24,7 +24,7 @@
     },
     {
       "date": "2026-09-08",
-      "bankroll": 1453.72
+      "bankroll": 1420.64
     }
   ],
   "bets": [
@@ -424,9 +424,9 @@
       "edge_pct_at_placement": 10.14,
       "predicted_win_prob": 0.1757,
       "stake_usd": 33.08,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-08T12:54:40.970053+00:00",
+      "pnl_usd": -33.08
     },
     {
       "bet_id": "calibration:bank-of-japan-decision-in-september-20260616002734979:2589856",
