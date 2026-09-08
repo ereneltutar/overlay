@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1507.02,
+  "bankroll": 1453.72,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -21,6 +21,10 @@
     {
       "date": "2026-09-07",
       "bankroll": 1507.02
+    },
+    {
+      "date": "2026-09-08",
+      "bankroll": 1453.72
     }
   ],
   "bets": [
@@ -400,9 +404,9 @@
       "edge_pct_at_placement": 10.24,
       "predicted_win_prob": 0.1757,
       "stake_usd": 53.3,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-08T04:47:42.952652+00:00",
+      "pnl_usd": -53.3
     },
     {
       "bet_id": "calibration:of-views-of-mrbeast-video-on-day-2:4293229",
