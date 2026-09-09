@@ -451,6 +451,26 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-taipei-on-september-9-2026:4321919",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Taipei be 31°C on September 9?",
+      "slug": "highest-temperature-in-taipei-on-september-9-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-taipei-on-september-9-2026",
+      "placed_at": "2026-09-09T07:40:31.613833+00:00",
+      "deadline": "2026-09-09T12:28:31.613833+00:00",
+      "market_ids": [
+        "4321919"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0115,
+      "edge_pct_at_placement": 13.56,
+      "predicted_win_prob": 0.1471,
+      "stake_usd": 21.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
