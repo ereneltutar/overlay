@@ -475,6 +475,26 @@
       "status": "lost",
       "resolved_at": "2026-09-10T04:51:55.817428+00:00",
       "pnl_usd": -21.5
+    },
+    {
+      "bet_id": "calibration:what-price-will-wti-hit-in-september-2026:4413392",
+      "tag": "calibration",
+      "market_question": "Will WTI Crude Oil (WTI) hit (LOW) $95 in September?",
+      "slug": "what-price-will-wti-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-wti-hit-in-september-2026",
+      "placed_at": "2026-09-10T07:36:45.229930+00:00",
+      "deadline": "2026-10-01T05:12:45.229930+00:00",
+      "market_ids": [
+        "4413392"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0623,
+      "edge_pct_at_placement": 10.61,
+      "predicted_win_prob": 0.1684,
+      "stake_usd": 13.98,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
