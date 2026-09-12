@@ -503,6 +503,26 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-september-10-september-12-2026:4338482",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post 40-64 tweets from September 10 to September 12, 2026?",
+      "slug": "elon-musk-of-tweets-september-10-september-12-2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-september-10-september-12-2026",
+      "placed_at": "2026-09-12T07:26:43.670916+00:00",
+      "deadline": "2026-09-12T17:02:43.670916+00:00",
+      "market_ids": [
+        "4338482"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0178,
+      "edge_pct_at_placement": 12.93,
+      "predicted_win_prob": 0.1471,
+      "stake_usd": 29.33,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
