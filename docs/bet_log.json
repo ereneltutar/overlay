@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1354.02,
+  "bankroll": 1324.69,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -44,7 +44,7 @@
     },
     {
       "date": "2026-09-13",
-      "bankroll": 1354.02
+      "bankroll": 1324.69
     }
   ],
   "bets": [
@@ -524,6 +524,26 @@
       "edge_pct_at_placement": 12.93,
       "predicted_win_prob": 0.1471,
       "stake_usd": 29.33,
+      "status": "lost",
+      "resolved_at": "2026-09-13T07:46:14.114096+00:00",
+      "pnl_usd": -29.33
+    },
+    {
+      "bet_id": "calibration:russia-parliamentary-election-winner:1129894",
+      "tag": "calibration",
+      "market_question": "Will United Russia (ER) win the most seats in the next Russian parliamentary election?",
+      "slug": "russia-parliamentary-election-winner",
+      "url": "https://polymarket.com/event/russia-parliamentary-election-winner",
+      "placed_at": "2026-09-13T07:46:14.114096+00:00",
+      "deadline": "2026-09-20T00:34:14.114096+00:00",
+      "market_ids": [
+        "1129894"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.012,
+      "edge_pct_at_placement": 13.51,
+      "predicted_win_prob": 0.1471,
+      "stake_usd": 19.06,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
