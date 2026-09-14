@@ -265,6 +265,13 @@
       "opportunities": 0,
       "calibration_signals": 20,
       "mispricing_signals": 16
+    },
+    {
+      "date": "2026-09-14",
+      "scanned_events": 20800,
+      "opportunities": 0,
+      "calibration_signals": 20,
+      "mispricing_signals": 15
     }
   ]
 }
