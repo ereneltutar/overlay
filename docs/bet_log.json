@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1324.69,
+  "bankroll": 1184.68,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -52,7 +52,7 @@
     },
     {
       "date": "2026-09-15",
-      "bankroll": 1324.69
+      "bankroll": 1184.68
     }
   ],
   "bets": [
@@ -292,9 +292,9 @@
       "edge_pct_at_placement": 11.29,
       "predicted_win_prob": 0.1757,
       "stake_usd": 73.59,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-15T19:43:11.968309+00:00",
+      "pnl_usd": -73.59
     },
     {
       "bet_id": "calibration:next-regional-board-chair-of-region-kalmar-20260810082939125:3480216",
@@ -332,9 +332,9 @@
       "edge_pct_at_placement": 10.24,
       "predicted_win_prob": 0.1757,
       "stake_usd": 66.42,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-15T19:43:11.968309+00:00",
+      "pnl_usd": -66.42
     },
     {
       "bet_id": "calibration:brazil-presidential-election-first-round-2nd-place:1365861",
