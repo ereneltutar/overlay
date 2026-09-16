@@ -559,6 +559,46 @@
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-in-september-2026:4052461",
+      "tag": "calibration",
+      "market_question": "Will Ethereum dip to $1,700 in September?",
+      "slug": "what-price-will-ethereum-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-september-2026",
+      "placed_at": "2026-09-16T08:02:19.200077+00:00",
+      "deadline": "2026-10-01T03:14:19.200077+00:00",
+      "market_ids": [
+        "4052461"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0427,
+      "edge_pct_at_placement": 25.73,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 43.05,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-dogecoin-hit-in-september-2026:4052500",
+      "tag": "calibration",
+      "market_question": "Will Dogecoin reach $0.15 in September?",
+      "slug": "what-price-will-dogecoin-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-dogecoin-hit-in-september-2026",
+      "placed_at": "2026-09-16T08:02:19.200077+00:00",
+      "deadline": "2026-10-01T03:14:19.200077+00:00",
+      "market_ids": [
+        "4052500"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0427,
+      "edge_pct_at_placement": 25.73,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 40.9,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
