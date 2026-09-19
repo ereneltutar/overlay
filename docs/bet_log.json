@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1184.68,
+  "bankroll": 1150.04,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -68,7 +68,7 @@
     },
     {
       "date": "2026-09-19",
-      "bankroll": 1184.68
+      "bankroll": 1150.04
     }
   ],
   "bets": [
@@ -488,9 +488,9 @@
       "edge_pct_at_placement": 12.72,
       "predicted_win_prob": 0.1471,
       "stake_usd": 34.64,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-19T07:39:44.616865+00:00",
+      "pnl_usd": -34.64
     },
     {
       "bet_id": "calibration:highest-temperature-in-taipei-on-september-9-2026:4321919",
@@ -608,6 +608,26 @@
       "edge_pct_at_placement": 25.73,
       "predicted_win_prob": 0.3,
       "stake_usd": 40.9,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-september-14-20-2026:4545862",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $2,800 September 14-20?",
+      "slug": "what-price-will-ethereum-hit-september-14-20-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-september-14-20-2026",
+      "placed_at": "2026-09-19T07:39:44.616865+00:00",
+      "deadline": "2026-09-21T02:51:44.616865+00:00",
+      "market_ids": [
+        "4545862"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0491,
+      "edge_pct_at_placement": 25.09,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 29.57,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null
