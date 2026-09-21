@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1150.04,
+  "bankroll": 1101.41,
   "bankroll_history": [
     {
       "date": "2026-09-03",
@@ -76,7 +76,7 @@
     },
     {
       "date": "2026-09-21",
-      "bankroll": 1150.04
+      "bankroll": 1101.41
     }
   ],
   "bets": [
@@ -576,9 +576,9 @@
       "edge_pct_at_placement": 13.51,
       "predicted_win_prob": 0.1471,
       "stake_usd": 19.06,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-21T15:09:22.812353+00:00",
+      "pnl_usd": -19.06
     },
     {
       "bet_id": "calibration:what-price-will-ethereum-hit-in-september-2026:4052461",
@@ -636,9 +636,9 @@
       "edge_pct_at_placement": 25.09,
       "predicted_win_prob": 0.3,
       "stake_usd": 29.57,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null
+      "status": "lost",
+      "resolved_at": "2026-09-21T15:09:22.812353+00:00",
+      "pnl_usd": -29.57
     }
   ]
 }
