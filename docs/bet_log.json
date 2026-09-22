@@ -643,6 +643,26 @@
       "status": "lost",
       "resolved_at": "2026-09-21T15:09:22.812353+00:00",
       "pnl_usd": -29.57
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-in-september-2026:4052445",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $3,300 in September?",
+      "slug": "what-price-will-ethereum-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-september-2026",
+      "placed_at": "2026-09-22T08:04:07.737922+00:00",
+      "deadline": "2026-10-01T03:16:07.737922+00:00",
+      "market_ids": [
+        "4052445"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0427,
+      "edge_pct_at_placement": 25.73,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 31.61,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null
     }
   ]
 }
