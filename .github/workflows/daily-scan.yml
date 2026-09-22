@@ -30,6 +30,8 @@ jobs:
         run: python scripts/fetch_arbitrage.py
 
       - name: Track paper-trading bets
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/track_bets.py
 
       - name: Check scan health

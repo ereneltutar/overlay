@@ -61,6 +61,7 @@ import time
 from pathlib import Path
 
 import gamma_client
+import llm_fact_check
 
 # --- Tunable parameters -----------------------------------------------
 STARTING_BANKROLL = 1000.00
@@ -109,6 +110,7 @@ SLEEP_BETWEEN_CALLS = 1.15
 
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "docs" / "results.json"
 BET_LOG_PATH = Path(__file__).resolve().parent.parent / "docs" / "bet_log.json"
+FACT_CHECK_LOG_PATH = Path(__file__).resolve().parent.parent / "docs" / "fact_check_log.jsonl"
 
 
 def load_bet_log() -> dict:
@@ -128,6 +130,26 @@ def load_bet_log() -> dict:
 def save_bet_log(log: dict):
     BET_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
     BET_LOG_PATH.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def log_fact_check(bet_id: str, candidate: dict, result: dict, passed: bool):
+    """Appends one fact-check outcome to docs/fact_check_log.jsonl
+    (append-only, same convention as fetch_arbitrage.py's price_log.jsonl).
+    This is the only record of a VETOed candidate -- one that fails the
+    check never becomes a bet, so without this log it would leave no trace
+    at all, making the gate itself impossible to audit or tune later."""
+    FACT_CHECK_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    entry = {
+        "bet_id": bet_id,
+        "market_question": candidate["market_question"],
+        "recommended_side": candidate["recommended_side"],
+        "passed": passed,
+        "verdict": result.get("verdict"),
+        "reason": result.get("reason"),
+        "checked_at": result.get("checked_at"),
+    }
+    with FACT_CHECK_LOG_PATH.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
 def realized_pnl_total(log: dict) -> float:
@@ -451,17 +473,33 @@ def open_stake_total(log: dict) -> float:
     return sum(b["stake_usd"] for b in log["bets"] if b["status"] == "open")
 
 
-def place_new_bets(log: dict, results: dict, now: datetime.datetime):
+def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm_fact_check.ask_llm_fact_check):
     existing_ids = {bet["bet_id"] for bet in log["bets"]}
     track = own_track_record(log)
     placed_count = 0
     skipped_low_bankroll = 0
     skipped_no_edge = 0
     skipped_exposure_cap = 0
+    skipped_fact_check = 0
 
     for c in build_candidates(results, now):
         if c["bet_id"] in existing_ids:
             continue
+
+        fact_check_result = None
+        # ARB is close to a guaranteed win by construction (see module
+        # docstring) and has no "recommended side" in the same sense CAL/MIS
+        # do, so there's nothing for a fact-check to usefully veto -- only
+        # gate the two tags that are actually betting the model's belief
+        # about which side wins.
+        if c["tag"] in ("calibration", "mispricing"):
+            passed, fact_check_result = llm_fact_check.passes_fact_check(
+                c["market_question"], c["recommended_side"], c["deadline"], now, ask_llm=ask_llm)
+            log_fact_check(c["bet_id"], c, fact_check_result, passed)
+            if not passed:
+                skipped_fact_check += 1
+                continue
+
         bankroll_avail = available_bankroll(log)
         if bankroll_avail < STAKE_FLOOR_USD:
             skipped_low_bankroll += 1
@@ -506,11 +544,12 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime):
             "status": "open",
             "resolved_at": None,
             "pnl_usd": None,
+            "fact_check": fact_check_result,
         })
         existing_ids.add(c["bet_id"])
         placed_count += 1
 
-    return placed_count, skipped_low_bankroll, skipped_no_edge, skipped_exposure_cap
+    return placed_count, skipped_low_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check
 
 
 def record_bankroll_snapshot(log: dict, now: datetime.datetime):
@@ -549,9 +588,10 @@ def main():
     log = load_bet_log()
 
     resolved_count = resolve_open_bets(log, now)
-    placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = (0, 0, 0, 0)
+    placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = (0, 0, 0, 0, 0)
     if not args.resolve_only:
-        placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap = place_new_bets(log, results, now)
+        placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
+            place_new_bets(log, results, now)
 
     log["bankroll"] = round(total_bankroll(log), 2)
     record_bankroll_snapshot(log, now)
@@ -574,6 +614,10 @@ def main():
     if skipped_exposure_cap:
         print(f"Skipped {skipped_exposure_cap} signals: open bets already at/near "
               f"{MAX_OPEN_STAKE_FRAC:.0%} of bankroll (MAX_OPEN_STAKE_FRAC).",
+              file=sys.stderr)
+    if skipped_fact_check:
+        print(f"Skipped {skipped_fact_check} signals: LLM fact-check found current, verifiable "
+              f"evidence against the recommended side (see docs/fact_check_log.jsonl).",
               file=sys.stderr)
 
 
