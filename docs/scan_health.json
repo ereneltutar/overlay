@@ -324,10 +324,10 @@
     },
     {
       "date": "2026-09-22",
-      "scanned_events": 18574,
+      "scanned_events": 18593,
       "opportunities": 0,
       "calibration_signals": 20,
-      "mispricing_signals": 20
+      "mispricing_signals": 19
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-22T11:31:02.394882+00:00",
+  "generated_at": "2026-09-22T12:18:55.787220+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 18574,
+  "scanned_events": 18593,
   "opportunities": [],
   "calibration_signals": [
     {
@@ -22,7 +22,7 @@
       "bucket_sample_size": 40,
       "bucket_historical_rate": 0.3,
       "edge_pct": 25.2,
-      "liquidity": 29893.55
+      "liquidity": 32019.68
     },
     {
       "market_id": "4781362",
@@ -41,7 +41,7 @@
       "bucket_sample_size": 124,
       "bucket_historical_rate": 0.1532,
       "edge_pct": 12.76,
-      "liquidity": 36615.48
+      "liquidity": 37782.12
     },
     {
       "market_id": "4828124",
@@ -60,7 +60,26 @@
       "bucket_sample_size": 124,
       "bucket_historical_rate": 0.1532,
       "edge_pct": 12.65,
-      "liquidity": 15222.05
+      "liquidity": 15120.45
+    },
+    {
+      "market_id": "4811463",
+      "market_question": "Dota 2: Natus Vincere vs 1win - Game 2 Winner",
+      "slug": "dota2-navi-1win-2026-09-22",
+      "url": "https://polymarket.com/event/dota2-navi-1win-2026-09-22",
+      "days_left": 0.2,
+      "recommended_side": "NO",
+      "current_price": 0.989,
+      "implied_cost": 0.0115,
+      "fee": 0.0005,
+      "bucket_range": [
+        0.98,
+        0.99
+      ],
+      "bucket_sample_size": 51,
+      "bucket_historical_rate": 0.8627,
+      "edge_pct": 12.58,
+      "liquidity": 61606.65
     },
     {
       "market_id": "4052425",
@@ -79,7 +98,7 @@
       "bucket_sample_size": 124,
       "bucket_historical_rate": 0.1532,
       "edge_pct": 12.54,
-      "liquidity": 87677.88
+      "liquidity": 89040.03
     },
     {
       "market_id": "4052456",
@@ -98,7 +117,7 @@
       "bucket_sample_size": 124,
       "bucket_historical_rate": 0.1532,
       "edge_pct": 12.54,
-      "liquidity": 31993.98
+      "liquidity": 33268.76
     },
     {
       "market_id": "3008494",
@@ -107,8 +126,8 @@
       "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-september-20260717143435868",
       "days_left": 8.2,
       "recommended_side": "NO",
-      "current_price": 0.988,
-      "implied_cost": 0.0125,
+      "current_price": 0.987,
+      "implied_cost": 0.0135,
       "fee": 0.0005,
       "bucket_range": [
         0.98,
@@ -116,8 +135,8 @@
       ],
       "bucket_sample_size": 51,
       "bucket_historical_rate": 0.8627,
-      "edge_pct": 12.48,
-      "liquidity": 77831.64
+      "edge_pct": 12.38,
+      "liquidity": 78843.64
     },
     {
       "market_id": "3212185",
@@ -136,7 +155,7 @@
       "bucket_sample_size": 51,
       "bucket_historical_rate": 0.8627,
       "edge_pct": 12.38,
-      "liquidity": 60147.31
+      "liquidity": 63427.69
     },
     {
       "market_id": "3701375",
@@ -155,64 +174,7 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 12.19,
-      "liquidity": 52966.31
-    },
-    {
-      "market_id": "4711368",
-      "market_question": "Will WTI Crude Oil (WTI) hit (LOW) $90 Week of September 21 2026?",
-      "slug": "will-wti-hit-week-of-september-21-2026",
-      "url": "https://polymarket.com/event/will-wti-hit-week-of-september-21-2026",
-      "days_left": 3.4,
-      "recommended_side": "NO",
-      "current_price": 0.98,
-      "implied_cost": 0.0208,
-      "fee": 0.0008,
-      "bucket_range": [
-        0.98,
-        0.99
-      ],
-      "bucket_sample_size": 51,
-      "bucket_historical_rate": 0.8627,
-      "edge_pct": 11.65,
-      "liquidity": 179021.49
-    },
-    {
-      "market_id": "4608830",
-      "market_question": "Brisbane Bullets vs. New Zealand Breakers",
-      "slug": "bknbl-bri-new-2026-09-22",
-      "url": "https://polymarket.com/event/bknbl-bri-new-2026-09-22",
-      "days_left": 6.9,
-      "recommended_side": "NO",
-      "current_price": 0.98,
-      "implied_cost": 0.021,
-      "fee": 0.001,
-      "bucket_range": [
-        0.98,
-        0.99
-      ],
-      "bucket_sample_size": 51,
-      "bucket_historical_rate": 0.8627,
-      "edge_pct": 11.63,
-      "liquidity": 59316.38
-    },
-    {
-      "market_id": "4063373",
-      "market_question": "Will WTI Crude Oil (WTI) hit (LOW) $85 in September?",
-      "slug": "what-price-will-wti-hit-in-september-2026",
-      "url": "https://polymarket.com/event/what-price-will-wti-hit-in-september-2026",
-      "days_left": 8.7,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.4699,
-      "fee": 0.0099,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1605,
-      "bucket_historical_rate": 0.4181,
-      "edge_pct": 11.2,
-      "liquidity": 48537.3
+      "liquidity": 64536.72
     },
     {
       "market_id": "3701405",
@@ -231,14 +193,14 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 11.19,
-      "liquidity": 28032.01
+      "liquidity": 27638.45
     },
     {
       "market_id": "3664825",
       "market_question": "Vikings vs. Buccaneers",
       "slug": "nfl-min-tb-2026-09-27",
       "url": "https://polymarket.com/event/nfl-min-tb-2026-09-27",
-      "days_left": 5.4,
+      "days_left": 5.3,
       "recommended_side": "NO",
       "current_price": 0.53,
       "implied_cost": 0.47,
@@ -250,32 +212,13 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 11.19,
-      "liquidity": 41718.62
+      "liquidity": 41951.74
     },
     {
-      "market_id": "4746104",
-      "market_question": "Will the highest temperature in London be 25°C on September 22?",
-      "slug": "highest-temperature-in-london-on-september-22-2026",
-      "url": "https://polymarket.com/event/highest-temperature-in-london-on-september-22-2026",
-      "days_left": 0.0,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1605,
-      "bucket_historical_rate": 0.4181,
-      "edge_pct": 10.95,
-      "liquidity": 508.61
-    },
-    {
-      "market_id": "4824481",
-      "market_question": "LoL: Arctic Pandas vs Pyramid IV Esports - Game 1 Winner",
-      "slug": "lol-ap-piv-2026-09-22",
-      "url": "https://polymarket.com/event/lol-ap-piv-2026-09-22",
+      "market_id": "4824503",
+      "market_question": "LoL: The Otter Side vs Team Aqua ASD - Game 1 Winner",
+      "slug": "lol-tos-aqua-2026-09-22",
+      "url": "https://polymarket.com/event/lol-tos-aqua-2026-09-22",
       "days_left": 0.5,
       "recommended_side": "NO",
       "current_price": 0.54,
@@ -288,45 +231,7 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 10.95,
-      "liquidity": 5046.43
-    },
-    {
-      "market_id": "4788881",
-      "market_question": "SPY (SPY) Up or Down on September 22?",
-      "slug": "spy-up-or-down-on-september-22-2026",
-      "url": "https://polymarket.com/event/spy-up-or-down-on-september-22-2026",
-      "days_left": 0.4,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.48,
-      "fee": 0.01,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1605,
-      "bucket_historical_rate": 0.4181,
-      "edge_pct": 10.19,
-      "liquidity": 21132.21
-    },
-    {
-      "market_id": "4584880",
-      "market_question": "Fukuoka SoftBank Hawks vs. Saitama Seibu Lions",
-      "slug": "npb-fuk-sai-2026-09-22",
-      "url": "https://polymarket.com/event/npb-fuk-sai-2026-09-22",
-      "days_left": 6.9,
-      "recommended_side": "NO",
-      "current_price": 0.941,
-      "implied_cost": 0.0618,
-      "fee": 0.0028,
-      "bucket_range": [
-        0.9,
-        0.95
-      ],
-      "bucket_sample_size": 245,
-      "bucket_historical_rate": 0.8367,
-      "edge_pct": 10.15,
-      "liquidity": 43234.5
+      "liquidity": 10514.09
     },
     {
       "market_id": "4822928",
@@ -345,7 +250,7 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 9.94,
-      "liquidity": 26449.55
+      "liquidity": 43719.73
     },
     {
       "market_id": "4464671",
@@ -364,7 +269,7 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 9.94,
-      "liquidity": 35509.88
+      "liquidity": 35778.82
     },
     {
       "market_id": "4613535",
@@ -383,16 +288,155 @@
       "bucket_sample_size": 1605,
       "bucket_historical_rate": 0.4181,
       "edge_pct": 9.94,
-      "liquidity": 123216.22
+      "liquidity": 208106.95
+    },
+    {
+      "market_id": "4811464",
+      "market_question": "Dota 2: Natus Vincere vs 1win (BO3) - PGL Wallachia Group Stage",
+      "slug": "dota2-navi-1win-2026-09-22",
+      "url": "https://polymarket.com/event/dota2-navi-1win-2026-09-22",
+      "days_left": 0.2,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1605,
+      "bucket_historical_rate": 0.4181,
+      "edge_pct": 9.94,
+      "liquidity": 78321.95
+    },
+    {
+      "market_id": "1607632",
+      "market_question": "Will Seattle Sounders FC win on 2026-04-12?",
+      "slug": "mls-sea-rsl-2026-04-12",
+      "url": "https://polymarket.com/event/mls-sea-rsl-2026-04-12",
+      "days_left": 1.5,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1605,
+      "bucket_historical_rate": 0.4181,
+      "edge_pct": 9.44,
+      "liquidity": 31699.5
+    },
+    {
+      "market_id": "3701323",
+      "market_question": "Spread: 49ers (-7.5)",
+      "slug": "nfl-ari-sf-2026-09-27",
+      "url": "https://polymarket.com/event/nfl-ari-sf-2026-09-27",
+      "days_left": 5.3,
+      "recommended_side": "NO",
+      "current_price": 0.51,
+      "implied_cost": 0.49,
+      "fee": 0.0,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1605,
+      "bucket_historical_rate": 0.4181,
+      "edge_pct": 9.19,
+      "liquidity": 25041.86
+    },
+    {
+      "market_id": "4807320",
+      "market_question": "Boise State Team Total: O/U 27.5",
+      "slug": "cfb-boise-wmich-2026-09-26",
+      "url": "https://polymarket.com/event/cfb-boise-wmich-2026-09-26",
+      "days_left": 4.3,
+      "recommended_side": "NO",
+      "current_price": 0.51,
+      "implied_cost": 0.49,
+      "fee": 0.0,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1605,
+      "bucket_historical_rate": 0.4181,
+      "edge_pct": 9.19,
+      "liquidity": 6003.03
+    },
+    {
+      "market_id": "4384854",
+      "market_question": "Will Arsenal WFC win on 2026-09-22?",
+      "slug": "uwcl-ars-hbk-2026-09-22",
+      "url": "https://polymarket.com/event/uwcl-ars-hbk-2026-09-22",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "current_price": 0.93,
+      "implied_cost": 0.0733,
+      "fee": 0.0033,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 245,
+      "bucket_historical_rate": 0.8367,
+      "edge_pct": 9.0,
+      "liquidity": 6664.61
     }
   ],
   "calibration_table_generated_at": "2026-09-21T09:49:29.518986+00:00",
   "mispricing_signals": [
     {
-      "market_id": "4824481",
-      "market_question": "LoL: Arctic Pandas vs Pyramid IV Esports - Game 1 Winner",
-      "slug": "lol-ap-piv-2026-09-22",
-      "url": "https://polymarket.com/event/lol-ap-piv-2026-09-22",
+      "market_id": "4811463",
+      "market_question": "Dota 2: Natus Vincere vs 1win - Game 2 Winner",
+      "slug": "dota2-navi-1win-2026-09-22",
+      "url": "https://polymarket.com/event/dota2-navi-1win-2026-09-22",
+      "days_left": 0.2,
+      "recommended_side": "NO",
+      "implied_probability": 0.989,
+      "fair_probability": 0.8627,
+      "implied_cost": 0.0115,
+      "fee": 0.0005,
+      "edge_pct": 12.58,
+      "volume_24h": 666049.65,
+      "liquidity": 61606.65,
+      "bucket_range": [
+        0.98,
+        0.99
+      ],
+      "bucket_sample_size": 51,
+      "low_sample_warning": false,
+      "score": 20526.37
+    },
+    {
+      "market_id": "4824117",
+      "market_question": "Counter-Strike: EAC Extra vs OldMix - Map 2 Winner",
+      "slug": "cs2-eace-oldmix-2026-09-22",
+      "url": "https://polymarket.com/event/cs2-eace-oldmix-2026-09-22",
+      "days_left": 0.1,
+      "recommended_side": "NO",
+      "implied_probability": 0.98,
+      "fair_probability": 0.8627,
+      "implied_cost": 0.021,
+      "fee": 0.001,
+      "edge_pct": 11.63,
+      "volume_24h": 45980.0,
+      "liquidity": 114.29,
+      "bucket_range": [
+        0.98,
+        0.99
+      ],
+      "bucket_sample_size": 51,
+      "low_sample_warning": false,
+      "score": 4988.49
+    },
+    {
+      "market_id": "4824503",
+      "market_question": "LoL: The Otter Side vs Team Aqua ASD - Game 1 Winner",
+      "slug": "lol-tos-aqua-2026-09-22",
+      "url": "https://polymarket.com/event/lol-tos-aqua-2026-09-22",
       "days_left": 0.5,
       "recommended_side": "NO",
       "implied_probability": 0.54,
@@ -400,15 +444,15 @@
       "implied_cost": 0.4724,
       "fee": 0.0124,
       "edge_pct": 10.95,
-      "volume_24h": 18729.96,
-      "liquidity": 5046.43,
+      "volume_24h": 39374.24,
+      "liquidity": 10514.09,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1605,
       "low_sample_warning": false,
-      "score": 2880.76
+      "score": 4344.81
     },
     {
       "market_id": "4828124",
@@ -423,80 +467,14 @@
       "fee": 0.0017,
       "edge_pct": 12.65,
       "volume_24h": 13527.09,
-      "liquidity": 15222.05,
+      "liquidity": 15120.45,
       "bucket_range": [
         0.02,
         0.03
       ],
       "bucket_sample_size": 124,
       "low_sample_warning": false,
-      "score": 2142.17
-    },
-    {
-      "market_id": "4746104",
-      "market_question": "Will the highest temperature in London be 25°C on September 22?",
-      "slug": "highest-temperature-in-london-on-september-22-2026",
-      "url": "https://polymarket.com/event/highest-temperature-in-london-on-september-22-2026",
-      "days_left": 0.0,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4181,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "edge_pct": 10.95,
-      "volume_24h": 7895.89,
-      "liquidity": 508.61,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1605,
-      "low_sample_warning": false,
-      "score": 1945.65
-    },
-    {
-      "market_id": "4788881",
-      "market_question": "SPY (SPY) Up or Down on September 22?",
-      "slug": "spy-up-or-down-on-september-22-2026",
-      "url": "https://polymarket.com/event/spy-up-or-down-on-september-22-2026",
-      "days_left": 0.4,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4181,
-      "implied_cost": 0.48,
-      "fee": 0.01,
-      "edge_pct": 10.19,
-      "volume_24h": 9069.77,
-      "liquidity": 21132.21,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1605,
-      "low_sample_warning": false,
-      "score": 1941.58
-    },
-    {
-      "market_id": "4608830",
-      "market_question": "Brisbane Bullets vs. New Zealand Breakers",
-      "slug": "bknbl-bri-new-2026-09-22",
-      "url": "https://polymarket.com/event/bknbl-bri-new-2026-09-22",
-      "days_left": 6.9,
-      "recommended_side": "NO",
-      "implied_probability": 0.98,
-      "fair_probability": 0.8627,
-      "implied_cost": 0.021,
-      "fee": 0.001,
-      "edge_pct": 11.63,
-      "volume_24h": 63893.49,
-      "liquidity": 59316.38,
-      "bucket_range": [
-        0.98,
-        0.99
-      ],
-      "bucket_sample_size": 51,
-      "low_sample_warning": false,
-      "score": 425.14
+      "score": 2251.19
     },
     {
       "market_id": "4781341",
@@ -511,14 +489,14 @@
       "fee": 0.003,
       "edge_pct": 25.2,
       "volume_24h": 8094.09,
-      "liquidity": 29893.55,
+      "liquidity": 32019.68,
       "bucket_range": [
         0.04,
         0.05
       ],
       "bucket_sample_size": 40,
       "low_sample_warning": false,
-      "score": 398.66
+      "score": 401.01
     },
     {
       "market_id": "4052425",
@@ -532,22 +510,22 @@
       "implied_cost": 0.0278,
       "fee": 0.0018,
       "edge_pct": 12.54,
-      "volume_24h": 67018.6,
-      "liquidity": 87677.88,
+      "volume_24h": 66276.71,
+      "liquidity": 89040.03,
       "bucket_range": [
         0.02,
         0.03
       ],
       "bucket_sample_size": 124,
       "low_sample_warning": false,
-      "score": 373.79
+      "score": 373.15
     },
     {
       "market_id": "3664825",
       "market_question": "Vikings vs. Buccaneers",
       "slug": "nfl-min-tb-2026-09-27",
       "url": "https://polymarket.com/event/nfl-min-tb-2026-09-27",
-      "days_left": 5.4,
+      "days_left": 5.3,
       "recommended_side": "NO",
       "implied_probability": 0.53,
       "fair_probability": 0.4181,
@@ -555,14 +533,14 @@
       "fee": 0.0,
       "edge_pct": 11.19,
       "volume_24h": 18809.28,
-      "liquidity": 41718.62,
+      "liquidity": 41951.74,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1605,
       "low_sample_warning": false,
-      "score": 286.48
+      "score": 288.27
     },
     {
       "market_id": "4711368",
@@ -577,21 +555,21 @@
       "fee": 0.0008,
       "edge_pct": 11.65,
       "volume_24h": 6138.51,
-      "liquidity": 179021.49,
+      "liquidity": 0.0,
       "bucket_range": [
         0.98,
         0.99
       ],
       "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 265.62
+      "score": 268.22
     },
     {
       "market_id": "4746577",
       "market_question": "Korea Open: Completed Match: Chan/Wu vs Charaeva/Rakhimova",
       "slug": "wta-doubles-chanwu-charrak-2026-09-21",
       "url": "https://polymarket.com/event/wta-doubles-chanwu-charrak-2026-09-21",
-      "days_left": 6.6,
+      "days_left": 6.5,
       "recommended_side": "NO",
       "implied_probability": 0.98,
       "fair_probability": 0.8627,
@@ -606,7 +584,7 @@
       ],
       "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 265.11
+      "score": 266.46
     },
     {
       "market_id": "3008494",
@@ -615,20 +593,20 @@
       "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-september-20260717143435868",
       "days_left": 8.2,
       "recommended_side": "NO",
-      "implied_probability": 0.988,
+      "implied_probability": 0.987,
       "fair_probability": 0.8627,
-      "implied_cost": 0.0125,
+      "implied_cost": 0.0135,
       "fee": 0.0005,
-      "edge_pct": 12.48,
-      "volume_24h": 28943.76,
-      "liquidity": 77831.64,
+      "edge_pct": 12.38,
+      "volume_24h": 28927.03,
+      "liquidity": 78843.64,
       "bucket_range": [
         0.98,
         0.99
       ],
       "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 259.4
+      "score": 258.21
     },
     {
       "market_id": "3701375",
@@ -642,37 +620,15 @@
       "implied_cost": 0.46,
       "fee": 0.0,
       "edge_pct": 12.19,
-      "volume_24h": 10017.46,
-      "liquidity": 52966.31,
+      "volume_24h": 10028.32,
+      "liquidity": 64536.72,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1605,
       "low_sample_warning": false,
-      "score": 233.35
-    },
-    {
-      "market_id": "4063373",
-      "market_question": "Will WTI Crude Oil (WTI) hit (LOW) $85 in September?",
-      "slug": "what-price-will-wti-hit-in-september-2026",
-      "url": "https://polymarket.com/event/what-price-will-wti-hit-in-september-2026",
-      "days_left": 8.7,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4181,
-      "implied_cost": 0.4699,
-      "fee": 0.0099,
-      "edge_pct": 11.2,
-      "volume_24h": 27615.51,
-      "liquidity": 48537.3,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1605,
-      "low_sample_warning": false,
-      "score": 214.19
+      "score": 234.97
     },
     {
       "market_id": "4761794",
@@ -686,7 +642,7 @@
       "implied_cost": 0.021,
       "fee": 0.001,
       "edge_pct": 11.63,
-      "volume_24h": 11141.0,
+      "volume_24h": 11181.0,
       "liquidity": 0.2,
       "bucket_range": [
         0.98,
@@ -694,7 +650,7 @@
       ],
       "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 206.81
+      "score": 208.35
     },
     {
       "market_id": "4781362",
@@ -709,14 +665,14 @@
       "fee": 0.0016,
       "edge_pct": 12.76,
       "volume_24h": 7201.69,
-      "liquidity": 36615.48,
+      "liquidity": 37782.12,
       "bucket_range": [
         0.02,
         0.03
       ],
       "bucket_sample_size": 124,
       "low_sample_warning": false,
-      "score": 190.36
+      "score": 191.48
     },
     {
       "market_id": "4798945",
@@ -738,7 +694,7 @@
       ],
       "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 190.23
+      "score": 191.15
     },
     {
       "market_id": "4052456",
@@ -752,15 +708,15 @@
       "implied_cost": 0.0278,
       "fee": 0.0018,
       "edge_pct": 12.54,
-      "volume_24h": 12537.02,
-      "liquidity": 31993.98,
+      "volume_24h": 12433.02,
+      "liquidity": 33268.76,
       "bucket_range": [
         0.02,
         0.03
       ],
       "bucket_sample_size": 124,
       "low_sample_warning": false,
-      "score": 161.67
+      "score": 161.62
     },
     {
       "market_id": "3701405",
@@ -774,15 +730,15 @@
       "implied_cost": 0.47,
       "fee": 0.0,
       "edge_pct": 11.19,
-      "volume_24h": 5049.34,
-      "liquidity": 28032.01,
+      "volume_24h": 5238.02,
+      "liquidity": 27638.45,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1605,
       "low_sample_warning": false,
-      "score": 152.08
+      "score": 155.89
     },
     {
       "market_id": "3212185",
@@ -796,37 +752,59 @@
       "implied_cost": 0.0135,
       "fee": 0.0005,
       "edge_pct": 12.38,
-      "volume_24h": 6741.09,
-      "liquidity": 60147.31,
+      "volume_24h": 5300.03,
+      "liquidity": 63427.69,
       "bucket_range": [
         0.98,
         0.99
       ],
       "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 117.01
+      "score": 104.15
     },
     {
-      "market_id": "4584880",
-      "market_question": "Fukuoka SoftBank Hawks vs. Saitama Seibu Lions",
-      "slug": "npb-fuk-sai-2026-09-22",
-      "url": "https://polymarket.com/event/npb-fuk-sai-2026-09-22",
-      "days_left": 6.9,
+      "market_id": "4641642",
+      "market_question": "Will Gold (XAUUSD) hit (LOW) $4,300 in September?",
+      "slug": "what-price-will-xauusd-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-xauusd-hit-in-september-2026",
+      "days_left": 8.7,
       "recommended_side": "NO",
-      "implied_probability": 0.941,
-      "fair_probability": 0.8367,
-      "implied_cost": 0.0618,
-      "fee": 0.0028,
-      "edge_pct": 10.15,
-      "volume_24h": 6042.01,
-      "liquidity": 43234.5,
+      "implied_probability": 0.98,
+      "fair_probability": 0.8627,
+      "implied_cost": 0.0208,
+      "fee": 0.0008,
+      "edge_pct": 11.65,
+      "volume_24h": 5328.81,
+      "liquidity": 0.0,
       "bucket_range": [
-        0.9,
-        0.95
+        0.98,
+        0.99
       ],
-      "bucket_sample_size": 245,
+      "bucket_sample_size": 51,
       "low_sample_warning": false,
-      "score": 114.45
+      "score": 98.29
+    },
+    {
+      "market_id": "701502",
+      "market_question": "Will Bitcoin dip to $45,000 by December 31, 2026?",
+      "slug": "what-price-will-bitcoin-hit-before-2027",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-before-2027",
+      "days_left": 100.7,
+      "recommended_side": "YES",
+      "implied_probability": 0.042,
+      "fair_probability": 0.3,
+      "implied_cost": 0.0448,
+      "fee": 0.0028,
+      "edge_pct": 25.52,
+      "volume_24h": 94591.64,
+      "liquidity": 369846.61,
+      "bucket_range": [
+        0.04,
+        0.05
+      ],
+      "bucket_sample_size": 40,
+      "low_sample_warning": false,
+      "score": 77.94
     }
   ],
   "mispricing_filters": {
