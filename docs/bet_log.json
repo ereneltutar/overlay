@@ -1,6 +1,273 @@
 {
   "starting_bankroll": 1000.0,
   "bankroll": 1000.0,
-  "bankroll_history": [],
-  "bets": []
+  "bankroll_history": [
+    {
+      "date": "2026-09-22",
+      "bankroll": 1000.0
+    }
+  ],
+  "bets": [
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-september-21-27-2026:4781341",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin reach $96,000 September 21-27?",
+      "slug": "what-price-will-bitcoin-hit-september-21-27-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-21-27-2026",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-09-28T04:11:36.922823+00:00",
+      "market_ids": [
+        "4781341"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.048,
+      "edge_pct_at_placement": 25.2,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 50.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:bitcoin-price-on-september-23-2026:4617516",
+      "tag": "calibration",
+      "market_question": "Will the price of Bitcoin be between $80,000 and $82,000 on September 23?",
+      "slug": "bitcoin-price-on-september-23-2026",
+      "url": "https://polymarket.com/event/bitcoin-price-on-september-23-2026",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-09-23T16:11:36.922823+00:00",
+      "market_ids": [
+        "4617516"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0235,
+      "edge_pct_at_placement": 12.97,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 47.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-september-21-27-2026:4781362",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $74,000 September 21-27?",
+      "slug": "what-price-will-bitcoin-hit-september-21-27-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-21-27-2026",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-09-28T04:11:36.922823+00:00",
+      "market_ids": [
+        "4781362"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0256,
+      "edge_pct_at_placement": 12.76,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 45.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-on-september-22-2026:4828124",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin reach $90,000 on September 22?",
+      "slug": "what-price-will-bitcoin-hit-on-september-22-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-on-september-22-2026",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-09-23T04:11:36.922823+00:00",
+      "market_ids": [
+        "4828124"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0267,
+      "edge_pct_at_placement": 12.65,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 42.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-in-september-2026:4052425",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $72,500 in September?",
+      "slug": "what-price-will-bitcoin-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-september-2026",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-10-01T04:11:36.922823+00:00",
+      "market_ids": [
+        "4052425"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0278,
+      "edge_pct_at_placement": 12.54,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 40.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-in-september-2026:4052456",
+      "tag": "calibration",
+      "market_question": "Will Ethereum dip to $2,200 in September?",
+      "slug": "what-price-will-ethereum-hit-in-september-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-september-2026",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-10-01T04:11:36.922823+00:00",
+      "market_ids": [
+        "4052456"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0278,
+      "edge_pct_at_placement": 12.54,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 38.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:which-company-has-the-best-ai-model-end-of-september-20260717143435868:3008494",
+      "tag": "calibration",
+      "market_question": "Will Anthropic have the best AI model at the end of September 2026?",
+      "slug": "which-company-has-the-best-ai-model-end-of-september-20260717143435868",
+      "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-september-20260717143435868",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-09-30T16:11:36.922823+00:00",
+      "market_ids": [
+        "3008494"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0135,
+      "edge_pct_at_placement": 12.38,
+      "predicted_win_prob": 0.1373,
+      "stake_usd": 36.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:largest-company-end-of-september-1785358369147:3212185",
+      "tag": "calibration",
+      "market_question": "Will NVIDIA be the largest company in the world by market cap on September 30?",
+      "slug": "largest-company-end-of-september-1785358369147",
+      "url": "https://polymarket.com/event/largest-company-end-of-september-1785358369147",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-10-01T04:11:36.922823+00:00",
+      "market_ids": [
+        "3212185"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0135,
+      "edge_pct_at_placement": 12.38,
+      "predicted_win_prob": 0.1373,
+      "stake_usd": 34.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:nfl-car-cle-2026-09-27:3701405",
+      "tag": "calibration",
+      "market_question": "Spread: Panthers (-2.5)",
+      "slug": "nfl-car-cle-2026-09-27",
+      "url": "https://polymarket.com/event/nfl-car-cle-2026-09-27",
+      "placed_at": "2026-09-22T11:23:36.922823+00:00",
+      "deadline": "2026-09-27T16:11:36.922823+00:00",
+      "market_ids": [
+        "3701405"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.46,
+      "edge_pct_at_placement": 12.19,
+      "predicted_win_prob": 0.5819,
+      "stake_usd": 13.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
+        "checked_at": "2026-09-22T11:23:36.922823+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    }
+  ]
 }
