@@ -52,6 +52,41 @@ def test_parse_verdict_none_input():
     assert result["verdict"] == "UNCERTAIN"
 
 
+# --- estimate_cost_usd / extract_usage --------------------------------
+
+def test_estimate_cost_usd_token_only():
+    # 1,000,000 input tokens @ $2/M + 1,000,000 output tokens @ $10/M, no searches
+    assert lfc.estimate_cost_usd(1_000_000, 1_000_000, 0) == 12.0
+
+
+def test_estimate_cost_usd_includes_web_search_flat_fee():
+    assert lfc.estimate_cost_usd(0, 0, 3) == 0.03
+
+
+def test_estimate_cost_usd_zero_usage_is_zero_cost():
+    assert lfc.estimate_cost_usd(0, 0, 0) == 0.0
+
+
+def test_extract_usage_reads_usage_object():
+    body = {"usage": {"input_tokens": 2000, "output_tokens": 150,
+                       "server_tool_use": {"web_search_requests": 2}}}
+    usage = lfc.extract_usage(body)
+    assert usage["input_tokens"] == 2000
+    assert usage["output_tokens"] == 150
+    assert usage["web_searches"] == 2
+    assert usage["cost_usd"] == lfc.estimate_cost_usd(2000, 150, 2)
+
+
+def test_extract_usage_missing_usage_object_returns_zero():
+    assert lfc.extract_usage({}) == lfc.ZERO_USAGE
+
+
+def test_extract_usage_missing_server_tool_use_defaults_zero_searches():
+    body = {"usage": {"input_tokens": 500, "output_tokens": 50}}
+    usage = lfc.extract_usage(body)
+    assert usage["web_searches"] == 0
+
+
 # --- ask_llm_fact_check (network mocked / missing key) ---------------------
 
 def test_ask_llm_fact_check_missing_api_key_returns_error(monkeypatch):
@@ -59,6 +94,8 @@ def test_ask_llm_fact_check_missing_api_key_returns_error(monkeypatch):
     result = lfc.ask_llm_fact_check("Will X happen?", "YES", "2026-02-01T00:00:00Z", NOW)
     assert result["verdict"] == "ERROR"
     assert "not set" in result["reason"]
+    assert result["cost_usd"] == 0.0
+    assert result["input_tokens"] == 0
 
 
 class FakeResponse:
@@ -75,19 +112,26 @@ class FakeResponse:
         return self._payload
 
 
-def test_ask_llm_fact_check_success_parses_verdict(monkeypatch):
+def test_ask_llm_fact_check_success_parses_verdict_and_usage(monkeypatch):
     monkeypatch.setenv(lfc.ANTHROPIC_API_KEY_ENV, "test-key")
-    payload = {"content": [
-        {"type": "text", "text": "Researched via web search.\nVERDICT: VETO\nREASON: Already resolved."},
-    ]}
+    payload = {
+        "content": [
+            {"type": "text", "text": "Researched via web search.\nVERDICT: VETO\nREASON: Already resolved."},
+        ],
+        "usage": {"input_tokens": 3000, "output_tokens": 120, "server_tool_use": {"web_search_requests": 2}},
+    }
     monkeypatch.setattr(lfc.requests, "post", lambda *a, **k: FakeResponse(payload=payload))
     result = lfc.ask_llm_fact_check("Will X happen?", "YES", "2026-02-01T00:00:00Z", NOW)
     assert result["verdict"] == "VETO"
     assert result["reason"] == "Already resolved."
     assert result["checked_at"] == NOW.isoformat()
+    assert result["input_tokens"] == 3000
+    assert result["output_tokens"] == 120
+    assert result["web_searches"] == 2
+    assert result["cost_usd"] == lfc.estimate_cost_usd(3000, 120, 2)
 
 
-def test_ask_llm_fact_check_request_exception_returns_error(monkeypatch):
+def test_ask_llm_fact_check_request_exception_returns_error_with_zero_cost(monkeypatch):
     monkeypatch.setenv(lfc.ANTHROPIC_API_KEY_ENV, "test-key")
 
     def raise_request_exc(*a, **k):
@@ -97,13 +141,18 @@ def test_ask_llm_fact_check_request_exception_returns_error(monkeypatch):
     result = lfc.ask_llm_fact_check("Will X happen?", "YES", "2026-02-01T00:00:00Z", NOW)
     assert result["verdict"] == "ERROR"
     assert "boom" in result["reason"]
+    assert result["cost_usd"] == 0.0
 
 
-def test_ask_llm_fact_check_empty_reply_returns_error(monkeypatch):
+def test_ask_llm_fact_check_empty_reply_keeps_real_usage(monkeypatch):
+    # The call was made (and may have been billed) even though the reply
+    # text was unusable -- cost shouldn't be zeroed out in this case.
     monkeypatch.setenv(lfc.ANTHROPIC_API_KEY_ENV, "test-key")
-    monkeypatch.setattr(lfc.requests, "post", lambda *a, **k: FakeResponse(payload={"content": []}))
+    payload = {"content": [], "usage": {"input_tokens": 500, "output_tokens": 0}}
+    monkeypatch.setattr(lfc.requests, "post", lambda *a, **k: FakeResponse(payload=payload))
     result = lfc.ask_llm_fact_check("Will X happen?", "YES", "2026-02-01T00:00:00Z", NOW)
     assert result["verdict"] == "ERROR"
+    assert result["input_tokens"] == 500
 
 
 # --- passes_fact_check ---------------------------------------------------

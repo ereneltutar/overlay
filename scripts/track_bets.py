@@ -147,6 +147,13 @@ def log_fact_check(bet_id: str, candidate: dict, result: dict, passed: bool):
         "verdict": result.get("verdict"),
         "reason": result.get("reason"),
         "checked_at": result.get("checked_at"),
+        # .get(..., 0) so a result dict from an older log line's shape (or a
+        # test stub that doesn't bother with cost fields) still logs cleanly
+        # -- see llm_fact_check.extract_usage for where these come from.
+        "input_tokens": result.get("input_tokens", 0),
+        "output_tokens": result.get("output_tokens", 0),
+        "web_searches": result.get("web_searches", 0),
+        "cost_usd": result.get("cost_usd", 0.0),
     }
     with FACT_CHECK_LOG_PATH.open("a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")

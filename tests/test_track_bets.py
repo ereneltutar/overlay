@@ -532,6 +532,22 @@ def test_place_new_bets_logs_every_fact_check_including_vetoed():
     assert entry["market_question"] == "Q?"
 
 
+def costed_llm(verdict, cost_usd=0.02):
+    def _ask(question, recommended_side, deadline_str, now):
+        return {"verdict": verdict, "reason": "stub", "checked_at": now.isoformat(),
+                "input_tokens": 2500, "output_tokens": 90, "web_searches": 1, "cost_usd": cost_usd}
+    return _ask
+
+
+def test_place_new_bets_logs_cost_fields_from_fact_check_result():
+    log = fresh_log()
+    tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=costed_llm("SAFE", cost_usd=0.0234))
+    entry = json.loads(tb.FACT_CHECK_LOG_PATH.read_text(encoding="utf-8").strip())
+    assert entry["cost_usd"] == 0.0234
+    assert entry["input_tokens"] == 2500
+    assert entry["web_searches"] == 1
+
+
 # --- resolve_open_bets (network mocked) ------------------------------------
 
 def test_resolve_open_bets_skips_bets_before_deadline_plus_grace():

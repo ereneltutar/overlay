@@ -60,6 +60,50 @@ REQUEST_TIMEOUT = 45  # web search adds real latency beyond a plain completion
 
 FAIL_OPEN = True  # see module docstring; ERROR and UNCERTAIN both pass when True
 
+# Pricing as of 2026-09-22 (https://platform.claude.com/docs/en/about-claude/pricing):
+# Sonnet 5 is $2/$10 per million input/output tokens; the web search tool is
+# a flat $0.01 per search on top of the token cost of whatever results it
+# returns (those land in input_tokens like any other input). Hardcoded
+# estimates, not fetched live -- same caveat as every other tunable constant
+# in this repo that isn't sourced from a live API: update these by hand if
+# Anthropic changes pricing. See fact_check_budget.py for how this rolls up
+# into a daily/monthly spend report.
+INPUT_TOKEN_COST_PER_MILLION = 2.00
+OUTPUT_TOKEN_COST_PER_MILLION = 10.00
+WEB_SEARCH_COST_PER_SEARCH = 0.01
+
+ZERO_USAGE = {"input_tokens": 0, "output_tokens": 0, "web_searches": 0, "cost_usd": 0.0}
+
+
+def estimate_cost_usd(input_tokens: int, output_tokens: int, web_searches: int) -> float:
+    """Estimated USD cost of one API call from its token/search counts (see
+    the pricing constants above). Pure function, no network call."""
+    token_cost = (input_tokens / 1_000_000) * INPUT_TOKEN_COST_PER_MILLION \
+        + (output_tokens / 1_000_000) * OUTPUT_TOKEN_COST_PER_MILLION
+    search_cost = web_searches * WEB_SEARCH_COST_PER_SEARCH
+    return round(token_cost + search_cost, 6)
+
+
+def extract_usage(response_body: dict) -> dict:
+    """Pulls token/search counts out of a Messages API response's `usage`
+    object and estimates the cost. Returns ZERO_USAGE (not an error) if
+    `usage` is missing or malformed, since a response that made it this far
+    already parsed -- this is about cost accounting, not correctness. Pure
+    function of the parsed response body."""
+    usage = response_body.get("usage") or {}
+    try:
+        input_tokens = int(usage.get("input_tokens") or 0)
+        output_tokens = int(usage.get("output_tokens") or 0)
+        web_searches = int((usage.get("server_tool_use") or {}).get("web_search_requests") or 0)
+    except (TypeError, ValueError):
+        return dict(ZERO_USAGE)
+    return {
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
+        "web_searches": web_searches,
+        "cost_usd": estimate_cost_usd(input_tokens, output_tokens, web_searches),
+    }
+
 VERDICT_RE = re.compile(r"VERDICT:\s*(SAFE|VETO|UNCERTAIN)", re.IGNORECASE)
 REASON_RE = re.compile(r"REASON:\s*(.+)", re.IGNORECASE)
 
@@ -121,16 +165,22 @@ def parse_verdict(reply_text: str) -> dict:
 def ask_llm_fact_check(question: str, recommended_side, deadline_str: str,
                         now: datetime.datetime) -> dict:
     """Calls the Claude API (web search enabled) to fact-check one market
-    candidate. Returns {"verdict", "reason", "checked_at"}; verdict is
-    "ERROR" (not SAFE/VETO/UNCERTAIN) if the API key is missing, the
-    request fails, or the response can't be parsed -- see FAIL_OPEN in
-    passes_fact_check for how that's handled. This is the one function in
-    this module that hits the network; passes_fact_check takes it as an
-    injectable parameter so it's never called for real in tests."""
+    candidate. Returns {"verdict", "reason", "checked_at", "input_tokens",
+    "output_tokens", "web_searches", "cost_usd"}; verdict is "ERROR" (not
+    SAFE/VETO/UNCERTAIN) if the API key is missing, the request fails, or
+    the response can't be parsed -- see FAIL_OPEN in passes_fact_check for
+    how that's handled. Usage/cost fields are zeroed (ZERO_USAGE) on every
+    ERROR path: a request that never completed was never billed for tokens
+    it didn't use (Anthropic's own docs note a failed web search isn't
+    billed either), so zero is the accurate cost, not just a placeholder.
+    This is the one function in this module that hits the network;
+    passes_fact_check takes it as an injectable parameter so it's never
+    called for real in tests."""
     checked_at = now.isoformat()
     api_key = os.environ.get(ANTHROPIC_API_KEY_ENV)
     if not api_key:
-        return {"verdict": "ERROR", "reason": f"{ANTHROPIC_API_KEY_ENV} not set.", "checked_at": checked_at}
+        return {"verdict": "ERROR", "reason": f"{ANTHROPIC_API_KEY_ENV} not set.",
+                "checked_at": checked_at, **ZERO_USAGE}
 
     prompt = PROMPT_TEMPLATE.format(
         question=question,
@@ -158,14 +208,21 @@ def ask_llm_fact_check(question: str, recommended_side, deadline_str: str,
         resp.raise_for_status()
         body = resp.json()
     except (requests.RequestException, ValueError) as exc:
-        return {"verdict": "ERROR", "reason": f"API request failed: {exc}", "checked_at": checked_at}
+        return {"verdict": "ERROR", "reason": f"API request failed: {exc}",
+                "checked_at": checked_at, **ZERO_USAGE}
+
+    usage = extract_usage(body)
 
     reply_text = _extract_text(body.get("content"))
     if not reply_text:
-        return {"verdict": "ERROR", "reason": "Empty reply from the API.", "checked_at": checked_at}
+        # The call was made (and may have been billed) even though the reply
+        # was unusable, so this keeps the real usage/cost instead of zeroing it.
+        return {"verdict": "ERROR", "reason": "Empty reply from the API.",
+                "checked_at": checked_at, **usage}
 
     result = parse_verdict(reply_text)
     result["checked_at"] = checked_at
+    result.update(usage)
     return result
 
 
