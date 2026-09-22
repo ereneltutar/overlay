@@ -490,6 +490,46 @@ def test_find_calibration_signal_implied_cost_includes_real_taker_fee():
     assert sig["edge_pct"] < no_fee_edge
 
 
+def test_find_calibration_signal_default_no_live_prices_is_unaffected():
+    # No live_crypto_prices arg passed at all -> behaves exactly as before
+    # the price-sanity gate existed, even for a crypto question.
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000,
+              "id": "mk1", "question": "Will Ethereum dip to $1,700 in September?"}
+    event = {"endDate": "2026-01-11T00:00:00Z", "slug": "s"}
+    sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW)
+    assert sig is not None
+
+
+def test_find_calibration_signal_vetoed_by_implausible_live_crypto_move():
+    # Regression for the 2026-09-22 diagnostic: an otherwise-qualifying
+    # crypto signal must be dropped when the live spot price makes the
+    # required move implausible, regardless of what the bucket says.
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000,
+              "id": "mk1", "question": "Will Ethereum dip to $1,700 in September?"}
+    event = {"endDate": (NOW + datetime.timedelta(days=9)).isoformat(), "slug": "s"}
+    sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW,
+                                      live_crypto_prices={"ethereum": 2733.0})
+    assert sig is None
+
+
+def test_find_calibration_signal_not_vetoed_by_plausible_live_crypto_move():
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000,
+              "id": "mk1", "question": "Will Ethereum reach $3,300 in September?"}
+    event = {"endDate": (NOW + datetime.timedelta(days=9)).isoformat(), "slug": "s"}
+    sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW,
+                                      live_crypto_prices={"ethereum": 2733.0})
+    assert sig is not None
+
+
+def test_find_calibration_signal_not_vetoed_for_non_crypto_question():
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000,
+              "id": "mk1", "question": "Will Fulham FC win on 2026-08-24?"}
+    event = {"endDate": (NOW + datetime.timedelta(days=9)).isoformat(), "slug": "s"}
+    sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=10.0, resolved_yes_rate=0.6), NOW,
+                                      live_crypto_prices={"ethereum": 2733.0})
+    assert sig is not None
+
+
 # --- find_mispricing_signal ----------------------------------------------
 
 def mis_bins(resolved_yes_rate=0.5, sample_size=40, significant=True):
@@ -571,3 +611,21 @@ def test_find_mispricing_signal_implied_cost_includes_real_taker_fee():
     assert sig["implied_cost"] == round(0.3 + expected_fee, 4)
     # fee eats into the raw 20pt gap
     assert sig["edge_pct"] < 20.0
+
+
+def test_find_mispricing_signal_vetoed_by_implausible_live_crypto_move():
+    # Same price-sanity gate as find_calibration_signal (see crypto_price_gate.py).
+    market = {"lastTradePrice": 0.3, "volume24hr": 10000, "id": "mk2",
+              "question": "Will Dogecoin reach $0.15 in September?"}
+    event = {"endDate": (NOW + datetime.timedelta(days=9)).isoformat(), "slug": "s"}
+    sig = fa.find_mispricing_signal(market, event, mis_bins(resolved_yes_rate=0.5), NOW,
+                                     live_crypto_prices={"dogecoin": 0.09})
+    assert sig is None
+
+
+def test_find_mispricing_signal_default_no_live_prices_is_unaffected():
+    market = {"lastTradePrice": 0.3, "volume24hr": 10000, "id": "mk2",
+              "question": "Will Dogecoin reach $0.15 in September?"}
+    event = {"endDate": (NOW + datetime.timedelta(days=9)).isoformat(), "slug": "s"}
+    sig = fa.find_mispricing_signal(market, event, mis_bins(resolved_yes_rate=0.5), NOW)
+    assert sig is not None

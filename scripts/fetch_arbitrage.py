@@ -84,6 +84,7 @@ from pathlib import Path
 
 import requests
 
+import crypto_price_gate
 import gamma_client
 import market_category
 
@@ -498,7 +499,8 @@ def find_bin(price: float, bins: list):
     return None
 
 
-def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime.datetime):
+def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime.datetime,
+                             live_crypto_prices: dict = None):
     """Returns a signal if a market's price falls into a bucket with a
     historically statistically significant calibration gap, else None.
 
@@ -513,7 +515,14 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     low-cost bucket with a ratio-inflated "edge" could otherwise monopolize
     every slot in that Top N regardless of how small its real, absolute edge
     was (a real incident: one bucket's edge_pct hit five digits this way and
-    crowded out every other candidate for days)."""
+    crowded out every other candidate for days).
+
+    live_crypto_prices (see crypto_price_gate.py): for a crypto threshold
+    market, a required move that's implausible within the time left given
+    the live spot price vetoes the signal regardless of what the bucket
+    says -- the bucket has no idea how far this specific market's target
+    actually sits from the live price. Defaults to None (treated as {}, i.e.
+    no veto) so callers that don't pass it keep today's behavior."""
     try:
         price = float(market.get("lastTradePrice") or market.get("bestAsk") or 0)
     except (TypeError, ValueError):
@@ -556,9 +565,13 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     end_date = parse_iso(event.get("endDate"))
     days_left = (end_date - now).total_seconds() / 86400 if end_date else None
 
+    question = market.get("question") or event.get("title") or "?"
+    if not crypto_price_gate.passes_price_sanity_gate(question, days_left, live_crypto_prices or {}):
+        return None
+
     return {
         "market_id": market.get("id"),
-        "market_question": market.get("question") or event.get("title") or "?",
+        "market_question": question,
         "slug": event.get("slug"),
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
         "days_left": round(days_left, 1) if days_left is not None else None,
@@ -574,10 +587,16 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     }
 
 
-def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.datetime):
+def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.datetime,
+                            live_crypto_prices: dict = None):
     """Looks at the gap between the implied probability (the market's current
     price) and that price bucket's PAST resolution rate (a proxy for "fair
     probability").
+
+    live_crypto_prices: same live-price plausibility veto as
+    find_calibration_signal (see crypto_price_gate.py and that function's
+    docstring); defaults to None (no veto) so existing callers are
+    unaffected unless they opt in.
 
     HOW THIS DIFFERS FROM find_calibration_signal():
       - has a 24-hour volume filter (tradability, not liquidity), CAL has a
@@ -646,6 +665,10 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
             and edge_pts <= MISPRICING_LONGTERM_MIN_EDGE_PTS:
         return None
 
+    question = market.get("question") or event.get("title") or "?"
+    if not crypto_price_gate.passes_price_sanity_gate(question, days_left, live_crypto_prices or {}):
+        return None
+
     liquidity = float(market.get("liquidityNum") or 0)
 
     # Floor so the score doesn't blow up when days left is near 0 (or unknown).
@@ -654,7 +677,7 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
 
     return {
         "market_id": market.get("id"),
-        "market_question": market.get("question") or event.get("title") or "?",
+        "market_question": question,
         "slug": event.get("slug"),
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
         "days_left": round(days_left, 1) if days_left is not None else None,
@@ -754,6 +777,17 @@ def main():
     calibration_bins = calibration["bins"] if calibration else None
     calibration_crypto_bins = calibration.get("crypto_bins") if calibration else None
 
+    # One request for every DISTINCT asset this repo knows how to
+    # price-check (see crypto_price_gate.py; ASSET_COINGECKO_IDS has
+    # multiple keys aliasing the same id, e.g. "eth" and "ethereum" both ->
+    # "ethereum", so dedupe with set() rather than one request per market).
+    # Fetched unconditionally whenever a crypto table exists, since either
+    # scan below might need it.
+    known_crypto_ids = sorted(set(crypto_price_gate.ASSET_COINGECKO_IDS.values()))
+    live_crypto_prices = {}
+    if calibration_crypto_bins:
+        live_crypto_prices = crypto_price_gate.fetch_live_prices(known_crypto_ids)
+
     opportunities = []
     calibration_signals = []
 
@@ -771,7 +805,7 @@ def main():
                 market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins)
                 if not market_bins:
                     continue
-                sig = find_calibration_signal(market, event, market_bins, now)
+                sig = find_calibration_signal(market, event, market_bins, now, live_crypto_prices)
                 if sig:
                     calibration_signals.append(sig)
 
@@ -794,7 +828,7 @@ def main():
                 market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins)
                 if not market_bins:
                     continue
-                sig = find_mispricing_signal(market, event, market_bins, now)
+                sig = find_mispricing_signal(market, event, market_bins, now, live_crypto_prices)
                 if sig:
                     mispricing_signals.append(sig)
 
@@ -822,6 +856,9 @@ def main():
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
+    if calibration_crypto_bins:
+        print(f"Fetched {len(live_crypto_prices)}/{len(known_crypto_ids)} "
+              f"live crypto prices for the price-sanity gate (CoinGecko).")
     print(f"Scanned {len(events)} events, found {len(opportunities)} arbitrage opportunities, "
           f"{len(calibration_signals)} calibration signals -> {OUTPUT_PATH}")
     print(f"Found {len(mispricing_signals)} mispricing signals (within the Top {MAX_MISPRICING_SIGNALS}).")
