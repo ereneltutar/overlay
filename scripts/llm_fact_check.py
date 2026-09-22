@@ -162,6 +162,32 @@ def parse_verdict(reply_text: str) -> dict:
     }
 
 
+def _extract_error_detail(exc: Exception) -> str:
+    """Pulls the Anthropic API's own error message out of a failed
+    request's response body (e.g. {"error": {"message": "Your credit
+    balance is too low..."}}) instead of settling for the generic '400
+    Client Error: Bad Request for url: ...' requests.HTTPError gives by
+    default. That generic text alone can't tell "out of API credit" apart
+    from "wrong model name" apart from a dozen other causes that all raise
+    the same exception type -- the real diagnosis for this repo's first
+    production failure (2026-09-22, all 40 fact-checks that day) took a
+    manual curl to find, purely because this function was throwing away
+    the response body. Falls back to str(exc) if there's no response
+    object (a network-level failure never got a response at all) or its
+    body isn't parseable JSON. Pure function, no network call."""
+    response = getattr(exc, "response", None)
+    if response is None:
+        return str(exc)
+    try:
+        body = response.json()
+        message = (body.get("error") or {}).get("message")
+    except (ValueError, AttributeError):
+        return str(exc)
+    if not message:
+        return str(exc)
+    return f"{response.status_code}: {message}"
+
+
 def ask_llm_fact_check(question: str, recommended_side, deadline_str: str,
                         now: datetime.datetime) -> dict:
     """Calls the Claude API (web search enabled) to fact-check one market
@@ -207,8 +233,11 @@ def ask_llm_fact_check(question: str, recommended_side, deadline_str: str,
         )
         resp.raise_for_status()
         body = resp.json()
-    except (requests.RequestException, ValueError) as exc:
-        return {"verdict": "ERROR", "reason": f"API request failed: {exc}",
+    except requests.RequestException as exc:
+        return {"verdict": "ERROR", "reason": f"API request failed: {_extract_error_detail(exc)}",
+                "checked_at": checked_at, **ZERO_USAGE}
+    except ValueError as exc:
+        return {"verdict": "ERROR", "reason": f"API request failed: invalid JSON response ({exc})",
                 "checked_at": checked_at, **ZERO_USAGE}
 
     usage = extract_usage(body)

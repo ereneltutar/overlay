@@ -106,10 +106,50 @@ class FakeResponse:
 
     def raise_for_status(self):
         if self._raise_exc:
+            # Mirrors real requests.Response.raise_for_status(), which sets
+            # .response on the HTTPError it raises -- _extract_error_detail
+            # relies on that to read the real error body back out.
+            self._raise_exc.response = self
             raise self._raise_exc
 
     def json(self):
         return self._payload
+
+
+# --- _extract_error_detail -----------------------------------------------
+
+class FakeErrorResponse:
+    def __init__(self, status_code=400, payload=None, json_raises=False):
+        self.status_code = status_code
+        self._payload = payload
+        self._json_raises = json_raises
+
+    def json(self):
+        if self._json_raises:
+            raise ValueError("not json")
+        return self._payload
+
+
+def test_extract_error_detail_pulls_api_message():
+    exc = Exception("generic")
+    exc.response = FakeErrorResponse(payload={"error": {"message": "Your credit balance is too low."}})
+    assert lfc._extract_error_detail(exc) == "400: Your credit balance is too low."
+
+
+def test_extract_error_detail_no_response_falls_back_to_str():
+    assert lfc._extract_error_detail(Exception("connection refused")) == "connection refused"
+
+
+def test_extract_error_detail_unparseable_body_falls_back_to_str():
+    exc = Exception("bad gateway")
+    exc.response = FakeErrorResponse(json_raises=True)
+    assert lfc._extract_error_detail(exc) == "bad gateway"
+
+
+def test_extract_error_detail_missing_message_falls_back_to_str():
+    exc = Exception("boom")
+    exc.response = FakeErrorResponse(payload={"error": {}})
+    assert lfc._extract_error_detail(exc) == "boom"
 
 
 def test_ask_llm_fact_check_success_parses_verdict_and_usage(monkeypatch):
@@ -141,6 +181,27 @@ def test_ask_llm_fact_check_request_exception_returns_error_with_zero_cost(monke
     result = lfc.ask_llm_fact_check("Will X happen?", "YES", "2026-02-01T00:00:00Z", NOW)
     assert result["verdict"] == "ERROR"
     assert "boom" in result["reason"]
+    assert result["cost_usd"] == 0.0
+
+
+def test_ask_llm_fact_check_surfaces_real_api_error_message(monkeypatch):
+    # Regression for the 2026-09-22 production incident: every fact-check
+    # that day failed with the generic "400 Client Error: Bad Request for
+    # url: ..." requests.HTTPError text, which gave no clue the real cause
+    # was an empty Anthropic API credit balance -- diagnosing it took a
+    # manual curl. The reason string must surface the API's own message.
+    monkeypatch.setenv(lfc.ANTHROPIC_API_KEY_ENV, "test-key")
+    error_body = {"type": "error", "error": {
+        "type": "invalid_request_error",
+        "message": "Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.",
+    }}
+    http_error = lfc.requests.exceptions.HTTPError("400 Client Error: Bad Request for url: ...")
+    resp = FakeResponse(status_code=400, payload=error_body, raise_exc=http_error)
+    monkeypatch.setattr(lfc.requests, "post", lambda *a, **k: resp)
+
+    result = lfc.ask_llm_fact_check("Will X happen?", "YES", "2026-02-01T00:00:00Z", NOW)
+    assert result["verdict"] == "ERROR"
+    assert "credit balance is too low" in result["reason"]
     assert result["cost_usd"] == 0.0
 
 
