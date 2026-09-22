@@ -342,9 +342,8 @@ def test_place_new_bets_dedupes_against_existing_bets():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
-    assert placed == 0
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 0
     assert len(log["bets"]) == 1  # still just the pre-existing one
 
 
@@ -354,10 +353,9 @@ def test_place_new_bets_skips_when_bankroll_below_floor():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
-    assert placed == 0
-    assert skipped_bankroll == 1
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 0
+    assert stats["skipped_low_bankroll"] == 1
 
 
 def test_place_new_bets_places_and_updates_log():
@@ -366,11 +364,10 @@ def test_place_new_bets_places_and_updates_log():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
-    assert placed == 1
-    assert skipped_bankroll == 0
-    assert skipped_no_edge == 0
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 1
+    assert stats["skipped_low_bankroll"] == 0
+    assert stats["skipped_no_edge"] == 0
     assert log["bets"][0]["status"] == "open"
     assert log["bets"][0]["stake_usd"] > 0
 
@@ -406,10 +403,9 @@ def test_place_new_bets_skips_calibration_signal_when_own_track_record_kills_kel
         "recommended_side": "YES", "implied_cost": 0.951, "edge_pct": 4.79,
         "bucket_historical_rate": 0.90,
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
-    assert placed == 0
-    assert skipped_no_edge == 1
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 0
+    assert stats["skipped_no_edge"] == 1
     assert not any(b["slug"] == "new-market" for b in log["bets"])
 
 
@@ -423,10 +419,9 @@ def test_place_new_bets_skips_when_open_stake_already_at_exposure_cap():
         "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
         "fair_probability": 0.7, "recommended_side": "YES",
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
-    assert placed == 0
-    assert skipped_exposure_cap == 1
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 0
+    assert stats["skipped_exposure_cap"] == 1
     assert not any(b["slug"] == "s" for b in log["bets"])
 
 
@@ -438,12 +433,11 @@ def test_place_new_bets_trims_stake_to_remaining_exposure_room():
         "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
         "fair_probability": 0.7, "recommended_side": "YES",
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
     # exposure_room ($5) is below STAKE_FLOOR_USD ($10), so this is skipped
     # outright rather than placed with a dust-sized stake.
-    assert placed == 0
-    assert skipped_exposure_cap == 1
+    assert stats["placed"] == 0
+    assert stats["skipped_exposure_cap"] == 1
 
 
 def test_place_new_bets_allows_bet_within_exposure_room():
@@ -454,10 +448,9 @@ def test_place_new_bets_allows_bet_within_exposure_room():
         "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
         "fair_probability": 0.7, "recommended_side": "YES",
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
-    assert placed == 1
-    assert skipped_exposure_cap == 0
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 1
+    assert stats["skipped_exposure_cap"] == 0
     assert log["bets"][-1]["stake_usd"] <= 50.0
 
 
@@ -481,10 +474,9 @@ def erroring_llm(question, recommended_side, deadline_str, now):
 
 def test_place_new_bets_skips_calibration_candidate_on_veto():
     log = fresh_log()
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=vetoing_llm)
-    assert placed == 0
-    assert skipped_fact_check == 1
+    stats = tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=vetoing_llm)
+    assert stats["placed"] == 0
+    assert stats["skipped_fact_check"] == 1
     assert log["bets"] == []
 
 
@@ -493,10 +485,9 @@ def test_place_new_bets_fail_open_on_llm_error():
     # the bet through -- an Anthropic API outage shouldn't silently halt
     # every new calibration/mispricing bet.
     log = fresh_log()
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=erroring_llm)
-    assert placed == 1
-    assert skipped_fact_check == 0
+    stats = tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=erroring_llm)
+    assert stats["placed"] == 1
+    assert stats["skipped_fact_check"] == 0
 
 
 def test_place_new_bets_stores_fact_check_result_on_the_placed_bet():
@@ -514,10 +505,9 @@ def test_place_new_bets_does_not_fact_check_arbitrage_candidates():
         "event_title": "E", "slug": "s", "end_date": "2026-02-01T00:00:00Z",
         "total_cost": 0.9, "edge_pct": 5, "legs": [{"market_id": "m1"}, {"market_id": "m2"}],
     }]}
-    placed, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-        tb.place_new_bets(log, results, NOW, ask_llm=vetoing_llm)
-    assert placed == 1
-    assert skipped_fact_check == 0
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=vetoing_llm)
+    assert stats["placed"] == 1
+    assert stats["skipped_fact_check"] == 0
     assert log["bets"][0]["fact_check"] is None
 
 
@@ -546,6 +536,127 @@ def test_place_new_bets_logs_cost_fields_from_fact_check_result():
     assert entry["cost_usd"] == 0.0234
     assert entry["input_tokens"] == 2500
     assert entry["web_searches"] == 1
+
+
+# --- place_new_bets: fact-check cache reuse ---------------------------------
+# Regression for the 2026-09-22 cost leak: a candidate that never gets
+# placed (VETOed, or skipped for an unrelated reason) has nothing to dedupe
+# against via existing_ids, so it would otherwise get re-fact-checked (and
+# re-billed) on every single run it keeps appearing in results.json.
+
+def counting_llm(verdict="SAFE"):
+    calls = []
+
+    def _ask(question, recommended_side, deadline_str, now):
+        calls.append(question)
+        return {"verdict": verdict, "reason": "stub", "checked_at": now.isoformat()}
+    _ask.calls = calls
+    return _ask
+
+
+def test_place_new_bets_reuses_recent_veto_instead_of_recalling_llm():
+    log = fresh_log()
+    # A VETO from an hour ago for the exact same bet_id -- within
+    # FACT_CHECK_CACHE_DAYS, so it should be reused, not re-queried.
+    tb.log_fact_check(
+        "calibration:s:m1", CAL_RESULTS["calibration_signals"][0],
+        {"verdict": "VETO", "reason": "stale but recent", "checked_at": (NOW - datetime.timedelta(hours=1)).isoformat()},
+        passed=False,
+    )
+    llm = counting_llm("SAFE")  # would pass if actually called -- must NOT be called
+    stats = tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=llm)
+    assert llm.calls == []
+    assert stats["fact_check_cache_hits"] == 1
+    assert stats["skipped_fact_check"] == 1  # cached VETO still blocks the bet
+    assert stats["placed"] == 0
+
+
+def test_place_new_bets_ignores_stale_cache_entry_beyond_cache_days():
+    log = fresh_log()
+    stale_at = NOW - datetime.timedelta(days=tb.FACT_CHECK_CACHE_DAYS + 1)
+    tb.log_fact_check(
+        "calibration:s:m1", CAL_RESULTS["calibration_signals"][0],
+        {"verdict": "VETO", "reason": "old news", "checked_at": stale_at.isoformat()},
+        passed=False,
+    )
+    llm = counting_llm("SAFE")
+    stats = tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=llm)
+    assert len(llm.calls) == 1  # stale entry ignored -- a fresh check was made
+    assert stats["fact_check_cache_hits"] == 0
+    assert stats["placed"] == 1
+
+
+def test_place_new_bets_does_not_relog_a_cache_hit():
+    log = fresh_log()
+    tb.log_fact_check(
+        "calibration:s:m1", CAL_RESULTS["calibration_signals"][0],
+        {"verdict": "SAFE", "reason": "cached", "checked_at": (NOW - datetime.timedelta(hours=1)).isoformat()},
+        passed=True,
+    )
+    tb.place_new_bets(log, CAL_RESULTS, NOW, ask_llm=counting_llm("SAFE"))
+    lines = tb.FACT_CHECK_LOG_PATH.read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines) == 1  # only the original entry -- no duplicate written for the cache hit
+
+
+# --- place_new_bets: per-run fact-check cap ---------------------------------
+
+def n_calibration_candidates(n):
+    return {"calibration_signals": [{
+        "market_id": f"m{i}", "slug": f"s{i}", "days_left": 5, "market_question": f"Q{i}?",
+        "recommended_side": "YES", "implied_cost": 0.2, "edge_pct": 8, "bucket_historical_rate": 0.35,
+    } for i in range(n)]}
+
+
+def test_place_new_bets_stops_fresh_calls_at_per_run_cap(monkeypatch):
+    monkeypatch.setattr(tb, "MAX_NEW_FACT_CHECKS_PER_RUN", 2)
+    log = fresh_log()
+    llm = counting_llm("SAFE")
+    stats = tb.place_new_bets(log, n_calibration_candidates(5), NOW, ask_llm=llm)
+    assert len(llm.calls) == 2
+    assert stats["fact_check_cap_skipped"] == 3
+    # The 3 over-cap candidates fail open (no check) and still get placed.
+    assert stats["placed"] == 5
+
+
+def test_place_new_bets_cache_hits_do_not_count_against_the_cap(monkeypatch):
+    monkeypatch.setattr(tb, "MAX_NEW_FACT_CHECKS_PER_RUN", 1)
+    log = fresh_log()
+    candidates = n_calibration_candidates(3)
+    # Pre-seed a recent cache entry for one of the three so it doesn't
+    # consume any of the (very tight) per-run budget.
+    tb.log_fact_check("calibration:s0:m0", candidates["calibration_signals"][0],
+                       {"verdict": "SAFE", "reason": "cached", "checked_at": (NOW - datetime.timedelta(hours=1)).isoformat()},
+                       passed=True)
+    llm = counting_llm("SAFE")
+    stats = tb.place_new_bets(log, candidates, NOW, ask_llm=llm)
+    assert stats["fact_check_cache_hits"] == 1
+    assert len(llm.calls) == 1       # the cap (1) applies only to the other two
+    assert stats["fact_check_cap_skipped"] == 1
+    assert stats["placed"] == 3
+
+
+# --- load_recent_fact_checks ------------------------------------------------
+
+def test_load_recent_fact_checks_returns_empty_when_file_missing():
+    assert tb.load_recent_fact_checks(NOW) == {}
+
+
+def test_load_recent_fact_checks_excludes_entries_older_than_cache_window():
+    tb.log_fact_check("a", {"market_question": "Q", "recommended_side": "YES"},
+                       {"verdict": "SAFE", "checked_at": (NOW - datetime.timedelta(days=tb.FACT_CHECK_CACHE_DAYS + 1)).isoformat()},
+                       passed=True)
+    assert tb.load_recent_fact_checks(NOW) == {}
+
+
+def test_load_recent_fact_checks_keeps_the_latest_entry_per_bet_id():
+    tb.log_fact_check("a", {"market_question": "Q", "recommended_side": "YES"},
+                       {"verdict": "VETO", "checked_at": (NOW - datetime.timedelta(hours=5)).isoformat()},
+                       passed=False)
+    tb.log_fact_check("a", {"market_question": "Q", "recommended_side": "YES"},
+                       {"verdict": "SAFE", "checked_at": (NOW - datetime.timedelta(hours=1)).isoformat()},
+                       passed=True)
+    recent = tb.load_recent_fact_checks(NOW)
+    assert recent["a"]["verdict"] == "SAFE"
 
 
 # --- resolve_open_bets (network mocked) ------------------------------------

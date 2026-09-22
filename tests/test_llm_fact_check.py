@@ -216,6 +216,28 @@ def test_ask_llm_fact_check_empty_reply_keeps_real_usage(monkeypatch):
     assert result["input_tokens"] == 500
 
 
+# --- verdict_passes -----------------------------------------------------
+
+def test_verdict_passes_true_on_safe():
+    assert lfc.verdict_passes({"verdict": "SAFE"}) is True
+
+
+def test_verdict_passes_false_on_veto():
+    assert lfc.verdict_passes({"verdict": "VETO"}) is False
+
+
+def test_verdict_passes_fail_open_true_for_error_and_uncertain(monkeypatch):
+    monkeypatch.setattr(lfc, "FAIL_OPEN", True)
+    assert lfc.verdict_passes({"verdict": "ERROR"}) is True
+    assert lfc.verdict_passes({"verdict": "UNCERTAIN"}) is True
+
+
+def test_verdict_passes_fail_closed_when_disabled(monkeypatch):
+    monkeypatch.setattr(lfc, "FAIL_OPEN", False)
+    assert lfc.verdict_passes({"verdict": "ERROR"}) is False
+    assert lfc.verdict_passes({"verdict": "UNCERTAIN"}) is False
+
+
 # --- passes_fact_check ---------------------------------------------------
 
 def stub_llm(verdict):

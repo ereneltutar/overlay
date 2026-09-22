@@ -106,6 +106,34 @@ MAX_OPEN_STAKE_FRAC = 0.35     # never let more than this fraction of total bank
 
 DEADLINE_GRACE_HOURS = 12      # wait this long past the deadline before checking (resolution isn't instant)
 SLEEP_BETWEEN_CALLS = 1.15
+
+# A candidate only gets deduplicated against existing_ids once it's actually
+# PLACED as a bet (see place_new_bets). A VETOed candidate -- or one that
+# passed the fact-check but then got skipped for an unrelated reason (no
+# Kelly edge, bankroll floor, exposure cap) -- never gets placed, so it has
+# nothing to dedupe against: as long as it keeps appearing in results.json,
+# it gets re-fact-checked, and re-billed, on every single run. Observed
+# directly on 2026-09-22 (first production day of the gate): a handful of
+# persistently-vetoed candidates recurring across a few manual runs alone
+# accounted for a meaningful share of that day's $3+ spend. FACT_CHECK_CACHE_DAYS
+# closes that gap: load_recent_fact_checks() reuses any check already on record
+# for a bet_id within this many days instead of calling the API again.
+# 3 is a judgment call, not backtested (see crypto_price_gate.py's
+# MAX_VOL_MULTIPLE for the same caveat pattern) -- long enough to stop daily
+# re-billing of a still-open candidate, short enough that a fact that
+# actually changes (a by-election resolves, a poll moves) gets re-checked
+# reasonably soon rather than trusting a stale verdict indefinitely.
+FACT_CHECK_CACHE_DAYS = 3
+# Hard ceiling on how many FRESH (not cache-hit) fact-check API calls one run
+# will make, regardless of how many new candidates show up. This bounds
+# worst-case single-run spend (at ~$0.10-0.19/call observed in production,
+# 20 calls is roughly $2-4) independent of the Anthropic Console's own
+# monthly spend limit, the same "more than one layer of defense" philosophy
+# as MAX_OPEN_STAKE_FRAC below. A run that hits this cap just lets its
+# remaining new candidates through unchecked (fail-open, same as any other
+# uncheckable case) -- they'll get a real check on a later run once this
+# run's count resets to zero.
+MAX_NEW_FACT_CHECKS_PER_RUN = 20
 # ----------------------------------------------------------------------------
 
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "docs" / "results.json"
@@ -157,6 +185,44 @@ def log_fact_check(bet_id: str, candidate: dict, result: dict, passed: bool):
     }
     with FACT_CHECK_LOG_PATH.open("a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+
+def load_recent_fact_checks(now: datetime.datetime) -> dict:
+    """Reads docs/fact_check_log.jsonl and returns {bet_id: latest logged
+    result} for every bet_id whose most recent check happened within
+    FACT_CHECK_CACHE_DAYS of `now` -- see that constant's comment for why
+    this exists. A bet_id with no entry in the returned dict either has
+    never been checked or its last check is stale enough to redo. Malformed
+    lines and entries missing checked_at/bet_id are skipped rather than
+    raising, same tolerance as every other *.jsonl reader in this repo.
+    Pure function of the file's current contents and `now`."""
+    if not FACT_CHECK_LOG_PATH.exists():
+        return {}
+    cutoff = now - datetime.timedelta(days=FACT_CHECK_CACHE_DAYS)
+    latest = {}
+    with FACT_CHECK_LOG_PATH.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                entry = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            bet_id = entry.get("bet_id")
+            checked_at = entry.get("checked_at")
+            if not bet_id or not checked_at:
+                continue
+            try:
+                checked_dt = datetime.datetime.fromisoformat(checked_at.replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if checked_dt < cutoff:
+                continue
+            existing = latest.get(bet_id)
+            if existing is None or checked_at > existing["checked_at"]:
+                latest[bet_id] = entry
+    return latest
 
 
 def realized_pnl_total(log: dict) -> float:
@@ -481,13 +547,25 @@ def open_stake_total(log: dict) -> float:
 
 
 def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm_fact_check.ask_llm_fact_check):
+    """Returns a stats dict: placed, skipped_low_bankroll, skipped_no_edge,
+    skipped_exposure_cap, skipped_fact_check, fact_check_cache_hits,
+    fact_check_cap_skipped. A dict (not a positional tuple) because this
+    has already grown twice as fact-check accounting was added -- a 7-tuple
+    every caller has to unpack in the right order is exactly the kind of
+    thing that silently breaks the next time a field gets added."""
     existing_ids = {bet["bet_id"] for bet in log["bets"]}
+    recent_fact_checks = load_recent_fact_checks(now)
     track = own_track_record(log)
-    placed_count = 0
-    skipped_low_bankroll = 0
-    skipped_no_edge = 0
-    skipped_exposure_cap = 0
-    skipped_fact_check = 0
+    stats = {
+        "placed": 0,
+        "skipped_low_bankroll": 0,
+        "skipped_no_edge": 0,
+        "skipped_exposure_cap": 0,
+        "skipped_fact_check": 0,
+        "fact_check_cache_hits": 0,
+        "fact_check_cap_skipped": 0,
+    }
+    fresh_fact_checks_this_run = 0
 
     for c in build_candidates(results, now):
         if c["bet_id"] in existing_ids:
@@ -500,16 +578,36 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         # gate the two tags that are actually betting the model's belief
         # about which side wins.
         if c["tag"] in ("calibration", "mispricing"):
-            passed, fact_check_result = llm_fact_check.passes_fact_check(
-                c["market_question"], c["recommended_side"], c["deadline"], now, ask_llm=ask_llm)
-            log_fact_check(c["bet_id"], c, fact_check_result, passed)
+            cached = recent_fact_checks.get(c["bet_id"])
+            if cached is not None:
+                # Reuse a check already on record instead of re-billing the
+                # API for a candidate that's been showing up unplaced for
+                # days (see FACT_CHECK_CACHE_DAYS) -- not re-logged, since
+                # it isn't a new check and would just inflate the budget
+                # report with $0 entries.
+                fact_check_result = cached
+                passed = llm_fact_check.verdict_passes(cached)
+                stats["fact_check_cache_hits"] += 1
+            elif fresh_fact_checks_this_run >= MAX_NEW_FACT_CHECKS_PER_RUN:
+                # Hard per-run ceiling reached (see MAX_NEW_FACT_CHECKS_PER_RUN)
+                # -- fail open exactly like any other uncheckable case rather
+                # than blocking the bet on a self-imposed budget cap; this
+                # candidate gets a real check on a later run once the cap
+                # resets to zero.
+                passed = True
+                stats["fact_check_cap_skipped"] += 1
+            else:
+                passed, fact_check_result = llm_fact_check.passes_fact_check(
+                    c["market_question"], c["recommended_side"], c["deadline"], now, ask_llm=ask_llm)
+                log_fact_check(c["bet_id"], c, fact_check_result, passed)
+                fresh_fact_checks_this_run += 1
             if not passed:
-                skipped_fact_check += 1
+                stats["skipped_fact_check"] += 1
                 continue
 
         bankroll_avail = available_bankroll(log)
         if bankroll_avail < STAKE_FLOOR_USD:
-            skipped_low_bankroll += 1
+            stats["skipped_low_bankroll"] += 1
             continue
 
         # Portfolio-level cap: how much stake room is left before open bets
@@ -521,7 +619,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         total_bank = total_bankroll(log)
         exposure_room = max(0.0, MAX_OPEN_STAKE_FRAC * total_bank - open_stake_total(log))
         if exposure_room < STAKE_FLOOR_USD:
-            skipped_exposure_cap += 1
+            stats["skipped_exposure_cap"] += 1
             continue
 
         if c["tag"] == "arbitrage":
@@ -530,7 +628,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
             stake = kelly_stake(c["entry_cost"], c["predicted_win_prob"], track,
                                  bankroll_avail, STAKE_CAP_FRAC[c["tag"]])
         if stake <= 0:
-            skipped_no_edge += 1
+            stats["skipped_no_edge"] += 1
             continue
         stake = min(stake, round(bankroll_avail, 2), round(exposure_room, 2))
 
@@ -554,9 +652,9 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
             "fact_check": fact_check_result,
         })
         existing_ids.add(c["bet_id"])
-        placed_count += 1
+        stats["placed"] += 1
 
-    return placed_count, skipped_low_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check
+    return stats
 
 
 def record_bankroll_snapshot(log: dict, now: datetime.datetime):
@@ -595,10 +693,10 @@ def main():
     log = load_bet_log()
 
     resolved_count = resolve_open_bets(log, now)
-    placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = (0, 0, 0, 0, 0)
+    stats = {"placed": 0, "skipped_low_bankroll": 0, "skipped_no_edge": 0, "skipped_exposure_cap": 0,
+              "skipped_fact_check": 0, "fact_check_cache_hits": 0, "fact_check_cap_skipped": 0}
     if not args.resolve_only:
-        placed_count, skipped_bankroll, skipped_no_edge, skipped_exposure_cap, skipped_fact_check = \
-            place_new_bets(log, results, now)
+        stats = place_new_bets(log, results, now)
 
     log["bankroll"] = round(total_bankroll(log), 2)
     record_bankroll_snapshot(log, now)
@@ -608,23 +706,31 @@ def main():
     lost = sum(1 for b in log["bets"] if b["status"] == "lost")
     void = sum(1 for b in log["bets"] if b["status"] == "void")
     open_n = sum(1 for b in log["bets"] if b["status"] == "open")
-    print(f"Bets: placed {placed_count} new, resolved {resolved_count} this run. "
+    print(f"Bets: placed {stats['placed']} new, resolved {resolved_count} this run. "
           f"All-time: {won} won / {lost} lost / {void} void / {open_n} open. "
           f"Bankroll: ${log['bankroll']:.2f} (started at ${log['starting_bankroll']:.2f}).")
-    if skipped_bankroll:
-        print(f"Skipped {skipped_bankroll} signals: available bankroll below the ${STAKE_FLOOR_USD:.0f} stake floor.",
-              file=sys.stderr)
-    if skipped_no_edge:
-        print(f"Skipped {skipped_no_edge} signals: Kelly sizing found no edge once each tag's real "
+    if stats["skipped_low_bankroll"]:
+        print(f"Skipped {stats['skipped_low_bankroll']} signals: available bankroll below the "
+              f"${STAKE_FLOOR_USD:.0f} stake floor.", file=sys.stderr)
+    if stats["skipped_no_edge"]:
+        print(f"Skipped {stats['skipped_no_edge']} signals: Kelly sizing found no edge once each tag's real "
               f"resolution math (haircut model for ARB, own realized win rate for CAL/MIS) was priced in.",
               file=sys.stderr)
-    if skipped_exposure_cap:
-        print(f"Skipped {skipped_exposure_cap} signals: open bets already at/near "
+    if stats["skipped_exposure_cap"]:
+        print(f"Skipped {stats['skipped_exposure_cap']} signals: open bets already at/near "
               f"{MAX_OPEN_STAKE_FRAC:.0%} of bankroll (MAX_OPEN_STAKE_FRAC).",
               file=sys.stderr)
-    if skipped_fact_check:
-        print(f"Skipped {skipped_fact_check} signals: LLM fact-check found current, verifiable "
+    if stats["skipped_fact_check"]:
+        print(f"Skipped {stats['skipped_fact_check']} signals: LLM fact-check found current, verifiable "
               f"evidence against the recommended side (see docs/fact_check_log.jsonl).",
+              file=sys.stderr)
+    if stats["fact_check_cache_hits"]:
+        print(f"Reused {stats['fact_check_cache_hits']} fact-checks already on record within "
+              f"{FACT_CHECK_CACHE_DAYS} days instead of re-billing the API for them.")
+    if stats["fact_check_cap_skipped"]:
+        print(f"Skipped fact-checking {stats['fact_check_cap_skipped']} new candidates: hit "
+              f"MAX_NEW_FACT_CHECKS_PER_RUN ({MAX_NEW_FACT_CHECKS_PER_RUN}) fresh API calls for this run "
+              f"(fail-open -- they were placed without a check and will be checked on a later run).",
               file=sys.stderr)
 
 

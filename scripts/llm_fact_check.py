@@ -255,21 +255,31 @@ def ask_llm_fact_check(question: str, recommended_side, deadline_str: str,
     return result
 
 
+def verdict_passes(result: dict) -> bool:
+    """True unless `result` is a confirmed VETO. ERROR and UNCERTAIN both
+    pass when FAIL_OPEN is True (the default -- see module docstring):
+    this is a veto on CONFIRMED problems only, not a requirement to prove
+    every bet safe, and an unreachable/ambiguous check should never be
+    able to silently halt all new betting on its own.
+
+    Factored out of passes_fact_check so a CACHED result (see
+    track_bets.load_recent_fact_checks -- reusing a recent check instead
+    of re-billing the API for the same still-open candidate every run)
+    applies the exact same pass/fail rule a fresh call would, from one
+    place, rather than a second copy of this logic living in track_bets.py."""
+    if result["verdict"] == "VETO":
+        return False
+    if result["verdict"] in ("ERROR", "UNCERTAIN") and not FAIL_OPEN:
+        return False
+    return True
+
+
 def passes_fact_check(question: str, recommended_side, deadline_str: str,
                        now: datetime.datetime, ask_llm=ask_llm_fact_check) -> tuple:
-    """True unless the fact-check comes back a confirmed VETO. ERROR and
-    UNCERTAIN both pass when FAIL_OPEN is True (the default -- see module
-    docstring): this is a veto on CONFIRMED problems only, not a
-    requirement to prove every bet safe, and an unreachable/ambiguous check
-    should never be able to silently halt all new betting on its own.
-
-    Returns (passed: bool, result: dict) -- the caller logs `result`
-    (verdict/reason/checked_at) to docs/fact_check_log.jsonl regardless of
-    the outcome, since a VETO is exactly the case that would otherwise
-    leave no trace (a vetoed candidate never becomes a bet)."""
+    """Calls `ask_llm` and applies verdict_passes to the result. Returns
+    (passed: bool, result: dict) -- the caller logs `result` (verdict/
+    reason/checked_at) to docs/fact_check_log.jsonl regardless of the
+    outcome, since a VETO is exactly the case that would otherwise leave
+    no trace (a vetoed candidate never becomes a bet)."""
     result = ask_llm(question, recommended_side, deadline_str, now)
-    if result["verdict"] == "VETO":
-        return False, result
-    if result["verdict"] in ("ERROR", "UNCERTAIN") and not FAIL_OPEN:
-        return False, result
-    return True, result
+    return verdict_passes(result), result
