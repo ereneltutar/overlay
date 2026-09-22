@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overlay — Billing</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<script src="theme-init.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg: #F3F1E9;
+  --surface: #EAE6D8;
+  --ink: #1B1D22;
+  --ink-dim: #6B7280;
+  --ink-faint: #9A9585;
+  --rule: #DCD8CC;
+  --rule-strong: #1B1D22;
+  --safe: #1E9A6C;
+  --veto: #C0392B;
+  --uncertain: #A9741C;
+  --error: #6B7280;
+  --accent: var(--uncertain);
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --bg: #0A0D12;
+    --surface: #11151C;
+    --ink: #ECE7DA;
+    --ink-dim: #7A818F;
+    --ink-faint: #4B5160;
+    --rule: #1D222B;
+    --rule-strong: #ECE7DA;
+    --safe: #21A97A;
+    --veto: #D9584A;
+    --uncertain: #B87F22;
+    --error: #7A818F;
+    --accent: var(--uncertain);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg: #0A0D12;
+  --surface: #11151C;
+  --ink: #ECE7DA;
+  --ink-dim: #7A818F;
+  --ink-faint: #4B5160;
+  --rule: #1D222B;
+  --rule-strong: #ECE7DA;
+  --safe: #21A97A;
+  --veto: #D9584A;
+  --uncertain: #B87F22;
+  --error: #7A818F;
+  --accent: var(--uncertain);
+}
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg: #F3F1E9;
+  --surface: #EAE6D8;
+  --ink: #1B1D22;
+  --ink-dim: #6B7280;
+  --ink-faint: #9A9585;
+  --rule: #DCD8CC;
+  --rule-strong: #1B1D22;
+  --safe: #1E9A6C;
+  --veto: #C0392B;
+  --uncertain: #A9741C;
+  --error: #6B7280;
+  --accent: var(--uncertain);
+}
+
+*{ box-sizing: border-box; }
+html{ background: var(--bg); }
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap{ max-width: 860px; margin: 0 auto; padding: 44px 24px 90px; }
+a{ color: inherit; }
+
+.theme-toggle{
+  position: fixed; top: 16px; right: 16px; z-index: 20;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+  letter-spacing: .04em; color: var(--ink-dim);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 5px;
+  padding: 6px 10px; cursor: pointer;
+}
+.theme-toggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
+
+.masthead{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:10px 20px; margin-bottom:6px; }
+.brand{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink); }
+.back-link{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); text-decoration:none; }
+.back-link:hover{ color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
+.brand-sub{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.03em; margin-bottom:8px; }
+.subtitle{ font-family:'IBM Plex Sans', sans-serif; font-style:italic; font-size:12px; color:var(--ink-faint); max-width:60ch; line-height:1.5; margin:10px 0 30px; }
+
+.rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:28px 0 26px; }
+
+.stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:34px; }
+.stat-card{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:18px 18px 16px; }
+.stat-card-label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:10px; }
+.stat-card-cost{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:clamp(22px,4.5vw,30px); color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; margin-bottom:10px; }
+.stat-card-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); display:flex; flex-direction:column; gap:3px; }
+.stat-card-meta b{ color:var(--ink); font-variant-numeric:tabular-nums; font-weight:600; }
+
+.panel{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px 22px 18px; margin-bottom:28px; }
+.panel-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.panel-title{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:15px; margin:0; }
+.panel-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); }
+.panel-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.6; color:var(--ink-dim); max-width:64ch; margin:-6px 0 16px; }
+.panel-desc b{ color:var(--ink); }
+
+.chart-wrap{ overflow-x:auto; margin-bottom:6px; }
+.chart-wrap svg{ display:block; width:100%; height:auto; min-width:420px; }
+.bar-rect{ fill:var(--uncertain); }
+.bar-rect.today{ fill:var(--accent); }
+.axis-label{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; fill:var(--ink-faint); }
+
+table{ width:100%; border-collapse:collapse; font-family:'IBM Plex Mono', monospace; font-size:12px; }
+thead th{ text-align:left; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-dim); font-weight:600; padding:0 10px 8px 0; border-bottom:1px solid var(--rule); white-space:nowrap; }
+tbody td{ padding:9px 10px 9px 0; border-bottom:1px solid var(--rule); vertical-align:top; }
+tbody tr:last-child td{ border-bottom:none; }
+td.num, th.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+td.question{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.45; max-width:360px; }
+td.reason{ font-family:'IBM Plex Sans', sans-serif; font-size:11.5px; line-height:1.45; color:var(--ink-dim); max-width:340px; }
+td.date{ color:var(--ink-dim); white-space:nowrap; }
+
+.verdict{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.4px; border-radius:3px; padding:2px 6px; border:1px solid currentColor; white-space:nowrap; display:inline-block; }
+.verdict.safe{ color:var(--safe); }
+.verdict.veto{ color:var(--veto); }
+.verdict.uncertain{ color:var(--uncertain); }
+.verdict.error{ color:var(--error); }
+
+.side-pill{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; color:var(--ink-dim); }
+
+.panel-empty{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim); padding:6px 0 4px; }
+
+footer{ margin-top:36px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); padding-top:16px; border-top:1px solid var(--rule); line-height:1.7; }
+footer b{ color:var(--ink); }
+
+@media (max-width:640px){
+  .wrap{ padding:32px 16px 72px; }
+  .stat-row{ grid-template-columns:1fr; }
+  .panel{ padding:18px 16px 16px; }
+  td.question, td.reason{ max-width:220px; }
+}
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">◐ theme</button>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <div class="brand">Overlay</div>
+    <a class="back-link" href="./index.html">← dashboard</a>
+  </div>
+  <div class="brand-sub">Billing — LLM fact-check gate</div>
+  <p class="subtitle">
+    Every calibration/mispricing bet candidate gets checked against current, verifiable reality
+    before it's staked (see <code>llm_fact_check.py</code>). This page tracks the real Anthropic API
+    cost of running that check — separate from any Claude.ai subscription — estimated from each call's
+    token and web-search usage, not pulled from a live billing API. Trust your Anthropic Console invoice
+    over this page if they ever disagree.
+  </p>
+
+  <div class="stat-row" id="statRow">
+    <div class="stat-card">
+      <div class="stat-card-label">Today</div>
+      <div class="stat-card-cost" id="todayCost">—</div>
+      <div class="stat-card-meta" id="todayMeta"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">Month to date</div>
+      <div class="stat-card-cost" id="monthCost">—</div>
+      <div class="stat-card-meta" id="monthMeta"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-label">All time</div>
+      <div class="stat-card-cost" id="allTimeCost">—</div>
+      <div class="stat-card-meta" id="allTimeMeta"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="dailyPanel">
+    <div class="panel-head">
+      <p class="panel-title">Daily Spend</p>
+      <span class="panel-meta" id="pricingMeta">—</span>
+    </div>
+    <div id="dailyBody">
+      <div class="panel-empty">Loading…</div>
+    </div>
+  </div>
+
+  <div class="panel" id="ledgerPanel">
+    <div class="panel-head">
+      <p class="panel-title">Recent Fact-Checks</p>
+      <span class="panel-meta" id="ledgerMeta">—</span>
+    </div>
+    <p class="panel-desc">Every check is logged here, including <span style="color:var(--veto); font-weight:600;">VETO</span>ed
+      candidates — those never become a bet, so without this log they'd leave no trace at all.</p>
+    <div id="ledgerBody">
+      <div class="panel-empty">Loading…</div>
+    </div>
+  </div>
+
+  <footer>
+    Estimated from response token/web-search counts against hardcoded Sonnet 5 pricing
+    (<b id="pricingLine">—</b>). Costs are billed to the Anthropic API account behind
+    <code>ANTHROPIC_API_KEY</code>, independent of any Claude.ai subscription.
+  </footer>
+</div>
+
+<script src="billing.js"></script>
+</body>
+</html>
