@@ -20,11 +20,13 @@
   --ink-faint: #9A9585;
   --rule: #DCD8CC;
   --rule-strong: #1B1D22;
-  --safe: #1E9A6C;
-  --veto: #C0392B;
-  --uncertain: #A9741C;
-  --error: #6B7280;
-  --accent: var(--uncertain);
+  --arb: #1E9A6C;
+  --cal: #A9741C;
+  --loss: #B33F3F;
+  --safe: var(--arb);
+  --veto: var(--loss);
+  --uncertain: var(--cal);
+  --accent: var(--cal);
 }
 @media (prefers-color-scheme: dark){
   :root:where(:not([data-theme="light"])){
@@ -36,11 +38,13 @@
     --ink-faint: #4B5160;
     --rule: #1D222B;
     --rule-strong: #ECE7DA;
-    --safe: #21A97A;
-    --veto: #D9584A;
-    --uncertain: #B87F22;
-    --error: #7A818F;
-    --accent: var(--uncertain);
+    --arb: #21A97A;
+    --cal: #B87F22;
+    --loss: #D9615F;
+    --safe: var(--arb);
+    --veto: var(--loss);
+    --uncertain: var(--cal);
+    --accent: var(--cal);
   }
 }
 :root[data-theme="dark"]{
@@ -52,11 +56,13 @@
   --ink-faint: #4B5160;
   --rule: #1D222B;
   --rule-strong: #ECE7DA;
-  --safe: #21A97A;
-  --veto: #D9584A;
-  --uncertain: #B87F22;
-  --error: #7A818F;
-  --accent: var(--uncertain);
+  --arb: #21A97A;
+  --cal: #B87F22;
+  --loss: #D9615F;
+  --safe: var(--arb);
+  --veto: var(--loss);
+  --uncertain: var(--cal);
+  --accent: var(--cal);
 }
 :root[data-theme="light"]{
   color-scheme: light;
@@ -67,11 +73,13 @@
   --ink-faint: #9A9585;
   --rule: #DCD8CC;
   --rule-strong: #1B1D22;
-  --safe: #1E9A6C;
-  --veto: #C0392B;
-  --uncertain: #A9741C;
-  --error: #6B7280;
-  --accent: var(--uncertain);
+  --arb: #1E9A6C;
+  --cal: #A9741C;
+  --loss: #B33F3F;
+  --safe: var(--arb);
+  --veto: var(--loss);
+  --uncertain: var(--cal);
+  --accent: var(--cal);
 }
 
 *{ box-sizing: border-box; }
@@ -84,8 +92,9 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
-.wrap{ max-width: 860px; margin: 0 auto; padding: 44px 24px 90px; }
+.wrap{ max-width: 760px; margin: 0 auto; padding: 44px 24px 90px; }
 a{ color: inherit; }
+code{ font-family:'IBM Plex Mono', monospace; font-size:.92em; font-style:normal; color:var(--ink-dim); }
 
 .theme-toggle{
   position: fixed; top: 16px; right: 16px; z-index: 20;
@@ -96,62 +105,102 @@ a{ color: inherit; }
 }
 .theme-toggle:hover{ color: var(--ink); border-color: var(--ink-faint); }
 
-.masthead{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:10px 20px; margin-bottom:6px; }
+.masthead{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; margin-bottom:6px; }
 .brand{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink); }
-.back-link{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); text-decoration:none; }
-.back-link:hover{ color:var(--ink); text-decoration:underline; text-underline-offset:2px; }
-.brand-sub{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.03em; margin-bottom:8px; }
-.subtitle{ font-family:'IBM Plex Sans', sans-serif; font-style:italic; font-size:12px; color:var(--ink-faint); max-width:60ch; line-height:1.5; margin:10px 0 30px; }
+.brand-sub{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); letter-spacing:.03em; }
+.nav-back{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); text-decoration:underline; text-underline-offset:3px; }
+.nav-back:hover{ color:var(--ink); }
+.etymology{ font-family:'IBM Plex Sans', sans-serif; font-style:italic; font-size:12px; color:var(--ink-faint); max-width:52ch; line-height:1.5; margin:10px 0 28px; }
 
-.rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:28px 0 26px; }
+.ticker{ display:flex; flex-wrap:wrap; gap:6px 18px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-dim); padding:10px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-bottom:36px; }
+.ticker span{ white-space:nowrap; }
+.ticker b{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.ticker .live-dot{ width:6px; height:6px; border-radius:50%; background:var(--arb); display:inline-block; margin-right:6px; box-shadow:0 0 0 3px color-mix(in srgb, var(--arb) 20%, transparent); }
 
-.stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:34px; }
-.stat-card{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:18px 18px 16px; }
-.stat-card-label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:10px; }
-.stat-card-cost{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:clamp(22px,4.5vw,30px); color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; margin-bottom:10px; }
-.stat-card-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); display:flex; flex-direction:column; gap:3px; }
-.stat-card-meta b{ color:var(--ink); font-variant-numeric:tabular-nums; font-weight:600; }
+.hero-count{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:clamp(48px,12vw,72px); line-height:.9; color:var(--ink); font-variant-numeric:tabular-nums; }
+.hero-label{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-dim); margin-top:8px; }
+.hero-context{ display:flex; flex-wrap:wrap; gap:4px 22px; margin-top:18px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim); }
+.hero-context b{ color:var(--ink); font-variant-numeric:tabular-nums; font-weight:600; }
 
-.panel{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px 22px 18px; margin-bottom:28px; }
-.panel-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+.rule-thick{ border:none; border-top:2px solid var(--rule-strong); opacity:.9; margin:30px 0 26px; }
+
+.panel{ background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px 22px 18px; margin-bottom:34px; }
+.panel-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:4px; flex-wrap:wrap; }
 .panel-title{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:15px; margin:0; }
+.panel-title .tag-dot{ display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--cal); margin-right:8px; vertical-align:middle; }
 .panel-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); }
-.panel-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.6; color:var(--ink-dim); max-width:64ch; margin:-6px 0 16px; }
+.panel-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.6; color:var(--ink-dim); max-width:62ch; margin:8px 0 16px; }
 .panel-desc b{ color:var(--ink); }
-
-.chart-wrap{ overflow-x:auto; margin-bottom:6px; }
+.chart-wrap{ overflow-x:auto; }
 .chart-wrap svg{ display:block; width:100%; height:auto; min-width:420px; }
-.bar-rect{ fill:var(--uncertain); }
-.bar-rect.today{ fill:var(--accent); }
 .axis-label{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; fill:var(--ink-faint); }
+.grid-line{ stroke:var(--rule); stroke-width:1; }
+.bar-rect{ fill:color-mix(in srgb, var(--cal) 55%, transparent); }
+.bar-rect.today{ fill:var(--cal); }
 
+.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px; padding-top:20px; border-top:1px solid var(--rule); }
+.stat-card-tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--ink-dim); margin-bottom:6px; }
+.stat-card-rate{ font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:22px; color:var(--ink); font-variant-numeric:tabular-nums; line-height:1; }
+.stat-card-sub{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-dim); margin-top:5px; }
+.stat-card-sub2{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-faint); margin-top:3px; }
+.stat-card-sub b{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+
+.disclaimer{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.65; color:var(--ink-dim); max-width:64ch; margin:0 0 30px; }
+.disclaimer b{ color:var(--ink); }
+
+.ledger-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; flex-wrap:wrap; gap:6px; }
+.ledger-title{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); }
+.ledger-meta{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); }
+
+.table-wrap{ overflow-x:auto; }
 table{ width:100%; border-collapse:collapse; font-family:'IBM Plex Mono', monospace; font-size:12px; }
 thead th{ text-align:left; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-dim); font-weight:600; padding:0 10px 8px 0; border-bottom:1px solid var(--rule); white-space:nowrap; }
 tbody td{ padding:9px 10px 9px 0; border-bottom:1px solid var(--rule); vertical-align:top; }
-tbody tr:last-child td{ border-bottom:none; }
 td.num, th.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
-td.question{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; line-height:1.45; max-width:360px; }
-td.reason{ font-family:'IBM Plex Sans', sans-serif; font-size:11.5px; line-height:1.45; color:var(--ink-dim); max-width:340px; }
+td.num:last-child, th.num:last-child{ padding-right:0; }
 td.date{ color:var(--ink-dim); white-space:nowrap; }
+.panel table{ margin-top:22px; }
+.panel tbody tr:last-child td{ border-bottom:none; }
+.today-mark{ color:var(--accent); }
 
-.verdict{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.4px; border-radius:3px; padding:2px 6px; border:1px solid currentColor; white-space:nowrap; display:inline-block; }
-.verdict.safe{ color:var(--safe); }
-.verdict.veto{ color:var(--veto); }
-.verdict.uncertain{ color:var(--uncertain); }
-.verdict.error{ color:var(--error); }
+.ledger-table tbody td{ padding:16px 12px 16px 0; }
+.ledger-table td.question{ font-family:'IBM Plex Sans', sans-serif; font-weight:600; font-size:13.5px; line-height:1.4; color:var(--ink); min-width:150px; }
+.ledger-table td.reason{ font-family:'IBM Plex Sans', sans-serif; font-size:12px; line-height:1.5; color:var(--ink-dim); min-width:170px; }
+.ledger-table tbody tr{ transition:background-color .15s ease; }
+.ledger-table tbody tr:hover{ background-color:var(--surface); }
 
-.side-pill{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; color:var(--ink-dim); }
+.verdict{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.5px; border-radius:3px; padding:2px 6px; white-space:nowrap; display:inline-block; }
+.verdict.safe{ color:var(--safe); background:color-mix(in srgb, var(--safe) 14%, transparent); }
+.verdict.veto{ color:var(--veto); background:color-mix(in srgb, var(--veto) 14%, transparent); }
+.verdict.uncertain{ color:var(--uncertain); background:color-mix(in srgb, var(--uncertain) 14%, transparent); }
+.verdict.error{ color:var(--ink-dim); background:color-mix(in srgb, var(--ink-faint) 18%, transparent); }
+.inline-veto{ color:var(--veto); font-weight:600; }
 
-.panel-empty{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-dim); padding:6px 0 4px; }
+.side-badge{ font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:700; letter-spacing:.5px; border-radius:3px; padding:1px 5px; border:1px solid currentColor; color:var(--ink-dim); white-space:nowrap; }
 
-footer{ margin-top:36px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); padding-top:16px; border-top:1px solid var(--rule); line-height:1.7; }
-footer b{ color:var(--ink); }
+.state{ padding:30px 4px 6px; border-top:1px dashed var(--rule); margin-top:6px; }
+.panel .state{ border-top:none; padding:18px 0 4px; margin-top:0; }
+.state-msg{ font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--ink); margin-bottom:8px; display:flex; align-items:center; gap:10px; }
+.state-sub{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; color:var(--ink-dim); line-height:1.6; max-width:56ch; }
 
-@media (max-width:640px){
+.pulse{ width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block; animation:pulse 1.4s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{ opacity:.3; } 50%{ opacity:1; } }
+
+footer{ margin-top:50px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-dim); padding-top:16px; border-top:1px solid var(--rule); }
+footer b{ color:var(--ink); font-weight:600; }
+footer a{ color:var(--ink-dim); text-decoration:underline; text-underline-offset:2px; }
+footer a:hover{ color:var(--ink); }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .pulse{ animation:none; opacity:.8; }
+}
+
+@media (max-width:560px){
   .wrap{ padding:32px 16px 72px; }
-  .stat-row{ grid-template-columns:1fr; }
+  .hero-count{ font-size:clamp(38px,16vw,52px); }
   .panel{ padding:18px 16px 16px; }
-  td.question, td.reason{ max-width:220px; }
+  .stat-grid{ grid-template-columns:1fr; gap:18px; }
 }
 </style>
 </head>
@@ -163,61 +212,85 @@ footer b{ color:var(--ink); }
 
   <div class="masthead">
     <div class="brand">Overlay</div>
-    <a class="back-link" href="./index.html">← dashboard</a>
+    <a class="nav-back" href="./index.html">← back to dashboard</a>
   </div>
-  <div class="brand-sub">Billing — LLM fact-check gate</div>
-  <p class="subtitle">
-    Every calibration/mispricing bet candidate gets checked against current, verifiable reality
-    before it's staked (see <code>llm_fact_check.py</code>). This page tracks the real Anthropic API
-    cost of running that check — separate from any Claude.ai subscription — estimated from each call's
-    token and web-search usage, not pulled from a live billing API. Trust your Anthropic Console invoice
-    over this page if they ever disagree.
-  </p>
+  <div class="brand-sub">LLM fact-check billing</div>
+  <p class="etymology">Every CAL/MIS bet candidate gets checked against current, verifiable reality before it's staked. This page tracks what that check costs in real Anthropic API spend.</p>
 
-  <div class="stat-row" id="statRow">
-    <div class="stat-card">
-      <div class="stat-card-label">Today</div>
-      <div class="stat-card-cost" id="todayCost">—</div>
-      <div class="stat-card-meta" id="todayMeta"></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card-label">Month to date</div>
-      <div class="stat-card-cost" id="monthCost">—</div>
-      <div class="stat-card-meta" id="monthMeta"></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-card-label">All time</div>
-      <div class="stat-card-cost" id="allTimeCost">—</div>
-      <div class="stat-card-meta" id="allTimeMeta"></div>
+  <div class="ticker">
+    <span><span class="live-dot"></span>updated <b id="tkGenerated">—</b></span>
+    <span><b id="tkCalls">—</b> checks all-time</span>
+    <span><b id="tkVetoes">—</b> vetoed</span>
+    <span><b id="tkErrors">—</b> errored</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-count" id="allTimeAmount">—</div>
+    <div class="hero-label">estimated API spend · all time</div>
+    <div class="hero-context">
+      <span>today <b id="todayAmount">—</b></span>
+      <span>month to date <b id="monthAmount">—</b></span>
+      <span>avg per check <b id="avgPerCall">—</b></span>
+      <span>veto rate <b id="vetoRate">—</b></span>
     </div>
   </div>
+
+  <hr class="rule-thick">
 
   <div class="panel" id="dailyPanel">
     <div class="panel-head">
-      <p class="panel-title">Daily Spend</p>
+      <p class="panel-title"><span class="tag-dot"></span>Daily Spend</p>
       <span class="panel-meta" id="pricingMeta">—</span>
     </div>
+    <p class="panel-desc">
+      Estimated cost per day across the last 30 days with any fact-check activity. The solid bar is
+      today; the table below breaks each day into calls, vetoes, errors, web searches and tokens.
+    </p>
     <div id="dailyBody">
-      <div class="panel-empty">Loading…</div>
+      <div class="state"><span class="state-msg"><span class="pulse"></span>Loading</span></div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-card-tag">Today</div>
+        <div class="stat-card-rate" id="todayCost">—</div>
+        <div class="stat-card-sub" id="todaySub">—</div>
+        <div class="stat-card-sub2" id="todaySub2">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-tag">Month to date</div>
+        <div class="stat-card-rate" id="monthCost">—</div>
+        <div class="stat-card-sub" id="monthSub">—</div>
+        <div class="stat-card-sub2" id="monthSub2">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-tag">All time</div>
+        <div class="stat-card-rate" id="allTimeCost">—</div>
+        <div class="stat-card-sub" id="allTimeSub">—</div>
+        <div class="stat-card-sub2" id="allTimeSub2">—</div>
+      </div>
     </div>
   </div>
 
-  <div class="panel" id="ledgerPanel">
-    <div class="panel-head">
-      <p class="panel-title">Recent Fact-Checks</p>
-      <span class="panel-meta" id="ledgerMeta">—</span>
-    </div>
-    <p class="panel-desc">Every check is logged here, including <span style="color:var(--veto); font-weight:600;">VETO</span>ed
-      candidates — those never become a bet, so without this log they'd leave no trace at all.</p>
-    <div id="ledgerBody">
-      <div class="panel-empty">Loading…</div>
-    </div>
+  <p class="disclaimer">
+    Costs are <b>estimated</b> from each call's token and web-search counts (see <code>llm_fact_check.py</code>),
+    not pulled from a live billing API. They're billed to the Anthropic API account behind
+    <code>ANTHROPIC_API_KEY</code>, separate from any Claude.ai subscription. Trust your Anthropic
+    Console invoice over this page if they ever disagree.
+  </p>
+
+  <div class="ledger-head">
+    <span class="ledger-title">Fact-Check Ledger</span>
+    <span class="ledger-meta" id="ledgerMeta">—</span>
+  </div>
+  <p class="disclaimer">Every check is logged here, including <span class="inline-veto">VETO</span>ed
+    candidates. Those never become a bet, so without this log they'd leave no trace at all.</p>
+  <div id="ledgerBody">
+    <div class="state"><span class="state-msg"><span class="pulse"></span>Loading</span></div>
   </div>
 
   <footer>
-    Estimated from response token/web-search counts against hardcoded Sonnet 5 pricing
-    (<b id="pricingLine">—</b>). Costs are billed to the Anthropic API account behind
-    <code>ANTHROPIC_API_KEY</code>, independent of any Claude.ai subscription.
+    <span>Sonnet 5 pricing · <b id="pricingLine">—</b></span>
+    <a href="./index.html">dashboard ↗</a>
   </footer>
 </div>
 

@@ -12,11 +12,12 @@ function fmtUsd(n){
   });
 }
 function fmtInt(n){ return (n || 0).toLocaleString('en-US'); }
+function fmtPct(n){ return (n * 100).toFixed(1) + '%'; }
 function fmtDateTime(iso){
   if(!iso) return '—';
   const d = new Date(iso);
   if(isNaN(d)) return '—';
-  return d.toLocaleString('en-US', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' });
+  return d.toLocaleString('en-US', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit', hourCycle:'h23' });
 }
 function verdictClass(v){
   switch(v){
@@ -25,6 +26,9 @@ function verdictClass(v){
     case 'ERROR': return 'error';
     default: return 'uncertain';
   }
+}
+function stateHtml(msg, sub){
+  return `<div class="state"><div class="state-msg">${escapeHtml(msg)}</div>${sub ? `<div class="state-sub">${escapeHtml(sub)}</div>` : ''}</div>`;
 }
 
 /* ============ jsonl parsing ============ */
@@ -42,12 +46,12 @@ function parseJsonl(text){
 function renderDailyChart(daily, todayDate){
   const wrap = document.getElementById('dailyBody');
   if(!daily.length){
-    wrap.innerHTML = '<div class="panel-empty">No fact-checks logged yet. This fills in once the daily scan places its first calibration/mispricing bet candidate.</div>';
+    wrap.innerHTML = stateHtml('No fact-checks logged yet', 'This fills in once the daily scan places its first calibration/mispricing bet candidate.');
     return;
   }
 
   const recent = daily.slice(-30); // last 30 days with any activity
-  wrap.innerHTML = buildChartAndTable(recent, todayDate, 680, 220, 44);
+  wrap.innerHTML = buildChartAndTable(recent, todayDate, 680, 220, 52);
 }
 
 function buildChartAndTable(recent, todayDate, W, H, padL){
@@ -71,13 +75,13 @@ function buildChartAndTable(recent, todayDate, W, H, padL){
     }
   });
   for(const t of [0, 0.5, 1]){
-    labels += `<line class="grid-line" x1="${padL}" y1="${y(maxCost*t).toFixed(1)}" x2="${padL+plotW}" y2="${y(maxCost*t).toFixed(1)}" stroke="var(--rule)" stroke-width="1"></line>`;
+    labels += `<line class="grid-line" x1="${padL}" y1="${y(maxCost*t).toFixed(1)}" x2="${padL+plotW}" y2="${y(maxCost*t).toFixed(1)}"></line>`;
     labels += `<text class="axis-label" x="${padL-6}" y="${(y(maxCost*t)+3).toFixed(1)}" text-anchor="end">${fmtUsd(maxCost*t)}</text>`;
   }
 
   const tableRows = recent.slice().reverse().map(d => `
     <tr>
-      <td class="date">${escapeHtml(d.date)}${d.date === todayDate ? ' <span style="color:var(--accent);">(today)</span>' : ''}</td>
+      <td class="date">${escapeHtml(d.date)}${d.date === todayDate ? ' <span class="today-mark">(today)</span>' : ''}</td>
       <td class="num">${fmtInt(d.calls)}</td>
       <td class="num">${fmtInt(d.vetoes)}</td>
       <td class="num">${fmtInt(d.errors)}</td>
@@ -90,7 +94,7 @@ function buildChartAndTable(recent, todayDate, W, H, padL){
     <div class="chart-wrap">
       <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily fact-check cost chart">${labels}${bars}</svg>
     </div>
-    <div style="overflow-x:auto;">
+    <div class="table-wrap">
       <table>
         <thead><tr>
           <th>Date</th><th class="num">Calls</th><th class="num">Vetoes</th><th class="num">Errors</th>
@@ -107,7 +111,7 @@ function renderLedger(entries){
   const meta = document.getElementById('ledgerMeta');
   if(!entries.length){
     meta.textContent = '0 checks';
-    wrap.innerHTML = '<div class="panel-empty">No fact-checks logged yet.</div>';
+    wrap.innerHTML = stateHtml('No fact-checks logged yet');
     return;
   }
 
@@ -119,15 +123,15 @@ function renderLedger(entries){
     <tr>
       <td class="date">${fmtDateTime(e.checked_at)}</td>
       <td class="question">${escapeHtml(e.market_question || '—')}</td>
-      <td><span class="side-pill">${escapeHtml(e.recommended_side || '—')}</span></td>
+      <td><span class="side-badge">${escapeHtml(e.recommended_side || '—')}</span></td>
       <td><span class="verdict ${verdictClass(e.verdict)}">${escapeHtml(e.verdict || '?')}</span></td>
       <td class="reason">${escapeHtml(e.reason || '—')}</td>
       <td class="num">${fmtUsd(e.cost_usd)}</td>
     </tr>`).join('');
 
   wrap.innerHTML = `
-    <div style="overflow-x:auto;">
-      <table>
+    <div class="table-wrap">
+      <table class="ledger-table">
         <thead><tr>
           <th>Checked</th><th>Market</th><th>Side</th><th>Verdict</th><th>Reason</th><th class="num">Cost</th>
         </tr></thead>
@@ -136,13 +140,27 @@ function renderLedger(entries){
     </div>`;
 }
 
-/* ============ stat cards ============ */
-function renderStatCard(prefix, stats, extraLabel){
+/* ============ header, hero, stat cards ============ */
+function renderStatCard(prefix, stats){
   document.getElementById(prefix + 'Cost').textContent = fmtUsd(stats.cost_usd);
-  document.getElementById(prefix + 'Meta').innerHTML = `
-    <span><b>${fmtInt(stats.calls)}</b> calls${extraLabel ? ' · ' + extraLabel : ''}</span>
-    <span><b>${fmtInt(stats.vetoes)}</b> vetoed · <b>${fmtInt(stats.errors)}</b> errored</span>
-    <span><b>${fmtInt(stats.web_searches)}</b> searches · <b>${fmtInt(stats.input_tokens + stats.output_tokens)}</b> tokens</span>`;
+  document.getElementById(prefix + 'Sub').innerHTML =
+    `<b>${fmtInt(stats.calls)}</b> calls · <b>${fmtInt(stats.vetoes)}</b> vetoed`;
+  document.getElementById(prefix + 'Sub2').textContent =
+    `${fmtInt(stats.errors)} errored · ${fmtInt(stats.web_searches)} searches`;
+}
+
+function renderHeader(data){
+  const all = data.all_time || {};
+  document.getElementById('tkGenerated').textContent = fmtDateTime(data.generated_at);
+  document.getElementById('tkCalls').textContent = fmtInt(all.calls);
+  document.getElementById('tkVetoes').textContent = fmtInt(all.vetoes);
+  document.getElementById('tkErrors').textContent = fmtInt(all.errors);
+
+  document.getElementById('allTimeAmount').textContent = fmtUsd(all.cost_usd);
+  document.getElementById('todayAmount').textContent = fmtUsd((data.today || {}).cost_usd);
+  document.getElementById('monthAmount').textContent = fmtUsd((data.month_to_date || {}).cost_usd);
+  document.getElementById('avgPerCall').textContent = all.calls ? fmtUsd(all.cost_usd / all.calls) : '—';
+  document.getElementById('vetoRate').textContent = all.calls ? fmtPct(all.vetoes / all.calls) : '—';
 }
 
 /* ============ main load ============ */
@@ -152,8 +170,9 @@ async function loadBudget(){
     if(!res.ok) throw new Error('not found');
     const data = await res.json();
 
+    renderHeader(data);
     renderStatCard('today', data.today);
-    renderStatCard('month', data.month_to_date, data.month_to_date.month);
+    renderStatCard('month', data.month_to_date);
     renderStatCard('allTime', data.all_time);
 
     const pr = data.pricing_reference || {};
@@ -164,7 +183,7 @@ async function loadBudget(){
     renderDailyChart(data.daily || [], data.today ? data.today.date : null);
   }catch(err){
     ['todayCost','monthCost','allTimeCost'].forEach(id => document.getElementById(id).textContent = '—');
-    document.getElementById('dailyBody').innerHTML = '<div class="panel-empty">docs/fact_check_budget.json not found yet — this fills in after the daily scan first runs the fact-check gate.</div>';
+    document.getElementById('dailyBody').innerHTML = stateHtml('Billing data not available yet', "fact_check_budget.json hasn't been generated yet. It's created the first time the daily scan runs the fact-check gate.");
     document.getElementById('pricingMeta').textContent = '—';
   }
 }
@@ -177,7 +196,7 @@ async function loadLedger(){
     renderLedger(parseJsonl(text));
   }catch(err){
     document.getElementById('ledgerMeta').textContent = '0 checks';
-    document.getElementById('ledgerBody').innerHTML = '<div class="panel-empty">docs/fact_check_log.jsonl not found yet.</div>';
+    document.getElementById('ledgerBody').innerHTML = stateHtml('Ledger not available yet', "fact_check_log.jsonl hasn't been generated yet.");
   }
 }
 
