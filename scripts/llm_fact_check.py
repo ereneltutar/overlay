@@ -55,7 +55,15 @@ ANTHROPIC_VERSION = "2023-06-01"
 # same reasoning as picking a real per-market probability model over a
 # cheaper heuristic elsewhere in this repo.
 MODEL = "claude-sonnet-5"
-MAX_TOKENS = 1024
+# 1024 (the original value) was too tight for this prompt: with 2-5 web
+# searches in play, the model regularly ran out of budget before reaching
+# the closing VERDICT/REASON lines, surfacing as "Empty reply from the API"
+# or "no parseable VERDICT line" -- 10 of 20 calls on 2026-09-23. Every one
+# of those had already used more than 1024 output tokens when generation
+# was cut off. 3000 gives room to finish the 4-5 search cases; the
+# per-run call count (MAX_NEW_FACT_CHECKS_PER_RUN in track_bets.py) is the
+# actual cost governor, not this.
+MAX_TOKENS = 3000
 REQUEST_TIMEOUT = 45  # web search adds real latency beyond a plain completion
 
 FAIL_OPEN = True  # see module docstring; ERROR and UNCERTAIN both pass when True
