@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 957.13,
+  "bankroll": 909.63,
   "bankroll_history": [
     {
       "date": "2026-09-22",
@@ -9,6 +9,10 @@
     {
       "date": "2026-09-23",
       "bankroll": 957.13
+    },
+    {
+      "date": "2026-09-24",
+      "bankroll": 909.63
     }
   ],
   "bets": [
@@ -57,9 +61,9 @@
       "edge_pct_at_placement": 12.97,
       "predicted_win_prob": 0.1532,
       "stake_usd": 47.5,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-09-24T05:00:53.929630+00:00",
+      "pnl_usd": -47.5,
       "fact_check": {
         "verdict": "ERROR",
         "reason": "API request failed: 400 Client Error: Bad Request for url: https://api.anthropic.com/v1/messages",
