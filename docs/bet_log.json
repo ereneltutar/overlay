@@ -276,6 +276,68 @@
         "web_searches": 0,
         "cost_usd": 0.0
       }
+    },
+    {
+      "bet_id": "calibration:nothing-ever-happens-september-27:4868524",
+      "tag": "calibration",
+      "market_question": "Nothing Ever Happens: September",
+      "slug": "nothing-ever-happens-september-27",
+      "url": "https://polymarket.com/event/nothing-ever-happens-september-27",
+      "placed_at": "2026-09-24T07:56:13.730876+00:00",
+      "deadline": "2026-10-01T00:44:13.730876+00:00",
+      "market_ids": [
+        "4868524"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.013,
+      "edge_pct_at_placement": 12.43,
+      "predicted_win_prob": 0.1373,
+      "stake_usd": 32.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "verdict": "ERROR",
+        "reason": "API request failed: HTTPSConnectionPool(host='api.anthropic.com', port=443): Read timed out. (read timeout=45)",
+        "checked_at": "2026-09-24T07:56:13.730876+00:00",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "web_searches": 0,
+        "cost_usd": 0.0
+      }
+    },
+    {
+      "bet_id": "calibration:nfl-ne-jax-2026-09-27:3701375",
+      "tag": "calibration",
+      "market_question": "Spread: Jaguars (-2.5)",
+      "slug": "nfl-ne-jax-2026-09-27",
+      "url": "https://polymarket.com/event/nfl-ne-jax-2026-09-27",
+      "placed_at": "2026-09-24T07:56:13.730876+00:00",
+      "deadline": "2026-09-27T17:32:13.730876+00:00",
+      "market_ids": [
+        "3701375"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.46,
+      "edge_pct_at_placement": 12.19,
+      "predicted_win_prob": 0.5819,
+      "stake_usd": 26.24,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": {
+        "bet_id": "calibration:nfl-ne-jax-2026-09-27:3701375",
+        "market_question": "Spread: Jaguars (-2.5)",
+        "recommended_side": "NO",
+        "passed": true,
+        "verdict": "SAFE",
+        "reason": "This is a normal, not-yet-played NFL Week 3 game (Patriots @ Jaguars, Sept 27, 2026) with a competitive spread and no verifiable fact (injury, cancellation, etc.) that makes either side a lock, so the bot's pick reflects genuine future game uncertainty rather than a contradicted fact.",
+        "checked_at": "2026-09-22T12:20:01.009485+00:00",
+        "input_tokens": 52577,
+        "output_tokens": 1283,
+        "web_searches": 3,
+        "cost_usd": 0.147984
+      }
     }
   ]
 }
