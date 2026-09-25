@@ -134,6 +134,13 @@ FACT_CHECK_CACHE_DAYS = 3
 # uncheckable case) -- they'll get a real check on a later run once this
 # run's count resets to zero.
 MAX_NEW_FACT_CHECKS_PER_RUN = 20
+# Master switch for the LLM fact-check gate. Off since 2026-09-25: the
+# Anthropic Console credits ran out (~$8.60 across Sep 22-25) and aren't
+# being topped up. With it off, place_new_bets makes no API calls and
+# places CAL/MIS bets unchecked, the same as before the gate existed on
+# 2026-09-22. Flip back to True (and fund the ANTHROPIC_API_KEY account)
+# to re-enable it.
+LLM_FACT_CHECK_ENABLED = False
 # ----------------------------------------------------------------------------
 
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "docs" / "results.json"
@@ -610,7 +617,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         # do, so there's nothing for a fact-check to usefully veto -- only
         # gate the two tags that are actually betting the model's belief
         # about which side wins.
-        if c["tag"] in ("calibration", "mispricing"):
+        if LLM_FACT_CHECK_ENABLED and c["tag"] in ("calibration", "mispricing"):
             cached = recent_fact_checks.get(c["bet_id"])
             if cached is not None:
                 # Reuse a check already on record instead of re-billing the
@@ -731,6 +738,9 @@ def main():
     if stats["fact_check_cache_hits"]:
         print(f"Reused {stats['fact_check_cache_hits']} fact-checks already on record within "
               f"{FACT_CHECK_CACHE_DAYS} days instead of re-billing the API for them.")
+    if not args.resolve_only and not LLM_FACT_CHECK_ENABLED:
+        print("LLM fact-check is disabled (LLM_FACT_CHECK_ENABLED = False): "
+              "calibration/mispricing bets were placed without a check.", file=sys.stderr)
     if stats["fact_check_cap_skipped"]:
         print(f"Skipped fact-checking {stats['fact_check_cap_skipped']} new candidates: hit "
               f"MAX_NEW_FACT_CHECKS_PER_RUN ({MAX_NEW_FACT_CHECKS_PER_RUN}) fresh API calls for this run "

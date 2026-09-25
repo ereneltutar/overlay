@@ -16,6 +16,10 @@ def isolate_fact_check_log(tmp_path, monkeypatch):
     per-test tmp_path for every test in this file so the suite never writes
     into the real docs/fact_check_log.jsonl."""
     monkeypatch.setattr(tb, "FACT_CHECK_LOG_PATH", tmp_path / "fact_check_log.jsonl")
+    # The gate is switched off in production (see LLM_FACT_CHECK_ENABLED);
+    # turn it on here so the fact-check tests keep exercising it for when
+    # it's re-enabled.
+    monkeypatch.setattr(tb, "LLM_FACT_CHECK_ENABLED", True)
 
 
 def fresh_log(starting=1000.0):
@@ -660,6 +664,18 @@ def test_place_new_bets_skips_fact_check_when_kelly_finds_no_edge():
     stats = tb.place_new_bets(log, results, NOW, ask_llm=llm)
     assert llm.calls == []
     assert stats["skipped_no_edge"] == 1
+
+
+def test_place_new_bets_makes_no_api_calls_when_fact_check_disabled(monkeypatch):
+    monkeypatch.setattr(tb, "LLM_FACT_CHECK_ENABLED", False)
+    log = fresh_log()
+    llm = counting_llm("VETO")  # would block every bet if it were consulted
+    stats = tb.place_new_bets(log, n_calibration_candidates(3), NOW, ask_llm=llm)
+    assert llm.calls == []
+    assert stats["placed"] == 3
+    assert stats["skipped_fact_check"] == 0
+    assert all(b["fact_check"] is None for b in log["bets"])
+    assert not tb.FACT_CHECK_LOG_PATH.exists()
 
 
 # --- load_recent_fact_checks ------------------------------------------------
