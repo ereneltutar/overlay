@@ -571,40 +571,12 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         if c["bet_id"] in existing_ids:
             continue
 
-        fact_check_result = None
-        # ARB is close to a guaranteed win by construction (see module
-        # docstring) and has no "recommended side" in the same sense CAL/MIS
-        # do, so there's nothing for a fact-check to usefully veto -- only
-        # gate the two tags that are actually betting the model's belief
-        # about which side wins.
-        if c["tag"] in ("calibration", "mispricing"):
-            cached = recent_fact_checks.get(c["bet_id"])
-            if cached is not None:
-                # Reuse a check already on record instead of re-billing the
-                # API for a candidate that's been showing up unplaced for
-                # days (see FACT_CHECK_CACHE_DAYS) -- not re-logged, since
-                # it isn't a new check and would just inflate the budget
-                # report with $0 entries.
-                fact_check_result = cached
-                passed = llm_fact_check.verdict_passes(cached)
-                stats["fact_check_cache_hits"] += 1
-            elif fresh_fact_checks_this_run >= MAX_NEW_FACT_CHECKS_PER_RUN:
-                # Hard per-run ceiling reached (see MAX_NEW_FACT_CHECKS_PER_RUN)
-                # -- fail open exactly like any other uncheckable case rather
-                # than blocking the bet on a self-imposed budget cap; this
-                # candidate gets a real check on a later run once the cap
-                # resets to zero.
-                passed = True
-                stats["fact_check_cap_skipped"] += 1
-            else:
-                passed, fact_check_result = llm_fact_check.passes_fact_check(
-                    c["market_question"], c["recommended_side"], c["deadline"], now, ask_llm=ask_llm)
-                log_fact_check(c["bet_id"], c, fact_check_result, passed)
-                fresh_fact_checks_this_run += 1
-            if not passed:
-                stats["skipped_fact_check"] += 1
-                continue
-
+        # Every gate that doesn't depend on the fact-check verdict runs
+        # first, so a candidate that could never be placed anyway (no
+        # bankroll, exposure cap full, no Kelly edge) never costs an API
+        # call. Before this ordering, the 2026-09-25 scan paid ~$2.19 to
+        # fact-check 20 candidates that were then all dropped by the
+        # exposure cap.
         bankroll_avail = available_bankroll(log)
         if bankroll_avail < STAKE_FLOOR_USD:
             stats["skipped_low_bankroll"] += 1
@@ -631,6 +603,38 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
             stats["skipped_no_edge"] += 1
             continue
         stake = min(stake, round(bankroll_avail, 2), round(exposure_room, 2))
+
+        fact_check_result = None
+        # ARB is close to a guaranteed win by construction (see module
+        # docstring) and has no "recommended side" in the same sense CAL/MIS
+        # do, so there's nothing for a fact-check to usefully veto -- only
+        # gate the two tags that are actually betting the model's belief
+        # about which side wins.
+        if c["tag"] in ("calibration", "mispricing"):
+            cached = recent_fact_checks.get(c["bet_id"])
+            if cached is not None:
+                # Reuse a check already on record instead of re-billing the
+                # API for a candidate that's been showing up unplaced for
+                # days (see FACT_CHECK_CACHE_DAYS) -- not re-logged, since
+                # it isn't a new check and would just inflate the budget
+                # report with $0 entries.
+                fact_check_result = cached
+                passed = llm_fact_check.verdict_passes(cached)
+                stats["fact_check_cache_hits"] += 1
+            elif fresh_fact_checks_this_run >= MAX_NEW_FACT_CHECKS_PER_RUN:
+                # Hard per-run ceiling reached (see MAX_NEW_FACT_CHECKS_PER_RUN)
+                # -- fail open exactly like any other uncheckable case rather
+                # than blocking the bet on a self-imposed budget cap.
+                passed = True
+                stats["fact_check_cap_skipped"] += 1
+            else:
+                passed, fact_check_result = llm_fact_check.passes_fact_check(
+                    c["market_question"], c["recommended_side"], c["deadline"], now, ask_llm=ask_llm)
+                log_fact_check(c["bet_id"], c, fact_check_result, passed)
+                fresh_fact_checks_this_run += 1
+            if not passed:
+                stats["skipped_fact_check"] += 1
+                continue
 
         log["bets"].append({
             "bet_id": c["bet_id"],
@@ -730,7 +734,7 @@ def main():
     if stats["fact_check_cap_skipped"]:
         print(f"Skipped fact-checking {stats['fact_check_cap_skipped']} new candidates: hit "
               f"MAX_NEW_FACT_CHECKS_PER_RUN ({MAX_NEW_FACT_CHECKS_PER_RUN}) fresh API calls for this run "
-              f"(fail-open -- they were placed without a check and will be checked on a later run).",
+              f"(fail-open -- they were placed without a check).",
               file=sys.stderr)
 
 

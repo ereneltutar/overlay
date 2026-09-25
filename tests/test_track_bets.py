@@ -635,6 +635,33 @@ def test_place_new_bets_cache_hits_do_not_count_against_the_cap(monkeypatch):
     assert stats["placed"] == 3
 
 
+def test_place_new_bets_skips_fact_check_when_exposure_cap_is_full():
+    # Regression for the 2026-09-25 scan: 20 candidates were fact-checked
+    # (and billed) and then every one was dropped by the exposure cap. A
+    # candidate that can't be placed must never reach the API.
+    log = fresh_log()  # bankroll 1000, cap = 350
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=350.0))
+    llm = counting_llm("SAFE")
+    stats = tb.place_new_bets(log, n_calibration_candidates(3), NOW, ask_llm=llm)
+    assert llm.calls == []
+    assert stats["skipped_exposure_cap"] == 3
+    assert stats["placed"] == 0
+    assert not tb.FACT_CHECK_LOG_PATH.exists()
+
+
+def test_place_new_bets_skips_fact_check_when_kelly_finds_no_edge():
+    log = fresh_log()
+    results = {"calibration_signals": [{
+        "market_id": "new1", "slug": "new-market", "days_left": 5, "market_question": "Q?",
+        "recommended_side": "YES", "implied_cost": 0.951, "edge_pct": 4.79,
+        "bucket_historical_rate": 0.90,
+    }]}
+    llm = counting_llm("SAFE")
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=llm)
+    assert llm.calls == []
+    assert stats["skipped_no_edge"] == 1
+
+
 # --- load_recent_fact_checks ------------------------------------------------
 
 def test_load_recent_fact_checks_returns_empty_when_file_missing():
