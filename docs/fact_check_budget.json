@@ -1,38 +1,38 @@
 {
-  "generated_at": "2026-09-24T08:01:52.603414+00:00",
+  "generated_at": "2026-09-25T08:27:10.408490+00:00",
   "pricing_reference": {
     "input_token_cost_per_million_usd": 2.0,
     "output_token_cost_per_million_usd": 10.0,
     "web_search_cost_per_search_usd": 0.01
   },
   "today": {
-    "date": "2026-09-24",
+    "date": "2026-09-25",
     "calls": 20,
-    "vetoes": 17,
-    "errors": 1,
-    "input_tokens": 494336,
-    "output_tokens": 22492,
-    "web_searches": 31,
-    "cost_usd": 1.523592
+    "vetoes": 8,
+    "errors": 3,
+    "input_tokens": 723314,
+    "output_tokens": 28014,
+    "web_searches": 46,
+    "cost_usd": 2.186768
   },
   "month_to_date": {
     "month": "2026-09",
-    "calls": 143,
-    "vetoes": 32,
-    "errors": 86,
-    "input_tokens": 2095804,
-    "output_tokens": 83112,
-    "web_searches": 142,
-    "cost_usd": 6.442728
+    "calls": 163,
+    "vetoes": 40,
+    "errors": 89,
+    "input_tokens": 2819118,
+    "output_tokens": 111126,
+    "web_searches": 188,
+    "cost_usd": 8.629496
   },
   "all_time": {
-    "calls": 143,
-    "vetoes": 32,
-    "errors": 86,
-    "input_tokens": 2095804,
-    "output_tokens": 83112,
-    "web_searches": 142,
-    "cost_usd": 6.442728
+    "calls": 163,
+    "vetoes": 40,
+    "errors": 89,
+    "input_tokens": 2819118,
+    "output_tokens": 111126,
+    "web_searches": 188,
+    "cost_usd": 8.629496
   },
   "daily": [
     {
@@ -64,6 +64,16 @@
       "output_tokens": 22492,
       "web_searches": 31,
       "cost_usd": 1.523592
+    },
+    {
+      "date": "2026-09-25",
+      "calls": 20,
+      "vetoes": 8,
+      "errors": 3,
+      "input_tokens": 723314,
+      "output_tokens": 28014,
+      "web_searches": 46,
+      "cost_usd": 2.186768
     }
   ]
 }
