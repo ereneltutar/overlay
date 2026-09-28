@@ -354,6 +354,27 @@
         "web_searches": 3,
         "cost_usd": 0.147984
       }
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-on-september-28-2026:5062324",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $2,850 on September 28?",
+      "slug": "what-price-will-ethereum-hit-on-september-28-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-on-september-28-2026",
+      "placed_at": "2026-09-28T09:06:43.727394+00:00",
+      "deadline": "2026-09-29T04:18:43.727394+00:00",
+      "market_ids": [
+        "5062324"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0459,
+      "edge_pct_at_placement": 25.41,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 31.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
