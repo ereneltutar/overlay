@@ -379,6 +379,48 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bitcoin-above-on-october-2-2026:4950494",
+      "tag": "calibration",
+      "market_question": "Will the price of Bitcoin be above $90,000 on October 2?",
+      "slug": "bitcoin-above-on-october-2-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-october-2-2026",
+      "placed_at": "2026-09-29T09:15:48.326482+00:00",
+      "deadline": "2026-10-02T16:27:48.326482+00:00",
+      "market_ids": [
+        "4950494"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0469,
+      "edge_pct_at_placement": 25.31,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 29.47,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bitcoin-price-on-september-29-2026:4841902",
+      "tag": "calibration",
+      "market_question": "Will the price of Bitcoin be between $86,000 and $88,000 on September 29?",
+      "slug": "bitcoin-price-on-september-29-2026",
+      "url": "https://polymarket.com/event/bitcoin-price-on-september-29-2026",
+      "placed_at": "2026-09-29T09:15:48.326482+00:00",
+      "deadline": "2026-09-29T16:27:48.326482+00:00",
+      "market_ids": [
+        "4841902"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0501,
+      "edge_pct_at_placement": 24.99,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 28.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
