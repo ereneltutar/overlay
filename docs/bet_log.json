@@ -425,6 +425,48 @@
       "resolved_at": "2026-09-30T05:41:02.802743+00:00",
       "pnl_usd": -28.0,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-september-28-october-4-2026:5062283",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $76,000 September 28-October 4?",
+      "slug": "what-price-will-bitcoin-hit-september-28-october-4-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-28-october-4-2026",
+      "placed_at": "2026-09-30T09:13:47.004701+00:00",
+      "deadline": "2026-10-05T04:25:47.004701+00:00",
+      "market_ids": [
+        "5062283"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0523,
+      "edge_pct_at_placement": 24.77,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 26.6,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ethereum-above-on-september-30-2026:4882962",
+      "tag": "calibration",
+      "market_question": "Will the price of Ethereum be above $2,800 on September 30?",
+      "slug": "ethereum-above-on-september-30-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-september-30-2026",
+      "placed_at": "2026-09-30T09:13:47.004701+00:00",
+      "deadline": "2026-09-30T16:25:47.004701+00:00",
+      "market_ids": [
+        "4882962"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0246,
+      "edge_pct_at_placement": 12.86,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 21.09,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
