@@ -471,6 +471,48 @@
       "resolved_at": "2026-10-01T06:06:39.726246+00:00",
       "pnl_usd": -21.09,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-september-28-october-4-2026:5062320",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $3,000 September 28-October 4?",
+      "slug": "what-price-will-ethereum-hit-september-28-october-4-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-september-28-october-4-2026",
+      "placed_at": "2026-10-01T09:36:16.350580+00:00",
+      "deadline": "2026-10-05T04:48:16.350580+00:00",
+      "market_ids": [
+        "5062320"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0523,
+      "edge_pct_at_placement": 24.77,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 24.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-ethereum-hit-september-28-october-4-2026:5062318",
+      "tag": "calibration",
+      "market_question": "Will Ethereum reach $3,100 September 28-October 4?",
+      "slug": "what-price-will-ethereum-hit-september-28-october-4-2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-september-28-october-4-2026",
+      "placed_at": "2026-10-01T09:36:16.350580+00:00",
+      "deadline": "2026-10-05T04:48:16.350580+00:00",
+      "market_ids": [
+        "5062318"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0214,
+      "edge_pct_at_placement": 13.18,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 13.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }

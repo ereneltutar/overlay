@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-30T09:13:47.113098+00:00",
+  "generated_at": "2026-10-01T09:36:16.461161+00:00",
   "pricing_reference": {
     "input_token_cost_per_million_usd": 2.0,
     "output_token_cost_per_million_usd": 10.0,
     "web_search_cost_per_search_usd": 0.01
   },
   "today": {
-    "date": "2026-09-30",
+    "date": "2026-10-01",
     "calls": 0,
     "vetoes": 0,
     "errors": 0,
@@ -16,14 +16,14 @@
     "cost_usd": 0
   },
   "month_to_date": {
-    "month": "2026-09",
-    "calls": 163,
-    "vetoes": 40,
-    "errors": 89,
-    "input_tokens": 2819118,
-    "output_tokens": 111126,
-    "web_searches": 188,
-    "cost_usd": 8.629496
+    "month": "2026-10",
+    "calls": 0,
+    "vetoes": 0,
+    "errors": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "web_searches": 0,
+    "cost_usd": 0
   },
   "all_time": {
     "calls": 163,
