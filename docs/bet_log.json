@@ -517,6 +517,90 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bitcoin-above-on-october-3-2026:4985089",
+      "tag": "calibration",
+      "market_question": "Will the price of Bitcoin be above $90,000 on October 3?",
+      "slug": "bitcoin-above-on-october-3-2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-october-3-2026",
+      "placed_at": "2026-10-02T09:09:53.768841+00:00",
+      "deadline": "2026-10-03T16:21:53.768841+00:00",
+      "market_ids": [
+        "4985089"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0427,
+      "edge_pct_at_placement": 25.73,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 22.33,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-september-28-october-4-2026:5062275",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $82,000 September 28-October 4?",
+      "slug": "what-price-will-bitcoin-hit-september-28-october-4-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-28-october-4-2026",
+      "placed_at": "2026-10-02T09:09:53.768841+00:00",
+      "deadline": "2026-10-05T04:21:53.768841+00:00",
+      "market_ids": [
+        "5062275"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0448,
+      "edge_pct_at_placement": 25.52,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 21.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ethereum-above-on-october-3-2026:4984999",
+      "tag": "calibration",
+      "market_question": "Will the price of Ethereum be above $2,900 on October 3?",
+      "slug": "ethereum-above-on-october-3-2026",
+      "url": "https://polymarket.com/event/ethereum-above-on-october-3-2026",
+      "placed_at": "2026-10-02T09:09:53.768841+00:00",
+      "deadline": "2026-10-03T16:21:53.768841+00:00",
+      "market_ids": [
+        "4984999"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0469,
+      "edge_pct_at_placement": 25.31,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 20.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-september-28-october-4-2026:5062249",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin reach $92,000 September 28-October 4?",
+      "slug": "what-price-will-bitcoin-hit-september-28-october-4-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-september-28-october-4-2026",
+      "placed_at": "2026-10-02T09:09:53.768841+00:00",
+      "deadline": "2026-10-05T04:21:53.768841+00:00",
+      "market_ids": [
+        "5062249"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0491,
+      "edge_pct_at_placement": 25.09,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 10.61,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
