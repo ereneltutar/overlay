@@ -605,6 +605,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:what-price-will-bitcoin-hit-in-october-2026:5170745",
+      "tag": "calibration",
+      "market_question": "Will Bitcoin dip to $62,500 in October?",
+      "slug": "what-price-will-bitcoin-hit-in-october-2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-october-2026",
+      "placed_at": "2026-10-03T08:42:44.032316+00:00",
+      "deadline": "2026-11-01T03:54:44.032316+00:00",
+      "market_ids": [
+        "5170745"
+      ],
+      "recommended_side": "YES",
+      "entry_cost": 0.0448,
+      "edge_pct_at_placement": 25.52,
+      "predicted_win_prob": 0.3,
+      "stake_usd": 18.62,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
