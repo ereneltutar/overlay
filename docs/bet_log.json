@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 543.35,
+  "bankroll": 500.86,
   "bankroll_history": [
     {
       "date": "2026-09-22",
@@ -49,6 +49,10 @@
     {
       "date": "2026-10-03",
       "bankroll": 543.35
+    },
+    {
+      "date": "2026-10-04",
+      "bankroll": 500.86
     }
   ],
   "bets": [
@@ -538,9 +542,9 @@
       "edge_pct_at_placement": 25.73,
       "predicted_win_prob": 0.3,
       "stake_usd": 22.33,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-10-04T06:01:41.781218+00:00",
+      "pnl_usd": -22.33,
       "fact_check": null
     },
     {
@@ -580,9 +584,9 @@
       "edge_pct_at_placement": 25.31,
       "predicted_win_prob": 0.3,
       "stake_usd": 20.16,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-10-04T06:01:41.781218+00:00",
+      "pnl_usd": -20.16,
       "fact_check": null
     },
     {
