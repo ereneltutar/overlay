@@ -66,6 +66,16 @@ BIN_WIDTH = 0.05              # bucket width through the middle of the range
 TAIL_ZONE_WIDTH = 0.05        # how much of each end (0..this, (1-this)..1) gets finer bins
 TAIL_BIN_WIDTH = 0.01         # width of those finer tail bins
 MIN_SAMPLE_PER_BUCKET = 30    # buckets with fewer samples than this have no statistical confidence
+# Samples aren't independent: markets in the same event (a strike ladder like
+# "XRP above $1.20/$1.30/$1.40/$1.50 on Aug 24") resolve together, and crypto
+# markets closing on the same day all ride the same underlying price move. The
+# Oct 2026 drawdown came from exactly this: the crypto [0.04, 0.05) bucket
+# claimed a 30% YES rate (n=40, "significant"), but all 12 YES samples were
+# logged Aug 13-18 during a single rally -- one market move counted 12 times.
+# So significance is judged on independent clusters (see cluster_key_for_entry),
+# not raw market count, and a bucket needs this many distinct clusters before
+# it can be marked significant at all.
+MIN_CLUSTERS_PER_BUCKET = 30
 # Must match fetch_arbitrage.py's MIN_CALIBRATION_LIQUIDITY_USD (the live signal's own
 # floor). A market too illiquid to ever qualify as a live signal shouldn't get a vote in
 # the historical rate that judges every live signal in its bucket. $100 (this constant's
@@ -190,14 +200,35 @@ def bucket_edges() -> list:
     )
 
 
+def cluster_key_for_entry(entry: dict, is_crypto: bool) -> str:
+    """Groups samples whose outcomes move together, so compute_bins() can
+    count independent evidence instead of raw markets (see
+    MIN_CLUSTERS_PER_BUCKET):
+      - crypto: every crypto market closing on the same UTC day is one
+        cluster, since BTC/ETH/SOL/XRP thresholds all hinge on the same
+        market-wide move
+      - everything else: one cluster per event slug (a ladder of strikes
+        or brackets within one event resolves off one underlying outcome)
+    Falls back to the market_id when neither is available, i.e. the sample
+    counts as independent."""
+    if is_crypto and entry.get("end_date"):
+        return f"crypto-day:{entry['end_date'][:10]}"
+    if entry.get("slug"):
+        return f"event:{entry['slug']}"
+    return f"market:{entry.get('market_id')}"
+
+
 def build_sample(entry: dict, outcome_yes: bool) -> dict:
     """Builds one resolved-market sample from a price_log.jsonl entry, tagged
     with its category so compute_bins() can be run separately per category
-    (see split_samples_by_category and market_category.is_crypto_market)."""
+    (see split_samples_by_category and market_category.is_crypto_market),
+    and with the cluster it belongs to (see cluster_key_for_entry)."""
+    is_crypto = market_category.is_crypto_market(entry.get("question"))
     return {
         "reference_price": entry["price"],
         "resolved_yes": outcome_yes,
-        "is_crypto": market_category.is_crypto_market(entry.get("question")),
+        "is_crypto": is_crypto,
+        "cluster_key": cluster_key_for_entry(entry, is_crypto),
     }
 
 
@@ -211,11 +242,25 @@ def split_samples_by_category(samples: list):
     return general, crypto
 
 
+def cluster_count(bucket_samples: list) -> int:
+    """Number of independent clusters among a bucket's samples. A sample
+    without a cluster_key counts as its own cluster."""
+    return len({s.get("cluster_key") or ("sample", i) for i, s in enumerate(bucket_samples)})
+
+
 def compute_bins(samples: list) -> list:
     """Buckets resolved samples into price ranges (see bucket_edges) and
     computes the calibration stats for each bucket. Pure function of
-    `samples` (each a {"reference_price": float, "resolved_yes": bool}
-    dict) so it can be tested without hitting the network."""
+    `samples` (each a {"reference_price": float, "resolved_yes": bool,
+    "cluster_key": str (optional)} dict) so it can be tested without
+    hitting the network.
+
+    The confidence interval is computed on the bucket's effective sample
+    size -- its number of independent clusters, not its number of markets
+    -- so twelve markets that all resolved off one rally widen the
+    interval like one observation would, not like twelve (see
+    MIN_CLUSTERS_PER_BUCKET). A bucket also can't be significant if its
+    rate contradicts its neighbors' (see flag_neighbor_inconsistent_bins)."""
     edges = bucket_edges()
     last_idx = len(edges) - 1
     bins = []
@@ -223,19 +268,23 @@ def compute_bins(samples: list) -> list:
         bucket_samples = [s for s in samples if lo <= s["reference_price"] < hi or (b == last_idx and s["reference_price"] == 1.0)]
         n = len(bucket_samples)
         k = sum(1 for s in bucket_samples if s["resolved_yes"])
+        n_clusters = cluster_count(bucket_samples)
         midpoint = (lo + hi) / 2
 
         entry = {
             "range": [round(lo, 2), round(hi, 2)],
             "midpoint": round(midpoint, 3),
             "sample_size": n,
+            "cluster_count": n_clusters,
         }
 
         if n >= MIN_SAMPLE_PER_BUCKET:
             actual_rate = k / n
-            ci_low, ci_high = wilson_interval(k, n)
+            # Wilson on the effective sample: same observed rate, but only
+            # as much evidence as there are independent clusters.
+            ci_low, ci_high = wilson_interval(round(actual_rate * n_clusters), n_clusters)
             bias_pct = (actual_rate - midpoint) * 100
-            significant = not (ci_low <= midpoint <= ci_high)
+            significant = n_clusters >= MIN_CLUSTERS_PER_BUCKET and not (ci_low <= midpoint <= ci_high)
             entry.update({
                 "resolved_yes_rate": round(actual_rate, 4),
                 "ci_95_low": round(ci_low, 4),
@@ -253,6 +302,29 @@ def compute_bins(samples: list) -> list:
             })
 
         bins.append(entry)
+    return flag_neighbor_inconsistent_bins(bins)
+
+
+def flag_neighbor_inconsistent_bins(bins: list) -> list:
+    """A market priced higher should resolve YES at least about as often as
+    one priced lower. For each pair of adjacent populated buckets, if the
+    cheaper one's rate sits above the pricier one's whole confidence
+    interval (or the pricier one's rate below the cheaper one's), the
+    ordering is broken by more than noise allows -- a correlated cluster or
+    a fluke, not a pricing bias -- like the crypto table's 15% -> 3% -> 30%
+    -> 11% run across [0.02, 0.10) that drove the Oct 2026 drawdown. It
+    can't be told from the pair alone which side is the outlier, so both
+    are marked neighbor_inconsistent and can't be significant. Mutates and
+    returns `bins`."""
+    populated = [b for b in bins if b["resolved_yes_rate"] is not None]
+    for b in populated:
+        b["neighbor_inconsistent"] = False
+    for cheaper, pricier in zip(populated, populated[1:]):
+        if (cheaper["resolved_yes_rate"] > pricier["ci_95_high"] or
+                pricier["resolved_yes_rate"] < cheaper["ci_95_low"]):
+            for b in (cheaper, pricier):
+                b["neighbor_inconsistent"] = True
+                b["significant"] = False
     return bins
 
 
@@ -334,6 +406,7 @@ def main():
         "tail_bin_width": TAIL_BIN_WIDTH,
         "tail_zone_width": TAIL_ZONE_WIDTH,
         "min_sample_per_bucket": MIN_SAMPLE_PER_BUCKET,
+        "min_clusters_per_bucket": MIN_CLUSTERS_PER_BUCKET,
         "min_sample_liquidity_usd": MIN_SAMPLE_LIQUIDITY_USD,
         "logged_markets_total": logged_markets_total,
         "logged_markets_below_liquidity_floor": below_liquidity_floor,

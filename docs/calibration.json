@@ -1,19 +1,20 @@
 {
-  "generated_at": "2026-09-28T10:46:17.751676+00:00",
+  "generated_at": "2026-10-04T10:10:35.523515+00:00",
   "bin_width": 0.05,
   "tail_bin_width": 0.01,
   "tail_zone_width": 0.05,
   "min_sample_per_bucket": 30,
+  "min_clusters_per_bucket": 30,
   "min_sample_liquidity_usd": 500,
-  "logged_markets_total": 40435,
+  "logged_markets_total": 40626,
   "logged_markets_below_liquidity_floor": 22302,
-  "logged_markets_cached": 17690,
-  "logged_markets_checked_this_run": 443,
-  "logged_markets_deferred": 0,
+  "logged_markets_cached": 17949,
+  "logged_markets_checked_this_run": 0,
+  "logged_markets_deferred": 375,
   "markets_resolved": 17571,
   "markets_resolved_general": 16892,
   "markets_resolved_crypto": 679,
-  "markets_still_open_or_unclear": 562,
+  "markets_still_open_or_unclear": 378,
   "bins": [
     {
       "range": [
@@ -22,11 +23,13 @@
       ],
       "midpoint": 0.005,
       "sample_size": 973,
+      "cluster_count": 314,
       "resolved_yes_rate": 0.0041,
-      "ci_95_low": 0.0016,
-      "ci_95_high": 0.0105,
+      "ci_95_low": 0.0006,
+      "ci_95_high": 0.0178,
       "bias_pct": -0.09,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -35,11 +38,13 @@
       ],
       "midpoint": 0.015,
       "sample_size": 352,
+      "cluster_count": 218,
       "resolved_yes_rate": 0.0057,
-      "ci_95_low": 0.0016,
-      "ci_95_high": 0.0205,
+      "ci_95_low": 0.0008,
+      "ci_95_high": 0.0255,
       "bias_pct": -0.93,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -48,11 +53,13 @@
       ],
       "midpoint": 0.025,
       "sample_size": 87,
+      "cluster_count": 65,
       "resolved_yes_rate": 0.023,
-      "ci_95_low": 0.0063,
-      "ci_95_high": 0.08,
+      "ci_95_low": 0.0027,
+      "ci_95_high": 0.0821,
       "bias_pct": -0.2,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -61,11 +68,13 @@
       ],
       "midpoint": 0.035,
       "sample_size": 96,
+      "cluster_count": 75,
       "resolved_yes_rate": 0.0104,
-      "ci_95_low": 0.0018,
-      "ci_95_high": 0.0567,
+      "ci_95_low": 0.0024,
+      "ci_95_high": 0.0717,
       "bias_pct": -2.46,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -74,11 +83,13 @@
       ],
       "midpoint": 0.045,
       "sample_size": 78,
+      "cluster_count": 68,
       "resolved_yes_rate": 0.0641,
-      "ci_95_low": 0.0277,
-      "ci_95_high": 0.1414,
+      "ci_95_low": 0.0231,
+      "ci_95_high": 0.1417,
       "bias_pct": 1.91,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -87,11 +98,13 @@
       ],
       "midpoint": 0.075,
       "sample_size": 452,
+      "cluster_count": 264,
       "resolved_yes_rate": 0.0575,
-      "ci_95_low": 0.0396,
-      "ci_95_high": 0.0829,
+      "ci_95_low": 0.0347,
+      "ci_95_high": 0.0916,
       "bias_pct": -1.75,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -100,11 +113,13 @@
       ],
       "midpoint": 0.125,
       "sample_size": 554,
+      "cluster_count": 404,
       "resolved_yes_rate": 0.0957,
-      "ci_95_low": 0.0739,
-      "ci_95_high": 0.123,
+      "ci_95_low": 0.0714,
+      "ci_95_high": 0.1292,
       "bias_pct": -2.93,
-      "significant": true
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -113,11 +128,13 @@
       ],
       "midpoint": 0.175,
       "sample_size": 719,
+      "cluster_count": 593,
       "resolved_yes_rate": 0.121,
-      "ci_95_low": 0.0992,
-      "ci_95_high": 0.1469,
+      "ci_95_low": 0.0975,
+      "ci_95_high": 0.1502,
       "bias_pct": -5.4,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -126,11 +143,13 @@
       ],
       "midpoint": 0.225,
       "sample_size": 799,
+      "cluster_count": 635,
       "resolved_yes_rate": 0.1564,
-      "ci_95_low": 0.1329,
-      "ci_95_high": 0.1833,
+      "ci_95_low": 0.1298,
+      "ci_95_high": 0.1862,
       "bias_pct": -6.86,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -139,11 +158,13 @@
       ],
       "midpoint": 0.275,
       "sample_size": 1087,
+      "cluster_count": 904,
       "resolved_yes_rate": 0.2374,
-      "ci_95_low": 0.213,
-      "ci_95_high": 0.2635,
+      "ci_95_low": 0.2112,
+      "ci_95_high": 0.2667,
       "bias_pct": -3.76,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -152,11 +173,13 @@
       ],
       "midpoint": 0.325,
       "sample_size": 1148,
+      "cluster_count": 909,
       "resolved_yes_rate": 0.2726,
-      "ci_95_low": 0.2477,
-      "ci_95_high": 0.2991,
+      "ci_95_low": 0.2449,
+      "ci_95_high": 0.3027,
       "bias_pct": -5.24,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -165,11 +188,13 @@
       ],
       "midpoint": 0.375,
       "sample_size": 1284,
+      "cluster_count": 979,
       "resolved_yes_rate": 0.3333,
-      "ci_95_low": 0.3081,
-      "ci_95_high": 0.3596,
+      "ci_95_low": 0.3042,
+      "ci_95_high": 0.3631,
       "bias_pct": -4.17,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -178,11 +203,13 @@
       ],
       "midpoint": 0.425,
       "sample_size": 1340,
+      "cluster_count": 953,
       "resolved_yes_rate": 0.3739,
-      "ci_95_low": 0.3484,
-      "ci_95_high": 0.4001,
+      "ci_95_low": 0.3434,
+      "ci_95_high": 0.4047,
       "bias_pct": -5.11,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -191,11 +218,13 @@
       ],
       "midpoint": 0.475,
       "sample_size": 1541,
+      "cluster_count": 1062,
       "resolved_yes_rate": 0.403,
-      "ci_95_low": 0.3788,
-      "ci_95_high": 0.4277,
+      "ci_95_low": 0.3739,
+      "ci_95_high": 0.4328,
       "bias_pct": -7.2,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -204,11 +233,13 @@
       ],
       "midpoint": 0.525,
       "sample_size": 1626,
+      "cluster_count": 1105,
       "resolved_yes_rate": 0.4207,
-      "ci_95_low": 0.3969,
-      "ci_95_high": 0.4448,
+      "ci_95_low": 0.392,
+      "ci_95_high": 0.4501,
       "bias_pct": -10.43,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -217,11 +248,13 @@
       ],
       "midpoint": 0.575,
       "sample_size": 845,
+      "cluster_count": 699,
       "resolved_yes_rate": 0.5692,
-      "ci_95_low": 0.5356,
-      "ci_95_high": 0.6022,
+      "ci_95_low": 0.5324,
+      "ci_95_high": 0.6056,
       "bias_pct": -0.58,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -230,11 +263,13 @@
       ],
       "midpoint": 0.625,
       "sample_size": 773,
+      "cluster_count": 647,
       "resolved_yes_rate": 0.6119,
-      "ci_95_low": 0.5771,
-      "ci_95_high": 0.6456,
+      "ci_95_low": 0.574,
+      "ci_95_high": 0.6488,
       "bias_pct": -1.31,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -243,11 +278,13 @@
       ],
       "midpoint": 0.675,
       "sample_size": 680,
+      "cluster_count": 585,
       "resolved_yes_rate": 0.6485,
-      "ci_95_low": 0.6119,
-      "ci_95_high": 0.6835,
+      "ci_95_low": 0.6083,
+      "ci_95_high": 0.6855,
       "bias_pct": -2.65,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -256,11 +293,13 @@
       ],
       "midpoint": 0.725,
       "sample_size": 581,
+      "cluster_count": 515,
       "resolved_yes_rate": 0.6644,
-      "ci_95_low": 0.625,
-      "ci_95_high": 0.7016,
+      "ci_95_low": 0.6222,
+      "ci_95_high": 0.7035,
       "bias_pct": -6.06,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -269,11 +308,13 @@
       ],
       "midpoint": 0.775,
       "sample_size": 505,
+      "cluster_count": 454,
       "resolved_yes_rate": 0.7109,
-      "ci_95_low": 0.6699,
-      "ci_95_high": 0.7487,
+      "ci_95_low": 0.6681,
+      "ci_95_high": 0.7512,
       "bias_pct": -6.41,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -282,11 +323,13 @@
       ],
       "midpoint": 0.825,
       "sample_size": 328,
+      "cluster_count": 302,
       "resolved_yes_rate": 0.7622,
-      "ci_95_low": 0.7133,
-      "ci_95_high": 0.8051,
+      "ci_95_low": 0.7104,
+      "ci_95_high": 0.8062,
       "bias_pct": -6.28,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -295,11 +338,13 @@
       ],
       "midpoint": 0.875,
       "sample_size": 274,
+      "cluster_count": 261,
       "resolved_yes_rate": 0.8029,
-      "ci_95_low": 0.7518,
-      "ci_95_high": 0.8457,
+      "ci_95_low": 0.7522,
+      "ci_95_high": 0.8481,
       "bias_pct": -7.21,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -308,11 +353,13 @@
       ],
       "midpoint": 0.925,
       "sample_size": 250,
+      "cluster_count": 239,
       "resolved_yes_rate": 0.84,
-      "ci_95_low": 0.7895,
-      "ci_95_high": 0.8802,
+      "ci_95_low": 0.7893,
+      "ci_95_high": 0.8819,
       "bias_pct": -8.5,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -321,11 +368,13 @@
       ],
       "midpoint": 0.955,
       "sample_size": 96,
+      "cluster_count": 92,
       "resolved_yes_rate": 0.9167,
-      "ci_95_low": 0.8441,
-      "ci_95_high": 0.9572,
+      "ci_95_low": 0.8377,
+      "ci_95_high": 0.9553,
       "bias_pct": -3.83,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -334,11 +383,13 @@
       ],
       "midpoint": 0.965,
       "sample_size": 70,
+      "cluster_count": 68,
       "resolved_yes_rate": 0.9571,
-      "ci_95_low": 0.8814,
-      "ci_95_high": 0.9853,
+      "ci_95_low": 0.8781,
+      "ci_95_high": 0.9849,
       "bias_pct": -0.79,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     },
     {
       "range": [
@@ -347,11 +398,13 @@
       ],
       "midpoint": 0.975,
       "sample_size": 66,
+      "cluster_count": 65,
       "resolved_yes_rate": 0.9394,
-      "ci_95_low": 0.8543,
-      "ci_95_high": 0.9762,
+      "ci_95_low": 0.8522,
+      "ci_95_high": 0.9758,
       "bias_pct": -3.56,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": true
     },
     {
       "range": [
@@ -360,11 +413,13 @@
       ],
       "midpoint": 0.985,
       "sample_size": 57,
+      "cluster_count": 53,
       "resolved_yes_rate": 0.8596,
-      "ci_95_low": 0.7468,
-      "ci_95_high": 0.9271,
+      "ci_95_low": 0.7516,
+      "ci_95_high": 0.9345,
       "bias_pct": -12.54,
-      "significant": true
+      "significant": false,
+      "neighbor_inconsistent": true
     },
     {
       "range": [
@@ -373,11 +428,13 @@
       ],
       "midpoint": 0.995,
       "sample_size": 231,
+      "cluster_count": 176,
       "resolved_yes_rate": 0.974,
-      "ci_95_low": 0.9445,
-      "ci_95_high": 0.988,
+      "ci_95_low": 0.9352,
+      "ci_95_high": 0.9878,
       "bias_pct": -2.1,
-      "significant": true
+      "significant": true,
+      "neighbor_inconsistent": false
     }
   ],
   "crypto_bins": [
@@ -388,6 +445,7 @@
       ],
       "midpoint": 0.005,
       "sample_size": 11,
+      "cluster_count": 1,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -401,6 +459,7 @@
       ],
       "midpoint": 0.015,
       "sample_size": 25,
+      "cluster_count": 9,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -414,11 +473,13 @@
       ],
       "midpoint": 0.025,
       "sample_size": 124,
+      "cluster_count": 10,
       "resolved_yes_rate": 0.1532,
-      "ci_95_low": 0.1003,
-      "ci_95_high": 0.227,
+      "ci_95_low": 0.0567,
+      "ci_95_high": 0.5098,
       "bias_pct": 12.82,
-      "significant": true
+      "significant": false,
+      "neighbor_inconsistent": true
     },
     {
       "range": [
@@ -427,11 +488,13 @@
       ],
       "midpoint": 0.035,
       "sample_size": 89,
+      "cluster_count": 10,
       "resolved_yes_rate": 0.0337,
-      "ci_95_low": 0.0115,
-      "ci_95_high": 0.0945,
+      "ci_95_low": 0.0,
+      "ci_95_high": 0.2775,
       "bias_pct": -0.13,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": true
     },
     {
       "range": [
@@ -440,11 +503,13 @@
       ],
       "midpoint": 0.045,
       "sample_size": 40,
+      "cluster_count": 9,
       "resolved_yes_rate": 0.3,
-      "ci_95_low": 0.1807,
-      "ci_95_high": 0.4543,
+      "ci_95_low": 0.1206,
+      "ci_95_high": 0.6458,
       "bias_pct": 25.5,
-      "significant": true
+      "significant": false,
+      "neighbor_inconsistent": true
     },
     {
       "range": [
@@ -453,11 +518,13 @@
       ],
       "midpoint": 0.075,
       "sample_size": 47,
+      "cluster_count": 11,
       "resolved_yes_rate": 0.1064,
-      "ci_95_low": 0.0463,
-      "ci_95_high": 0.2259,
+      "ci_95_low": 0.0162,
+      "ci_95_high": 0.3774,
       "bias_pct": 3.14,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": true
     },
     {
       "range": [
@@ -466,6 +533,7 @@
       ],
       "midpoint": 0.125,
       "sample_size": 29,
+      "cluster_count": 10,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -479,6 +547,7 @@
       ],
       "midpoint": 0.175,
       "sample_size": 28,
+      "cluster_count": 10,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -492,6 +561,7 @@
       ],
       "midpoint": 0.225,
       "sample_size": 17,
+      "cluster_count": 8,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -505,6 +575,7 @@
       ],
       "midpoint": 0.275,
       "sample_size": 12,
+      "cluster_count": 7,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -518,6 +589,7 @@
       ],
       "midpoint": 0.325,
       "sample_size": 9,
+      "cluster_count": 7,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -531,6 +603,7 @@
       ],
       "midpoint": 0.375,
       "sample_size": 21,
+      "cluster_count": 9,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -544,6 +617,7 @@
       ],
       "midpoint": 0.425,
       "sample_size": 13,
+      "cluster_count": 7,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -557,6 +631,7 @@
       ],
       "midpoint": 0.475,
       "sample_size": 8,
+      "cluster_count": 5,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -570,6 +645,7 @@
       ],
       "midpoint": 0.525,
       "sample_size": 5,
+      "cluster_count": 3,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -583,6 +659,7 @@
       ],
       "midpoint": 0.575,
       "sample_size": 6,
+      "cluster_count": 6,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -596,6 +673,7 @@
       ],
       "midpoint": 0.625,
       "sample_size": 6,
+      "cluster_count": 6,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -609,6 +687,7 @@
       ],
       "midpoint": 0.675,
       "sample_size": 6,
+      "cluster_count": 5,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -622,6 +701,7 @@
       ],
       "midpoint": 0.725,
       "sample_size": 2,
+      "cluster_count": 2,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -635,6 +715,7 @@
       ],
       "midpoint": 0.775,
       "sample_size": 3,
+      "cluster_count": 3,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -648,6 +729,7 @@
       ],
       "midpoint": 0.825,
       "sample_size": 8,
+      "cluster_count": 6,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -661,6 +743,7 @@
       ],
       "midpoint": 0.875,
       "sample_size": 5,
+      "cluster_count": 4,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -674,6 +757,7 @@
       ],
       "midpoint": 0.925,
       "sample_size": 8,
+      "cluster_count": 6,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -687,6 +771,7 @@
       ],
       "midpoint": 0.955,
       "sample_size": 2,
+      "cluster_count": 2,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -700,6 +785,7 @@
       ],
       "midpoint": 0.965,
       "sample_size": 6,
+      "cluster_count": 4,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -713,6 +799,7 @@
       ],
       "midpoint": 0.975,
       "sample_size": 8,
+      "cluster_count": 5,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -726,6 +813,7 @@
       ],
       "midpoint": 0.985,
       "sample_size": 13,
+      "cluster_count": 8,
       "resolved_yes_rate": null,
       "ci_95_low": null,
       "ci_95_high": null,
@@ -739,11 +827,13 @@
       ],
       "midpoint": 0.995,
       "sample_size": 128,
+      "cluster_count": 9,
       "resolved_yes_rate": 1.0,
-      "ci_95_low": 0.9709,
+      "ci_95_low": 0.7008,
       "ci_95_high": 1.0,
       "bias_pct": 0.5,
-      "significant": false
+      "significant": false,
+      "neighbor_inconsistent": false
     }
   ]
 }

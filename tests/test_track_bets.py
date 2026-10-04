@@ -799,3 +799,55 @@ def test_record_bankroll_snapshot_overwrites_same_date():
     tb.record_bankroll_snapshot(log, NOW)
     assert len(log["bankroll_history"]) == 1
     assert log["bankroll_history"][0]["bankroll"] == 1050.0
+
+
+# --- place_new_bets: correlation cap ------------------------------------------
+# Regression for the Oct 2026 drawdown: nine open BTC/ETH strike bets
+# expiring the same week were one bet on "crypto moves big this week".
+
+def test_correlation_cluster_key_groups_same_crypto_asset_and_week():
+    a = tb.correlation_cluster_key("Will Bitcoin reach $92,000 September 28-October 4?", "s1",
+                                   "2026-10-04T12:00:00+00:00")
+    b = tb.correlation_cluster_key("Will the price of Bitcoin be above $90,000 on October 2?", "s2",
+                                   "2026-10-02T12:00:00+00:00")
+    assert a == b
+
+
+def test_correlation_cluster_key_separates_assets_and_weeks():
+    btc = tb.correlation_cluster_key("Will Bitcoin reach $92,000?", "s1", "2026-10-02T12:00:00+00:00")
+    eth = tb.correlation_cluster_key("Will Ethereum reach $3,000?", "s1", "2026-10-02T12:00:00+00:00")
+    btc_next_week = tb.correlation_cluster_key("Will Bitcoin reach $92,000?", "s1", "2026-10-09T12:00:00+00:00")
+    assert len({btc, eth, btc_next_week}) == 3
+
+
+def test_correlation_cluster_key_non_crypto_uses_event_slug():
+    assert tb.correlation_cluster_key("Will Fulham FC win?", "epl-ful", "2026-10-02T12:00:00+00:00") == "event:epl-ful"
+
+
+def btc_signal(market_id, days_left=2):
+    return {
+        "market_id": market_id, "slug": f"btc-{market_id}", "days_left": days_left,
+        "market_question": f"Will Bitcoin reach ${market_id},000?",
+        "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
+        "fair_probability": 0.7, "recommended_side": "YES",
+    }
+
+
+def test_place_new_bets_caps_open_bets_per_correlation_cluster():
+    log = fresh_log()
+    results = {"mispricing_signals": [btc_signal(str(90 + i)) for i in range(4)]}
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == tb.MAX_OPEN_BETS_PER_CLUSTER
+    assert stats["skipped_correlation_cap"] == 4 - tb.MAX_OPEN_BETS_PER_CLUSTER
+
+
+def test_place_new_bets_correlation_cap_counts_existing_open_bets():
+    log = fresh_log()
+    for i in range(tb.MAX_OPEN_BETS_PER_CLUSTER):
+        bet = make_bet(stake=10.0, deadline=NOW + datetime.timedelta(days=2))
+        bet["bet_id"] = f"calibration:old{i}"
+        bet["market_question"] = "Will Bitcoin dip to $70,000?"
+        log["bets"].append(bet)
+    stats = tb.place_new_bets(log, {"mispricing_signals": [btc_signal("95")]}, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 0
+    assert stats["skipped_correlation_cap"] == 1

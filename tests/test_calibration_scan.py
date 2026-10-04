@@ -195,12 +195,14 @@ def log_entry(market_id, price, question, liquidity=1000):
 
 def test_build_sample_tags_crypto_market():
     sample = cs.build_sample(log_entry("01", 0.4, "Will Bitcoin reach $65,000 on August 18?"), True)
-    assert sample == {"reference_price": 0.4, "resolved_yes": True, "is_crypto": True}
+    assert sample == {"reference_price": 0.4, "resolved_yes": True, "is_crypto": True,
+                      "cluster_key": "market:01"}
 
 
 def test_build_sample_tags_non_crypto_market():
     sample = cs.build_sample(log_entry("02", 0.4, "Will Fulham FC win on 2026-08-24?"), False)
-    assert sample == {"reference_price": 0.4, "resolved_yes": False, "is_crypto": False}
+    assert sample == {"reference_price": 0.4, "resolved_yes": False, "is_crypto": False,
+                      "cluster_key": "market:02"}
 
 
 def test_split_samples_by_category_separates_crypto_from_general():
@@ -248,3 +250,71 @@ def test_calibration_log_floor_matches_live_signal_floor():
     assert cs.MIN_SAMPLE_LIQUIDITY_USD >= fa.MIN_CALIBRATION_LIQUIDITY_USD
     assert fa.CALIBRATION_LOG_MIN_VOLUME_24H >= fa.MIN_CALIBRATION_VOLUME_24H_USD
 
+
+
+# --- clustering / neighbor consistency ---------------------------------------
+# Regression for the Oct 2026 drawdown: the crypto [0.04, 0.05) bucket showed
+# a "significant" 30% YES rate on n=40, but all 12 YES samples came from one
+# mid-August rally. Correlated samples must count as one piece of evidence,
+# and a bucket that breaks price ordering with its neighbor can't be trusted.
+
+def test_cluster_key_groups_crypto_by_close_day():
+    e1 = {"market_id": "1", "slug": "bitcoin-above-on-august-24-2026", "end_date": "2026-08-24T16:00:00Z"}
+    e2 = {"market_id": "2", "slug": "solana-above-on-august-24-2026", "end_date": "2026-08-24T16:00:00Z"}
+    assert cs.cluster_key_for_entry(e1, True) == cs.cluster_key_for_entry(e2, True) == "crypto-day:2026-08-24"
+
+
+def test_cluster_key_groups_non_crypto_by_event_slug():
+    e = {"market_id": "1", "slug": "nba-finals", "end_date": "2026-08-24T16:00:00Z"}
+    assert cs.cluster_key_for_entry(e, False) == "event:nba-finals"
+
+
+def clustered(price, yes_count, no_count, clusters):
+    """Samples spread round-robin across `clusters` cluster keys."""
+    samples = make_samples(price, yes_count, no_count)
+    for i, s in enumerate(samples):
+        s["cluster_key"] = f"c{i % clusters}"
+    return samples
+
+
+def test_compute_bins_not_significant_when_samples_share_few_clusters():
+    # Same 29/30 YES split that's significant as 30 independent samples
+    # (test_compute_bins_significant_when_far_from_midpoint) -- but drawn
+    # from only 3 underlying clusters, so it's 3 observations, not 30.
+    bins = cs.compute_bins(clustered(0.42, yes_count=29, no_count=1, clusters=3))
+    bucket = next(b for b in bins if b["range"] == [0.4, 0.45])
+    assert bucket["sample_size"] == 30
+    assert bucket["cluster_count"] == 3
+    assert bucket["resolved_yes_rate"] == round(29 / 30, 4)
+    assert bucket["significant"] is False
+
+
+def test_compute_bins_significant_with_enough_independent_clusters():
+    bins = cs.compute_bins(clustered(0.42, yes_count=29, no_count=1, clusters=30))
+    bucket = next(b for b in bins if b["range"] == [0.4, 0.45])
+    assert bucket["cluster_count"] == 30
+    assert bucket["significant"] is True
+
+
+def test_compute_bins_flags_both_sides_of_an_ordering_violation():
+    # [0.40, 0.45) resolving YES 97% while the pricier [0.45, 0.50) resolves
+    # 3%: higher price, far lower YES rate -- not a believable bias.
+    bins = cs.compute_bins(make_samples(0.42, yes_count=29, no_count=1) +
+                           make_samples(0.47, yes_count=1, no_count=29))
+    cheaper = next(b for b in bins if b["range"] == [0.4, 0.45])
+    pricier = next(b for b in bins if b["range"] == [0.45, 0.5])
+    assert cheaper["neighbor_inconsistent"] is True
+    assert pricier["neighbor_inconsistent"] is True
+    assert cheaper["significant"] is False
+    assert pricier["significant"] is False
+
+
+def test_compute_bins_monotonic_neighbors_stay_significant():
+    bins = cs.compute_bins(make_samples(0.42, yes_count=2, no_count=28) +
+                           make_samples(0.47, yes_count=3, no_count=27))
+    cheaper = next(b for b in bins if b["range"] == [0.4, 0.45])
+    pricier = next(b for b in bins if b["range"] == [0.45, 0.5])
+    assert cheaper["neighbor_inconsistent"] is False
+    assert pricier["neighbor_inconsistent"] is False
+    assert cheaper["significant"] is True
+    assert pricier["significant"] is True

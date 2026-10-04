@@ -60,6 +60,7 @@ import sys
 import time
 from pathlib import Path
 
+import crypto_price_gate
 import gamma_client
 import llm_fact_check
 
@@ -103,6 +104,11 @@ MAX_OPEN_STAKE_FRAC = 0.35     # never let more than this fraction of total bank
                                 # added after the Sep 2026 drawdown left 70% of bankroll concurrently at
                                 # risk in open positions, which is a portfolio-level concentration problem
                                 # no single per-bet cap addresses
+MAX_OPEN_BETS_PER_CLUSTER = 2  # never hold more than this many open bets whose outcomes hinge on the
+                                # same thing (see correlation_cluster_key). Added after the Oct 2026
+                                # drawdown: nine open BTC/ETH strike bets expiring the same week were
+                                # really one bet on "crypto makes a big move this week" -- each passed
+                                # the per-bet cap and the portfolio cap, and they all lost together.
 
 DEADLINE_GRACE_HOURS = 12      # wait this long past the deadline before checking (resolution isn't instant)
 SLEEP_BETWEEN_CALLS = 1.15
@@ -549,14 +555,36 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
     return candidates
 
 
+def correlation_cluster_key(question: str, slug: str, deadline: str) -> str:
+    """Groups bets whose outcomes move together, for MAX_OPEN_BETS_PER_CLUSTER:
+    crypto bets on the same asset with deadlines in the same ISO week share
+    a cluster (they all hinge on one price path), everything else clusters
+    by event slug (strikes/brackets within one event). Pure function so the
+    grouping is testable without a bet log."""
+    coin_id = crypto_price_gate.asset_id_for_question(question)
+    if coin_id and deadline:
+        year, week, _ = parse_deadline(deadline).isocalendar()
+        return f"crypto:{coin_id}:{year}-W{week:02d}"
+    return f"event:{slug}"
+
+
+def open_cluster_counts(log: dict) -> dict:
+    counts: dict = {}
+    for b in log["bets"]:
+        if b["status"] == "open":
+            key = correlation_cluster_key(b["market_question"], b["slug"], b["deadline"])
+            counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
 def open_stake_total(log: dict) -> float:
     return sum(b["stake_usd"] for b in log["bets"] if b["status"] == "open")
 
 
 def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm_fact_check.ask_llm_fact_check):
     """Returns a stats dict: placed, skipped_low_bankroll, skipped_no_edge,
-    skipped_exposure_cap, skipped_fact_check, fact_check_cache_hits,
-    fact_check_cap_skipped. A dict (not a positional tuple) because this
+    skipped_exposure_cap, skipped_correlation_cap, skipped_fact_check,
+    fact_check_cache_hits, fact_check_cap_skipped. A dict (not a positional tuple) because this
     has already grown twice as fact-check accounting was added -- a 7-tuple
     every caller has to unpack in the right order is exactly the kind of
     thing that silently breaks the next time a field gets added."""
@@ -568,11 +596,13 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         "skipped_low_bankroll": 0,
         "skipped_no_edge": 0,
         "skipped_exposure_cap": 0,
+        "skipped_correlation_cap": 0,
         "skipped_fact_check": 0,
         "fact_check_cache_hits": 0,
         "fact_check_cap_skipped": 0,
     }
     fresh_fact_checks_this_run = 0
+    cluster_counts = open_cluster_counts(log)
 
     for c in build_candidates(results, now):
         if c["bet_id"] in existing_ids:
@@ -599,6 +629,14 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         exposure_room = max(0.0, MAX_OPEN_STAKE_FRAC * total_bank - open_stake_total(log))
         if exposure_room < STAKE_FLOOR_USD:
             stats["skipped_exposure_cap"] += 1
+            continue
+
+        # Correlation cap: the portfolio cap above bounds total dollars at
+        # risk, but not how many of those dollars ride on the same outcome
+        # (see MAX_OPEN_BETS_PER_CLUSTER).
+        cluster = correlation_cluster_key(c["market_question"], c["slug"], c["deadline"])
+        if cluster_counts.get(cluster, 0) >= MAX_OPEN_BETS_PER_CLUSTER:
+            stats["skipped_correlation_cap"] += 1
             continue
 
         if c["tag"] == "arbitrage":
@@ -663,6 +701,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
             "fact_check": fact_check_result,
         })
         existing_ids.add(c["bet_id"])
+        cluster_counts[cluster] = cluster_counts.get(cluster, 0) + 1
         stats["placed"] += 1
 
     return stats
@@ -705,7 +744,7 @@ def main():
 
     resolved_count = resolve_open_bets(log, now)
     stats = {"placed": 0, "skipped_low_bankroll": 0, "skipped_no_edge": 0, "skipped_exposure_cap": 0,
-              "skipped_fact_check": 0, "fact_check_cache_hits": 0, "fact_check_cap_skipped": 0}
+              "skipped_correlation_cap": 0, "skipped_fact_check": 0, "fact_check_cache_hits": 0, "fact_check_cap_skipped": 0}
     if not args.resolve_only:
         stats = place_new_bets(log, results, now)
 
@@ -730,6 +769,10 @@ def main():
     if stats["skipped_exposure_cap"]:
         print(f"Skipped {stats['skipped_exposure_cap']} signals: open bets already at/near "
               f"{MAX_OPEN_STAKE_FRAC:.0%} of bankroll (MAX_OPEN_STAKE_FRAC).",
+              file=sys.stderr)
+    if stats["skipped_correlation_cap"]:
+        print(f"Skipped {stats['skipped_correlation_cap']} signals: already {MAX_OPEN_BETS_PER_CLUSTER} open bets "
+              f"on the same event / crypto asset-week (MAX_OPEN_BETS_PER_CLUSTER).",
               file=sys.stderr)
     if stats["skipped_fact_check"]:
         print(f"Skipped {stats['skipped_fact_check']} signals: LLM fact-check found current, verifiable "
