@@ -11,5 +11,195 @@
       "bankroll": 1000.0
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "bet_id": "calibration:saudi-oil-pipeline-east-west-restarts-byptptpt:4619164",
+      "tag": "calibration",
+      "market_question": "Saudi Oil Pipeline (East-West) restarts by October 31?",
+      "slug": "saudi-oil-pipeline-east-west-restarts-byptptpt",
+      "url": "https://polymarket.com/event/saudi-oil-pipeline-east-west-restarts-byptptpt",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-11-01T04:59:37.850232+00:00",
+      "market_ids": [
+        "4619164"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.454,
+      "edge_pct_at_placement": 12.53,
+      "predicted_win_prob": 0.5793,
+      "stake_usd": 50.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:lol-navi-fly-2026-10-05:5233595",
+      "tag": "calibration",
+      "market_question": "LoL: Natus Vincere vs FlyQuest - Game 2 Winner",
+      "slug": "lol-navi-fly-2026-10-05",
+      "url": "https://polymarket.com/event/lol-navi-fly-2026-10-05",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-10-05T14:35:37.850232+00:00",
+      "market_ids": [
+        "5233595"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 10.69,
+      "predicted_win_prob": 0.5793,
+      "stake_usd": 47.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:highest-temperature-in-tokyo-on-october-5-2026:5225279",
+      "tag": "calibration",
+      "market_question": "Will the highest temperature in Tokyo be 22°C on October 5?",
+      "slug": "highest-temperature-in-tokyo-on-october-5-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-tokyo-on-october-5-2026",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-10-05T12:11:37.850232+00:00",
+      "market_ids": [
+        "5225279"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0534,
+      "edge_pct_at_placement": 10.66,
+      "predicted_win_prob": 0.16,
+      "stake_usd": 45.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ca-14-house-election-winner:1281029",
+      "tag": "calibration",
+      "market_question": "Will the Democratic Party win the CA-14 House seat?",
+      "slug": "ca-14-house-election-winner",
+      "url": "https://polymarket.com/event/ca-14-house-election-winner",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-11-04T04:59:37.850232+00:00",
+      "market_ids": [
+        "1281029"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0571,
+      "edge_pct_at_placement": 10.29,
+      "predicted_win_prob": 0.16,
+      "stake_usd": 42.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:tennessee-senate-election-winner:630951",
+      "tag": "calibration",
+      "market_question": "Will the Republicans win the Tennessee Senate race in 2026?",
+      "slug": "tennessee-senate-election-winner",
+      "url": "https://polymarket.com/event/tennessee-senate-election-winner",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-11-04T04:59:37.850232+00:00",
+      "market_ids": [
+        "630951"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0612,
+      "edge_pct_at_placement": 9.88,
+      "predicted_win_prob": 0.16,
+      "stake_usd": 40.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:of-views-of-mrbeast-video-on-day-2-20261003:5286105",
+      "tag": "calibration",
+      "market_question": "Will MrBeast's next video get 100 million or more views on day 2?",
+      "slug": "of-views-of-mrbeast-video-on-day-2-20261003",
+      "url": "https://polymarket.com/event/of-views-of-mrbeast-video-on-day-2-20261003",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-10-06T00:11:37.850232+00:00",
+      "market_ids": [
+        "5286105"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 9.72,
+      "predicted_win_prob": 0.16,
+      "stake_usd": 38.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-villanu-hardt-2026-10-05:5267994",
+      "tag": "calibration",
+      "market_question": "Antofagasta: Gonzalo Villanueva vs Nick Hardt",
+      "slug": "atp-villanu-hardt-2026-10-05",
+      "url": "https://polymarket.com/event/atp-villanu-hardt-2026-10-05",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-10-12T12:11:37.850232+00:00",
+      "market_ids": [
+        "5267994"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 9.68,
+      "predicted_win_prob": 0.5793,
+      "stake_usd": 36.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:next-premier-of-british-columbia:4881659",
+      "tag": "calibration",
+      "market_question": "Will David Eby be the next Premier of British Columbia?",
+      "slug": "next-premier-of-british-columbia",
+      "url": "https://polymarket.com/event/next-premier-of-british-columbia",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-10-25T00:11:37.850232+00:00",
+      "market_ids": [
+        "4881659"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.49,
+      "edge_pct_at_placement": 8.93,
+      "predicted_win_prob": 0.5793,
+      "stake_usd": 34.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:which-party-will-win-the-house-in-2026:562802",
+      "tag": "calibration",
+      "market_question": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+      "slug": "which-party-will-win-the-house-in-2026",
+      "url": "https://polymarket.com/event/which-party-will-win-the-house-in-2026",
+      "placed_at": "2026-10-05T09:47:37.850232+00:00",
+      "deadline": "2026-11-04T04:59:37.850232+00:00",
+      "market_ids": [
+        "562802"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0726,
+      "edge_pct_at_placement": 8.74,
+      "predicted_win_prob": 0.16,
+      "stake_usd": 13.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    }
+  ]
 }
