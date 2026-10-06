@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 954.88,
+  "bankroll": 907.38,
   "bankroll_history": [
     {
       "date": "2026-10-04",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-10-06",
-      "bankroll": 954.88
+      "bankroll": 907.38
     }
   ],
   "bets": [
@@ -53,9 +53,9 @@
       "edge_pct_at_placement": 10.69,
       "predicted_win_prob": 0.5793,
       "stake_usd": 47.5,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-10-06T09:35:11.385984+00:00",
+      "pnl_usd": -47.5,
       "fact_check": null
     },
     {
@@ -200,6 +200,48 @@
       "edge_pct_at_placement": 8.74,
       "predicted_win_prob": 0.16,
       "stake_usd": 13.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-hou-ten-2026-10-11:4061483",
+      "tag": "calibration",
+      "market_question": "Spread: Texans (-6.5)",
+      "slug": "nfl-hou-ten-2026-10-11",
+      "url": "https://polymarket.com/event/nfl-hou-ten-2026-10-11",
+      "placed_at": "2026-10-06T09:35:11.385984+00:00",
+      "deadline": "2026-10-11T16:47:11.385984+00:00",
+      "market_ids": [
+        "4061483"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4675,
+      "edge_pct_at_placement": 11.13,
+      "predicted_win_prob": 0.5788,
+      "stake_usd": 32.5,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-bal-atl-2026-10-12:4024681",
+      "tag": "calibration",
+      "market_question": "Ravens vs. Falcons",
+      "slug": "nfl-bal-atl-2026-10-12",
+      "url": "https://polymarket.com/event/nfl-bal-atl-2026-10-12",
+      "placed_at": "2026-10-06T09:35:11.385984+00:00",
+      "deadline": "2026-10-11T23:59:11.385984+00:00",
+      "market_ids": [
+        "4024681"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4675,
+      "edge_pct_at_placement": 11.13,
+      "predicted_win_prob": 0.5788,
+      "stake_usd": 27.7,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
