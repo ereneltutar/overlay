@@ -250,6 +250,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-xi-psna-2026-10-07:5343559",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: XI Esport vs Passion Academy (BO3) - United21 Playoffs",
+      "slug": "cs2-xi-psna-2026-10-07",
+      "url": "https://polymarket.com/event/cs2-xi-psna-2026-10-07",
+      "placed_at": "2026-10-07T09:31:10.130173+00:00",
+      "deadline": "2026-10-07T14:19:10.130173+00:00",
+      "market_ids": [
+        "5343559"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0126,
+      "edge_pct_at_placement": 11.64,
+      "predicted_win_prob": 0.129,
+      "stake_usd": 25.15,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
