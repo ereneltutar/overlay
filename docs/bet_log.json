@@ -275,6 +275,27 @@
       "resolved_at": "2026-10-08T06:15:44.155475+00:00",
       "pnl_usd": -25.15,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-cerund-mejia-2026-10-07:5380332",
+      "tag": "calibration",
+      "market_question": "Shanghai Rolex Masters: Juan Manuel Cerundolo vs Nicolas Mejia",
+      "slug": "atp-cerund-mejia-2026-10-07",
+      "url": "https://polymarket.com/event/atp-cerund-mejia-2026-10-07",
+      "placed_at": "2026-10-08T09:42:54.159933+00:00",
+      "deadline": "2026-10-15T02:30:54.159933+00:00",
+      "market_ids": [
+        "5380332"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.0126,
+      "edge_pct_at_placement": 11.64,
+      "predicted_win_prob": 0.129,
+      "stake_usd": 16.35,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
