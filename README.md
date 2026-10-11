@@ -13,7 +13,7 @@ Pages (static hosting). No server to run, nothing to keep awake.
 |---|---|---|
 | **ARB** | negRisk event groups where buying every mutually exclusive outcome at the current best ask costs less than $1.00 total | Mathematically yes, in practice no (fees, slippage, thin liquidity) |
 | **CAL** | Price buckets where a statistically significant gap exists between price and outcome, measured across resolved markets (Wilson 95% CI, n≥30) | No — a tendency across many repeated positions, not a single-bet guarantee |
-| **MIS** | Markets with ≥$5,000 in 24h volume where price differs from that bucket's historical resolution rate by 15+ points, no significance test required | No |
+| **MIS** | Markets with ≥$5,000 in 24h volume where price differs from that bucket's historical resolution rate by 10+ points, with the same statistical significance test as CAL (required since Sep 3, 2026) | No |
 
 None of this is investment advice.
 
@@ -232,8 +232,9 @@ so this catches it before merge instead of live in the Actions tab.
   they only need one reliable price per market, not a two-sided quote.
 - CAL and MIS use the same historical bucket table as their "fair
   probability" proxy. They don't run an independent forecasting model.
-  Small sample sizes are flagged (`low_sample_warning`) but MIS doesn't
-  require statistical significance the way CAL does.
+  Both require the bucket to pass the same statistical significance
+  test; MIS additionally flags buckets with fewer than 30 samples
+  (`low_sample_warning`).
 - This tool gives **no investment advice**. It only processes public
   market data.
 
