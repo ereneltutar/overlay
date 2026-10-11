@@ -146,27 +146,39 @@ Near the top of `scripts/fetch_arbitrage.py`:
 |---|---|---|
 | `DAYS_AHEAD` | Scan events with a deadline at most this many days out | 30 |
 | `MIN_EDGE_PCT` | Hide ARB edges below this percent (noise filter) | 0.5 |
-| `MIN_LIQUIDITY_USD` | Minimum liquidity required per leg | 50 |
+| `MIN_LIQUIDITY_USD` | Minimum liquidity required per ARB leg | 500 |
+| `ARB_MIN_VOLUME_24H_USD` | Minimum 24h volume required per ARB leg | 5000 |
+| `ARB_TARGET_FILL_USD` | Simulated per-leg buy walked through the live CLOB order book to confirm the ask is really fillable | 100 |
 | `MIN_CALIBRATION_EDGE_PCT` | Hide CAL edges below this percent | 2.0 |
-| `MISPRICING_MIN_EDGE_PTS` | Minimum point gap for a MIS signal | 15.0 |
+| `MIN_CALIBRATION_LIQUIDITY_USD` | Minimum liquidity for a CAL signal | 500 |
+| `MIN_CALIBRATION_VOLUME_24H_USD` | Minimum 24h volume for a CAL signal | 5000 |
+| `MISPRICING_MIN_EDGE_PTS` | Minimum point gap for a MIS signal | 10.0 |
+| `MISPRICING_LONGTERM_MIN_EDGE_PTS` | Minimum point gap for MIS markets closing beyond `MISPRICING_HORIZON_DAYS` (30) | 25 |
 | `MISPRICING_MIN_VOLUME_24H` | Minimum 24h volume for a MIS signal | 5000 |
 
 In `scripts/calibration_scan.py`:
 
 | Parameter | What it does | Default |
 |---|---|---|
-| `BIN_WIDTH` | Bucket width for the calibration curve | 0.05 (20 buckets) |
+| `BIN_WIDTH` | Bucket width for the calibration curve | 0.05 |
+| `TAIL_ZONE_WIDTH` / `TAIL_BIN_WIDTH` | The outer 5% at each end of the range uses finer buckets so near-certain markets aren't averaged with merely likely ones | 0.05 / 0.01 |
 | `MIN_SAMPLE_PER_BUCKET` | Samples needed before a bucket counts as significant | 30 |
+| `MIN_CLUSTERS_PER_BUCKET` | Independent clusters (same event, or crypto markets closing the same day, count once) needed before a bucket counts as significant | 30 |
+| `MIN_SAMPLE_LIQUIDITY_USD` | Logged markets below this liquidity are left out of the historical rate | 500 |
 
 In `scripts/track_bets.py`:
 
 | Parameter | What it does | Default |
 |---|---|---|
 | `STARTING_BANKROLL` | Simulated starting bankroll | $1,000 |
-| `STAKE_K` | Sizing multiplier: stake = bankroll_available x K x edge_pct/100 | 3.0 |
-| `STAKE_FLOOR_USD` | Never bet less than this | $10 |
+| `KELLY_FRACTION` | Fraction of the Kelly-optimal stake actually bet (both ARB and CAL/MIS are Kelly-sized) | 0.5 (half-Kelly) |
+| `STAKE_FLOOR_USD` | Available bankroll must be at least this before a new bet is sized | $10 |
 | `STAKE_CAP_FRAC` | Max fraction of available bankroll per bet (per tag) | 8% ARB, 2.5% CAL/MIS |
+| `MAX_OPEN_STAKE_FRAC` | Max fraction of total bankroll in open bets at once | 35% |
+| `MAX_OPEN_BETS_PER_CLUSTER` | Max open bets on the same event or crypto asset-week | 2 |
+| `OWN_TRACK_MIN_SAMPLE` | Resolved CAL/MIS bets in a probability bucket before Overlay's own record overrides the predicted win rate | 8 |
 | `ARB_HAIRCUT_MAX_PTS` | Simulated execution slippage/fees on ARB wins | 0-2 points off the edge |
+| `LLM_FACT_CHECK_ENABLED` | Ask Claude (with web search) to veto CAL/MIS bets contradicted by current facts; needs `ANTHROPIC_API_KEY` | `False` |
 
 To change the schedule, edit the `cron:` line in
 `.github/workflows/daily-scan.yml` or `calibration-scan.yml` (both use
