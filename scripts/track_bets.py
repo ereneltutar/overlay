@@ -69,9 +69,9 @@ STARTING_BANKROLL = 1000.00
 STAKE_FLOOR_USD = 10.0         # available bankroll must clear this before even trying to size a bet
 STAKE_CAP_FRAC = {             # never bet more than this fraction of available bankroll
     "arbitrage": 0.08,
-    "calibration": 0.05,
-    "mispricing": 0.05,
-}
+    "calibration": 0.025,      # was 5%: half-Kelly hit that cap on nearly every CAL/MIS bet, so ~9 bets
+    "mispricing": 0.025,       # filled MAX_OPEN_STAKE_FRAC and the rest of each day's signals were skipped.
+}                              # Half the cap spreads the same 35% of exposure over about twice as many bets.
 ARB_HAIRCUT_MAX_PTS = 2.0      # simulated execution slippage/fees, 0 to this many points off the ARB edge
                                 # (see arb_kelly_stake: this also defines the ARB breakeven edge, H/2)
 
@@ -381,6 +381,31 @@ def kelly_fraction(p: float, b: float, l: float = 1.0) -> float:
     return max(0.0, p / l - (1 - p) / b)
 
 
+def track_adjusted_win_prob(predicted_win_prob: float, track: dict) -> float:
+    """predicted_win_prob, pulled down to the Wilson lower bound of
+    Overlay's own resolved bets in that bucket (or its pooled neighbors)
+    once there are OWN_TRACK_MIN_SAMPLE of them -- see kelly_stake."""
+    key = prob_bucket_key(predicted_win_prob)
+    wins, total = track.get(key, (0, 0))
+    p = predicted_win_prob
+    if total >= OWN_TRACK_MIN_SAMPLE:
+        ci_low, _ = wilson_interval(wins, total)
+        p = min(p, ci_low)
+    else:
+        pooled_wins, pooled_total = pooled_track_record(track, key)
+        if pooled_total >= OWN_TRACK_MIN_SAMPLE:
+            ci_low, _ = wilson_interval(pooled_wins, pooled_total)
+            p = min(p, ci_low)
+    return p
+
+
+def cal_mis_kelly_fraction(entry_cost: float, predicted_win_prob: float, track: dict) -> float:
+    """Full-Kelly fraction for a CAL/MIS bet at the track-adjusted win prob."""
+    p = track_adjusted_win_prob(predicted_win_prob, track)
+    b = (1 / entry_cost) - 1
+    return kelly_fraction(p, b)
+
+
 def kelly_stake(entry_cost: float, predicted_win_prob: float, track: dict,
                  bankroll_avail: float, cap_frac: float) -> float:
     """Fractional-Kelly stake sizing for CAL/MIS bets.
@@ -414,26 +439,24 @@ def kelly_stake(entry_cost: float, predicted_win_prob: float, track: dict,
     fraction is <= 0, i.e. there's no edge left once realized performance is
     priced in.
     """
-    key = prob_bucket_key(predicted_win_prob)
-    wins, total = track.get(key, (0, 0))
-    p = predicted_win_prob
-    if total >= OWN_TRACK_MIN_SAMPLE:
-        ci_low, _ = wilson_interval(wins, total)
-        p = min(p, ci_low)
-    else:
-        pooled_wins, pooled_total = pooled_track_record(track, key)
-        if pooled_total >= OWN_TRACK_MIN_SAMPLE:
-            ci_low, _ = wilson_interval(pooled_wins, pooled_total)
-            p = min(p, ci_low)
-
-    b = (1 / entry_cost) - 1
-    f = kelly_fraction(p, b)
+    f = cal_mis_kelly_fraction(entry_cost, predicted_win_prob, track)
     if f <= 0:
         return 0.0
 
     stake = bankroll_avail * f * KELLY_FRACTION
     cap = bankroll_avail * cap_frac
     return round(min(stake, cap), 2)
+
+
+def arb_kelly_fraction(raw_edge_pct: float) -> float:
+    """Full-Kelly fraction for ARB under the haircut model (see
+    arb_kelly_stake); inf once the haircut can never reach the edge."""
+    if raw_edge_pct >= ARB_HAIRCUT_MAX_PTS:
+        return float("inf")
+    p = raw_edge_pct / ARB_HAIRCUT_MAX_PTS
+    avg_win_frac = (raw_edge_pct / 2) / 100
+    avg_loss_frac = ((ARB_HAIRCUT_MAX_PTS - raw_edge_pct) / 2) / 100
+    return kelly_fraction(p, avg_win_frac, avg_loss_frac)
 
 
 def arb_kelly_stake(raw_edge_pct: float, bankroll_avail: float, cap_frac: float) -> float:
@@ -467,11 +490,7 @@ def arb_kelly_stake(raw_edge_pct: float, bankroll_avail: float, cap_frac: float)
     if raw_edge_pct >= ARB_HAIRCUT_MAX_PTS:
         return round(cap, 2)
 
-    p = raw_edge_pct / ARB_HAIRCUT_MAX_PTS
-    avg_win_frac = (raw_edge_pct / 2) / 100
-    avg_loss_frac = ((ARB_HAIRCUT_MAX_PTS - raw_edge_pct) / 2) / 100
-
-    f = kelly_fraction(p, avg_win_frac, avg_loss_frac)
+    f = arb_kelly_fraction(raw_edge_pct)
     if f <= 0:
         return 0.0
 
@@ -555,6 +574,15 @@ def build_candidates(results: dict, now: datetime.datetime) -> list:
     return candidates
 
 
+def signal_strength(c: dict, track: dict) -> float:
+    """Ranking key for place_new_bets: the candidate's full-Kelly fraction,
+    i.e. its edge per unit of risk after Overlay's own track record is
+    priced in. Favors likelier wins over long shots with the same edge."""
+    if c["tag"] == "arbitrage":
+        return arb_kelly_fraction(c["edge_pct"])
+    return cal_mis_kelly_fraction(c["entry_cost"], c["predicted_win_prob"], track)
+
+
 def correlation_cluster_key(question: str, slug: str, deadline: str) -> str:
     """Groups bets whose outcomes move together, for MAX_OPEN_BETS_PER_CLUSTER:
     crypto bets on the same asset with deadlines in the same ISO week share
@@ -583,12 +611,15 @@ def open_stake_total(log: dict) -> float:
 
 def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm_fact_check.ask_llm_fact_check):
     """Returns a stats dict: placed, skipped_low_bankroll, skipped_no_edge,
-    skipped_exposure_cap, skipped_correlation_cap, skipped_fact_check,
+    skipped_exposure_cap, skipped_correlation_cap, skipped_duplicate_market, skipped_fact_check,
     fact_check_cache_hits, fact_check_cap_skipped. A dict (not a positional tuple) because this
     has already grown twice as fact-check accounting was added -- a 7-tuple
     every caller has to unpack in the right order is exactly the kind of
     thing that silently breaks the next time a field gets added."""
     existing_ids = {bet["bet_id"] for bet in log["bets"]}
+    # CAL and MIS read the same calibration table, so they usually flag the
+    # same market; bet_ids differ by tag, so dedupe on market_id as well.
+    open_market_ids = {m for bet in log["bets"] if bet["status"] == "open" for m in bet["market_ids"]}
     recent_fact_checks = load_recent_fact_checks(now)
     track = own_track_record(log)
     stats = {
@@ -597,6 +628,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
         "skipped_no_edge": 0,
         "skipped_exposure_cap": 0,
         "skipped_correlation_cap": 0,
+        "skipped_duplicate_market": 0,
         "skipped_fact_check": 0,
         "fact_check_cache_hits": 0,
         "fact_check_cap_skipped": 0,
@@ -604,8 +636,15 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
     fresh_fact_checks_this_run = 0
     cluster_counts = open_cluster_counts(log)
 
-    for c in build_candidates(results, now):
+    # Strongest signals first, so the exposure cap's room goes to them
+    # instead of to whichever tag build_candidates happens to list first.
+    candidates = sorted(build_candidates(results, now),
+                        key=lambda c: signal_strength(c, track), reverse=True)
+    for c in candidates:
         if c["bet_id"] in existing_ids:
+            continue
+        if open_market_ids.intersection(c["market_ids"]):
+            stats["skipped_duplicate_market"] += 1
             continue
 
         # Every gate that doesn't depend on the fact-check verdict runs
@@ -701,6 +740,7 @@ def place_new_bets(log: dict, results: dict, now: datetime.datetime, ask_llm=llm
             "fact_check": fact_check_result,
         })
         existing_ids.add(c["bet_id"])
+        open_market_ids.update(c["market_ids"])
         cluster_counts[cluster] = cluster_counts.get(cluster, 0) + 1
         stats["placed"] += 1
 
@@ -744,7 +784,7 @@ def main():
 
     resolved_count = resolve_open_bets(log, now)
     stats = {"placed": 0, "skipped_low_bankroll": 0, "skipped_no_edge": 0, "skipped_exposure_cap": 0,
-              "skipped_correlation_cap": 0, "skipped_fact_check": 0, "fact_check_cache_hits": 0, "fact_check_cap_skipped": 0}
+              "skipped_correlation_cap": 0, "skipped_duplicate_market": 0, "skipped_fact_check": 0, "fact_check_cache_hits": 0, "fact_check_cap_skipped": 0}
     if not args.resolve_only:
         stats = place_new_bets(log, results, now)
 
@@ -774,6 +814,9 @@ def main():
         print(f"Skipped {stats['skipped_correlation_cap']} signals: already {MAX_OPEN_BETS_PER_CLUSTER} open bets "
               f"on the same event / crypto asset-week (MAX_OPEN_BETS_PER_CLUSTER).",
               file=sys.stderr)
+    if stats["skipped_duplicate_market"]:
+        print(f"Skipped {stats['skipped_duplicate_market']} signals: already an open bet on the same market "
+              f"(usually the same market flagged by both CAL and MIS).", file=sys.stderr)
     if stats["skipped_fact_check"]:
         print(f"Skipped {stats['skipped_fact_check']} signals: LLM fact-check found current, verifiable "
               f"evidence against the recommended side (see docs/fact_check_log.jsonl).",

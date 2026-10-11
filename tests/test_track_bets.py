@@ -417,7 +417,7 @@ def test_place_new_bets_skips_calibration_signal_when_own_track_record_kills_kel
 
 def test_place_new_bets_skips_when_open_stake_already_at_exposure_cap():
     log = fresh_log()  # bankroll 1000, cap = 350
-    log["bets"].append(make_bet(tag="calibration", status="open", stake=350.0))
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=350.0, market_ids=("other",)))
     results = {"mispricing_signals": [{
         "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
         "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
@@ -431,7 +431,7 @@ def test_place_new_bets_skips_when_open_stake_already_at_exposure_cap():
 
 def test_place_new_bets_trims_stake_to_remaining_exposure_room():
     log = fresh_log()  # bankroll 1000, cap = 350
-    log["bets"].append(make_bet(tag="calibration", status="open", stake=345.0))  # only $5 of room left
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=345.0, market_ids=("other",)))  # only $5 of room left
     results = {"mispricing_signals": [{
         "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
         "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
@@ -446,7 +446,7 @@ def test_place_new_bets_trims_stake_to_remaining_exposure_room():
 
 def test_place_new_bets_allows_bet_within_exposure_room():
     log = fresh_log()  # bankroll 1000, cap = 350
-    log["bets"].append(make_bet(tag="calibration", status="open", stake=300.0))  # $50 of room left
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=300.0, market_ids=("other",)))  # $50 of room left
     results = {"mispricing_signals": [{
         "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
         "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
@@ -644,7 +644,7 @@ def test_place_new_bets_skips_fact_check_when_exposure_cap_is_full():
     # (and billed) and then every one was dropped by the exposure cap. A
     # candidate that can't be placed must never reach the API.
     log = fresh_log()  # bankroll 1000, cap = 350
-    log["bets"].append(make_bet(tag="calibration", status="open", stake=350.0))
+    log["bets"].append(make_bet(tag="calibration", status="open", stake=350.0, market_ids=("other",)))
     llm = counting_llm("SAFE")
     stats = tb.place_new_bets(log, n_calibration_candidates(3), NOW, ask_llm=llm)
     assert llm.calls == []
@@ -851,3 +851,61 @@ def test_place_new_bets_correlation_cap_counts_existing_open_bets():
     stats = tb.place_new_bets(log, {"mispricing_signals": [btc_signal("95")]}, NOW, ask_llm=always_safe_llm)
     assert stats["placed"] == 0
     assert stats["skipped_correlation_cap"] == 1
+
+
+# --- place_new_bets: market dedupe, ranking, stake size -----------------------
+
+def cal_signal(market_id, implied_cost, rate, side="NO", slug=None):
+    return {
+        "market_id": market_id, "slug": slug or f"s-{market_id}", "days_left": 5,
+        "market_question": "Q?", "recommended_side": side, "implied_cost": implied_cost,
+        "edge_pct": 10, "bucket_historical_rate": rate,
+    }
+
+
+def test_place_new_bets_skips_mispricing_on_market_already_bet_by_calibration():
+    log = fresh_log()
+    results = {
+        "calibration_signals": [cal_signal("m1", 0.47, 0.42)],
+        "mispricing_signals": [{
+            "market_id": "m1", "slug": "s-m1", "days_left": 5, "market_question": "Q?",
+            "implied_probability": 0.53, "implied_cost": 0.47, "edge_pct": 10,
+            "fair_probability": 0.42, "recommended_side": "NO",
+        }],
+    }
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 1
+    assert stats["skipped_duplicate_market"] == 1
+
+
+def test_place_new_bets_dedupes_market_against_existing_open_bet():
+    log = fresh_log()
+    log["bets"].append(make_bet(tag="calibration", stake=20.0, market_ids=("m1",)))
+    stats = tb.place_new_bets(log, {"mispricing_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",
+        "implied_probability": 0.3, "implied_cost": 0.3084, "edge_pct": 19.16,
+        "fair_probability": 0.7, "recommended_side": "YES",
+    }]}, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 0
+    assert stats["skipped_duplicate_market"] == 1
+
+
+def test_place_new_bets_spends_exposure_room_on_strongest_signal_first():
+    log = fresh_log()  # cap = 350
+    log["bets"].append(make_bet(tag="calibration", stake=330.0, market_ids=("old",)))  # $20 room
+    weak = cal_signal("weak", 0.053, 0.84)    # NO at 5.3c, 16% to win: Kelly ~0.11
+    strong = cal_signal("strong", 0.47, 0.42)  # NO at 47c, 58% to win: Kelly ~0.21
+    results = {"calibration_signals": [weak, strong]}
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 1
+    assert log["bets"][-1]["market_ids"] == ["strong"]
+
+
+def test_signal_strength_ranks_arb_above_cal_mis_when_guaranteed():
+    arb = {"tag": "arbitrage", "edge_pct": tb.ARB_HAIRCUT_MAX_PTS}
+    cal = {"tag": "calibration", "entry_cost": 0.47, "predicted_win_prob": 0.58}
+    assert tb.signal_strength(arb, {}) > tb.signal_strength(cal, {})
+
+
+def test_cal_stake_capped_at_two_and_a_half_percent():
+    assert tb.kelly_stake(0.47, 0.58, {}, 1000.0, tb.STAKE_CAP_FRAC["calibration"]) == 25.0

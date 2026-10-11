@@ -165,7 +165,7 @@ In `scripts/track_bets.py`:
 | `STARTING_BANKROLL` | Simulated starting bankroll | $1,000 |
 | `STAKE_K` | Sizing multiplier: stake = bankroll_available x K x edge_pct/100 | 3.0 |
 | `STAKE_FLOOR_USD` | Never bet less than this | $10 |
-| `STAKE_CAP_FRAC` | Max fraction of available bankroll per bet (per tag) | 8% ARB, 5% CAL/MIS |
+| `STAKE_CAP_FRAC` | Max fraction of available bankroll per bet (per tag) | 8% ARB, 2.5% CAL/MIS |
 | `ARB_HAIRCUT_MAX_PTS` | Simulated execution slippage/fees on ARB wins | 0-2 points off the edge |
 
 To change the schedule, edit the `cron:` line in
