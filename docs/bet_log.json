@@ -312,6 +312,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:iran-oman-hormuz-management-agreement-byptptpt-20260804222725871:5375147",
+      "tag": "calibration",
+      "market_question": "Iran-Oman Hormuz Agreement by November 30?",
+      "slug": "iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
+      "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
+      "placed_at": "2026-10-12T09:58:51.370261+00:00",
+      "deadline": "2026-11-01T05:10:51.370261+00:00",
+      "market_ids": [
+        "5375147"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.76,
+      "edge_pct_at_placement": 8.18,
+      "predicted_win_prob": 0.8418,
+      "stake_usd": 13.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
