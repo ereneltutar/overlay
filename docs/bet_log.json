@@ -337,6 +337,111 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms:5611045",
+      "tag": "calibration",
+      "market_question": "Will oil be at least $80 on November 2 and the Democrats win the Senate?",
+      "slug": "who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms",
+      "url": "https://polymarket.com/event/who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms",
+      "placed_at": "2026-10-13T09:52:51.543910+00:00",
+      "deadline": "2026-11-04T05:04:51.543910+00:00",
+      "market_ids": [
+        "5611045"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4609,
+      "edge_pct_at_placement": 11.78,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 15.27,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:spx-up-or-down-on-october-13-2026:5603326",
+      "tag": "calibration",
+      "market_question": "S&P 500 (SPX) Up or Down on October 13?",
+      "slug": "spx-up-or-down-on-october-13-2026",
+      "url": "https://polymarket.com/event/spx-up-or-down-on-october-13-2026",
+      "placed_at": "2026-10-13T09:52:51.543910+00:00",
+      "deadline": "2026-10-13T19:28:51.543910+00:00",
+      "market_ids": [
+        "5603326"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4699,
+      "edge_pct_at_placement": 10.88,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 14.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-lin2-liv-2026-10-14-more-markets:5159438",
+      "tag": "calibration",
+      "market_question": "Spread: Liverpool FC (-1.5)",
+      "slug": "ucl-lin2-liv-2026-10-14-more-markets",
+      "url": "https://polymarket.com/event/ucl-lin2-liv-2026-10-14-more-markets",
+      "placed_at": "2026-10-13T09:52:51.543910+00:00",
+      "deadline": "2026-10-14T17:04:51.543910+00:00",
+      "market_ids": [
+        "5159438"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 10.63,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 14.52,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-walton-cilic-2026-10-11:5509634",
+      "tag": "calibration",
+      "market_question": "Jinan: Adam Walton vs Marin Cilic",
+      "slug": "atp-walton-cilic-2026-10-11",
+      "url": "https://polymarket.com/event/atp-walton-cilic-2026-10-11",
+      "placed_at": "2026-10-13T09:52:51.543910+00:00",
+      "deadline": "2026-10-19T02:40:51.543910+00:00",
+      "market_ids": [
+        "5509634"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 10.63,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 14.15,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-sea-den-2026-10-16:4367619",
+      "tag": "calibration",
+      "market_question": "Spread: Seahawks (-2.5)",
+      "slug": "nfl-sea-den-2026-10-16",
+      "url": "https://polymarket.com/event/nfl-sea-den-2026-10-16",
+      "placed_at": "2026-10-13T09:52:51.543910+00:00",
+      "deadline": "2026-10-16T00:16:51.543910+00:00",
+      "market_ids": [
+        "4367619"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4775,
+      "edge_pct_at_placement": 10.12,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 13.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
