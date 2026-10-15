@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-14T08:08:53.717144+00:00",
+  "generated_at": "2026-10-15T07:49:00.052354+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 22297,
+  "scanned_events": 22433,
   "opportunities": [],
   "calibration_signals": [
     {
@@ -10,7 +10,7 @@
       "market_question": "Will oil be at least $80 on November 2 and the Democrats win the Senate?",
       "slug": "who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms",
       "url": "https://polymarket.com/event/who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms",
-      "days_left": 20.9,
+      "days_left": 19.9,
       "recommended_side": "NO",
       "current_price": 0.548,
       "implied_cost": 0.4619,
@@ -22,70 +22,127 @@
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
       "edge_pct": 11.68,
-      "liquidity": 466136.06
+      "liquidity": 495211.13
     },
     {
-      "market_id": "5658632",
-      "market_question": "Wuhan Tennis Open: Ashlyn Krueger vs Lanlana Tararudee",
-      "slug": "wta-krueger-tararud-2026-10-14",
-      "url": "https://polymarket.com/event/wta-krueger-tararud-2026-10-14",
-      "days_left": 7.0,
+      "market_id": "5350041",
+      "market_question": "Spread: SMU (-8.5)",
+      "slug": "cfb-vir-smu-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-vir-smu-2026-10-17",
+      "days_left": 2.3,
       "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
-      "edge_pct": 10.63,
-      "liquidity": 184597.48
+      "edge_pct": 10.12,
+      "liquidity": 19767.71
     },
     {
-      "market_id": "5180413",
-      "market_question": "Will NVIDIA be the largest company in the world by market cap on October 31, 2026?",
-      "slug": "largest-company-end-of-october-2026",
-      "url": "https://polymarket.com/event/largest-company-end-of-october-2026",
-      "days_left": 17.8,
+      "market_id": "5353600",
+      "market_question": "Spread: Baylor (-5.5)",
+      "slug": "cfb-tcu-bayl-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-tcu-bayl-2026-10-17",
+      "days_left": 2.6,
       "recommended_side": "NO",
-      "current_price": 0.943,
-      "implied_cost": 0.0592,
-      "fee": 0.0022,
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 10.12,
+      "liquidity": 24310.27
+    },
+    {
+      "market_id": "5628087",
+      "market_question": "Spread: Wake Forest (-9.5)",
+      "slug": "cfb-wake-cah-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-wake-cah-2026-10-17",
+      "days_left": 2.8,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 10.12,
+      "liquidity": 13087.13
+    },
+    {
+      "market_id": "5686981",
+      "market_question": "US x Iran ceasefire continues through October 17?",
+      "slug": "us-iran-ceasefire-continues-throughptptpt",
+      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+      "days_left": 16.7,
+      "recommended_side": "NO",
+      "current_price": 0.941,
+      "implied_cost": 0.059,
+      "fee": 0.0,
       "bucket_range": [
         0.9,
         0.95
       ],
       "bucket_sample_size": 259,
       "bucket_historical_rate": 0.8417,
-      "edge_pct": 9.91,
-      "liquidity": 24679.55
+      "edge_pct": 9.93,
+      "liquidity": 77661.55
     },
     {
-      "market_id": "5506778",
-      "market_question": "Will Elon Musk post 90-114 tweets from October 12 to October 14, 2026?",
-      "slug": "elon-musk-of-tweets-october-12-october-14-2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-october-12-october-14-2026",
-      "days_left": 0.3,
+      "market_id": "4688861",
+      "market_question": "Sabres vs. Maple Leafs: O/U 6.5",
+      "slug": "nhl-buf-tor-2026-10-15",
+      "url": "https://polymarket.com/event/nhl-buf-tor-2026-10-15",
+      "days_left": 0.6,
       "recommended_side": "NO",
-      "current_price": 0.943,
-      "implied_cost": 0.0597,
-      "fee": 0.0027,
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
       "bucket_range": [
-        0.9,
-        0.95
+        0.5,
+        0.55
       ],
-      "bucket_sample_size": 259,
-      "bucket_historical_rate": 0.8417,
-      "edge_pct": 9.86,
-      "liquidity": 4523.12
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 9.62,
+      "liquidity": 45389.2
     },
     {
-      "market_id": "5600381",
-      "market_question": "Will the highest temperature in Miami be between 86-87°F on October 14?",
-      "slug": "highest-temperature-in-miami-on-october-14-2026",
-      "url": "https://polymarket.com/event/highest-temperature-in-miami-on-october-14-2026",
+      "market_id": "5255063",
+      "market_question": "UFC Fight Night: Mike Malott vs. Joaquin Buckley (Welterweight, Main Card)",
+      "slug": "ufc-mik9-joa3-2026-10-17",
+      "url": "https://polymarket.com/event/ufc-mik9-joa3-2026-10-17",
+      "days_left": 2.8,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 9.62,
+      "liquidity": 42197.62
+    },
+    {
+      "market_id": "5641877",
+      "market_question": "Will the highest temperature in Lucknow be 31°C on October 15?",
+      "slug": "highest-temperature-in-lucknow-on-october-15-2026",
+      "url": "https://polymarket.com/event/highest-temperature-in-lucknow-on-october-15-2026",
       "days_left": 0.2,
       "recommended_side": "NO",
       "current_price": 0.53,
@@ -98,71 +155,33 @@
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
       "edge_pct": 9.62,
-      "liquidity": 790.88
+      "liquidity": 5841.89
     },
     {
-      "market_id": "3830012",
-      "market_question": "Will Elon Musk post 1000+ tweets in October 2026?",
-      "slug": "elon-musk-of-tweets-october-2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-october-2026",
-      "days_left": 17.8,
+      "market_id": "5709540",
+      "market_question": "Counter-Strike: PARIVISION vs BetBoom Team (BO3) - Thunderpick World Championship Group B",
+      "slug": "cs2-prv-bb3-2026-10-15",
+      "url": "https://polymarket.com/event/cs2-prv-bb3-2026-10-15",
+      "days_left": 0.5,
       "recommended_side": "NO",
-      "current_price": 0.94,
-      "implied_cost": 0.0628,
-      "fee": 0.0028,
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
       "bucket_range": [
-        0.9,
-        0.95
+        0.5,
+        0.55
       ],
-      "bucket_sample_size": 259,
-      "bucket_historical_rate": 0.8417,
-      "edge_pct": 9.55,
-      "liquidity": 12998.38
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 9.62,
+      "liquidity": 227847.57
     },
     {
-      "market_id": "5604813",
-      "market_question": "Will the highest temperature in Toronto be 18°C on October 14?",
-      "slug": "highest-temperature-in-toronto-on-october-14-2026",
-      "url": "https://polymarket.com/event/highest-temperature-in-toronto-on-october-14-2026",
-      "days_left": 0.2,
-      "recommended_side": "NO",
-      "current_price": 0.94,
-      "implied_cost": 0.0628,
-      "fee": 0.0028,
-      "bucket_range": [
-        0.9,
-        0.95
-      ],
-      "bucket_sample_size": 259,
-      "bucket_historical_rate": 0.8417,
-      "edge_pct": 9.55,
-      "liquidity": 1169.55
-    },
-    {
-      "market_id": "5649507",
-      "market_question": "W15 Chisinau: Kristina Kroitor vs Ines Faltinger",
-      "slug": "itf-kroito1-faltin1-2026-10-14",
-      "url": "https://polymarket.com/event/itf-kroito1-faltin1-2026-10-14",
-      "days_left": 7.0,
-      "recommended_side": "NO",
-      "current_price": 0.94,
-      "implied_cost": 0.0628,
-      "fee": 0.0028,
-      "bucket_range": [
-        0.9,
-        0.95
-      ],
-      "bucket_sample_size": 259,
-      "bucket_historical_rate": 0.8417,
-      "edge_pct": 9.55,
-      "liquidity": 11129.62
-    },
-    {
-      "market_id": "5625597",
-      "market_question": "Spread: James Madison (-12.5)",
-      "slug": "cfb-gast-jmad-2026-10-17",
-      "url": "https://polymarket.com/event/cfb-gast-jmad-2026-10-17",
-      "days_left": 3.3,
+      "market_id": "4329887",
+      "market_question": "Saints vs. Giants",
+      "slug": "nfl-no-nyg-2026-10-18",
+      "url": "https://polymarket.com/event/nfl-no-nyg-2026-10-18",
+      "days_left": 3.4,
       "recommended_side": "NO",
       "current_price": 0.52,
       "implied_cost": 0.4875,
@@ -174,17 +193,55 @@
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
       "edge_pct": 9.12,
-      "liquidity": 19336.98
+      "liquidity": 142313.21
     },
     {
-      "market_id": "5611882",
-      "market_question": "Will oil be at least $85 on November 2 and the Democrats win the Senate?",
-      "slug": "who-wins-the-senate-pending-oil-below-85-before-the-midterms",
-      "url": "https://polymarket.com/event/who-wins-the-senate-pending-oil-below-85-before-the-midterms",
-      "days_left": 20.9,
+      "market_id": "5348442",
+      "market_question": "Appalachian State vs. Coastal Carolina",
+      "slug": "cfb-applst-coast-2026-10-16",
+      "url": "https://polymarket.com/event/cfb-applst-coast-2026-10-16",
+      "days_left": 1.7,
       "recommended_side": "NO",
-      "current_price": 0.513,
-      "implied_cost": 0.497,
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 9.12,
+      "liquidity": 81593.83
+    },
+    {
+      "market_id": "5625597",
+      "market_question": "Spread: James Madison (-12.5)",
+      "slug": "cfb-gast-jmad-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-gast-jmad-2026-10-17",
+      "days_left": 2.3,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 9.12,
+      "liquidity": 20505.77
+    },
+    {
+      "market_id": "629505",
+      "market_question": "Will the Democrats win the Nevada governor race in 2026?",
+      "slug": "nevada-governor-winner-2026",
+      "url": "https://polymarket.com/event/nevada-governor-winner-2026",
+      "days_left": 19.9,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.49,
       "fee": 0.01,
       "bucket_range": [
         0.5,
@@ -192,15 +249,110 @@
       ],
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
-      "edge_pct": 8.17,
-      "liquidity": 426377.07
+      "edge_pct": 8.87,
+      "liquidity": 144200.53
     },
     {
-      "market_id": "4367619",
-      "market_question": "Spread: Seahawks (-2.5)",
-      "slug": "nfl-sea-den-2026-10-16",
-      "url": "https://polymarket.com/event/nfl-sea-den-2026-10-16",
-      "days_left": 1.7,
+      "market_id": "4641065",
+      "market_question": "US x Iran ceasefire continues through October 31?",
+      "slug": "us-iran-ceasefire-continues-throughptptpt",
+      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+      "days_left": 16.7,
+      "recommended_side": "NO",
+      "current_price": 0.79,
+      "implied_cost": 0.21,
+      "fee": 0.0,
+      "bucket_range": [
+        0.75,
+        0.8
+      ],
+      "bucket_sample_size": 520,
+      "bucket_historical_rate": 0.7038,
+      "edge_pct": 8.62,
+      "liquidity": 586581.4
+    },
+    {
+      "market_id": "5677711",
+      "market_question": "Tampa Bay Rays vs. Cleveland Guardians: O/U 6.5",
+      "slug": "mlb-tb-cle-2026-10-15",
+      "url": "https://polymarket.com/event/mlb-tb-cle-2026-10-15",
+      "days_left": 7.4,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 8.62,
+      "liquidity": 113402.36
+    },
+    {
+      "market_id": "5691073",
+      "market_question": "Wuhan Tennis Open: Leylah Fernandez vs Jelena Ostapenko",
+      "slug": "wta-fernand-ostapen-2026-10-15",
+      "url": "https://polymarket.com/event/wta-fernand-ostapen-2026-10-15",
+      "days_left": 7.0,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "bucket_historical_rate": 0.4213,
+      "edge_pct": 8.62,
+      "liquidity": 68440.37
+    },
+    {
+      "market_id": "5180413",
+      "market_question": "Will NVIDIA be the largest company in the world by market cap on October 31, 2026?",
+      "slug": "largest-company-end-of-october-2026",
+      "url": "https://polymarket.com/event/largest-company-end-of-october-2026",
+      "days_left": 16.8,
+      "recommended_side": "NO",
+      "current_price": 0.795,
+      "implied_cost": 0.2115,
+      "fee": 0.0065,
+      "bucket_range": [
+        0.75,
+        0.8
+      ],
+      "bucket_sample_size": 520,
+      "bucket_historical_rate": 0.7038,
+      "edge_pct": 8.47,
+      "liquidity": 14598.53
+    },
+    {
+      "market_id": "5375147",
+      "market_question": "Iran-Oman Hormuz Agreement by November 30?",
+      "slug": "iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
+      "url": "https://polymarket.com/event/iran-oman-hormuz-management-agreement-byptptpt-20260804222725871",
+      "days_left": 16.8,
+      "recommended_side": "NO",
+      "current_price": 0.24,
+      "implied_cost": 0.76,
+      "fee": 0.0,
+      "bucket_range": [
+        0.2,
+        0.25
+      ],
+      "bucket_sample_size": 817,
+      "bucket_historical_rate": 0.1579,
+      "edge_pct": 8.21,
+      "liquidity": 45589.28
+    },
+    {
+      "market_id": "4329883",
+      "market_question": "Bears vs. Falcons",
+      "slug": "nfl-chi-atl-2026-10-18",
+      "url": "https://polymarket.com/event/nfl-chi-atl-2026-10-18",
+      "days_left": 3.4,
       "recommended_side": "NO",
       "current_price": 0.51,
       "implied_cost": 0.4975,
@@ -212,225 +364,117 @@
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
       "edge_pct": 8.12,
-      "liquidity": 445984.64
+      "liquidity": 406742.91
     },
     {
-      "market_id": "5572739",
-      "market_question": "Will there be no Hormuz agreement?",
-      "slug": "who-wins-the-senate-pending-hormuz-agreement-before-the-midterms",
-      "url": "https://polymarket.com/event/who-wins-the-senate-pending-hormuz-agreement-before-the-midterms",
-      "days_left": 20.9,
-      "recommended_side": "NO",
-      "current_price": 0.841,
-      "implied_cost": 0.1643,
-      "fee": 0.0053,
-      "bucket_range": [
-        0.8,
-        0.85
-      ],
-      "bucket_sample_size": 335,
-      "bucket_historical_rate": 0.7582,
-      "edge_pct": 7.75,
-      "liquidity": 552229.39
-    },
-    {
-      "market_id": "5634443",
-      "market_question": "Dota 2: LEGION vs PuckChamp - Game 1 Winner",
-      "slug": "dota2-legion1-pckcp-2026-10-15",
-      "url": "https://polymarket.com/event/dota2-legion1-pckcp-2026-10-15",
-      "days_left": 1.3,
-      "recommended_side": "NO",
-      "current_price": 0.89,
-      "implied_cost": 0.1149,
-      "fee": 0.0049,
-      "bucket_range": [
-        0.85,
-        0.9
-      ],
-      "bucket_sample_size": 286,
-      "bucket_historical_rate": 0.8077,
-      "edge_pct": 7.74,
-      "liquidity": 3411.27
-    },
-    {
-      "market_id": "5650461",
-      "market_question": "Dota 2: Inner Circle vs Team Lynx (BO3) - EPL Masters Play-In Group A",
-      "slug": "dota2-ic-lynx-2026-10-14",
-      "url": "https://polymarket.com/event/dota2-ic-lynx-2026-10-14",
-      "days_left": 0.2,
+      "market_id": "4329888",
+      "market_question": "Panthers vs. Eagles",
+      "slug": "nfl-car-phi-2026-10-18",
+      "url": "https://polymarket.com/event/nfl-car-phi-2026-10-18",
+      "days_left": 3.4,
       "recommended_side": "NO",
       "current_price": 0.51,
-      "implied_cost": 0.5025,
-      "fee": 0.0125,
+      "implied_cost": 0.4975,
+      "fee": 0.0075,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1640,
       "bucket_historical_rate": 0.4213,
-      "edge_pct": 7.62,
-      "liquidity": 30373.06
-    },
-    {
-      "market_id": "5603002",
-      "market_question": "Set 1 Winner: Casper Ruud vs Felix Auger-Aliassime",
-      "slug": "atp-ruud-augeral-2026-10-13",
-      "url": "https://polymarket.com/event/atp-ruud-augeral-2026-10-13",
-      "days_left": 6.7,
-      "recommended_side": "NO",
-      "current_price": 0.509,
-      "implied_cost": 0.5035,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1640,
-      "bucket_historical_rate": 0.4213,
-      "edge_pct": 7.52,
-      "liquidity": 25546.55
-    },
-    {
-      "market_id": "635012",
-      "market_question": "Will Bernadette Wilson win the 2026 Alaska governor election?",
-      "slug": "alaska-governor-election-winner",
-      "url": "https://polymarket.com/event/alaska-governor-election-winner",
-      "days_left": 20.9,
-      "recommended_side": "NO",
-      "current_price": 0.24,
-      "implied_cost": 0.7673,
-      "fee": 0.0073,
-      "bucket_range": [
-        0.2,
-        0.25
-      ],
-      "bucket_sample_size": 817,
-      "bucket_historical_rate": 0.1579,
-      "edge_pct": 7.48,
-      "liquidity": 118327.64
-    },
-    {
-      "market_id": "682708",
-      "market_question": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
-      "slug": "who-will-be-the-next-prime-minister-of-israel-after-the-next-election",
-      "url": "https://polymarket.com/event/who-will-be-the-next-prime-minister-of-israel-after-the-next-election",
-      "days_left": 13.8,
-      "recommended_side": "NO",
-      "current_price": 0.478,
-      "implied_cost": 0.522,
-      "fee": 0.0,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1570,
-      "bucket_historical_rate": 0.4038,
-      "edge_pct": 7.42,
-      "liquidity": 136727.88
-    },
-    {
-      "market_id": "5158640",
-      "market_question": "Will Como 1907 win on 2026-10-14?",
-      "slug": "ucl-fey-com-2026-10-14",
-      "url": "https://polymarket.com/event/ucl-fey-com-2026-10-14",
-      "days_left": 0.4,
-      "recommended_side": "NO",
-      "current_price": 0.49,
-      "implied_cost": 0.5225,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1570,
-      "bucket_historical_rate": 0.4038,
-      "edge_pct": 7.37,
-      "liquidity": 460444.22
-    },
-    {
-      "market_id": "5179349",
-      "market_question": "Will Real Salt Lake win on 2026-10-14?",
-      "slug": "mls-rsl-sje-2026-10-14",
-      "url": "https://polymarket.com/event/mls-rsl-sje-2026-10-14",
-      "days_left": 0.7,
-      "recommended_side": "NO",
-      "current_price": 0.49,
-      "implied_cost": 0.5225,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1570,
-      "bucket_historical_rate": 0.4038,
-      "edge_pct": 7.37,
-      "liquidity": 94972.71
-    },
-    {
-      "market_id": "5184009",
-      "market_question": "Will Real Madrid CF win on 2026-10-14?",
-      "slug": "ucl-rom-rma-2026-10-14",
-      "url": "https://polymarket.com/event/ucl-rom-rma-2026-10-14",
-      "days_left": 0.5,
-      "recommended_side": "NO",
-      "current_price": 0.49,
-      "implied_cost": 0.5225,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1570,
-      "bucket_historical_rate": 0.4038,
-      "edge_pct": 7.37,
-      "liquidity": 756630.12
+      "edge_pct": 8.12,
+      "liquidity": 150466.12
     }
   ],
   "calibration_table_generated_at": "2026-10-12T11:49:34.069283+00:00",
   "mispricing_signals": [
     {
-      "market_id": "5658632",
-      "market_question": "Wuhan Tennis Open: Ashlyn Krueger vs Lanlana Tararudee",
-      "slug": "wta-krueger-tararud-2026-10-14",
-      "url": "https://polymarket.com/event/wta-krueger-tararud-2026-10-14",
-      "days_left": 7.0,
+      "market_id": "5350041",
+      "market_question": "Spread: SMU (-8.5)",
+      "slug": "cfb-vir-smu-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-vir-smu-2026-10-17",
+      "days_left": 2.3,
       "recommended_side": "NO",
-      "implied_probability": 0.54,
+      "implied_probability": 0.53,
       "fair_probability": 0.4213,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "edge_pct": 10.63,
-      "volume_24h": 65596.58,
-      "liquidity": 184597.48,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "edge_pct": 10.12,
+      "volume_24h": 10788.9,
+      "liquidity": 19767.71,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1640,
       "low_sample_warning": false,
-      "score": 390.37
+      "score": 449.15
+    },
+    {
+      "market_id": "5353600",
+      "market_question": "Spread: Baylor (-5.5)",
+      "slug": "cfb-tcu-bayl-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-tcu-bayl-2026-10-17",
+      "days_left": 2.6,
+      "recommended_side": "NO",
+      "implied_probability": 0.53,
+      "fair_probability": 0.4213,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "edge_pct": 10.12,
+      "volume_24h": 10478.85,
+      "liquidity": 24310.27,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "low_sample_warning": false,
+      "score": 393.61
+    },
+    {
+      "market_id": "5628087",
+      "market_question": "Spread: Wake Forest (-9.5)",
+      "slug": "cfb-wake-cah-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-wake-cah-2026-10-17",
+      "days_left": 2.8,
+      "recommended_side": "NO",
+      "implied_probability": 0.53,
+      "fair_probability": 0.4213,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "edge_pct": 10.12,
+      "volume_24h": 7201.65,
+      "liquidity": 13087.13,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1640,
+      "low_sample_warning": false,
+      "score": 309.18
     },
     {
       "market_id": "5611045",
       "market_question": "Will oil be at least $80 on November 2 and the Democrats win the Senate?",
       "slug": "who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms",
       "url": "https://polymarket.com/event/who-wins-the-senate-pending-oil-above-or-below-80-before-the-midterms",
-      "days_left": 20.9,
+      "days_left": 19.9,
       "recommended_side": "NO",
       "implied_probability": 0.548,
       "fair_probability": 0.4213,
       "implied_cost": 0.4619,
       "fee": 0.0099,
       "edge_pct": 11.68,
-      "volume_24h": 5038.49,
-      "liquidity": 466136.06,
+      "volume_24h": 7236.18,
+      "liquidity": 495211.13,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1640,
       "low_sample_warning": false,
-      "score": 39.73
+      "score": 49.97
     }
   ],
   "mispricing_filters": {

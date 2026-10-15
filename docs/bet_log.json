@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 839.56,
+  "bankroll": 825.04,
   "bankroll_history": [
     {
       "date": "2026-10-04",
@@ -48,7 +48,7 @@
     },
     {
       "date": "2026-10-15",
-      "bankroll": 839.56
+      "bankroll": 825.04
     }
   ],
   "bets": [
@@ -404,9 +404,9 @@
       "edge_pct_at_placement": 10.63,
       "predicted_win_prob": 0.5787,
       "stake_usd": 14.52,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-10-15T07:50:26.307702+00:00",
+      "pnl_usd": -14.52,
       "fact_check": null
     },
     {
@@ -467,6 +467,27 @@
       "edge_pct_at_placement": 7.48,
       "predicted_win_prob": 0.8421,
       "stake_usd": 14.25,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-vir-smu-2026-10-17:5350041",
+      "tag": "calibration",
+      "market_question": "Spread: SMU (-8.5)",
+      "slug": "cfb-vir-smu-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-vir-smu-2026-10-17",
+      "placed_at": "2026-10-15T07:50:26.307702+00:00",
+      "deadline": "2026-10-17T15:02:26.307702+00:00",
+      "market_ids": [
+        "5350041"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4775,
+      "edge_pct_at_placement": 10.12,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 13.89,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
