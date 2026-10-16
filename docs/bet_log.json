@@ -496,6 +496,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ten-ind-2026-10-18:4367427",
+      "tag": "calibration",
+      "market_question": "Spread: Colts (-6.5)",
+      "slug": "nfl-ten-ind-2026-10-18",
+      "url": "https://polymarket.com/event/nfl-ten-ind-2026-10-18",
+      "placed_at": "2026-10-16T07:39:45.929260+00:00",
+      "deadline": "2026-10-18T17:15:45.929260+00:00",
+      "market_ids": [
+        "4367427"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4675,
+      "edge_pct_at_placement": 11.12,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 13.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
