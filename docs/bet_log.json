@@ -521,6 +521,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-nd-byu-2026-10-17:5354672",
+      "tag": "calibration",
+      "market_question": "Notre Dame vs. BYU: O/U 45.5",
+      "slug": "cfb-nd-byu-2026-10-17",
+      "url": "https://polymarket.com/event/cfb-nd-byu-2026-10-17",
+      "placed_at": "2026-10-17T07:17:40.773612+00:00",
+      "deadline": "2026-10-18T00:05:40.773612+00:00",
+      "market_ids": [
+        "5354672"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.4675,
+      "edge_pct_at_placement": 11.12,
+      "predicted_win_prob": 0.5787,
+      "stake_usd": 13.93,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
