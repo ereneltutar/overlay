@@ -546,6 +546,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:elon-musk-of-tweets-october-13-october-20-2026:5479391",
+      "tag": "calibration",
+      "market_question": "Will Elon Musk post 340-359 tweets from October 13 to October 20, 2026?",
+      "slug": "elon-musk-of-tweets-october-13-october-20-2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-october-13-october-20-2026",
+      "placed_at": "2026-10-18T07:32:05.848731+00:00",
+      "deadline": "2026-10-20T17:08:05.848731+00:00",
+      "market_ids": [
+        "5479391"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7633,
+      "edge_pct_at_placement": 7.88,
+      "predicted_win_prob": 0.8421,
+      "stake_usd": 13.58,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
