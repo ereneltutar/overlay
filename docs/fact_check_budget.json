@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-18T07:32:05.965559+00:00",
+  "generated_at": "2026-10-19T08:15:55.523778+00:00",
   "pricing_reference": {
     "input_token_cost_per_million_usd": 2.0,
     "output_token_cost_per_million_usd": 10.0,
     "web_search_cost_per_search_usd": 0.01
   },
   "today": {
-    "date": "2026-10-18",
+    "date": "2026-10-19",
     "calls": 0,
     "vetoes": 0,
     "errors": 0,

@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 795.97,
+  "bankroll": 811.39,
   "bankroll_history": [
     {
       "date": "2026-10-04",
@@ -64,7 +64,7 @@
     },
     {
       "date": "2026-10-19",
-      "bankroll": 795.97
+      "bankroll": 811.39
     }
   ],
   "bets": [
@@ -525,9 +525,9 @@
       "edge_pct_at_placement": 11.12,
       "predicted_win_prob": 0.5787,
       "stake_usd": 13.54,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-10-19T08:15:54.053780+00:00",
+      "pnl_usd": 15.42,
       "fact_check": null
     },
     {
@@ -567,6 +567,48 @@
       "edge_pct_at_placement": 7.88,
       "predicted_win_prob": 0.8421,
       "stake_usd": 13.58,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:brazil-presidential-election-second-round-1st-place-in-amapa:5329577",
+      "tag": "calibration",
+      "market_question": "Will Lula win the most votes in the second round of the Brazil presidential election from Amapá?",
+      "slug": "brazil-presidential-election-second-round-1st-place-in-amapa",
+      "url": "https://polymarket.com/event/brazil-presidential-election-second-round-1st-place-in-amapa",
+      "placed_at": "2026-10-19T08:15:54.053780+00:00",
+      "deadline": "2026-10-26T03:27:54.053780+00:00",
+      "market_ids": [
+        "5329577"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.7673,
+      "edge_pct_at_placement": 7.48,
+      "predicted_win_prob": 0.8421,
+      "stake_usd": 13.96,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:will-israel-election-happen-as-scheduled-20260720204824362:3008329",
+      "tag": "calibration",
+      "market_question": "Will Israel election happen as scheduled?",
+      "slug": "will-israel-election-happen-as-scheduled-20260720204824362",
+      "url": "https://polymarket.com/event/will-israel-election-happen-as-scheduled-20260720204824362",
+      "placed_at": "2026-10-19T08:15:54.053780+00:00",
+      "deadline": "2026-10-28T03:27:54.053780+00:00",
+      "market_ids": [
+        "3008329"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.054,
+      "edge_pct_at_placement": 10.43,
+      "predicted_win_prob": 0.1583,
+      "stake_usd": 13.61,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
