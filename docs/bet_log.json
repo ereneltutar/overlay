@@ -617,6 +617,27 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:us-iran-ceasefire-continues-throughptptpt:4641065",
+      "tag": "calibration",
+      "market_question": "US x Iran ceasefire continues through October 31?",
+      "slug": "us-iran-ceasefire-continues-throughptptpt",
+      "url": "https://polymarket.com/event/us-iran-ceasefire-continues-throughptptpt",
+      "placed_at": "2026-10-20T08:01:20.434187+00:00",
+      "deadline": "2026-11-01T00:49:20.434187+00:00",
+      "market_ids": [
+        "4641065"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.21,
+      "edge_pct_at_placement": 8.9,
+      "predicted_win_prob": 0.299,
+      "stake_usd": 14.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
