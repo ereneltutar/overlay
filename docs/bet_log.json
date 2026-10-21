@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 827.19,
+  "bankroll": 831.4,
   "bankroll_history": [
     {
       "date": "2026-10-04",
@@ -72,7 +72,7 @@
     },
     {
       "date": "2026-10-21",
-      "bankroll": 827.19
+      "bankroll": 831.4
     }
   ],
   "bets": [
@@ -575,9 +575,9 @@
       "edge_pct_at_placement": 7.88,
       "predicted_win_prob": 0.8421,
       "stake_usd": 13.58,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-10-21T08:07:12.379758+00:00",
+      "pnl_usd": 4.21,
       "fact_check": null
     },
     {
@@ -638,6 +638,48 @@
       "edge_pct_at_placement": 8.9,
       "predicted_win_prob": 0.299,
       "stake_usd": 14.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:alaska-governor-election-winner:635016",
+      "tag": "calibration",
+      "market_question": "Will Jonathan Kreiss-Tomkins win the 2026 Alaska governor election?",
+      "slug": "alaska-governor-election-winner",
+      "url": "https://polymarket.com/event/alaska-governor-election-winner",
+      "placed_at": "2026-10-21T08:07:12.379758+00:00",
+      "deadline": "2026-11-04T05:43:12.379758+00:00",
+      "market_ids": [
+        "635016"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.21,
+      "edge_pct_at_placement": 8.9,
+      "predicted_win_prob": 0.299,
+      "stake_usd": 14.12,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:who-wins-the-senate-pending-hormuz-agreement:5568259",
+      "tag": "calibration",
+      "market_question": "Will there be no Hormuz agreement?",
+      "slug": "who-wins-the-senate-pending-hormuz-agreement",
+      "url": "https://polymarket.com/event/who-wins-the-senate-pending-hormuz-agreement",
+      "placed_at": "2026-10-21T08:07:12.379758+00:00",
+      "deadline": "2026-11-04T05:43:12.379758+00:00",
+      "market_ids": [
+        "5568259"
+      ],
+      "recommended_side": "NO",
+      "entry_cost": 0.06,
+      "edge_pct_at_placement": 9.53,
+      "predicted_win_prob": 0.1553,
+      "stake_usd": 10.11,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
