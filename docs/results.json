@@ -1,111 +1,16 @@
 {
-  "generated_at": "2026-10-23T08:02:59.964595+00:00",
+  "generated_at": "2026-10-24T07:42:17.809282+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 22881,
+  "scanned_events": 22752,
   "opportunities": [],
   "calibration_signals": [
-    {
-      "market_id": "1812607",
-      "market_question": "Will Olivia Chow win the 2026 Toronto mayoral election?",
-      "slug": "toronto-mayoral-election-winner-545",
-      "url": "https://polymarket.com/event/toronto-mayoral-election-winner-545",
-      "days_left": 3.8,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.46,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 11.84,
-      "liquidity": 75088.65
-    },
-    {
-      "market_id": "6037149",
-      "market_question": "Spread: Pacers (-5.5)",
-      "slug": "nba-dal-ind-2026-10-23",
-      "url": "https://polymarket.com/event/nba-dal-ind-2026-10-23",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.46,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 11.84,
-      "liquidity": 105871.73
-    },
-    {
-      "market_id": "5792072",
-      "market_question": "Timberwolves vs. Magic",
-      "slug": "nba-min-orl-2026-10-23",
-      "url": "https://polymarket.com/event/nba-min-orl-2026-10-23",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.46,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 11.84,
-      "liquidity": 131494.92
-    },
-    {
-      "market_id": "4588657",
-      "market_question": "Browns vs. Titans: O/U 36.5",
-      "slug": "nfl-cle-ten-2026-10-25",
-      "url": "https://polymarket.com/event/nfl-cle-ten-2026-10-25",
-      "days_left": 2.4,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.4675,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 11.09,
-      "liquidity": 86796.85
-    },
-    {
-      "market_id": "5621870",
-      "market_question": "Spread: South Carolina (-1.5)",
-      "slug": "cfb-tenn-sc-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-tenn-sc-2026-10-24",
-      "days_left": 1.5,
-      "recommended_side": "NO",
-      "current_price": 0.54,
-      "implied_cost": 0.4675,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 11.09,
-      "liquidity": 118490.51
-    },
     {
       "market_id": "5624633",
       "market_question": "Spread: UTSA (-2.5)",
       "slug": "cfb-utsa-tulane-2026-10-24",
       "url": "https://polymarket.com/event/cfb-utsa-tulane-2026-10-24",
-      "days_left": 1.7,
+      "days_left": 0.7,
       "recommended_side": "NO",
       "current_price": 0.54,
       "implied_cost": 0.4675,
@@ -117,71 +22,14 @@
       "bucket_sample_size": 1651,
       "bucket_historical_rate": 0.4216,
       "edge_pct": 11.09,
-      "liquidity": 57651.73
+      "liquidity": 122147.42
     },
     {
-      "market_id": "6036611",
-      "market_question": "Spread: Hawks (-2.5)",
-      "slug": "nba-atl-cha-2026-10-23",
-      "url": "https://polymarket.com/event/nba-atl-cha-2026-10-23",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.47,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.84,
-      "liquidity": 90083.78
-    },
-    {
-      "market_id": "6065337",
-      "market_question": "Bulls vs. Bucks: O/U 237.5",
-      "slug": "nba-chi-mil-2026-10-23",
-      "url": "https://polymarket.com/event/nba-chi-mil-2026-10-23",
-      "days_left": 0.5,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.47,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.84,
-      "liquidity": 58223.43
-    },
-    {
-      "market_id": "6036764",
-      "market_question": "Pelicans vs. Jazz: O/U 237.5",
-      "slug": "nba-nop-uta-2026-10-23",
-      "url": "https://polymarket.com/event/nba-nop-uta-2026-10-23",
-      "days_left": 0.7,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.47,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.84,
-      "liquidity": 66233.07
-    },
-    {
-      "market_id": "6051881",
-      "market_question": "Almaty Open: Alexander Bublik vs Karen Khachanov",
-      "slug": "atp-bublik-khachan-2026-10-23",
-      "url": "https://polymarket.com/event/atp-bublik-khachan-2026-10-23",
-      "days_left": 7.3,
+      "market_id": "5523120",
+      "market_question": "UFC 333: Alexander Volkov vs. Rizvan Kuniev (Heavyweight, Main Card)",
+      "slug": "ufc-ale22-riz-2026-10-24",
+      "url": "https://polymarket.com/event/ufc-ale22-riz-2026-10-24",
+      "days_left": 0.8,
       "recommended_side": "NO",
       "current_price": 0.54,
       "implied_cost": 0.4724,
@@ -193,13 +41,32 @@
       "bucket_sample_size": 1651,
       "bucket_historical_rate": 0.4216,
       "edge_pct": 10.6,
-      "liquidity": 98775.35
+      "liquidity": 169755.47
     },
     {
-      "market_id": "6051889",
-      "market_question": "Florence: Matthew William Donald vs Filippo Romano",
-      "slug": "atp-donald-romano-2026-10-23",
-      "url": "https://polymarket.com/event/atp-donald-romano-2026-10-23",
+      "market_id": "5565257",
+      "market_question": "Will Inter Miami CF win on 2026-10-24?",
+      "slug": "mls-nyr-mia-2026-10-24",
+      "url": "https://polymarket.com/event/mls-nyr-mia-2026-10-24",
+      "days_left": 0.6,
+      "recommended_side": "NO",
+      "current_price": 0.54,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 10.6,
+      "liquidity": 68530.99
+    },
+    {
+      "market_id": "6078327",
+      "market_question": "Ningbo Open: Leylah Fernandez vs Marie Bouzkova",
+      "slug": "wta-fernand-bouzkov-2026-10-24",
+      "url": "https://polymarket.com/event/wta-fernand-bouzkov-2026-10-24",
       "days_left": 7.0,
       "recommended_side": "NO",
       "current_price": 0.54,
@@ -212,13 +79,70 @@
       "bucket_sample_size": 1651,
       "bucket_historical_rate": 0.4216,
       "edge_pct": 10.6,
-      "liquidity": 126266.64
+      "liquidity": 147316.34
     },
     {
-      "market_id": "5615920",
-      "market_question": "Spread: NC State (-6.5)",
-      "slug": "cfb-ncst-stan-2026-10-23",
-      "url": "https://polymarket.com/event/cfb-ncst-stan-2026-10-23",
+      "market_id": "6108175",
+      "market_question": "Lyon Open: Flavio Cobolli vs Lorenzo Musetti",
+      "slug": "atp-cobolli-musetti-2026-10-24",
+      "url": "https://polymarket.com/event/atp-cobolli-musetti-2026-10-24",
+      "days_left": 7.2,
+      "recommended_side": "NO",
+      "current_price": 0.54,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 10.6,
+      "liquidity": 95806.54
+    },
+    {
+      "market_id": "4551273",
+      "market_question": "Bengals vs. Ravens",
+      "slug": "nfl-cin-bal-2026-10-25",
+      "url": "https://polymarket.com/event/nfl-cin-bal-2026-10-25",
+      "days_left": 1.4,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 10.09,
+      "liquidity": 188378.8
+    },
+    {
+      "market_id": "5617680",
+      "market_question": "Spread: Texas Tech (-10.5)",
+      "slug": "cfb-txtech-cin-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-txtech-cin-2026-10-24",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 10.09,
+      "liquidity": 156827.79
+    },
+    {
+      "market_id": "5619442",
+      "market_question": "Spread: Utah (-6.5)",
+      "slug": "cfb-hou-utah-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-hou-utah-2026-10-24",
       "days_left": 0.8,
       "recommended_side": "NO",
       "current_price": 0.53,
@@ -231,127 +155,13 @@
       "bucket_sample_size": 1651,
       "bucket_historical_rate": 0.4216,
       "edge_pct": 10.09,
-      "liquidity": 139145.44
+      "liquidity": 259671.31
     },
     {
-      "market_id": "5618926",
-      "market_question": "Michigan State vs. UCLA: O/U 43.5",
-      "slug": "cfb-mst-ucla-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-mst-ucla-2026-10-24",
-      "days_left": 1.5,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.09,
-      "liquidity": 63681.24
-    },
-    {
-      "market_id": "5949592",
-      "market_question": "Spread: Oklahoma State (-12.5)",
-      "slug": "cfb-col-okst-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-col-okst-2026-10-24",
-      "days_left": 1.6,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.09,
-      "liquidity": 56001.67
-    },
-    {
-      "market_id": "5619442",
-      "market_question": "Spread: Utah (-6.5)",
-      "slug": "cfb-hou-utah-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-hou-utah-2026-10-24",
-      "days_left": 1.8,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.09,
-      "liquidity": 197723.83
-    },
-    {
-      "market_id": "5623970",
-      "market_question": "Spread: Georgia State (-1.5)",
-      "slug": "cfb-gast-arkst-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-gast-arkst-2026-10-24",
-      "days_left": 1.6,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.09,
-      "liquidity": 49800.34
-    },
-    {
-      "market_id": "5624835",
-      "market_question": "Spread: New Mexico (-4.5)",
-      "slug": "cfb-ndkst-nmx-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-ndkst-nmx-2026-10-24",
-      "days_left": 1.7,
-      "recommended_side": "NO",
-      "current_price": 0.53,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 10.09,
-      "liquidity": 53813.89
-    },
-    {
-      "market_id": "6036628",
-      "market_question": "Hawks vs. Hornets: O/U 225.5",
-      "slug": "nba-atl-cha-2026-10-23",
-      "url": "https://polymarket.com/event/nba-atl-cha-2026-10-23",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "current_price": 0.52,
-      "implied_cost": 0.48,
-      "fee": 0.0,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "bucket_historical_rate": 0.4216,
-      "edge_pct": 9.84,
-      "liquidity": 63922.92
-    },
-    {
-      "market_id": "6067702",
-      "market_question": "Pelicans vs. Jazz: O/U 238.5",
-      "slug": "nba-nop-uta-2026-10-23",
-      "url": "https://polymarket.com/event/nba-nop-uta-2026-10-23",
+      "market_id": "5847758",
+      "market_question": "Wizards vs. Bulls",
+      "slug": "nba-was-chi-2026-10-24",
+      "url": "https://polymarket.com/event/nba-was-chi-2026-10-24",
       "days_left": 0.7,
       "recommended_side": "NO",
       "current_price": 0.52,
@@ -364,17 +174,17 @@
       "bucket_sample_size": 1651,
       "bucket_historical_rate": 0.4216,
       "edge_pct": 9.84,
-      "liquidity": 50365.65
+      "liquidity": 89877.35
     },
     {
-      "market_id": "5929769",
-      "market_question": "Will Elon Musk post 65-89 tweets from October 22 to October 24, 2026?",
-      "slug": "elon-musk-of-tweets-october-22-october-24-2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-october-22-october-24-2026",
-      "days_left": 1.3,
+      "market_id": "682708",
+      "market_question": "Will Gadi Eizenkot be the next Prime Minister of Israel?",
+      "slug": "who-will-be-the-next-prime-minister-of-israel-after-the-next-election",
+      "url": "https://polymarket.com/event/who-will-be-the-next-prime-minister-of-israel-after-the-next-election",
+      "days_left": 3.8,
       "recommended_side": "NO",
-      "current_price": 0.52,
-      "implied_cost": 0.48,
+      "current_price": 0.518,
+      "implied_cost": 0.482,
       "fee": 0.0,
       "bucket_range": [
         0.5,
@@ -382,83 +192,317 @@
       ],
       "bucket_sample_size": 1651,
       "bucket_historical_rate": 0.4216,
-      "edge_pct": 9.84,
-      "liquidity": 4504.01
+      "edge_pct": 9.64,
+      "liquidity": 334326.65
+    },
+    {
+      "market_id": "5523246",
+      "market_question": "UFC 333: Abus Magomedov vs. Cam Rowston (Middleweight, Prelims)",
+      "slug": "ufc-abu2-cam7-2026-10-24",
+      "url": "https://polymarket.com/event/ufc-abu2-cam7-2026-10-24",
+      "days_left": 0.8,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 9.59,
+      "liquidity": 99238.37
+    },
+    {
+      "market_id": "6065038",
+      "market_question": "Game Handicap: TY (-1.5) vs OG (+1.5)",
+      "slug": "dota2-ty-og-2026-10-24",
+      "url": "https://polymarket.com/event/dota2-ty-og-2026-10-24",
+      "days_left": 0.4,
+      "recommended_side": "NO",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 9.59,
+      "liquidity": 81135.84
+    },
+    {
+      "market_id": "2589812",
+      "market_question": "Will there be no change in Fed interest rates after the October 2026 meeting?",
+      "slug": "fed-decision-in-october-20260617190323537",
+      "url": "https://polymarket.com/event/fed-decision-in-october-20260617190323537",
+      "days_left": 4.8,
+      "recommended_side": "NO",
+      "current_price": 0.94,
+      "implied_cost": 0.06,
+      "fee": 0.0,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 264,
+      "bucket_historical_rate": 0.8447,
+      "edge_pct": 9.53,
+      "liquidity": 1707085.97
+    },
+    {
+      "market_id": "601826",
+      "market_question": "Will Flávio Bolsonaro win the 2026 Brazilian presidential election?",
+      "slug": "brazil-presidential-election",
+      "url": "https://polymarket.com/event/brazil-presidential-election",
+      "days_left": 1.8,
+      "recommended_side": "NO",
+      "current_price": 0.793,
+      "implied_cost": 0.207,
+      "fee": 0.0,
+      "bucket_range": [
+        0.75,
+        0.8
+      ],
+      "bucket_sample_size": 525,
+      "bucket_historical_rate": 0.701,
+      "edge_pct": 9.2,
+      "liquidity": 864294.29
+    },
+    {
+      "market_id": "4586940",
+      "market_question": "Spread: Cowboys (-3.5)",
+      "slug": "nfl-dal-phi-2026-10-27",
+      "url": "https://polymarket.com/event/nfl-dal-phi-2026-10-27",
+      "days_left": 2.7,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 9.09,
+      "liquidity": 131142.1
+    },
+    {
+      "market_id": "5616668",
+      "market_question": "West Virginia vs. TCU: O/U 57.5",
+      "slug": "cfb-wvir-tcu-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-wvir-tcu-2026-10-24",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 9.09,
+      "liquidity": 34044.77
+    },
+    {
+      "market_id": "5617130",
+      "market_question": "Spread: Florida Atlantic (-7.5)",
+      "slug": "cfb-rice-flatl-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-rice-flatl-2026-10-24",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 9.09,
+      "liquidity": 101022.59
+    },
+    {
+      "market_id": "5618560",
+      "market_question": "Baylor vs. Kansas",
+      "slug": "cfb-bayl-kan-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-bayl-kan-2026-10-24",
+      "days_left": 0.4,
+      "recommended_side": "NO",
+      "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "bucket_historical_rate": 0.4216,
+      "edge_pct": 9.09,
+      "liquidity": 247136.24
+    },
+    {
+      "market_id": "630925",
+      "market_question": "Will the Republicans win the South Carolina Senate race in 2026?",
+      "slug": "south-carolina-senate-election-winner",
+      "url": "https://polymarket.com/event/south-carolina-senate-election-winner",
+      "days_left": 10.9,
+      "recommended_side": "NO",
+      "current_price": 0.79,
+      "implied_cost": 0.21,
+      "fee": 0.0,
+      "bucket_range": [
+        0.75,
+        0.8
+      ],
+      "bucket_sample_size": 525,
+      "bucket_historical_rate": 0.701,
+      "edge_pct": 8.9,
+      "liquidity": 207966.42
+    },
+    {
+      "market_id": "3554659",
+      "market_question": "Will Google have the best AI model at the end of October 2026?",
+      "slug": "which-company-has-the-best-ai-model-end-of-october",
+      "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-october",
+      "days_left": 7.3,
+      "recommended_side": "NO",
+      "current_price": 0.899,
+      "implied_cost": 0.101,
+      "fee": 0.0,
+      "bucket_range": [
+        0.85,
+        0.9
+      ],
+      "bucket_sample_size": 290,
+      "bucket_historical_rate": 0.8103,
+      "edge_pct": 8.87,
+      "liquidity": 23320.47
     }
   ],
   "calibration_table_generated_at": "2026-10-19T09:46:44.415873+00:00",
   "mispricing_signals": [
     {
-      "market_id": "5792072",
-      "market_question": "Timberwolves vs. Magic",
-      "slug": "nba-min-orl-2026-10-23",
-      "url": "https://polymarket.com/event/nba-min-orl-2026-10-23",
+      "market_id": "5617680",
+      "market_question": "Spread: Texas Tech (-10.5)",
+      "slug": "cfb-txtech-cin-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-txtech-cin-2026-10-24",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "implied_probability": 0.53,
+      "fair_probability": 0.4216,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "edge_pct": 10.09,
+      "volume_24h": 39952.38,
+      "liquidity": 156827.79,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "low_sample_warning": false,
+      "score": 4034.68
+    },
+    {
+      "market_id": "5523120",
+      "market_question": "UFC 333: Alexander Volkov vs. Rizvan Kuniev (Heavyweight, Main Card)",
+      "slug": "ufc-ale22-riz-2026-10-24",
+      "url": "https://polymarket.com/event/ufc-ale22-riz-2026-10-24",
+      "days_left": 0.8,
+      "recommended_side": "NO",
+      "implied_probability": 0.54,
+      "fair_probability": 0.4216,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "edge_pct": 10.6,
+      "volume_24h": 100637.33,
+      "liquidity": 169755.47,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "low_sample_warning": false,
+      "score": 3975.8
+    },
+    {
+      "market_id": "5565257",
+      "market_question": "Will Inter Miami CF win on 2026-10-24?",
+      "slug": "mls-nyr-mia-2026-10-24",
+      "url": "https://polymarket.com/event/mls-nyr-mia-2026-10-24",
       "days_left": 0.6,
       "recommended_side": "NO",
       "implied_probability": 0.54,
       "fair_probability": 0.4216,
-      "implied_cost": 0.46,
-      "fee": 0.0,
-      "edge_pct": 11.84,
-      "volume_24h": 63939.23,
-      "liquidity": 131494.92,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "edge_pct": 10.6,
+      "volume_24h": 20680.05,
+      "liquidity": 68530.99,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1651,
       "low_sample_warning": false,
-      "score": 4806.24
+      "score": 2651.47
     },
     {
-      "market_id": "6036611",
-      "market_question": "Spread: Hawks (-2.5)",
-      "slug": "nba-atl-cha-2026-10-23",
-      "url": "https://polymarket.com/event/nba-atl-cha-2026-10-23",
-      "days_left": 0.6,
+      "market_id": "4551273",
+      "market_question": "Bengals vs. Ravens",
+      "slug": "nfl-cin-bal-2026-10-25",
+      "url": "https://polymarket.com/event/nfl-cin-bal-2026-10-25",
+      "days_left": 1.4,
       "recommended_side": "NO",
       "implied_probability": 0.53,
       "fair_probability": 0.4216,
-      "implied_cost": 0.47,
-      "fee": 0.0,
-      "edge_pct": 10.84,
-      "volume_24h": 17211.95,
-      "liquidity": 90083.78,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "edge_pct": 10.09,
+      "volume_24h": 72497.44,
+      "liquidity": 188378.8,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1651,
       "low_sample_warning": false,
-      "score": 2283.04
+      "score": 1958.85
     },
     {
-      "market_id": "6036764",
-      "market_question": "Pelicans vs. Jazz: O/U 237.5",
-      "slug": "nba-nop-uta-2026-10-23",
-      "url": "https://polymarket.com/event/nba-nop-uta-2026-10-23",
+      "market_id": "5624633",
+      "market_question": "Spread: UTSA (-2.5)",
+      "slug": "cfb-utsa-tulane-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-utsa-tulane-2026-10-24",
       "days_left": 0.7,
       "recommended_side": "NO",
-      "implied_probability": 0.53,
+      "implied_probability": 0.54,
       "fair_probability": 0.4216,
-      "implied_cost": 0.47,
-      "fee": 0.0,
-      "edge_pct": 10.84,
-      "volume_24h": 17694.12,
-      "liquidity": 66233.07,
+      "implied_cost": 0.4675,
+      "fee": 0.0075,
+      "edge_pct": 11.09,
+      "volume_24h": 8551.81,
+      "liquidity": 122147.42,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1651,
       "low_sample_warning": false,
-      "score": 1983.17
+      "score": 1511.14
     },
     {
-      "market_id": "5615920",
-      "market_question": "Spread: NC State (-6.5)",
-      "slug": "cfb-ncst-stan-2026-10-23",
-      "url": "https://polymarket.com/event/cfb-ncst-stan-2026-10-23",
+      "market_id": "5619442",
+      "market_question": "Spread: Utah (-6.5)",
+      "slug": "cfb-hou-utah-2026-10-24",
+      "url": "https://polymarket.com/event/cfb-hou-utah-2026-10-24",
       "days_left": 0.8,
       "recommended_side": "NO",
       "implied_probability": 0.53,
@@ -466,285 +510,21 @@
       "implied_cost": 0.4775,
       "fee": 0.0075,
       "edge_pct": 10.09,
-      "volume_24h": 20563.05,
-      "liquidity": 139145.44,
+      "volume_24h": 13034.18,
+      "liquidity": 259671.31,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1651,
       "low_sample_warning": false,
-      "score": 1882.63
+      "score": 1491.19
     },
     {
-      "market_id": "6065337",
-      "market_question": "Bulls vs. Bucks: O/U 237.5",
-      "slug": "nba-chi-mil-2026-10-23",
-      "url": "https://polymarket.com/event/nba-chi-mil-2026-10-23",
-      "days_left": 0.5,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.47,
-      "fee": 0.0,
-      "edge_pct": 10.84,
-      "volume_24h": 7206.52,
-      "liquidity": 58223.43,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 1840.44
-    },
-    {
-      "market_id": "5621870",
-      "market_question": "Spread: South Carolina (-1.5)",
-      "slug": "cfb-tenn-sc-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-tenn-sc-2026-10-24",
-      "days_left": 1.5,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4675,
-      "fee": 0.0075,
-      "edge_pct": 11.09,
-      "volume_24h": 53276.13,
-      "liquidity": 118490.51,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 1733.73
-    },
-    {
-      "market_id": "6037149",
-      "market_question": "Spread: Pacers (-5.5)",
-      "slug": "nba-dal-ind-2026-10-23",
-      "url": "https://polymarket.com/event/nba-dal-ind-2026-10-23",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.46,
-      "fee": 0.0,
-      "edge_pct": 11.84,
-      "volume_24h": 6331.09,
-      "liquidity": 105871.73,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 1512.38
-    },
-    {
-      "market_id": "5619442",
-      "market_question": "Spread: Utah (-6.5)",
-      "slug": "cfb-hou-utah-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-hou-utah-2026-10-24",
-      "days_left": 1.8,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "edge_pct": 10.09,
-      "volume_24h": 67512.85,
-      "liquidity": 197723.83,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 1491.42
-    },
-    {
-      "market_id": "5624835",
-      "market_question": "Spread: New Mexico (-4.5)",
-      "slug": "cfb-ndkst-nmx-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-ndkst-nmx-2026-10-24",
-      "days_left": 1.7,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "edge_pct": 10.09,
-      "volume_24h": 59964.68,
-      "liquidity": 53813.89,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 1413.95
-    },
-    {
-      "market_id": "5624633",
-      "market_question": "Spread: UTSA (-2.5)",
-      "slug": "cfb-utsa-tulane-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-utsa-tulane-2026-10-24",
-      "days_left": 1.7,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4675,
-      "fee": 0.0075,
-      "edge_pct": 11.09,
-      "volume_24h": 14479.15,
-      "liquidity": 57651.73,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 802.02
-    },
-    {
-      "market_id": "5623970",
-      "market_question": "Spread: Georgia State (-1.5)",
-      "slug": "cfb-gast-arkst-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-gast-arkst-2026-10-24",
-      "days_left": 1.6,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "edge_pct": 10.09,
-      "volume_24h": 12404.52,
-      "liquidity": 49800.34,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 692.63
-    },
-    {
-      "market_id": "1812607",
-      "market_question": "Will Olivia Chow win the 2026 Toronto mayoral election?",
-      "slug": "toronto-mayoral-election-winner-545",
-      "url": "https://polymarket.com/event/toronto-mayoral-election-winner-545",
-      "days_left": 3.8,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.46,
-      "fee": 0.0,
-      "edge_pct": 11.84,
-      "volume_24h": 37874.65,
-      "liquidity": 75088.65,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 601.54
-    },
-    {
-      "market_id": "4588657",
-      "market_question": "Browns vs. Titans: O/U 36.5",
-      "slug": "nfl-cle-ten-2026-10-25",
-      "url": "https://polymarket.com/event/nfl-cle-ten-2026-10-25",
-      "days_left": 2.4,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4675,
-      "fee": 0.0075,
-      "edge_pct": 11.09,
-      "volume_24h": 16468.82,
-      "liquidity": 86796.85,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 600.02
-    },
-    {
-      "market_id": "5949592",
-      "market_question": "Spread: Oklahoma State (-12.5)",
-      "slug": "cfb-col-okst-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-col-okst-2026-10-24",
-      "days_left": 1.6,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "edge_pct": 10.09,
-      "volume_24h": 8281.66,
-      "liquidity": 56001.67,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 565.94
-    },
-    {
-      "market_id": "5618926",
-      "market_question": "Michigan State vs. UCLA: O/U 43.5",
-      "slug": "cfb-mst-ucla-2026-10-24",
-      "url": "https://polymarket.com/event/cfb-mst-ucla-2026-10-24",
-      "days_left": 1.5,
-      "recommended_side": "NO",
-      "implied_probability": 0.53,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4775,
-      "fee": 0.0075,
-      "edge_pct": 10.09,
-      "volume_24h": 6202.51,
-      "liquidity": 63681.24,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 538.13
-    },
-    {
-      "market_id": "6051881",
-      "market_question": "Almaty Open: Alexander Bublik vs Karen Khachanov",
-      "slug": "atp-bublik-khachan-2026-10-23",
-      "url": "https://polymarket.com/event/atp-bublik-khachan-2026-10-23",
-      "days_left": 7.3,
-      "recommended_side": "NO",
-      "implied_probability": 0.54,
-      "fair_probability": 0.4216,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "edge_pct": 10.6,
-      "volume_24h": 39880.99,
-      "liquidity": 98775.35,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1651,
-      "low_sample_warning": false,
-      "score": 291.17
-    },
-    {
-      "market_id": "6051889",
-      "market_question": "Florence: Matthew William Donald vs Filippo Romano",
-      "slug": "atp-donald-romano-2026-10-23",
-      "url": "https://polymarket.com/event/atp-donald-romano-2026-10-23",
+      "market_id": "6078327",
+      "market_question": "Ningbo Open: Leylah Fernandez vs Marie Bouzkova",
+      "slug": "wta-fernand-bouzkov-2026-10-24",
+      "url": "https://polymarket.com/event/wta-fernand-bouzkov-2026-10-24",
       "days_left": 7.0,
       "recommended_side": "NO",
       "implied_probability": 0.54,
@@ -752,15 +532,37 @@
       "implied_cost": 0.4724,
       "fee": 0.0124,
       "edge_pct": 10.6,
-      "volume_24h": 6942.36,
-      "liquidity": 126266.64,
+      "volume_24h": 244734.88,
+      "liquidity": 147316.34,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1651,
       "low_sample_warning": false,
-      "score": 126.19
+      "score": 752.14
+    },
+    {
+      "market_id": "6108175",
+      "market_question": "Lyon Open: Flavio Cobolli vs Lorenzo Musetti",
+      "slug": "atp-cobolli-musetti-2026-10-24",
+      "url": "https://polymarket.com/event/atp-cobolli-musetti-2026-10-24",
+      "days_left": 7.2,
+      "recommended_side": "NO",
+      "implied_probability": 0.54,
+      "fair_probability": 0.4216,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "edge_pct": 10.6,
+      "volume_24h": 16312.62,
+      "liquidity": 95806.54,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1651,
+      "low_sample_warning": false,
+      "score": 186.92
     }
   ],
   "mispricing_filters": {
