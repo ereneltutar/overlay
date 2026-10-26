@@ -196,13 +196,19 @@ def log_entry(market_id, price, question, liquidity=1000):
 def test_build_sample_tags_crypto_market():
     sample = cs.build_sample(log_entry("01", 0.4, "Will Bitcoin reach $65,000 on August 18?"), True)
     assert sample == {"reference_price": 0.4, "resolved_yes": True, "is_crypto": True,
-                      "cluster_key": "market:01"}
+                      "category": "crypto", "cluster_key": "market:01"}
 
 
 def test_build_sample_tags_non_crypto_market():
-    sample = cs.build_sample(log_entry("02", 0.4, "Will Fulham FC win on 2026-08-24?"), False)
+    sample = cs.build_sample(log_entry("02", 0.4, "Will the Fed cut rates in December?"), False)
     assert sample == {"reference_price": 0.4, "resolved_yes": False, "is_crypto": False,
-                      "cluster_key": "market:02"}
+                      "category": "general", "cluster_key": "market:02"}
+
+
+def test_build_sample_tags_sports_market():
+    sample = cs.build_sample(log_entry("03", 0.4, "Ravens vs. Falcons"), False)
+    assert sample["category"] == "sports"
+    assert sample["is_crypto"] is False
 
 
 def test_split_samples_by_category_separates_crypto_from_general():
@@ -211,9 +217,10 @@ def test_split_samples_by_category_separates_crypto_from_general():
         cs.build_sample(log_entry("02", 0.4, "Will Fulham FC win?"), False),
         cs.build_sample(log_entry("03", 0.5, "Will Ethereum reach $2,400?"), True),
     ]
-    general, crypto = cs.split_samples_by_category(samples)
+    general, crypto, sports = cs.split_samples_by_category(samples)
     assert len(general) == 1
     assert len(crypto) == 2
+    assert sports == []
     assert all(s["is_crypto"] for s in crypto)
     assert all(not s["is_crypto"] for s in general)
 
@@ -225,7 +232,7 @@ def test_split_samples_by_category_feeds_compute_bins_independently():
                        for i in range(30)]
     general_samples = [cs.build_sample(log_entry(str(i), 0.42, "Will Fulham FC win?"), False)
                         for i in range(100, 130)]
-    general, crypto = cs.split_samples_by_category(general_samples + crypto_samples)
+    general, crypto, _ = cs.split_samples_by_category(general_samples + crypto_samples)
     general_bins = cs.compute_bins(general)
     crypto_bins = cs.compute_bins(crypto)
 
@@ -233,6 +240,28 @@ def test_split_samples_by_category_feeds_compute_bins_independently():
     crypto_bucket = next(b for b in crypto_bins if b["range"] == [0.4, 0.45])
     assert general_bucket["resolved_yes_rate"] == 0.0
     assert crypto_bucket["resolved_yes_rate"] == 1.0
+
+
+def test_split_samples_by_category_separates_sports_from_general():
+    # Regression (Oct 2026): sports game lines were ~84% of the general
+    # table, so their outcomes[0]-overpriced bias made every significant
+    # bucket say NO and leaked onto non-sports Yes/No questions.
+    samples = [
+        cs.build_sample(log_entry("01", 0.5, "Spread: Texans (-6.5)"), False),
+        cs.build_sample(log_entry("02", 0.5, "Notre Dame vs. BYU: O/U 45.5"), False),
+        cs.build_sample(log_entry("03", 0.5, "Will the Democratic Party win the CA-14 House seat?"), True),
+    ]
+    general, crypto, sports = cs.split_samples_by_category(samples)
+    assert [s["category"] for s in general] == ["general"]
+    assert crypto == []
+    assert len(sports) == 2
+
+
+def test_split_samples_by_category_without_category_field_falls_back_to_is_crypto():
+    samples = [{"reference_price": 0.4, "resolved_yes": True, "is_crypto": True},
+               {"reference_price": 0.4, "resolved_yes": True, "is_crypto": False}]
+    general, crypto, sports = cs.split_samples_by_category(samples)
+    assert len(general) == 1 and len(crypto) == 1 and sports == []
 
 
 def test_calibration_log_floor_matches_live_signal_floor():

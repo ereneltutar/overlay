@@ -219,6 +219,14 @@ function renderArbEntry(opp, rank, demo){
     </a>`;
 }
 
+// The outcome actually bought. recommended_side is always YES/NO internally
+// (outcomes[0]/outcomes[1]); side_label is that outcome's real name, which
+// differs for two-named-outcome markets ("Under", "FlyQuest", ...).
+function sideText(x){
+  const label = x.side_label || x.recommended_side || '';
+  return /^(yes|no)$/i.test(label) ? label.toUpperCase() : label;
+}
+
 function renderCalEntry(sig, rank, demo){
   const [lo, hi] = sig.bucket_range;
   const trueRatePct = (sig.recommended_side === 'YES' ? sig.bucket_historical_rate : 1 - sig.bucket_historical_rate) * 100;
@@ -229,7 +237,7 @@ function renderCalEntry(sig, rank, demo){
         <p class="entry-title">${escapeHtml(sig.market_question || sig.event_title)}</p>
         <span class="entry-edge">+${sig.edge_pct.toFixed(1)}%</span>
       </div>
-      <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
+      <div class="entry-meta">recommends ${escapeHtml(sideText(sig))} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · historical rate ${(sig.bucket_historical_rate*100).toFixed(1)}% (n=${sig.bucket_sample_size})</div>
       ${buildCalBar(sig)}
       <div class="entry-foot">
         <span>cost <span class="cost">$${sig.implied_cost.toFixed(3)}</span>${sig.fee > 0 ? ` (incl. $${sig.fee.toFixed(3)} fees)` : ''} / historical rate ${trueRatePct.toFixed(1)}%</span>
@@ -248,7 +256,7 @@ function renderMisEntry(sig, rank, demo){
         <p class="entry-title">${escapeHtml(sig.market_question || sig.event_title)}</p>
         <span class="entry-edge">${sig.edge_pct.toFixed(1)}pt</span>
       </div>
-      <div class="entry-meta">recommends ${sig.recommended_side} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · n=${sig.bucket_sample_size}${warn}</div>
+      <div class="entry-meta">recommends ${escapeHtml(sideText(sig))} · ${daysLabel(sig.days_left, true)} · ${Math.round(lo*100)}–${Math.round(hi*100)}% bucket · n=${sig.bucket_sample_size}${warn}</div>
       ${buildMisDumbbell(sig)}
       <div class="entry-foot">
         <span>24h volume <span class="cost">$${fmtInt(Math.round(sig.volume_24h))}</span> · score ${sig.score}</span>

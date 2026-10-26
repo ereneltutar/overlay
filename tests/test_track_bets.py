@@ -291,6 +291,15 @@ def test_build_candidates_calibration_valid():
     assert candidates[0]["predicted_win_prob"] == 0.35
 
 
+def test_build_candidates_carries_side_label():
+    results = {"calibration_signals": [{
+        "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "O/U 45.5",
+        "recommended_side": "NO", "side_label": "Under", "implied_cost": 0.5, "edge_pct": 8,
+        "bucket_historical_rate": 0.35,
+    }]}
+    assert tb.build_candidates(results, NOW)[0]["side_label"] == "Under"
+
+
 def test_build_candidates_calibration_predicted_win_prob_flips_for_no_side():
     results = {"calibration_signals": [{
         "market_id": "m1", "slug": "s", "days_left": 5, "market_question": "Q?",

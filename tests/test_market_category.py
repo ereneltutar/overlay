@@ -30,3 +30,26 @@ def test_is_crypto_market_does_not_match_substring_false_positives():
 def test_is_crypto_market_none_or_empty_returns_false():
     assert mc.is_crypto_market(None) is False
     assert mc.is_crypto_market("") is False
+
+
+def test_is_sports_market_game_lines():
+    for q in ["Ravens vs. Falcons", "Spread: Texans (-6.5)", "Notre Dame vs. BYU: O/U 45.5",
+              "LoL: Natus Vincere vs FlyQuest - Game 2 Winner",
+              "Exact Score: Arsenal FC 1 - 0 Coventry City FC?", "Club Puebla leading at halftime?",
+              "CA Osasuna to win the second half?", "Will Fulham FC win on 2026-08-24?",
+              "Will Portland Timbers vs. San Diego FC end in a draw?"]:
+        assert mc.is_sports_market(q) is True, q
+
+
+def test_is_sports_market_leaves_futures_and_politics_general():
+    for q in ["Will Argentina win the 2026 FIFA World Cup?",
+              "Will the Democratic Party win the CA-14 House seat?",
+              "Will Elon Musk post 340-359 tweets from October 13 to October 20, 2026?",
+              "Iran-Oman Hormuz Agreement by November 30?", None, ""]:
+        assert mc.is_sports_market(q) is False, q
+
+
+def test_category_crypto_wins_over_sports():
+    assert mc.category("Bitcoin vs. Ethereum: which performs better?") == "crypto"
+    assert mc.category("Ravens vs. Falcons") == "sports"
+    assert mc.category("Will the Fed cut rates?") == "general"

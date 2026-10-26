@@ -481,13 +481,19 @@ def load_calibration():
         return None
 
 
-def select_bins_for_market(market: dict, event: dict, bins: list, crypto_bins: list):
+def select_bins_for_market(market: dict, event: dict, bins: list, crypto_bins: list,
+                           sports_bins: list = None):
     """Routes a live market to the calibration table matching its category
-    (see market_category.py for why crypto needs its own table). Pure
-    function of the market/event question text plus the two already-loaded
-    tables, so it's testable without a network call."""
+    (see market_category.py for why crypto and sports each need their own
+    table). Pure function of the market/event question text plus the
+    already-loaded tables, so it's testable without a network call."""
     question = market.get("question") or event.get("title") or ""
-    return crypto_bins if market_category.is_crypto_market(question) else bins
+    category = market_category.category(question)
+    if category == "crypto":
+        return crypto_bins
+    if category == "sports":
+        return sports_bins
+    return bins
 
 
 def find_bin(price: float, bins: list):
@@ -497,6 +503,23 @@ def find_bin(price: float, bins: list):
         if lo <= price < hi or (hi >= 1.0 and price == 1.0):
             return b
     return None
+
+
+def side_label(market: dict, side: str) -> str:
+    """The real name of the outcome a YES/NO side buys. Internally every
+    market is treated as binary: outcomes[0] is "YES", outcomes[1] is "NO".
+    That's literal for Yes/No questions, but for two-named-outcome markets
+    (sports "A vs. B", spreads, O/U, Up or Down) the dashboard used to show
+    a bare "NO" badge on a market that has no "No" option at all -- e.g.
+    "NO" on "O/U 45.5" actually meant Under. Falls back to the side itself
+    when the market doesn't carry a usable outcomes list."""
+    raw = market.get("outcomes")
+    try:
+        outcomes = json.loads(raw) if isinstance(raw, str) else raw
+        label = outcomes[0 if side == "YES" else 1]
+    except (ValueError, TypeError, IndexError, KeyError):
+        return side
+    return str(label) if label else side
 
 
 def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime.datetime,
@@ -576,6 +599,7 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
         "days_left": round(days_left, 1) if days_left is not None else None,
         "recommended_side": side,
+        "side_label": side_label(market, side),
         "current_price": round(price, 4),
         "implied_cost": round(cost, 4),
         "fee": round(fee, 4),
@@ -682,6 +706,7 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
         "url": f"https://polymarket.com/event/{event.get('slug')}" if event.get("slug") else None,
         "days_left": round(days_left, 1) if days_left is not None else None,
         "recommended_side": side,
+        "side_label": side_label(market, side),
         "implied_probability": round(implied_prob, 4),
         "fair_probability": round(fair_prob, 4),
         "implied_cost": round(cost, 4),
@@ -776,6 +801,16 @@ def main():
     calibration = load_calibration()
     calibration_bins = calibration["bins"] if calibration else None
     calibration_crypto_bins = calibration.get("crypto_bins") if calibration else None
+    calibration_sports_bins = calibration.get("sports_bins") if calibration else None
+    if calibration and "sports_bins" not in calibration:
+        # A calibration.json from before the sports split: its general table
+        # is ~84% sports samples (see market_category.py), so judging a
+        # non-sports market against it is exactly the bug the split fixes.
+        # Sit out until the weekly scan rewrites the file.
+        print("Note: docs/calibration.json predates the sports table split; skipping "
+              "general/sports CAL+MIS signals until the weekly calibration scan reruns.",
+              file=sys.stderr)
+        calibration_bins = None
 
     # One request for every DISTINCT asset this repo knows how to
     # price-check (see crypto_price_gate.py; ASSET_COINGECKO_IDS has
@@ -800,9 +835,10 @@ def main():
         if opp:
             opportunities.append(opp)
 
-        if calibration_bins or calibration_crypto_bins:
+        if calibration_bins or calibration_crypto_bins or calibration_sports_bins:
             for market in (event.get("markets") or []):
-                market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins)
+                market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins,
+                                                     calibration_sports_bins)
                 if not market_bins:
                     continue
                 sig = find_calibration_signal(market, event, market_bins, now, live_crypto_prices)
@@ -819,13 +855,14 @@ def main():
     # to be checked even past 30 days out, so find_mispricing_signal() applies
     # its own day logic internally.
     mispricing_signals = []
-    if calibration_bins or calibration_crypto_bins:
+    if calibration_bins or calibration_crypto_bins or calibration_sports_bins:
         for event in events:
             end_date = parse_iso(event.get("endDate"))
             if not end_date or end_date < now:
                 continue  # closed / date unknown event
             for market in (event.get("markets") or []):
-                market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins)
+                market_bins = select_bins_for_market(market, event, calibration_bins, calibration_crypto_bins,
+                                                     calibration_sports_bins)
                 if not market_bins:
                     continue
                 sig = find_mispricing_signal(market, event, market_bins, now, live_crypto_prices)

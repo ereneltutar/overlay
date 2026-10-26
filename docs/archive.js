@@ -251,7 +251,11 @@ function renderEntry(b){
   const pnlText = b.status === 'open' ? 'pending'
     : b.status === 'void' ? 'stake returned'
     : fmtSignedUsd(b.pnl_usd);
-  const sideBadge = b.recommended_side ? `<span class="side-badge">${escapeHtml(b.recommended_side)}</span>` : '';
+  // side_label is the real outcome name (e.g. "Under" for an O/U market);
+  // bets placed before it existed only carry the internal YES/NO side.
+  const sideLabel = b.side_label || b.recommended_side;
+  const sideText = sideLabel && /^(yes|no)$/i.test(sideLabel) ? sideLabel.toUpperCase() : sideLabel;
+  const sideBadge = sideText ? `<span class="side-badge" title="${escapeHtml(sideText)}">${escapeHtml(sideText)}</span>` : '';
   const dateText = b.status === 'open'
     ? `placed ${fmtShortDate(b.placed_at)} · resolves ~${fmtShortDate(b.deadline)}`
     : `placed ${fmtShortDate(b.placed_at)} · resolved ${fmtShortDate(b.resolved_at)}`;

@@ -221,25 +221,32 @@ def cluster_key_for_entry(entry: dict, is_crypto: bool) -> str:
 def build_sample(entry: dict, outcome_yes: bool) -> dict:
     """Builds one resolved-market sample from a price_log.jsonl entry, tagged
     with its category so compute_bins() can be run separately per category
-    (see split_samples_by_category and market_category.is_crypto_market),
-    and with the cluster it belongs to (see cluster_key_for_entry)."""
-    is_crypto = market_category.is_crypto_market(entry.get("question"))
+    (see split_samples_by_category and market_category.category), and with
+    the cluster it belongs to (see cluster_key_for_entry)."""
+    category = market_category.category(entry.get("question"))
+    is_crypto = category == "crypto"
     return {
         "reference_price": entry["price"],
         "resolved_yes": outcome_yes,
         "is_crypto": is_crypto,
+        "category": category,
         "cluster_key": cluster_key_for_entry(entry, is_crypto),
     }
 
 
 def split_samples_by_category(samples: list):
-    """Splits resolved samples into (general, crypto) so each category gets
-    its own calibration table instead of being blended into one average --
-    see market_category.py's docstring for why crypto needs this. Pure
-    function so it's testable without touching compute_bins or the network."""
-    general = [s for s in samples if not s.get("is_crypto")]
-    crypto = [s for s in samples if s.get("is_crypto")]
-    return general, crypto
+    """Splits resolved samples into (general, crypto, sports) so each
+    category gets its own calibration table instead of being blended into
+    one average -- see market_category.py's docstring for why crypto and
+    sports each need this. Samples built before the "category" field
+    existed fall back to is_crypto. Pure function so it's testable without
+    touching compute_bins or the network."""
+    def cat(s):
+        return s.get("category") or ("crypto" if s.get("is_crypto") else "general")
+    general = [s for s in samples if cat(s) == "general"]
+    crypto = [s for s in samples if cat(s) == "crypto"]
+    sports = [s for s in samples if cat(s) == "sports"]
+    return general, crypto, sports
 
 
 def cluster_count(bucket_samples: list) -> int:
@@ -393,12 +400,13 @@ def main():
               f"({MAX_LOG_ENTRIES_TO_CHECK}-per-run budget).")
 
     # --- Bucketing and statistics ---
-    # Crypto gets its own table (see market_category.py) instead of being
-    # blended into the general one, so a live crypto market is only judged
-    # against genuinely comparable crypto history.
-    general_samples, crypto_samples = split_samples_by_category(samples)
+    # Crypto and sports each get their own table (see market_category.py)
+    # instead of being blended into the general one, so a live market is
+    # only judged against genuinely comparable history.
+    general_samples, crypto_samples, sports_samples = split_samples_by_category(samples)
     bins = compute_bins(general_samples)
     crypto_bins = compute_bins(crypto_samples)
+    sports_bins = compute_bins(sports_samples)
 
     output = {
         "generated_at": now.isoformat(),
@@ -416,9 +424,11 @@ def main():
         "markets_resolved": len(samples),
         "markets_resolved_general": len(general_samples),
         "markets_resolved_crypto": len(crypto_samples),
+        "markets_resolved_sports": len(sports_samples),
         "markets_still_open_or_unclear": still_open_or_unclear,
         "bins": bins,
         "crypto_bins": crypto_bins,
+        "sports_bins": sports_bins,
     }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -426,8 +436,10 @@ def main():
     print(f"Wrote -> {OUTPUT_PATH}")
     sig_count = sum(1 for b in bins if b["significant"])
     crypto_sig_count = sum(1 for b in crypto_bins if b["significant"])
+    sports_sig_count = sum(1 for b in sports_bins if b["significant"])
     print(f"Found a statistically significant gap in {sig_count} general buckets, "
-          f"{crypto_sig_count} crypto buckets ({len(crypto_samples)} crypto samples).")
+          f"{crypto_sig_count} crypto buckets ({len(crypto_samples)} crypto samples), "
+          f"{sports_sig_count} sports buckets ({len(sports_samples)} sports samples).")
     if len(samples) < MIN_SAMPLE_PER_BUCKET:
         print(f"Note: {len(samples)} markets have resolved so far; even one significant "
               f"bucket needs {MIN_SAMPLE_PER_BUCKET}. Waiting for more markets to close.", file=sys.stderr)

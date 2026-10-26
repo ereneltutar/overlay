@@ -30,7 +30,8 @@ All state lives as committed files in `docs/`. Each script reads the previous st
 
 Shared modules:
 - `gamma_client.py`: the single resolution-check implementation used by both calibration and bet tracking.
-- `market_category.py`: crypto markets get their **own calibration table**, so a crypto market must route to the crypto table and never to the general pool.
+- `market_category.py`: crypto and sports game markets each get their **own calibration table** (`crypto_bins`, `sports_bins`), so they must route to their table and never to the general pool. Sports was split out in Oct 2026 after its outcomes[0]-overpriced bias (~84% of samples) made every general bucket say NO.
+- Internally every market is binary: `recommended_side` YES = `outcomes[0]`, NO = `outcomes[1]`. `side_label` stores the real outcome name ("Under", "Falcons"), which is what the UI shows.
 - `crypto_price_gate.py`: a hard veto when the move a crypto market needs, measured against the live CoinGecko spot price, is implausible.
 - `llm_fact_check.py`: Claude web-search veto, fail-open. **Currently disabled** (`LLM_FACT_CHECK_ENABLED = False` in `track_bets.py`) because the user stopped funding API credits. Don't propose features that depend on paid APIs.
 

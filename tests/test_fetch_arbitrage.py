@@ -99,6 +99,7 @@ def test_find_bin_no_match_returns_none():
 
 GENERAL_BINS = [{"range": [0.0, 1.0], "table": "general"}]
 CRYPTO_BINS = [{"range": [0.0, 1.0], "table": "crypto"}]
+SPORTS_BINS = [{"range": [0.0, 1.0], "table": "sports"}]
 
 
 def test_select_bins_for_market_routes_crypto_question_to_crypto_bins():
@@ -108,9 +109,22 @@ def test_select_bins_for_market_routes_crypto_question_to_crypto_bins():
 
 
 def test_select_bins_for_market_routes_non_crypto_question_to_general_bins():
-    market = {"question": "Will Fulham FC win on 2026-08-24?"}
-    result = fa.select_bins_for_market(market, {}, GENERAL_BINS, CRYPTO_BINS)
+    market = {"question": "Will the Democratic Party win the CA-14 House seat?"}
+    result = fa.select_bins_for_market(market, {}, GENERAL_BINS, CRYPTO_BINS, SPORTS_BINS)
     assert result is GENERAL_BINS
+
+
+def test_select_bins_for_market_routes_sports_question_to_sports_bins():
+    market = {"question": "Will Fulham FC win on 2026-08-24?"}
+    result = fa.select_bins_for_market(market, {}, GENERAL_BINS, CRYPTO_BINS, SPORTS_BINS)
+    assert result is SPORTS_BINS
+
+
+def test_select_bins_for_market_sports_without_table_gets_none():
+    # An old calibration.json without sports_bins must not fall back to the
+    # general table for a sports market.
+    market = {"question": "Ravens vs. Falcons"}
+    assert fa.select_bins_for_market(market, {}, GENERAL_BINS, CRYPTO_BINS) is None
 
 
 def test_select_bins_for_market_falls_back_to_event_title():
@@ -452,6 +466,28 @@ def test_find_calibration_signal_negative_bias_recommends_no():
     assert sig is not None
     assert sig["recommended_side"] == "NO"
     assert sig["implied_cost"] == 0.55  # 1 - 0.45
+
+
+def test_find_calibration_signal_side_label_names_the_real_outcome():
+    # Regression: two-named-outcome markets (O/U, spreads, "A vs. B") have no
+    # "No" option, so the archive's bare "NO" badge hid which side was bought.
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000, "id": "mk1",
+              "outcomes": json.dumps(["Over", "Under"])}
+    event = {"endDate": "2026-01-11T00:00:00Z", "slug": "s"}
+    sig = fa.find_calibration_signal(market, event, sig_bins(bias_pct=-10.0, resolved_yes_rate=0.2), NOW)
+    assert sig["recommended_side"] == "NO"
+    assert sig["side_label"] == "Under"
+
+
+def test_side_label_yes_maps_to_first_outcome():
+    assert fa.side_label({"outcomes": '["Natus Vincere", "FlyQuest"]'}, "YES") == "Natus Vincere"
+    assert fa.side_label({"outcomes": ["Yes", "No"]}, "NO") == "No"
+
+
+def test_side_label_falls_back_to_side_without_outcomes():
+    assert fa.side_label({}, "NO") == "NO"
+    assert fa.side_label({"outcomes": "not json"}, "YES") == "YES"
+    assert fa.side_label({"outcomes": '["Only"]'}, "NO") == "NO"
 
 
 def test_find_calibration_signal_below_min_edge_returns_none():
