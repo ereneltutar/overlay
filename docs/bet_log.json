@@ -11,5 +11,380 @@
       "bankroll": 1000.0
     }
   ],
-  "bets": []
+  "bets": [
+    {
+      "bet_id": "calibration:nfl-ten-cin-2026-11-01:5603304",
+      "tag": "calibration",
+      "market_question": "Titans vs. Bengals",
+      "slug": "nfl-ten-cin-2026-11-01",
+      "url": "https://polymarket.com/event/nfl-ten-cin-2026-11-01",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-01T18:07:26.070013+00:00",
+      "market_ids": [
+        "5603304"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Bengals",
+      "entry_cost": 0.8146,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.8844,
+      "stake_usd": 25.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-aguilar-medvede-2026-10-27:6176407",
+      "tag": "calibration",
+      "market_question": "Erste Bank Open: Daniel Merida Aguilar vs Daniil Medvedev",
+      "slug": "atp-aguilar-medvede-2026-10-27",
+      "url": "https://polymarket.com/event/atp-aguilar-medvede-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-03T08:31:26.070013+00:00",
+      "market_ids": [
+        "6176407"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Daniil Medvedev",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.89,
+      "predicted_win_prob": 0.838,
+      "stake_usd": 24.38,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-det-nyk-2026-10-27:6265708",
+      "tag": "calibration",
+      "market_question": "Spread: Knicks (-3.5)",
+      "slug": "nba-det-nyk-2026-10-27",
+      "url": "https://polymarket.com/event/nba-det-nyk-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-27T22:55:26.070013+00:00",
+      "market_ids": [
+        "6265708"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Pistons",
+      "entry_cost": 0.46,
+      "edge_pct_at_placement": 10.96,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 23.77,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-por-lal-2026-10-27:6265845",
+      "tag": "calibration",
+      "market_question": "Spread: Lakers (-2.5)",
+      "slug": "nba-por-lal-2026-10-27",
+      "url": "https://polymarket.com/event/nba-por-lal-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-28T03:43:26.070013+00:00",
+      "market_ids": [
+        "6265845"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Trail Blazers",
+      "entry_cost": 0.47,
+      "edge_pct_at_placement": 9.96,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 23.17,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-por-lal-2026-10-27:6265871",
+      "tag": "calibration",
+      "market_question": "Trail Blazers vs. Lakers: O/U 235.5",
+      "slug": "nba-por-lal-2026-10-27",
+      "url": "https://polymarket.com/event/nba-por-lal-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-28T03:43:26.070013+00:00",
+      "market_ids": [
+        "6265871"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.47,
+      "edge_pct_at_placement": 9.96,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 22.59,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bkcba-zhe-lia-2026-10-27:6004968",
+      "tag": "calibration",
+      "market_question": "Zhejiang Lions vs. Liaoning Flying Leopards",
+      "slug": "bkcba-zhe-lia-2026-10-27",
+      "url": "https://polymarket.com/event/bkcba-zhe-lia-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-03T10:55:26.070013+00:00",
+      "market_ids": [
+        "6004968"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Liaoning Flying Leopards",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.72,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 22.03,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-bkn-bos-2026-10-27:6265617",
+      "tag": "calibration",
+      "market_question": "Spread: Celtics (-11.5)",
+      "slug": "nba-bkn-bos-2026-10-27",
+      "url": "https://polymarket.com/event/nba-bkn-bos-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-27T22:55:26.070013+00:00",
+      "market_ids": [
+        "6265617"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Nets",
+      "entry_cost": 0.48,
+      "edge_pct_at_placement": 8.96,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 21.48,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:wta-ruzic-liu-2026-10-26:6173089",
+      "tag": "calibration",
+      "market_question": "Guangzhou Open: Antonia Ruzic vs Claire Liu",
+      "slug": "wta-ruzic-liu-2026-10-26",
+      "url": "https://polymarket.com/event/wta-ruzic-liu-2026-10-26",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-03T01:19:26.070013+00:00",
+      "market_ids": [
+        "6173089"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Claire Liu",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.71,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 20.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:efl-fle-ars-2026-10-27-more-markets:5699028",
+      "tag": "calibration",
+      "market_question": "Fleetwood Town FC vs. Arsenal FC: O/U 3.5",
+      "slug": "efl-fle-ars-2026-10-27-more-markets",
+      "url": "https://polymarket.com/event/efl-fle-ars-2026-10-27-more-markets",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-27T20:31:26.070013+00:00",
+      "market_ids": [
+        "5699028"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.71,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 20.42,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:crint-nzl-ind-2026-10-27:5965434",
+      "tag": "calibration",
+      "market_question": "India Tour of New Zealand T20s: New Zealand vs India",
+      "slug": "crint-nzl-ind-2026-10-27",
+      "url": "https://polymarket.com/event/crint-nzl-ind-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-03T06:07:26.070013+00:00",
+      "market_ids": [
+        "5965434"
+      ],
+      "recommended_side": "NO",
+      "side_label": "India",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.71,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 19.91,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:euroleague-besiktas-olympiac-2026-10-28:6043731",
+      "tag": "calibration",
+      "market_question": "Spread: Olympiacos B.C. (-4.5)",
+      "slug": "euroleague-besiktas-olympiac-2026-10-28",
+      "url": "https://polymarket.com/event/euroleague-besiktas-olympiac-2026-10-28",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-28T18:07:26.070013+00:00",
+      "market_ids": [
+        "6043731"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Besiktas",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.71,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 19.41,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-kym-rinderk-2026-10-27:6176461",
+      "tag": "calibration",
+      "market_question": "Swiss Indoors Basel: Jerome Kym vs Arthur Rinderknech",
+      "slug": "atp-kym-rinderk-2026-10-27",
+      "url": "https://polymarket.com/event/atp-kym-rinderk-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-03T08:31:26.070013+00:00",
+      "market_ids": [
+        "6176461"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Arthur Rinderknech",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.71,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 18.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-mccabe-moriya-2026-10-27:6257146",
+      "tag": "calibration",
+      "market_question": "Ningbo: James McCabe vs Hiroki Moriya",
+      "slug": "atp-mccabe-moriya-2026-10-27",
+      "url": "https://polymarket.com/event/atp-mccabe-moriya-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-03T03:43:26.070013+00:00",
+      "market_ids": [
+        "6257146"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Hiroki Moriya",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.71,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 18.45,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-fokus-ntr-2026-10-27:6279996",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: FOKUS vs Nuclear TigeRES (BO3) - NODWIN Clutch Series Playoffs",
+      "slug": "cs2-fokus-ntr-2026-10-27",
+      "url": "https://polymarket.com/event/cs2-fokus-ntr-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-27T18:07:26.070013+00:00",
+      "market_ids": [
+        "6279996"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Nuclear TigeRES",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 7.04,
+      "predicted_win_prob": 0.5929,
+      "stake_usd": 17.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-ratti-pi-2026-10-26:6231303",
+      "tag": "calibration",
+      "market_question": "Guayaquil: Lucio Ratti vs Mateo Del Pino",
+      "slug": "atp-ratti-pi-2026-10-26",
+      "url": "https://polymarket.com/event/atp-ratti-pi-2026-10-26",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-11-02T15:43:26.070013+00:00",
+      "market_ids": [
+        "6231303"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Mateo Del Pino",
+      "entry_cost": 0.0586,
+      "edge_pct_at_placement": 9.91,
+      "predicted_win_prob": 0.1577,
+      "stake_usd": 17.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:por-cas-spo-2026-10-30:5828025",
+      "tag": "calibration",
+      "market_question": "Will Sporting CP win on 2026-10-30?",
+      "slug": "por-cas-spo-2026-10-30",
+      "url": "https://polymarket.com/event/por-cas-spo-2026-10-30",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-30T20:31:26.070013+00:00",
+      "market_ids": [
+        "5828025"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 17.1,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-b8-k271-2026-10-27:6024944",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: B8 vs K27 (BO3) - Tesla Cup Group A",
+      "slug": "cs2-b8-k271-2026-10-27",
+      "url": "https://polymarket.com/event/cs2-b8-k271-2026-10-27",
+      "placed_at": "2026-10-27T08:31:26.070013+00:00",
+      "deadline": "2026-10-27T13:19:26.070013+00:00",
+      "market_ids": [
+        "6024944"
+      ],
+      "recommended_side": "NO",
+      "side_label": "K27",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 16.67,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    }
+  ]
 }
