@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1059.69,
+  "bankroll": 1062.74,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-10-28",
-      "bankroll": 1059.69
+      "bankroll": 1062.74
     }
   ],
   "bets": [
@@ -209,9 +209,9 @@
       "edge_pct_at_placement": 7.71,
       "predicted_win_prob": 0.5696,
       "stake_usd": 20.42,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-10-28T09:07:41.237523+00:00",
+      "pnl_usd": 21.04,
       "fact_check": null
     },
     {
@@ -319,9 +319,9 @@
       "edge_pct_at_placement": 7.04,
       "predicted_win_prob": 0.5929,
       "stake_usd": 17.99,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-10-28T09:07:41.237523+00:00",
+      "pnl_usd": -17.99,
       "fact_check": null
     },
     {
@@ -388,6 +388,94 @@
       "status": "won",
       "resolved_at": "2026-10-28T05:53:40.480957+00:00",
       "pnl_usd": 59.69,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ari-dal-2026-11-01:5656365",
+      "tag": "calibration",
+      "market_question": "Spread: Cowboys (-6.5)",
+      "slug": "nfl-ari-dal-2026-11-01",
+      "url": "https://polymarket.com/event/nfl-ari-dal-2026-11-01",
+      "placed_at": "2026-10-28T09:07:41.237523+00:00",
+      "deadline": "2026-11-01T18:43:41.237523+00:00",
+      "market_ids": [
+        "5656365"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Cardinals",
+      "entry_cost": 0.4675,
+      "edge_pct_at_placement": 10.21,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 19.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-orl-tor-2026-10-28:6326715",
+      "tag": "calibration",
+      "market_question": "Spread: Raptors (-4.5)",
+      "slug": "nba-orl-tor-2026-10-28",
+      "url": "https://polymarket.com/event/nba-orl-tor-2026-10-28",
+      "placed_at": "2026-10-28T09:07:41.237523+00:00",
+      "deadline": "2026-10-28T23:31:41.237523+00:00",
+      "market_ids": [
+        "6326715"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Magic",
+      "entry_cost": 0.47,
+      "edge_pct_at_placement": 9.96,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 18.72,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-den-nop-2026-10-28:6322491",
+      "tag": "calibration",
+      "market_question": "Nuggets vs. Pelicans: O/U 239.5",
+      "slug": "nba-den-nop-2026-10-28",
+      "url": "https://polymarket.com/event/nba-den-nop-2026-10-28",
+      "placed_at": "2026-10-28T09:07:41.237523+00:00",
+      "deadline": "2026-10-28T23:31:41.237523+00:00",
+      "market_ids": [
+        "6322491"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.47,
+      "edge_pct_at_placement": 9.96,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 18.25,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:svk1-kos-dac-2026-08-09:3153992",
+      "tag": "calibration",
+      "market_question": "Will FC DAC 1904 Dunajská Streda win on 2026-08-09?",
+      "slug": "svk1-kos-dac-2026-08-09",
+      "url": "https://polymarket.com/event/svk1-kos-dac-2026-08-09",
+      "placed_at": "2026-10-28T09:07:41.237523+00:00",
+      "deadline": "2026-10-28T16:19:41.237523+00:00",
+      "market_ids": [
+        "3153992"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.72,
+      "predicted_win_prob": 0.5696,
+      "stake_usd": 17.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
       "fact_check": null
     }
   ]
