@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1047.98,
+  "bankroll": 1028.57,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -16,7 +16,7 @@
     },
     {
       "date": "2026-10-29",
-      "bankroll": 1047.98
+      "bankroll": 1028.57
     }
   ],
   "bets": [
@@ -257,9 +257,9 @@
       "edge_pct_at_placement": 7.71,
       "predicted_win_prob": 0.5696,
       "stake_usd": 19.41,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-10-29T09:05:59.275159+00:00",
+      "pnl_usd": -19.41,
       "fact_check": null
     },
     {
@@ -480,6 +480,72 @@
       "status": "lost",
       "resolved_at": "2026-10-29T05:57:52.978738+00:00",
       "pnl_usd": -17.8,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cricwbbl-mes-hoh-2026-10-29:6324190",
+      "tag": "calibration",
+      "market_question": "Big Bash League, Women: Melbourne Stars vs Hobart Hurricanes",
+      "slug": "cricwbbl-mes-hoh-2026-10-29",
+      "url": "https://polymarket.com/event/cricwbbl-mes-hoh-2026-10-29",
+      "placed_at": "2026-10-29T09:05:59.275159+00:00",
+      "deadline": "2026-11-05T09:05:59.275159+00:00",
+      "market_ids": [
+        "6324190"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Hobart Hurricanes",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 19.7,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:wta-jones-souza-2026-10-29:6326296",
+      "tag": "calibration",
+      "market_question": "Curitiba: Francesca Jones vs Marjorie Souza",
+      "slug": "wta-jones-souza-2026-10-29",
+      "url": "https://polymarket.com/event/wta-jones-souza-2026-10-29",
+      "placed_at": "2026-10-29T09:05:59.275159+00:00",
+      "deadline": "2026-11-05T13:53:59.275159+00:00",
+      "market_ids": [
+        "6326296"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Marjorie Souza",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 8.44,
+      "predicted_win_prob": 0.1577,
+      "stake_usd": 19.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-mia-ncar-2026-10-31:5947054",
+      "tag": "calibration",
+      "market_question": "Miami (FL) vs. North Carolina",
+      "slug": "cfb-mia-ncar-2026-10-31",
+      "url": "https://polymarket.com/event/cfb-mia-ncar-2026-10-31",
+      "placed_at": "2026-10-29T09:05:59.275159+00:00",
+      "deadline": "2026-10-31T23:29:59.275159+00:00",
+      "market_ids": [
+        "5947054"
+      ],
+      "recommended_side": "NO",
+      "side_label": "North Carolina",
+      "entry_cost": 0.164,
+      "edge_pct_at_placement": 7.45,
+      "predicted_win_prob": 0.2385,
+      "stake_usd": 18.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
       "fact_check": null
     }
   ]
