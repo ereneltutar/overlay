@@ -69,6 +69,16 @@ eaten by real-money spreads anyway.
   patch-and-reset; any new idea starts as a new experiment with its own
   pre-written test.
 
+## Idea backlog (for the next experiment)
+
+Major strategy ideas raised during the freeze are recorded here, not implemented.
+Changing bet selection or sizing mid-test voids it, unless the user explicitly
+decides to end the test early.
+
+| Date | Idea | Evidence | Status |
+|---|---|---|---|
+| — | — | — | — |
+
 ## Change log during the freeze
 
 | Date | Commit | Change | Why it's allowed |
