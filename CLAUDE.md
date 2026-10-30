@@ -43,6 +43,10 @@ Sizing is half-Kelly capped per tag by `STAKE_CAP_FRAC`. CAL/MIS win probability
 
 `place_new_bets` returns a stats **dict**, not a tuple. A new counter must be added in three places: `place_new_bets`'s initial dict, the default dict in `main()`, and the stderr summary in `main()`.
 
+## Experiment freeze (since 2026-10-30)
+
+**The rules are frozen until the pass/fail test in `EXPERIMENT.md` reaches a verdict.** This overrides the bankroll-reset convention below. Don't propose or make changes to signal generation, gates, thresholds, sizing, or ranking, and don't reset the bankroll or remove or edit bets in `docs/bet_log.json`. Pipeline-keeping fixes and fixes for bets that are invalid by construction are allowed, but must be justifiable without looking at bet outcomes and must be logged in `EXPERIMENT.md`'s change log. `python scripts/experiment_status.py` prints the current verdict. When the user asks for a status report, include it, and treat RUNNING numbers as informational only.
+
 ## Conventions and gotchas
 
 - **The cron bots commit to `main` several times a day** ("Daily scan", "Resolve bets", "Weekly calibration"). Always `git fetch` and compare with `origin/main` before analyzing `docs/bet_log.json` or other data, and before pushing.
