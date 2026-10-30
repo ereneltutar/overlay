@@ -665,3 +665,40 @@ def test_find_mispricing_signal_default_no_live_prices_is_unaffected():
     event = {"endDate": (NOW + datetime.timedelta(days=9)).isoformat(), "slug": "s"}
     sig = fa.find_mispricing_signal(market, event, mis_bins(resolved_yes_rate=0.5), NOW)
     assert sig is not None
+
+
+# --- past-game-date veto (STALE_DATE_RE) ---------------------------------
+
+def test_embedded_game_date_reads_question_and_slugs():
+    assert fa.embedded_game_date({"question": "Will X win on 2026-08-09?"}, {}) == datetime.date(2026, 8, 9)
+    assert fa.embedded_game_date({}, {"slug": "atp-kym-rinderk-2026-10-27"}) == datetime.date(2026, 10, 27)
+    assert fa.embedded_game_date({"question": "Titans vs. Bengals"}, {"slug": "nfl-ten-cin"}) is None
+
+
+def test_embedded_game_date_uses_latest_date_and_skips_invalid():
+    market = {"question": "Range 2026-10-26 to 2026-11-01", "slug": "bad-2026-13-45"}
+    assert fa.embedded_game_date(market, {}) == datetime.date(2026, 11, 1)
+
+
+def test_is_past_game_date_same_day_passes_previous_day_vetoed():
+    assert not fa.is_past_game_date({}, {"slug": "evt-2026-01-01"}, NOW)
+    assert fa.is_past_game_date({}, {"slug": "evt-2025-12-31"}, NOW)
+
+
+def test_find_calibration_signal_vetoes_past_game_date():
+    # Regression: Oct 28 2026 CAL bet on "Will FC DAC 1904 Dunajska Streda win
+    # on 2026-08-09?", a match played weeks earlier whose endDate Gamma had
+    # extended. Every other filter passed it.
+    market = {"lastTradePrice": 0.45, "liquidityNum": 1000, "volume24hr": 10000, "id": "mk1",
+              "question": "Will FC DAC 1904 Dunajska Streda win on 2025-08-09?"}
+    event = {"endDate": "2026-01-11T00:00:00Z", "slug": "svk1-kos-dac-2025-08-09"}
+    assert fa.find_calibration_signal(market, event, sig_bins(), NOW) is None
+    event["slug"] = "svk1-kos-dac-2026-01-01"
+    market["question"] = "Will FC DAC 1904 Dunajska Streda win on 2026-01-01?"
+    assert fa.find_calibration_signal(market, event, sig_bins(), NOW) is not None
+
+
+def test_find_mispricing_signal_vetoes_past_game_date():
+    market = {"lastTradePrice": 0.3, "volume24hr": 10000, "question": "Q?"}
+    event = {"endDate": (NOW + datetime.timedelta(days=5)).isoformat(), "slug": "evt-2025-12-30"}
+    assert fa.find_mispricing_signal(market, event, mis_bins(resolved_yes_rate=0.5), NOW) is None

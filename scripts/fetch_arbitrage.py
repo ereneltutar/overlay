@@ -78,6 +78,7 @@ Output: docs/results.json (the static dashboard reads this file)
 import datetime
 import json
 import math
+import re
 import sys
 import time
 from pathlib import Path
@@ -144,6 +145,19 @@ MIN_CALIBRATION_LIQUIDITY_USD = 500  # drop markets below this liquidity
 # already has a clean track record at this threshold.
 MIN_CALIBRATION_VOLUME_24H_USD = 5000
 MAX_CALIBRATION_SIGNALS = 20      # max signals shown on the dashboard
+
+# Gamma keeps some markets open and trading long after the game they're about,
+# because the event's endDate got pushed out while settlement waits on UMA. Real
+# incident (2026-10-28): CAL bet NO on "Will FC DAC 1904 Dunajska Streda win on
+# 2026-08-09?" (slug svk1-kos-dac-2026-08-09) at 0.47 -- a match played eleven
+# weeks earlier whose endDate had been extended to Oct 28. The result was
+# already public, the bet lost, and nothing in the liquidity/volume/bucket
+# filters can see it: the price still looked like a live coin flip. Polymarket
+# stamps the game date into sports slugs and many questions as YYYY-MM-DD, so
+# any market whose latest embedded date is before today (UTC) is treated as
+# already decided. The latest date is used, not the first, so a range like
+# "2026-10-26 to 2026-11-01" isn't vetoed on its start date.
+STALE_DATE_RE = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
 
 # For forward-looking calibration LOGGING (the archive calibration_scan.py reads):
 # WARNING: CALIBRATION_LOG_LEAD_DAYS represents the same concept as LEAD_DAYS in
@@ -278,6 +292,28 @@ def parse_iso(date_str):
     except ValueError:
         return None
 
+
+
+def embedded_game_date(market: dict, event: dict):
+    """Latest YYYY-MM-DD date found in the market's question, the market's
+    slug or the event's slug, or None when none of them carries one. See
+    STALE_DATE_RE for why this exists."""
+    text = " ".join(str(x) for x in (market.get("question"), market.get("slug"),
+                                     event.get("slug")) if x)
+    dates = []
+    for y, m, d in STALE_DATE_RE.findall(text):
+        try:
+            dates.append(datetime.date(int(y), int(m), int(d)))
+        except ValueError:
+            continue
+    return max(dates) if dates else None
+
+
+def is_past_game_date(market: dict, event: dict, now: datetime.datetime) -> bool:
+    """True when the market is about a date that's already over (strictly
+    before today in UTC). Same-day games pass: they may not have started."""
+    game_date = embedded_game_date(market, event)
+    return game_date is not None and game_date < now.astimezone(datetime.timezone.utc).date()
 
 def leg_token_id(market: dict):
     """Extracts the CLOB token ID for the outcome this market's bestAsk
@@ -553,6 +589,9 @@ def find_calibration_signal(market: dict, event: dict, bins: list, now: datetime
     if price <= 0 or price >= 1:
         return None
 
+    if is_past_game_date(market, event, now):
+        return None
+
     liquidity = float(market.get("liquidityNum") or 0)
     if liquidity < MIN_CALIBRATION_LIQUIDITY_USD:
         return None
@@ -652,6 +691,9 @@ def find_mispricing_signal(market: dict, event: dict, bins: list, now: datetime.
         return None
     if implied_prob <= 0 or implied_prob >= 1:
         return None
+
+    if is_past_game_date(market, event, now):
+        return None  # same stale-market veto as find_calibration_signal (see STALE_DATE_RE)
 
     try:
         volume_24h = float(market.get("volume24hr") or 0)
