@@ -551,6 +551,28 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:crint-nzl-ind-2026-10-30:6076594",
+      "tag": "calibration",
+      "market_question": "India Tour of New Zealand T20s: New Zealand vs India",
+      "slug": "crint-nzl-ind-2026-10-30",
+      "url": "https://polymarket.com/event/crint-nzl-ind-2026-10-30",
+      "placed_at": "2026-10-30T09:18:03.540586+00:00",
+      "deadline": "2026-11-06T06:54:03.540586+00:00",
+      "market_ids": [
+        "6076594"
+      ],
+      "recommended_side": "NO",
+      "side_label": "India",
+      "entry_cost": 0.1149,
+      "edge_pct_at_placement": 7.7,
+      "predicted_win_prob": 0.1919,
+      "stake_usd": 19.23,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
