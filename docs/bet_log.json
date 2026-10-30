@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1030.43,
+  "bankroll": 1048.23,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -16,11 +16,11 @@
     },
     {
       "date": "2026-10-29",
-      "bankroll": 1030.43
+      "bankroll": 1048.23
     },
     {
       "date": "2026-10-30",
-      "bankroll": 1030.43
+      "bankroll": 1048.23
     }
   ],
   "bets": [
@@ -418,28 +418,6 @@
       "status": "won",
       "resolved_at": "2026-10-29T15:16:39.519652+00:00",
       "pnl_usd": 20.58,
-      "fact_check": null
-    },
-    {
-      "bet_id": "calibration:svk1-kos-dac-2026-08-09:3153992",
-      "tag": "calibration",
-      "market_question": "Will FC DAC 1904 Dunajská Streda win on 2026-08-09?",
-      "slug": "svk1-kos-dac-2026-08-09",
-      "url": "https://polymarket.com/event/svk1-kos-dac-2026-08-09",
-      "placed_at": "2026-10-28T09:07:41.237523+00:00",
-      "deadline": "2026-10-28T16:19:41.237523+00:00",
-      "market_ids": [
-        "3153992"
-      ],
-      "recommended_side": "NO",
-      "side_label": "No",
-      "entry_cost": 0.4724,
-      "edge_pct_at_placement": 9.72,
-      "predicted_win_prob": 0.5696,
-      "stake_usd": 17.8,
-      "status": "lost",
-      "resolved_at": "2026-10-29T05:57:52.978738+00:00",
-      "pnl_usd": -17.8,
       "fact_check": null
     },
     {
