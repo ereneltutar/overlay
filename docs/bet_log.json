@@ -537,6 +537,160 @@
       "resolved_at": "2026-11-01T06:21:03.580364+00:00",
       "pnl_usd": -20.16,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:sea-laz-cag-2026-11-01-more-markets:5914866",
+      "tag": "calibration",
+      "market_question": "SS Lazio vs. Cagliari Calcio: O/U 1.5",
+      "slug": "sea-laz-cag-2026-11-01-more-markets",
+      "url": "https://polymarket.com/event/sea-laz-cag-2026-11-01-more-markets",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-01T14:42:57.729153+00:00",
+      "market_ids": [
+        "5914866"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 19.66,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-samrej-matsuda-2026-11-01:6480487",
+      "tag": "calibration",
+      "market_question": "Taipei: Kasidit Samrej vs Koki Matsuda",
+      "slug": "atp-samrej-matsuda-2026-11-01",
+      "url": "https://polymarket.com/event/atp-samrej-matsuda-2026-11-01",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-08T07:30:57.729153+00:00",
+      "market_ids": [
+        "6480487"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Koki Matsuda",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 19.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:lol-gen-ly-2026-11-05:6501463",
+      "tag": "calibration",
+      "market_question": "LoL: Gen.G vs LYON (BO5) - Worlds Playoffs",
+      "slug": "lol-gen-ly-2026-11-05",
+      "url": "https://polymarket.com/event/lol-gen-ly-2026-11-05",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-05T05:06:57.729153+00:00",
+      "market_ids": [
+        "6501463"
+      ],
+      "recommended_side": "NO",
+      "side_label": "LYON",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 8.44,
+      "predicted_win_prob": 0.1577,
+      "stake_usd": 18.68,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:sea-com-ven-2026-11-01-more-markets:5915007",
+      "tag": "calibration",
+      "market_question": "Como 1907 vs. Venezia FC: O/U 1.5",
+      "slug": "sea-com-ven-2026-11-01-more-markets",
+      "url": "https://polymarket.com/event/sea-com-ven-2026-11-01-more-markets",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-01T12:18:57.729153+00:00",
+      "market_ids": [
+        "5915007"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.1149,
+      "edge_pct_at_placement": 7.7,
+      "predicted_win_prob": 0.1919,
+      "stake_usd": 18.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:por-ben-alv-2026-11-02:5980848",
+      "tag": "calibration",
+      "market_question": "Will Sport Lisboa e Benfica win on 2026-11-02?",
+      "slug": "por-ben-alv-2026-11-02",
+      "url": "https://polymarket.com/event/por-ben-alv-2026-11-02",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-02T19:30:57.729153+00:00",
+      "market_ids": [
+        "5980848"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.1667,
+      "edge_pct_at_placement": 7.18,
+      "predicted_win_prob": 0.2385,
+      "stake_usd": 17.76,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-ep-maybe-2026-11-01:6345262",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: eternal premium vs maybe - Map 1 Winner",
+      "slug": "cs2-ep-maybe-2026-11-01",
+      "url": "https://polymarket.com/event/cs2-ep-maybe-2026-11-01",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-01T14:42:57.729153+00:00",
+      "market_ids": [
+        "6345262"
+      ],
+      "recommended_side": "NO",
+      "side_label": "maybe",
+      "entry_cost": 0.1667,
+      "edge_pct_at_placement": 7.18,
+      "predicted_win_prob": 0.2385,
+      "stake_usd": 17.32,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:crint-nam-irl-2026-11-01:6182048",
+      "tag": "calibration",
+      "market_question": "Ireland Tour of Namibia ODIs: Namibia vs Ireland",
+      "slug": "crint-nam-irl-2026-11-01",
+      "url": "https://polymarket.com/event/crint-nam-irl-2026-11-01",
+      "placed_at": "2026-11-01T09:54:57.729153+00:00",
+      "deadline": "2026-11-08T07:30:57.729153+00:00",
+      "market_ids": [
+        "6182048"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Ireland",
+      "entry_cost": 0.0837,
+      "edge_pct_at_placement": 7.4,
+      "predicted_win_prob": 0.1577,
+      "stake_usd": 16.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
