@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1205.2,
+  "bankroll": 1227.07,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -32,7 +32,7 @@
     },
     {
       "date": "2026-11-02",
-      "bankroll": 1205.2
+      "bankroll": 1227.07
     }
   ],
   "bets": [
@@ -383,9 +383,9 @@
       "edge_pct_at_placement": 10.21,
       "predicted_win_prob": 0.5696,
       "stake_usd": 19.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-02T10:15:21.264185+00:00",
+      "pnl_usd": 21.87,
       "fact_check": null
     },
     {
@@ -691,6 +691,72 @@
       "edge_pct_at_placement": 7.4,
       "predicted_win_prob": 0.1577,
       "stake_usd": 16.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-chi-sea-2026-11-03:5658364",
+      "tag": "calibration",
+      "market_question": "Spread: Seahawks (-10.5)",
+      "slug": "nfl-chi-sea-2026-11-03",
+      "url": "https://polymarket.com/event/nfl-chi-sea-2026-11-03",
+      "placed_at": "2026-11-02T10:15:21.264185+00:00",
+      "deadline": "2026-11-03T00:39:21.264185+00:00",
+      "market_ids": [
+        "5658364"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Bears",
+      "entry_cost": 0.7655,
+      "edge_pct_at_placement": 7.25,
+      "predicted_win_prob": 0.838,
+      "stake_usd": 24.82,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-fcb-ast-2026-11-03:6018865",
+      "tag": "calibration",
+      "market_question": "Will FC Barcelona win on 2026-11-03?",
+      "slug": "ucl-fcb-ast-2026-11-03",
+      "url": "https://polymarket.com/event/ucl-fcb-ast-2026-11-03",
+      "placed_at": "2026-11-02T10:15:21.264185+00:00",
+      "deadline": "2026-11-03T19:51:21.264185+00:00",
+      "market_ids": [
+        "6018865"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 24.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-aek1-rma-2026-11-04:6018965",
+      "tag": "calibration",
+      "market_question": "Will Real Madrid CF win on 2026-11-04?",
+      "slug": "ucl-aek1-rma-2026-11-04",
+      "url": "https://polymarket.com/event/ucl-aek1-rma-2026-11-04",
+      "placed_at": "2026-11-02T10:15:21.264185+00:00",
+      "deadline": "2026-11-04T17:27:21.264185+00:00",
+      "market_ids": [
+        "6018965"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.21,
+      "predicted_win_prob": 0.2904,
+      "stake_usd": 23.59,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
