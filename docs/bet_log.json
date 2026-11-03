@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1227.07,
+  "bankroll": 1209.31,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -36,7 +36,7 @@
     },
     {
       "date": "2026-11-03",
-      "bankroll": 1227.07
+      "bankroll": 1209.31
     }
   ],
   "bets": [
@@ -651,9 +651,9 @@
       "edge_pct_at_placement": 7.18,
       "predicted_win_prob": 0.2385,
       "stake_usd": 17.76,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-03T10:18:35.394918+00:00",
+      "pnl_usd": -17.76,
       "fact_check": null
     },
     {
@@ -761,6 +761,138 @@
       "edge_pct_at_placement": 7.21,
       "predicted_win_prob": 0.2904,
       "stake_usd": 23.59,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:lol-kc-t1-2026-11-04:6501428",
+      "tag": "calibration",
+      "market_question": "LoL: Karmine Corp vs T1 (BO5) - Worlds Playoffs",
+      "slug": "lol-kc-t1-2026-11-04",
+      "url": "https://polymarket.com/event/lol-kc-t1-2026-11-04",
+      "placed_at": "2026-11-03T10:18:35.394918+00:00",
+      "deadline": "2026-11-07T03:06:35.394918+00:00",
+      "market_ids": [
+        "6501428"
+      ],
+      "recommended_side": "NO",
+      "side_label": "T1",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 6.81,
+      "predicted_win_prob": 0.8858,
+      "stake_usd": 23.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-mnu-rom-2026-11-03:6018817",
+      "tag": "calibration",
+      "market_question": "Will Manchester United FC vs. AS Roma end in a draw?",
+      "slug": "ucl-mnu-rom-2026-11-03",
+      "url": "https://polymarket.com/event/ucl-mnu-rom-2026-11-03",
+      "placed_at": "2026-11-03T10:18:35.394918+00:00",
+      "deadline": "2026-11-03T19:54:35.394918+00:00",
+      "market_ids": [
+        "6018817"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.91,
+      "predicted_win_prob": 0.8382,
+      "stake_usd": 22.43,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:por-ama-ben-2026-11-08:6258281",
+      "tag": "calibration",
+      "market_question": "Will Sport Lisboa e Benfica win on 2026-11-08?",
+      "slug": "por-ama-ben-2026-11-08",
+      "url": "https://polymarket.com/event/por-ama-ben-2026-11-08",
+      "placed_at": "2026-11-03T10:18:35.394918+00:00",
+      "deadline": "2026-11-08T19:54:35.394918+00:00",
+      "market_ids": [
+        "6258281"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.05,
+      "predicted_win_prob": 0.2888,
+      "stake_usd": 21.87,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:spl-kho-kha-2026-11-05-more-markets:6499258",
+      "tag": "calibration",
+      "market_question": "Al Kholood Saudi Club vs. Al Khaleej Saudi Club: O/U 0.5",
+      "slug": "spl-kho-kha-2026-11-05-more-markets",
+      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05-more-markets",
+      "placed_at": "2026-11-03T10:18:35.394918+00:00",
+      "deadline": "2026-11-05T12:42:35.394918+00:00",
+      "market_ids": [
+        "6499258"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.05,
+      "predicted_win_prob": 0.2888,
+      "stake_usd": 21.32,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:spl-kho-kha-2026-11-05:6490277",
+      "tag": "calibration",
+      "market_question": "Will Al Kholood Saudi Club vs. Al Khaleej Saudi Club end in a draw?",
+      "slug": "spl-kho-kha-2026-11-05",
+      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05",
+      "placed_at": "2026-11-03T10:18:35.394918+00:00",
+      "deadline": "2026-11-05T12:42:35.394918+00:00",
+      "market_ids": [
+        "6490277"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.1149,
+      "edge_pct_at_placement": 7.57,
+      "predicted_win_prob": 0.1906,
+      "stake_usd": 20.79,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bkcba-sha3-jil-2026-11-03:6335573",
+      "tag": "calibration",
+      "market_question": "Shanghai Sharks vs. Jilin Northeast Tigers",
+      "slug": "bkcba-sha3-jil-2026-11-03",
+      "url": "https://polymarket.com/event/bkcba-sha3-jil-2026-11-03",
+      "placed_at": "2026-11-03T10:18:35.394918+00:00",
+      "deadline": "2026-11-10T12:42:35.394918+00:00",
+      "market_ids": [
+        "6335573"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Jilin Northeast Tigers",
+      "entry_cost": 0.0764,
+      "edge_pct_at_placement": 7.68,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 20.27,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
