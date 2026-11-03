@@ -45,6 +45,8 @@ Sizing is half-Kelly capped per tag by `STAKE_CAP_FRAC`. CAL/MIS win probability
 
 ## Experiment freeze (since 2026-10-30)
 
+The rules were frozen on 2026-10-30. The test counts only bets placed from **2026-10-31 00:00 UTC** onward (`FREEZE_AT` in `experiment_status.py`), because the Oct 31 daily scan was the first one to run with the past-game-date gate. That's why the script prints "Frozen since 2026-10-31". Both dates are correct.
+
 **The rules are frozen until the pass/fail test in `EXPERIMENT.md` reaches a verdict.** This overrides the bankroll-reset convention below. Don't propose or make changes to signal generation, gates, thresholds, sizing, or ranking, and don't reset the bankroll or remove or edit bets in `docs/bet_log.json`. Pipeline-keeping fixes and fixes for bets that are invalid by construction are allowed, but must be justifiable without looking at bet outcomes and must be logged in `EXPERIMENT.md`'s change log. `python scripts/experiment_status.py` prints the current verdict. When the user asks for a status report, include it, and treat RUNNING numbers as informational only.
 
 The user still wants to hear about a **major** strategy flaw or a strong new idea, but only if it's well-founded, not a reaction to a few recent losses. Report it in a separate "Ideas (parked)" section of the status report, with the evidence and what it would cost the experiment. Never implement one during the freeze without the user's explicit go-ahead, since any change to bet selection or sizing voids the test. Accepted ideas go in `EXPERIMENT.md`'s idea backlog for the next experiment.
