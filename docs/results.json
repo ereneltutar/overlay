@@ -1,78 +1,38 @@
 {
-  "generated_at": "2026-11-03T10:15:55.963946+00:00",
+  "generated_at": "2026-11-04T10:06:56.956116+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 21157,
+  "scanned_events": 20776,
   "opportunities": [],
   "calibration_signals": [
     {
-      "market_id": "5406742",
-      "market_question": "Avalanche vs. Blue Jackets",
-      "slug": "nhl-col-cbj-2026-11-03",
-      "url": "https://polymarket.com/event/nhl-col-cbj-2026-11-03",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "side_label": "Blue Jackets",
-      "current_price": 0.54,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1637,
-      "bucket_historical_rate": 0.4319,
-      "edge_pct": 9.57,
-      "liquidity": 68972.32
-    },
-    {
-      "market_id": "5987689",
-      "market_question": "Galatasaray SK vs. VfB Stuttgart: O/U 3.5",
-      "slug": "ucl-gal-stu-2026-11-03-more-markets",
-      "url": "https://polymarket.com/event/ucl-gal-stu-2026-11-03-more-markets",
-      "days_left": 0.3,
-      "recommended_side": "NO",
-      "side_label": "Under",
-      "current_price": 0.54,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1637,
-      "bucket_historical_rate": 0.4319,
-      "edge_pct": 9.57,
-      "liquidity": 160982.89
-    },
-    {
-      "market_id": "6490282",
-      "market_question": "Exact Score: Al Kholood Saudi Club 0 - 0 Al Khaleej Saudi Club?",
-      "slug": "spl-kho-kha-2026-11-05-exact-score",
-      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05-exact-score",
-      "days_left": 2.1,
-      "recommended_side": "NO",
-      "side_label": "No",
-      "current_price": 0.54,
-      "implied_cost": 0.4724,
-      "fee": 0.0124,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1637,
-      "bucket_historical_rate": 0.4319,
-      "edge_pct": 9.57,
-      "liquidity": 6167.25
-    },
-    {
-      "market_id": "6576568",
-      "market_question": "Will Beijing Guoan win on 2026-11-03?",
-      "slug": "acle-por-bjg-2026-11-03",
-      "url": "https://polymarket.com/event/acle-por-bjg-2026-11-03",
+      "market_id": "6665139",
+      "market_question": "Map Handicap: BB (-1.5) vs Liquid (+1.5)",
+      "slug": "cs2-tl1-bb3-2026-11-04",
+      "url": "https://polymarket.com/event/cs2-tl1-bb3-2026-11-04",
       "days_left": 0.1,
       "recommended_side": "NO",
-      "side_label": "No",
+      "side_label": "Liquid",
+      "current_price": 0.949,
+      "implied_cost": 0.0534,
+      "fee": 0.0024,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 248,
+      "bucket_historical_rate": 0.8468,
+      "edge_pct": 9.98,
+      "liquidity": 47784.15
+    },
+    {
+      "market_id": "6501467",
+      "market_question": "Game Handicap: GEN (-2.5) vs LYON (+2.5)",
+      "slug": "lol-gen-ly-2026-11-05",
+      "url": "https://polymarket.com/event/lol-gen-ly-2026-11-05",
+      "days_left": 0.7,
+      "recommended_side": "NO",
+      "side_label": "LYON",
       "current_price": 0.54,
       "implied_cost": 0.4724,
       "fee": 0.0124,
@@ -83,16 +43,156 @@
       "bucket_sample_size": 1637,
       "bucket_historical_rate": 0.4319,
       "edge_pct": 9.57,
-      "liquidity": 59370.64
+      "liquidity": 473464.0
     },
     {
-      "market_id": "5975787",
-      "market_question": "Spread: 49ers (-9.5)",
-      "slug": "nfl-lv-sf-2026-11-08",
-      "url": "https://polymarket.com/event/nfl-lv-sf-2026-11-08",
-      "days_left": 5.5,
+      "market_id": "5975094",
+      "market_question": "Jets vs. Chiefs: O/U 46.5",
+      "slug": "nfl-nyj-kc-2026-11-08",
+      "url": "https://polymarket.com/event/nfl-nyj-kc-2026-11-08",
+      "days_left": 4.3,
       "recommended_side": "NO",
-      "side_label": "Raiders",
+      "side_label": "Under",
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 9.06,
+      "liquidity": 43775.08
+    },
+    {
+      "market_id": "6270244",
+      "market_question": "Spread: Utah (-4.5)",
+      "slug": "cfb-byu-utah-2026-11-07",
+      "url": "https://polymarket.com/event/cfb-byu-utah-2026-11-07",
+      "days_left": 3.3,
+      "recommended_side": "NO",
+      "side_label": "BYU",
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 9.06,
+      "liquidity": 22537.84
+    },
+    {
+      "market_id": "6276239",
+      "market_question": "Spread: Notre Dame (-5.5)",
+      "slug": "cfb-mia-nd-2026-11-07",
+      "url": "https://polymarket.com/event/cfb-mia-nd-2026-11-07",
+      "days_left": 3.6,
+      "recommended_side": "NO",
+      "side_label": "Miami (FL)",
+      "current_price": 0.53,
+      "implied_cost": 0.4775,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 9.06,
+      "liquidity": 22999.55
+    },
+    {
+      "market_id": "6381287",
+      "market_question": "Brisbane Bullets vs. Perth Wildcats",
+      "slug": "bknbl-bri-per-2026-11-04",
+      "url": "https://polymarket.com/event/bknbl-bri-per-2026-11-04",
+      "days_left": 7.0,
+      "recommended_side": "NO",
+      "side_label": "Perth Wildcats",
+      "current_price": 0.94,
+      "implied_cost": 0.0628,
+      "fee": 0.0028,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 248,
+      "bucket_historical_rate": 0.8468,
+      "edge_pct": 9.04,
+      "liquidity": 31580.67
+    },
+    {
+      "market_id": "6430872",
+      "market_question": "Exact Score: CD Universidad de Concepción 0 - 0 O'Higgins FC?",
+      "slug": "chi1-cu1-ohf-2026-11-05-exact-score",
+      "url": "https://polymarket.com/event/chi1-cu1-ohf-2026-11-05-exact-score",
+      "days_left": 1.5,
+      "recommended_side": "NO",
+      "side_label": "No",
+      "current_price": 0.94,
+      "implied_cost": 0.0628,
+      "fee": 0.0028,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 248,
+      "bucket_historical_rate": 0.8468,
+      "edge_pct": 9.04,
+      "liquidity": 3261.46
+    },
+    {
+      "market_id": "6458218",
+      "market_question": "CD Universidad de Concepción vs. O'Higgins FC: O/U 8.5",
+      "slug": "chi1-cu1-ohf-2026-11-05-more-markets",
+      "url": "https://polymarket.com/event/chi1-cu1-ohf-2026-11-05-more-markets",
+      "days_left": 1.5,
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 8.56,
+      "liquidity": 11757.13
+    },
+    {
+      "market_id": "6668286",
+      "market_question": "Counter-Strike: Natus Vincere vs Team Falcons - Map 1 Winner",
+      "slug": "cs2-navi-fal2-2026-11-04",
+      "url": "https://polymarket.com/event/cs2-navi-fal2-2026-11-04",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "side_label": "Team Falcons",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 8.56,
+      "liquidity": 39906.06
+    },
+    {
+      "market_id": "5972394",
+      "market_question": "Spread: Jaguars (-9.5)",
+      "slug": "nfl-jax-bal-2026-11-06",
+      "url": "https://polymarket.com/event/nfl-jax-bal-2026-11-06",
+      "days_left": 1.6,
+      "recommended_side": "NO",
+      "side_label": "Ravens",
       "current_price": 0.52,
       "implied_cost": 0.4875,
       "fee": 0.0075,
@@ -103,97 +203,37 @@
       "bucket_sample_size": 1637,
       "bucket_historical_rate": 0.4319,
       "edge_pct": 8.06,
-      "liquidity": 29909.83
+      "liquidity": 79351.09
     },
     {
-      "market_id": "6335573",
-      "market_question": "Shanghai Sharks vs. Jilin Northeast Tigers",
-      "slug": "bkcba-sha3-jil-2026-11-03",
-      "url": "https://polymarket.com/event/bkcba-sha3-jil-2026-11-03",
-      "days_left": 7.1,
-      "recommended_side": "NO",
-      "side_label": "Jilin Northeast Tigers",
-      "current_price": 0.927,
-      "implied_cost": 0.0764,
-      "fee": 0.0034,
-      "bucket_range": [
-        0.9,
-        0.95
-      ],
-      "bucket_sample_size": 248,
-      "bucket_historical_rate": 0.8468,
-      "edge_pct": 7.68,
-      "liquidity": 45368.37
-    },
-    {
-      "market_id": "6490331",
-      "market_question": "Will Abha Saudi Club vs. Al Shabab Saudi Club end in a draw?",
-      "slug": "spl-abh-sha-2026-11-05",
-      "url": "https://polymarket.com/event/spl-abh-sha-2026-11-05",
-      "days_left": 2.2,
-      "recommended_side": "NO",
-      "side_label": "No",
-      "current_price": 0.84,
-      "implied_cost": 0.1667,
-      "fee": 0.0067,
-      "bucket_range": [
-        0.8,
-        0.85
-      ],
-      "bucket_sample_size": 334,
-      "bucket_historical_rate": 0.7575,
-      "edge_pct": 7.58,
-      "liquidity": 45193.68
-    },
-    {
-      "market_id": "6490277",
-      "market_question": "Will Al Kholood Saudi Club vs. Al Khaleej Saudi Club end in a draw?",
-      "slug": "spl-kho-kha-2026-11-05",
-      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05",
-      "days_left": 2.1,
-      "recommended_side": "NO",
-      "side_label": "No",
-      "current_price": 0.89,
-      "implied_cost": 0.1149,
-      "fee": 0.0049,
-      "bucket_range": [
-        0.85,
-        0.9
-      ],
-      "bucket_sample_size": 278,
-      "bucket_historical_rate": 0.8094,
-      "edge_pct": 7.57,
-      "liquidity": 25943.15
-    },
-    {
-      "market_id": "6022297",
-      "market_question": "Spread: LASK Linz (-1.5)",
-      "slug": "ucl-lin2-sba-2026-11-03-more-markets",
-      "url": "https://polymarket.com/event/ucl-lin2-sba-2026-11-03-more-markets",
-      "days_left": 0.4,
-      "recommended_side": "NO",
-      "side_label": "ŠK Slovan Bratislava",
-      "current_price": 0.52,
-      "implied_cost": 0.4925,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1637,
-      "bucket_historical_rate": 0.4319,
-      "edge_pct": 7.56,
-      "liquidity": 134784.79
-    },
-    {
-      "market_id": "6578147",
-      "market_question": "Games Total: O/U 2.5",
-      "slug": "cs2-furia-navi-2026-11-03",
-      "url": "https://polymarket.com/event/cs2-furia-navi-2026-11-03",
-      "days_left": 0.2,
+      "market_id": "5974533",
+      "market_question": "Browns vs. Saints: O/U 42.5",
+      "slug": "nfl-cle-no-2026-11-08",
+      "url": "https://polymarket.com/event/nfl-cle-no-2026-11-08",
+      "days_left": 4.3,
       "recommended_side": "NO",
       "side_label": "Under",
       "current_price": 0.52,
+      "implied_cost": 0.4875,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 8.06,
+      "liquidity": 47505.12
+    },
+    {
+      "market_id": "6053559",
+      "market_question": "Will FC Porto win on 2026-11-04?",
+      "slug": "ucl-por-nap-2026-11-04",
+      "url": "https://polymarket.com/event/ucl-por-nap-2026-11-04",
+      "days_left": 0.4,
+      "recommended_side": "NO",
+      "side_label": "No",
+      "current_price": 0.52,
       "implied_cost": 0.4925,
       "fee": 0.0125,
       "bucket_range": [
@@ -203,16 +243,36 @@
       "bucket_sample_size": 1637,
       "bucket_historical_rate": 0.4319,
       "edge_pct": 7.56,
-      "liquidity": 5236.71
+      "liquidity": 375039.36
     },
     {
-      "market_id": "6501392",
-      "market_question": "LoL: Dplus KIA vs Bilibili Gaming - Game 3 Winner",
-      "slug": "lol-dk-blg-2026-11-03",
-      "url": "https://polymarket.com/event/lol-dk-blg-2026-11-03",
-      "days_left": 2.7,
+      "market_id": "6231161",
+      "market_question": "Will FC Internazionale Milano win on 2026-11-08?",
+      "slug": "sea-int-com-2026-11-08",
+      "url": "https://polymarket.com/event/sea-int-com-2026-11-08",
+      "days_left": 4.3,
       "recommended_side": "NO",
-      "side_label": "Bilibili Gaming",
+      "side_label": "No",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1637,
+      "bucket_historical_rate": 0.4319,
+      "edge_pct": 7.56,
+      "liquidity": 22754.23
+    },
+    {
+      "market_id": "6644125",
+      "market_question": "Chennai Open: Oksana Selekhmeteva vs Polina Kudermetova",
+      "slug": "wta-selekhm-kuderme-2026-11-04",
+      "url": "https://polymarket.com/event/wta-selekhm-kuderme-2026-11-04",
+      "days_left": 7.0,
+      "recommended_side": "NO",
+      "side_label": "Polina Kudermetova",
       "current_price": 0.49,
       "implied_cost": 0.5225,
       "fee": 0.0125,
@@ -223,116 +283,56 @@
       "bucket_sample_size": 1577,
       "bucket_historical_rate": 0.4065,
       "edge_pct": 7.1,
-      "liquidity": 14192.82
+      "liquidity": 193316.55
     },
     {
-      "market_id": "6268633",
-      "market_question": "Spread: Miami (OH) (-6.5)",
-      "slug": "cfb-buf-miaoh-2026-11-03",
-      "url": "https://polymarket.com/event/cfb-buf-miaoh-2026-11-03",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "side_label": "Buffalo",
-      "current_price": 0.51,
-      "implied_cost": 0.4975,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1637,
-      "bucket_historical_rate": 0.4319,
-      "edge_pct": 7.06,
-      "liquidity": 42322.99
-    },
-    {
-      "market_id": "6018965",
-      "market_question": "Will Real Madrid CF win on 2026-11-04?",
-      "slug": "ucl-aek1-rma-2026-11-04",
-      "url": "https://polymarket.com/event/ucl-aek1-rma-2026-11-04",
-      "days_left": 1.3,
-      "recommended_side": "NO",
-      "side_label": "No",
-      "current_price": 0.79,
-      "implied_cost": 0.2183,
-      "fee": 0.0083,
-      "bucket_range": [
-        0.75,
-        0.8
-      ],
-      "bucket_sample_size": 516,
-      "bucket_historical_rate": 0.7112,
-      "edge_pct": 7.05,
-      "liquidity": 80279.54
-    },
-    {
-      "market_id": "6258281",
-      "market_question": "Will Sport Lisboa e Benfica win on 2026-11-08?",
-      "slug": "por-ama-ben-2026-11-08",
-      "url": "https://polymarket.com/event/por-ama-ben-2026-11-08",
-      "days_left": 5.4,
-      "recommended_side": "NO",
-      "side_label": "No",
-      "current_price": 0.79,
-      "implied_cost": 0.2183,
-      "fee": 0.0083,
-      "bucket_range": [
-        0.75,
-        0.8
-      ],
-      "bucket_sample_size": 516,
-      "bucket_historical_rate": 0.7112,
-      "edge_pct": 7.05,
-      "liquidity": 9964.29
-    },
-    {
-      "market_id": "6499258",
-      "market_question": "Al Kholood Saudi Club vs. Al Khaleej Saudi Club: O/U 0.5",
-      "slug": "spl-kho-kha-2026-11-05-more-markets",
-      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05-more-markets",
-      "days_left": 2.1,
-      "recommended_side": "NO",
-      "side_label": "Under",
-      "current_price": 0.79,
-      "implied_cost": 0.2183,
-      "fee": 0.0083,
-      "bucket_range": [
-        0.75,
-        0.8
-      ],
-      "bucket_sample_size": 516,
-      "bucket_historical_rate": 0.7112,
-      "edge_pct": 7.05,
-      "liquidity": 1712.08
-    },
-    {
-      "market_id": "6501463",
-      "market_question": "LoL: Gen.G vs LYON (BO5) - Worlds Playoffs",
-      "slug": "lol-gen-ly-2026-11-05",
-      "url": "https://polymarket.com/event/lol-gen-ly-2026-11-05",
-      "days_left": 1.7,
-      "recommended_side": "NO",
-      "side_label": "LYON",
-      "current_price": 0.92,
-      "implied_cost": 0.0837,
-      "fee": 0.0037,
-      "bucket_range": [
-        0.9,
-        0.95
-      ],
-      "bucket_sample_size": 248,
-      "bucket_historical_rate": 0.8468,
-      "edge_pct": 6.95,
-      "liquidity": 115984.52
-    },
-    {
-      "market_id": "6598850",
-      "market_question": "W50 Heraklion: Antonia Stoyanov vs Laura Svatikova",
-      "slug": "itf-stoyan1-svatik1-2026-11-03",
-      "url": "https://polymarket.com/event/itf-stoyan1-svatik1-2026-11-03",
+      "market_id": "6645960",
+      "market_question": "Rolex Paris Masters: Matteo Berrettini vs Ugo Humbert",
+      "slug": "atp-berrett-humbert-2026-11-04",
+      "url": "https://polymarket.com/event/atp-berrett-humbert-2026-11-04",
       "days_left": 7.0,
       "recommended_side": "NO",
-      "side_label": "Laura Svatikova",
+      "side_label": "Ugo Humbert",
+      "current_price": 0.49,
+      "implied_cost": 0.5225,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.45,
+        0.5
+      ],
+      "bucket_sample_size": 1577,
+      "bucket_historical_rate": 0.4065,
+      "edge_pct": 7.1,
+      "liquidity": 118765.05
+    },
+    {
+      "market_id": "6053757",
+      "market_question": "Will Arsenal FC win on 2026-11-04?",
+      "slug": "ucl-slp-ars-2026-11-04",
+      "url": "https://polymarket.com/event/ucl-slp-ars-2026-11-04",
+      "days_left": 0.4,
+      "recommended_side": "NO",
+      "side_label": "No",
+      "current_price": 0.79,
+      "implied_cost": 0.2183,
+      "fee": 0.0083,
+      "bucket_range": [
+        0.75,
+        0.8
+      ],
+      "bucket_sample_size": 516,
+      "bucket_historical_rate": 0.7112,
+      "edge_pct": 7.05,
+      "liquidity": 213701.32
+    },
+    {
+      "market_id": "6021447",
+      "market_question": "AEK vs. Real Madrid CF: O/U 1.5",
+      "slug": "ucl-aek1-rma-2026-11-04-more-markets",
+      "url": "https://polymarket.com/event/ucl-aek1-rma-2026-11-04-more-markets",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "side_label": "Under",
       "current_price": 0.92,
       "implied_cost": 0.0837,
       "fee": 0.0037,
@@ -343,13 +343,53 @@
       "bucket_sample_size": 248,
       "bucket_historical_rate": 0.8468,
       "edge_pct": 6.95,
-      "liquidity": 5874.76
+      "liquidity": 86448.51
     },
     {
-      "market_id": "6018817",
-      "market_question": "Will Manchester United FC vs. AS Roma end in a draw?",
-      "slug": "ucl-mnu-rom-2026-11-03",
-      "url": "https://polymarket.com/event/ucl-mnu-rom-2026-11-03",
+      "market_id": "6490282",
+      "market_question": "Exact Score: Al Kholood Saudi Club 0 - 0 Al Khaleej Saudi Club?",
+      "slug": "spl-kho-kha-2026-11-05-exact-score",
+      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05-exact-score",
+      "days_left": 1.1,
+      "recommended_side": "NO",
+      "side_label": "No",
+      "current_price": 0.92,
+      "implied_cost": 0.0837,
+      "fee": 0.0037,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 248,
+      "bucket_historical_rate": 0.8468,
+      "edge_pct": 6.95,
+      "liquidity": 8488.36
+    },
+    {
+      "market_id": "6490708",
+      "market_question": "Will Al Ittihad Saudi Club vs. NEOM SC end in a draw?",
+      "slug": "spl-ith-neo-2026-11-06",
+      "url": "https://polymarket.com/event/spl-ith-neo-2026-11-06",
+      "days_left": 2.3,
+      "recommended_side": "NO",
+      "side_label": "No",
+      "current_price": 0.92,
+      "implied_cost": 0.0837,
+      "fee": 0.0037,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 248,
+      "bucket_historical_rate": 0.8468,
+      "edge_pct": 6.95,
+      "liquidity": 27882.9
+    },
+    {
+      "market_id": "6053561",
+      "market_question": "Will SSC Napoli win on 2026-11-04?",
+      "slug": "ucl-por-nap-2026-11-04",
+      "url": "https://polymarket.com/event/ucl-por-nap-2026-11-04",
       "days_left": 0.4,
       "recommended_side": "NO",
       "side_label": "No",
@@ -363,47 +403,7 @@
       "bucket_sample_size": 754,
       "bucket_historical_rate": 0.1618,
       "edge_pct": 6.91,
-      "liquidity": 715332.6
-    },
-    {
-      "market_id": "6501428",
-      "market_question": "LoL: Karmine Corp vs T1 (BO5) - Worlds Playoffs",
-      "slug": "lol-kc-t1-2026-11-04",
-      "url": "https://polymarket.com/event/lol-kc-t1-2026-11-04",
-      "days_left": 3.7,
-      "recommended_side": "NO",
-      "side_label": "T1",
-      "current_price": 0.19,
-      "implied_cost": 0.8177,
-      "fee": 0.0077,
-      "bucket_range": [
-        0.15,
-        0.2
-      ],
-      "bucket_sample_size": 683,
-      "bucket_historical_rate": 0.1142,
-      "edge_pct": 6.81,
-      "liquidity": 106518.72
-    },
-    {
-      "market_id": "5406728",
-      "market_question": "Stars vs. Capitals",
-      "slug": "nhl-dal-wsh-2026-11-03",
-      "url": "https://polymarket.com/event/nhl-dal-wsh-2026-11-03",
-      "days_left": 0.6,
-      "recommended_side": "NO",
-      "side_label": "Capitals",
-      "current_price": 0.51,
-      "implied_cost": 0.5025,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1637,
-      "bucket_historical_rate": 0.4319,
-      "edge_pct": 6.56,
-      "liquidity": 68599.31
+      "liquidity": 342837.41
     }
   ],
   "calibration_table_generated_at": "2026-11-02T12:13:11.261455+00:00",

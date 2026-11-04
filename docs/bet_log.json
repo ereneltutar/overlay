@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1222.81,
+  "bankroll": 1205.34,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -40,7 +40,7 @@
     },
     {
       "date": "2026-11-04",
-      "bankroll": 1222.81
+      "bankroll": 1205.34
     }
   ],
   "bets": [
@@ -743,9 +743,9 @@
       "edge_pct_at_placement": 7.21,
       "predicted_win_prob": 0.2904,
       "stake_usd": 24.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-04T10:09:15.695816+00:00",
+      "pnl_usd": -24.2,
       "fact_check": null
     },
     {
@@ -809,9 +809,9 @@
       "edge_pct_at_placement": 6.91,
       "predicted_win_prob": 0.8382,
       "stake_usd": 22.43,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-04T10:09:15.695816+00:00",
+      "pnl_usd": 6.73,
       "fact_check": null
     },
     {
@@ -897,6 +897,182 @@
       "edge_pct_at_placement": 7.68,
       "predicted_win_prob": 0.1532,
       "stake_usd": 20.27,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-por-nap-2026-11-04:6053561",
+      "tag": "calibration",
+      "market_question": "Will SSC Napoli win on 2026-11-04?",
+      "slug": "ucl-por-nap-2026-11-04",
+      "url": "https://polymarket.com/event/ucl-por-nap-2026-11-04",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-04T19:45:15.695816+00:00",
+      "market_ids": [
+        "6053561"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.91,
+      "predicted_win_prob": 0.8382,
+      "stake_usd": 24.04,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-tl1-bb3-2026-11-04:6665139",
+      "tag": "calibration",
+      "market_question": "Map Handicap: BB (-1.5) vs Liquid (+1.5)",
+      "slug": "cs2-tl1-bb3-2026-11-04",
+      "url": "https://polymarket.com/event/cs2-tl1-bb3-2026-11-04",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-04T12:33:15.695816+00:00",
+      "market_ids": [
+        "6665139"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Liquid",
+      "entry_cost": 0.0534,
+      "edge_pct_at_placement": 9.98,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 23.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bknbl-bri-per-2026-11-04:6381287",
+      "tag": "calibration",
+      "market_question": "Brisbane Bullets vs. Perth Wildcats",
+      "slug": "bknbl-bri-per-2026-11-04",
+      "url": "https://polymarket.com/event/bknbl-bri-per-2026-11-04",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-11T10:09:15.695816+00:00",
+      "market_ids": [
+        "6381287"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Perth Wildcats",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 9.04,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 22.85,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:chi1-cu1-ohf-2026-11-05-exact-score:6430872",
+      "tag": "calibration",
+      "market_question": "Exact Score: CD Universidad de Concepción 0 - 0 O'Higgins FC?",
+      "slug": "chi1-cu1-ohf-2026-11-05-exact-score",
+      "url": "https://polymarket.com/event/chi1-cu1-ohf-2026-11-05-exact-score",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-05T22:09:15.695816+00:00",
+      "market_ids": [
+        "6430872"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 9.04,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 22.28,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-slp-ars-2026-11-04:6053757",
+      "tag": "calibration",
+      "market_question": "Will Arsenal FC win on 2026-11-04?",
+      "slug": "ucl-slp-ars-2026-11-04",
+      "url": "https://polymarket.com/event/ucl-slp-ars-2026-11-04",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-04T19:45:15.695816+00:00",
+      "market_ids": [
+        "6053757"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.2183,
+      "edge_pct_at_placement": 7.05,
+      "predicted_win_prob": 0.2888,
+      "stake_usd": 21.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-aek1-rma-2026-11-04-more-markets:6021447",
+      "tag": "calibration",
+      "market_question": "AEK vs. Real Madrid CF: O/U 1.5",
+      "slug": "ucl-aek1-rma-2026-11-04-more-markets",
+      "url": "https://polymarket.com/event/ucl-aek1-rma-2026-11-04-more-markets",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-04T17:21:15.695816+00:00",
+      "market_ids": [
+        "6021447"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.0837,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 21.18,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:spl-kho-kha-2026-11-05-exact-score:6490282",
+      "tag": "calibration",
+      "market_question": "Exact Score: Al Kholood Saudi Club 0 - 0 Al Khaleej Saudi Club?",
+      "slug": "spl-kho-kha-2026-11-05-exact-score",
+      "url": "https://polymarket.com/event/spl-kho-kha-2026-11-05-exact-score",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-05T12:33:15.695816+00:00",
+      "market_ids": [
+        "6490282"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.0837,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 20.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:spl-ith-neo-2026-11-06:6490708",
+      "tag": "calibration",
+      "market_question": "Will Al Ittihad Saudi Club vs. NEOM SC end in a draw?",
+      "slug": "spl-ith-neo-2026-11-06",
+      "url": "https://polymarket.com/event/spl-ith-neo-2026-11-06",
+      "placed_at": "2026-11-04T10:09:15.695816+00:00",
+      "deadline": "2026-11-06T17:21:15.695816+00:00",
+      "market_ids": [
+        "6490708"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.0837,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 20.14,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
