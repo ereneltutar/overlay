@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1620.85,
+  "bankroll": 1561.57,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -44,7 +44,7 @@
     },
     {
       "date": "2026-11-05",
-      "bankroll": 1620.85
+      "bankroll": 1561.57
     }
   ],
   "bets": [
@@ -769,9 +769,9 @@
       "edge_pct_at_placement": 7.21,
       "predicted_win_prob": 0.2904,
       "stake_usd": 23.59,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-05T10:03:29.186593+00:00",
+      "pnl_usd": -23.59,
       "fact_check": null
     },
     {
@@ -923,9 +923,9 @@
       "edge_pct_at_placement": 6.91,
       "predicted_win_prob": 0.8382,
       "stake_usd": 24.04,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-05T10:03:29.186593+00:00",
+      "pnl_usd": 7.22,
       "fact_check": null
     },
     {
@@ -1011,9 +1011,9 @@
       "edge_pct_at_placement": 7.05,
       "predicted_win_prob": 0.2888,
       "stake_usd": 21.73,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-05T10:03:29.186593+00:00",
+      "pnl_usd": -21.73,
       "fact_check": null
     },
     {
@@ -1033,9 +1033,9 @@
       "edge_pct_at_placement": 6.95,
       "predicted_win_prob": 0.1532,
       "stake_usd": 21.18,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-05T10:03:29.186593+00:00",
+      "pnl_usd": -21.18,
       "fact_check": null
     },
     {
@@ -1077,6 +1077,72 @@
       "edge_pct_at_placement": 6.95,
       "predicted_win_prob": 0.1532,
       "stake_usd": 20.14,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:wta-blinkov-zongyul-2026-11-05:6659472",
+      "tag": "calibration",
+      "market_question": "Luanda: Anna Blinkova vs Zongyu Li",
+      "slug": "wta-blinkov-zongyul-2026-11-05",
+      "url": "https://polymarket.com/event/wta-blinkov-zongyul-2026-11-05",
+      "placed_at": "2026-11-05T10:03:29.186593+00:00",
+      "deadline": "2026-11-12T10:03:29.186593+00:00",
+      "market_ids": [
+        "6659472"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Zongyu Li",
+      "entry_cost": 0.0701,
+      "edge_pct_at_placement": 8.31,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 31.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:euroleague-bologna-dubai-2026-11-06:6547847",
+      "tag": "calibration",
+      "market_question": "Spread: BC Dubai (-1.5)",
+      "slug": "euroleague-bologna-dubai-2026-11-06",
+      "url": "https://polymarket.com/event/euroleague-bologna-dubai-2026-11-06",
+      "placed_at": "2026-11-05T10:03:29.186593+00:00",
+      "deadline": "2026-11-06T19:39:29.186593+00:00",
+      "market_ids": [
+        "6547847"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Virtus Bologna",
+      "entry_cost": 0.0733,
+      "edge_pct_at_placement": 7.99,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 30.6,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:fl1-psg-tro-2026-11-07:6171537",
+      "tag": "calibration",
+      "market_question": "Will Paris Saint-Germain FC win on 2026-11-07?",
+      "slug": "fl1-psg-tro-2026-11-07",
+      "url": "https://polymarket.com/event/fl1-psg-tro-2026-11-07",
+      "placed_at": "2026-11-05T10:03:29.186593+00:00",
+      "deadline": "2026-11-07T19:39:29.186593+00:00",
+      "market_ids": [
+        "6171537"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.1149,
+      "edge_pct_at_placement": 7.57,
+      "predicted_win_prob": 0.1906,
+      "stake_usd": 29.84,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
