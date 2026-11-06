@@ -1,13 +1,6 @@
 {
   "history": [
     {
-      "date": "2026-08-08",
-      "scanned_events": 18261,
-      "opportunities": 0,
-      "calibration_signals": 20,
-      "mispricing_signals": 0
-    },
-    {
       "date": "2026-08-09",
       "scanned_events": 17574,
       "opportunities": 1,
@@ -629,6 +622,13 @@
       "opportunities": 0,
       "calibration_signals": 20,
       "mispricing_signals": 2
+    },
+    {
+      "date": "2026-11-06",
+      "scanned_events": 20232,
+      "opportunities": 0,
+      "calibration_signals": 20,
+      "mispricing_signals": 6
     }
   ]
 }

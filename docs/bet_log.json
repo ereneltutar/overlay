@@ -1151,6 +1151,72 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:epl-eve-cov-2026-11-06-more-markets:6107557",
+      "tag": "calibration",
+      "market_question": "Everton FC vs. Coventry City FC: O/U 0.5",
+      "slug": "epl-eve-cov-2026-11-06-more-markets",
+      "url": "https://polymarket.com/event/epl-eve-cov-2026-11-06-more-markets",
+      "placed_at": "2026-11-06T10:05:22.285218+00:00",
+      "deadline": "2026-11-06T19:41:22.285218+00:00",
+      "market_ids": [
+        "6107557"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 9.04,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 29.09,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:sea-ven-udi-2026-11-06-more-markets:6107628",
+      "tag": "calibration",
+      "market_question": "Venezia FC vs. Udinese Calcio: O/U 0.5",
+      "slug": "sea-ven-udi-2026-11-06-more-markets",
+      "url": "https://polymarket.com/event/sea-ven-udi-2026-11-06-more-markets",
+      "placed_at": "2026-11-06T10:05:22.285218+00:00",
+      "deadline": "2026-11-06T19:41:22.285218+00:00",
+      "market_ids": [
+        "6107628"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.0628,
+      "edge_pct_at_placement": 9.04,
+      "predicted_win_prob": 0.1532,
+      "stake_usd": 28.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-sas-sac-2026-11-06:6428605",
+      "tag": "calibration",
+      "market_question": "Spurs vs. Kings",
+      "slug": "nba-sas-sac-2026-11-06",
+      "url": "https://polymarket.com/event/nba-sas-sac-2026-11-06",
+      "placed_at": "2026-11-06T10:05:22.285218+00:00",
+      "deadline": "2026-11-07T02:53:22.285218+00:00",
+      "market_ids": [
+        "6428605"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Kings",
+      "entry_cost": 0.1149,
+      "edge_pct_at_placement": 7.57,
+      "predicted_win_prob": 0.1906,
+      "stake_usd": 3.55,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
