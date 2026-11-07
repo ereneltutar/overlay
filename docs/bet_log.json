@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1396.69,
+  "bankroll": 1393.14,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -52,7 +52,7 @@
     },
     {
       "date": "2026-11-07",
-      "bankroll": 1396.69
+      "bankroll": 1393.14
     }
   ],
   "bets": [
@@ -1217,9 +1217,9 @@
       "edge_pct_at_placement": 7.57,
       "predicted_win_prob": 0.1906,
       "stake_usd": 3.55,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-07T14:56:22.888169+00:00",
+      "pnl_usd": -3.55,
       "fact_check": null
     }
   ]
