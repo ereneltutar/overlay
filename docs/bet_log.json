@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1398.27,
+  "bankroll": 1304.71,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -56,7 +56,7 @@
     },
     {
       "date": "2026-11-08",
-      "bankroll": 1398.27
+      "bankroll": 1304.71
     }
   ],
   "bets": [
@@ -869,9 +869,9 @@
       "edge_pct_at_placement": 7.05,
       "predicted_win_prob": 0.2888,
       "stake_usd": 21.32,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "void",
+      "resolved_at": "2026-11-08T09:42:40.973822+00:00",
+      "pnl_usd": 0.0,
       "fact_check": null
     },
     {
@@ -891,9 +891,9 @@
       "edge_pct_at_placement": 7.57,
       "predicted_win_prob": 0.1906,
       "stake_usd": 20.79,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-08T09:42:40.973822+00:00",
+      "pnl_usd": -20.79,
       "fact_check": null
     },
     {
@@ -1001,9 +1001,9 @@
       "edge_pct_at_placement": 9.04,
       "predicted_win_prob": 0.1532,
       "stake_usd": 22.28,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-08T09:42:40.973822+00:00",
+      "pnl_usd": -22.28,
       "fact_check": null
     },
     {
@@ -1067,9 +1067,9 @@
       "edge_pct_at_placement": 6.95,
       "predicted_win_prob": 0.1532,
       "stake_usd": 20.65,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-08T09:42:40.973822+00:00",
+      "pnl_usd": -20.65,
       "fact_check": null
     },
     {
@@ -1155,9 +1155,9 @@
       "edge_pct_at_placement": 7.57,
       "predicted_win_prob": 0.1906,
       "stake_usd": 29.84,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-08T09:42:40.973822+00:00",
+      "pnl_usd": -29.84,
       "fact_check": null
     },
     {
@@ -1224,6 +1224,50 @@
       "status": "lost",
       "resolved_at": "2026-11-07T14:56:22.888169+00:00",
       "pnl_usd": -3.55,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-nyj-kc-2026-11-08:5920623",
+      "tag": "calibration",
+      "market_question": "Jets vs. Chiefs",
+      "slug": "nfl-nyj-kc-2026-11-08",
+      "url": "https://polymarket.com/event/nfl-nyj-kc-2026-11-08",
+      "placed_at": "2026-11-08T09:42:40.973822+00:00",
+      "deadline": "2026-11-08T16:54:40.973822+00:00",
+      "market_ids": [
+        "5920623"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Chiefs",
+      "entry_cost": 0.8146,
+      "edge_pct_at_placement": 7.12,
+      "predicted_win_prob": 0.8858,
+      "stake_usd": 28.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-cle-no-2026-11-08:5974380",
+      "tag": "calibration",
+      "market_question": "Spread: Saints (-10.5)",
+      "slug": "nfl-cle-no-2026-11-08",
+      "url": "https://polymarket.com/event/nfl-cle-no-2026-11-08",
+      "placed_at": "2026-11-08T09:42:40.973822+00:00",
+      "deadline": "2026-11-08T16:54:40.973822+00:00",
+      "market_ids": [
+        "5974380"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Browns",
+      "entry_cost": 0.7655,
+      "edge_pct_at_placement": 7.27,
+      "predicted_win_prob": 0.8382,
+      "stake_usd": 28.08,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
       "fact_check": null
     }
   ]
