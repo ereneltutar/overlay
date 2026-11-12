@@ -1,4 +1,7 @@
-# Frozen-rules experiment (started 2026-10-30)
+# Frozen-rules experiment
+
+**Current: Experiment 2, started 2026-11-12.** Experiment 1 (2026-10-30 to
+2026-11-12) was ended early without a verdict; see below.
 
 ## Why
 
@@ -13,13 +16,37 @@ So the rules are frozen and the pass/fail test below is written down **before**
 any post-freeze bet exists. The question it answers: **do Overlay's CAL/MIS bets
 beat their own entry price, net of fees, on bets it hasn't seen yet?**
 
-## Frozen baseline
+## Experiment 1 (2026-10-30 to 2026-11-12): ended early, no verdict
 
-- Code: commit `38a8bb3` (includes the past-date gate from `9f24ca7`).
-- Bankroll at freeze: **$1,048.23**.
-- Bets counted: CAL and MIS bets **placed on or after 2026-10-31 00:00 UTC**,
-  the first daily scan with the past-date gate. The 12 bets still open at the
-  freeze are excluded from the metric but still count toward the bankroll.
+Baseline was commit `38a8bb3`, bankroll $1,048.23, kill switch $524.12, bets
+counted from 2026-10-31. It ended at 31 settled bets (interim, informational
+only) and a bankroll of $1,198.68.
+
+**Why it was ended:** its own rules made the 300-bet checkpoint unreachable.
+`track_bets.py` replaced a bucket's predicted win probability with the 95%
+Wilson *lower* bound of Overlay's own record in that bucket once it had 8
+resolved bets (pooled with neighbors). Kelly then needs that lower bound to
+beat the entry price, which takes far more evidence than 8 bets: a perfect
+8/8 bucket has a lower bound of 0.676 and was shut off at a 0.82 entry, and a
+bucket that truly wins 57% at a 0.50 entry needs about 200 bets to reopen. A
+shut bucket places no bets, so its record never changes. By 2026-11-09 every
+signalled bucket was shut, and the daily scans placed 0 of 20 signals for
+four days running. The test would have ended in a FAIL for too few bets,
+which says nothing about edge. This diagnosis follows from the formula alone
+(the perfect-record bucket shows it), not from which bets won or lost.
+
+## Experiment 2 baseline (frozen 2026-11-12)
+
+- Code: Experiment 1's rules with one change: `OWN_TRACK_ADJUSTMENT_ENABLED =
+  False` in `track_bets.py`. CAL/MIS bets are sized from the model's predicted
+  win probability as is. Everything else (signals, gates, caps, half-Kelly,
+  2.5% stake cap) is unchanged. Commit: see the change log.
+- **No bankroll reset.** Bankroll at the switch: **$1,198.68**. All earlier
+  bets stay in `bet_log.json` untouched.
+- Bets counted: CAL and MIS bets **placed on or after 2026-11-12 00:00 UTC**.
+  Experiment 1's bets (including the one still open on Nov 12) are excluded
+  from the metric but still move the bankroll.
+- Checkpoint is unchanged: 300 settled bets or 2027-04-30.
 
 ## The test
 
@@ -33,8 +60,8 @@ doesn't depend on stake sizing.
 | Verdict | Condition |
 |---|---|
 | **RUNNING** | Fewer than 300 settled post-freeze bets and before 2027-04-30. Interim numbers are for information only. **There is no early PASS.** |
-| **FAIL (kill switch)** | The bankroll drops below **$524.12** (half the freeze bankroll) at any point. Can fire any time. |
-| **PASS** | At the checkpoint (**300 settled bets or 2027-04-30, whichever comes first**): the one-sided 95% lower bound of the mean edge is **above 0**, **and** the bankroll is above $1,048.23. |
+| **FAIL (kill switch)** | The bankroll drops below **$599.34** (half the Experiment 2 baseline) at any point. Can fire any time. |
+| **PASS** | At the checkpoint (**300 settled bets or 2027-04-30, whichever comes first**): the one-sided 95% lower bound of the mean edge is **above 0**, **and** the bankroll is above $1,198.68. |
 | **FAIL** | The checkpoint is reached and PASS isn't met. This includes the deadline arriving with too few bets, since a strategy that can't find enough bets isn't usable either. |
 
 What it takes to pass: at typical prices around $0.45–0.55, 300 bets give a
@@ -77,10 +104,10 @@ decides to end the test early.
 
 | Date | Idea | Evidence | Status |
 |---|---|---|---|
-| — | — | — | — |
+| 2026-11-12 | Bring back a track-record correction that can't lock a bucket shut: e.g. a Bayesian posterior mean (model prior + own results) instead of the Wilson lower bound, plus small fixed-stake "probe" bets so a down-weighted bucket keeps producing data. | Experiment 1 shutdown above. | For the experiment after Experiment 2. |
 
 ## Change log during the freeze
 
 | Date | Commit | Change | Why it's allowed |
 |---|---|---|---|
-| — | — | — | — |
+| 2026-11-12 | (this commit) | Ended Experiment 1, started Experiment 2: own-track correction off, new baseline $1,198.68, kill switch $599.34, bets counted from 2026-11-12. | Not a freeze exception. The user explicitly decided to end the test early and re-register, as this document allows. |

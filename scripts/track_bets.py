@@ -96,6 +96,17 @@ NEIGHBOR_POOL_RADIUS = 1        # a bucket that hasn't hit OWN_TRACK_MIN_SAMPLE 
                                 # damning evidence, kept getting bet into for days. This only ever pulls
                                 # the used probability DOWN (same guarantee kelly_stake already made),
                                 # it just lets that evidence propagate one bucket faster.
+OWN_TRACK_ADJUSTMENT_ENABLED = False  # Experiment 2 (from 2026-11-12) runs with the own-track-record
+                                # correction OFF: the model's predicted_win_prob is used as is. With it
+                                # on, a bucket that reached OWN_TRACK_MIN_SAMPLE had to beat its entry
+                                # price at the 95% Wilson LOWER bound to keep betting -- even a perfect
+                                # 8/8 bucket (Wilson low 0.676) was shut off at a 0.82 entry, and an
+                                # honest 57% bucket at 0.50 needs ~200 bets to reopen. A shut bucket
+                                # places no bets, so its record never changes: an absorbing state.
+                                # By Nov 9 every signalled bucket was shut and the daily scan placed 0
+                                # of 20 signals for days, which made Experiment 1's 300-bet checkpoint
+                                # unreachable. The experiment itself now measures realized edge, and
+                                # the kill switch bounds the downside. See EXPERIMENT.md.
 KELLY_FRACTION = 0.5           # half-Kelly: full Kelly is provably optimal long-run growth but swings
                                 # hard on estimation error; half-Kelly trades some growth for a much
                                 # smaller drawdown when the win-probability estimate is off
@@ -384,7 +395,10 @@ def kelly_fraction(p: float, b: float, l: float = 1.0) -> float:
 def track_adjusted_win_prob(predicted_win_prob: float, track: dict) -> float:
     """predicted_win_prob, pulled down to the Wilson lower bound of
     Overlay's own resolved bets in that bucket (or its pooled neighbors)
-    once there are OWN_TRACK_MIN_SAMPLE of them -- see kelly_stake."""
+    once there are OWN_TRACK_MIN_SAMPLE of them -- see kelly_stake. Returns
+    predicted_win_prob untouched while OWN_TRACK_ADJUSTMENT_ENABLED is off."""
+    if not OWN_TRACK_ADJUSTMENT_ENABLED:
+        return predicted_win_prob
     key = prob_bucket_key(predicted_win_prob)
     wins, total = track.get(key, (0, 0))
     p = predicted_win_prob

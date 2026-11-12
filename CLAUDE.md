@@ -39,13 +39,13 @@ Shared modules:
 
 Candidates are sorted by `signal_strength` (full-Kelly fraction after Overlay's own track record is priced in). They then pass these gates in order: dedupe by `bet_id` and by open `market_id` (CAL and MIS often flag the same market), bankroll floor, Kelly > 0, `MAX_OPEN_STAKE_FRAC` exposure cap, `MAX_OPEN_BETS_PER_CLUSTER` correlation cap, then the fact-check. Any gate that doesn't need the fact-check verdict must run before it, so vetoed-anyway candidates never cost an API call.
 
-Sizing is half-Kelly capped per tag by `STAKE_CAP_FRAC`. CAL/MIS win probability is pulled down to the Wilson lower bound of Overlay's own resolved bets in that bucket (or pooled neighbor buckets) once `OWN_TRACK_MIN_SAMPLE` is reached. ARB uses a haircut model (`ARB_HAIRCUT_MAX_PTS`) that matches the resolution-time haircut.
+Sizing is half-Kelly capped per tag by `STAKE_CAP_FRAC`. When `OWN_TRACK_ADJUSTMENT_ENABLED` is on, CAL/MIS win probability is pulled down to the Wilson lower bound of Overlay's own resolved bets in that bucket (or pooled neighbor buckets) once `OWN_TRACK_MIN_SAMPLE` is reached. It is **off for Experiment 2**, because it locked buckets shut for good (see `EXPERIMENT.md`). ARB uses a haircut model (`ARB_HAIRCUT_MAX_PTS`) that matches the resolution-time haircut.
 
 `place_new_bets` returns a stats **dict**, not a tuple. A new counter must be added in three places: `place_new_bets`'s initial dict, the default dict in `main()`, and the stderr summary in `main()`.
 
-## Experiment freeze (since 2026-10-30)
+## Experiment freeze (Experiment 2, since 2026-11-12)
 
-The rules were frozen on 2026-10-30. The test counts only bets placed from **2026-10-31 00:00 UTC** onward (`FREEZE_AT` in `experiment_status.py`), because the Oct 31 daily scan was the first one to run with the past-game-date gate. That's why the script prints "Frozen since 2026-10-31". Both dates are correct.
+Experiment 1 (frozen 2026-10-30) was ended early on 2026-11-12 without a verdict, because the own-track correction had shut every bucket and no bets were being placed. Experiment 2 runs the same rules with that correction off. The bankroll was not reset: baseline $1,198.68, kill switch $599.34. Only bets placed from **2026-11-12 00:00 UTC** onward count (`FREEZE_AT` in `experiment_status.py`); earlier bets stay in the log and move the bankroll.
 
 **The rules are frozen until the pass/fail test in `EXPERIMENT.md` reaches a verdict.** This overrides the bankroll-reset convention below. Don't propose or make changes to signal generation, gates, thresholds, sizing, or ranking, and don't reset the bankroll or remove or edit bets in `docs/bet_log.json`. Pipeline-keeping fixes and fixes for bets that are invalid by construction are allowed, but must be justifiable without looking at bet outcomes and must be logged in `EXPERIMENT.md`'s change log. `python scripts/experiment_status.py` prints the current verdict. When the user asks for a status report, include it, and treat RUNNING numbers as informational only.
 

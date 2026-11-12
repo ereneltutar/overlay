@@ -20,6 +20,11 @@ def isolate_fact_check_log(tmp_path, monkeypatch):
     # turn it on here so the fact-check tests keep exercising it for when
     # it's re-enabled.
     monkeypatch.setattr(tb, "LLM_FACT_CHECK_ENABLED", True)
+    # Same pattern for the own-track-record correction: it's switched off
+    # for Experiment 2 (see OWN_TRACK_ADJUSTMENT_ENABLED), but the tests
+    # below keep exercising it so it still works if a later experiment
+    # turns it back on. Tests of the disabled behavior set it to False.
+    monkeypatch.setattr(tb, "OWN_TRACK_ADJUSTMENT_ENABLED", True)
 
 
 def fresh_log(starting=1000.0):
@@ -918,3 +923,32 @@ def test_signal_strength_ranks_arb_above_cal_mis_when_guaranteed():
 
 def test_cal_stake_capped_at_two_and_a_half_percent():
     assert tb.kelly_stake(0.47, 0.58, {}, 1000.0, tb.STAKE_CAP_FRAC["calibration"]) == 25.0
+
+
+# --- own-track correction switched off (Experiment 2) ------------------------
+
+def test_track_adjusted_win_prob_returns_model_prob_when_adjustment_disabled(monkeypatch):
+    # Real Nov 2026 case: bucket [0.85,0.90) pooled 8/8 wins, Wilson low
+    # 0.676, which shut off every ~0.82 signal despite a perfect record.
+    # With the correction off, the model's own prediction must be used as is.
+    monkeypatch.setattr(tb, "OWN_TRACK_ADJUSTMENT_ENABLED", False)
+    key = tb.prob_bucket_key(0.884)
+    track = {key: (3, 3), key - 1: (5, 5)}
+    assert tb.track_adjusted_win_prob(0.884, track) == 0.884
+
+
+def test_place_new_bets_places_signal_a_bad_track_record_would_have_blocked(monkeypatch):
+    monkeypatch.setattr(tb, "OWN_TRACK_ADJUSTMENT_ENABLED", False)
+    log = fresh_log()
+    for status in ["won"] * 15 + ["lost"] * 5:
+        bet = make_bet(tag="calibration", status=status, pnl=1.0 if status == "won" else -10.0)
+        bet["predicted_win_prob"] = 0.90
+        log["bets"].append(bet)
+    results = {"calibration_signals": [{
+        "market_id": "new1", "slug": "new-market", "days_left": 5, "market_question": "Q?",
+        "recommended_side": "YES", "implied_cost": 0.851, "edge_pct": 4.9,
+        "bucket_historical_rate": 0.90,
+    }]}
+    stats = tb.place_new_bets(log, results, NOW, ask_llm=always_safe_llm)
+    assert stats["placed"] == 1
+    assert any(b["slug"] == "new-market" for b in log["bets"])

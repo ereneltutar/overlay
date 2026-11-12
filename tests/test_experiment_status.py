@@ -6,11 +6,11 @@ BEFORE_DEADLINE = datetime.datetime(2026, 12, 1, tzinfo=datetime.timezone.utc)
 AFTER_DEADLINE = datetime.datetime(2027, 5, 1, tzinfo=datetime.timezone.utc)
 
 
-def bet(status, cost=0.5, tag="calibration", placed_at="2026-11-01T09:00:00+00:00"):
+def bet(status, cost=0.5, tag="calibration", placed_at="2026-11-20T09:00:00+00:00"):
     return {"tag": tag, "status": status, "entry_cost": cost, "placed_at": placed_at}
 
 
-def make_log(bets, bankroll=1100.0, history=None):
+def make_log(bets, bankroll=1250.0, history=None):
     return {"bets": bets, "bankroll": bankroll, "bankroll_history": history or []}
 
 
@@ -20,7 +20,8 @@ def test_post_freeze_settled_excludes_pre_freeze_open_void_and_arb():
     log = make_log([
         bet("won"),
         bet("lost", tag="mispricing"),
-        bet("won", placed_at="2026-10-30T09:18:00+00:00"),  # placed before the freeze
+        bet("won", placed_at="2026-10-30T09:18:00+00:00"),  # placed before Experiment 1
+        bet("lost", placed_at="2026-11-05T10:03:00+00:00"),  # Experiment 1 bet, own-track gate on
         bet("open"),
         bet("void"),
         bet("won", tag="arbitrage"),
@@ -89,3 +90,24 @@ def test_verdict_fail_when_edge_ok_but_bankroll_below_freeze():
 def test_verdict_deadline_forces_evaluation_below_min_sample():
     v, reason, _ = es.verdict(make_log([bet("won"), bet("lost")]), AFTER_DEADLINE)
     assert v == "FAIL" and "checkpoint" in reason
+
+
+def test_kill_switch_is_half_the_experiment_2_baseline():
+    # Experiment 2 keeps the bankroll (no reset): its baseline is the
+    # bankroll on 2026-11-12, and the kill switch is half of that.
+    assert es.FREEZE_BANKROLL == 1198.68
+    assert es.KILL_BANKROLL == round(es.FREEZE_BANKROLL / 2, 2)
+
+
+def test_verdict_kill_switch_fires_below_experiment_2_level():
+    # $560 was safe under Experiment 1's $524.12 floor; it isn't now.
+    log = make_log([], bankroll=900.0,
+                   history=[{"date": "2026-11-20", "bankroll": 560.0}])
+    v, reason, _ = es.verdict(log, BEFORE_DEADLINE)
+    assert v == "FAIL" and "kill switch" in reason
+
+
+def test_kill_switch_ignores_experiment_1_history():
+    log = make_log([], history=[{"date": "2026-11-11", "bankroll": 500.0}])
+    v, _, _ = es.verdict(log, BEFORE_DEADLINE)
+    assert v == "RUNNING"

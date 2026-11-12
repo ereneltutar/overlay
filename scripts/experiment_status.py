@@ -15,6 +15,19 @@ On 2026-10-30 the rules were frozen and this test was written down BEFORE
 any post-freeze bet was placed, so the answer can't be fitted after the
 fact.
 
+Experiment 2 (from 2026-11-12). Experiment 1 was ended early, without a
+verdict, because its own rules made the checkpoint unreachable: the
+own-track-record correction in track_bets.py shut off every probability
+bucket once it had 8 resolved bets unless the bucket's 95% Wilson LOWER
+bound beat the entry price (a perfect 8/8 bucket still failed at a 0.82
+entry), and a shut bucket never bets again, so its record can't recover.
+From Nov 9 the daily scan placed 0 of 20 signals. That diagnosis comes
+from the formula, not from which bets won. Experiment 2 runs the same
+rules with that correction off (OWN_TRACK_ADJUSTMENT_ENABLED = False) and
+the same test. The bankroll was NOT reset, so the baseline is the bankroll
+on the switch date and the kill switch is half of it. Experiment 1's bets
+stay in bet_log.json and move the bankroll, but not the metric.
+
 The metric is sizing-independent: for each settled CAL/MIS bet placed after
 FREEZE_AT, x = (1 if won else 0) - entry_cost. entry_cost already includes
 the taker fee, so mean(x) is the average net edge per $1 of contract, in
@@ -48,9 +61,12 @@ from pathlib import Path
 
 # Pre-registered on 2026-10-30. Changing any of these after post-freeze bets
 # exist invalidates the test -- see EXPERIMENT.md.
-FREEZE_AT = "2026-10-31T00:00:00+00:00"  # first scan with the past-date gate is the Oct 31 daily run
-FREEZE_BANKROLL = 1048.23                 # docs/bet_log.json bankroll at the freeze
-KILL_BANKROLL = 524.12                    # half of FREEZE_BANKROLL
+# Experiment 2 re-registered these on 2026-11-12 (Experiment 1 used
+# 2026-10-31 / $1048.23 / $524.12). MIN_SETTLED_BETS and DEADLINE are unchanged.
+EXPERIMENT = 2
+FREEZE_AT = "2026-11-12T00:00:00+00:00"  # first daily scan with the own-track correction off is Nov 12
+FREEZE_BANKROLL = 1198.68                 # docs/bet_log.json bankroll on 2026-11-12, no reset
+KILL_BANKROLL = 599.34                    # half of FREEZE_BANKROLL
 MIN_SETTLED_BETS = 300                    # enough to tell a ~5-point edge from luck at these prices
 DEADLINE = "2027-04-30T00:00:00+00:00"    # evaluate whatever exists by then, even if < MIN_SETTLED_BETS
 Z_ONE_SIDED_95 = 1.645
@@ -123,7 +139,7 @@ def main():
     log = json.loads(BET_LOG_PATH.read_text(encoding="utf-8"))
     now = datetime.datetime.now(datetime.timezone.utc)
     v, reason, s = verdict(log, now)
-    print(f"Frozen since {FREEZE_AT[:10]}, checkpoint at {MIN_SETTLED_BETS} settled bets or {DEADLINE[:10]}.")
+    print(f"Experiment {EXPERIMENT}: frozen since {FREEZE_AT[:10]}, checkpoint at {MIN_SETTLED_BETS} settled bets or {DEADLINE[:10]}.")
     print(f"Settled post-freeze CAL/MIS bets: {s['n']} ({s['wins']} won)")
     print(f"Mean net edge per bet: {fmt_pts(s['mean'])}  (one-sided 95% lower bound: {fmt_pts(s['lower'])})")
     print(f"Bankroll: ${log['bankroll']:.2f} (freeze ${FREEZE_BANKROLL:.2f}, kill switch ${KILL_BANKROLL:.2f})")
