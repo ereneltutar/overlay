@@ -40,7 +40,7 @@ which says nothing about edge. This diagnosis follows from the formula alone
 - Code: Experiment 1's rules with one change: `OWN_TRACK_ADJUSTMENT_ENABLED =
   False` in `track_bets.py`. CAL/MIS bets are sized from the model's predicted
   win probability as is. Everything else (signals, gates, caps, half-Kelly,
-  2.5% stake cap) is unchanged. Commit: see the change log.
+  2.5% stake cap) is unchanged. Commit: `d5e7d3d`.
 - **No bankroll reset.** Bankroll at the switch: **$1,198.68**. All earlier
   bets stay in `bet_log.json` untouched.
 - Bets counted: CAL and MIS bets **placed on or after 2026-11-12 00:00 UTC**.
@@ -110,4 +110,4 @@ decides to end the test early.
 
 | Date | Commit | Change | Why it's allowed |
 |---|---|---|---|
-| 2026-11-12 | (this commit) | Ended Experiment 1, started Experiment 2: own-track correction off, new baseline $1,198.68, kill switch $599.34, bets counted from 2026-11-12. | Not a freeze exception. The user explicitly decided to end the test early and re-register, as this document allows. |
+| 2026-11-12 | `d5e7d3d` | Ended Experiment 1, started Experiment 2: own-track correction off, new baseline $1,198.68, kill switch $599.34, bets counted from 2026-11-12. | Not a freeze exception. The user explicitly decided to end the test early and re-register, as this document allows. |
