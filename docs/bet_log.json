@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1167.29,
+  "bankroll": 1148.75,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -76,7 +76,7 @@
     },
     {
       "date": "2026-11-13",
-      "bankroll": 1167.29
+      "bankroll": 1148.75
     }
   ],
   "bets": [
@@ -1505,9 +1505,9 @@
       "edge_pct_at_placement": 7.03,
       "predicted_win_prob": 0.5928,
       "stake_usd": 23.24,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-13T10:18:18.517933+00:00",
+      "pnl_usd": 21.24,
       "fact_check": null
     },
     {
@@ -1615,9 +1615,9 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.1467,
       "stake_usd": 20.47,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-13T10:18:18.517933+00:00",
+      "pnl_usd": -20.47,
       "fact_check": null
     },
     {
@@ -1637,6 +1637,94 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.1467,
       "stake_usd": 19.31,
+      "status": "lost",
+      "resolved_at": "2026-11-13T10:18:18.517933+00:00",
+      "pnl_usd": -19.31,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-min-gb-2026-11-15:6302525",
+      "tag": "calibration",
+      "market_question": "Spread: Packers (-2.5)",
+      "slug": "nfl-min-gb-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-min-gb-2026-11-15",
+      "placed_at": "2026-11-13T10:18:18.517933+00:00",
+      "deadline": "2026-11-15T17:30:18.517933+00:00",
+      "market_ids": [
+        "6302525"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Vikings",
+      "entry_cost": 0.4675,
+      "edge_pct_at_placement": 10.05,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 20.59,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ne-det-2026-11-15:6301680",
+      "tag": "calibration",
+      "market_question": "Spread: Lions (-2.5)",
+      "slug": "nfl-ne-det-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-ne-det-2026-11-15",
+      "placed_at": "2026-11-13T10:18:18.517933+00:00",
+      "deadline": "2026-11-15T15:06:18.517933+00:00",
+      "market_ids": [
+        "6301680"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Patriots",
+      "entry_cost": 0.4775,
+      "edge_pct_at_placement": 9.05,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 20.08,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-sf-dal-2026-11-15:6305013",
+      "tag": "calibration",
+      "market_question": "Spread: 49ers (-3.5)",
+      "slug": "nfl-sf-dal-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-sf-dal-2026-11-15",
+      "placed_at": "2026-11-13T10:18:18.517933+00:00",
+      "deadline": "2026-11-15T22:18:18.517933+00:00",
+      "market_ids": [
+        "6305013"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Cowboys",
+      "entry_cost": 0.4875,
+      "edge_pct_at_placement": 8.05,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 19.57,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-hou-cle-2026-11-15:6302406",
+      "tag": "calibration",
+      "market_question": "Texans vs. Browns: O/U 40.5",
+      "slug": "nfl-hou-cle-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-hou-cle-2026-11-15",
+      "placed_at": "2026-11-13T10:18:18.517933+00:00",
+      "deadline": "2026-11-15T17:30:18.517933+00:00",
+      "market_ids": [
+        "6302406"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5175,
+      "edge_pct_at_placement": 7.53,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 16.69,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
