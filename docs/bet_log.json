@@ -1733,6 +1733,116 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nhl-min-bos-2026-11-14:5887342",
+      "tag": "calibration",
+      "market_question": "Wild vs. Bruins",
+      "slug": "nhl-min-bos-2026-11-14",
+      "url": "https://polymarket.com/event/nhl-min-bos-2026-11-14",
+      "placed_at": "2026-11-14T09:38:23.113887+00:00",
+      "deadline": "2026-11-15T00:02:23.113887+00:00",
+      "market_ids": [
+        "5887342"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Bruins",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 21.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-nw-ohiost-2026-11-14:6602058",
+      "tag": "calibration",
+      "market_question": "Spread: Ohio State (-13.5)",
+      "slug": "cfb-nw-ohiost-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-nw-ohiost-2026-11-14",
+      "placed_at": "2026-11-14T09:38:23.113887+00:00",
+      "deadline": "2026-11-14T16:50:23.113887+00:00",
+      "market_ids": [
+        "6602058"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Northwestern",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 20.83,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-prnce-yale-2026-11-14:6602879",
+      "tag": "calibration",
+      "market_question": "Spread: Yale (-3.5)",
+      "slug": "cfb-prnce-yale-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-prnce-yale-2026-11-14",
+      "placed_at": "2026-11-14T09:38:23.113887+00:00",
+      "deadline": "2026-11-14T16:50:23.113887+00:00",
+      "market_ids": [
+        "6602879"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Princeton",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 20.3,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:unl-rom-pol-2026-11-14:6517024",
+      "tag": "calibration",
+      "market_question": "Will Poland win on 2026-11-14?",
+      "slug": "unl-rom-pol-2026-11-14",
+      "url": "https://polymarket.com/event/unl-rom-pol-2026-11-14",
+      "placed_at": "2026-11-14T09:38:23.113887+00:00",
+      "deadline": "2026-11-14T19:14:23.113887+00:00",
+      "market_ids": [
+        "6517024"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.55,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 19.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-missr-ga-2026-11-14:6884801",
+      "tag": "calibration",
+      "market_question": "Spread: Georgia (-15.5)",
+      "slug": "cfb-missr-ga-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-missr-ga-2026-11-14",
+      "placed_at": "2026-11-14T09:38:23.113887+00:00",
+      "deadline": "2026-11-14T21:38:23.113887+00:00",
+      "market_ids": [
+        "6884801"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Missouri",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.55,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 19.3,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }

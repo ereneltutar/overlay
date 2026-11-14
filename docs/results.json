@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-13T10:17:07.807966+00:00",
+  "generated_at": "2026-11-14T09:36:55.021275+00:00",
   "days_ahead_filter": 30,
   "min_edge_pct_filter": 0.5,
-  "scanned_events": 19383,
+  "scanned_events": 19422,
   "opportunities": [],
   "calibration_signals": [
     {
@@ -10,7 +10,7 @@
       "market_question": "Spread: Packers (-2.5)",
       "slug": "nfl-min-gb-2026-11-15",
       "url": "https://polymarket.com/event/nfl-min-gb-2026-11-15",
-      "days_left": 2.3,
+      "days_left": 1.3,
       "recommended_side": "NO",
       "side_label": "Vikings",
       "current_price": 0.54,
@@ -23,16 +23,96 @@
       "bucket_sample_size": 1646,
       "bucket_historical_rate": 0.432,
       "edge_pct": 10.05,
-      "liquidity": 159941.55
+      "liquidity": 157498.54
     },
     {
-      "market_id": "6301680",
-      "market_question": "Spread: Lions (-2.5)",
-      "slug": "nfl-ne-det-2026-11-15",
-      "url": "https://polymarket.com/event/nfl-ne-det-2026-11-15",
-      "days_left": 2.2,
+      "market_id": "6302122",
+      "market_question": "Chiefs vs. Falcons: O/U 46.5",
+      "slug": "nfl-kc-atl-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-kc-atl-2026-11-15",
+      "days_left": 1.3,
       "recommended_side": "NO",
-      "side_label": "Patriots",
+      "side_label": "Under",
+      "current_price": 0.54,
+      "implied_cost": 0.4675,
+      "fee": 0.0075,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 10.05,
+      "liquidity": 77346.91
+    },
+    {
+      "market_id": "5887342",
+      "market_question": "Wild vs. Bruins",
+      "slug": "nhl-min-bos-2026-11-14",
+      "url": "https://polymarket.com/event/nhl-min-bos-2026-11-14",
+      "days_left": 0.6,
+      "recommended_side": "NO",
+      "side_label": "Bruins",
+      "current_price": 0.54,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 9.56,
+      "liquidity": 60447.62
+    },
+    {
+      "market_id": "6602058",
+      "market_question": "Spread: Ohio State (-13.5)",
+      "slug": "cfb-nw-ohiost-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-nw-ohiost-2026-11-14",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "side_label": "Northwestern",
+      "current_price": 0.54,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 9.56,
+      "liquidity": 77096.02
+    },
+    {
+      "market_id": "6602879",
+      "market_question": "Spread: Yale (-3.5)",
+      "slug": "cfb-prnce-yale-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-prnce-yale-2026-11-14",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "side_label": "Princeton",
+      "current_price": 0.54,
+      "implied_cost": 0.4724,
+      "fee": 0.0124,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 9.56,
+      "liquidity": 2398.67
+    },
+    {
+      "market_id": "6305013",
+      "market_question": "Spread: 49ers (-3.5)",
+      "slug": "nfl-sf-dal-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-sf-dal-2026-11-15",
+      "days_left": 1.5,
+      "recommended_side": "NO",
+      "side_label": "Cowboys",
       "current_price": 0.53,
       "implied_cost": 0.4775,
       "fee": 0.0075,
@@ -43,16 +123,96 @@
       "bucket_sample_size": 1646,
       "bucket_historical_rate": 0.432,
       "edge_pct": 9.05,
-      "liquidity": 204410.73
+      "liquidity": 129785.11
     },
     {
-      "market_id": "6305013",
-      "market_question": "Spread: 49ers (-3.5)",
-      "slug": "nfl-sf-dal-2026-11-15",
-      "url": "https://polymarket.com/event/nfl-sf-dal-2026-11-15",
-      "days_left": 2.5,
+      "market_id": "6517024",
+      "market_question": "Will Poland win on 2026-11-14?",
+      "slug": "unl-rom-pol-2026-11-14",
+      "url": "https://polymarket.com/event/unl-rom-pol-2026-11-14",
+      "days_left": 0.4,
       "recommended_side": "NO",
-      "side_label": "Cowboys",
+      "side_label": "No",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 8.55,
+      "liquidity": 132520.52
+    },
+    {
+      "market_id": "6884801",
+      "market_question": "Spread: Georgia (-15.5)",
+      "slug": "cfb-missr-ga-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-missr-ga-2026-11-14",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "side_label": "Missouri",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 8.55,
+      "liquidity": 72012.52
+    },
+    {
+      "market_id": "6608209",
+      "market_question": "Appalachian State vs. Marshall: O/U 53.5",
+      "slug": "cfb-applst-marsh-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-applst-marsh-2026-11-14",
+      "days_left": 0.6,
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "current_price": 0.53,
+      "implied_cost": 0.4825,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 8.55,
+      "liquidity": 50666.87
+    },
+    {
+      "market_id": "6776260",
+      "market_question": "Alvark Tokyo vs. Hiroshima Dragonflies",
+      "slug": "bkjpn-alv-hir-2026-11-14",
+      "url": "https://polymarket.com/event/bkjpn-alv-hir-2026-11-14",
+      "days_left": 6.9,
+      "recommended_side": "NO",
+      "side_label": "Hiroshima Dragonflies",
+      "current_price": 0.94,
+      "implied_cost": 0.0628,
+      "fee": 0.0028,
+      "bucket_range": [
+        0.9,
+        0.95
+      ],
+      "bucket_sample_size": 259,
+      "bucket_historical_rate": 0.8533,
+      "edge_pct": 8.39,
+      "liquidity": 27932.92
+    },
+    {
+      "market_id": "6303639",
+      "market_question": "Spread: Bills (-7.5)",
+      "slug": "nfl-buf-nyj-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-buf-nyj-2026-11-15",
+      "days_left": 1.3,
+      "recommended_side": "NO",
+      "side_label": "Jets",
       "current_price": 0.52,
       "implied_cost": 0.4875,
       "fee": 0.0075,
@@ -63,96 +223,116 @@
       "bucket_sample_size": 1646,
       "bucket_historical_rate": 0.432,
       "edge_pct": 8.05,
-      "liquidity": 153772.17
+      "liquidity": 129334.88
     },
     {
-      "market_id": "6999747",
-      "market_question": "Spread: Grizzlies (-3.5)",
-      "slug": "nba-mem-nop-2026-11-13",
-      "url": "https://polymarket.com/event/nba-mem-nop-2026-11-13",
+      "market_id": "6605228",
+      "market_question": "Baylor vs. BYU: O/U 49.5",
+      "slug": "cfb-bayl-byu-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-bayl-byu-2026-11-14",
+      "days_left": 0.6,
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 7.55,
+      "liquidity": 66281.36
+    },
+    {
+      "market_id": "6605542",
+      "market_question": "Utah vs. Arizona",
+      "slug": "cfb-utah-arz-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-utah-arz-2026-11-14",
+      "days_left": 0.7,
+      "recommended_side": "NO",
+      "side_label": "Arizona",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 7.55,
+      "liquidity": 109148.47
+    },
+    {
+      "market_id": "6607458",
+      "market_question": "Boston College vs. Notre Dame: O/U 51.5",
+      "slug": "cfb-boscol-nd-2026-11-14",
+      "url": "https://polymarket.com/event/cfb-boscol-nd-2026-11-14",
+      "days_left": 0.5,
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 7.55,
+      "liquidity": 48597.68
+    },
+    {
+      "market_id": "7011740",
+      "market_question": "Counter-Strike: Spirit vs MOUZ - Map 2 Winner",
+      "slug": "cs2-ts7-mouz-2026-11-14",
+      "url": "https://polymarket.com/event/cs2-ts7-mouz-2026-11-14",
+      "days_left": 0.2,
+      "recommended_side": "NO",
+      "side_label": "MOUZ",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 7.55,
+      "liquidity": 68189.86
+    },
+    {
+      "market_id": "7014755",
+      "market_question": "Counter-Strike: FURIA vs Team Falcons (BO3) - BLAST Rivals Playoffs",
+      "slug": "cs2-furia-fal2-2026-11-14",
+      "url": "https://polymarket.com/event/cs2-furia-fal2-2026-11-14",
+      "days_left": 0.3,
+      "recommended_side": "NO",
+      "side_label": "Team Falcons",
+      "current_price": 0.52,
+      "implied_cost": 0.4925,
+      "fee": 0.0125,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "bucket_historical_rate": 0.432,
+      "edge_pct": 7.55,
+      "liquidity": 920922.65
+    },
+    {
+      "market_id": "6446615",
+      "market_question": "Nuggets vs. Pelicans",
+      "slug": "nba-den-nop-2026-11-14",
+      "url": "https://polymarket.com/event/nba-den-nop-2026-11-14",
       "days_left": 0.6,
       "recommended_side": "NO",
       "side_label": "Pelicans",
-      "current_price": 0.52,
-      "implied_cost": 0.4925,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1646,
-      "bucket_historical_rate": 0.432,
-      "edge_pct": 7.55,
-      "liquidity": 55026.81
-    },
-    {
-      "market_id": "6608725",
-      "market_question": "Spread: South Carolina (-7.5)",
-      "slug": "cfb-sc-ark-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-sc-ark-2026-11-14",
-      "days_left": 1.6,
-      "recommended_side": "NO",
-      "side_label": "Arkansas",
-      "current_price": 0.52,
-      "implied_cost": 0.4925,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1646,
-      "bucket_historical_rate": 0.432,
-      "edge_pct": 7.55,
-      "liquidity": 54539.58
-    },
-    {
-      "market_id": "6609037",
-      "market_question": "Spread: Wyoming (-7.5)",
-      "slug": "cfb-wyom-utep-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-wyom-utep-2026-11-14",
-      "days_left": 1.7,
-      "recommended_side": "NO",
-      "side_label": "UTEP",
-      "current_price": 0.52,
-      "implied_cost": 0.4925,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1646,
-      "bucket_historical_rate": 0.432,
-      "edge_pct": 7.55,
-      "liquidity": 47491.28
-    },
-    {
-      "market_id": "6302406",
-      "market_question": "Texans vs. Browns: O/U 40.5",
-      "slug": "nfl-hou-cle-2026-11-15",
-      "url": "https://polymarket.com/event/nfl-hou-cle-2026-11-15",
-      "days_left": 2.3,
-      "recommended_side": "NO",
-      "side_label": "Under",
-      "current_price": 0.49,
-      "implied_cost": 0.5175,
-      "fee": 0.0075,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 7.53,
-      "liquidity": 75531.62
-    },
-    {
-      "market_id": "6982348",
-      "market_question": "Counter-Strike: Brute vs 33 (BO3) - NODWIN Clutch Series Group Stage",
-      "slug": "cs2-brute-331-2026-11-13",
-      "url": "https://polymarket.com/event/cs2-brute-331-2026-11-13",
-      "days_left": 0.2,
-      "recommended_side": "NO",
-      "side_label": "33",
       "current_price": 0.84,
       "implied_cost": 0.1667,
       "fee": 0.0067,
@@ -163,34 +343,14 @@
       "bucket_sample_size": 337,
       "bucket_historical_rate": 0.7596,
       "edge_pct": 7.37,
-      "liquidity": 8316.57
-    },
-    {
-      "market_id": "6974745",
-      "market_question": "Dota 2: PARIVISION vs Yellow Submarine (BO3) - 1win Essence Group A",
-      "slug": "dota2-pari-yes-2026-11-13",
-      "url": "https://polymarket.com/event/dota2-pari-yes-2026-11-13",
-      "days_left": 0.4,
-      "recommended_side": "NO",
-      "side_label": "Yellow Submarine",
-      "current_price": 0.93,
-      "implied_cost": 0.0733,
-      "fee": 0.0033,
-      "bucket_range": [
-        0.9,
-        0.95
-      ],
-      "bucket_sample_size": 259,
-      "bucket_historical_rate": 0.8533,
-      "edge_pct": 7.34,
-      "liquidity": 63314.73
+      "liquidity": 90814.69
     },
     {
       "market_id": "6302797",
       "market_question": "Spread: Jaguars (-10.5)",
       "slug": "nfl-jax-ten-2026-11-15",
       "url": "https://polymarket.com/event/nfl-jax-ten-2026-11-15",
-      "days_left": 2.3,
+      "days_left": 1.3,
       "recommended_side": "NO",
       "side_label": "Titans",
       "current_price": 0.51,
@@ -203,118 +363,18 @@
       "bucket_sample_size": 1646,
       "bucket_historical_rate": 0.432,
       "edge_pct": 7.05,
-      "liquidity": 164837.31
+      "liquidity": 161072.42
     },
     {
-      "market_id": "6605960",
-      "market_question": "Tulane vs. Rice: O/U 49.5",
-      "slug": "cfb-tulane-rice-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-tulane-rice-2026-11-14",
-      "days_left": 1.4,
+      "market_id": "6302406",
+      "market_question": "Texans vs. Browns: O/U 40.5",
+      "slug": "nfl-hou-cle-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-hou-cle-2026-11-15",
+      "days_left": 1.3,
       "recommended_side": "NO",
       "side_label": "Under",
-      "current_price": 0.49,
-      "implied_cost": 0.5225,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 7.03,
-      "liquidity": 55294.57
-    },
-    {
-      "market_id": "6607585",
-      "market_question": "Georgia Southern vs. Georgia State: O/U 57.5",
-      "slug": "cfb-gas-gast-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-gas-gast-2026-11-14",
-      "days_left": 1.4,
-      "recommended_side": "NO",
-      "side_label": "Under",
-      "current_price": 0.49,
-      "implied_cost": 0.5225,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 7.03,
-      "liquidity": 49514.49
-    },
-    {
-      "market_id": "6609347",
-      "market_question": "North Dakota State vs. Hawai'i: O/U 39.5",
-      "slug": "cfb-ndkst-hawaii-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-ndkst-hawaii-2026-11-14",
-      "days_left": 1.7,
-      "recommended_side": "NO",
-      "side_label": "Under",
-      "current_price": 0.49,
-      "implied_cost": 0.5225,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 7.03,
-      "liquidity": 32214.12
-    },
-    {
-      "market_id": "6605671",
-      "market_question": "Spread: TCU (-10.5)",
-      "slug": "cfb-kanst-tcu-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-kanst-tcu-2026-11-14",
-      "days_left": 1.4,
-      "recommended_side": "NO",
-      "side_label": "Kansas State",
       "current_price": 0.51,
-      "implied_cost": 0.5025,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.5,
-        0.55
-      ],
-      "bucket_sample_size": 1646,
-      "bucket_historical_rate": 0.432,
-      "edge_pct": 6.55,
-      "liquidity": 47424.46
-    },
-    {
-      "market_id": "6451993",
-      "market_question": "Will Scotland win on 2026-11-13?",
-      "slug": "unl-sco-mac-2026-11-13",
-      "url": "https://polymarket.com/event/unl-sco-mac-2026-11-13",
-      "days_left": 0.4,
-      "recommended_side": "NO",
-      "side_label": "No",
-      "current_price": 0.83,
-      "implied_cost": 0.1771,
-      "fee": 0.0071,
-      "bucket_range": [
-        0.8,
-        0.85
-      ],
-      "bucket_sample_size": 337,
-      "bucket_historical_rate": 0.7596,
-      "edge_pct": 6.33,
-      "liquidity": 67143.72
-    },
-    {
-      "market_id": "6305309",
-      "market_question": "Spread: Bengals (-3.5)",
-      "slug": "nfl-pit-cin-2026-11-16",
-      "url": "https://polymarket.com/event/nfl-pit-cin-2026-11-16",
-      "days_left": 2.6,
-      "recommended_side": "NO",
-      "side_label": "Steelers",
-      "current_price": 0.5,
-      "implied_cost": 0.5075,
+      "implied_cost": 0.4975,
       "fee": 0.0075,
       "bucket_range": [
         0.5,
@@ -322,19 +382,19 @@
       ],
       "bucket_sample_size": 1646,
       "bucket_historical_rate": 0.432,
-      "edge_pct": 6.05,
-      "liquidity": 187088.13
+      "edge_pct": 7.05,
+      "liquidity": 93377.87
     },
     {
-      "market_id": "6490808",
-      "market_question": "Jordan vs. Indonesia: O/U 8.5",
-      "slug": "fif-jor-idn-2026-11-13-more-markets",
-      "url": "https://polymarket.com/event/fif-jor-idn-2026-11-13-more-markets",
-      "days_left": 0.3,
+      "market_id": "5887357",
+      "market_question": "Islanders vs. Ducks",
+      "slug": "nhl-nyi-ana-2026-11-14",
+      "url": "https://polymarket.com/event/nhl-nyi-ana-2026-11-14",
+      "days_left": 0.7,
       "recommended_side": "NO",
-      "side_label": "Under",
-      "current_price": 0.48,
-      "implied_cost": 0.5325,
+      "side_label": "Ducks",
+      "current_price": 0.49,
+      "implied_cost": 0.5225,
       "fee": 0.0125,
       "bucket_range": [
         0.45,
@@ -342,68 +402,8 @@
       ],
       "bucket_sample_size": 1589,
       "bucket_historical_rate": 0.4072,
-      "edge_pct": 6.03,
-      "liquidity": 14617.96
-    },
-    {
-      "market_id": "6567955",
-      "market_question": "Warriors vs. Pelicans",
-      "slug": "nba-gsw-nop-2026-11-16",
-      "url": "https://polymarket.com/event/nba-gsw-nop-2026-11-16",
-      "days_left": 3.6,
-      "recommended_side": "NO",
-      "side_label": "Pelicans",
-      "current_price": 0.48,
-      "implied_cost": 0.5325,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 6.03,
-      "liquidity": 17175.62
-    },
-    {
-      "market_id": "6605211",
-      "market_question": "Spread: BYU (-7.5)",
-      "slug": "cfb-bayl-byu-2026-11-14",
-      "url": "https://polymarket.com/event/cfb-bayl-byu-2026-11-14",
-      "days_left": 1.4,
-      "recommended_side": "NO",
-      "side_label": "Baylor",
-      "current_price": 0.48,
-      "implied_cost": 0.5325,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 6.03,
-      "liquidity": 83974.65
-    },
-    {
-      "market_id": "6828351",
-      "market_question": "Louisiana-Lafayette Ragin' Cajuns vs. UNCW Seahawks",
-      "slug": "cbb-loulaf-ncw-2026-11-14",
-      "url": "https://polymarket.com/event/cbb-loulaf-ncw-2026-11-14",
-      "days_left": 1.6,
-      "recommended_side": "NO",
-      "side_label": "UNCW Seahawks",
-      "current_price": 0.48,
-      "implied_cost": 0.5325,
-      "fee": 0.0125,
-      "bucket_range": [
-        0.45,
-        0.5
-      ],
-      "bucket_sample_size": 1589,
-      "bucket_historical_rate": 0.4072,
-      "edge_pct": 6.03,
-      "liquidity": 752157.3
+      "edge_pct": 7.03,
+      "liquidity": 73210.35
     }
   ],
   "calibration_table_generated_at": "2026-11-09T12:43:04.576354+00:00",
@@ -413,7 +413,7 @@
       "market_question": "Spread: Packers (-2.5)",
       "slug": "nfl-min-gb-2026-11-15",
       "url": "https://polymarket.com/event/nfl-min-gb-2026-11-15",
-      "days_left": 2.3,
+      "days_left": 1.3,
       "recommended_side": "NO",
       "side_label": "Vikings",
       "implied_probability": 0.54,
@@ -421,15 +421,38 @@
       "implied_cost": 0.4675,
       "fee": 0.0075,
       "edge_pct": 10.05,
-      "volume_24h": 20763.22,
-      "liquidity": 159941.55,
+      "volume_24h": 12285.02,
+      "liquidity": 157498.54,
       "bucket_range": [
         0.5,
         0.55
       ],
       "bucket_sample_size": 1646,
       "low_sample_warning": false,
-      "score": 624.11
+      "score": 825.91
+    },
+    {
+      "market_id": "6302122",
+      "market_question": "Chiefs vs. Falcons: O/U 46.5",
+      "slug": "nfl-kc-atl-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-kc-atl-2026-11-15",
+      "days_left": 1.3,
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "implied_probability": 0.54,
+      "fair_probability": 0.432,
+      "implied_cost": 0.4675,
+      "fee": 0.0075,
+      "edge_pct": 10.05,
+      "volume_24h": 7709.24,
+      "liquidity": 77346.91,
+      "bucket_range": [
+        0.5,
+        0.55
+      ],
+      "bucket_sample_size": 1646,
+      "low_sample_warning": false,
+      "score": 654.26
     }
   ],
   "mispricing_filters": {
