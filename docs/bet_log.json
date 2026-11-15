@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1234.8,
+  "bankroll": 1198.5,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -84,7 +84,7 @@
     },
     {
       "date": "2026-11-15",
-      "bankroll": 1234.8
+      "bankroll": 1198.5
     }
   ],
   "bets": [
@@ -1359,9 +1359,9 @@
       "edge_pct_at_placement": 9.56,
       "predicted_win_prob": 0.568,
       "stake_usd": 27.74,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-15T15:42:15.554825+00:00",
+      "pnl_usd": 30.98,
       "fact_check": null
     },
     {
@@ -1491,9 +1491,9 @@
       "edge_pct_at_placement": 7.55,
       "predicted_win_prob": 0.568,
       "stake_usd": 23.83,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-15T15:42:15.554825+00:00",
+      "pnl_usd": -23.83,
       "fact_check": null
     },
     {
@@ -1557,9 +1557,9 @@
       "edge_pct_at_placement": 7.03,
       "predicted_win_prob": 0.5928,
       "stake_usd": 22.09,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-15T15:42:15.554825+00:00",
+      "pnl_usd": -22.09,
       "fact_check": null
     },
     {
@@ -1755,9 +1755,9 @@
       "edge_pct_at_placement": 9.56,
       "predicted_win_prob": 0.568,
       "stake_usd": 21.36,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-15T15:42:15.554825+00:00",
+      "pnl_usd": -21.36,
       "fact_check": null
     },
     {
