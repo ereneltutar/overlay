@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1186.97,
+  "bankroll": 1234.8,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -84,7 +84,7 @@
     },
     {
       "date": "2026-11-15",
-      "bankroll": 1186.97
+      "bankroll": 1234.8
     }
   ],
   "bets": [
@@ -1469,9 +1469,9 @@
       "edge_pct_at_placement": 7.55,
       "predicted_win_prob": 0.568,
       "stake_usd": 24.44,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-15T10:07:54.821401+00:00",
+      "pnl_usd": 25.18,
       "fact_check": null
     },
     {
@@ -1535,9 +1535,9 @@
       "edge_pct_at_placement": 7.03,
       "predicted_win_prob": 0.5928,
       "stake_usd": 22.66,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-15T10:07:54.821401+00:00",
+      "pnl_usd": 20.71,
       "fact_check": null
     },
     {
@@ -1821,9 +1821,9 @@
       "edge_pct_at_placement": 8.55,
       "predicted_win_prob": 0.568,
       "stake_usd": 19.8,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-15T10:07:54.821401+00:00",
+      "pnl_usd": 21.24,
       "fact_check": null
     },
     {
@@ -1843,6 +1843,182 @@
       "edge_pct_at_placement": 8.55,
       "predicted_win_prob": 0.568,
       "stake_usd": 19.3,
+      "status": "lost",
+      "resolved_at": "2026-11-15T10:07:54.821401+00:00",
+      "pnl_usd": -19.3,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:unl-cyp-mon-2026-11-15-more-markets:6575702",
+      "tag": "calibration",
+      "market_question": "Cyprus vs. Montenegro: O/U 2.5",
+      "slug": "unl-cyp-mon-2026-11-15-more-markets",
+      "url": "https://polymarket.com/event/unl-cyp-mon-2026-11-15-more-markets",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-15T14:55:54.821401+00:00",
+      "market_ids": [
+        "6575702"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 24.78,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:unl-kaz-svk-2026-11-16:6631128",
+      "tag": "calibration",
+      "market_question": "Will Slovakia win on 2026-11-16?",
+      "slug": "unl-kaz-svk-2026-11-16",
+      "url": "https://polymarket.com/event/unl-kaz-svk-2026-11-16",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-16T14:55:54.821401+00:00",
+      "market_ids": [
+        "6631128"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 24.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-faze-fnc-2026-11-15:7039527",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: FaZe vs fnatic (BO3) - PGL Cluj-Napoca: Closed Qualifier Playoffs",
+      "slug": "cs2-faze-fnc-2026-11-15",
+      "url": "https://polymarket.com/event/cs2-faze-fnc-2026-11-15",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-15T14:55:54.821401+00:00",
+      "market_ids": [
+        "7039527"
+      ],
+      "recommended_side": "NO",
+      "side_label": "fnatic",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 23.55,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-mia-ind-2026-11-15:6303247",
+      "tag": "calibration",
+      "market_question": "Dolphins vs. Colts: O/U 36.5",
+      "slug": "nfl-mia-ind-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-mia-ind-2026-11-15",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-15T17:19:54.821401+00:00",
+      "market_ids": [
+        "6303247"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4775,
+      "edge_pct_at_placement": 9.05,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 22.97,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-buf-nyj-2026-11-15:6303842",
+      "tag": "calibration",
+      "market_question": "Bills vs. Jets: O/U 50.5",
+      "slug": "nfl-buf-nyj-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-buf-nyj-2026-11-15",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-15T17:19:54.821401+00:00",
+      "market_ids": [
+        "6303842"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4875,
+      "edge_pct_at_placement": 8.05,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 22.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-sea-lv-2026-11-15:6304159",
+      "tag": "calibration",
+      "market_question": "Spread: Seahawks (-6.5)",
+      "slug": "nfl-sea-lv-2026-11-15",
+      "url": "https://polymarket.com/event/nfl-sea-lv-2026-11-15",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-15T22:07:54.821401+00:00",
+      "market_ids": [
+        "6304159"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Raiders",
+      "entry_cost": 0.5175,
+      "edge_pct_at_placement": 7.53,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 21.83,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-hou-was-2026-11-15:7048215",
+      "tag": "calibration",
+      "market_question": "Spread: Rockets (-9.5)",
+      "slug": "nba-hou-was-2026-11-15",
+      "url": "https://polymarket.com/event/nba-hou-was-2026-11-15",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-16T00:31:54.821401+00:00",
+      "market_ids": [
+        "7048215"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Wizards",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 7.03,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 21.29,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-bca-priv-2026-11-15:7027578",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: Betclic Apogee Esports vs PRIVATE (BO3) - CCT Europe Playoffs",
+      "slug": "cs2-bca-priv-2026-11-15",
+      "url": "https://polymarket.com/event/cs2-bca-priv-2026-11-15",
+      "placed_at": "2026-11-15T10:07:54.821401+00:00",
+      "deadline": "2026-11-16T00:31:54.821401+00:00",
+      "market_ids": [
+        "7027578"
+      ],
+      "recommended_side": "NO",
+      "side_label": "PRIVATE",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 7.03,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 20.75,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
