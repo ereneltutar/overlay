@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1137.09,
+  "bankroll": 1095.69,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -88,7 +88,7 @@
     },
     {
       "date": "2026-11-16",
-      "bankroll": 1137.09
+      "bankroll": 1095.69
     }
   ],
   "bets": [
@@ -1715,9 +1715,9 @@
       "edge_pct_at_placement": 8.05,
       "predicted_win_prob": 0.568,
       "stake_usd": 19.57,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-16T10:21:04.358329+00:00",
+      "pnl_usd": -19.57,
       "fact_check": null
     },
     {
@@ -1979,9 +1979,9 @@
       "edge_pct_at_placement": 7.53,
       "predicted_win_prob": 0.5928,
       "stake_usd": 21.83,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-16T10:21:04.358329+00:00",
+      "pnl_usd": -21.83,
       "fact_check": null
     },
     {
@@ -2023,6 +2023,314 @@
       "edge_pct_at_placement": 7.03,
       "predicted_win_prob": 0.5928,
       "stake_usd": 20.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ind-hou-2026-11-20:6417673",
+      "tag": "calibration",
+      "market_question": "Colts vs. Texans",
+      "slug": "nfl-ind-hou-2026-11-20",
+      "url": "https://polymarket.com/event/nfl-ind-hou-2026-11-20",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-20T00:45:04.358329+00:00",
+      "market_ids": [
+        "6417673"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Texans",
+      "entry_cost": 0.8244,
+      "edge_pct_at_placement": 5.98,
+      "predicted_win_prob": 0.8842,
+      "stake_usd": 25.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-orl-bos-2026-11-16:6567949",
+      "tag": "calibration",
+      "market_question": "Magic vs. Celtics",
+      "slug": "nba-orl-bos-2026-11-16",
+      "url": "https://polymarket.com/event/nba-orl-bos-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "6567949"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Celtics",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 24.57,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-chi-cle-2026-11-16:6567950",
+      "tag": "calibration",
+      "market_question": "Bulls vs. Cavaliers",
+      "slug": "nba-chi-cle-2026-11-16",
+      "url": "https://polymarket.com/event/nba-chi-cle-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "6567950"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Cavaliers",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 23.95,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-hou-mia-2026-11-16:6567953",
+      "tag": "calibration",
+      "market_question": "Rockets vs. Heat",
+      "slug": "nba-hou-mia-2026-11-16",
+      "url": "https://polymarket.com/event/nba-hou-mia-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "6567953"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Heat",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 23.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bkkbl-seo-mob-2026-11-16:7068978",
+      "tag": "calibration",
+      "market_question": "Seoul Knights vs. Mobis Phoebus: O/U 166.5",
+      "slug": "bkkbl-seo-mob-2026-11-16",
+      "url": "https://polymarket.com/event/bkkbl-seo-mob-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-23T10:21:04.358329+00:00",
+      "market_ids": [
+        "7068978"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 22.77,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-bca-maybe-2026-11-16:7081244",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: Betclic Apogee Esports vs maybe - Map 1 Winner",
+      "slug": "cs2-bca-maybe-2026-11-16",
+      "url": "https://polymarket.com/event/cs2-bca-maybe-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-16T15:09:04.358329+00:00",
+      "market_ids": [
+        "7081244"
+      ],
+      "recommended_side": "NO",
+      "side_label": "maybe",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.56,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 22.2,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-gsw-nop-2026-11-16:7081718",
+      "tag": "calibration",
+      "market_question": "Warriors vs. Pelicans: O/U 224.5",
+      "slug": "nba-gsw-nop-2026-11-16",
+      "url": "https://polymarket.com/event/nba-gsw-nop-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "7081718"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.55,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 21.65,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:unl-ger-nld-2026-11-16:6631573",
+      "tag": "calibration",
+      "market_question": "Will Germany win on 2026-11-16?",
+      "slug": "unl-ger-nld-2026-11-16",
+      "url": "https://polymarket.com/event/unl-ger-nld-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-16T19:57:04.358329+00:00",
+      "market_ids": [
+        "6631573"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.55,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 21.11,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-chi-cle-2026-11-16:7081664",
+      "tag": "calibration",
+      "market_question": "Spread: Cavaliers (-9.5)",
+      "slug": "nba-chi-cle-2026-11-16",
+      "url": "https://polymarket.com/event/nba-chi-cle-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "7081664"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Bulls",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 7.03,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 20.58,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-hou-mia-2026-11-16:7083686",
+      "tag": "calibration",
+      "market_question": "Spread: Rockets (-2.5)",
+      "slug": "nba-hou-mia-2026-11-16",
+      "url": "https://polymarket.com/event/nba-hou-mia-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "7083686"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Heat",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 7.03,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 20.06,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-lac-bal-2026-11-17:6305593",
+      "tag": "calibration",
+      "market_question": "Spread: Ravens (-4.5)",
+      "slug": "nfl-lac-bal-2026-11-17",
+      "url": "https://polymarket.com/event/nfl-lac-bal-2026-11-17",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "6305593"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Chargers",
+      "entry_cost": 0.4975,
+      "edge_pct_at_placement": 7.05,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 19.56,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-por-min-2026-11-16:7081455",
+      "tag": "calibration",
+      "market_question": "Trail Blazers vs. Timberwolves: O/U 228.5",
+      "slug": "nba-por-min-2026-11-16",
+      "url": "https://polymarket.com/event/nba-por-min-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "7081455"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 6.55,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 19.07,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-mgc-ef1-2026-11-16:7078810",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: magic vs Eternal Fire (BO3) - PGL Cluj-Napoca: Closed Qualifier Playoffs",
+      "slug": "cs2-mgc-ef1-2026-11-16",
+      "url": "https://polymarket.com/event/cs2-mgc-ef1-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-16T19:57:04.358329+00:00",
+      "market_ids": [
+        "7078810"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Eternal Fire",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 6.55,
+      "predicted_win_prob": 0.568,
+      "stake_usd": 18.6,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-hero-prv-2026-11-16:7079251",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: Heroic vs PARIVISION (BO3) - PGL Cluj-Napoca: Closed Qualifier Playoffs",
+      "slug": "cs2-hero-prv-2026-11-16",
+      "url": "https://polymarket.com/event/cs2-hero-prv-2026-11-16",
+      "placed_at": "2026-11-16T10:21:04.358329+00:00",
+      "deadline": "2026-11-17T00:45:04.358329+00:00",
+      "market_ids": [
+        "7079251"
+      ],
+      "recommended_side": "NO",
+      "side_label": "PARIVISION",
+      "entry_cost": 0.5325,
+      "edge_pct_at_placement": 6.03,
+      "predicted_win_prob": 0.5928,
+      "stake_usd": 13.07,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
