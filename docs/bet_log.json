@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1170.47,
+  "bankroll": 1196.34,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -96,7 +96,7 @@
     },
     {
       "date": "2026-11-18",
-      "bankroll": 1170.47
+      "bankroll": 1196.34
     }
   ],
   "bets": [
@@ -2361,9 +2361,9 @@
       "edge_pct_at_placement": 5.62,
       "predicted_win_prob": 0.8836,
       "stake_usd": 21.25,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-18T10:53:31.710995+00:00",
+      "pnl_usd": 4.43,
       "fact_check": null
     },
     {
@@ -2449,9 +2449,9 @@
       "edge_pct_at_placement": 9.52,
       "predicted_win_prob": 0.5676,
       "stake_usd": 19.2,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-18T10:53:31.710995+00:00",
+      "pnl_usd": 21.44,
       "fact_check": null
     },
     {
@@ -2493,6 +2493,292 @@
       "edge_pct_at_placement": 7.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 11.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:itf-neiman1-pankin1-2026-11-18:7120002",
+      "tag": "calibration",
+      "market_question": "M25 Monastir: Rihards Neimanis vs Semen Pankin",
+      "slug": "itf-neiman1-pankin1-2026-11-18",
+      "url": "https://polymarket.com/event/itf-neiman1-pankin1-2026-11-18",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-25T08:29:31.710995+00:00",
+      "market_ids": [
+        "7120002"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Semen Pankin",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 26.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-tb-det-2026-11-22:6640387",
+      "tag": "calibration",
+      "market_question": "Spread: Lions (-6.5)",
+      "slug": "nfl-tb-det-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-tb-det-2026-11-22",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-22T18:05:31.710995+00:00",
+      "market_ids": [
+        "6640387"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Buccaneers",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 26.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-pha-mzp-2026-11-18:7127608",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: Phantom vs Metizport (BO3) - RUSH Brno Group B",
+      "slug": "cs2-pha-mzp-2026-11-18",
+      "url": "https://polymarket.com/event/cs2-pha-mzp-2026-11-18",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-18T18:05:31.710995+00:00",
+      "market_ids": [
+        "7127608"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Metizport",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 25.56,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bra-cre-cha-2026-11-18-more-markets:6747554",
+      "tag": "calibration",
+      "market_question": "Clube do Remo vs. Associação Chapecoense de Futebol: O/U 3.5",
+      "slug": "bra-cre-cha-2026-11-18-more-markets",
+      "url": "https://polymarket.com/event/bra-cre-cha-2026-11-18-more-markets",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-18T22:53:31.710995+00:00",
+      "market_ids": [
+        "6747554"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.6712,
+      "edge_pct_at_placement": 5.48,
+      "predicted_win_prob": 0.726,
+      "stake_usd": 24.92,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-bal-car-2026-11-22:6641260",
+      "tag": "calibration",
+      "market_question": "Spread: Panthers (-2.5)",
+      "slug": "nfl-bal-car-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-bal-car-2026-11-22",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-22T18:05:31.710995+00:00",
+      "market_ids": [
+        "6641260"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Ravens",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 24.3,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ten-dal-2026-11-22:6640834",
+      "tag": "calibration",
+      "market_question": "Titans vs. Cowboys: O/U 54.5",
+      "slug": "nfl-ten-dal-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-ten-dal-2026-11-22",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-22T18:05:31.710995+00:00",
+      "market_ids": [
+        "6640834"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 23.69,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-pit-phi-2026-11-22:6643126",
+      "tag": "calibration",
+      "market_question": "Steelers vs. Eagles: O/U 38.5",
+      "slug": "nfl-pit-phi-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-pit-phi-2026-11-22",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-22T20:29:31.710995+00:00",
+      "market_ids": [
+        "6643126"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.92,
+      "predicted_win_prob": 0.5917,
+      "stake_usd": 23.1,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-det-nop-2026-11-18:7126986",
+      "tag": "calibration",
+      "market_question": "Spread: Pistons (-7.5)",
+      "slug": "nba-det-nop-2026-11-18",
+      "url": "https://polymarket.com/event/nba-det-nop-2026-11-18",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-19T01:17:31.710995+00:00",
+      "market_ids": [
+        "7126986"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Pelicans",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.92,
+      "predicted_win_prob": 0.5917,
+      "stake_usd": 22.52,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-atl-okc-2026-11-18:7127005",
+      "tag": "calibration",
+      "market_question": "Spread: Thunder (-7.5)",
+      "slug": "nba-atl-okc-2026-11-18",
+      "url": "https://polymarket.com/event/nba-atl-okc-2026-11-18",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-19T01:17:31.710995+00:00",
+      "market_ids": [
+        "7127005"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Hawks",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.92,
+      "predicted_win_prob": 0.5917,
+      "stake_usd": 21.96,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-chi-bkn-2026-11-18:7126348",
+      "tag": "calibration",
+      "market_question": "Bulls vs. Nets: O/U 238.5",
+      "slug": "nba-chi-bkn-2026-11-18",
+      "url": "https://polymarket.com/event/nba-chi-bkn-2026-11-18",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-19T01:17:31.710995+00:00",
+      "market_ids": [
+        "7126348"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 6.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 21.41,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:epl-bou-not-2026-11-21:6834800",
+      "tag": "calibration",
+      "market_question": "Will AFC Bournemouth win on 2026-11-21?",
+      "slug": "epl-bou-not-2026-11-21",
+      "url": "https://polymarket.com/event/epl-bou-not-2026-11-21",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-21T15:41:31.710995+00:00",
+      "market_ids": [
+        "6834800"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.5025,
+      "edge_pct_at_placement": 6.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 20.88,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-lsu-tenn-2026-11-21:6822128",
+      "tag": "calibration",
+      "market_question": "Spread: LSU (-1.5)",
+      "slug": "cfb-lsu-tenn-2026-11-21",
+      "url": "https://polymarket.com/event/cfb-lsu-tenn-2026-11-21",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-21T20:29:31.710995+00:00",
+      "market_ids": [
+        "6822128"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Tennessee",
+      "entry_cost": 0.5325,
+      "edge_pct_at_placement": 5.92,
+      "predicted_win_prob": 0.5917,
+      "stake_usd": 20.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-phi-orl-2026-11-18:7126341",
+      "tag": "calibration",
+      "market_question": "Spread: 76ers (-1.5)",
+      "slug": "nba-phi-orl-2026-11-18",
+      "url": "https://polymarket.com/event/nba-phi-orl-2026-11-18",
+      "placed_at": "2026-11-18T10:53:31.710995+00:00",
+      "deadline": "2026-11-18T22:53:31.710995+00:00",
+      "market_ids": [
+        "7126341"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Magic",
+      "entry_cost": 0.5125,
+      "edge_pct_at_placement": 5.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 16.23,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
