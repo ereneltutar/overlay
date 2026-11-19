@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1189.71,
+  "bankroll": 1214.24,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -100,7 +100,7 @@
     },
     {
       "date": "2026-11-19",
-      "bankroll": 1189.71
+      "bankroll": 1214.24
     }
   ],
   "bets": [
@@ -2563,9 +2563,9 @@
       "edge_pct_at_placement": 9.52,
       "predicted_win_prob": 0.5676,
       "stake_usd": 25.56,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-19T10:54:35.437404+00:00",
+      "pnl_usd": 28.55,
       "fact_check": null
     },
     {
@@ -2585,9 +2585,9 @@
       "edge_pct_at_placement": 5.48,
       "predicted_win_prob": 0.726,
       "stake_usd": 24.92,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-19T10:54:35.437404+00:00",
+      "pnl_usd": 12.21,
       "fact_check": null
     },
     {
@@ -2783,6 +2783,116 @@
       "edge_pct_at_placement": 5.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 16.23,
+      "status": "lost",
+      "resolved_at": "2026-11-19T10:54:35.437404+00:00",
+      "pnl_usd": -16.23,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-gsw-mem-2026-11-19:7165170",
+      "tag": "calibration",
+      "market_question": "Warriors vs. Grizzlies: O/U 225.5",
+      "slug": "nba-gsw-mem-2026-11-19",
+      "url": "https://polymarket.com/event/nba-gsw-mem-2026-11-19",
+      "placed_at": "2026-11-19T10:54:35.437404+00:00",
+      "deadline": "2026-11-20T01:18:35.437404+00:00",
+      "market_ids": [
+        "7165170"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 22.32,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-nyk-min-2026-11-19:7163593",
+      "tag": "calibration",
+      "market_question": "Knicks vs. Timberwolves: O/U 216.5",
+      "slug": "nba-nyk-min-2026-11-19",
+      "url": "https://polymarket.com/event/nba-nyk-min-2026-11-19",
+      "placed_at": "2026-11-19T10:54:35.437404+00:00",
+      "deadline": "2026-11-20T01:18:35.437404+00:00",
+      "market_ids": [
+        "7163593"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 21.76,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:epl-ast-sun-2026-11-21:6833902",
+      "tag": "calibration",
+      "market_question": "Will Aston Villa FC win on 2026-11-21?",
+      "slug": "epl-ast-sun-2026-11-21",
+      "url": "https://polymarket.com/event/epl-ast-sun-2026-11-21",
+      "placed_at": "2026-11-19T10:54:35.437404+00:00",
+      "deadline": "2026-11-21T15:42:35.437404+00:00",
+      "market_ids": [
+        "6833902"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 21.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ari-kc-2026-11-22:6640256",
+      "tag": "calibration",
+      "market_question": "Cardinals vs. Chiefs: O/U 40.5",
+      "slug": "nfl-ari-kc-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-ari-kc-2026-11-22",
+      "placed_at": "2026-11-19T10:54:35.437404+00:00",
+      "deadline": "2026-11-22T18:06:35.437404+00:00",
+      "market_ids": [
+        "6640256"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 20.68,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-nyk-min-2026-11-19:6707161",
+      "tag": "calibration",
+      "market_question": "Knicks vs. Timberwolves",
+      "slug": "nba-nyk-min-2026-11-19",
+      "url": "https://polymarket.com/event/nba-nyk-min-2026-11-19",
+      "placed_at": "2026-11-19T10:54:35.437404+00:00",
+      "deadline": "2026-11-20T01:18:35.437404+00:00",
+      "market_ids": [
+        "6707161"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Timberwolves",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 17.44,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
