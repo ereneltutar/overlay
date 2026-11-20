@@ -2901,6 +2901,94 @@
       "resolved_at": null,
       "pnl_usd": null,
       "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-nop-okc-2026-11-20:6742004",
+      "tag": "calibration",
+      "market_question": "Pelicans vs. Thunder",
+      "slug": "nba-nop-okc-2026-11-20",
+      "url": "https://polymarket.com/event/nba-nop-okc-2026-11-20",
+      "placed_at": "2026-11-20T10:43:00.780566+00:00",
+      "deadline": "2026-11-21T01:07:00.780566+00:00",
+      "market_ids": [
+        "6742004"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Thunder",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 6.59,
+      "predicted_win_prob": 0.8836,
+      "stake_usd": 20.78,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bra-pal-fla-2026-11-21:6811936",
+      "tag": "calibration",
+      "market_question": "Will SE Palmeiras win on 2026-11-21?",
+      "slug": "bra-pal-fla-2026-11-21",
+      "url": "https://polymarket.com/event/bra-pal-fla-2026-11-21",
+      "placed_at": "2026-11-20T10:43:00.780566+00:00",
+      "deadline": "2026-11-21T20:19:00.780566+00:00",
+      "market_ids": [
+        "6811936"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 20.26,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nor-mol-bog-2026-11-20:6761128",
+      "tag": "calibration",
+      "market_question": "Will FK Bodø/Glimt win on 2026-11-20?",
+      "slug": "nor-mol-bog-2026-11-20",
+      "url": "https://polymarket.com/event/nor-mol-bog-2026-11-20",
+      "placed_at": "2026-11-20T10:43:00.780566+00:00",
+      "deadline": "2026-11-20T17:55:00.780566+00:00",
+      "market_ids": [
+        "6761128"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 19.76,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-ind-cle-2026-11-20:7180220",
+      "tag": "calibration",
+      "market_question": "Spread: Cavaliers (-6.5)",
+      "slug": "nba-ind-cle-2026-11-20",
+      "url": "https://polymarket.com/event/nba-ind-cle-2026-11-20",
+      "placed_at": "2026-11-20T10:43:00.780566+00:00",
+      "deadline": "2026-11-21T01:07:00.780566+00:00",
+      "market_ids": [
+        "7180220"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Pacers",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 10.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
     }
   ]
 }
