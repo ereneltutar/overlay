@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1206.0,
+  "bankroll": 1186.24,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -108,7 +108,7 @@
     },
     {
       "date": "2026-11-21",
-      "bankroll": 1206.0
+      "bankroll": 1186.24
     }
   ],
   "bets": [
@@ -2967,9 +2967,9 @@
       "edge_pct_at_placement": 9.52,
       "predicted_win_prob": 0.5676,
       "stake_usd": 19.76,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-21T10:27:25.647827+00:00",
+      "pnl_usd": -19.76,
       "fact_check": null
     },
     {
@@ -2989,6 +2989,116 @@
       "edge_pct_at_placement": 8.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 10.74,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-iowa-ill-2026-11-21:6823292",
+      "tag": "calibration",
+      "market_question": "Spread: Iowa (-7.5)",
+      "slug": "cfb-iowa-ill-2026-11-21",
+      "url": "https://polymarket.com/event/cfb-iowa-ill-2026-11-21",
+      "placed_at": "2026-11-21T10:27:25.647827+00:00",
+      "deadline": "2026-11-21T20:03:25.647827+00:00",
+      "market_ids": [
+        "6823292"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Illinois",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 22.09,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:dota2-lgd-1win-2026-11-21:7142261",
+      "tag": "calibration",
+      "market_question": "Dota 2: LGD Gaming vs 1win (BO3) - BLAST Slam Group D",
+      "slug": "dota2-lgd-1win-2026-11-21",
+      "url": "https://polymarket.com/event/dota2-lgd-1win-2026-11-21",
+      "placed_at": "2026-11-21T10:27:25.647827+00:00",
+      "deadline": "2026-11-21T17:39:25.647827+00:00",
+      "market_ids": [
+        "7142261"
+      ],
+      "recommended_side": "NO",
+      "side_label": "1win",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 21.54,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:atp-kwon-gueymar-2026-11-21:7202329",
+      "tag": "calibration",
+      "market_question": "Metz: Soon-Woo Kwon vs Sascha Gueymard-Wayenburg",
+      "slug": "atp-kwon-gueymar-2026-11-21",
+      "url": "https://polymarket.com/event/atp-kwon-gueymar-2026-11-21",
+      "placed_at": "2026-11-21T10:27:25.647827+00:00",
+      "deadline": "2026-11-28T12:51:25.647827+00:00",
+      "market_ids": [
+        "7202329"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Sascha Gueymard-Wayenburg",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 21.0,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-nop-sas-2026-11-21:7207569",
+      "tag": "calibration",
+      "market_question": "Spread: Spurs (-16.5)",
+      "slug": "nba-nop-sas-2026-11-21",
+      "url": "https://polymarket.com/event/nba-nop-sas-2026-11-21",
+      "placed_at": "2026-11-21T10:27:25.647827+00:00",
+      "deadline": "2026-11-22T00:51:25.647827+00:00",
+      "market_ids": [
+        "7207569"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Pelicans",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 20.48,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nor-tro-vik-2026-11-21:6816263",
+      "tag": "calibration",
+      "market_question": "Will Viking FK win on 2026-11-21?",
+      "slug": "nor-tro-vik-2026-11-21",
+      "url": "https://polymarket.com/event/nor-tro-vik-2026-11-21",
+      "placed_at": "2026-11-21T10:27:25.647827+00:00",
+      "deadline": "2026-11-21T12:51:25.647827+00:00",
+      "market_ids": [
+        "6816263"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 19.96,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
