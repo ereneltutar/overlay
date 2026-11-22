@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1227.48,
+  "bankroll": 1229.34,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -112,7 +112,7 @@
     },
     {
       "date": "2026-11-22",
-      "bankroll": 1227.48
+      "bankroll": 1229.34
     }
   ],
   "bets": [
@@ -2773,9 +2773,9 @@
       "edge_pct_at_placement": 5.92,
       "predicted_win_prob": 0.5917,
       "stake_usd": 20.36,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-22T10:29:59.107339+00:00",
+      "pnl_usd": 17.87,
       "fact_check": null
     },
     {
@@ -2949,9 +2949,9 @@
       "edge_pct_at_placement": 6.95,
       "predicted_win_prob": 0.8386,
       "stake_usd": 20.26,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-22T10:29:59.107339+00:00",
+      "pnl_usd": 6.08,
       "fact_check": null
     },
     {
@@ -3015,9 +3015,9 @@
       "edge_pct_at_placement": 9.52,
       "predicted_win_prob": 0.5676,
       "stake_usd": 22.09,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-22T10:29:59.107339+00:00",
+      "pnl_usd": -22.09,
       "fact_check": null
     },
     {
@@ -3106,6 +3106,204 @@
       "status": "won",
       "resolved_at": "2026-11-22T07:03:00.819120+00:00",
       "pnl_usd": 21.41,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-tb-det-2026-11-22:6640394",
+      "tag": "calibration",
+      "market_question": "Spread: Lions (-16.5)",
+      "slug": "nfl-tb-det-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-tb-det-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T17:41:59.107339+00:00",
+      "market_ids": [
+        "6640394"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Buccaneers",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 6.59,
+      "predicted_win_prob": 0.8836,
+      "stake_usd": 24.99,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:sea-juv-ven-2026-11-22:6885978",
+      "tag": "calibration",
+      "market_question": "Will Juventus FC vs. Venezia FC end in a draw?",
+      "slug": "sea-juv-ven-2026-11-22",
+      "url": "https://polymarket.com/event/sea-juv-ven-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T10:29:59.107339+00:00",
+      "market_ids": [
+        "6885978"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 6.59,
+      "predicted_win_prob": 0.8836,
+      "stake_usd": 24.36,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-ten-dal-2026-11-22:6577553",
+      "tag": "calibration",
+      "market_question": "Titans vs. Cowboys",
+      "slug": "nfl-ten-dal-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-ten-dal-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T17:41:59.107339+00:00",
+      "market_ids": [
+        "6577553"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Cowboys",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 23.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-ind-nyk-2026-11-22:6840924",
+      "tag": "calibration",
+      "market_question": "Pacers vs. Knicks",
+      "slug": "nba-ind-nyk-2026-11-22",
+      "url": "https://polymarket.com/event/nba-ind-nyk-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-23T00:53:59.107339+00:00",
+      "market_ids": [
+        "6840924"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Knicks",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 23.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:lal-rrc-rso-2026-11-22:6895996",
+      "tag": "calibration",
+      "market_question": "Will Real Racing Club vs. Real Sociedad de Fútbol end in a draw?",
+      "slug": "lal-rrc-rso-2026-11-22",
+      "url": "https://polymarket.com/event/lal-rrc-rso-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T15:17:59.107339+00:00",
+      "market_ids": [
+        "6895996"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 6.95,
+      "predicted_win_prob": 0.8386,
+      "stake_usd": 22.58,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:dota2-pari-liquid-2026-11-22:7206177",
+      "tag": "calibration",
+      "market_question": "Game Handicap: PARI (-1.5) vs Team Liquid (+1.5)",
+      "slug": "dota2-pari-liquid-2026-11-22",
+      "url": "https://polymarket.com/event/dota2-pari-liquid-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T20:05:59.107339+00:00",
+      "market_ids": [
+        "7206177"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Team Liquid",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.52,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 22.02,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ptc-gvd-lus-2026-11-22-more-markets:6924411",
+      "tag": "calibration",
+      "market_question": "GD Vitória de Sernache vs. Lusitânia FC Lourosa: O/U 2.5",
+      "slug": "ptc-gvd-lus-2026-11-22-more-markets",
+      "url": "https://polymarket.com/event/ptc-gvd-lus-2026-11-22-more-markets",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T12:53:59.107339+00:00",
+      "market_ids": [
+        "6924411"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.51,
+      "predicted_win_prob": 0.5676,
+      "stake_usd": 21.47,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-mia-buf-2026-11-22:6641576",
+      "tag": "calibration",
+      "market_question": "Spread: Bills (-16.5)",
+      "slug": "nfl-mia-buf-2026-11-22",
+      "url": "https://polymarket.com/event/nfl-mia-buf-2026-11-22",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T17:41:59.107339+00:00",
+      "market_ids": [
+        "6641576"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Dolphins",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.92,
+      "predicted_win_prob": 0.5917,
+      "stake_usd": 20.93,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bun-aug-mai-2026-11-22-more-markets:6893646",
+      "tag": "calibration",
+      "market_question": "FC Augsburg vs. 1. FSV Mainz 05: O/U 3.5",
+      "slug": "bun-aug-mai-2026-11-22-more-markets",
+      "url": "https://polymarket.com/event/bun-aug-mai-2026-11-22-more-markets",
+      "placed_at": "2026-11-22T10:29:59.107339+00:00",
+      "deadline": "2026-11-22T15:17:59.107339+00:00",
+      "market_ids": [
+        "6893646"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.92,
+      "predicted_win_prob": 0.5917,
+      "stake_usd": 17.16,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
       "fact_check": null
     }
   ]
