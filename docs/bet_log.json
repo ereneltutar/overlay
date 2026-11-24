@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1203.15,
+  "bankroll": 1109.42,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -120,7 +120,7 @@
     },
     {
       "date": "2026-11-24",
-      "bankroll": 1203.15
+      "bankroll": 1109.42
     }
   ],
   "bets": [
@@ -3375,9 +3375,9 @@
       "edge_pct_at_placement": 7.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 26.25,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-24T13:03:27.567688+00:00",
+      "pnl_usd": -26.25,
       "fact_check": null
     },
     {
@@ -3419,9 +3419,9 @@
       "edge_pct_at_placement": 6.92,
       "predicted_win_prob": 0.5917,
       "stake_usd": 24.95,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-24T13:03:27.567688+00:00",
+      "pnl_usd": -24.95,
       "fact_check": null
     },
     {
@@ -3463,9 +3463,9 @@
       "edge_pct_at_placement": 6.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 23.72,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-24T13:03:27.567688+00:00",
+      "pnl_usd": 23.48,
       "fact_check": null
     },
     {
@@ -3485,9 +3485,9 @@
       "edge_pct_at_placement": 6.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 23.13,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-24T13:03:27.567688+00:00",
+      "pnl_usd": -23.13,
       "fact_check": null
     },
     {
@@ -3529,9 +3529,9 @@
       "edge_pct_at_placement": 6.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 21.98,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-24T13:03:27.567688+00:00",
+      "pnl_usd": -21.98,
       "fact_check": null
     },
     {
@@ -3573,9 +3573,9 @@
       "edge_pct_at_placement": 5.92,
       "predicted_win_prob": 0.5917,
       "stake_usd": 20.9,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-24T13:03:27.567688+00:00",
+      "pnl_usd": -20.9,
       "fact_check": null
     },
     {
@@ -3595,6 +3595,160 @@
       "edge_pct_at_placement": 5.92,
       "predicted_win_prob": 0.5917,
       "stake_usd": 20.38,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cs2-infini-thecha-2026-11-24:7281127",
+      "tag": "calibration",
+      "market_question": "Counter-Strike: INFINITE Talent vs TheChampionGG (BO3) - United21 Group B",
+      "slug": "cs2-infini-thecha-2026-11-24",
+      "url": "https://polymarket.com/event/cs2-infini-thecha-2026-11-24",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-24T20:15:27.567688+00:00",
+      "market_ids": [
+        "7281127"
+      ],
+      "recommended_side": "NO",
+      "side_label": "TheChampionGG",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 21.8,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-kc-buf-2026-11-27:6937084",
+      "tag": "calibration",
+      "market_question": "Spread: Bills (-2.5)",
+      "slug": "nfl-kc-buf-2026-11-27",
+      "url": "https://polymarket.com/event/nfl-kc-buf-2026-11-27",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-27T01:03:27.567688+00:00",
+      "market_ids": [
+        "6937084"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Chiefs",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 21.25,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-dal-den-2026-11-24:7291743",
+      "tag": "calibration",
+      "market_question": "Mavericks vs. Nuggets: O/U 232.5",
+      "slug": "nba-dal-den-2026-11-24",
+      "url": "https://polymarket.com/event/nba-dal-den-2026-11-24",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-25T03:27:27.567688+00:00",
+      "market_ids": [
+        "7291743"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 20.72,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-rma-psv-2026-11-24-more-markets:6970216",
+      "tag": "calibration",
+      "market_question": "Spread: Real Madrid CF (-2.5)",
+      "slug": "ucl-rma-psv-2026-11-24-more-markets",
+      "url": "https://polymarket.com/event/ucl-rma-psv-2026-11-24-more-markets",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-24T20:15:27.567688+00:00",
+      "market_ids": [
+        "6970216"
+      ],
+      "recommended_side": "NO",
+      "side_label": "PSV",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 20.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-mich-ohiost-2026-11-28:7050310",
+      "tag": "calibration",
+      "market_question": "Michigan vs. Ohio State: O/U 37.5",
+      "slug": "cfb-mich-ohiost-2026-11-28",
+      "url": "https://polymarket.com/event/cfb-mich-ohiost-2026-11-28",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-28T17:51:27.567688+00:00",
+      "market_ids": [
+        "7050310"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 19.7,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-sc-clmsn-2026-11-28:7050600",
+      "tag": "calibration",
+      "market_question": "Spread: South Carolina (-5.5)",
+      "slug": "cfb-sc-clmsn-2026-11-28",
+      "url": "https://polymarket.com/event/cfb-sc-clmsn-2026-11-28",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-28T20:15:27.567688+00:00",
+      "market_ids": [
+        "7050600"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Clemson",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 19.21,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:epl-eve-liv-2026-11-29:7223165",
+      "tag": "calibration",
+      "market_question": "Will Liverpool FC win on 2026-11-29?",
+      "slug": "epl-eve-liv-2026-11-29",
+      "url": "https://polymarket.com/event/epl-eve-liv-2026-11-29",
+      "placed_at": "2026-11-24T13:03:27.567688+00:00",
+      "deadline": "2026-11-29T13:03:27.567688+00:00",
+      "market_ids": [
+        "7223165"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 18.73,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
