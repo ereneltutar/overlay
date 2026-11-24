@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1109.42,
+  "bankroll": 1227.96,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -120,7 +120,7 @@
     },
     {
       "date": "2026-11-24",
-      "bankroll": 1109.42
+      "bankroll": 1227.96
     }
   ],
   "bets": [
@@ -3331,9 +3331,9 @@
       "edge_pct_at_placement": 9.52,
       "predicted_win_prob": 0.5676,
       "stake_usd": 27.61,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-24T14:58:04.203045+00:00",
+      "pnl_usd": 30.84,
       "fact_check": null
     },
     {
@@ -3397,9 +3397,9 @@
       "edge_pct_at_placement": 6.92,
       "predicted_win_prob": 0.5917,
       "stake_usd": 25.59,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-24T14:58:04.203045+00:00",
+      "pnl_usd": 23.39,
       "fact_check": null
     },
     {
@@ -3441,9 +3441,9 @@
       "edge_pct_at_placement": 6.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 24.33,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-24T14:58:04.203045+00:00",
+      "pnl_usd": 24.09,
       "fact_check": null
     },
     {
@@ -3507,9 +3507,9 @@
       "edge_pct_at_placement": 6.51,
       "predicted_win_prob": 0.5676,
       "stake_usd": 22.55,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-24T14:58:04.203045+00:00",
+      "pnl_usd": 22.33,
       "fact_check": null
     },
     {
@@ -3595,9 +3595,9 @@
       "edge_pct_at_placement": 5.92,
       "predicted_win_prob": 0.5917,
       "stake_usd": 20.38,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-24T14:58:04.203045+00:00",
+      "pnl_usd": 17.89,
       "fact_check": null
     },
     {
