@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1207.24,
+  "bankroll": 1211.38,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -124,7 +124,7 @@
     },
     {
       "date": "2026-11-25",
-      "bankroll": 1207.24
+      "bankroll": 1211.38
     }
   ],
   "bets": [
@@ -3621,9 +3621,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5664,
       "stake_usd": 21.8,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-25T11:52:43.037252+00:00",
+      "pnl_usd": 24.35,
       "fact_check": null
     },
     {
@@ -3687,9 +3687,9 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 20.21,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-25T11:52:43.037252+00:00",
+      "pnl_usd": -20.21,
       "fact_check": null
     },
     {
@@ -3753,6 +3753,226 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 18.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-atm-vf-2026-11-25-more-markets:6993634",
+      "tag": "calibration",
+      "market_question": "Spread: Club Atlético de Madrid (-4.5)",
+      "slug": "ucl-atm-vf-2026-11-25-more-markets",
+      "url": "https://polymarket.com/event/ucl-atm-vf-2026-11-25-more-markets",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-25T19:04:43.037252+00:00",
+      "market_ids": [
+        "6993634"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Viking FK",
+      "entry_cost": 0.8177,
+      "edge_pct_at_placement": 6.52,
+      "predicted_win_prob": 0.8829,
+      "stake_usd": 25.39,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-phx-hou-2026-11-25:6956406",
+      "tag": "calibration",
+      "market_question": "Suns vs. Rockets",
+      "slug": "nba-phx-hou-2026-11-25",
+      "url": "https://polymarket.com/event/nba-phx-hou-2026-11-25",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-26T02:16:43.037252+00:00",
+      "market_ids": [
+        "6956406"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Rockets",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 24.75,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-psg-rom-2026-11-25-more-markets:6993579",
+      "tag": "calibration",
+      "market_question": "Spread: Paris Saint-Germain FC (-2.5)",
+      "slug": "ucl-psg-rom-2026-11-25-more-markets",
+      "url": "https://polymarket.com/event/ucl-psg-rom-2026-11-25-more-markets",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-25T19:04:43.037252+00:00",
+      "market_ids": [
+        "6993579"
+      ],
+      "recommended_side": "NO",
+      "side_label": "AS Roma",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 24.13,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-min-okc-2026-11-25:7334839",
+      "tag": "calibration",
+      "market_question": "Timberwolves vs. Thunder: O/U 223.5",
+      "slug": "nba-min-okc-2026-11-25",
+      "url": "https://polymarket.com/event/nba-min-okc-2026-11-25",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-25T23:52:43.037252+00:00",
+      "market_ids": [
+        "7334839"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 23.53,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-chi-det-2026-11-26:6747201",
+      "tag": "calibration",
+      "market_question": "Bears vs. Lions",
+      "slug": "nfl-chi-det-2026-11-26",
+      "url": "https://polymarket.com/event/nfl-chi-det-2026-11-26",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-26T19:04:43.037252+00:00",
+      "market_ids": [
+        "6747201"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Lions",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 22.94,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:ucl-bru-liv-2026-11-25-more-markets:6993488",
+      "tag": "calibration",
+      "market_question": "Club Brugge KV vs. Liverpool FC: O/U 3.5",
+      "slug": "ucl-bru-liv-2026-11-25-more-markets",
+      "url": "https://polymarket.com/event/ucl-bru-liv-2026-11-25-more-markets",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-25T19:04:43.037252+00:00",
+      "market_ids": [
+        "6993488"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 22.37,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-gb-la-2026-11-26:6936321",
+      "tag": "calibration",
+      "market_question": "Packers vs. Rams: O/U 44.5",
+      "slug": "nfl-gb-la-2026-11-26",
+      "url": "https://polymarket.com/event/nfl-gb-la-2026-11-26",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-25T23:52:43.037252+00:00",
+      "market_ids": [
+        "6936321"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.5923,
+      "stake_usd": 21.81,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-phx-hou-2026-11-25:7303967",
+      "tag": "calibration",
+      "market_question": "Spread: Rockets (-9.5)",
+      "slug": "nba-phx-hou-2026-11-25",
+      "url": "https://polymarket.com/event/nba-phx-hou-2026-11-25",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-26T02:16:43.037252+00:00",
+      "market_ids": [
+        "7303967"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Suns",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.5923,
+      "stake_usd": 21.27,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-sas-por-2026-11-25:7326684",
+      "tag": "calibration",
+      "market_question": "Spurs vs. Trail Blazers: O/U 226.5",
+      "slug": "nba-sas-por-2026-11-25",
+      "url": "https://polymarket.com/event/nba-sas-por-2026-11-25",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-26T02:16:43.037252+00:00",
+      "market_ids": [
+        "7326684"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.5923,
+      "stake_usd": 20.73,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-min-okc-2026-11-25:7303423",
+      "tag": "calibration",
+      "market_question": "Timberwolves vs. Thunder: O/U 224.5",
+      "slug": "nba-min-okc-2026-11-25",
+      "url": "https://polymarket.com/event/nba-min-okc-2026-11-25",
+      "placed_at": "2026-11-25T11:52:43.037252+00:00",
+      "deadline": "2026-11-25T23:52:43.037252+00:00",
+      "market_ids": [
+        "7303423"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4925,
+      "edge_pct_at_placement": 7.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 20.22,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
