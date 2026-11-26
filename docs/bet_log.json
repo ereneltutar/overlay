@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1241.67,
+  "bankroll": 1278.56,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -128,7 +128,7 @@
     },
     {
       "date": "2026-11-26",
-      "bankroll": 1241.67
+      "bankroll": 1278.56
     }
   ],
   "bets": [
@@ -3779,9 +3779,9 @@
       "edge_pct_at_placement": 6.52,
       "predicted_win_prob": 0.8829,
       "stake_usd": 25.39,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-26T11:41:25.392669+00:00",
+      "pnl_usd": 5.66,
       "fact_check": null
     },
     {
@@ -3823,9 +3823,9 @@
       "edge_pct_at_placement": 7.01,
       "predicted_win_prob": 0.8392,
       "stake_usd": 24.13,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-26T11:41:25.392669+00:00",
+      "pnl_usd": 7.24,
       "fact_check": null
     },
     {
@@ -3889,9 +3889,9 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 22.37,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-26T11:41:25.392669+00:00",
+      "pnl_usd": 23.99,
       "fact_check": null
     },
     {
@@ -3977,6 +3977,138 @@
       "edge_pct_at_placement": 7.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 20.22,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-buf-akron-2026-11-27:7025595",
+      "tag": "calibration",
+      "market_question": "Buffalo vs. Akron: O/U 47.5",
+      "slug": "cfb-buf-akron-2026-11-27",
+      "url": "https://polymarket.com/event/cfb-buf-akron-2026-11-27",
+      "placed_at": "2026-11-26T11:41:25.392669+00:00",
+      "deadline": "2026-11-27T16:29:25.392669+00:00",
+      "market_ids": [
+        "7025595"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 24.38,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-den-pit-2026-11-27:6937348",
+      "tag": "calibration",
+      "market_question": "Spread: Broncos (-3.5)",
+      "slug": "nfl-den-pit-2026-11-27",
+      "url": "https://polymarket.com/event/nfl-den-pit-2026-11-27",
+      "placed_at": "2026-11-26T11:41:25.392669+00:00",
+      "deadline": "2026-11-27T18:53:25.392669+00:00",
+      "market_ids": [
+        "6937348"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Steelers",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 23.77,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:col-scf-twe-2026-11-26:6996178",
+      "tag": "calibration",
+      "market_question": "Will SC Freiburg win on 2026-11-26?",
+      "slug": "col-scf-twe-2026-11-26",
+      "url": "https://polymarket.com/event/col-scf-twe-2026-11-26",
+      "placed_at": "2026-11-26T11:41:25.392669+00:00",
+      "deadline": "2026-11-26T18:53:25.392669+00:00",
+      "market_ids": [
+        "6996178"
+      ],
+      "recommended_side": "NO",
+      "side_label": "No",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 23.17,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-phi-dal-2026-11-26:6936804",
+      "tag": "calibration",
+      "market_question": "Spread: Cowboys (-9.5)",
+      "slug": "nfl-phi-dal-2026-11-26",
+      "url": "https://polymarket.com/event/nfl-phi-dal-2026-11-26",
+      "placed_at": "2026-11-26T11:41:25.392669+00:00",
+      "deadline": "2026-11-26T21:17:25.392669+00:00",
+      "market_ids": [
+        "6936804"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Eagles",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.5923,
+      "stake_usd": 22.59,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-chi-det-2026-11-26:6936500",
+      "tag": "calibration",
+      "market_question": "Spread: Bears (-1.5)",
+      "slug": "nfl-chi-det-2026-11-26",
+      "url": "https://polymarket.com/event/nfl-chi-det-2026-11-26",
+      "placed_at": "2026-11-26T11:41:25.392669+00:00",
+      "deadline": "2026-11-26T18:53:25.392669+00:00",
+      "market_ids": [
+        "6936500"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Lions",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.5923,
+      "stake_usd": 22.03,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-den-pit-2026-11-27:6937349",
+      "tag": "calibration",
+      "market_question": "Spread: Broncos (-4.5)",
+      "slug": "nfl-den-pit-2026-11-27",
+      "url": "https://polymarket.com/event/nfl-den-pit-2026-11-27",
+      "placed_at": "2026-11-26T11:41:25.392669+00:00",
+      "deadline": "2026-11-27T18:53:25.392669+00:00",
+      "market_ids": [
+        "6937349"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Steelers",
+      "entry_cost": 0.5225,
+      "edge_pct_at_placement": 6.98,
+      "predicted_win_prob": 0.5923,
+      "stake_usd": 21.48,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
