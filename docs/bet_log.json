@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1311.04,
+  "bankroll": 1263.54,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -132,7 +132,7 @@
     },
     {
       "date": "2026-11-27",
-      "bankroll": 1311.04
+      "bankroll": 1263.54
     }
   ],
   "bets": [
@@ -3871,9 +3871,9 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 22.94,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-27T11:34:26.084072+00:00",
+      "pnl_usd": -22.94,
       "fact_check": null
     },
     {
@@ -4047,9 +4047,9 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 23.17,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-27T11:34:26.084072+00:00",
+      "pnl_usd": -23.17,
       "fact_check": null
     },
     {
@@ -4069,9 +4069,9 @@
       "edge_pct_at_placement": 6.98,
       "predicted_win_prob": 0.5923,
       "stake_usd": 22.59,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-27T11:34:26.084072+00:00",
+      "pnl_usd": 20.64,
       "fact_check": null
     },
     {
@@ -4091,9 +4091,9 @@
       "edge_pct_at_placement": 6.98,
       "predicted_win_prob": 0.5923,
       "stake_usd": 22.03,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-27T11:34:26.084072+00:00",
+      "pnl_usd": -22.03,
       "fact_check": null
     },
     {
@@ -4113,6 +4113,226 @@
       "edge_pct_at_placement": 6.98,
       "predicted_win_prob": 0.5923,
       "stake_usd": 21.48,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-mil-det-2026-11-27:7008990",
+      "tag": "calibration",
+      "market_question": "Bucks vs. Pistons",
+      "slug": "nba-mil-det-2026-11-27",
+      "url": "https://polymarket.com/event/nba-mil-det-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-27T23:34:26.084072+00:00",
+      "market_ids": [
+        "7008990"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Pistons",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 26.14,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-atl-bos-2026-11-27:7008993",
+      "tag": "calibration",
+      "market_question": "Hawks vs. Celtics",
+      "slug": "nba-atl-bos-2026-11-27",
+      "url": "https://polymarket.com/event/nba-atl-bos-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-28T01:58:26.084072+00:00",
+      "market_ids": [
+        "7008993"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Celtics",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 25.49,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-gsw-por-2026-11-27:7008999",
+      "tag": "calibration",
+      "market_question": "Warriors vs. Trail Blazers",
+      "slug": "nba-gsw-por-2026-11-27",
+      "url": "https://polymarket.com/event/nba-gsw-por-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-28T01:58:26.084072+00:00",
+      "market_ids": [
+        "7008999"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Trail Blazers",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 24.85,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-phi-hou-2026-11-28:7031361",
+      "tag": "calibration",
+      "market_question": "76ers vs. Rockets",
+      "slug": "nba-phi-hou-2026-11-28",
+      "url": "https://polymarket.com/event/nba-phi-hou-2026-11-28",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-29T01:58:26.084072+00:00",
+      "market_ids": [
+        "7031361"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Rockets",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 24.23,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:sea-ven-bol-2026-11-27-more-markets:7179935",
+      "tag": "calibration",
+      "market_question": "Venezia FC vs. Bologna FC 1909: O/U 3.5",
+      "slug": "sea-ven-bol-2026-11-27-more-markets",
+      "url": "https://polymarket.com/event/sea-ven-bol-2026-11-27-more-markets",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-27T18:46:26.084072+00:00",
+      "market_ids": [
+        "7179935"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.7691,
+      "edge_pct_at_placement": 7.01,
+      "predicted_win_prob": 0.8392,
+      "stake_usd": 23.62,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-bkn-tor-2026-11-27:7375156",
+      "tag": "calibration",
+      "market_question": "Spread: Raptors (-7.5)",
+      "slug": "nba-bkn-tor-2026-11-27",
+      "url": "https://polymarket.com/event/nba-bkn-tor-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-27T23:34:26.084072+00:00",
+      "market_ids": [
+        "7375156"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Nets",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 23.03,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-den-uta-2026-11-27:7364961",
+      "tag": "calibration",
+      "market_question": "Spread: Nuggets (-9.5)",
+      "slug": "nba-den-uta-2026-11-27",
+      "url": "https://polymarket.com/event/nba-den-uta-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-28T01:58:26.084072+00:00",
+      "market_ids": [
+        "7364961"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Jazz",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 22.46,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-airf-nmx-2026-11-27:7026061",
+      "tag": "calibration",
+      "market_question": "Air Force vs. New Mexico: O/U 41.5",
+      "slug": "cfb-airf-nmx-2026-11-27",
+      "url": "https://polymarket.com/event/cfb-airf-nmx-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-27T21:10:26.084072+00:00",
+      "market_ids": [
+        "7026061"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 21.9,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-tulane-sfl-2026-11-28:7052308",
+      "tag": "calibration",
+      "market_question": "Tulane vs. South Florida: O/U 43.5",
+      "slug": "cfb-tulane-sfl-2026-11-28",
+      "url": "https://polymarket.com/event/cfb-tulane-sfl-2026-11-28",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-28T21:10:26.084072+00:00",
+      "market_ids": [
+        "7052308"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 21.35,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cbb-prnce-ncw-2026-11-27:7382502",
+      "tag": "calibration",
+      "market_question": "Princeton Tigers vs. UNCW Seahawks: O/U 151.5",
+      "slug": "cbb-prnce-ncw-2026-11-27",
+      "url": "https://polymarket.com/event/cbb-prnce-ncw-2026-11-27",
+      "placed_at": "2026-11-27T11:34:26.084072+00:00",
+      "deadline": "2026-11-27T21:10:26.084072+00:00",
+      "market_ids": [
+        "7382502"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 11.29,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
