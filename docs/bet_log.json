@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1340.55,
+  "bankroll": 1330.76,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -136,7 +136,7 @@
     },
     {
       "date": "2026-11-28",
-      "bankroll": 1340.55
+      "bankroll": 1330.76
     }
   ],
   "bets": [
@@ -4293,9 +4293,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5664,
       "stake_usd": 21.9,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-28T11:05:26.583447+00:00",
+      "pnl_usd": -21.9,
       "fact_check": null
     },
     {
@@ -4337,6 +4337,182 @@
       "edge_pct_at_placement": 8.39,
       "predicted_win_prob": 0.5664,
       "stake_usd": 11.29,
+      "status": "won",
+      "resolved_at": "2026-11-28T11:05:26.583447+00:00",
+      "pnl_usd": 12.11,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nhl-cal-nyr-2026-11-28:6535869",
+      "tag": "calibration",
+      "market_question": "Flames vs. Rangers: O/U 5.5",
+      "slug": "nhl-cal-nyr-2026-11-28",
+      "url": "https://polymarket.com/event/nhl-cal-nyr-2026-11-28",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-28T23:05:26.583447+00:00",
+      "market_ids": [
+        "6535869"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 26.44,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nba-phi-hou-2026-11-28:7411387",
+      "tag": "calibration",
+      "market_question": "Spread: Rockets (-11.5)",
+      "slug": "nba-phi-hou-2026-11-28",
+      "url": "https://polymarket.com/event/nba-phi-hou-2026-11-28",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-29T01:29:26.583447+00:00",
+      "market_ids": [
+        "7411387"
+      ],
+      "recommended_side": "NO",
+      "side_label": "76ers",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 25.78,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-mich-ohiost-2026-11-28:7050302",
+      "tag": "calibration",
+      "market_question": "Spread: Ohio State (-8.5)",
+      "slug": "cfb-mich-ohiost-2026-11-28",
+      "url": "https://polymarket.com/event/cfb-mich-ohiost-2026-11-28",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-28T15:53:26.583447+00:00",
+      "market_ids": [
+        "7050302"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Michigan",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 25.14,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-lou-uk-2026-11-28:7050473",
+      "tag": "calibration",
+      "market_question": "Louisville vs. Kentucky: O/U 51.5",
+      "slug": "cfb-lou-uk-2026-11-28",
+      "url": "https://polymarket.com/event/cfb-lou-uk-2026-11-28",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-28T15:53:26.583447+00:00",
+      "market_ids": [
+        "7050473"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 24.51,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:epl-cry-hul-2026-11-29-more-markets:7229316",
+      "tag": "calibration",
+      "market_question": "Crystal Palace FC vs. Hull City AFC: O/U 2.5",
+      "slug": "epl-cry-hul-2026-11-29-more-markets",
+      "url": "https://polymarket.com/event/epl-cry-hul-2026-11-29-more-markets",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-29T13:29:26.583447+00:00",
+      "market_ids": [
+        "7229316"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 23.89,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:bl2-vfl-h96-2026-11-28-more-markets:7257629",
+      "tag": "calibration",
+      "market_question": "VfL Osnabrück vs. Hannover 96: O/U 2.5",
+      "slug": "bl2-vfl-h96-2026-11-28-more-markets",
+      "url": "https://polymarket.com/event/bl2-vfl-h96-2026-11-28-more-markets",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-28T20:41:26.583447+00:00",
+      "market_ids": [
+        "7257629"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Under",
+      "entry_cost": 0.4724,
+      "edge_pct_at_placement": 9.4,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 23.3,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:nfl-sea-sf-2026-11-29:6902950",
+      "tag": "calibration",
+      "market_question": "Seahawks vs. 49ers",
+      "slug": "nfl-sea-sf-2026-11-29",
+      "url": "https://polymarket.com/event/nfl-sea-sf-2026-11-29",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-29T20:41:26.583447+00:00",
+      "market_ids": [
+        "6902950"
+      ],
+      "recommended_side": "NO",
+      "side_label": "49ers",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 22.71,
+      "status": "open",
+      "resolved_at": null,
+      "pnl_usd": null,
+      "fact_check": null
+    },
+    {
+      "bet_id": "calibration:cfb-gtech-ga-2026-11-28:7271499",
+      "tag": "calibration",
+      "market_question": "Spread: Georgia (-35.5)",
+      "slug": "cfb-gtech-ga-2026-11-28",
+      "url": "https://polymarket.com/event/cfb-gtech-ga-2026-11-28",
+      "placed_at": "2026-11-28T11:05:26.583447+00:00",
+      "deadline": "2026-11-28T20:41:26.583447+00:00",
+      "market_ids": [
+        "7271499"
+      ],
+      "recommended_side": "NO",
+      "side_label": "Georgia Tech",
+      "entry_cost": 0.4825,
+      "edge_pct_at_placement": 8.39,
+      "predicted_win_prob": 0.5664,
+      "stake_usd": 20.89,
       "status": "open",
       "resolved_at": null,
       "pnl_usd": null,
