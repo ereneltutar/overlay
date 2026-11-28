@@ -1,6 +1,6 @@
 {
   "starting_bankroll": 1000.0,
-  "bankroll": 1330.76,
+  "bankroll": 1275.09,
   "bankroll_history": [
     {
       "date": "2026-10-26",
@@ -136,7 +136,7 @@
     },
     {
       "date": "2026-11-28",
-      "bankroll": 1330.76
+      "bankroll": 1275.09
     }
   ],
   "bets": [
@@ -4139,9 +4139,9 @@
       "edge_pct_at_placement": 7.01,
       "predicted_win_prob": 0.8392,
       "stake_usd": 26.14,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-28T16:57:34.409398+00:00",
+      "pnl_usd": 7.85,
       "fact_check": null
     },
     {
@@ -4161,9 +4161,9 @@
       "edge_pct_at_placement": 7.01,
       "predicted_win_prob": 0.8392,
       "stake_usd": 25.49,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-28T16:57:34.409398+00:00",
+      "pnl_usd": -25.49,
       "fact_check": null
     },
     {
@@ -4183,9 +4183,9 @@
       "edge_pct_at_placement": 7.01,
       "predicted_win_prob": 0.8392,
       "stake_usd": 24.85,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "won",
+      "resolved_at": "2026-11-28T16:57:34.409398+00:00",
+      "pnl_usd": 7.46,
       "fact_check": null
     },
     {
@@ -4249,9 +4249,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5664,
       "stake_usd": 23.03,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-28T16:57:34.409398+00:00",
+      "pnl_usd": -23.03,
       "fact_check": null
     },
     {
@@ -4271,9 +4271,9 @@
       "edge_pct_at_placement": 9.4,
       "predicted_win_prob": 0.5664,
       "stake_usd": 22.46,
-      "status": "open",
-      "resolved_at": null,
-      "pnl_usd": null,
+      "status": "lost",
+      "resolved_at": "2026-11-28T16:57:34.409398+00:00",
+      "pnl_usd": -22.46,
       "fact_check": null
     },
     {
